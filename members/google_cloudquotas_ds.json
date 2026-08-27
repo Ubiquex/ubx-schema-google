@@ -1,0 +1,2066 @@
+{
+  "schema_source": "discovery_docs",
+  "mode": "data_source",
+  "auth": {
+    "Type": "",
+    "Params": null
+  },
+  "base_url": "https://cloudquotas.googleapis.com",
+  "retry": {
+    "MaxAttempts": 0,
+    "InitialBackoff": "",
+    "MaxBackoff": "",
+    "Jitter": null,
+    "RespectRetryAfter": null,
+    "RateLimitResetHeader": ""
+  },
+  "timeouts": {
+    "Create": "",
+    "Read": "",
+    "Update": "",
+    "Delete": "",
+    "Default": ""
+  },
+  "wire_name": "google_cloudquotas",
+  "raw_spec": {
+    "name": "cloudquotas",
+    "revision": "20260820",
+    "discoveryVersion": "v1",
+    "baseUrl": "https://cloudquotas.googleapis.com/",
+    "rootUrl": "https://cloudquotas.googleapis.com/",
+    "servicePath": "",
+    "schemas": {
+      "DimensionsInfo": {
+        "type": "object",
+        "format": "",
+        "description": "The detailed quota information such as effective quota value for a combination of dimensions.",
+        "$ref": "",
+        "properties": {
+          "applicableLocations": {
+            "type": "array",
+            "format": "",
+            "description": "The applicable regions or zones of this dimension. The field is set to ['global'] for quotas that are not per region or per zone. Otherwise, it will be set to the list of locations this dimension info is applicable to.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "details": {
+            "type": "",
+            "format": "",
+            "description": "Quota details for the specified dimensions.",
+            "$ref": "QuotaDetails",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "dimensions": {
+            "type": "object",
+            "format": "",
+            "description": "The map of dimensions in key-value pairs. The key of a map entry is \"region\", \"zone\", or the name of a service-specific dimension, and the value of a map entry is the value of the dimension. If a dimension does not appear in the map of dimensions, the dimensions info applies to all the dimension values except for those that have another DimensionInfo instance configured for the specific value. For example: `{\"provider\" : \"Example Organization\"}` where `provider` is a service-specific quota dimension and `Example Organization` is the provider name.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GdcDimensionsInfo": {
+        "type": "object",
+        "format": "",
+        "description": "The detailed quota information such as effective quota value for a combination of dimensions.",
+        "$ref": "",
+        "properties": {
+          "details": {
+            "type": "",
+            "format": "",
+            "description": "Quota details for the specified dimensions.",
+            "$ref": "GdcQuotaDetails",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "dimensions": {
+            "type": "object",
+            "format": "",
+            "description": "The map of dimensions in key-value pairs. The key of a map entry is \"region\", \"zone\", or the name of a service-specific dimension, and the value of a map entry is the value of the dimension. If a dimension does not appear in the map of dimensions, the dimensions info applies to all the dimension values except for those that have another DimensionInfo instance configured for the specific value. For example: `{\"provider\" : \"Example Organization\"}` where `provider` is a service-specific quota dimension and `Example Organization` is the provider name.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GdcQuotaDetails": {
+        "type": "object",
+        "format": "",
+        "description": "The quota details for a map of dimensions.",
+        "$ref": "",
+        "properties": {
+          "resetValue": {
+            "type": "string",
+            "format": "int64",
+            "description": "The Google Cloud defined quota value that the quota will be reset to if a quota decrease preference is deleted",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "value": {
+            "type": "string",
+            "format": "int64",
+            "description": "The value currently in effect and being enforced.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GdcQuotaInfo": {
+        "type": "object",
+        "format": "",
+        "description": "GdcQuotaInfo represents information about a particular quota for a given project, folder or organization in GDC.",
+        "$ref": "",
+        "properties": {
+          "containerType": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The type of a cloud resource container that the quota is defined for.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "GDC_CONTAINER_TYPE_UNSPECIFIED",
+              "GDC_PROJECT",
+              "GDC_ORGANIZATION"
+            ],
+            "readOnly": true
+          },
+          "dimensions": {
+            "type": "array",
+            "format": "",
+            "description": "Output only. The dimensions the quota is defined on.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "gdcDimensionsInfos": {
+            "type": "array",
+            "format": "",
+            "description": "Output only. The collection of dimensions info ordered by their dimensions from more specific ones to less specific ones.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "GdcDimensionsInfo",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "metric": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The metric of the quota. It specifies the resources consumption the quota is defined for. For example, `compute.googleapis.com/cpus`",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. Identifier. Resource name of this GdcQuotaInfo. For example, `projects/123/locations/us-west2/gdcZones/us-west2-edge-lga1/gdcServices/edgecontainer.googleapis.com/gdcQuotaInfos/gdc-quota-1` `organizations/123/locations/us-west2/gdcZones/us-west2-edge-lga1/gdcServices/edgecontainer.googleapis.com/gdcQuotaInfos/gdc-quota-1`",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "precise": {
+            "type": "boolean",
+            "format": "",
+            "description": "Output only. Whether this is a precise quota. A precise quota is tracked with absolute precision. In contrast, an imprecise quota is not tracked with precision.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "quotaId": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The id of the quota, which is unique within the service. For example, `CpusPerProjectPerRegion`",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "refreshInterval": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The reset time interval for the quota. Refresh interval applies to rate quota only. For example, \"minute\" for per minute, \"day\" for per day, or \"10 seconds\" for every 10 seconds.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "service": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The name of the service in which the quota is defined. For example, `compute.googleapis.com`",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ListGdcQuotaInfosResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Message for response to listing GdcQuotaInfos",
+        "$ref": "",
+        "properties": {
+          "gdcQuotaInfos": {
+            "type": "array",
+            "format": "",
+            "description": "The list of GdcQuotaInfo",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "GdcQuotaInfo",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "A token identifying a page of results the server should return.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ListQuotaInfosResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Message for response to listing QuotaInfos",
+        "$ref": "",
+        "properties": {
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "quotaInfos": {
+            "type": "array",
+            "format": "",
+            "description": "The list of QuotaInfo",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "QuotaInfo",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ListQuotaPreferencesResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Message for response to listing QuotaPreferences",
+        "$ref": "",
+        "properties": {
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "quotaPreferences": {
+            "type": "array",
+            "format": "",
+            "description": "The list of QuotaPreference",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "QuotaPreference",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "unreachable": {
+            "type": "array",
+            "format": "",
+            "description": "Locations that could not be reached.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "QuotaAdjusterSettings": {
+        "type": "object",
+        "format": "",
+        "description": "The QuotaAdjusterSettings resource defines the settings for the Quota Adjuster.",
+        "$ref": "",
+        "properties": {
+          "enablement": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The configured value of the enablement at the given resource.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "ENABLEMENT_UNSPECIFIED",
+              "ENABLED",
+              "DISABLED"
+            ],
+            "readOnly": false
+          },
+          "etag": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The current ETag of the QuotaAdjusterSettings. If an ETag is provided on update and does not match the current server's ETag in the QuotaAdjusterSettings, the request is blocked and returns an ABORTED error. See https://google.aip.dev/134#etags for more details on ETags.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "inherited": {
+            "type": "boolean",
+            "format": "",
+            "description": "Optional. Indicates whether the setting is inherited or explicitly specified.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "inheritedFrom": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The resource container from which the setting is inherited. This refers to the nearest ancestor with enablement set (either ENABLED or DISABLED). The value can be an organizations/{organization_id}, folders/{folder_id}, or can be 'default' if no ancestor exists with enablement set. The value will be empty when enablement is directly set on this container.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "Identifier. Name of the configuration, in the formats below: * For a project: projects/PROJECT_NUMBER/locations/global/quotaAdjusterSettings * For a folder: folders/FOLDER_NUMBER/locations/global/quotaAdjusterSettings * For an organization: organizations/ORGANIZATION_NUMBER/locations/global/quotaAdjusterSettings",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "updateTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. The timestamp when the QuotaAdjusterSettings resource was last updated.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "QuotaConfig": {
+        "type": "object",
+        "format": "",
+        "description": "The preferred quota configuration.",
+        "$ref": "",
+        "properties": {
+          "annotations": {
+            "type": "object",
+            "format": "",
+            "description": "Optional. The annotations map for clients to store small amounts of arbitrary data. Do not put PII or other sensitive information here. See https://google.aip.dev/128#annotations",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "grantedValue": {
+            "type": "string",
+            "format": "int64",
+            "description": "Output only. Granted quota value.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "preferredValue": {
+            "type": "string",
+            "format": "int64",
+            "description": "Required. The preferred value. Must be greater than or equal to -1. If set to -1, it means the value is \"unlimited\".",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "requestOrigin": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The origin of the quota preference request.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "ORIGIN_UNSPECIFIED",
+              "CLOUD_CONSOLE",
+              "AUTO_ADJUSTER"
+            ],
+            "readOnly": true
+          },
+          "stateDetail": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. Optional details about the state of this quota preference. For example, it may contain a description of a partially approved request or explain why the request was denied.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "traceId": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The trace id that the Google Cloud uses to provision the requested quota. This trace id may be used by the client to contact Cloud support to track the state of a quota preference request. The trace id is only produced for increase requests and is unique for each request. The quota decrease requests do not have a trace id.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "QuotaDetails": {
+        "type": "object",
+        "format": "",
+        "description": "The quota details for a map of dimensions.",
+        "$ref": "",
+        "properties": {
+          "rolloutInfo": {
+            "type": "",
+            "format": "",
+            "description": "Rollout information of this quota. This field is present only if the effective limit will change due to the ongoing rollout of the service config.",
+            "$ref": "RolloutInfo",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "value": {
+            "type": "string",
+            "format": "int64",
+            "description": "The value currently in effect and being enforced.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "QuotaIncreaseEligibility": {
+        "type": "object",
+        "format": "",
+        "description": "Eligibility information regarding requesting increase adjustment of a quota.",
+        "$ref": "",
+        "properties": {
+          "ineligibilityReason": {
+            "type": "string",
+            "format": "",
+            "description": "The reason of why it is ineligible to request increased value of the quota. If the is_eligible field is true, it defaults to INELIGIBILITY_REASON_UNSPECIFIED.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "INELIGIBILITY_REASON_UNSPECIFIED",
+              "NO_VALID_BILLING_ACCOUNT",
+              "NOT_SUPPORTED",
+              "NOT_ENOUGH_USAGE_HISTORY",
+              "OTHER"
+            ],
+            "readOnly": false
+          },
+          "isEligible": {
+            "type": "boolean",
+            "format": "",
+            "description": "Whether a higher quota value can be requested for the quota.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "QuotaInfo": {
+        "type": "object",
+        "format": "",
+        "description": "QuotaInfo represents information about a particular quota for a given project, folder or organization.",
+        "$ref": "",
+        "properties": {
+          "containerType": {
+            "type": "string",
+            "format": "",
+            "description": "The container type of the QuotaInfo.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "CONTAINER_TYPE_UNSPECIFIED",
+              "PROJECT",
+              "FOLDER",
+              "ORGANIZATION"
+            ],
+            "readOnly": false
+          },
+          "dimensions": {
+            "type": "array",
+            "format": "",
+            "description": "The dimensions the quota is defined on.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "dimensionsInfos": {
+            "type": "array",
+            "format": "",
+            "description": "The collection of dimensions info ordered by their dimensions from more specific ones to less specific ones.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "DimensionsInfo",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "isConcurrent": {
+            "type": "boolean",
+            "format": "",
+            "description": "Whether the quota is a concurrent quota. Concurrent quotas are enforced on the total number of concurrent operations in flight at any given time.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "isFixed": {
+            "type": "boolean",
+            "format": "",
+            "description": "Whether the quota value is fixed or adjustable",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "isPrecise": {
+            "type": "boolean",
+            "format": "",
+            "description": "Whether this is a precise quota. A precise quota is tracked with absolute precision. In contrast, an imprecise quota is not tracked with precision.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "metric": {
+            "type": "string",
+            "format": "",
+            "description": "The metric of the quota. It specifies the resources consumption the quota is defined for. For example, `compute.googleapis.com/cpus`",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "metricDisplayName": {
+            "type": "string",
+            "format": "",
+            "description": "The display name of the quota metric",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "metricUnit": {
+            "type": "string",
+            "format": "",
+            "description": "The unit in which the metric value is reported, e.g., \"MByte\".",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "Resource name of this QuotaInfo. The ID component following \"locations/\" must be \"global\". For example, `projects/123/locations/global/services/compute.googleapis.com/quotaInfos/CpusPerProjectPerRegion`",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "quotaDisplayName": {
+            "type": "string",
+            "format": "",
+            "description": "The display name of the quota.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "quotaId": {
+            "type": "string",
+            "format": "",
+            "description": "The id of the quota, which is unique within the service. For example, `CpusPerProjectPerRegion`",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "quotaIncreaseEligibility": {
+            "type": "",
+            "format": "",
+            "description": "Whether it is eligible to request a higher quota value for this quota.",
+            "$ref": "QuotaIncreaseEligibility",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "refreshInterval": {
+            "type": "string",
+            "format": "",
+            "description": "The reset time interval for the quota. Refresh interval applies to rate quota only. For example, \"minute\" for per minute, \"day\" for per day, or \"10 seconds\" for every 10 seconds.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "service": {
+            "type": "string",
+            "format": "",
+            "description": "The name of the service in which the quota is defined. For example, `compute.googleapis.com`",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "serviceRequestQuotaUri": {
+            "type": "string",
+            "format": "",
+            "description": "URI to the page where users can request more quota for the cloud service—for example, https://console.cloud.google.com/iam-admin/quotas.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "trafficSource": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. Indicates the traffic type attribution for this quota limit (e.g. agentic). This is an informational field used to categorize and filter the quota limits.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "TRAFFIC_SOURCE_UNSPECIFIED",
+              "TRAFFIC_SOURCE_NONAGENTIC",
+              "TRAFFIC_SOURCE_AGENTIC"
+            ],
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "QuotaPreference": {
+        "type": "object",
+        "format": "",
+        "description": "QuotaPreference represents the preferred quota configuration specified for a project, folder or organization. There is only one QuotaPreference resource for a quota value targeting a unique set of dimensions.",
+        "$ref": "",
+        "properties": {
+          "contactEmail": {
+            "type": "string",
+            "format": "",
+            "description": "Input only. An email address that can be used to contact the user, in case Google Cloud needs more information to make a decision before additional quota can be granted. When requesting a quota increase, the email address is required. When requesting a quota decrease, the email address is optional. For example, the email address is optional when the `QuotaConfig.preferred_value` is smaller than the `QuotaDetails.reset_value`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "createTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. Create time stamp",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "dimensions": {
+            "type": "object",
+            "format": "",
+            "description": "Immutable. The dimensions that this quota preference applies to. The key of the map entry is the name of a dimension, such as `region`, `zone`, `network_id`, and the value of the map entry is the dimension value. If a dimension is missing from the map of dimensions, the quota preference applies to all the dimension values except for those that have other quota preferences configured for the specific value. Note: QuotaPreferences can only be applied across all values of `user` and `resource` dimension. Do not set values for `user` or `resource` in the dimension map. For example: `{\"provider\" : \"Example Organization\"}` where `provider` is a service-specific quota dimension and `Example Organization` is the provider name.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "etag": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The current etag of the quota preference. If an etag is provided on update and does not match the current server's etag of the quota preference, the request will be blocked and an ABORTED error will be returned. See https://google.aip.dev/134#etags for more details on etags.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "justification": {
+            "type": "string",
+            "format": "",
+            "description": "The reason / justification for this quota preference.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "Required except in the CREATE requests. The resource name of the quota preference. The path that follows `/locations` must be `/global`. For example: `projects/123/locations/global/quotaPreferences/my-config-for-us-east1`",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "quotaConfig": {
+            "type": "",
+            "format": "",
+            "description": "Required. Preferred quota configuration.",
+            "$ref": "QuotaConfig",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "quotaId": {
+            "type": "string",
+            "format": "",
+            "description": "Required. The id of the quota to which the quota preference is applied. A quota name is unique in the service. For example, `CpusPerProjectPerRegion`",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "reconciling": {
+            "type": "boolean",
+            "format": "",
+            "description": "Output only. Is the quota preference pending Google Cloud approval and fulfillment.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "service": {
+            "type": "string",
+            "format": "",
+            "description": "Required. The name of the service to which the quota preference is applied.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "updateTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. Update time stamp",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "RolloutInfo": {
+        "type": "object",
+        "format": "",
+        "description": "[Output only] Rollout information of a quota.",
+        "$ref": "",
+        "properties": {
+          "ongoingRollout": {
+            "type": "boolean",
+            "format": "",
+            "description": "Whether there is an ongoing rollout for a quota or not.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      }
+    },
+    "resources": {
+      "folders": {
+        "methods": null,
+        "resources": {
+          "locations": {
+            "methods": null,
+            "resources": {
+              "quotaAdjusterSettings": {
+                "methods": {
+                  "getQuotaAdjusterSettings": {
+                    "id": "cloudquotas.folders.locations.quotaAdjusterSettings.getQuotaAdjusterSettings",
+                    "httpMethod": "GET",
+                    "path": "v1/{+name}",
+                    "flatPath": "v1/folders/{foldersId}/locations/{locationsId}/quotaAdjusterSettings",
+                    "description": "Gets the QuotaAdjusterSettings for the specified resource.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "QuotaAdjusterSettings"
+                    }
+                  },
+                  "updateQuotaAdjusterSettings": {
+                    "id": "cloudquotas.folders.locations.quotaAdjusterSettings.updateQuotaAdjusterSettings",
+                    "httpMethod": "PATCH",
+                    "path": "v1/{+name}",
+                    "flatPath": "v1/folders/{foldersId}/locations/{locationsId}/quotaAdjusterSettings",
+                    "description": "Updates the QuotaAdjusterSettings for the specified resource.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      },
+                      "updateMask": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "validateOnly": {
+                        "type": "boolean",
+                        "location": "query",
+                        "required": false
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": {
+                      "$ref": "QuotaAdjusterSettings"
+                    },
+                    "response": {
+                      "$ref": "QuotaAdjusterSettings"
+                    }
+                  }
+                },
+                "resources": null
+              },
+              "quotaPreferences": {
+                "methods": {
+                  "create": {
+                    "id": "cloudquotas.folders.locations.quotaPreferences.create",
+                    "httpMethod": "POST",
+                    "path": "v1/{+parent}/quotaPreferences",
+                    "flatPath": "v1/folders/{foldersId}/locations/{locationsId}/quotaPreferences",
+                    "description": "Creates a new QuotaPreference that declares the desired value for a quota.",
+                    "parameters": {
+                      "ignoreSafetyChecks": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "parent": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      },
+                      "quotaPreferenceId": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      }
+                    },
+                    "parameterOrder": [
+                      "parent"
+                    ],
+                    "request": {
+                      "$ref": "QuotaPreference"
+                    },
+                    "response": {
+                      "$ref": "QuotaPreference"
+                    }
+                  },
+                  "get": {
+                    "id": "cloudquotas.folders.locations.quotaPreferences.get",
+                    "httpMethod": "GET",
+                    "path": "v1/{+name}",
+                    "flatPath": "v1/folders/{foldersId}/locations/{locationsId}/quotaPreferences/{quotaPreferencesId}",
+                    "description": "Gets details of a single QuotaPreference.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "QuotaPreference"
+                    }
+                  },
+                  "list": {
+                    "id": "cloudquotas.folders.locations.quotaPreferences.list",
+                    "httpMethod": "GET",
+                    "path": "v1/{+parent}/quotaPreferences",
+                    "flatPath": "v1/folders/{foldersId}/locations/{locationsId}/quotaPreferences",
+                    "description": "Lists QuotaPreferences in a given project, folder or organization.",
+                    "parameters": {
+                      "filter": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "orderBy": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "pageSize": {
+                        "type": "integer",
+                        "location": "query",
+                        "required": false
+                      },
+                      "pageToken": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "parent": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "parent"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "ListQuotaPreferencesResponse"
+                    }
+                  },
+                  "patch": {
+                    "id": "cloudquotas.folders.locations.quotaPreferences.patch",
+                    "httpMethod": "PATCH",
+                    "path": "v1/{+name}",
+                    "flatPath": "v1/folders/{foldersId}/locations/{locationsId}/quotaPreferences/{quotaPreferencesId}",
+                    "description": "Updates the parameters of a single QuotaPreference. It can updates the config in any states, not just the ones pending approval.",
+                    "parameters": {
+                      "allowMissing": {
+                        "type": "boolean",
+                        "location": "query",
+                        "required": false
+                      },
+                      "ignoreSafetyChecks": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      },
+                      "updateMask": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "validateOnly": {
+                        "type": "boolean",
+                        "location": "query",
+                        "required": false
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": {
+                      "$ref": "QuotaPreference"
+                    },
+                    "response": {
+                      "$ref": "QuotaPreference"
+                    }
+                  }
+                },
+                "resources": null
+              },
+              "services": {
+                "methods": null,
+                "resources": {
+                  "quotaInfos": {
+                    "methods": {
+                      "get": {
+                        "id": "cloudquotas.folders.locations.services.quotaInfos.get",
+                        "httpMethod": "GET",
+                        "path": "v1/{+name}",
+                        "flatPath": "v1/folders/{foldersId}/locations/{locationsId}/services/{servicesId}/quotaInfos/{quotaInfosId}",
+                        "description": "Retrieve the QuotaInfo of a quota for a project, folder or organization.",
+                        "parameters": {
+                          "name": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          }
+                        },
+                        "parameterOrder": [
+                          "name"
+                        ],
+                        "request": null,
+                        "response": {
+                          "$ref": "QuotaInfo"
+                        }
+                      },
+                      "list": {
+                        "id": "cloudquotas.folders.locations.services.quotaInfos.list",
+                        "httpMethod": "GET",
+                        "path": "v1/{+parent}/quotaInfos",
+                        "flatPath": "v1/folders/{foldersId}/locations/{locationsId}/services/{servicesId}/quotaInfos",
+                        "description": "Lists QuotaInfos of all quotas for a given project, folder or organization.",
+                        "parameters": {
+                          "pageSize": {
+                            "type": "integer",
+                            "location": "query",
+                            "required": false
+                          },
+                          "pageToken": {
+                            "type": "string",
+                            "location": "query",
+                            "required": false
+                          },
+                          "parent": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          }
+                        },
+                        "parameterOrder": [
+                          "parent"
+                        ],
+                        "request": null,
+                        "response": {
+                          "$ref": "ListQuotaInfosResponse"
+                        }
+                      }
+                    },
+                    "resources": null
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "organizations": {
+        "methods": null,
+        "resources": {
+          "locations": {
+            "methods": null,
+            "resources": {
+              "gdcZones": {
+                "methods": null,
+                "resources": {
+                  "gdcServices": {
+                    "methods": null,
+                    "resources": {
+                      "gdcQuotaInfos": {
+                        "methods": {
+                          "get": {
+                            "id": "cloudquotas.organizations.locations.gdcZones.gdcServices.gdcQuotaInfos.get",
+                            "httpMethod": "GET",
+                            "path": "v1/{+name}",
+                            "flatPath": "v1/organizations/{organizationsId}/locations/{locationsId}/gdcZones/{gdcZonesId}/gdcServices/{gdcServicesId}/gdcQuotaInfos/{gdcQuotaInfosId}",
+                            "description": "Gets details of a single GdcQuotaInfo.",
+                            "parameters": {
+                              "name": {
+                                "type": "string",
+                                "location": "path",
+                                "required": true
+                              }
+                            },
+                            "parameterOrder": [
+                              "name"
+                            ],
+                            "request": null,
+                            "response": {
+                              "$ref": "GdcQuotaInfo"
+                            }
+                          },
+                          "list": {
+                            "id": "cloudquotas.organizations.locations.gdcZones.gdcServices.gdcQuotaInfos.list",
+                            "httpMethod": "GET",
+                            "path": "v1/{+parent}/gdcQuotaInfos",
+                            "flatPath": "v1/organizations/{organizationsId}/locations/{locationsId}/gdcZones/{gdcZonesId}/gdcServices/{gdcServicesId}/gdcQuotaInfos",
+                            "description": "Lists GdcQuotaInfos in a given project and location.",
+                            "parameters": {
+                              "pageSize": {
+                                "type": "integer",
+                                "location": "query",
+                                "required": false
+                              },
+                              "pageToken": {
+                                "type": "string",
+                                "location": "query",
+                                "required": false
+                              },
+                              "parent": {
+                                "type": "string",
+                                "location": "path",
+                                "required": true
+                              }
+                            },
+                            "parameterOrder": [
+                              "parent"
+                            ],
+                            "request": null,
+                            "response": {
+                              "$ref": "ListGdcQuotaInfosResponse"
+                            }
+                          }
+                        },
+                        "resources": null
+                      }
+                    }
+                  }
+                }
+              },
+              "quotaAdjusterSettings": {
+                "methods": {
+                  "getQuotaAdjusterSettings": {
+                    "id": "cloudquotas.organizations.locations.quotaAdjusterSettings.getQuotaAdjusterSettings",
+                    "httpMethod": "GET",
+                    "path": "v1/{+name}",
+                    "flatPath": "v1/organizations/{organizationsId}/locations/{locationsId}/quotaAdjusterSettings",
+                    "description": "Gets the QuotaAdjusterSettings for the specified resource.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "QuotaAdjusterSettings"
+                    }
+                  },
+                  "updateQuotaAdjusterSettings": {
+                    "id": "cloudquotas.organizations.locations.quotaAdjusterSettings.updateQuotaAdjusterSettings",
+                    "httpMethod": "PATCH",
+                    "path": "v1/{+name}",
+                    "flatPath": "v1/organizations/{organizationsId}/locations/{locationsId}/quotaAdjusterSettings",
+                    "description": "Updates the QuotaAdjusterSettings for the specified resource.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      },
+                      "updateMask": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "validateOnly": {
+                        "type": "boolean",
+                        "location": "query",
+                        "required": false
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": {
+                      "$ref": "QuotaAdjusterSettings"
+                    },
+                    "response": {
+                      "$ref": "QuotaAdjusterSettings"
+                    }
+                  }
+                },
+                "resources": null
+              },
+              "quotaPreferences": {
+                "methods": {
+                  "create": {
+                    "id": "cloudquotas.organizations.locations.quotaPreferences.create",
+                    "httpMethod": "POST",
+                    "path": "v1/{+parent}/quotaPreferences",
+                    "flatPath": "v1/organizations/{organizationsId}/locations/{locationsId}/quotaPreferences",
+                    "description": "Creates a new QuotaPreference that declares the desired value for a quota.",
+                    "parameters": {
+                      "ignoreSafetyChecks": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "parent": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      },
+                      "quotaPreferenceId": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      }
+                    },
+                    "parameterOrder": [
+                      "parent"
+                    ],
+                    "request": {
+                      "$ref": "QuotaPreference"
+                    },
+                    "response": {
+                      "$ref": "QuotaPreference"
+                    }
+                  },
+                  "get": {
+                    "id": "cloudquotas.organizations.locations.quotaPreferences.get",
+                    "httpMethod": "GET",
+                    "path": "v1/{+name}",
+                    "flatPath": "v1/organizations/{organizationsId}/locations/{locationsId}/quotaPreferences/{quotaPreferencesId}",
+                    "description": "Gets details of a single QuotaPreference.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "QuotaPreference"
+                    }
+                  },
+                  "list": {
+                    "id": "cloudquotas.organizations.locations.quotaPreferences.list",
+                    "httpMethod": "GET",
+                    "path": "v1/{+parent}/quotaPreferences",
+                    "flatPath": "v1/organizations/{organizationsId}/locations/{locationsId}/quotaPreferences",
+                    "description": "Lists QuotaPreferences in a given project, folder or organization.",
+                    "parameters": {
+                      "filter": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "orderBy": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "pageSize": {
+                        "type": "integer",
+                        "location": "query",
+                        "required": false
+                      },
+                      "pageToken": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "parent": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "parent"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "ListQuotaPreferencesResponse"
+                    }
+                  },
+                  "patch": {
+                    "id": "cloudquotas.organizations.locations.quotaPreferences.patch",
+                    "httpMethod": "PATCH",
+                    "path": "v1/{+name}",
+                    "flatPath": "v1/organizations/{organizationsId}/locations/{locationsId}/quotaPreferences/{quotaPreferencesId}",
+                    "description": "Updates the parameters of a single QuotaPreference. It can updates the config in any states, not just the ones pending approval.",
+                    "parameters": {
+                      "allowMissing": {
+                        "type": "boolean",
+                        "location": "query",
+                        "required": false
+                      },
+                      "ignoreSafetyChecks": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      },
+                      "updateMask": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "validateOnly": {
+                        "type": "boolean",
+                        "location": "query",
+                        "required": false
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": {
+                      "$ref": "QuotaPreference"
+                    },
+                    "response": {
+                      "$ref": "QuotaPreference"
+                    }
+                  }
+                },
+                "resources": null
+              },
+              "services": {
+                "methods": null,
+                "resources": {
+                  "quotaInfos": {
+                    "methods": {
+                      "get": {
+                        "id": "cloudquotas.organizations.locations.services.quotaInfos.get",
+                        "httpMethod": "GET",
+                        "path": "v1/{+name}",
+                        "flatPath": "v1/organizations/{organizationsId}/locations/{locationsId}/services/{servicesId}/quotaInfos/{quotaInfosId}",
+                        "description": "Retrieve the QuotaInfo of a quota for a project, folder or organization.",
+                        "parameters": {
+                          "name": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          }
+                        },
+                        "parameterOrder": [
+                          "name"
+                        ],
+                        "request": null,
+                        "response": {
+                          "$ref": "QuotaInfo"
+                        }
+                      },
+                      "list": {
+                        "id": "cloudquotas.organizations.locations.services.quotaInfos.list",
+                        "httpMethod": "GET",
+                        "path": "v1/{+parent}/quotaInfos",
+                        "flatPath": "v1/organizations/{organizationsId}/locations/{locationsId}/services/{servicesId}/quotaInfos",
+                        "description": "Lists QuotaInfos of all quotas for a given project, folder or organization.",
+                        "parameters": {
+                          "pageSize": {
+                            "type": "integer",
+                            "location": "query",
+                            "required": false
+                          },
+                          "pageToken": {
+                            "type": "string",
+                            "location": "query",
+                            "required": false
+                          },
+                          "parent": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          }
+                        },
+                        "parameterOrder": [
+                          "parent"
+                        ],
+                        "request": null,
+                        "response": {
+                          "$ref": "ListQuotaInfosResponse"
+                        }
+                      }
+                    },
+                    "resources": null
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "projects": {
+        "methods": null,
+        "resources": {
+          "locations": {
+            "methods": null,
+            "resources": {
+              "gdcZones": {
+                "methods": null,
+                "resources": {
+                  "gdcServices": {
+                    "methods": null,
+                    "resources": {
+                      "gdcQuotaInfos": {
+                        "methods": {
+                          "get": {
+                            "id": "cloudquotas.projects.locations.gdcZones.gdcServices.gdcQuotaInfos.get",
+                            "httpMethod": "GET",
+                            "path": "v1/{+name}",
+                            "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/gdcZones/{gdcZonesId}/gdcServices/{gdcServicesId}/gdcQuotaInfos/{gdcQuotaInfosId}",
+                            "description": "Gets details of a single GdcQuotaInfo.",
+                            "parameters": {
+                              "name": {
+                                "type": "string",
+                                "location": "path",
+                                "required": true
+                              }
+                            },
+                            "parameterOrder": [
+                              "name"
+                            ],
+                            "request": null,
+                            "response": {
+                              "$ref": "GdcQuotaInfo"
+                            }
+                          },
+                          "list": {
+                            "id": "cloudquotas.projects.locations.gdcZones.gdcServices.gdcQuotaInfos.list",
+                            "httpMethod": "GET",
+                            "path": "v1/{+parent}/gdcQuotaInfos",
+                            "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/gdcZones/{gdcZonesId}/gdcServices/{gdcServicesId}/gdcQuotaInfos",
+                            "description": "Lists GdcQuotaInfos in a given project and location.",
+                            "parameters": {
+                              "pageSize": {
+                                "type": "integer",
+                                "location": "query",
+                                "required": false
+                              },
+                              "pageToken": {
+                                "type": "string",
+                                "location": "query",
+                                "required": false
+                              },
+                              "parent": {
+                                "type": "string",
+                                "location": "path",
+                                "required": true
+                              }
+                            },
+                            "parameterOrder": [
+                              "parent"
+                            ],
+                            "request": null,
+                            "response": {
+                              "$ref": "ListGdcQuotaInfosResponse"
+                            }
+                          }
+                        },
+                        "resources": null
+                      }
+                    }
+                  }
+                }
+              },
+              "quotaAdjusterSettings": {
+                "methods": {
+                  "getQuotaAdjusterSettings": {
+                    "id": "cloudquotas.projects.locations.quotaAdjusterSettings.getQuotaAdjusterSettings",
+                    "httpMethod": "GET",
+                    "path": "v1/{+name}",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/quotaAdjusterSettings",
+                    "description": "Gets the QuotaAdjusterSettings for the specified resource.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "QuotaAdjusterSettings"
+                    }
+                  },
+                  "updateQuotaAdjusterSettings": {
+                    "id": "cloudquotas.projects.locations.quotaAdjusterSettings.updateQuotaAdjusterSettings",
+                    "httpMethod": "PATCH",
+                    "path": "v1/{+name}",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/quotaAdjusterSettings",
+                    "description": "Updates the QuotaAdjusterSettings for the specified resource.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      },
+                      "updateMask": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "validateOnly": {
+                        "type": "boolean",
+                        "location": "query",
+                        "required": false
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": {
+                      "$ref": "QuotaAdjusterSettings"
+                    },
+                    "response": {
+                      "$ref": "QuotaAdjusterSettings"
+                    }
+                  }
+                },
+                "resources": null
+              },
+              "quotaPreferences": {
+                "methods": {
+                  "create": {
+                    "id": "cloudquotas.projects.locations.quotaPreferences.create",
+                    "httpMethod": "POST",
+                    "path": "v1/{+parent}/quotaPreferences",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/quotaPreferences",
+                    "description": "Creates a new QuotaPreference that declares the desired value for a quota.",
+                    "parameters": {
+                      "ignoreSafetyChecks": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "parent": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      },
+                      "quotaPreferenceId": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      }
+                    },
+                    "parameterOrder": [
+                      "parent"
+                    ],
+                    "request": {
+                      "$ref": "QuotaPreference"
+                    },
+                    "response": {
+                      "$ref": "QuotaPreference"
+                    }
+                  },
+                  "get": {
+                    "id": "cloudquotas.projects.locations.quotaPreferences.get",
+                    "httpMethod": "GET",
+                    "path": "v1/{+name}",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/quotaPreferences/{quotaPreferencesId}",
+                    "description": "Gets details of a single QuotaPreference.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "QuotaPreference"
+                    }
+                  },
+                  "list": {
+                    "id": "cloudquotas.projects.locations.quotaPreferences.list",
+                    "httpMethod": "GET",
+                    "path": "v1/{+parent}/quotaPreferences",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/quotaPreferences",
+                    "description": "Lists QuotaPreferences in a given project, folder or organization.",
+                    "parameters": {
+                      "filter": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "orderBy": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "pageSize": {
+                        "type": "integer",
+                        "location": "query",
+                        "required": false
+                      },
+                      "pageToken": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "parent": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "parent"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "ListQuotaPreferencesResponse"
+                    }
+                  },
+                  "patch": {
+                    "id": "cloudquotas.projects.locations.quotaPreferences.patch",
+                    "httpMethod": "PATCH",
+                    "path": "v1/{+name}",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/quotaPreferences/{quotaPreferencesId}",
+                    "description": "Updates the parameters of a single QuotaPreference. It can updates the config in any states, not just the ones pending approval.",
+                    "parameters": {
+                      "allowMissing": {
+                        "type": "boolean",
+                        "location": "query",
+                        "required": false
+                      },
+                      "ignoreSafetyChecks": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      },
+                      "updateMask": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "validateOnly": {
+                        "type": "boolean",
+                        "location": "query",
+                        "required": false
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": {
+                      "$ref": "QuotaPreference"
+                    },
+                    "response": {
+                      "$ref": "QuotaPreference"
+                    }
+                  }
+                },
+                "resources": null
+              },
+              "services": {
+                "methods": null,
+                "resources": {
+                  "quotaInfos": {
+                    "methods": {
+                      "get": {
+                        "id": "cloudquotas.projects.locations.services.quotaInfos.get",
+                        "httpMethod": "GET",
+                        "path": "v1/{+name}",
+                        "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/services/{servicesId}/quotaInfos/{quotaInfosId}",
+                        "description": "Retrieve the QuotaInfo of a quota for a project, folder or organization.",
+                        "parameters": {
+                          "name": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          }
+                        },
+                        "parameterOrder": [
+                          "name"
+                        ],
+                        "request": null,
+                        "response": {
+                          "$ref": "QuotaInfo"
+                        }
+                      },
+                      "list": {
+                        "id": "cloudquotas.projects.locations.services.quotaInfos.list",
+                        "httpMethod": "GET",
+                        "path": "v1/{+parent}/quotaInfos",
+                        "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/services/{servicesId}/quotaInfos",
+                        "description": "Lists QuotaInfos of all quotas for a given project, folder or organization.",
+                        "parameters": {
+                          "pageSize": {
+                            "type": "integer",
+                            "location": "query",
+                            "required": false
+                          },
+                          "pageToken": {
+                            "type": "string",
+                            "location": "query",
+                            "required": false
+                          },
+                          "parent": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          }
+                        },
+                        "parameterOrder": [
+                          "parent"
+                        ],
+                        "request": null,
+                        "response": {
+                          "$ref": "ListQuotaInfosResponse"
+                        }
+                      }
+                    },
+                    "resources": null
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

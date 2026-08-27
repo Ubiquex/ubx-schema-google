@@ -1,0 +1,2511 @@
+{
+  "schema_source": "discovery_docs",
+  "mode": "data_source",
+  "auth": {
+    "Type": "",
+    "Params": null
+  },
+  "base_url": "https://observability.googleapis.com",
+  "retry": {
+    "MaxAttempts": 0,
+    "InitialBackoff": "",
+    "MaxBackoff": "",
+    "Jitter": null,
+    "RespectRetryAfter": null,
+    "RateLimitResetHeader": ""
+  },
+  "timeouts": {
+    "Create": "",
+    "Read": "",
+    "Update": "",
+    "Delete": "",
+    "Default": ""
+  },
+  "wire_name": "google_observability",
+  "raw_spec": {
+    "name": "observability",
+    "revision": "20260820",
+    "discoveryVersion": "v1",
+    "baseUrl": "https://observability.googleapis.com/",
+    "rootUrl": "https://observability.googleapis.com/",
+    "servicePath": "",
+    "schemas": {
+      "Bucket": {
+        "type": "object",
+        "format": "",
+        "description": "Bucket configuration for storing observability data.",
+        "$ref": "",
+        "properties": {
+          "cmekSettings": {
+            "type": "",
+            "format": "",
+            "description": "Optional. Settings for configuring CMEK on a bucket.",
+            "$ref": "CmekSettings",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "createTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. Create timestamp.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "deleteTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. Delete timestamp.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "description": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Description of the bucket.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "displayName": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. User friendly display name.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "Identifier. Name of the bucket. The format is: projects/[PROJECT_ID]/locations/[LOCATION]/buckets/[BUCKET_ID]",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "purgeTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. Timestamp when the bucket in soft-deleted state is purged.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "updateTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. Update timestamp.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "CancelOperationRequest": {
+        "type": "object",
+        "format": "",
+        "description": "The request message for Operations.CancelOperation.",
+        "$ref": "",
+        "properties": {},
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "CmekSettings": {
+        "type": "object",
+        "format": "",
+        "description": "Settings for configuring CMEK for a bucket.",
+        "$ref": "",
+        "properties": {
+          "kmsKey": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The resource name for the configured Cloud KMS key. The format is: projects/[PROJECT_ID]/locations/[LOCATION]/keyRings/[KEYRING]/cryptoKeys/[KEY] For example: projects/my-project/locations/us-central1/keyRings/my-ring/cryptoKeys/my-key",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "kmsKeyVersion": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The CryptoKeyVersion resource name for the configured Cloud KMS key. The format is: projects/[PROJECT_ID]/locations/[LOCATION]/keyRings/[KEYRING]/cryptoKeys/[KEY]/cryptoKeyVersions/[VERSION] For example: projects/my-project/locations/us-central1/keyRings/my-ring/cryptoKeys/my-key/cryptoKeyVersions/1 This read-only field is used to convey the specific configured CryptoKeyVersion of the `kms_key` that has been configured. It is populated when the CMEK settings are bound to a single key version.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "serviceAccountId": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The service account used to access the key.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Dataset": {
+        "type": "object",
+        "format": "",
+        "description": "A dataset is a collection of data that has a specific configuration. A dataset can be backed by multiple tables. One bucket can have multiple datasets.",
+        "$ref": "",
+        "properties": {
+          "createTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. Create timestamp.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "deleteTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. Delete timestamp.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "description": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Description of the dataset.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "displayName": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. User friendly display name.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "Identifier. Name of the dataset. The format is: projects/[PROJECT_ID]/locations/[LOCATION]/buckets/[BUCKET_ID]/datasets/[DATASET_ID]",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "purgeTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. Timestamp when the dataset in soft-deleted state is purged.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Empty": {
+        "type": "object",
+        "format": "",
+        "description": "A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }",
+        "$ref": "",
+        "properties": {},
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Link": {
+        "type": "object",
+        "format": "",
+        "description": "A link lets a dataset be accessible to BigQuery via usage of linked datasets.",
+        "$ref": "",
+        "properties": {
+          "createTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. Create timestamp.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "description": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Description of the link.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "displayName": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. A user friendly display name.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "Identifier. Name of the link. The format is: projects/[PROJECT_ID]/locations/[LOCATION]/buckets/[BUCKET_ID]/datasets/[DATASET_ID]/links/[LINK_ID]",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ListBucketsResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Response for listing buckets.",
+        "$ref": "",
+        "properties": {
+          "buckets": {
+            "type": "array",
+            "format": "",
+            "description": "Optional. The list of buckets.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Bucket",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. A token that can be sent as `page_token` to retrieve the next page. When this field is omitted, there are no subsequent pages.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ListDatasetsResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Response for listing datasets.",
+        "$ref": "",
+        "properties": {
+          "datasets": {
+            "type": "array",
+            "format": "",
+            "description": "The list of datasets.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Dataset",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "A token that can be sent as `page_token` to retrieve the next page. When this field is omitted, there are no subsequent pages.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ListLinksResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Response for listing links.",
+        "$ref": "",
+        "properties": {
+          "links": {
+            "type": "array",
+            "format": "",
+            "description": "The list of links.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Link",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. A token that can be sent as `page_token` to retrieve the next page. When this field is omitted, there are no subsequent pages.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ListLocationsResponse": {
+        "type": "object",
+        "format": "",
+        "description": "The response message for Locations.ListLocations.",
+        "$ref": "",
+        "properties": {
+          "locations": {
+            "type": "array",
+            "format": "",
+            "description": "A list of locations that matches the specified filter in the request.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Location",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "The standard List next-page token.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ListOperationsResponse": {
+        "type": "object",
+        "format": "",
+        "description": "The response message for Operations.ListOperations.",
+        "$ref": "",
+        "properties": {
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "The standard List next-page token.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "operations": {
+            "type": "array",
+            "format": "",
+            "description": "A list of operations that matches the specified filter in the request.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Operation",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "unreachable": {
+            "type": "array",
+            "format": "",
+            "description": "Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ListTraceScopesResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Response for listing TraceScopes.",
+        "$ref": "",
+        "properties": {
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. If there might be more results than appear in this response, then `next_page_token` is included. To get the next set of results, call the same method again using the value of `next_page_token` as `page_token`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "traceScopes": {
+            "type": "array",
+            "format": "",
+            "description": "Optional. A list of trace scopes.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "TraceScope",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ListViewsResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Response for listing views.",
+        "$ref": "",
+        "properties": {
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. A token that can be sent as `page_token` to retrieve the next page. When this field is omitted, there are no subsequent pages.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "views": {
+            "type": "array",
+            "format": "",
+            "description": "The list of views.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "View",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Location": {
+        "type": "object",
+        "format": "",
+        "description": "A resource that represents a Google Cloud location.",
+        "$ref": "",
+        "properties": {
+          "displayName": {
+            "type": "string",
+            "format": "",
+            "description": "The friendly name for this location, typically a nearby city name. For example, \"Tokyo\".",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "labels": {
+            "type": "object",
+            "format": "",
+            "description": "Cross-service attributes for the location. For example {\"cloud.googleapis.com/region\": \"us-east1\"}",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "locationId": {
+            "type": "string",
+            "format": "",
+            "description": "The canonical id for this location. For example: `\"us-east1\"`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "metadata": {
+            "type": "object",
+            "format": "",
+            "description": "Service-specific metadata. For example the available capacity at the given location.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "any",
+              "format": "",
+              "description": "Properties of the object. Contains field @type with type URL.",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "Resource name for the location, which may vary between implementations. For example: `\"projects/example-project/locations/us-east1\"`",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Operation": {
+        "type": "object",
+        "format": "",
+        "description": "This resource represents a long-running operation that is the result of a network API call.",
+        "$ref": "",
+        "properties": {
+          "done": {
+            "type": "boolean",
+            "format": "",
+            "description": "If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "error": {
+            "type": "",
+            "format": "",
+            "description": "The error result of the operation in case of failure or cancellation.",
+            "$ref": "Status",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "metadata": {
+            "type": "object",
+            "format": "",
+            "description": "Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "any",
+              "format": "",
+              "description": "Properties of the object. Contains field @type with type URL.",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "response": {
+            "type": "object",
+            "format": "",
+            "description": "The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "any",
+              "format": "",
+              "description": "Properties of the object. Contains field @type with type URL.",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "OperationMetadata": {
+        "type": "object",
+        "format": "",
+        "description": "Represents the metadata of the long-running operation.",
+        "$ref": "",
+        "properties": {
+          "apiVersion": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. API version used to start the operation.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "createTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. The time the operation was created.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "endTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. The time the operation finished running.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "requestedCancellation": {
+            "type": "boolean",
+            "format": "",
+            "description": "Output only. Identifies whether the user has requested cancellation of the operation. Operations that have been cancelled successfully have Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "statusMessage": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. Human-readable status of the operation, if any.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "target": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. Server-defined resource path for the target of the operation.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "verb": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. Name of the verb executed by the operation.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Scope": {
+        "type": "object",
+        "format": "",
+        "description": "Message describing Scope object",
+        "$ref": "",
+        "properties": {
+          "logScope": {
+            "type": "string",
+            "format": "",
+            "description": "Required. The full resource name of the `LogScope`. For example: //logging.googleapis.com/projects/myproject/locations/global/logScopes/my-log-scope",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "Identifier. Name of the resource. The format is: projects/{project}/locations/{location}/scopes/{scope} The `{location}` field must be set to `global`. The `{scope}` field must be set to `_Default`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "traceScope": {
+            "type": "string",
+            "format": "",
+            "description": "Required. The resource name of the `TraceScope`. For example: projects/myproject/locations/global/traceScopes/my-trace-scope",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "updateTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. Update timestamp. Note: The Update timestamp for the default scope is initially unset.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Settings": {
+        "type": "object",
+        "format": "",
+        "description": "Describes the settings associated with a project, organization, or folder.",
+        "$ref": "",
+        "properties": {
+          "defaultStorageLocation": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The location which should be used when any regional resources are provisioned by Google Cloud.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "kmsKeyName": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The resource name for the configured Cloud KMS key. KMS key name format: \"projects/[PROJECT_ID]/locations/[LOCATION]/keyRings/[KEYRING]/cryptoKeys/[KEY]\" For example: `\"projects/my-project/locations/us-central1/keyRings/my-ring/cryptoKeys/my-key\"`",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "Identifier. The resource name of the settings.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "serviceAccountId": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The service account for the given resource container, such as project or folder. This will be used by Cloud Observability to perform actions in the container's project like access KMS keys or create Links. Always the same service account per resource container regardless of region.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Status": {
+        "type": "object",
+        "format": "",
+        "description": "The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).",
+        "$ref": "",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32",
+            "description": "The status code, which should be an enum value of google.rpc.Code.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "details": {
+            "type": "array",
+            "format": "",
+            "description": "A list of messages that carry the error details. There is a common set of message types for APIs to use.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "object",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": {
+                "type": "any",
+                "format": "",
+                "description": "Properties of the object. Contains field @type with type URL.",
+                "$ref": "",
+                "properties": null,
+                "items": null,
+                "additionalProperties": null,
+                "enum": null,
+                "readOnly": false
+              },
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "message": {
+            "type": "string",
+            "format": "",
+            "description": "A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "TraceScope": {
+        "type": "object",
+        "format": "",
+        "description": "A trace scope is a collection of resources whose traces are queried together.",
+        "$ref": "",
+        "properties": {
+          "createTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. The creation timestamp of the trace scope.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "description": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Describes this trace scope. The maximum length of the description is 8000 characters.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "Identifier. The resource name of the trace scope. For example: projects/my-project/locations/global/traceScopes/my-trace-scope",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "resourceNames": {
+            "type": "array",
+            "format": "",
+            "description": "Required. Names of the projects that are included in this trace scope. * `projects/[PROJECT_ID]` A trace scope can include a maximum of 20 projects.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "updateTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. The last update timestamp of the trace scope.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "View": {
+        "type": "object",
+        "format": "",
+        "description": "A view corresponds to a read-only representation of a subset of the data in a dataset.",
+        "$ref": "",
+        "properties": {
+          "createTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. Create timestamp.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "description": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Description of the view.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "displayName": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. User friendly display name.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "Identifier. Name of the view. The format is: projects/[PROJECT_ID]/locations/[LOCATION]/buckets/[BUCKET_ID]/datasets/[DATASET_ID]/views/[VIEW_ID]",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "updateTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. Update timestamp.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      }
+    },
+    "resources": {
+      "folders": {
+        "methods": null,
+        "resources": {
+          "locations": {
+            "methods": {
+              "get": {
+                "id": "observability.folders.locations.get",
+                "httpMethod": "GET",
+                "path": "v1/{+name}",
+                "flatPath": "v1/folders/{foldersId}/locations/{locationsId}",
+                "description": "Gets information about a location.",
+                "parameters": {
+                  "name": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  }
+                },
+                "parameterOrder": [
+                  "name"
+                ],
+                "request": null,
+                "response": {
+                  "$ref": "Location"
+                }
+              },
+              "getSettings": {
+                "id": "observability.folders.locations.getSettings",
+                "httpMethod": "GET",
+                "path": "v1/{+name}",
+                "flatPath": "v1/folders/{foldersId}/locations/{locationsId}/settings",
+                "description": "Get Settings",
+                "parameters": {
+                  "name": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  }
+                },
+                "parameterOrder": [
+                  "name"
+                ],
+                "request": null,
+                "response": {
+                  "$ref": "Settings"
+                }
+              },
+              "list": {
+                "id": "observability.folders.locations.list",
+                "httpMethod": "GET",
+                "path": "v1/{+name}/locations",
+                "flatPath": "v1/folders/{foldersId}/locations",
+                "description": "Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the ListLocationsRequest.name field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version.",
+                "parameters": {
+                  "extraLocationTypes": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false
+                  },
+                  "filter": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false
+                  },
+                  "name": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  },
+                  "pageSize": {
+                    "type": "integer",
+                    "location": "query",
+                    "required": false
+                  },
+                  "pageToken": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false
+                  }
+                },
+                "parameterOrder": [
+                  "name"
+                ],
+                "request": null,
+                "response": {
+                  "$ref": "ListLocationsResponse"
+                }
+              },
+              "updateSettings": {
+                "id": "observability.folders.locations.updateSettings",
+                "httpMethod": "PATCH",
+                "path": "v1/{+name}",
+                "flatPath": "v1/folders/{foldersId}/locations/{locationsId}/settings",
+                "description": "Update Settings",
+                "parameters": {
+                  "name": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  },
+                  "updateMask": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false
+                  }
+                },
+                "parameterOrder": [
+                  "name"
+                ],
+                "request": {
+                  "$ref": "Settings"
+                },
+                "response": {
+                  "$ref": "Operation"
+                }
+              }
+            },
+            "resources": {
+              "operations": {
+                "methods": {
+                  "cancel": {
+                    "id": "observability.folders.locations.operations.cancel",
+                    "httpMethod": "POST",
+                    "path": "v1/{+name}:cancel",
+                    "flatPath": "v1/folders/{foldersId}/locations/{locationsId}/operations/{operationsId}:cancel",
+                    "description": "Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": {
+                      "$ref": "CancelOperationRequest"
+                    },
+                    "response": {
+                      "$ref": "Empty"
+                    }
+                  },
+                  "delete": {
+                    "id": "observability.folders.locations.operations.delete",
+                    "httpMethod": "DELETE",
+                    "path": "v1/{+name}",
+                    "flatPath": "v1/folders/{foldersId}/locations/{locationsId}/operations/{operationsId}",
+                    "description": "Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "Empty"
+                    }
+                  },
+                  "get": {
+                    "id": "observability.folders.locations.operations.get",
+                    "httpMethod": "GET",
+                    "path": "v1/{+name}",
+                    "flatPath": "v1/folders/{foldersId}/locations/{locationsId}/operations/{operationsId}",
+                    "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "Operation"
+                    }
+                  },
+                  "list": {
+                    "id": "observability.folders.locations.operations.list",
+                    "httpMethod": "GET",
+                    "path": "v1/{+name}/operations",
+                    "flatPath": "v1/folders/{foldersId}/locations/{locationsId}/operations",
+                    "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.",
+                    "parameters": {
+                      "filter": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      },
+                      "pageSize": {
+                        "type": "integer",
+                        "location": "query",
+                        "required": false
+                      },
+                      "pageToken": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "returnPartialSuccess": {
+                        "type": "boolean",
+                        "location": "query",
+                        "required": false
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "ListOperationsResponse"
+                    }
+                  }
+                },
+                "resources": null
+              }
+            }
+          }
+        }
+      },
+      "organizations": {
+        "methods": null,
+        "resources": {
+          "locations": {
+            "methods": {
+              "get": {
+                "id": "observability.organizations.locations.get",
+                "httpMethod": "GET",
+                "path": "v1/{+name}",
+                "flatPath": "v1/organizations/{organizationsId}/locations/{locationsId}",
+                "description": "Gets information about a location.",
+                "parameters": {
+                  "name": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  }
+                },
+                "parameterOrder": [
+                  "name"
+                ],
+                "request": null,
+                "response": {
+                  "$ref": "Location"
+                }
+              },
+              "getSettings": {
+                "id": "observability.organizations.locations.getSettings",
+                "httpMethod": "GET",
+                "path": "v1/{+name}",
+                "flatPath": "v1/organizations/{organizationsId}/locations/{locationsId}/settings",
+                "description": "Get Settings",
+                "parameters": {
+                  "name": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  }
+                },
+                "parameterOrder": [
+                  "name"
+                ],
+                "request": null,
+                "response": {
+                  "$ref": "Settings"
+                }
+              },
+              "list": {
+                "id": "observability.organizations.locations.list",
+                "httpMethod": "GET",
+                "path": "v1/{+name}/locations",
+                "flatPath": "v1/organizations/{organizationsId}/locations",
+                "description": "Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the ListLocationsRequest.name field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version.",
+                "parameters": {
+                  "extraLocationTypes": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false
+                  },
+                  "filter": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false
+                  },
+                  "name": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  },
+                  "pageSize": {
+                    "type": "integer",
+                    "location": "query",
+                    "required": false
+                  },
+                  "pageToken": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false
+                  }
+                },
+                "parameterOrder": [
+                  "name"
+                ],
+                "request": null,
+                "response": {
+                  "$ref": "ListLocationsResponse"
+                }
+              },
+              "updateSettings": {
+                "id": "observability.organizations.locations.updateSettings",
+                "httpMethod": "PATCH",
+                "path": "v1/{+name}",
+                "flatPath": "v1/organizations/{organizationsId}/locations/{locationsId}/settings",
+                "description": "Update Settings",
+                "parameters": {
+                  "name": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  },
+                  "updateMask": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false
+                  }
+                },
+                "parameterOrder": [
+                  "name"
+                ],
+                "request": {
+                  "$ref": "Settings"
+                },
+                "response": {
+                  "$ref": "Operation"
+                }
+              }
+            },
+            "resources": {
+              "operations": {
+                "methods": {
+                  "cancel": {
+                    "id": "observability.organizations.locations.operations.cancel",
+                    "httpMethod": "POST",
+                    "path": "v1/{+name}:cancel",
+                    "flatPath": "v1/organizations/{organizationsId}/locations/{locationsId}/operations/{operationsId}:cancel",
+                    "description": "Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": {
+                      "$ref": "CancelOperationRequest"
+                    },
+                    "response": {
+                      "$ref": "Empty"
+                    }
+                  },
+                  "delete": {
+                    "id": "observability.organizations.locations.operations.delete",
+                    "httpMethod": "DELETE",
+                    "path": "v1/{+name}",
+                    "flatPath": "v1/organizations/{organizationsId}/locations/{locationsId}/operations/{operationsId}",
+                    "description": "Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "Empty"
+                    }
+                  },
+                  "get": {
+                    "id": "observability.organizations.locations.operations.get",
+                    "httpMethod": "GET",
+                    "path": "v1/{+name}",
+                    "flatPath": "v1/organizations/{organizationsId}/locations/{locationsId}/operations/{operationsId}",
+                    "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "Operation"
+                    }
+                  },
+                  "list": {
+                    "id": "observability.organizations.locations.operations.list",
+                    "httpMethod": "GET",
+                    "path": "v1/{+name}/operations",
+                    "flatPath": "v1/organizations/{organizationsId}/locations/{locationsId}/operations",
+                    "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.",
+                    "parameters": {
+                      "filter": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      },
+                      "pageSize": {
+                        "type": "integer",
+                        "location": "query",
+                        "required": false
+                      },
+                      "pageToken": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "returnPartialSuccess": {
+                        "type": "boolean",
+                        "location": "query",
+                        "required": false
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "ListOperationsResponse"
+                    }
+                  }
+                },
+                "resources": null
+              }
+            }
+          }
+        }
+      },
+      "projects": {
+        "methods": null,
+        "resources": {
+          "locations": {
+            "methods": {
+              "get": {
+                "id": "observability.projects.locations.get",
+                "httpMethod": "GET",
+                "path": "v1/{+name}",
+                "flatPath": "v1/projects/{projectsId}/locations/{locationsId}",
+                "description": "Gets information about a location.",
+                "parameters": {
+                  "name": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  }
+                },
+                "parameterOrder": [
+                  "name"
+                ],
+                "request": null,
+                "response": {
+                  "$ref": "Location"
+                }
+              },
+              "getSettings": {
+                "id": "observability.projects.locations.getSettings",
+                "httpMethod": "GET",
+                "path": "v1/{+name}",
+                "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/settings",
+                "description": "Get Settings",
+                "parameters": {
+                  "name": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  }
+                },
+                "parameterOrder": [
+                  "name"
+                ],
+                "request": null,
+                "response": {
+                  "$ref": "Settings"
+                }
+              },
+              "list": {
+                "id": "observability.projects.locations.list",
+                "httpMethod": "GET",
+                "path": "v1/{+name}/locations",
+                "flatPath": "v1/projects/{projectsId}/locations",
+                "description": "Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the ListLocationsRequest.name field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version.",
+                "parameters": {
+                  "extraLocationTypes": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false
+                  },
+                  "filter": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false
+                  },
+                  "name": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  },
+                  "pageSize": {
+                    "type": "integer",
+                    "location": "query",
+                    "required": false
+                  },
+                  "pageToken": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false
+                  }
+                },
+                "parameterOrder": [
+                  "name"
+                ],
+                "request": null,
+                "response": {
+                  "$ref": "ListLocationsResponse"
+                }
+              },
+              "updateSettings": {
+                "id": "observability.projects.locations.updateSettings",
+                "httpMethod": "PATCH",
+                "path": "v1/{+name}",
+                "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/settings",
+                "description": "Update Settings",
+                "parameters": {
+                  "name": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  },
+                  "updateMask": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false
+                  }
+                },
+                "parameterOrder": [
+                  "name"
+                ],
+                "request": {
+                  "$ref": "Settings"
+                },
+                "response": {
+                  "$ref": "Operation"
+                }
+              }
+            },
+            "resources": {
+              "buckets": {
+                "methods": {
+                  "create": {
+                    "id": "observability.projects.locations.buckets.create",
+                    "httpMethod": "POST",
+                    "path": "v1/{+parent}/buckets",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/buckets",
+                    "description": "Create a new bucket.",
+                    "parameters": {
+                      "bucketId": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "parent": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "parent"
+                    ],
+                    "request": {
+                      "$ref": "Bucket"
+                    },
+                    "response": {
+                      "$ref": "Operation"
+                    }
+                  },
+                  "get": {
+                    "id": "observability.projects.locations.buckets.get",
+                    "httpMethod": "GET",
+                    "path": "v1/{+name}",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/buckets/{bucketsId}",
+                    "description": "Get bucket resource.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "Bucket"
+                    }
+                  },
+                  "list": {
+                    "id": "observability.projects.locations.buckets.list",
+                    "httpMethod": "GET",
+                    "path": "v1/{+parent}/buckets",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/buckets",
+                    "description": "List buckets of a project in a particular location.",
+                    "parameters": {
+                      "pageSize": {
+                        "type": "integer",
+                        "location": "query",
+                        "required": false
+                      },
+                      "pageToken": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "parent": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      },
+                      "showDeleted": {
+                        "type": "boolean",
+                        "location": "query",
+                        "required": false
+                      }
+                    },
+                    "parameterOrder": [
+                      "parent"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "ListBucketsResponse"
+                    }
+                  },
+                  "patch": {
+                    "id": "observability.projects.locations.buckets.patch",
+                    "httpMethod": "PATCH",
+                    "path": "v1/{+name}",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/buckets/{bucketsId}",
+                    "description": "Update a bucket.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      },
+                      "updateMask": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": {
+                      "$ref": "Bucket"
+                    },
+                    "response": {
+                      "$ref": "Operation"
+                    }
+                  }
+                },
+                "resources": {
+                  "datasets": {
+                    "methods": {
+                      "get": {
+                        "id": "observability.projects.locations.buckets.datasets.get",
+                        "httpMethod": "GET",
+                        "path": "v1/{+name}",
+                        "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/buckets/{bucketsId}/datasets/{datasetsId}",
+                        "description": "Get a dataset.",
+                        "parameters": {
+                          "name": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          }
+                        },
+                        "parameterOrder": [
+                          "name"
+                        ],
+                        "request": null,
+                        "response": {
+                          "$ref": "Dataset"
+                        }
+                      },
+                      "list": {
+                        "id": "observability.projects.locations.buckets.datasets.list",
+                        "httpMethod": "GET",
+                        "path": "v1/{+parent}/datasets",
+                        "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/buckets/{bucketsId}/datasets",
+                        "description": "List datasets of a bucket.",
+                        "parameters": {
+                          "pageSize": {
+                            "type": "integer",
+                            "location": "query",
+                            "required": false
+                          },
+                          "pageToken": {
+                            "type": "string",
+                            "location": "query",
+                            "required": false
+                          },
+                          "parent": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          },
+                          "showDeleted": {
+                            "type": "boolean",
+                            "location": "query",
+                            "required": false
+                          }
+                        },
+                        "parameterOrder": [
+                          "parent"
+                        ],
+                        "request": null,
+                        "response": {
+                          "$ref": "ListDatasetsResponse"
+                        }
+                      }
+                    },
+                    "resources": {
+                      "links": {
+                        "methods": {
+                          "create": {
+                            "id": "observability.projects.locations.buckets.datasets.links.create",
+                            "httpMethod": "POST",
+                            "path": "v1/{+parent}/links",
+                            "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/buckets/{bucketsId}/datasets/{datasetsId}/links",
+                            "description": "Create a new link.",
+                            "parameters": {
+                              "linkId": {
+                                "type": "string",
+                                "location": "query",
+                                "required": false
+                              },
+                              "parent": {
+                                "type": "string",
+                                "location": "path",
+                                "required": true
+                              }
+                            },
+                            "parameterOrder": [
+                              "parent"
+                            ],
+                            "request": {
+                              "$ref": "Link"
+                            },
+                            "response": {
+                              "$ref": "Operation"
+                            }
+                          },
+                          "delete": {
+                            "id": "observability.projects.locations.buckets.datasets.links.delete",
+                            "httpMethod": "DELETE",
+                            "path": "v1/{+name}",
+                            "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/buckets/{bucketsId}/datasets/{datasetsId}/links/{linksId}",
+                            "description": "Delete a link.",
+                            "parameters": {
+                              "name": {
+                                "type": "string",
+                                "location": "path",
+                                "required": true
+                              }
+                            },
+                            "parameterOrder": [
+                              "name"
+                            ],
+                            "request": null,
+                            "response": {
+                              "$ref": "Operation"
+                            }
+                          },
+                          "get": {
+                            "id": "observability.projects.locations.buckets.datasets.links.get",
+                            "httpMethod": "GET",
+                            "path": "v1/{+name}",
+                            "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/buckets/{bucketsId}/datasets/{datasetsId}/links/{linksId}",
+                            "description": "Get a link.",
+                            "parameters": {
+                              "name": {
+                                "type": "string",
+                                "location": "path",
+                                "required": true
+                              }
+                            },
+                            "parameterOrder": [
+                              "name"
+                            ],
+                            "request": null,
+                            "response": {
+                              "$ref": "Link"
+                            }
+                          },
+                          "list": {
+                            "id": "observability.projects.locations.buckets.datasets.links.list",
+                            "httpMethod": "GET",
+                            "path": "v1/{+parent}/links",
+                            "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/buckets/{bucketsId}/datasets/{datasetsId}/links",
+                            "description": "List links of a dataset.",
+                            "parameters": {
+                              "pageSize": {
+                                "type": "integer",
+                                "location": "query",
+                                "required": false
+                              },
+                              "pageToken": {
+                                "type": "string",
+                                "location": "query",
+                                "required": false
+                              },
+                              "parent": {
+                                "type": "string",
+                                "location": "path",
+                                "required": true
+                              }
+                            },
+                            "parameterOrder": [
+                              "parent"
+                            ],
+                            "request": null,
+                            "response": {
+                              "$ref": "ListLinksResponse"
+                            }
+                          },
+                          "patch": {
+                            "id": "observability.projects.locations.buckets.datasets.links.patch",
+                            "httpMethod": "PATCH",
+                            "path": "v1/{+name}",
+                            "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/buckets/{bucketsId}/datasets/{datasetsId}/links/{linksId}",
+                            "description": "Update a link.",
+                            "parameters": {
+                              "name": {
+                                "type": "string",
+                                "location": "path",
+                                "required": true
+                              },
+                              "updateMask": {
+                                "type": "string",
+                                "location": "query",
+                                "required": false
+                              }
+                            },
+                            "parameterOrder": [
+                              "name"
+                            ],
+                            "request": {
+                              "$ref": "Link"
+                            },
+                            "response": {
+                              "$ref": "Operation"
+                            }
+                          }
+                        },
+                        "resources": null
+                      },
+                      "views": {
+                        "methods": {
+                          "get": {
+                            "id": "observability.projects.locations.buckets.datasets.views.get",
+                            "httpMethod": "GET",
+                            "path": "v1/{+name}",
+                            "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/buckets/{bucketsId}/datasets/{datasetsId}/views/{viewsId}",
+                            "description": "Get a view.",
+                            "parameters": {
+                              "name": {
+                                "type": "string",
+                                "location": "path",
+                                "required": true
+                              }
+                            },
+                            "parameterOrder": [
+                              "name"
+                            ],
+                            "request": null,
+                            "response": {
+                              "$ref": "View"
+                            }
+                          },
+                          "list": {
+                            "id": "observability.projects.locations.buckets.datasets.views.list",
+                            "httpMethod": "GET",
+                            "path": "v1/{+parent}/views",
+                            "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/buckets/{bucketsId}/datasets/{datasetsId}/views",
+                            "description": "List views of a dataset.",
+                            "parameters": {
+                              "pageSize": {
+                                "type": "integer",
+                                "location": "query",
+                                "required": false
+                              },
+                              "pageToken": {
+                                "type": "string",
+                                "location": "query",
+                                "required": false
+                              },
+                              "parent": {
+                                "type": "string",
+                                "location": "path",
+                                "required": true
+                              }
+                            },
+                            "parameterOrder": [
+                              "parent"
+                            ],
+                            "request": null,
+                            "response": {
+                              "$ref": "ListViewsResponse"
+                            }
+                          }
+                        },
+                        "resources": null
+                      }
+                    }
+                  }
+                }
+              },
+              "operations": {
+                "methods": {
+                  "cancel": {
+                    "id": "observability.projects.locations.operations.cancel",
+                    "httpMethod": "POST",
+                    "path": "v1/{+name}:cancel",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}:cancel",
+                    "description": "Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": {
+                      "$ref": "CancelOperationRequest"
+                    },
+                    "response": {
+                      "$ref": "Empty"
+                    }
+                  },
+                  "delete": {
+                    "id": "observability.projects.locations.operations.delete",
+                    "httpMethod": "DELETE",
+                    "path": "v1/{+name}",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
+                    "description": "Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "Empty"
+                    }
+                  },
+                  "get": {
+                    "id": "observability.projects.locations.operations.get",
+                    "httpMethod": "GET",
+                    "path": "v1/{+name}",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
+                    "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "Operation"
+                    }
+                  },
+                  "list": {
+                    "id": "observability.projects.locations.operations.list",
+                    "httpMethod": "GET",
+                    "path": "v1/{+name}/operations",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/operations",
+                    "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.",
+                    "parameters": {
+                      "filter": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      },
+                      "pageSize": {
+                        "type": "integer",
+                        "location": "query",
+                        "required": false
+                      },
+                      "pageToken": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "returnPartialSuccess": {
+                        "type": "boolean",
+                        "location": "query",
+                        "required": false
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "ListOperationsResponse"
+                    }
+                  }
+                },
+                "resources": null
+              },
+              "scopes": {
+                "methods": {
+                  "get": {
+                    "id": "observability.projects.locations.scopes.get",
+                    "httpMethod": "GET",
+                    "path": "v1/{+name}",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/scopes/{scopesId}",
+                    "description": "Gets details of a single Scope.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "Scope"
+                    }
+                  },
+                  "patch": {
+                    "id": "observability.projects.locations.scopes.patch",
+                    "httpMethod": "PATCH",
+                    "path": "v1/{+name}",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/scopes/{scopesId}",
+                    "description": "Updates the parameters of a single Scope.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      },
+                      "updateMask": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": {
+                      "$ref": "Scope"
+                    },
+                    "response": {
+                      "$ref": "Scope"
+                    }
+                  }
+                },
+                "resources": null
+              },
+              "traceScopes": {
+                "methods": {
+                  "create": {
+                    "id": "observability.projects.locations.traceScopes.create",
+                    "httpMethod": "POST",
+                    "path": "v1/{+parent}/traceScopes",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/traceScopes",
+                    "description": "Create a new TraceScope.",
+                    "parameters": {
+                      "parent": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      },
+                      "traceScopeId": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      }
+                    },
+                    "parameterOrder": [
+                      "parent"
+                    ],
+                    "request": {
+                      "$ref": "TraceScope"
+                    },
+                    "response": {
+                      "$ref": "TraceScope"
+                    }
+                  },
+                  "delete": {
+                    "id": "observability.projects.locations.traceScopes.delete",
+                    "httpMethod": "DELETE",
+                    "path": "v1/{+name}",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/traceScopes/{traceScopesId}",
+                    "description": "Delete a TraceScope.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "Empty"
+                    }
+                  },
+                  "get": {
+                    "id": "observability.projects.locations.traceScopes.get",
+                    "httpMethod": "GET",
+                    "path": "v1/{+name}",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/traceScopes/{traceScopesId}",
+                    "description": "Get TraceScope resource.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "TraceScope"
+                    }
+                  },
+                  "list": {
+                    "id": "observability.projects.locations.traceScopes.list",
+                    "httpMethod": "GET",
+                    "path": "v1/{+parent}/traceScopes",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/traceScopes",
+                    "description": "List TraceScopes of a project in a particular location.",
+                    "parameters": {
+                      "pageSize": {
+                        "type": "integer",
+                        "location": "query",
+                        "required": false
+                      },
+                      "pageToken": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "parent": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "parent"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "ListTraceScopesResponse"
+                    }
+                  },
+                  "patch": {
+                    "id": "observability.projects.locations.traceScopes.patch",
+                    "httpMethod": "PATCH",
+                    "path": "v1/{+name}",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/traceScopes/{traceScopesId}",
+                    "description": "Update a TraceScope.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      },
+                      "updateMask": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": {
+                      "$ref": "TraceScope"
+                    },
+                    "response": {
+                      "$ref": "TraceScope"
+                    }
+                  }
+                },
+                "resources": null
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

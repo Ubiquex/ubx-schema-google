@@ -1,0 +1,1234 @@
+{
+  "schema_source": "discovery_docs",
+  "mode": "data_source",
+  "auth": {
+    "Type": "",
+    "Params": null
+  },
+  "base_url": "https://workflows.googleapis.com",
+  "retry": {
+    "MaxAttempts": 0,
+    "InitialBackoff": "",
+    "MaxBackoff": "",
+    "Jitter": null,
+    "RespectRetryAfter": null,
+    "RateLimitResetHeader": ""
+  },
+  "timeouts": {
+    "Create": "",
+    "Read": "",
+    "Update": "",
+    "Delete": "",
+    "Default": ""
+  },
+  "wire_name": "google_workflows",
+  "raw_spec": {
+    "name": "workflows",
+    "revision": "20260812",
+    "discoveryVersion": "v1",
+    "baseUrl": "https://workflows.googleapis.com/",
+    "rootUrl": "https://workflows.googleapis.com/",
+    "servicePath": "",
+    "schemas": {
+      "Empty": {
+        "type": "object",
+        "format": "",
+        "description": "A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }",
+        "$ref": "",
+        "properties": {},
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ListLocationsResponse": {
+        "type": "object",
+        "format": "",
+        "description": "The response message for Locations.ListLocations.",
+        "$ref": "",
+        "properties": {
+          "locations": {
+            "type": "array",
+            "format": "",
+            "description": "A list of locations that matches the specified filter in the request.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Location",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "The standard List next-page token.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ListOperationsResponse": {
+        "type": "object",
+        "format": "",
+        "description": "The response message for Operations.ListOperations.",
+        "$ref": "",
+        "properties": {
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "The standard List next-page token.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "operations": {
+            "type": "array",
+            "format": "",
+            "description": "A list of operations that matches the specified filter in the request.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Operation",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "unreachable": {
+            "type": "array",
+            "format": "",
+            "description": "Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ListWorkflowRevisionsResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Response for the ListWorkflowRevisions method.",
+        "$ref": "",
+        "properties": {
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "workflows": {
+            "type": "array",
+            "format": "",
+            "description": "The revisions of the workflow, ordered in reverse chronological order.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Workflow",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ListWorkflowsResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Response for the ListWorkflows method.",
+        "$ref": "",
+        "properties": {
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "unreachable": {
+            "type": "array",
+            "format": "",
+            "description": "Unreachable resources.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "workflows": {
+            "type": "array",
+            "format": "",
+            "description": "The workflows that match the request.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Workflow",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Location": {
+        "type": "object",
+        "format": "",
+        "description": "A resource that represents a Google Cloud location.",
+        "$ref": "",
+        "properties": {
+          "displayName": {
+            "type": "string",
+            "format": "",
+            "description": "The friendly name for this location, typically a nearby city name. For example, \"Tokyo\".",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "labels": {
+            "type": "object",
+            "format": "",
+            "description": "Cross-service attributes for the location. For example {\"cloud.googleapis.com/region\": \"us-east1\"}",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "locationId": {
+            "type": "string",
+            "format": "",
+            "description": "The canonical id for this location. For example: `\"us-east1\"`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "metadata": {
+            "type": "object",
+            "format": "",
+            "description": "Service-specific metadata. For example the available capacity at the given location.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "any",
+              "format": "",
+              "description": "Properties of the object. Contains field @type with type URL.",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "Resource name for the location, which may vary between implementations. For example: `\"projects/example-project/locations/us-east1\"`",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Operation": {
+        "type": "object",
+        "format": "",
+        "description": "This resource represents a long-running operation that is the result of a network API call.",
+        "$ref": "",
+        "properties": {
+          "done": {
+            "type": "boolean",
+            "format": "",
+            "description": "If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "error": {
+            "type": "",
+            "format": "",
+            "description": "The error result of the operation in case of failure or cancellation.",
+            "$ref": "Status",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "metadata": {
+            "type": "object",
+            "format": "",
+            "description": "Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "any",
+              "format": "",
+              "description": "Properties of the object. Contains field @type with type URL.",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "response": {
+            "type": "object",
+            "format": "",
+            "description": "The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "any",
+              "format": "",
+              "description": "Properties of the object. Contains field @type with type URL.",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "OperationMetadata": {
+        "type": "object",
+        "format": "",
+        "description": "Represents the metadata of the long-running operation.",
+        "$ref": "",
+        "properties": {
+          "apiVersion": {
+            "type": "string",
+            "format": "",
+            "description": "API version used to start the operation.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "createTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "The time the operation was created.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "endTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "The time the operation finished running.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "target": {
+            "type": "string",
+            "format": "",
+            "description": "Server-defined resource path for the target of the operation.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "verb": {
+            "type": "string",
+            "format": "",
+            "description": "Name of the verb executed by the operation.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "StateError": {
+        "type": "object",
+        "format": "",
+        "description": "Describes an error related to the current state of the workflow.",
+        "$ref": "",
+        "properties": {
+          "details": {
+            "type": "string",
+            "format": "",
+            "description": "Provides specifics about the error.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "type": {
+            "type": "string",
+            "format": "",
+            "description": "The type of this state error.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "TYPE_UNSPECIFIED",
+              "KMS_ERROR"
+            ],
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Status": {
+        "type": "object",
+        "format": "",
+        "description": "The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).",
+        "$ref": "",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32",
+            "description": "The status code, which should be an enum value of google.rpc.Code.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "details": {
+            "type": "array",
+            "format": "",
+            "description": "A list of messages that carry the error details. There is a common set of message types for APIs to use.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "object",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": {
+                "type": "any",
+                "format": "",
+                "description": "Properties of the object. Contains field @type with type URL.",
+                "$ref": "",
+                "properties": null,
+                "items": null,
+                "additionalProperties": null,
+                "enum": null,
+                "readOnly": false
+              },
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "message": {
+            "type": "string",
+            "format": "",
+            "description": "A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Workflow": {
+        "type": "object",
+        "format": "",
+        "description": "Workflow program to be executed by Workflows.",
+        "$ref": "",
+        "properties": {
+          "allKmsKeys": {
+            "type": "array",
+            "format": "",
+            "description": "Output only. A list of all KMS crypto keys used to encrypt or decrypt the data associated with the workflow.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "allKmsKeysVersions": {
+            "type": "array",
+            "format": "",
+            "description": "Output only. A list of all KMS crypto key versions used to encrypt or decrypt the data associated with the workflow.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "callLogLevel": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Describes the level of platform logging to apply to calls and call responses during executions of this workflow. If both the workflow and the execution specify a logging level, the execution level takes precedence.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "CALL_LOG_LEVEL_UNSPECIFIED",
+              "LOG_ALL_CALLS",
+              "LOG_ERRORS_ONLY",
+              "LOG_NONE"
+            ],
+            "readOnly": false
+          },
+          "createTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. The timestamp for when the workflow was created. This is a workflow-wide field and is not tied to a specific revision.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "cryptoKeyName": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The resource name of a KMS crypto key used to encrypt or decrypt the data associated with the workflow. Format: projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey} Using `-` as a wildcard for the `{project}` or not providing one at all will infer the project from the account. If not provided, data associated with the workflow will not be CMEK-encrypted.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "cryptoKeyVersion": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The resource name of a KMS crypto key version used to encrypt or decrypt the data associated with the workflow. Format: projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey}/cryptoKeyVersions/{cryptoKeyVersion}",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "description": {
+            "type": "string",
+            "format": "",
+            "description": "Description of the workflow provided by the user. Must be at most 1000 Unicode characters long. This is a workflow-wide field and is not tied to a specific revision.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "executionHistoryLevel": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Describes the execution history level to apply to this workflow.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "EXECUTION_HISTORY_LEVEL_UNSPECIFIED",
+              "EXECUTION_HISTORY_BASIC",
+              "EXECUTION_HISTORY_DETAILED"
+            ],
+            "readOnly": false
+          },
+          "labels": {
+            "type": "object",
+            "format": "",
+            "description": "Labels associated with this workflow. Labels can contain at most 64 entries. Keys and values can be no longer than 63 characters and can only contain lowercase letters, numeric characters, underscores, and dashes. Label keys must start with a letter. International characters are allowed. This is a workflow-wide field and is not tied to a specific revision.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "The resource name of the workflow. Format: projects/{project}/locations/{location}/workflows/{workflow}. This is a workflow-wide field and is not tied to a specific revision.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "revisionCreateTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. The timestamp for the latest revision of the workflow's creation.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "revisionId": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The revision of the workflow. A new revision of a workflow is created as a result of updating the following properties of a workflow: - Service account - Workflow code to be executed The format is \"000001-a4d\", where the first six characters define the zero-padded revision ordinal number. They are followed by a hyphen and three hexadecimal random characters.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "serviceAccount": {
+            "type": "string",
+            "format": "",
+            "description": "The service account associated with the latest workflow version. This service account represents the identity of the workflow and determines what permissions the workflow has. Format: projects/{project}/serviceAccounts/{account} or {account} Using `-` as a wildcard for the `{project}` or not providing one at all will infer the project from the account. The `{account}` value can be the `email` address or the `unique_id` of the service account. If not provided, workflow will use the project's default service account. Modifying this field for an existing workflow results in a new workflow revision.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "sourceContents": {
+            "type": "string",
+            "format": "",
+            "description": "Workflow code to be executed. The size limit is 128KB.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "state": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. State of the workflow deployment.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "STATE_UNSPECIFIED",
+              "ACTIVE",
+              "UNAVAILABLE"
+            ],
+            "readOnly": true
+          },
+          "stateError": {
+            "type": "",
+            "format": "",
+            "description": "Output only. Error regarding the state of the workflow. For example, this field will have error details if the execution data is unavailable due to revoked KMS key permissions.",
+            "$ref": "StateError",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "tags": {
+            "type": "object",
+            "format": "",
+            "description": "Optional. Input only. Immutable. Tags associated with this workflow.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "updateTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. The timestamp for when the workflow was last updated. This is a workflow-wide field and is not tied to a specific revision.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "userEnvVars": {
+            "type": "object",
+            "format": "",
+            "description": "Optional. User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 4KiB. Keys cannot be empty strings and cannot start with \"GOOGLE\" or \"WORKFLOWS\".",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      }
+    },
+    "resources": {
+      "projects": {
+        "methods": null,
+        "resources": {
+          "locations": {
+            "methods": {
+              "get": {
+                "id": "workflows.projects.locations.get",
+                "httpMethod": "GET",
+                "path": "v1/{+name}",
+                "flatPath": "v1/projects/{projectsId}/locations/{locationsId}",
+                "description": "Gets information about a location.",
+                "parameters": {
+                  "name": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  }
+                },
+                "parameterOrder": [
+                  "name"
+                ],
+                "request": null,
+                "response": {
+                  "$ref": "Location"
+                }
+              },
+              "list": {
+                "id": "workflows.projects.locations.list",
+                "httpMethod": "GET",
+                "path": "v1/{+name}/locations",
+                "flatPath": "v1/projects/{projectsId}/locations",
+                "description": "Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the ListLocationsRequest.name field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version.",
+                "parameters": {
+                  "extraLocationTypes": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false
+                  },
+                  "filter": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false
+                  },
+                  "name": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  },
+                  "pageSize": {
+                    "type": "integer",
+                    "location": "query",
+                    "required": false
+                  },
+                  "pageToken": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false
+                  }
+                },
+                "parameterOrder": [
+                  "name"
+                ],
+                "request": null,
+                "response": {
+                  "$ref": "ListLocationsResponse"
+                }
+              }
+            },
+            "resources": {
+              "operations": {
+                "methods": {
+                  "delete": {
+                    "id": "workflows.projects.locations.operations.delete",
+                    "httpMethod": "DELETE",
+                    "path": "v1/{+name}",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
+                    "description": "Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "Empty"
+                    }
+                  },
+                  "get": {
+                    "id": "workflows.projects.locations.operations.get",
+                    "httpMethod": "GET",
+                    "path": "v1/{+name}",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
+                    "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "Operation"
+                    }
+                  },
+                  "list": {
+                    "id": "workflows.projects.locations.operations.list",
+                    "httpMethod": "GET",
+                    "path": "v1/{+name}/operations",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/operations",
+                    "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.",
+                    "parameters": {
+                      "filter": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      },
+                      "pageSize": {
+                        "type": "integer",
+                        "location": "query",
+                        "required": false
+                      },
+                      "pageToken": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "returnPartialSuccess": {
+                        "type": "boolean",
+                        "location": "query",
+                        "required": false
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "ListOperationsResponse"
+                    }
+                  }
+                },
+                "resources": null
+              },
+              "workflows": {
+                "methods": {
+                  "create": {
+                    "id": "workflows.projects.locations.workflows.create",
+                    "httpMethod": "POST",
+                    "path": "v1/{+parent}/workflows",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/workflows",
+                    "description": "Creates a new workflow. If a workflow with the specified name already exists in the specified project and location, the long running operation returns a ALREADY_EXISTS error.",
+                    "parameters": {
+                      "parent": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      },
+                      "workflowId": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      }
+                    },
+                    "parameterOrder": [
+                      "parent"
+                    ],
+                    "request": {
+                      "$ref": "Workflow"
+                    },
+                    "response": {
+                      "$ref": "Operation"
+                    }
+                  },
+                  "delete": {
+                    "id": "workflows.projects.locations.workflows.delete",
+                    "httpMethod": "DELETE",
+                    "path": "v1/{+name}",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/workflows/{workflowsId}",
+                    "description": "Deletes a workflow with the specified name. This method also cancels and deletes all running executions of the workflow.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "Operation"
+                    }
+                  },
+                  "get": {
+                    "id": "workflows.projects.locations.workflows.get",
+                    "httpMethod": "GET",
+                    "path": "v1/{+name}",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/workflows/{workflowsId}",
+                    "description": "Gets details of a single workflow.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      },
+                      "revisionId": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "Workflow"
+                    }
+                  },
+                  "list": {
+                    "id": "workflows.projects.locations.workflows.list",
+                    "httpMethod": "GET",
+                    "path": "v1/{+parent}/workflows",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/workflows",
+                    "description": "Lists workflows in a given project and location. The default order is not specified.",
+                    "parameters": {
+                      "filter": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "orderBy": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "pageSize": {
+                        "type": "integer",
+                        "location": "query",
+                        "required": false
+                      },
+                      "pageToken": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "parent": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "parent"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "ListWorkflowsResponse"
+                    }
+                  },
+                  "listRevisions": {
+                    "id": "workflows.projects.locations.workflows.listRevisions",
+                    "httpMethod": "GET",
+                    "path": "v1/{+name}:listRevisions",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/workflows/{workflowsId}:listRevisions",
+                    "description": "Lists revisions for a given workflow.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      },
+                      "pageSize": {
+                        "type": "integer",
+                        "location": "query",
+                        "required": false
+                      },
+                      "pageToken": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "ListWorkflowRevisionsResponse"
+                    }
+                  },
+                  "patch": {
+                    "id": "workflows.projects.locations.workflows.patch",
+                    "httpMethod": "PATCH",
+                    "path": "v1/{+name}",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/workflows/{workflowsId}",
+                    "description": "Updates an existing workflow. Running this method has no impact on already running executions of the workflow. A new revision of the workflow might be created as a result of a successful update operation. In that case, the new revision is used in new workflow executions.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      },
+                      "updateMask": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": {
+                      "$ref": "Workflow"
+                    },
+                    "response": {
+                      "$ref": "Operation"
+                    }
+                  }
+                },
+                "resources": null
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

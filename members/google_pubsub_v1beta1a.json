@@ -1,0 +1,1094 @@
+{
+  "schema_source": "discovery_docs",
+  "mode": "resource",
+  "auth": {
+    "Type": "",
+    "Params": null
+  },
+  "base_url": "https://pubsub.googleapis.com",
+  "retry": {
+    "MaxAttempts": 0,
+    "InitialBackoff": "",
+    "MaxBackoff": "",
+    "Jitter": null,
+    "RespectRetryAfter": null,
+    "RateLimitResetHeader": ""
+  },
+  "timeouts": {
+    "Create": "",
+    "Read": "",
+    "Update": "",
+    "Delete": "",
+    "Default": ""
+  },
+  "wire_name": "google_pubsub_v1beta1a",
+  "version_qualifier": "v1beta1a",
+  "raw_spec": {
+    "name": "pubsub",
+    "revision": "20260818",
+    "discoveryVersion": "v1",
+    "baseUrl": "https://pubsub.googleapis.com/",
+    "rootUrl": "https://pubsub.googleapis.com/",
+    "servicePath": "",
+    "schemas": {
+      "AcknowledgeRequest": {
+        "type": "object",
+        "format": "",
+        "description": "Request for the Acknowledge method.",
+        "$ref": "",
+        "properties": {
+          "ackId": {
+            "type": "array",
+            "format": "",
+            "description": "The acknowledgment ID for the message being acknowledged. This was returned by the Pub/Sub system in the Pull response.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "subscription": {
+            "type": "string",
+            "format": "",
+            "description": "The subscription whose message is being acknowledged.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Empty": {
+        "type": "object",
+        "format": "",
+        "description": "An empty message that you can re-use to avoid defining duplicated empty messages in your project. A typical example is to use it as argument or the return value of a service API. For instance: service Foo { rpc Bar (proto2.Empty) returns (proto2.Empty) { }; }; BEGIN GOOGLE-INTERNAL The difference between this one and net/rpc/empty-message.proto is that 1) The generated message here is in proto2 C++ API. 2) The proto2.Empty has minimum dependencies (no message_set or net/rpc dependencies) END GOOGLE-INTERNAL",
+        "$ref": "",
+        "properties": {},
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Label": {
+        "type": "object",
+        "format": "",
+        "description": "A key-value pair applied to a given object.",
+        "$ref": "",
+        "properties": {
+          "key": {
+            "type": "string",
+            "format": "",
+            "description": "The key of a label is a syntactically valid URL (as per RFC 1738) with the \"scheme\" and initial slashes omitted and with the additional restrictions noted below. Each key should be globally unique. The \"host\" portion is called the \"namespace\" and is not necessarily resolvable to a network endpoint. Instead, the namespace indicates what system or entity defines the semantics of the label. Namespaces do not restrict the set of objects to which a label may be associated. Keys are defined by the following grammar: key = hostname \"/\" kpath kpath = ksegment *[ \"/\" ksegment ] ksegment = alphadigit | *[ alphadigit | \"-\" | \"_\" | \".\" ] where \"hostname\" and \"alphadigit\" are defined as in RFC 1738. Example key: spanner.google.com/universe",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "numValue": {
+            "type": "string",
+            "format": "int64",
+            "description": "An integer value.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "strValue": {
+            "type": "string",
+            "format": "",
+            "description": "A string value.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ListSubscriptionsResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Response for the ListSubscriptions method.",
+        "$ref": "",
+        "properties": {
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "If not empty, indicates that there are more subscriptions that match the request and this value should be passed to the next ListSubscriptionsRequest to continue.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "subscription": {
+            "type": "array",
+            "format": "",
+            "description": "The subscriptions that match the request.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Subscription",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ListTopicsResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Response for the ListTopics method.",
+        "$ref": "",
+        "properties": {
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "If not empty, indicates that there are more topics that match the request, and this value should be passed to the next ListTopicsRequest to continue.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "topic": {
+            "type": "array",
+            "format": "",
+            "description": "The resulting topics.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Topic",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ModifyAckDeadlineRequest": {
+        "type": "object",
+        "format": "",
+        "description": "Request for the ModifyAckDeadline method.",
+        "$ref": "",
+        "properties": {
+          "ackDeadlineSeconds": {
+            "type": "integer",
+            "format": "int32",
+            "description": "The new ack deadline with respect to the time this request was sent to the Pub/Sub system. Must be \u003e= 0. For example, if the value is 10, the new ack deadline will expire 10 seconds after the ModifyAckDeadline call was made. Specifying zero may immediately make the message available for another pull request.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "ackId": {
+            "type": "string",
+            "format": "",
+            "description": "The acknowledgment ID. Either this or ack_ids must be populated, not both.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "ackIds": {
+            "type": "array",
+            "format": "",
+            "description": "List of acknowledgment IDs. Either this field or ack_id should be populated, not both.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "subscription": {
+            "type": "string",
+            "format": "",
+            "description": "Next Index: 5 The name of the subscription from which messages are being pulled.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ModifyPushConfigRequest": {
+        "type": "object",
+        "format": "",
+        "description": "Request for the ModifyPushConfig method.",
+        "$ref": "",
+        "properties": {
+          "pushConfig": {
+            "type": "",
+            "format": "",
+            "description": "An empty push_config indicates that the Pub/Sub system should pause pushing messages from the given subscription.",
+            "$ref": "PushConfig",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "subscription": {
+            "type": "string",
+            "format": "",
+            "description": "The name of the subscription.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "PublishBatchRequest": {
+        "type": "object",
+        "format": "",
+        "description": "Request for the PublishBatch method.",
+        "$ref": "",
+        "properties": {
+          "messages": {
+            "type": "array",
+            "format": "",
+            "description": "The messages to publish.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "PubsubMessage",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "topic": {
+            "type": "string",
+            "format": "",
+            "description": "The messages in the request will be published on this topic.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "PublishBatchResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Response for the PublishBatch method.",
+        "$ref": "",
+        "properties": {
+          "messageIds": {
+            "type": "array",
+            "format": "",
+            "description": "The server-assigned ID of each published message, in the same order as the messages in the request. IDs are guaranteed to be unique within the topic.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "PublishRequest": {
+        "type": "object",
+        "format": "",
+        "description": "Request for the Publish method.",
+        "$ref": "",
+        "properties": {
+          "message": {
+            "type": "",
+            "format": "",
+            "description": "The message to publish.",
+            "$ref": "PubsubMessage",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "topic": {
+            "type": "string",
+            "format": "",
+            "description": "The message in the request will be published on this topic.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "PubsubEvent": {
+        "type": "object",
+        "format": "",
+        "description": "An event indicating a received message or truncation event.",
+        "$ref": "",
+        "properties": {
+          "deleted": {
+            "type": "boolean",
+            "format": "",
+            "description": "Indicates that this subscription has been deleted. (Note that pull subscribers will always receive NOT_FOUND in response in their pull request on the subscription, rather than seeing this boolean.)",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "message": {
+            "type": "",
+            "format": "",
+            "description": "A received message.",
+            "$ref": "PubsubMessage",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "subscription": {
+            "type": "string",
+            "format": "",
+            "description": "The subscription that received the event.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "truncated": {
+            "type": "boolean",
+            "format": "",
+            "description": "Indicates that this subscription has been truncated.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "PubsubMessage": {
+        "type": "object",
+        "format": "",
+        "description": "A message data and its labels.",
+        "$ref": "",
+        "properties": {
+          "data": {
+            "type": "string",
+            "format": "byte",
+            "description": "The message payload.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "label": {
+            "type": "array",
+            "format": "",
+            "description": "Optional list of labels for this message. Keys in this collection must be unique.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Label",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "messageId": {
+            "type": "string",
+            "format": "",
+            "description": "ID of this message assigned by the server at publication time. Guaranteed to be unique within the topic. This value may be read by a subscriber that receives a PubsubMessage via a Pull call or a push delivery. It must not be populated by a publisher in a Publish call.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "publishTime": {
+            "type": "string",
+            "format": "int64",
+            "description": "The time at which the message was published. The time is milliseconds since the UNIX epoch.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "PullBatchRequest": {
+        "type": "object",
+        "format": "",
+        "description": "Request for the PullBatch method.",
+        "$ref": "",
+        "properties": {
+          "maxEvents": {
+            "type": "integer",
+            "format": "int32",
+            "description": "The maximum number of PubsubEvents returned for this request. The Pub/Sub system may return fewer than the number of events specified.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "returnImmediately": {
+            "type": "boolean",
+            "format": "",
+            "description": "If this is specified as true the system will respond immediately even if it is not able to return a message in the Pull response. Otherwise the system is allowed to wait until at least one message is available rather than returning no messages. The client may cancel the request if it does not wish to wait any longer for the response.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "subscription": {
+            "type": "string",
+            "format": "",
+            "description": "The subscription from which messages should be pulled.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "PullBatchResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Response for the PullBatch method.",
+        "$ref": "",
+        "properties": {
+          "pullResponses": {
+            "type": "array",
+            "format": "",
+            "description": "Received Pub/Sub messages or status events. The Pub/Sub system will return zero messages if there are no more messages available in the backlog. The Pub/Sub system may return fewer than the max_events requested even if there are more messages available in the backlog.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "PullResponse",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "PullRequest": {
+        "type": "object",
+        "format": "",
+        "description": "Request for the Pull method.",
+        "$ref": "",
+        "properties": {
+          "returnImmediately": {
+            "type": "boolean",
+            "format": "",
+            "description": "If this is specified as true the system will respond immediately even if it is not able to return a message in the Pull response. Otherwise the system is allowed to wait until at least one message is available rather than returning FAILED_PRECONDITION. The client may cancel the request if it does not wish to wait any longer for the response.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "subscription": {
+            "type": "string",
+            "format": "",
+            "description": "The subscription from which a message should be pulled.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "PullResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Either a PubsubMessage or a truncation event. One of these two must be populated.",
+        "$ref": "",
+        "properties": {
+          "ackId": {
+            "type": "string",
+            "format": "",
+            "description": "This ID must be used to acknowledge the received event or message.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "pubsubEvent": {
+            "type": "",
+            "format": "",
+            "description": "A pubsub message or truncation event.",
+            "$ref": "PubsubEvent",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "PushConfig": {
+        "type": "object",
+        "format": "",
+        "description": "Configuration for a push delivery endpoint.",
+        "$ref": "",
+        "properties": {
+          "pushEndpoint": {
+            "type": "string",
+            "format": "",
+            "description": "A URL locating the endpoint to which messages should be pushed. For example, a Webhook endpoint might use \"https://example.com/push\".",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Subscription": {
+        "type": "object",
+        "format": "",
+        "description": "A subscription resource.",
+        "$ref": "",
+        "properties": {
+          "ackDeadlineSeconds": {
+            "type": "integer",
+            "format": "int32",
+            "description": "For either push or pull delivery, the value is the maximum time after a subscriber receives a message before the subscriber should acknowledge or Nack the message. If the Ack deadline for a message passes without an Ack or a Nack, the Pub/Sub system will eventually redeliver the message. If a subscriber acknowledges after the deadline, the Pub/Sub system may accept the Ack, but it is possible that the message has been already delivered again. Multiple Acks to the message are allowed and will succeed. For push delivery, this value is used to set the request timeout for the call to the push endpoint. For pull delivery, this value is used as the initial value for the Ack deadline. It may be overridden for each message using its corresponding ack_id with ModifyAckDeadline. While a message is outstanding (i.e. it has been delivered to a pull subscriber and the subscriber has not yet Acked or Nacked), the Pub/Sub system will not deliver that message to another pull subscriber (on a best-effort basis).",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "Name of the subscription.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "pushConfig": {
+            "type": "",
+            "format": "",
+            "description": "If push delivery is used with this subscription, this field is used to configure it.",
+            "$ref": "PushConfig",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "topic": {
+            "type": "string",
+            "format": "",
+            "description": "The name of the topic from which this subscription is receiving messages.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Topic": {
+        "type": "object",
+        "format": "",
+        "description": "A topic resource.",
+        "$ref": "",
+        "properties": {
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "Name of the topic.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      }
+    },
+    "resources": {
+      "subscriptions": {
+        "methods": {
+          "acknowledge": {
+            "id": "pubsub.subscriptions.acknowledge",
+            "httpMethod": "POST",
+            "path": "v1beta1a/subscriptions/acknowledge",
+            "flatPath": "v1beta1a/subscriptions/acknowledge",
+            "description": "Acknowledges a particular received message: the Pub/Sub system can remove the given message from the subscription. Acknowledging a message whose Ack deadline has expired may succeed, but the message could have been already redelivered. Acknowledging a message more than once will not result in an error. This is only used for messages received via pull.",
+            "parameters": {},
+            "parameterOrder": [],
+            "request": {
+              "$ref": "AcknowledgeRequest"
+            },
+            "response": {
+              "$ref": "Empty"
+            }
+          },
+          "create": {
+            "id": "pubsub.subscriptions.create",
+            "httpMethod": "POST",
+            "path": "v1beta1a/subscriptions",
+            "flatPath": "v1beta1a/subscriptions",
+            "description": "Creates a subscription on a given topic for a given subscriber. If the subscription already exists, returns ALREADY_EXISTS. If the corresponding topic doesn't exist, returns NOT_FOUND. If the name is not provided in the request, the server will assign a random name for this subscription on the same project as the topic.",
+            "parameters": {},
+            "parameterOrder": [],
+            "request": {
+              "$ref": "Subscription"
+            },
+            "response": {
+              "$ref": "Subscription"
+            }
+          },
+          "delete": {
+            "id": "pubsub.subscriptions.delete",
+            "httpMethod": "DELETE",
+            "path": "v1beta1a/subscriptions/{+subscription}",
+            "flatPath": "v1beta1a/subscriptions/{subscriptionsId}",
+            "description": "Deletes an existing subscription. All pending messages in the subscription are immediately dropped. Calls to Pull after deletion will return NOT_FOUND.",
+            "parameters": {
+              "subscription": {
+                "type": "string",
+                "location": "path",
+                "required": true
+              }
+            },
+            "parameterOrder": [
+              "subscription"
+            ],
+            "request": null,
+            "response": {
+              "$ref": "Empty"
+            }
+          },
+          "get": {
+            "id": "pubsub.subscriptions.get",
+            "httpMethod": "GET",
+            "path": "v1beta1a/subscriptions/{+subscription}",
+            "flatPath": "v1beta1a/subscriptions/{subscriptionsId}",
+            "description": "Gets the configuration details of a subscription.",
+            "parameters": {
+              "subscription": {
+                "type": "string",
+                "location": "path",
+                "required": true
+              }
+            },
+            "parameterOrder": [
+              "subscription"
+            ],
+            "request": null,
+            "response": {
+              "$ref": "Subscription"
+            }
+          },
+          "list": {
+            "id": "pubsub.subscriptions.list",
+            "httpMethod": "GET",
+            "path": "v1beta1a/subscriptions",
+            "flatPath": "v1beta1a/subscriptions",
+            "description": "Lists matching subscriptions.",
+            "parameters": {
+              "maxResults": {
+                "type": "integer",
+                "location": "query",
+                "required": false
+              },
+              "pageToken": {
+                "type": "string",
+                "location": "query",
+                "required": false
+              },
+              "query": {
+                "type": "string",
+                "location": "query",
+                "required": false
+              }
+            },
+            "parameterOrder": [],
+            "request": null,
+            "response": {
+              "$ref": "ListSubscriptionsResponse"
+            }
+          },
+          "modifyAckDeadline": {
+            "id": "pubsub.subscriptions.modifyAckDeadline",
+            "httpMethod": "POST",
+            "path": "v1beta1a/subscriptions/modifyAckDeadline",
+            "flatPath": "v1beta1a/subscriptions/modifyAckDeadline",
+            "description": "Modifies the Ack deadline for a message received from a pull request.",
+            "parameters": {},
+            "parameterOrder": [],
+            "request": {
+              "$ref": "ModifyAckDeadlineRequest"
+            },
+            "response": {
+              "$ref": "Empty"
+            }
+          },
+          "modifyPushConfig": {
+            "id": "pubsub.subscriptions.modifyPushConfig",
+            "httpMethod": "POST",
+            "path": "v1beta1a/subscriptions/modifyPushConfig",
+            "flatPath": "v1beta1a/subscriptions/modifyPushConfig",
+            "description": "Modifies the PushConfig for a specified subscription. This method can be used to suspend the flow of messages to an endpoint by clearing the PushConfig field in the request. Messages will be accumulated for delivery even if no push configuration is defined or while the configuration is modified.",
+            "parameters": {},
+            "parameterOrder": [],
+            "request": {
+              "$ref": "ModifyPushConfigRequest"
+            },
+            "response": {
+              "$ref": "Empty"
+            }
+          },
+          "pull": {
+            "id": "pubsub.subscriptions.pull",
+            "httpMethod": "POST",
+            "path": "v1beta1a/subscriptions/pull",
+            "flatPath": "v1beta1a/subscriptions/pull",
+            "description": "Pulls a single message from the server. If return_immediately is true, and no messages are available in the subscription, this method returns FAILED_PRECONDITION. The system is free to return an UNAVAILABLE error if no messages are available in a reasonable amount of time (to reduce system load).",
+            "parameters": {},
+            "parameterOrder": [],
+            "request": {
+              "$ref": "PullRequest"
+            },
+            "response": {
+              "$ref": "PullResponse"
+            }
+          },
+          "pullBatch": {
+            "id": "pubsub.subscriptions.pullBatch",
+            "httpMethod": "POST",
+            "path": "v1beta1a/subscriptions/pullBatch",
+            "flatPath": "v1beta1a/subscriptions/pullBatch",
+            "description": "Pulls messages from the server. Returns an empty list if there are no messages available in the backlog. The system is free to return UNAVAILABLE if there are too many pull requests outstanding for the given subscription.",
+            "parameters": {},
+            "parameterOrder": [],
+            "request": {
+              "$ref": "PullBatchRequest"
+            },
+            "response": {
+              "$ref": "PullBatchResponse"
+            }
+          }
+        },
+        "resources": null
+      },
+      "topics": {
+        "methods": {
+          "create": {
+            "id": "pubsub.topics.create",
+            "httpMethod": "POST",
+            "path": "v1beta1a/topics",
+            "flatPath": "v1beta1a/topics",
+            "description": "Creates the given topic with the given name.",
+            "parameters": {},
+            "parameterOrder": [],
+            "request": {
+              "$ref": "Topic"
+            },
+            "response": {
+              "$ref": "Topic"
+            }
+          },
+          "delete": {
+            "id": "pubsub.topics.delete",
+            "httpMethod": "DELETE",
+            "path": "v1beta1a/topics/{+topic}",
+            "flatPath": "v1beta1a/topics/{topicsId}",
+            "description": "Deletes the topic with the given name. Returns NOT_FOUND if the topic does not exist. After a topic is deleted, a new topic may be created with the same name.",
+            "parameters": {
+              "topic": {
+                "type": "string",
+                "location": "path",
+                "required": true
+              }
+            },
+            "parameterOrder": [
+              "topic"
+            ],
+            "request": null,
+            "response": {
+              "$ref": "Empty"
+            }
+          },
+          "get": {
+            "id": "pubsub.topics.get",
+            "httpMethod": "GET",
+            "path": "v1beta1a/topics/{+topic}",
+            "flatPath": "v1beta1a/topics/{topicsId}",
+            "description": "Gets the configuration of a topic. Since the topic only has the name attribute, this method is only useful to check the existence of a topic. If other attributes are added in the future, they will be returned here.",
+            "parameters": {
+              "topic": {
+                "type": "string",
+                "location": "path",
+                "required": true
+              }
+            },
+            "parameterOrder": [
+              "topic"
+            ],
+            "request": null,
+            "response": {
+              "$ref": "Topic"
+            }
+          },
+          "list": {
+            "id": "pubsub.topics.list",
+            "httpMethod": "GET",
+            "path": "v1beta1a/topics",
+            "flatPath": "v1beta1a/topics",
+            "description": "Lists matching topics.",
+            "parameters": {
+              "maxResults": {
+                "type": "integer",
+                "location": "query",
+                "required": false
+              },
+              "pageToken": {
+                "type": "string",
+                "location": "query",
+                "required": false
+              },
+              "query": {
+                "type": "string",
+                "location": "query",
+                "required": false
+              }
+            },
+            "parameterOrder": [],
+            "request": null,
+            "response": {
+              "$ref": "ListTopicsResponse"
+            }
+          },
+          "publish": {
+            "id": "pubsub.topics.publish",
+            "httpMethod": "POST",
+            "path": "v1beta1a/topics/publish",
+            "flatPath": "v1beta1a/topics/publish",
+            "description": "Adds a message to the topic. Returns NOT_FOUND if the topic does not exist.",
+            "parameters": {},
+            "parameterOrder": [],
+            "request": {
+              "$ref": "PublishRequest"
+            },
+            "response": {
+              "$ref": "Empty"
+            }
+          },
+          "publishBatch": {
+            "id": "pubsub.topics.publishBatch",
+            "httpMethod": "POST",
+            "path": "v1beta1a/topics/publishBatch",
+            "flatPath": "v1beta1a/topics/publishBatch",
+            "description": "Adds one or more messages to the topic. Returns NOT_FOUND if the topic does not exist.",
+            "parameters": {},
+            "parameterOrder": [],
+            "request": {
+              "$ref": "PublishBatchRequest"
+            },
+            "response": {
+              "$ref": "PublishBatchResponse"
+            }
+          }
+        },
+        "resources": null
+      }
+    }
+  }
+}

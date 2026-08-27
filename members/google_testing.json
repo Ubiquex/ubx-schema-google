@@ -1,0 +1,5495 @@
+{
+  "schema_source": "discovery_docs",
+  "mode": "resource",
+  "auth": {
+    "Type": "",
+    "Params": null
+  },
+  "base_url": "https://testing.googleapis.com",
+  "retry": {
+    "MaxAttempts": 0,
+    "InitialBackoff": "",
+    "MaxBackoff": "",
+    "Jitter": null,
+    "RespectRetryAfter": null,
+    "RateLimitResetHeader": ""
+  },
+  "timeouts": {
+    "Create": "",
+    "Read": "",
+    "Update": "",
+    "Delete": "",
+    "Default": ""
+  },
+  "wire_name": "google_testing",
+  "raw_spec": {
+    "name": "testing",
+    "revision": "20260821",
+    "discoveryVersion": "v1",
+    "baseUrl": "https://testing.googleapis.com/",
+    "rootUrl": "https://testing.googleapis.com/",
+    "servicePath": "",
+    "schemas": {
+      "Account": {
+        "type": "object",
+        "format": "",
+        "description": "Identifies an account and how to log into it.",
+        "$ref": "",
+        "properties": {
+          "googleAuto": {
+            "type": "",
+            "format": "",
+            "description": "An automatic google login account.",
+            "$ref": "GoogleAuto",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "AndroidDevice": {
+        "type": "object",
+        "format": "",
+        "description": "A single Android device.",
+        "$ref": "",
+        "properties": {
+          "androidModelId": {
+            "type": "string",
+            "format": "",
+            "description": "Required. The id of the Android device to be used. Use the TestEnvironmentDiscoveryService to get supported options.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "androidVersionId": {
+            "type": "string",
+            "format": "",
+            "description": "Required. The id of the Android OS version to be used. Use the TestEnvironmentDiscoveryService to get supported options.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "locale": {
+            "type": "string",
+            "format": "",
+            "description": "Required. The locale the test device used for testing. Use the TestEnvironmentDiscoveryService to get supported options.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "orientation": {
+            "type": "string",
+            "format": "",
+            "description": "Required. How the device is oriented during the test. Use the TestEnvironmentDiscoveryService to get supported options.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "AndroidDeviceCatalog": {
+        "type": "object",
+        "format": "",
+        "description": "The currently supported Android devices.",
+        "$ref": "",
+        "properties": {
+          "models": {
+            "type": "array",
+            "format": "",
+            "description": "The set of supported Android device models.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "AndroidModel",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "runtimeConfiguration": {
+            "type": "",
+            "format": "",
+            "description": "The set of supported runtime configurations.",
+            "$ref": "AndroidRuntimeConfiguration",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "versions": {
+            "type": "array",
+            "format": "",
+            "description": "The set of supported Android OS versions.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "AndroidVersion",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "AndroidDeviceList": {
+        "type": "object",
+        "format": "",
+        "description": "A list of Android device configurations in which the test is to be executed.",
+        "$ref": "",
+        "properties": {
+          "androidDevices": {
+            "type": "array",
+            "format": "",
+            "description": "Required. A list of Android devices.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "AndroidDevice",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "AndroidInstrumentationTest": {
+        "type": "object",
+        "format": "",
+        "description": "A test of an Android application that can control an Android component independently of its normal lifecycle. Android instrumentation tests run an application APK and test APK inside the same process on a virtual or physical AndroidDevice. They also specify a test runner class, such as com.google.GoogleTestRunner, which can vary on the specific instrumentation framework chosen. See for more information on types of Android tests.",
+        "$ref": "",
+        "properties": {
+          "appApk": {
+            "type": "",
+            "format": "",
+            "description": "The APK for the application under test.",
+            "$ref": "FileReference",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "appBundle": {
+            "type": "",
+            "format": "",
+            "description": "A multi-apk app bundle for the application under test.",
+            "$ref": "AppBundle",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "appPackageId": {
+            "type": "string",
+            "format": "",
+            "description": "The java package for the application under test. The default value is determined by examining the application's manifest.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "orchestratorOption": {
+            "type": "string",
+            "format": "",
+            "description": "The option of whether running each test within its own invocation of instrumentation with Android Test Orchestrator or not. ** Orchestrator is only compatible with AndroidJUnitRunner version 1.1 or higher! ** Orchestrator offers the following benefits: - No shared state - Crashes are isolated - Logs are scoped per test See for more information about Android Test Orchestrator. If not set, the test will be run without the orchestrator.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "ORCHESTRATOR_OPTION_UNSPECIFIED",
+              "USE_ORCHESTRATOR",
+              "DO_NOT_USE_ORCHESTRATOR"
+            ],
+            "readOnly": false
+          },
+          "shardingOption": {
+            "type": "",
+            "format": "",
+            "description": "The option to run tests in multiple shards in parallel.",
+            "$ref": "ShardingOption",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "testApk": {
+            "type": "",
+            "format": "",
+            "description": "Required. The APK containing the test code to be executed.",
+            "$ref": "FileReference",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "testPackageId": {
+            "type": "string",
+            "format": "",
+            "description": "The java package for the test to be executed. The default value is determined by examining the application's manifest.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "testRunnerClass": {
+            "type": "string",
+            "format": "",
+            "description": "The InstrumentationTestRunner class. The default value is determined by examining the application's manifest.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "testTargets": {
+            "type": "array",
+            "format": "",
+            "description": "Each target must be fully qualified with the package name or class name, in one of these formats: - \"package package_name\" - \"class package_name.class_name\" - \"class package_name.class_name#method_name\" If empty, all targets in the module will be run.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "AndroidMatrix": {
+        "type": "object",
+        "format": "",
+        "description": "A set of Android device configuration permutations is defined by the the cross-product of the given axes. Internally, the given AndroidMatrix will be expanded into a set of AndroidDevices. Only supported permutations will be instantiated. Invalid permutations (e.g., incompatible models/versions) are ignored.",
+        "$ref": "",
+        "properties": {
+          "androidModelIds": {
+            "type": "array",
+            "format": "",
+            "description": "Required. The ids of the set of Android device to be used. Use the TestEnvironmentDiscoveryService to get supported options.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "androidVersionIds": {
+            "type": "array",
+            "format": "",
+            "description": "Required. The ids of the set of Android OS version to be used. Use the TestEnvironmentDiscoveryService to get supported options.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "locales": {
+            "type": "array",
+            "format": "",
+            "description": "Required. The set of locales the test device will enable for testing. Use the TestEnvironmentDiscoveryService to get supported options.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "orientations": {
+            "type": "array",
+            "format": "",
+            "description": "Required. The set of orientations to test with. Use the TestEnvironmentDiscoveryService to get supported options.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "AndroidModel": {
+        "type": "object",
+        "format": "",
+        "description": "A description of an Android device tests may be run on.",
+        "$ref": "",
+        "properties": {
+          "accessDeniedReasons": {
+            "type": "array",
+            "format": "",
+            "description": "Reasons for access denial. This model is accessible if this list is empty, otherwise the model is viewable only.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": [
+                "ACCESS_DENIED_REASON_UNSPECIFIED",
+                "EULA_NOT_ACCEPTED"
+              ],
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "brand": {
+            "type": "string",
+            "format": "",
+            "description": "The company that this device is branded with. Example: \"Google\", \"Samsung\".",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "codename": {
+            "type": "string",
+            "format": "",
+            "description": "The name of the industrial design. This corresponds to android.os.Build.DEVICE.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "form": {
+            "type": "string",
+            "format": "",
+            "description": "Whether this device is virtual or physical.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "DEVICE_FORM_UNSPECIFIED",
+              "VIRTUAL",
+              "PHYSICAL",
+              "EMULATOR"
+            ],
+            "readOnly": false
+          },
+          "formFactor": {
+            "type": "string",
+            "format": "",
+            "description": "Whether this device is a phone, tablet, wearable, etc.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "DEVICE_FORM_FACTOR_UNSPECIFIED",
+              "PHONE",
+              "TABLET",
+              "WEARABLE",
+              "TV",
+              "AUTOMOTIVE",
+              "DESKTOP",
+              "XR"
+            ],
+            "readOnly": false
+          },
+          "id": {
+            "type": "string",
+            "format": "",
+            "description": "The unique opaque id for this model. Use this for invoking the TestExecutionService.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "labInfo": {
+            "type": "",
+            "format": "",
+            "description": "Output only. Lab info of this device.",
+            "$ref": "LabInfo",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "lowFpsVideoRecording": {
+            "type": "boolean",
+            "format": "",
+            "description": "True if and only if tests with this model are recorded by stitching together screenshots. See use_low_spec_video_recording in device config.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "manufacturer": {
+            "type": "string",
+            "format": "",
+            "description": "The manufacturer of this device.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "The human-readable marketing name for this device model. Examples: \"Nexus 5\", \"Galaxy S5\".",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "perVersionInfo": {
+            "type": "array",
+            "format": "",
+            "description": "Version-specific information of an Android model.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "PerAndroidVersionInfo",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "screenDensity": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Screen density in DPI. This corresponds to ro.sf.lcd_density",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "screenX": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Screen size in the horizontal (X) dimension measured in pixels.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "screenY": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Screen size in the vertical (Y) dimension measured in pixels.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "supportedAbis": {
+            "type": "array",
+            "format": "",
+            "description": "The list of supported ABIs for this device. This corresponds to either android.os.Build.SUPPORTED_ABIS (for API level 21 and above) or android.os.Build.CPU_ABI/CPU_ABI2. The most preferred ABI is the first element in the list. Elements are optionally prefixed by \"version_id:\" (where version_id is the id of an AndroidVersion), denoting an ABI that is supported only on a particular version.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "supportedVersionIds": {
+            "type": "array",
+            "format": "",
+            "description": "The set of Android versions this device supports.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "tags": {
+            "type": "array",
+            "format": "",
+            "description": "Tags for this dimension. Examples: \"default\", \"preview\", \"deprecated\".",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "thumbnailUrl": {
+            "type": "string",
+            "format": "",
+            "description": "URL of a thumbnail image (photo) of the device.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "AndroidRoboTest": {
+        "type": "object",
+        "format": "",
+        "description": "A test of an android application that explores the application on a virtual or physical Android Device, finding culprits and crashes as it goes.",
+        "$ref": "",
+        "properties": {
+          "appApk": {
+            "type": "",
+            "format": "",
+            "description": "The APK for the application under test.",
+            "$ref": "FileReference",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "appBundle": {
+            "type": "",
+            "format": "",
+            "description": "A multi-apk app bundle for the application under test.",
+            "$ref": "AppBundle",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "appInitialActivity": {
+            "type": "string",
+            "format": "",
+            "description": "The initial activity that should be used to start the app.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "appPackageId": {
+            "type": "string",
+            "format": "",
+            "description": "The java package for the application under test. The default value is determined by examining the application's manifest.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "maxDepth": {
+            "type": "integer",
+            "format": "int32",
+            "description": "The max depth of the traversal stack Robo can explore. Needs to be at least 2 to make Robo explore the app beyond the first activity. Default is 50.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "maxSteps": {
+            "type": "integer",
+            "format": "int32",
+            "description": "The max number of steps Robo can execute. Default is no limit.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "roboDirectives": {
+            "type": "array",
+            "format": "",
+            "description": "A set of directives Robo should apply during the crawl. This allows users to customize the crawl. For example, the username and password for a test account can be provided.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "RoboDirective",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "roboMode": {
+            "type": "string",
+            "format": "",
+            "description": "The mode in which Robo should run. Most clients should allow the server to populate this field automatically.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "ROBO_MODE_UNSPECIFIED",
+              "ROBO_VERSION_1",
+              "ROBO_VERSION_2"
+            ],
+            "readOnly": false
+          },
+          "roboScript": {
+            "type": "",
+            "format": "",
+            "description": "A JSON file with a sequence of actions Robo should perform as a prologue for the crawl.",
+            "$ref": "FileReference",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "startingIntents": {
+            "type": "array",
+            "format": "",
+            "description": "The intents used to launch the app for the crawl. If none are provided, then the main launcher activity is launched. If some are provided, then only those provided are launched (the main launcher activity must be provided explicitly).",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "RoboStartingIntent",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "AndroidRuntimeConfiguration": {
+        "type": "object",
+        "format": "",
+        "description": "Android configuration that can be selected at the time a test is run.",
+        "$ref": "",
+        "properties": {
+          "locales": {
+            "type": "array",
+            "format": "",
+            "description": "The set of available locales.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Locale",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "orientations": {
+            "type": "array",
+            "format": "",
+            "description": "The set of available orientations.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Orientation",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "AndroidTestLoop": {
+        "type": "object",
+        "format": "",
+        "description": "A test of an Android Application with a Test Loop. The intent \\ will be implicitly added, since Games is the only user of this api, for the time being.",
+        "$ref": "",
+        "properties": {
+          "appApk": {
+            "type": "",
+            "format": "",
+            "description": "The APK for the application under test.",
+            "$ref": "FileReference",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "appBundle": {
+            "type": "",
+            "format": "",
+            "description": "A multi-apk app bundle for the application under test.",
+            "$ref": "AppBundle",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "appPackageId": {
+            "type": "string",
+            "format": "",
+            "description": "The java package for the application under test. The default is determined by examining the application's manifest.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "scenarioLabels": {
+            "type": "array",
+            "format": "",
+            "description": "The list of scenario labels that should be run during the test. The scenario labels should map to labels defined in the application's manifest. For example, player_experience and com.google.test.loops.player_experience add all of the loops labeled in the manifest with the com.google.test.loops.player_experience name to the execution. Scenarios can also be specified in the scenarios field.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "scenarios": {
+            "type": "array",
+            "format": "",
+            "description": "The list of scenarios that should be run during the test. The default is all test loops, derived from the application's manifest.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "integer",
+              "format": "int32",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "AndroidVersion": {
+        "type": "object",
+        "format": "",
+        "description": "A version of the Android OS.",
+        "$ref": "",
+        "properties": {
+          "apiLevel": {
+            "type": "integer",
+            "format": "int32",
+            "description": "The API level for this Android version. Examples: 18, 19.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "codeName": {
+            "type": "string",
+            "format": "",
+            "description": "The code name for this Android version. Examples: \"JellyBean\", \"KitKat\".",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "distribution": {
+            "type": "",
+            "format": "",
+            "description": "Market share for this version.",
+            "$ref": "Distribution",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "id": {
+            "type": "string",
+            "format": "",
+            "description": "An opaque id for this Android version. Use this id to invoke the TestExecutionService.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "releaseDate": {
+            "type": "",
+            "format": "",
+            "description": "The date this Android version became available in the market.",
+            "$ref": "Date",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "tags": {
+            "type": "array",
+            "format": "",
+            "description": "Tags for this dimension. Examples: \"default\", \"preview\", \"deprecated\".",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "versionString": {
+            "type": "string",
+            "format": "",
+            "description": "A string representing this version of the Android OS. Examples: \"4.3\", \"4.4\".",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Apk": {
+        "type": "object",
+        "format": "",
+        "description": "An Android package file to install.",
+        "$ref": "",
+        "properties": {
+          "location": {
+            "type": "",
+            "format": "",
+            "description": "The path to an APK to be installed on the device before the test begins.",
+            "$ref": "FileReference",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "packageName": {
+            "type": "string",
+            "format": "",
+            "description": "The java package for the APK to be installed. Value is determined by examining the application's manifest.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ApkDetail": {
+        "type": "object",
+        "format": "",
+        "description": "Android application details based on application manifest and archive contents.",
+        "$ref": "",
+        "properties": {
+          "apkManifest": {
+            "type": "",
+            "format": "",
+            "description": "",
+            "$ref": "ApkManifest",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ApkManifest": {
+        "type": "object",
+        "format": "",
+        "description": "An Android app manifest. See http://developer.android.com/guide/topics/manifest/manifest-intro.html",
+        "$ref": "",
+        "properties": {
+          "applicationLabel": {
+            "type": "string",
+            "format": "",
+            "description": "User-readable name for the application.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "intentFilters": {
+            "type": "array",
+            "format": "",
+            "description": "",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "IntentFilter",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "maxSdkVersion": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Maximum API level on which the application is designed to run.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "metadata": {
+            "type": "array",
+            "format": "",
+            "description": "Meta-data tags defined in the manifest.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Metadata",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "minSdkVersion": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Minimum API level required for the application to run.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "packageName": {
+            "type": "string",
+            "format": "",
+            "description": "Full Java-style package name for this application, e.g. \"com.example.foo\".",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "services": {
+            "type": "array",
+            "format": "",
+            "description": "Services contained in the tag.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Service",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "targetSdkVersion": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Specifies the API Level on which the application is designed to run.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "usesFeature": {
+            "type": "array",
+            "format": "",
+            "description": "Feature usage tags defined in the manifest.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "UsesFeature",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "usesPermission": {
+            "type": "array",
+            "format": "",
+            "description": "",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "usesPermissionTags": {
+            "type": "array",
+            "format": "",
+            "description": "Permissions declared to be used by the application",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "UsesPermissionTag",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "versionCode": {
+            "type": "string",
+            "format": "int64",
+            "description": "Version number used internally by the app.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "versionName": {
+            "type": "string",
+            "format": "",
+            "description": "Version number shown to users.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ApkSplits": {
+        "type": "object",
+        "format": "",
+        "description": "A single dynamic feature apk.",
+        "$ref": "",
+        "properties": {
+          "bundleSplits": {
+            "type": "array",
+            "format": "",
+            "description": "A list of .apk files generated by bundletool to install to the device under test as a single android app with adb install-multiple. If specified, requires one or more bundle_splits. The first split specified represents the base APK, while subsequent splits represent feature apks.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "FileReference",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "AppBundle": {
+        "type": "object",
+        "format": "",
+        "description": "An Android App Bundle file format, containing a BundleConfig.pb file, a base module directory, zero or more dynamic feature module directories. See https://developer.android.com/guide/app-bundle/build for guidance on building App Bundles.",
+        "$ref": "",
+        "properties": {
+          "apks": {
+            "type": "",
+            "format": "",
+            "description": ".apk files generated by bundletool to install as a single android app.",
+            "$ref": "ApkSplits",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "bundleLocation": {
+            "type": "",
+            "format": "",
+            "description": ".aab file representing the app bundle under test.",
+            "$ref": "FileReference",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "CancelDeviceSessionRequest": {
+        "type": "object",
+        "format": "",
+        "description": "The request object for cancelling a Device Session.",
+        "$ref": "",
+        "properties": {},
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "CancelTestMatrixResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Response containing the current state of the specified test matrix.",
+        "$ref": "",
+        "properties": {
+          "testState": {
+            "type": "string",
+            "format": "",
+            "description": "The current rolled-up state of the test matrix. If this state is already final, then the cancelation request will have no effect.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "TEST_STATE_UNSPECIFIED",
+              "VALIDATING",
+              "PENDING",
+              "RUNNING",
+              "FINISHED",
+              "ERROR",
+              "UNSUPPORTED_ENVIRONMENT",
+              "INCOMPATIBLE_ENVIRONMENT",
+              "INCOMPATIBLE_ARCHITECTURE",
+              "CANCELLED",
+              "INVALID"
+            ],
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ClientInfo": {
+        "type": "object",
+        "format": "",
+        "description": "Information about the client which invoked the test.",
+        "$ref": "",
+        "properties": {
+          "clientInfoDetails": {
+            "type": "array",
+            "format": "",
+            "description": "The list of detailed information about client.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "ClientInfoDetail",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "Required. Client name, such as gcloud.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ClientInfoDetail": {
+        "type": "object",
+        "format": "",
+        "description": "Key-value pair of detailed information about the client which invoked the test. Examples: {'Version', '1.0'}, {'Release Track', 'BETA'}.",
+        "$ref": "",
+        "properties": {
+          "key": {
+            "type": "string",
+            "format": "",
+            "description": "Required. The key of detailed client information.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "value": {
+            "type": "string",
+            "format": "",
+            "description": "Required. The value of detailed client information.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Date": {
+        "type": "object",
+        "format": "",
+        "description": "Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp",
+        "$ref": "",
+        "properties": {
+          "day": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "month": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "year": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "DeviceFile": {
+        "type": "object",
+        "format": "",
+        "description": "A single device file description.",
+        "$ref": "",
+        "properties": {
+          "obbFile": {
+            "type": "",
+            "format": "",
+            "description": "A reference to an opaque binary blob file.",
+            "$ref": "ObbFile",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "regularFile": {
+            "type": "",
+            "format": "",
+            "description": "A reference to a regular file.",
+            "$ref": "RegularFile",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "DeviceIpBlock": {
+        "type": "object",
+        "format": "",
+        "description": "A single device IP block",
+        "$ref": "",
+        "properties": {
+          "addedDate": {
+            "type": "",
+            "format": "",
+            "description": "The date this block was added to Firebase Test Lab",
+            "$ref": "Date",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "block": {
+            "type": "string",
+            "format": "",
+            "description": "An IP address block in CIDR notation eg: 34.68.194.64/29",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "form": {
+            "type": "string",
+            "format": "",
+            "description": "Whether this block is used by physical or virtual devices",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "DEVICE_FORM_UNSPECIFIED",
+              "VIRTUAL",
+              "PHYSICAL",
+              "EMULATOR"
+            ],
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "DeviceIpBlockCatalog": {
+        "type": "object",
+        "format": "",
+        "description": "List of IP blocks used by the Firebase Test Lab",
+        "$ref": "",
+        "properties": {
+          "ipBlocks": {
+            "type": "array",
+            "format": "",
+            "description": "The device IP blocks used by Firebase Test Lab",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "DeviceIpBlock",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "DeviceSession": {
+        "type": "object",
+        "format": "",
+        "description": "Protobuf message describing the device message, used from several RPCs.",
+        "$ref": "",
+        "properties": {
+          "activeStartTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. The timestamp that the session first became ACTIVE.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "androidDevice": {
+            "type": "",
+            "format": "",
+            "description": "Required. The requested device",
+            "$ref": "AndroidDevice",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "createTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. The time that the Session was created.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "displayName": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The title of the DeviceSession to be presented in the UI.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "expireTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Optional. If the device is still in use at this time, any connections will be ended and the SessionState will transition from ACTIVE to FINISHED.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "inactivityTimeout": {
+            "type": "string",
+            "format": "google-duration",
+            "description": "Output only. The interval of time that this device must be interacted with before it transitions from ACTIVE to TIMEOUT_INACTIVITY.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Name of the DeviceSession, e.g. \"projects/{project_id}/deviceSessions/{session_id}\"",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "state": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. Current state of the DeviceSession.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "SESSION_STATE_UNSPECIFIED",
+              "REQUESTED",
+              "PENDING",
+              "ACTIVE",
+              "EXPIRED",
+              "FINISHED",
+              "UNAVAILABLE",
+              "ERROR"
+            ],
+            "readOnly": true
+          },
+          "stateHistories": {
+            "type": "array",
+            "format": "",
+            "description": "Output only. The historical state transitions of the session_state message including the current session state.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "SessionStateEvent",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "ttl": {
+            "type": "string",
+            "format": "google-duration",
+            "description": "Optional. The amount of time that a device will be initially allocated for. This can eventually be extended with the UpdateDeviceSession RPC. Default: 15 minutes.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "DirectAccessVersionInfo": {
+        "type": "object",
+        "format": "",
+        "description": "Denotes whether Direct Access is supported, and by which client versions. DirectAccessService is currently available as a preview to select developers. You can register today on behalf of you and your team at https://developer.android.com/studio/preview/android-device-streaming",
+        "$ref": "",
+        "properties": {
+          "directAccessSupported": {
+            "type": "boolean",
+            "format": "",
+            "description": "Whether direct access is supported at all. Clients are expected to filter down the device list to only android models and versions which support Direct Access when that is the user intent.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "minimumAndroidStudioVersion": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. Indicates client-device compatibility, where a device is known to work only with certain workarounds implemented in the Android Studio client. Expected format \"major.minor.micro.patch\", e.g. \"5921.22.2211.8881706\".",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Distribution": {
+        "type": "object",
+        "format": "",
+        "description": "Data about the relative number of devices running a given configuration of the Android platform.",
+        "$ref": "",
+        "properties": {
+          "marketShare": {
+            "type": "number",
+            "format": "double",
+            "description": "Output only. The estimated fraction (0-1) of the total market with this configuration.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "measurementTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. The time this distribution was measured.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Empty": {
+        "type": "object",
+        "format": "",
+        "description": "A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }",
+        "$ref": "",
+        "properties": {},
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Environment": {
+        "type": "object",
+        "format": "",
+        "description": "The environment in which the test is run.",
+        "$ref": "",
+        "properties": {
+          "androidDevice": {
+            "type": "",
+            "format": "",
+            "description": "An Android device which must be used with an Android test.",
+            "$ref": "AndroidDevice",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "iosDevice": {
+            "type": "",
+            "format": "",
+            "description": "An iOS device which must be used with an iOS test.",
+            "$ref": "IosDevice",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "EnvironmentMatrix": {
+        "type": "object",
+        "format": "",
+        "description": "The matrix of environments in which the test is to be executed.",
+        "$ref": "",
+        "properties": {
+          "androidDeviceList": {
+            "type": "",
+            "format": "",
+            "description": "A list of Android devices; the test will be run only on the specified devices.",
+            "$ref": "AndroidDeviceList",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "androidMatrix": {
+            "type": "",
+            "format": "",
+            "description": "A matrix of Android devices.",
+            "$ref": "AndroidMatrix",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "iosDeviceList": {
+            "type": "",
+            "format": "",
+            "description": "A list of iOS devices.",
+            "$ref": "IosDeviceList",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "EnvironmentVariable": {
+        "type": "object",
+        "format": "",
+        "description": "A key-value pair passed as an environment variable to the test.",
+        "$ref": "",
+        "properties": {
+          "key": {
+            "type": "string",
+            "format": "",
+            "description": "Key for the environment variable.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "value": {
+            "type": "string",
+            "format": "",
+            "description": "Value for the environment variable.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "FileReference": {
+        "type": "object",
+        "format": "",
+        "description": "A reference to a file, used for user inputs.",
+        "$ref": "",
+        "properties": {
+          "gcsPath": {
+            "type": "string",
+            "format": "",
+            "description": "A path to a file in Google Cloud Storage. Example: gs://build-app-1414623860166/app%40debug-unaligned.apk These paths are expected to be url encoded (percent encoding)",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GetApkDetailsResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Response containing the details of the specified Android application.",
+        "$ref": "",
+        "properties": {
+          "apkDetail": {
+            "type": "",
+            "format": "",
+            "description": "Details of the Android App.",
+            "$ref": "ApkDetail",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleAuto": {
+        "type": "object",
+        "format": "",
+        "description": "Enables automatic Google account login. If set, the service automatically generates a Google test account and adds it to the device, before executing the test. Note that test accounts might be reused. Many applications show their full set of functionalities when an account is present on the device. Logging into the device with these generated accounts allows testing more functionalities.",
+        "$ref": "",
+        "properties": {},
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudStorage": {
+        "type": "object",
+        "format": "",
+        "description": "A storage location within Google cloud storage (GCS).",
+        "$ref": "",
+        "properties": {
+          "gcsPath": {
+            "type": "string",
+            "format": "",
+            "description": "Required. The path to a directory in GCS that will eventually contain the results for this test. The requesting user must have write access on the bucket in the supplied path.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "IntentFilter": {
+        "type": "object",
+        "format": "",
+        "description": "The section of an tag. https://developer.android.com/guide/topics/manifest/intent-filter-element.html",
+        "$ref": "",
+        "properties": {
+          "actionNames": {
+            "type": "array",
+            "format": "",
+            "description": "The android:name value of the tag.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "categoryNames": {
+            "type": "array",
+            "format": "",
+            "description": "The android:name value of the tag.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "mimeType": {
+            "type": "string",
+            "format": "",
+            "description": "The android:mimeType value of the tag.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "IosDevice": {
+        "type": "object",
+        "format": "",
+        "description": "A single iOS device.",
+        "$ref": "",
+        "properties": {
+          "iosModelId": {
+            "type": "string",
+            "format": "",
+            "description": "Required. The id of the iOS device to be used. Use the TestEnvironmentDiscoveryService to get supported options.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "iosVersionId": {
+            "type": "string",
+            "format": "",
+            "description": "Required. The id of the iOS major software version to be used. Use the TestEnvironmentDiscoveryService to get supported options.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "locale": {
+            "type": "string",
+            "format": "",
+            "description": "Required. The locale the test device used for testing. Use the TestEnvironmentDiscoveryService to get supported options.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "orientation": {
+            "type": "string",
+            "format": "",
+            "description": "Required. How the device is oriented during the test. Use the TestEnvironmentDiscoveryService to get supported options.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "IosDeviceCatalog": {
+        "type": "object",
+        "format": "",
+        "description": "The currently supported iOS devices.",
+        "$ref": "",
+        "properties": {
+          "models": {
+            "type": "array",
+            "format": "",
+            "description": "The set of supported iOS device models.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "IosModel",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "runtimeConfiguration": {
+            "type": "",
+            "format": "",
+            "description": "The set of supported runtime configurations.",
+            "$ref": "IosRuntimeConfiguration",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "versions": {
+            "type": "array",
+            "format": "",
+            "description": "The set of supported iOS software versions.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "IosVersion",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "xcodeVersions": {
+            "type": "array",
+            "format": "",
+            "description": "The set of supported Xcode versions.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "XcodeVersion",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "IosDeviceFile": {
+        "type": "object",
+        "format": "",
+        "description": "A file or directory to install on the device before the test starts.",
+        "$ref": "",
+        "properties": {
+          "bundleId": {
+            "type": "string",
+            "format": "",
+            "description": "The bundle id of the app where this file lives. iOS apps sandbox their own filesystem, so app files must specify which app installed on the device.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "content": {
+            "type": "",
+            "format": "",
+            "description": "The source file",
+            "$ref": "FileReference",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "devicePath": {
+            "type": "string",
+            "format": "",
+            "description": "Location of the file on the device, inside the app's sandboxed filesystem",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "IosDeviceList": {
+        "type": "object",
+        "format": "",
+        "description": "A list of iOS device configurations in which the test is to be executed.",
+        "$ref": "",
+        "properties": {
+          "iosDevices": {
+            "type": "array",
+            "format": "",
+            "description": "Required. A list of iOS devices.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "IosDevice",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "IosModel": {
+        "type": "object",
+        "format": "",
+        "description": "A description of an iOS device tests may be run on.",
+        "$ref": "",
+        "properties": {
+          "deviceCapabilities": {
+            "type": "array",
+            "format": "",
+            "description": "Device capabilities. Copied from https://developer.apple.com/library/archive/documentation/DeviceInformation/Reference/iOSDeviceCompatibility/DeviceCompatibilityMatrix/DeviceCompatibilityMatrix.html",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "formFactor": {
+            "type": "string",
+            "format": "",
+            "description": "Whether this device is a phone, tablet, wearable, etc.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "DEVICE_FORM_FACTOR_UNSPECIFIED",
+              "PHONE",
+              "TABLET",
+              "WEARABLE",
+              "TV",
+              "AUTOMOTIVE",
+              "DESKTOP",
+              "XR"
+            ],
+            "readOnly": false
+          },
+          "id": {
+            "type": "string",
+            "format": "",
+            "description": "The unique opaque id for this model. Use this for invoking the TestExecutionService.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "The human-readable name for this device model. Examples: \"iPhone 4s\", \"iPad Mini 2\".",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "perVersionInfo": {
+            "type": "array",
+            "format": "",
+            "description": "Version-specific information of an iOS model.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "PerIosVersionInfo",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "screenDensity": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Screen density in DPI.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "screenX": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Screen size in the horizontal (X) dimension measured in pixels.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "screenY": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Screen size in the vertical (Y) dimension measured in pixels.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "supportedVersionIds": {
+            "type": "array",
+            "format": "",
+            "description": "The set of iOS major software versions this device supports.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "tags": {
+            "type": "array",
+            "format": "",
+            "description": "Tags for this dimension. Examples: \"default\", \"preview\", \"deprecated\".",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "IosRoboTest": {
+        "type": "object",
+        "format": "",
+        "description": "A test that explores an iOS application on an iOS device.",
+        "$ref": "",
+        "properties": {
+          "appBundleId": {
+            "type": "string",
+            "format": "",
+            "description": "The bundle ID for the app-under-test. This is determined by examining the application's \"Info.plist\" file.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "appIpa": {
+            "type": "",
+            "format": "",
+            "description": "Required. The ipa stored at this file should be used to run the test.",
+            "$ref": "FileReference",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "roboScript": {
+            "type": "",
+            "format": "",
+            "description": "An optional Roboscript to customize the crawl. See https://firebase.google.com/docs/test-lab/android/robo-scripts-reference for more information about Roboscripts. The maximum allowed file size of the roboscript is 10MiB.",
+            "$ref": "FileReference",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "IosRuntimeConfiguration": {
+        "type": "object",
+        "format": "",
+        "description": "iOS configuration that can be selected at the time a test is run.",
+        "$ref": "",
+        "properties": {
+          "locales": {
+            "type": "array",
+            "format": "",
+            "description": "The set of available locales.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Locale",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "orientations": {
+            "type": "array",
+            "format": "",
+            "description": "The set of available orientations.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Orientation",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "IosTestLoop": {
+        "type": "object",
+        "format": "",
+        "description": "A test of an iOS application that implements one or more game loop scenarios. This test type accepts an archived application (.ipa file) and a list of integer scenarios that will be executed on the app sequentially.",
+        "$ref": "",
+        "properties": {
+          "appBundleId": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The bundle id for the application under test.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "appIpa": {
+            "type": "",
+            "format": "",
+            "description": "Required. The .ipa of the application to test.",
+            "$ref": "FileReference",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "scenarios": {
+            "type": "array",
+            "format": "",
+            "description": "The list of scenarios that should be run during the test. Defaults to the single scenario 0 if unspecified.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "integer",
+              "format": "int32",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "IosTestSetup": {
+        "type": "object",
+        "format": "",
+        "description": "A description of how to set up an iOS device prior to running the test.",
+        "$ref": "",
+        "properties": {
+          "additionalIpas": {
+            "type": "array",
+            "format": "",
+            "description": "iOS apps to install in addition to those being directly tested.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "FileReference",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "networkProfile": {
+            "type": "string",
+            "format": "",
+            "description": "The network traffic profile used for running the test. Available network profiles can be queried by using the NETWORK_CONFIGURATION environment type when calling TestEnvironmentDiscoveryService.GetTestEnvironmentCatalog.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "pullDirectories": {
+            "type": "array",
+            "format": "",
+            "description": "List of directories on the device to upload to Cloud Storage at the end of the test. Directories should either be in a shared directory (such as /private/var/mobile/Media) or within an accessible directory inside the app's filesystem (such as /Documents) by specifying the bundle ID.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "IosDeviceFile",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "pushFiles": {
+            "type": "array",
+            "format": "",
+            "description": "List of files to push to the device before starting the test.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "IosDeviceFile",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "IosVersion": {
+        "type": "object",
+        "format": "",
+        "description": "An iOS version.",
+        "$ref": "",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "",
+            "description": "An opaque id for this iOS version. Use this id to invoke the TestExecutionService.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "majorVersion": {
+            "type": "integer",
+            "format": "int32",
+            "description": "An integer representing the major iOS version. Examples: \"8\", \"9\".",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "minorVersion": {
+            "type": "integer",
+            "format": "int32",
+            "description": "An integer representing the minor iOS version. Examples: \"1\", \"2\".",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "supportedXcodeVersionIds": {
+            "type": "array",
+            "format": "",
+            "description": "The available Xcode versions for this version.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "tags": {
+            "type": "array",
+            "format": "",
+            "description": "Tags for this dimension. Examples: \"default\", \"preview\", \"deprecated\".",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "IosXcTest": {
+        "type": "object",
+        "format": "",
+        "description": "A test of an iOS application that uses the XCTest framework. Xcode supports the option to \"build for testing\", which generates an .xctestrun file that contains a test specification (arguments, test methods, etc). This test type accepts a zip file containing the .xctestrun file and the corresponding contents of the Build/Products directory that contains all the binaries needed to run the tests.",
+        "$ref": "",
+        "properties": {
+          "appBundleId": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The bundle id for the application under test.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "testSpecialEntitlements": {
+            "type": "boolean",
+            "format": "",
+            "description": "The option to test special app entitlements. Setting this would re-sign the app having special entitlements with an explicit application-identifier. Currently supports testing aps-environment entitlement.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "testsZip": {
+            "type": "",
+            "format": "",
+            "description": "Required. The .zip containing the .xctestrun file and the contents of the DerivedData/Build/Products directory. The .xctestrun file in this zip is ignored if the xctestrun field is specified.",
+            "$ref": "FileReference",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "xcodeVersion": {
+            "type": "string",
+            "format": "",
+            "description": "The Xcode version that should be used for the test. Use the TestEnvironmentDiscoveryService to get supported options. Defaults to the latest Xcode version Firebase Test Lab supports.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "xctestrun": {
+            "type": "",
+            "format": "",
+            "description": "An .xctestrun file that will override the .xctestrun file in the tests zip. Because the .xctestrun file contains environment variables along with test methods to run and/or ignore, this can be useful for sharding tests. Default is taken from the tests zip.",
+            "$ref": "FileReference",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "LabInfo": {
+        "type": "object",
+        "format": "",
+        "description": "Lab specific information for a device.",
+        "$ref": "",
+        "properties": {
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "Lab name where the device is hosted. If empty, the device is hosted in a Google owned lab.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "regionCode": {
+            "type": "string",
+            "format": "",
+            "description": "The Unicode country/region code (CLDR) of the lab where the device is hosted. E.g. \"US\" for United States, \"CH\" for Switzerland.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "LauncherActivityIntent": {
+        "type": "object",
+        "format": "",
+        "description": "Specifies an intent that starts the main launcher activity.",
+        "$ref": "",
+        "properties": {},
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ListDeviceSessionsResponse": {
+        "type": "object",
+        "format": "",
+        "description": "A list of device sessions.",
+        "$ref": "",
+        "properties": {
+          "deviceSessions": {
+            "type": "array",
+            "format": "",
+            "description": "The sessions matching the specified filter in the given cloud project.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "DeviceSession",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Locale": {
+        "type": "object",
+        "format": "",
+        "description": "A location/region designation for language.",
+        "$ref": "",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "",
+            "description": "The id for this locale. Example: \"en_US\".",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "A human-friendly name for this language/locale. Example: \"English\".",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "region": {
+            "type": "string",
+            "format": "",
+            "description": "A human-friendly string representing the region for this locale. Example: \"United States\". Not present for every locale.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "tags": {
+            "type": "array",
+            "format": "",
+            "description": "Tags for this dimension. Example: \"default\".",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ManualSharding": {
+        "type": "object",
+        "format": "",
+        "description": "Shards test cases into the specified groups of packages, classes, and/or methods. With manual sharding enabled, specifying test targets via environment_variables or in InstrumentationTest is invalid.",
+        "$ref": "",
+        "properties": {
+          "testTargetsForShard": {
+            "type": "array",
+            "format": "",
+            "description": "Required. Group of packages, classes, and/or test methods to be run for each manually-created shard. You must specify at least one shard if this field is present. When you select one or more physical devices, the number of repeated test_targets_for_shard must be \u003c= 50. When you select one or more ARM virtual devices, it must be \u003c= 200. When you select only x86 virtual devices, it must be \u003c= 500.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "TestTargetsForShard",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "MatrixErrorDetail": {
+        "type": "object",
+        "format": "",
+        "description": "Describes a single error or issue with a matrix.",
+        "$ref": "",
+        "properties": {
+          "message": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. A human-readable message about how the error in the TestMatrix. Expands on the `reason` field with additional details and possible options to fix the issue.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "reason": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The reason for the error. This is a constant value in UPPER_SNAKE_CASE that identifies the cause of the error.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Metadata": {
+        "type": "object",
+        "format": "",
+        "description": "A tag within a manifest. https://developer.android.com/guide/topics/manifest/meta-data-element.html",
+        "$ref": "",
+        "properties": {
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "The android:name value",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "value": {
+            "type": "string",
+            "format": "",
+            "description": "The android:value value",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "NetworkConfiguration": {
+        "type": "object",
+        "format": "",
+        "description": "",
+        "$ref": "",
+        "properties": {
+          "downRule": {
+            "type": "",
+            "format": "",
+            "description": "The emulation rule applying to the download traffic.",
+            "$ref": "TrafficRule",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "id": {
+            "type": "string",
+            "format": "",
+            "description": "The unique opaque id for this network traffic configuration.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "upRule": {
+            "type": "",
+            "format": "",
+            "description": "The emulation rule applying to the upload traffic.",
+            "$ref": "TrafficRule",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "NetworkConfigurationCatalog": {
+        "type": "object",
+        "format": "",
+        "description": "",
+        "$ref": "",
+        "properties": {
+          "configurations": {
+            "type": "array",
+            "format": "",
+            "description": "",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "NetworkConfiguration",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "NoActivityIntent": {
+        "type": "object",
+        "format": "",
+        "description": "Skips the starting activity",
+        "$ref": "",
+        "properties": {},
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ObbFile": {
+        "type": "object",
+        "format": "",
+        "description": "An opaque binary blob file to install on the device before the test starts.",
+        "$ref": "",
+        "properties": {
+          "obb": {
+            "type": "",
+            "format": "",
+            "description": "Required. Opaque Binary Blob (OBB) file(s) to install on the device.",
+            "$ref": "FileReference",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "obbFileName": {
+            "type": "string",
+            "format": "",
+            "description": "Required. OBB file name which must conform to the format as specified by Android e.g. [main|patch].0300110.com.example.android.obb which will be installed into \\/Android/obb/\\/ on the device.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Orientation": {
+        "type": "object",
+        "format": "",
+        "description": "Screen orientation of the device.",
+        "$ref": "",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "",
+            "description": "The id for this orientation. Example: \"portrait\".",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "A human-friendly name for this orientation. Example: \"portrait\".",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "tags": {
+            "type": "array",
+            "format": "",
+            "description": "Tags for this dimension. Example: \"default\".",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "PerAndroidVersionInfo": {
+        "type": "object",
+        "format": "",
+        "description": "A version-specific information of an Android model.",
+        "$ref": "",
+        "properties": {
+          "deviceCapacity": {
+            "type": "string",
+            "format": "",
+            "description": "The number of online devices for an Android version.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "DEVICE_CAPACITY_UNSPECIFIED",
+              "DEVICE_CAPACITY_HIGH",
+              "DEVICE_CAPACITY_MEDIUM",
+              "DEVICE_CAPACITY_LOW",
+              "DEVICE_CAPACITY_NONE"
+            ],
+            "readOnly": false
+          },
+          "directAccessVersionInfo": {
+            "type": "",
+            "format": "",
+            "description": "Output only. Identifies supported clients for DirectAccess for this Android version.",
+            "$ref": "DirectAccessVersionInfo",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "interactiveDeviceAvailabilityEstimate": {
+            "type": "string",
+            "format": "google-duration",
+            "description": "Output only. The estimated wait time for a single interactive device session using Direct Access.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "versionId": {
+            "type": "string",
+            "format": "",
+            "description": "An Android version.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "PerIosVersionInfo": {
+        "type": "object",
+        "format": "",
+        "description": "A version-specific information of an iOS model.",
+        "$ref": "",
+        "properties": {
+          "deviceCapacity": {
+            "type": "string",
+            "format": "",
+            "description": "The number of online devices for an iOS version.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "DEVICE_CAPACITY_UNSPECIFIED",
+              "DEVICE_CAPACITY_HIGH",
+              "DEVICE_CAPACITY_MEDIUM",
+              "DEVICE_CAPACITY_LOW",
+              "DEVICE_CAPACITY_NONE"
+            ],
+            "readOnly": false
+          },
+          "versionId": {
+            "type": "string",
+            "format": "",
+            "description": "An iOS version.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ProvidedSoftwareCatalog": {
+        "type": "object",
+        "format": "",
+        "description": "The currently provided software environment on the devices under test.",
+        "$ref": "",
+        "properties": {
+          "androidxOrchestratorVersion": {
+            "type": "string",
+            "format": "",
+            "description": "A string representing the current version of AndroidX Test Orchestrator that is used in the environment. The package is available at https://maven.google.com/web/index.html#androidx.test:orchestrator.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "orchestratorVersion": {
+            "type": "string",
+            "format": "",
+            "description": "Deprecated: Use AndroidX Test Orchestrator going forward. A string representing the current version of Android Test Orchestrator that is used in the environment. The package is available at https://maven.google.com/web/index.html#com.android.support.test:orchestrator.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "RegularFile": {
+        "type": "object",
+        "format": "",
+        "description": "A file or directory to install on the device before the test starts.",
+        "$ref": "",
+        "properties": {
+          "content": {
+            "type": "",
+            "format": "",
+            "description": "Required. The source file.",
+            "$ref": "FileReference",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "devicePath": {
+            "type": "string",
+            "format": "",
+            "description": "Required. Where to put the content on the device. Must be an absolute, allowlisted path. If the file exists, it will be replaced. The following device-side directories and any of their subdirectories are allowlisted: ${EXTERNAL_STORAGE}, /sdcard ${ANDROID_DATA}/local/tmp, or /data/local/tmp Specifying a path outside of these directory trees is invalid. The paths /sdcard and /data will be made available and treated as implicit path substitutions. E.g. if /sdcard on a particular device does not map to external storage, the system will replace it with the external storage path prefix for that device and copy the file there. It is strongly advised to use the Environment API in app and test code to access files on the device in a portable way.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ResultStorage": {
+        "type": "object",
+        "format": "",
+        "description": "Locations where the results of running the test are stored.",
+        "$ref": "",
+        "properties": {
+          "googleCloudStorage": {
+            "type": "",
+            "format": "",
+            "description": "Required.",
+            "$ref": "GoogleCloudStorage",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "resultsUrl": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. URL to the results in the Firebase Web Console.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "toolResultsExecution": {
+            "type": "",
+            "format": "",
+            "description": "Output only. The tool results execution that results are written to.",
+            "$ref": "ToolResultsExecution",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "toolResultsHistory": {
+            "type": "",
+            "format": "",
+            "description": "The tool results history that contains the tool results execution that results are written to. If not provided, the service will choose an appropriate value.",
+            "$ref": "ToolResultsHistory",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "RoboDirective": {
+        "type": "object",
+        "format": "",
+        "description": "Directs Robo to interact with a specific UI element if it is encountered during the crawl. Currently, Robo can perform text entry or element click.",
+        "$ref": "",
+        "properties": {
+          "actionType": {
+            "type": "string",
+            "format": "",
+            "description": "Required. The type of action that Robo should perform on the specified element.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "ACTION_TYPE_UNSPECIFIED",
+              "SINGLE_CLICK",
+              "ENTER_TEXT",
+              "IGNORE"
+            ],
+            "readOnly": false
+          },
+          "inputText": {
+            "type": "string",
+            "format": "",
+            "description": "The text that Robo is directed to set. If left empty, the directive will be treated as a CLICK on the element matching the resource_name.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "resourceName": {
+            "type": "string",
+            "format": "",
+            "description": "Required. The android resource name of the target UI element. For example, in Java: R.string.foo in xml: @string/foo Only the \"foo\" part is needed. Reference doc: https://developer.android.com/guide/topics/resources/accessing-resources.html",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "RoboStartingIntent": {
+        "type": "object",
+        "format": "",
+        "description": "Message for specifying the start activities to crawl.",
+        "$ref": "",
+        "properties": {
+          "launcherActivity": {
+            "type": "",
+            "format": "",
+            "description": "An intent that starts the main launcher activity.",
+            "$ref": "LauncherActivityIntent",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "noActivity": {
+            "type": "",
+            "format": "",
+            "description": "Skips the starting activity",
+            "$ref": "NoActivityIntent",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "startActivity": {
+            "type": "",
+            "format": "",
+            "description": "An intent that starts an activity with specific details.",
+            "$ref": "StartActivityIntent",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "timeout": {
+            "type": "string",
+            "format": "google-duration",
+            "description": "Timeout in seconds for each intent.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Service": {
+        "type": "object",
+        "format": "",
+        "description": "The section of an tag. https://developer.android.com/guide/topics/manifest/service-element",
+        "$ref": "",
+        "properties": {
+          "intentFilter": {
+            "type": "array",
+            "format": "",
+            "description": "Intent filters in the service",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "IntentFilter",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "The android:name value",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "SessionStateEvent": {
+        "type": "object",
+        "format": "",
+        "description": "A message encapsulating a series of Session states and the time that the DeviceSession first entered those states.",
+        "$ref": "",
+        "properties": {
+          "eventTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. The time that the session_state first encountered that state.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "sessionState": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The session_state tracked by this event",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "SESSION_STATE_UNSPECIFIED",
+              "REQUESTED",
+              "PENDING",
+              "ACTIVE",
+              "EXPIRED",
+              "FINISHED",
+              "UNAVAILABLE",
+              "ERROR"
+            ],
+            "readOnly": true
+          },
+          "stateMessage": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. A human-readable message to explain the state.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Shard": {
+        "type": "object",
+        "format": "",
+        "description": "Output only. Details about the shard.",
+        "$ref": "",
+        "properties": {
+          "estimatedShardDuration": {
+            "type": "string",
+            "format": "google-duration",
+            "description": "Output only. The estimated shard duration based on previous test case timing records, if available.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "numShards": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Output only. The total number of shards.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "shardIndex": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Output only. The index of the shard among all the shards.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "testTargetsForShard": {
+            "type": "",
+            "format": "",
+            "description": "Output only. Test targets for each shard. Only set for manual sharding.",
+            "$ref": "TestTargetsForShard",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ShardingOption": {
+        "type": "object",
+        "format": "",
+        "description": "Options for enabling sharding.",
+        "$ref": "",
+        "properties": {
+          "manualSharding": {
+            "type": "",
+            "format": "",
+            "description": "Shards test cases into the specified groups of packages, classes, and/or methods.",
+            "$ref": "ManualSharding",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "smartSharding": {
+            "type": "",
+            "format": "",
+            "description": "Shards test based on previous test case timing records.",
+            "$ref": "SmartSharding",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "uniformSharding": {
+            "type": "",
+            "format": "",
+            "description": "Uniformly shards test cases given a total number of shards.",
+            "$ref": "UniformSharding",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "SmartSharding": {
+        "type": "object",
+        "format": "",
+        "description": "Shards test based on previous test case timing records.",
+        "$ref": "",
+        "properties": {
+          "targetedShardDuration": {
+            "type": "string",
+            "format": "google-duration",
+            "description": "The amount of time tests within a shard should take. Default: 300 seconds (5 minutes). The minimum allowed: 120 seconds (2 minutes). The shard count is dynamically set based on time, up to the maximum shard limit (described below). To guarantee at least one test case for each shard, the number of shards will not exceed the number of test cases. Shard duration will be exceeded if: - The maximum shard limit is reached and there is more calculated test time remaining to allocate into shards. - Any individual test is estimated to be longer than the targeted shard duration. Shard duration is not guaranteed because smart sharding uses test case history and default durations which may not be accurate. The rules for finding the test case timing records are: - If the service has processed a test case in the last 30 days, the record of the latest successful test case will be used. - For new test cases, the average duration of other known test cases will be used. - If there are no previous test case timing records available, the default test case duration is 15 seconds. Because the actual shard duration can exceed the targeted shard duration, we recommend that you set the targeted value at least 5 minutes less than the maximum allowed test timeout (45 minutes for physical devices and 60 minutes for virtual), or that you use the custom test timeout value that you set. This approach avoids cancelling the shard before all tests can finish. Note that there is a limit for maximum number of shards. When you select one or more physical devices, the number of shards must be \u003c= 50. When you select one or more ARM virtual devices, it must be \u003c= 200. When you select only x86 virtual devices, it must be \u003c= 500. To guarantee at least one test case for per shard, the number of shards will not exceed the number of test cases. Each shard created counts toward daily test quota.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "StartActivityIntent": {
+        "type": "object",
+        "format": "",
+        "description": "A starting intent specified by an action, uri, and categories.",
+        "$ref": "",
+        "properties": {
+          "action": {
+            "type": "string",
+            "format": "",
+            "description": "Action name. Required for START_ACTIVITY.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "categories": {
+            "type": "array",
+            "format": "",
+            "description": "Intent categories to set on the intent.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "uri": {
+            "type": "string",
+            "format": "",
+            "description": "URI for the action.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "SystraceSetup": {
+        "type": "object",
+        "format": "",
+        "description": "",
+        "$ref": "",
+        "properties": {
+          "durationSeconds": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Systrace duration in seconds. Should be between 1 and 30 seconds. 0 disables systrace.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "TestDetails": {
+        "type": "object",
+        "format": "",
+        "description": "Additional details about the progress of the running test.",
+        "$ref": "",
+        "properties": {
+          "errorMessage": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. If the TestState is ERROR, then this string will contain human-readable details about the error.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "progressMessages": {
+            "type": "array",
+            "format": "",
+            "description": "Output only. Human-readable, detailed descriptions of the test's progress. For example: \"Provisioning a device\", \"Starting Test\". During the course of execution new data may be appended to the end of progress_messages.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "TestEnvironmentCatalog": {
+        "type": "object",
+        "format": "",
+        "description": "A description of a test environment.",
+        "$ref": "",
+        "properties": {
+          "androidDeviceCatalog": {
+            "type": "",
+            "format": "",
+            "description": "Supported Android devices.",
+            "$ref": "AndroidDeviceCatalog",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "deviceIpBlockCatalog": {
+            "type": "",
+            "format": "",
+            "description": "The IP blocks used by devices in the test environment.",
+            "$ref": "DeviceIpBlockCatalog",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "iosDeviceCatalog": {
+            "type": "",
+            "format": "",
+            "description": "Supported iOS devices.",
+            "$ref": "IosDeviceCatalog",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "networkConfigurationCatalog": {
+            "type": "",
+            "format": "",
+            "description": "Supported network configurations.",
+            "$ref": "NetworkConfigurationCatalog",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "softwareCatalog": {
+            "type": "",
+            "format": "",
+            "description": "The software test environment provided by TestExecutionService.",
+            "$ref": "ProvidedSoftwareCatalog",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "TestExecution": {
+        "type": "object",
+        "format": "",
+        "description": "A single test executed in a single environment.",
+        "$ref": "",
+        "properties": {
+          "environment": {
+            "type": "",
+            "format": "",
+            "description": "Output only. How the host machine(s) are configured.",
+            "$ref": "Environment",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "id": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. Unique id set by the service.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "matrixId": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. Id of the containing TestMatrix.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "projectId": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The cloud project that owns the test execution.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "shard": {
+            "type": "",
+            "format": "",
+            "description": "Output only. Details about the shard.",
+            "$ref": "Shard",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "state": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. Indicates the current progress of the test execution (e.g., FINISHED).",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "TEST_STATE_UNSPECIFIED",
+              "VALIDATING",
+              "PENDING",
+              "RUNNING",
+              "FINISHED",
+              "ERROR",
+              "UNSUPPORTED_ENVIRONMENT",
+              "INCOMPATIBLE_ENVIRONMENT",
+              "INCOMPATIBLE_ARCHITECTURE",
+              "CANCELLED",
+              "INVALID"
+            ],
+            "readOnly": false
+          },
+          "testDetails": {
+            "type": "",
+            "format": "",
+            "description": "Output only. Additional details about the running test.",
+            "$ref": "TestDetails",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "testSpecification": {
+            "type": "",
+            "format": "",
+            "description": "Output only. How to run the test.",
+            "$ref": "TestSpecification",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. The time this test execution was initially created.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "toolResultsStep": {
+            "type": "",
+            "format": "",
+            "description": "Output only. Where the results for this execution are written.",
+            "$ref": "ToolResultsStep",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "TestMatrix": {
+        "type": "object",
+        "format": "",
+        "description": "TestMatrix captures all details about a test. It contains the environment configuration, test specification, test executions and overall state and outcome.",
+        "$ref": "",
+        "properties": {
+          "clientInfo": {
+            "type": "",
+            "format": "",
+            "description": "Information about the client which invoked the test.",
+            "$ref": "ClientInfo",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "environmentMatrix": {
+            "type": "",
+            "format": "",
+            "description": "Required. The devices the tests are being executed on.",
+            "$ref": "EnvironmentMatrix",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "extendedInvalidMatrixDetails": {
+            "type": "array",
+            "format": "",
+            "description": "Output only. Details about why a matrix was deemed invalid. If multiple checks can be safely performed, they will be reported but no assumptions should be made about the length of this list.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "MatrixErrorDetail",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "failFast": {
+            "type": "boolean",
+            "format": "",
+            "description": "If true, only a single attempt at most will be made to run each execution/shard in the matrix. Flaky test attempts are not affected. Normally, 2 or more attempts are made if a potential infrastructure issue is detected. This feature is for latency sensitive workloads. The incidence of execution failures may be significantly greater for fail-fast matrices and support is more limited because of that expectation.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "flakyTestAttempts": {
+            "type": "integer",
+            "format": "int32",
+            "description": "The number of times a TestExecution should be re-attempted if one or more of its test cases fail for any reason. The maximum number of reruns allowed is 10. Default is 0, which implies no reruns.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "invalidMatrixDetails": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. Describes why the matrix is considered invalid. Only useful for matrices in the INVALID state.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "INVALID_MATRIX_DETAILS_UNSPECIFIED",
+              "DETAILS_UNAVAILABLE",
+              "MALFORMED_APK",
+              "MALFORMED_TEST_APK",
+              "NO_MANIFEST",
+              "NO_PACKAGE_NAME",
+              "INVALID_PACKAGE_NAME",
+              "TEST_SAME_AS_APP",
+              "NO_INSTRUMENTATION",
+              "NO_SIGNATURE",
+              "INSTRUMENTATION_ORCHESTRATOR_INCOMPATIBLE",
+              "NO_TEST_RUNNER_CLASS",
+              "NO_LAUNCHER_ACTIVITY",
+              "FORBIDDEN_PERMISSIONS",
+              "INVALID_ROBO_DIRECTIVES",
+              "INVALID_RESOURCE_NAME",
+              "INVALID_DIRECTIVE_ACTION",
+              "TEST_LOOP_INTENT_FILTER_NOT_FOUND",
+              "SCENARIO_LABEL_NOT_DECLARED",
+              "SCENARIO_LABEL_MALFORMED",
+              "SCENARIO_NOT_DECLARED",
+              "DEVICE_ADMIN_RECEIVER",
+              "MALFORMED_XC_TEST_ZIP",
+              "BUILT_FOR_IOS_SIMULATOR",
+              "NO_TESTS_IN_XC_TEST_ZIP",
+              "USE_DESTINATION_ARTIFACTS",
+              "TEST_NOT_APP_HOSTED",
+              "PLIST_CANNOT_BE_PARSED",
+              "TEST_ONLY_APK",
+              "MALFORMED_IPA",
+              "MISSING_URL_SCHEME",
+              "MALFORMED_APP_BUNDLE",
+              "NO_CODE_APK",
+              "INVALID_INPUT_APK",
+              "INVALID_APK_PREVIEW_SDK",
+              "MATRIX_TOO_LARGE",
+              "TEST_QUOTA_EXCEEDED",
+              "SERVICE_NOT_ACTIVATED",
+              "UNKNOWN_PERMISSION_ERROR"
+            ],
+            "readOnly": false
+          },
+          "outcomeSummary": {
+            "type": "string",
+            "format": "",
+            "description": "Output Only. The overall outcome of the test. Only set when the test matrix state is FINISHED.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "OUTCOME_SUMMARY_UNSPECIFIED",
+              "SUCCESS",
+              "FAILURE",
+              "INCONCLUSIVE",
+              "SKIPPED"
+            ],
+            "readOnly": false
+          },
+          "projectId": {
+            "type": "string",
+            "format": "",
+            "description": "The cloud project that owns the test matrix.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "resultStorage": {
+            "type": "",
+            "format": "",
+            "description": "Required. Where the results for the matrix are written.",
+            "$ref": "ResultStorage",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "state": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. Indicates the current progress of the test matrix.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "TEST_STATE_UNSPECIFIED",
+              "VALIDATING",
+              "PENDING",
+              "RUNNING",
+              "FINISHED",
+              "ERROR",
+              "UNSUPPORTED_ENVIRONMENT",
+              "INCOMPATIBLE_ENVIRONMENT",
+              "INCOMPATIBLE_ARCHITECTURE",
+              "CANCELLED",
+              "INVALID"
+            ],
+            "readOnly": false
+          },
+          "testExecutions": {
+            "type": "array",
+            "format": "",
+            "description": "Output only. The list of test executions that the service creates for this matrix.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "TestExecution",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "testMatrixId": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. Unique id set by the service.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "testSpecification": {
+            "type": "",
+            "format": "",
+            "description": "Required. How to run the test.",
+            "$ref": "TestSpecification",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. The time this test matrix was initially created.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "TestSetup": {
+        "type": "object",
+        "format": "",
+        "description": "A description of how to set up the Android device prior to running the test.",
+        "$ref": "",
+        "properties": {
+          "account": {
+            "type": "",
+            "format": "",
+            "description": "The device will be logged in on this account for the duration of the test.",
+            "$ref": "Account",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "additionalApks": {
+            "type": "array",
+            "format": "",
+            "description": "APKs to install in addition to those being directly tested. These will be installed after the app under test. Limited to a combined total of 100 initial setup and additional files.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Apk",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "directoriesToPull": {
+            "type": "array",
+            "format": "",
+            "description": "List of directories on the device to upload to GCS at the end of the test; they must be absolute paths under /sdcard, /storage or /data/local/tmp. Path names are restricted to characters a-z A-Z 0-9 _ - . + and / Note: The paths /sdcard and /data will be made available and treated as implicit path substitutions. E.g. if /sdcard on a particular device does not map to external storage, the system will replace it with the external storage path prefix for that device.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "dontAutograntPermissions": {
+            "type": "boolean",
+            "format": "",
+            "description": "Whether to prevent all runtime permissions to be granted at app install",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "environmentVariables": {
+            "type": "array",
+            "format": "",
+            "description": "Environment variables to set for the test (only applicable for instrumentation tests).",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "EnvironmentVariable",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "filesToPush": {
+            "type": "array",
+            "format": "",
+            "description": "List of files to push to the device before starting the test.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "DeviceFile",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "initialSetupApks": {
+            "type": "array",
+            "format": "",
+            "description": "Optional. Initial setup APKs to install before the app under test is installed. Limited to a combined total of 100 initial setup and additional files.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Apk",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "networkProfile": {
+            "type": "string",
+            "format": "",
+            "description": "The network traffic profile used for running the test. Available network profiles can be queried by using the NETWORK_CONFIGURATION environment type when calling TestEnvironmentDiscoveryService.GetTestEnvironmentCatalog.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "systrace": {
+            "type": "",
+            "format": "",
+            "description": "Systrace configuration for the run. Deprecated: Systrace used Python 2 which was sunsetted on 2020-01-01. Systrace is no longer supported in the Cloud Testing API, and no Systrace file will be provided in the results.",
+            "$ref": "SystraceSetup",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "TestSpecification": {
+        "type": "object",
+        "format": "",
+        "description": "A description of how to run the test.",
+        "$ref": "",
+        "properties": {
+          "androidInstrumentationTest": {
+            "type": "",
+            "format": "",
+            "description": "An Android instrumentation test.",
+            "$ref": "AndroidInstrumentationTest",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "androidRoboTest": {
+            "type": "",
+            "format": "",
+            "description": "An Android robo test.",
+            "$ref": "AndroidRoboTest",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "androidTestLoop": {
+            "type": "",
+            "format": "",
+            "description": "An Android Application with a Test Loop.",
+            "$ref": "AndroidTestLoop",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "disablePerformanceMetrics": {
+            "type": "boolean",
+            "format": "",
+            "description": "Disables performance metrics recording. May reduce test latency.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "disableVideoRecording": {
+            "type": "boolean",
+            "format": "",
+            "description": "Disables video recording. May reduce test latency.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "iosRoboTest": {
+            "type": "",
+            "format": "",
+            "description": "An iOS Robo test.",
+            "$ref": "IosRoboTest",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "iosTestLoop": {
+            "type": "",
+            "format": "",
+            "description": "An iOS application with a test loop.",
+            "$ref": "IosTestLoop",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "iosTestSetup": {
+            "type": "",
+            "format": "",
+            "description": "Test setup requirements for iOS.",
+            "$ref": "IosTestSetup",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "iosXcTest": {
+            "type": "",
+            "format": "",
+            "description": "An iOS XCTest, via an .xctestrun file.",
+            "$ref": "IosXcTest",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "testSetup": {
+            "type": "",
+            "format": "",
+            "description": "Test setup requirements for Android e.g. files to install, bootstrap scripts.",
+            "$ref": "TestSetup",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "testTimeout": {
+            "type": "string",
+            "format": "google-duration",
+            "description": "Max time a test execution is allowed to run before it is automatically cancelled. The default value is 5 min.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "TestTargetsForShard": {
+        "type": "object",
+        "format": "",
+        "description": "Test targets for a shard.",
+        "$ref": "",
+        "properties": {
+          "testTargets": {
+            "type": "array",
+            "format": "",
+            "description": "Group of packages, classes, and/or test methods to be run for each shard. The targets need to be specified in AndroidJUnitRunner argument format. For example, \"package com.my.packages\" \"class com.my.package.MyClass\". The number of test_targets must be greater than 0.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ToolResultsExecution": {
+        "type": "object",
+        "format": "",
+        "description": "Represents a tool results execution resource. This has the results of a TestMatrix.",
+        "$ref": "",
+        "properties": {
+          "executionId": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. A tool results execution ID.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "historyId": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. A tool results history ID.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "projectId": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The cloud project that owns the tool results execution.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ToolResultsHistory": {
+        "type": "object",
+        "format": "",
+        "description": "Represents a tool results history resource.",
+        "$ref": "",
+        "properties": {
+          "historyId": {
+            "type": "string",
+            "format": "",
+            "description": "Required. A tool results history ID.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "projectId": {
+            "type": "string",
+            "format": "",
+            "description": "Required. The cloud project that owns the tool results history.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ToolResultsStep": {
+        "type": "object",
+        "format": "",
+        "description": "Represents a tool results step resource. This has the results of a TestExecution.",
+        "$ref": "",
+        "properties": {
+          "executionId": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. A tool results execution ID.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "historyId": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. A tool results history ID.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "projectId": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The cloud project that owns the tool results step.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "stepId": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. A tool results step ID.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "TrafficRule": {
+        "type": "object",
+        "format": "",
+        "description": "Network emulation parameters.",
+        "$ref": "",
+        "properties": {
+          "bandwidth": {
+            "type": "number",
+            "format": "float",
+            "description": "Bandwidth in kbits/second.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "burst": {
+            "type": "number",
+            "format": "float",
+            "description": "Burst size in kbits.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "delay": {
+            "type": "string",
+            "format": "google-duration",
+            "description": "Packet delay, must be \u003e= 0.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "packetDuplicationRatio": {
+            "type": "number",
+            "format": "float",
+            "description": "Packet duplication ratio (0.0 - 1.0).",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "packetLossRatio": {
+            "type": "number",
+            "format": "float",
+            "description": "Packet loss ratio (0.0 - 1.0).",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "UniformSharding": {
+        "type": "object",
+        "format": "",
+        "description": "Uniformly shards test cases given a total number of shards. For instrumentation tests, it will be translated to \"-e numShard\" and \"-e shardIndex\" AndroidJUnitRunner arguments. With uniform sharding enabled, specifying either of these sharding arguments via `environment_variables` is invalid. Based on the sharding mechanism AndroidJUnitRunner uses, there is no guarantee that test cases will be distributed uniformly across all shards.",
+        "$ref": "",
+        "properties": {
+          "numShards": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Required. The total number of shards to create. This must always be a positive number that is no greater than the total number of test cases. When you select one or more physical devices, the number of shards must be \u003c= 50. When you select one or more ARM virtual devices, it must be \u003c= 200. When you select only x86 virtual devices, it must be \u003c= 500.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "UsesFeature": {
+        "type": "object",
+        "format": "",
+        "description": "A tag within a manifest. https://developer.android.com/guide/topics/manifest/uses-feature-element.html",
+        "$ref": "",
+        "properties": {
+          "isRequired": {
+            "type": "boolean",
+            "format": "",
+            "description": "The android:required value",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "The android:name value",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "UsesPermissionTag": {
+        "type": "object",
+        "format": "",
+        "description": "The tag within a manifest. https://developer.android.com/guide/topics/manifest/uses-permission-element.html",
+        "$ref": "",
+        "properties": {
+          "maxSdkVersion": {
+            "type": "integer",
+            "format": "int32",
+            "description": "The android:name value",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "The android:name value",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "XcodeVersion": {
+        "type": "object",
+        "format": "",
+        "description": "An Xcode version that an iOS version is compatible with.",
+        "$ref": "",
+        "properties": {
+          "tags": {
+            "type": "array",
+            "format": "",
+            "description": "Tags for this Xcode version. Example: \"default\".",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "version": {
+            "type": "string",
+            "format": "",
+            "description": "The id for this version. Example: \"9.2\".",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      }
+    },
+    "resources": {
+      "applicationDetailService": {
+        "methods": {
+          "getApkDetails": {
+            "id": "testing.applicationDetailService.getApkDetails",
+            "httpMethod": "POST",
+            "path": "v1/applicationDetailService/getApkDetails",
+            "flatPath": "v1/applicationDetailService/getApkDetails",
+            "description": "Gets the details of an Android application APK.",
+            "parameters": {
+              "bundleLocation.gcsPath": {
+                "type": "string",
+                "location": "query",
+                "required": false
+              }
+            },
+            "parameterOrder": [],
+            "request": {
+              "$ref": "FileReference"
+            },
+            "response": {
+              "$ref": "GetApkDetailsResponse"
+            }
+          }
+        },
+        "resources": null
+      },
+      "projects": {
+        "methods": null,
+        "resources": {
+          "deviceSessions": {
+            "methods": {
+              "cancel": {
+                "id": "testing.projects.deviceSessions.cancel",
+                "httpMethod": "POST",
+                "path": "v1/{+name}:cancel",
+                "flatPath": "v1/projects/{projectsId}/deviceSessions/{deviceSessionsId}:cancel",
+                "description": "POST /v1/projects/{project_id}/deviceSessions/{device_session_id}:cancel Changes the DeviceSession to state FINISHED and terminates all connections. Canceled sessions are not deleted and can be retrieved or listed by the user until they expire based on the 28 day deletion policy.",
+                "parameters": {
+                  "name": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  }
+                },
+                "parameterOrder": [
+                  "name"
+                ],
+                "request": {
+                  "$ref": "CancelDeviceSessionRequest"
+                },
+                "response": {
+                  "$ref": "Empty"
+                }
+              },
+              "create": {
+                "id": "testing.projects.deviceSessions.create",
+                "httpMethod": "POST",
+                "path": "v1/{+parent}/deviceSessions",
+                "flatPath": "v1/projects/{projectsId}/deviceSessions",
+                "description": "POST /v1/projects/{project_id}/deviceSessions",
+                "parameters": {
+                  "parent": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  }
+                },
+                "parameterOrder": [
+                  "parent"
+                ],
+                "request": {
+                  "$ref": "DeviceSession"
+                },
+                "response": {
+                  "$ref": "DeviceSession"
+                }
+              },
+              "get": {
+                "id": "testing.projects.deviceSessions.get",
+                "httpMethod": "GET",
+                "path": "v1/{+name}",
+                "flatPath": "v1/projects/{projectsId}/deviceSessions/{deviceSessionsId}",
+                "description": "GET /v1/projects/{project_id}/deviceSessions/{device_session_id} Return a DeviceSession, which documents the allocation status and whether the device is allocated. Clients making requests from this API must poll GetDeviceSession.",
+                "parameters": {
+                  "name": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  }
+                },
+                "parameterOrder": [
+                  "name"
+                ],
+                "request": null,
+                "response": {
+                  "$ref": "DeviceSession"
+                }
+              },
+              "list": {
+                "id": "testing.projects.deviceSessions.list",
+                "httpMethod": "GET",
+                "path": "v1/{+parent}/deviceSessions",
+                "flatPath": "v1/projects/{projectsId}/deviceSessions",
+                "description": "GET /v1/projects/{project_id}/deviceSessions Lists device Sessions owned by the project user.",
+                "parameters": {
+                  "filter": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false
+                  },
+                  "pageSize": {
+                    "type": "integer",
+                    "location": "query",
+                    "required": false
+                  },
+                  "pageToken": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false
+                  },
+                  "parent": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  }
+                },
+                "parameterOrder": [
+                  "parent"
+                ],
+                "request": null,
+                "response": {
+                  "$ref": "ListDeviceSessionsResponse"
+                }
+              },
+              "patch": {
+                "id": "testing.projects.deviceSessions.patch",
+                "httpMethod": "PATCH",
+                "path": "v1/{+name}",
+                "flatPath": "v1/projects/{projectsId}/deviceSessions/{deviceSessionsId}",
+                "description": "PATCH /v1/projects/{projectId}/deviceSessions/deviceSessionId}:updateDeviceSession Updates the current device session to the fields described by the update_mask.",
+                "parameters": {
+                  "name": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  },
+                  "updateMask": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false
+                  }
+                },
+                "parameterOrder": [
+                  "name"
+                ],
+                "request": {
+                  "$ref": "DeviceSession"
+                },
+                "response": {
+                  "$ref": "DeviceSession"
+                }
+              }
+            },
+            "resources": null
+          },
+          "testMatrices": {
+            "methods": {
+              "cancel": {
+                "id": "testing.projects.testMatrices.cancel",
+                "httpMethod": "POST",
+                "path": "v1/projects/{projectId}/testMatrices/{testMatrixId}:cancel",
+                "flatPath": "v1/projects/{projectId}/testMatrices/{testMatrixId}:cancel",
+                "description": "Cancels unfinished test executions in a test matrix. This call returns immediately and cancellation proceeds asynchronously. If the matrix is already final, this operation will have no effect. May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to read project - INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the Test Matrix does not exist",
+                "parameters": {
+                  "projectId": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  },
+                  "testMatrixId": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  }
+                },
+                "parameterOrder": [
+                  "projectId",
+                  "testMatrixId"
+                ],
+                "request": null,
+                "response": {
+                  "$ref": "CancelTestMatrixResponse"
+                }
+              },
+              "create": {
+                "id": "testing.projects.testMatrices.create",
+                "httpMethod": "POST",
+                "path": "v1/projects/{projectId}/testMatrices",
+                "flatPath": "v1/projects/{projectId}/testMatrices",
+                "description": "Creates and runs a matrix of tests according to the given specifications. Unsupported environments will be returned in the state UNSUPPORTED. A test matrix is limited to use at most 2000 devices in parallel. The returned matrix will not yet contain the executions that will be created for this matrix. Execution creation happens later on and will require a call to GetTestMatrix. May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to write to project - INVALID_ARGUMENT - if the request is malformed or if the matrix tries to use too many simultaneous devices.",
+                "parameters": {
+                  "projectId": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  },
+                  "requestId": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false
+                  }
+                },
+                "parameterOrder": [
+                  "projectId"
+                ],
+                "request": {
+                  "$ref": "TestMatrix"
+                },
+                "response": {
+                  "$ref": "TestMatrix"
+                }
+              },
+              "get": {
+                "id": "testing.projects.testMatrices.get",
+                "httpMethod": "GET",
+                "path": "v1/projects/{projectId}/testMatrices/{testMatrixId}",
+                "flatPath": "v1/projects/{projectId}/testMatrices/{testMatrixId}",
+                "description": "Checks the status of a test matrix and the executions once they are created. The test matrix will contain the list of test executions to run if and only if the resultStorage.toolResultsExecution fields have been populated. Note: Flaky test executions may be added to the matrix at a later stage. May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to read project - INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the Test Matrix does not exist",
+                "parameters": {
+                  "projectId": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  },
+                  "testMatrixId": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  }
+                },
+                "parameterOrder": [
+                  "projectId",
+                  "testMatrixId"
+                ],
+                "request": null,
+                "response": {
+                  "$ref": "TestMatrix"
+                }
+              }
+            },
+            "resources": null
+          }
+        }
+      },
+      "testEnvironmentCatalog": {
+        "methods": {
+          "get": {
+            "id": "testing.testEnvironmentCatalog.get",
+            "httpMethod": "GET",
+            "path": "v1/testEnvironmentCatalog/{environmentType}",
+            "flatPath": "v1/testEnvironmentCatalog/{environmentType}",
+            "description": "Gets the catalog of supported test environments. May return any of the following canonical error codes: - INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the environment type does not exist - INTERNAL - if an internal error occurred",
+            "parameters": {
+              "environmentType": {
+                "type": "string",
+                "location": "path",
+                "required": true
+              },
+              "includeViewableModels": {
+                "type": "boolean",
+                "location": "query",
+                "required": false
+              },
+              "projectId": {
+                "type": "string",
+                "location": "query",
+                "required": false
+              }
+            },
+            "parameterOrder": [
+              "environmentType"
+            ],
+            "request": null,
+            "response": {
+              "$ref": "TestEnvironmentCatalog"
+            }
+          }
+        },
+        "resources": null
+      }
+    }
+  }
+}

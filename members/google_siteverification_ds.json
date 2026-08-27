@@ -1,0 +1,381 @@
+{
+  "schema_source": "discovery_docs",
+  "mode": "data_source",
+  "auth": {
+    "Type": "",
+    "Params": null
+  },
+  "base_url": "https://www.googleapis.com/siteVerification/v1",
+  "retry": {
+    "MaxAttempts": 0,
+    "InitialBackoff": "",
+    "MaxBackoff": "",
+    "Jitter": null,
+    "RespectRetryAfter": null,
+    "RateLimitResetHeader": ""
+  },
+  "timeouts": {
+    "Create": "",
+    "Read": "",
+    "Update": "",
+    "Delete": "",
+    "Default": ""
+  },
+  "wire_name": "google_siteverification",
+  "raw_spec": {
+    "name": "siteVerification",
+    "revision": "20191119",
+    "discoveryVersion": "v1",
+    "baseUrl": "https://www.googleapis.com/siteVerification/v1/",
+    "rootUrl": "https://www.googleapis.com/",
+    "servicePath": "siteVerification/v1/",
+    "schemas": {
+      "SiteVerificationWebResourceGettokenRequest": {
+        "type": "object",
+        "format": "",
+        "description": "",
+        "$ref": "",
+        "properties": {
+          "site": {
+            "type": "object",
+            "format": "",
+            "description": "The site for which a verification token will be generated.",
+            "$ref": "",
+            "properties": {
+              "identifier": {
+                "type": "string",
+                "format": "",
+                "description": "The site identifier. If the type is set to SITE, the identifier is a URL. If the type is set to INET_DOMAIN, the site identifier is a domain name.",
+                "$ref": "",
+                "properties": null,
+                "items": null,
+                "additionalProperties": null,
+                "enum": null,
+                "readOnly": false
+              },
+              "type": {
+                "type": "string",
+                "format": "",
+                "description": "The type of resource to be verified. Can be SITE or INET_DOMAIN (domain name).",
+                "$ref": "",
+                "properties": null,
+                "items": null,
+                "additionalProperties": null,
+                "enum": null,
+                "readOnly": false
+              }
+            },
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "verificationMethod": {
+            "type": "string",
+            "format": "",
+            "description": "The verification method that will be used to verify this site. For sites, 'FILE' or 'META' methods may be used. For domains, only 'DNS' may be used.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "SiteVerificationWebResourceGettokenResponse": {
+        "type": "object",
+        "format": "",
+        "description": "",
+        "$ref": "",
+        "properties": {
+          "method": {
+            "type": "string",
+            "format": "",
+            "description": "The verification method to use in conjunction with this token. For FILE, the token should be placed in the top-level directory of the site, stored inside a file of the same name. For META, the token should be placed in the HEAD tag of the default page that is loaded for the site. For DNS, the token should be placed in a TXT record of the domain.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "token": {
+            "type": "string",
+            "format": "",
+            "description": "The verification token. The token must be placed appropriately in order for verification to succeed.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "SiteVerificationWebResourceListResponse": {
+        "type": "object",
+        "format": "",
+        "description": "",
+        "$ref": "",
+        "properties": {
+          "items": {
+            "type": "array",
+            "format": "",
+            "description": "The list of sites that are owned by the authenticated user.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "SiteVerificationWebResourceResource",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "SiteVerificationWebResourceResource": {
+        "type": "object",
+        "format": "",
+        "description": "",
+        "$ref": "",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "",
+            "description": "The string used to identify this site. This value should be used in the \"id\" portion of the REST URL for the Get, Update, and Delete operations.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "owners": {
+            "type": "array",
+            "format": "",
+            "description": "The email addresses of all verified owners.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "site": {
+            "type": "object",
+            "format": "",
+            "description": "The address and type of a site that is verified or will be verified.",
+            "$ref": "",
+            "properties": {
+              "identifier": {
+                "type": "string",
+                "format": "",
+                "description": "The site identifier. If the type is set to SITE, the identifier is a URL. If the type is set to INET_DOMAIN, the site identifier is a domain name.",
+                "$ref": "",
+                "properties": null,
+                "items": null,
+                "additionalProperties": null,
+                "enum": null,
+                "readOnly": false
+              },
+              "type": {
+                "type": "string",
+                "format": "",
+                "description": "The site type. Can be SITE or INET_DOMAIN (domain name).",
+                "$ref": "",
+                "properties": null,
+                "items": null,
+                "additionalProperties": null,
+                "enum": null,
+                "readOnly": false
+              }
+            },
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      }
+    },
+    "resources": {
+      "webResource": {
+        "methods": {
+          "delete": {
+            "id": "siteVerification.webResource.delete",
+            "httpMethod": "DELETE",
+            "path": "webResource/{id}",
+            "flatPath": "",
+            "description": "Relinquish ownership of a website or domain.",
+            "parameters": {
+              "id": {
+                "type": "string",
+                "location": "path",
+                "required": true
+              }
+            },
+            "parameterOrder": [
+              "id"
+            ],
+            "request": null,
+            "response": null
+          },
+          "get": {
+            "id": "siteVerification.webResource.get",
+            "httpMethod": "GET",
+            "path": "webResource/{id}",
+            "flatPath": "",
+            "description": "Get the most current data for a website or domain.",
+            "parameters": {
+              "id": {
+                "type": "string",
+                "location": "path",
+                "required": true
+              }
+            },
+            "parameterOrder": [
+              "id"
+            ],
+            "request": null,
+            "response": {
+              "$ref": "SiteVerificationWebResourceResource"
+            }
+          },
+          "getToken": {
+            "id": "siteVerification.webResource.getToken",
+            "httpMethod": "POST",
+            "path": "token",
+            "flatPath": "",
+            "description": "Get a verification token for placing on a website or domain.",
+            "parameters": null,
+            "parameterOrder": null,
+            "request": {
+              "$ref": "SiteVerificationWebResourceGettokenRequest"
+            },
+            "response": {
+              "$ref": "SiteVerificationWebResourceGettokenResponse"
+            }
+          },
+          "insert": {
+            "id": "siteVerification.webResource.insert",
+            "httpMethod": "POST",
+            "path": "webResource",
+            "flatPath": "",
+            "description": "Attempt verification of a website or domain.",
+            "parameters": {
+              "verificationMethod": {
+                "type": "string",
+                "location": "query",
+                "required": true
+              }
+            },
+            "parameterOrder": [
+              "verificationMethod"
+            ],
+            "request": {
+              "$ref": "SiteVerificationWebResourceResource"
+            },
+            "response": {
+              "$ref": "SiteVerificationWebResourceResource"
+            }
+          },
+          "list": {
+            "id": "siteVerification.webResource.list",
+            "httpMethod": "GET",
+            "path": "webResource",
+            "flatPath": "",
+            "description": "Get the list of your verified websites and domains.",
+            "parameters": null,
+            "parameterOrder": null,
+            "request": null,
+            "response": {
+              "$ref": "SiteVerificationWebResourceListResponse"
+            }
+          },
+          "patch": {
+            "id": "siteVerification.webResource.patch",
+            "httpMethod": "PATCH",
+            "path": "webResource/{id}",
+            "flatPath": "",
+            "description": "Modify the list of owners for your website or domain. This method supports patch semantics.",
+            "parameters": {
+              "id": {
+                "type": "string",
+                "location": "path",
+                "required": true
+              }
+            },
+            "parameterOrder": [
+              "id"
+            ],
+            "request": {
+              "$ref": "SiteVerificationWebResourceResource"
+            },
+            "response": {
+              "$ref": "SiteVerificationWebResourceResource"
+            }
+          },
+          "update": {
+            "id": "siteVerification.webResource.update",
+            "httpMethod": "PUT",
+            "path": "webResource/{id}",
+            "flatPath": "",
+            "description": "Modify the list of owners for your website or domain.",
+            "parameters": {
+              "id": {
+                "type": "string",
+                "location": "path",
+                "required": true
+              }
+            },
+            "parameterOrder": [
+              "id"
+            ],
+            "request": {
+              "$ref": "SiteVerificationWebResourceResource"
+            },
+            "response": {
+              "$ref": "SiteVerificationWebResourceResource"
+            }
+          }
+        },
+        "resources": null
+      }
+    }
+  }
+}

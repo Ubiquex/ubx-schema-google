@@ -1,0 +1,3869 @@
+{
+  "schema_source": "discovery_docs",
+  "mode": "data_source",
+  "auth": {
+    "Type": "",
+    "Params": null
+  },
+  "base_url": "https://cloudnumberregistry.googleapis.com",
+  "retry": {
+    "MaxAttempts": 0,
+    "InitialBackoff": "",
+    "MaxBackoff": "",
+    "Jitter": null,
+    "RespectRetryAfter": null,
+    "RateLimitResetHeader": ""
+  },
+  "timeouts": {
+    "Create": "",
+    "Read": "",
+    "Update": "",
+    "Delete": "",
+    "Default": ""
+  },
+  "wire_name": "google_cloudnumberregistry",
+  "raw_spec": {
+    "name": "cloudnumberregistry",
+    "revision": "20260819",
+    "discoveryVersion": "v1",
+    "baseUrl": "https://cloudnumberregistry.googleapis.com/",
+    "rootUrl": "https://cloudnumberregistry.googleapis.com/",
+    "servicePath": "",
+    "schemas": {
+      "AggregatedData": {
+        "type": "object",
+        "format": "",
+        "description": "Aggregated data for the RegistryBook.",
+        "$ref": "",
+        "properties": {
+          "customRangesCount": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Output only. Number of CustomRanges in the RegistryBook.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "customRealmsCount": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Output only. Number of custom Realms in the RegistryBook.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "discoveredRangesCount": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Output only. Number of DiscoveredRanges in the RegistryBook.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "discoveredRealmsCount": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Output only. Number of discovered Realms in the RegistryBook.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "uniqueScopesCount": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Output only. Number of scopes unique to the RegistryBook.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Attribute": {
+        "type": "object",
+        "format": "",
+        "description": "A key-value pair representing a custom attribute associated with a resource.",
+        "$ref": "",
+        "properties": {
+          "key": {
+            "type": "string",
+            "format": "",
+            "description": "Required. The key of the attribute.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "value": {
+            "type": "string",
+            "format": "",
+            "description": "Required. The value of the attribute.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "CancelOperationRequest": {
+        "type": "object",
+        "format": "",
+        "description": "The request message for Operations.CancelOperation.",
+        "$ref": "",
+        "properties": {},
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "CheckAvailabilityIpamAdminScopesResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Response message for the CloudNumberRegistry.CheckAvailabilityIpamAdminScopes method.",
+        "$ref": "",
+        "properties": {
+          "scopeAvailabilities": {
+            "type": "array",
+            "format": "",
+            "description": "The details of the requested scopes.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "IpamAdminScopeAvailability",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "CleanupIpamAdminScopeRequest": {
+        "type": "object",
+        "format": "",
+        "description": "Request message for the CloudNumberRegistry.CleanupIpamAdminScope method.",
+        "$ref": "",
+        "properties": {
+          "requestId": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "CustomRange": {
+        "type": "object",
+        "format": "",
+        "description": "A CustomRange represents a user-defined IP address range.",
+        "$ref": "",
+        "properties": {
+          "attributes": {
+            "type": "array",
+            "format": "",
+            "description": "Optional. The attributes of the CustomRange.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Attribute",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "description": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The description of the CustomRange.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "ipv4CidrRange": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The IPv4 CIDR range of the CustomRange.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "ipv6CidrRange": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The IPv6 CIDR range of the CustomRange.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "labels": {
+            "type": "object",
+            "format": "",
+            "description": "Optional. User-defined labels.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "Required. Identifier. The resource name of the CustomRange, in the format `projects/{project}/locations/{location}/customRanges/{custom_range}`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "parentRange": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The resource name of the parent CustomRange, in the format `projects/{project}/locations/{location}/customRanges/{custom_range}`. If specified, the parent CustomRange must be in the same RegistryBook. This field is mutually exclusive with the `realm` field, as the Realm is inherited from the parent CustomRange.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "realm": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The resource name of the Realm associated with the CustomRange, in the format `projects/{project}/locations/{location}/realms/{realm}`. The Realm must be in the same project as the CustomRange. This field must not be set if the `parent_range` field is set, as the Realm will be inherited from the parent CustomRange.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "registryBook": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The RegistryBook of the CustomRange. This field is inherited from the Realm or parent CustomRange depending on which one is specified.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "DisableIpamAdminScopeRequest": {
+        "type": "object",
+        "format": "",
+        "description": "Request message for the CloudNumberRegistry.DisableIpamAdminScope method.",
+        "$ref": "",
+        "properties": {
+          "requestId": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "DiscoveredRange": {
+        "type": "object",
+        "format": "",
+        "description": "A DiscoveredRange represents an IP address range automatically detected by the discovery pipeline.",
+        "$ref": "",
+        "properties": {
+          "attributes": {
+            "type": "array",
+            "format": "",
+            "description": "Optional. The attributes of the DiscoveredRange.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Attribute",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "childCidrOverlapAllowed": {
+            "type": "boolean",
+            "format": "",
+            "description": "Output only. If true, allows child DiscoveredRanges of this DiscoveredRange to overlap with each other.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "createTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. The time at which the DiscoveredRange was created.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "description": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Description of the DiscoveredRange.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "discoveryMetadata": {
+            "type": "",
+            "format": "",
+            "description": "Output only. Owner metadata for this DiscoveredRange. A unique set of metadata is associated with each DiscoveredRange. If an IP range is shared by multiple resources (e.g., an Address resource and an Instance resource, or multiple ForwardingRules),separate DiscoveredRanges are created, each with a distinct owner. This ensures each DiscoveredRange has its own unique set of attributes, labels, create time and update time.",
+            "$ref": "DiscoveryMetadata",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "ipv4CidrRange": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The IPv4 CIDR range of the DiscoveredRange.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "ipv6CidrRange": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The IPv6 CIDR range of the DiscoveredRange.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "labels": {
+            "type": "object",
+            "format": "",
+            "description": "Optional. User-defined labels.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "Required. Identifier. The resource name of the DiscoveredRange, in the format `projects/{project}/locations/{location}/discoveredRanges/{discovered_range}`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "parentRange": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The resource name of the parent DiscoveredRange, in the format `projects/{project}/locations/{location}/discoveredRanges/{discovered_range}`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "realm": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The Realm of the DiscoveredRange.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "registryBook": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The RegistryBook of the DiscoveredRange.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "updateTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. The time at which the DiscoveredRange was last updated.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "DiscoveryMetadata": {
+        "type": "object",
+        "format": "",
+        "description": "Metadata about a discovered resource, tracking event times, state, and source information.",
+        "$ref": "",
+        "properties": {
+          "createTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. The time when the resource was created.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "eventTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. The time when the event happened.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "resource": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The resource name of the discovered resource, should be API-agnostic. Example: \"projects/{project_number}/networks/{network_id}\".",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "resourceUri": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The resource uri of the discovered resource.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "sourceId": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The canonical google.aip.dev/122 name of the source resource.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "sourceSubId": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. A single source resource can be the source of multiple CNR resources. This sub_id is used to distinguish between the different CNR resources derived from the same upstream resource. For example, a single subnetwork can be the source of multiple Ranges, one for each protocol. In this case, the sub_id could be \"private-ipv4\" or \"private-ipv6\".",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "state": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The state of the resource.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "RESOURCE_STATE_UNSPECIFIED",
+              "INVALID",
+              "EXISTS",
+              "DOES_NOT_EXIST",
+              "ERROR"
+            ],
+            "readOnly": true
+          },
+          "updateTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. The time when the resource was last modified.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Empty": {
+        "type": "object",
+        "format": "",
+        "description": "A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }",
+        "$ref": "",
+        "properties": {},
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "FindCustomRangeFreeIpRangesResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Response message for the CloudNumberRegistry.FindCustomRangeFreeIpRanges method.",
+        "$ref": "",
+        "properties": {
+          "freeIpCidrRanges": {
+            "type": "array",
+            "format": "",
+            "description": "Output only. The free IP CIDR ranges found.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "FindDiscoveredRangeFreeIpRangesResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Response message for the CloudNumberRegistry.FindDiscoveredRangeFreeIpRanges method.",
+        "$ref": "",
+        "properties": {
+          "freeIpCidrRanges": {
+            "type": "array",
+            "format": "",
+            "description": "Output only. The free IP CIDR ranges found.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "IpamAdminScope": {
+        "type": "object",
+        "format": "",
+        "description": "An IpamAdminScope defines the administrative boundary for IP address discovery and management. It configures which platforms and organizational scopes are enabled for IP tracking.",
+        "$ref": "",
+        "properties": {
+          "createTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. The time at which the IpamAdminScope was created.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "enabledAddonPlatforms": {
+            "type": "array",
+            "format": "",
+            "description": "Required. Add-on platforms that are enabled for this IpamAdminScope. Cloud Number Registry only discovers the IP addresses from the enabled platforms.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": [
+                "ADD_ON_PLATFORM_UNSPECIFIED",
+                "COMPUTE_ENGINE",
+                "GCE"
+              ],
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "labels": {
+            "type": "object",
+            "format": "",
+            "description": "Optional. User-defined labels.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "Required. Identifier. The resource name of the IpamAdminScope.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "scopes": {
+            "type": "array",
+            "format": "",
+            "description": "Required. Administrative scopes enabled for IP address discovery and management. For example, \"organizations/1234567890\". Minimum of 1 scope is required. In preview, only one organization scope is allowed.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "state": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. State of resource discovery pipeline.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "DISCOVERY_PIPELINE_STATE_UNSPECIFIED",
+              "INTERNAL_FAILURE",
+              "FAILED",
+              "SETUP_IN_PROGRESS",
+              "READY_FOR_USE",
+              "DELETING_IN_PROGRESS",
+              "UPDATING",
+              "RECOVERING",
+              "DISABLED",
+              "DELETION_COMPLETED",
+              "CLEANUP_IN_PROGRESS",
+              "READY_FOR_DELETION"
+            ],
+            "readOnly": true
+          },
+          "updateTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. The time at which the IpamAdminScope was last updated.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "IpamAdminScopeAvailability": {
+        "type": "object",
+        "format": "",
+        "description": "Availability details for a specific IpamAdminScope.",
+        "$ref": "",
+        "properties": {
+          "adminProject": {
+            "type": "string",
+            "format": "int64",
+            "description": "The admin project of the IpamAdminScope if it exists.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "availability": {
+            "type": "string",
+            "format": "",
+            "description": "The availability of the scope.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "AVAILABILITY_UNSPECIFIED",
+              "AVAILABLE",
+              "UNAVAILABLE"
+            ],
+            "readOnly": false
+          },
+          "scope": {
+            "type": "string",
+            "format": "",
+            "description": "The scope of the IpamAdminScope.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ListCustomRangesResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Response message for the CloudNumberRegistry.ListCustomRanges method.",
+        "$ref": "",
+        "properties": {
+          "customRanges": {
+            "type": "array",
+            "format": "",
+            "description": "The list of CustomRanges.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "CustomRange",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "A token to retrieve the next page of results, or empty if there are no more results in the list.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "unreachable": {
+            "type": "array",
+            "format": "",
+            "description": "Locations that could not be reached.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ListDiscoveredRangesResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Response message for the CloudNumberRegistry.ListDiscoveredRanges method.",
+        "$ref": "",
+        "properties": {
+          "discoveredRanges": {
+            "type": "array",
+            "format": "",
+            "description": "The list of DiscoveredRanges.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "DiscoveredRange",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "A token to retrieve the next page of results, or empty if there are no more results in the list.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "unreachable": {
+            "type": "array",
+            "format": "",
+            "description": "Locations that could not be reached.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ListIpamAdminScopesResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Response message for the CloudNumberRegistry.ListIpamAdminScopes method.",
+        "$ref": "",
+        "properties": {
+          "ipamAdminScopes": {
+            "type": "array",
+            "format": "",
+            "description": "The list of IpamAdminScopes.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "IpamAdminScope",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "A token to retrieve the next page of results, or empty if there are no more results in the list.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "unreachable": {
+            "type": "array",
+            "format": "",
+            "description": "Locations that could not be reached.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ListLocationsResponse": {
+        "type": "object",
+        "format": "",
+        "description": "The response message for Locations.ListLocations.",
+        "$ref": "",
+        "properties": {
+          "locations": {
+            "type": "array",
+            "format": "",
+            "description": "A list of locations that matches the specified filter in the request.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Location",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "The standard List next-page token.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ListOperationsResponse": {
+        "type": "object",
+        "format": "",
+        "description": "The response message for Operations.ListOperations.",
+        "$ref": "",
+        "properties": {
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "The standard List next-page token.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "operations": {
+            "type": "array",
+            "format": "",
+            "description": "A list of operations that matches the specified filter in the request.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Operation",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "unreachable": {
+            "type": "array",
+            "format": "",
+            "description": "Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ListOrgNumberRegistriesResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Response message for the CloudNumberRegistry.ListOrgNumberRegistries method.",
+        "$ref": "",
+        "properties": {
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "A token to retrieve the next page of results, or empty if there are no more results in the list.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "orgNumberRegistries": {
+            "type": "array",
+            "format": "",
+            "description": "The list of OrgNumberRegistries.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "OrgNumberRegistry",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "unreachable": {
+            "type": "array",
+            "format": "",
+            "description": "Locations that could not be reached.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ListRealmsResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Response message for the CloudNumberRegistry.ListRealms method.",
+        "$ref": "",
+        "properties": {
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "A token identifying a page of results the server should return.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "realms": {
+            "type": "array",
+            "format": "",
+            "description": "The list of Realms.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Realm",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "unreachable": {
+            "type": "array",
+            "format": "",
+            "description": "Locations that could not be reached.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ListRegistryBooksResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Response message for the CloudNumberRegistry.ListRegistryBooks method.",
+        "$ref": "",
+        "properties": {
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "A token identifying a page of results the server should return.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "registryBooks": {
+            "type": "array",
+            "format": "",
+            "description": "The list of RegistryBook",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "RegistryBook",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "unreachable": {
+            "type": "array",
+            "format": "",
+            "description": "Locations that could not be reached.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Location": {
+        "type": "object",
+        "format": "",
+        "description": "A resource that represents a Google Cloud location.",
+        "$ref": "",
+        "properties": {
+          "displayName": {
+            "type": "string",
+            "format": "",
+            "description": "The friendly name for this location, typically a nearby city name. For example, \"Tokyo\".",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "labels": {
+            "type": "object",
+            "format": "",
+            "description": "Cross-service attributes for the location. For example {\"cloud.googleapis.com/region\": \"us-east1\"}",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "locationId": {
+            "type": "string",
+            "format": "",
+            "description": "The canonical id for this location. For example: `\"us-east1\"`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "metadata": {
+            "type": "object",
+            "format": "",
+            "description": "Service-specific metadata. For example the available capacity at the given location.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "any",
+              "format": "",
+              "description": "Properties of the object. Contains field @type with type URL.",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "Resource name for the location, which may vary between implementations. For example: `\"projects/example-project/locations/us-east1\"`",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Operation": {
+        "type": "object",
+        "format": "",
+        "description": "This resource represents a long-running operation that is the result of a network API call.",
+        "$ref": "",
+        "properties": {
+          "done": {
+            "type": "boolean",
+            "format": "",
+            "description": "If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "error": {
+            "type": "",
+            "format": "",
+            "description": "The error result of the operation in case of failure or cancellation.",
+            "$ref": "Status",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "metadata": {
+            "type": "object",
+            "format": "",
+            "description": "Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "any",
+              "format": "",
+              "description": "Properties of the object. Contains field @type with type URL.",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "response": {
+            "type": "object",
+            "format": "",
+            "description": "The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "any",
+              "format": "",
+              "description": "Properties of the object. Contains field @type with type URL.",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "OperationMetadata": {
+        "type": "object",
+        "format": "",
+        "description": "Represents the metadata of the long-running operation.",
+        "$ref": "",
+        "properties": {
+          "apiVersion": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. API version used to start the operation.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "createTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. The time the operation was created.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "endTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. The time the operation finished running.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "requestedCancellation": {
+            "type": "boolean",
+            "format": "",
+            "description": "Output only. Identifies whether the user has requested cancellation of the operation. Operations that have been cancelled successfully have Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "statusMessage": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. Human-readable status of the operation, if any.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "target": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. Server-defined resource path for the target of the operation.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "verb": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. Name of the verb executed by the operation.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "OrgNumberRegistry": {
+        "type": "object",
+        "format": "",
+        "description": "An OrgNumberRegistry defines a delegation of authority from an organization to a project, allowing the project to manage IP address data within specified scopes of the organization.",
+        "$ref": "",
+        "properties": {
+          "adminProject": {
+            "type": "string",
+            "format": "",
+            "description": "Required. The project that will act as the admin project for CNR resources Format: projects/{project_number} or projects/{project_id}",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "createTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. The time at which the OrgNumberRegistry was created.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "labels": {
+            "type": "object",
+            "format": "",
+            "description": "Optional. User-defined labels.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "Identifier. The resource name of the OrgNumberRegistry.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "targetScopes": {
+            "type": "array",
+            "format": "",
+            "description": "Required. The scopes within the organization that the project is able to manage. Currently only organization scope is supported. For example, \"organizations/1234567890\".",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "updateTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. The time at which the OrgNumberRegistry was last updated.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Range": {
+        "type": "object",
+        "format": "",
+        "description": "Represents either a CustomRange or a DiscoveredRange.",
+        "$ref": "",
+        "properties": {
+          "customRange": {
+            "type": "",
+            "format": "",
+            "description": "A CustomRange.",
+            "$ref": "CustomRange",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "discoveredRange": {
+            "type": "",
+            "format": "",
+            "description": "A DiscoveredRange.",
+            "$ref": "DiscoveredRange",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "utilization": {
+            "type": "",
+            "format": "",
+            "description": "The utilization of the Range.",
+            "$ref": "RangeUtilization",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "RangeUtilization": {
+        "type": "object",
+        "format": "",
+        "description": "Utilization metrics for an IP Range, including consumed and produced address counts.",
+        "$ref": "",
+        "properties": {
+          "totalConsumed": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The total number of IP addresses consumed in the Range.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "totalProduced": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The total number of IP addresses produced in the Range.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "usage": {
+            "type": "number",
+            "format": "double",
+            "description": "Output only. The usage of the Range as a percentage. This is marked as optional so that we have presence tracking and API responses show 0.0 instead of NULL.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Realm": {
+        "type": "object",
+        "format": "",
+        "description": "A Realm represents a distinct network domain or security zone. It groups Ranges that share the same traffic and management characteristics. All the ranges in a Realm are routable to each other, meaning that they cannot overlap.",
+        "$ref": "",
+        "properties": {
+          "aggregatedData": {
+            "type": "",
+            "format": "",
+            "description": "Output only. Aggregated data for the Realm. Populated only when the view is AGGREGATE.",
+            "$ref": "RealmAggregatedData",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "createTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. The time at which the Realm was created.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "discoveryMetadata": {
+            "type": "",
+            "format": "",
+            "description": "Output only. Discovery metadata of the Realm.",
+            "$ref": "DiscoveryMetadata",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "ipVersion": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. IP version of the Realm.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "IP_VERSION_UNSPECIFIED",
+              "IPV4",
+              "IPV6"
+            ],
+            "readOnly": false
+          },
+          "labels": {
+            "type": "object",
+            "format": "",
+            "description": "Optional. User-defined labels.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "managementType": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Management type of the Realm.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "MANAGEMENT_TYPE_UNSPECIFIED",
+              "CNR",
+              "USER"
+            ],
+            "readOnly": false
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "Required. Identifier. The resource name of the Realm.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "registryBook": {
+            "type": "string",
+            "format": "",
+            "description": "Required. Name of the RegistryBook that claims the Realm.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "trafficType": {
+            "type": "string",
+            "format": "",
+            "description": "Required. Traffic type of the Realm.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "TRAFFIC_TYPE_UNSPECIFIED",
+              "UNSET",
+              "INTERNET",
+              "PRIVATE",
+              "LINKLOCAL"
+            ],
+            "readOnly": false
+          },
+          "updateTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. The time at which the Realm was last updated.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "RealmAggregatedData": {
+        "type": "object",
+        "format": "",
+        "description": "Aggregated data for the Realm.",
+        "$ref": "",
+        "properties": {
+          "customRangesCount": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Output only. Number of CustomRanges in the Realm.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "discoveredRangesCount": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Output only. Number of DiscoveredRanges in the Realm.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "RegistryBook": {
+        "type": "object",
+        "format": "",
+        "description": "A RegistryBook organizes and manages IP address space. It claims specific scopes (such as projects) and groups related Realms and Ranges.",
+        "$ref": "",
+        "properties": {
+          "aggregatedData": {
+            "type": "",
+            "format": "",
+            "description": "Output only. Aggregated data for the RegistryBook. Populated only when the view is AGGREGATE.",
+            "$ref": "AggregatedData",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "claimedScopes": {
+            "type": "array",
+            "format": "",
+            "description": "Optional. List of scopes claimed by the RegistryBook. In Preview, Only project scope is supported. Each scope is in the format of projects/{project}. Each scope can only be claimed once.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "createTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. The time at which the RegistryBook was created.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "isDefault": {
+            "type": "boolean",
+            "format": "",
+            "description": "Output only. Whether the RegistryBook is the default one.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "labels": {
+            "type": "object",
+            "format": "",
+            "description": "Optional. User-defined labels.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "Required. Identifier. The resource name of the RegistryBook.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "updateTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. The time at which the RegistryBook was last updated.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "SearchIpResourcesRequest": {
+        "type": "object",
+        "format": "",
+        "description": "Request message for the CloudNumberRegistry.SearchIpResources method.",
+        "$ref": "",
+        "properties": {
+          "orderBy": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Hint for how to order the results. Supported sort fields are: - `name`: Sort alphabetically by the resource name. - `create_time`: Sort by the creation timestamp of the resource. - `update_time`: Sort by the last update timestamp of the resource. Supported directions are `asc` (ascending) and `desc` (descending). If unspecified, direction defaults to `asc`. Only sorting by a single field is supported.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "pageSize": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "pageToken": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. A token identifying a page of results the server should return.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "query": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Search query. This string filters resources in an AIP-160-like format. It has some limitations. You can only specify top level conjunctions or attribute level negations. Each restriction can only be used once except the attribute restriction. The available restrictions for Ranges are: - `realm`: The Realm name to search in. - `ip_address`: The IP address to search for within Ranges. - `ip_version`: The IP version to filter by (e.g., \"IPV4\", \"IPV6\"). - `parent_range`: The parent Range of the Range to search for. - `attribute_text`: The attribute text to search for within Ranges. - `attribute`: The attribute key and value to filter by. The available restrictions for Realms are: - `ip_version`: The IP version to search for. - `management_type`: The management type of the Realm (e.g., \"CNR\", \"USER\"). Only one of attribute_text or multiple attribute filters can be specified. Examples: - `realm=test-realm` - `realm=test-realm AND ip_address=10.0.0.0` - `realm=test-realm AND ip_version=IPV6` - `realm=test-realm AND attribute_text=test` - `ip_address=10.0.0.0 AND attribute:(key1=value1) AND attribute:(key2=value2)` - `attribute_text=test AND parent_range=projects/123/locations/global/discoveredRanges/test-parent-range` - `management_type=CNR`",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "searchResourceTypes": {
+            "type": "array",
+            "format": "",
+            "description": "Optional. The type of resources to search for. If not specified, the server will return Ranges.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": [
+                "SEARCH_RESOURCE_TYPE_UNSPECIFIED",
+                "RANGES",
+                "REALMS"
+              ],
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "showUtilization": {
+            "type": "boolean",
+            "format": "",
+            "description": "Optional. Whether to show the utilization of the Ranges in the response.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "SearchIpResourcesResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Response message for the CloudNumberRegistry.SearchIpResources method.",
+        "$ref": "",
+        "properties": {
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "A token identifying a page of results the server should return.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "ranges": {
+            "type": "array",
+            "format": "",
+            "description": "Deprecated: Use results field instead. The list of Ranges matching the search query.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Range",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "results": {
+            "type": "array",
+            "format": "",
+            "description": "The list of results matching the search query.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "SearchIpResourcesResult",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "unreachable": {
+            "type": "array",
+            "format": "",
+            "description": "Locations that could not be reached.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "SearchIpResourcesResult": {
+        "type": "object",
+        "format": "",
+        "description": "A result matching the search query, which can be either a Range or a Realm.",
+        "$ref": "",
+        "properties": {
+          "range": {
+            "type": "",
+            "format": "",
+            "description": "A Range matching the search query.",
+            "$ref": "Range",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "realm": {
+            "type": "",
+            "format": "",
+            "description": "A Realm matching the search query.",
+            "$ref": "Realm",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ShowCustomRangeUtilizationResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Response message for the CloudNumberRegistry.ShowCustomRangeUtilization method.",
+        "$ref": "",
+        "properties": {
+          "customRange": {
+            "type": "",
+            "format": "",
+            "description": "The CustomRange resource.",
+            "$ref": "CustomRange",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "rangeUtilization": {
+            "type": "",
+            "format": "",
+            "description": "The utilization details of the CustomRange.",
+            "$ref": "RangeUtilization",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ShowDiscoveredRangeUtilizationResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Response message for the CloudNumberRegistry.ShowDiscoveredRangeUtilization method.",
+        "$ref": "",
+        "properties": {
+          "discoveredRange": {
+            "type": "",
+            "format": "",
+            "description": "The DiscoveredRange resource.",
+            "$ref": "DiscoveredRange",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "rangeUtilization": {
+            "type": "",
+            "format": "",
+            "description": "The utilization details of the DiscoveredRange.",
+            "$ref": "RangeUtilization",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Status": {
+        "type": "object",
+        "format": "",
+        "description": "The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).",
+        "$ref": "",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32",
+            "description": "The status code, which should be an enum value of google.rpc.Code.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "details": {
+            "type": "array",
+            "format": "",
+            "description": "A list of messages that carry the error details. There is a common set of message types for APIs to use.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "object",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": {
+                "type": "any",
+                "format": "",
+                "description": "Properties of the object. Contains field @type with type URL.",
+                "$ref": "",
+                "properties": null,
+                "items": null,
+                "additionalProperties": null,
+                "enum": null,
+                "readOnly": false
+              },
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "message": {
+            "type": "string",
+            "format": "",
+            "description": "A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      }
+    },
+    "resources": {
+      "organizations": {
+        "methods": null,
+        "resources": {
+          "locations": {
+            "methods": null,
+            "resources": {
+              "operations": {
+                "methods": {
+                  "cancel": {
+                    "id": "cloudnumberregistry.organizations.locations.operations.cancel",
+                    "httpMethod": "POST",
+                    "path": "v1alpha/{+name}:cancel",
+                    "flatPath": "v1alpha/organizations/{organizationsId}/locations/{locationsId}/operations/{operationsId}:cancel",
+                    "description": "Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": {
+                      "$ref": "CancelOperationRequest"
+                    },
+                    "response": {
+                      "$ref": "Empty"
+                    }
+                  },
+                  "delete": {
+                    "id": "cloudnumberregistry.organizations.locations.operations.delete",
+                    "httpMethod": "DELETE",
+                    "path": "v1alpha/{+name}",
+                    "flatPath": "v1alpha/organizations/{organizationsId}/locations/{locationsId}/operations/{operationsId}",
+                    "description": "Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "Empty"
+                    }
+                  },
+                  "get": {
+                    "id": "cloudnumberregistry.organizations.locations.operations.get",
+                    "httpMethod": "GET",
+                    "path": "v1alpha/{+name}",
+                    "flatPath": "v1alpha/organizations/{organizationsId}/locations/{locationsId}/operations/{operationsId}",
+                    "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "Operation"
+                    }
+                  },
+                  "list": {
+                    "id": "cloudnumberregistry.organizations.locations.operations.list",
+                    "httpMethod": "GET",
+                    "path": "v1alpha/{+name}/operations",
+                    "flatPath": "v1alpha/organizations/{organizationsId}/locations/{locationsId}/operations",
+                    "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.",
+                    "parameters": {
+                      "filter": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      },
+                      "pageSize": {
+                        "type": "integer",
+                        "location": "query",
+                        "required": false
+                      },
+                      "pageToken": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "returnPartialSuccess": {
+                        "type": "boolean",
+                        "location": "query",
+                        "required": false
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "ListOperationsResponse"
+                    }
+                  }
+                },
+                "resources": null
+              },
+              "orgNumberRegistries": {
+                "methods": {
+                  "create": {
+                    "id": "cloudnumberregistry.organizations.locations.orgNumberRegistries.create",
+                    "httpMethod": "POST",
+                    "path": "v1alpha/{+parent}/orgNumberRegistries",
+                    "flatPath": "v1alpha/organizations/{organizationsId}/locations/{locationsId}/orgNumberRegistries",
+                    "description": "Creates a new OrgNumberRegistry in a given organization and location.",
+                    "parameters": {
+                      "orgNumberRegistryId": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "parent": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      },
+                      "requestId": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      }
+                    },
+                    "parameterOrder": [
+                      "parent"
+                    ],
+                    "request": {
+                      "$ref": "OrgNumberRegistry"
+                    },
+                    "response": {
+                      "$ref": "Operation"
+                    }
+                  },
+                  "delete": {
+                    "id": "cloudnumberregistry.organizations.locations.orgNumberRegistries.delete",
+                    "httpMethod": "DELETE",
+                    "path": "v1alpha/{+name}",
+                    "flatPath": "v1alpha/organizations/{organizationsId}/locations/{locationsId}/orgNumberRegistries/{orgNumberRegistriesId}",
+                    "description": "Deletes a single OrgNumberRegistry.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      },
+                      "requestId": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "Operation"
+                    }
+                  },
+                  "get": {
+                    "id": "cloudnumberregistry.organizations.locations.orgNumberRegistries.get",
+                    "httpMethod": "GET",
+                    "path": "v1alpha/{+name}",
+                    "flatPath": "v1alpha/organizations/{organizationsId}/locations/{locationsId}/orgNumberRegistries/{orgNumberRegistriesId}",
+                    "description": "Gets details of a single OrgNumberRegistry.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "OrgNumberRegistry"
+                    }
+                  },
+                  "list": {
+                    "id": "cloudnumberregistry.organizations.locations.orgNumberRegistries.list",
+                    "httpMethod": "GET",
+                    "path": "v1alpha/{+parent}/orgNumberRegistries",
+                    "flatPath": "v1alpha/organizations/{organizationsId}/locations/{locationsId}/orgNumberRegistries",
+                    "description": "Lists OrgNumberRegistries in a given organization and location.",
+                    "parameters": {
+                      "filter": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "orderBy": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "pageSize": {
+                        "type": "integer",
+                        "location": "query",
+                        "required": false
+                      },
+                      "pageToken": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "parent": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "parent"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "ListOrgNumberRegistriesResponse"
+                    }
+                  }
+                },
+                "resources": null
+              }
+            }
+          }
+        }
+      },
+      "projects": {
+        "methods": null,
+        "resources": {
+          "locations": {
+            "methods": {
+              "get": {
+                "id": "cloudnumberregistry.projects.locations.get",
+                "httpMethod": "GET",
+                "path": "v1alpha/{+name}",
+                "flatPath": "v1alpha/projects/{projectsId}/locations/{locationsId}",
+                "description": "Gets information about a location.",
+                "parameters": {
+                  "name": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  }
+                },
+                "parameterOrder": [
+                  "name"
+                ],
+                "request": null,
+                "response": {
+                  "$ref": "Location"
+                }
+              },
+              "list": {
+                "id": "cloudnumberregistry.projects.locations.list",
+                "httpMethod": "GET",
+                "path": "v1alpha/{+name}/locations",
+                "flatPath": "v1alpha/projects/{projectsId}/locations",
+                "description": "Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the ListLocationsRequest.name field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version.",
+                "parameters": {
+                  "extraLocationTypes": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false
+                  },
+                  "filter": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false
+                  },
+                  "name": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  },
+                  "pageSize": {
+                    "type": "integer",
+                    "location": "query",
+                    "required": false
+                  },
+                  "pageToken": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false
+                  }
+                },
+                "parameterOrder": [
+                  "name"
+                ],
+                "request": null,
+                "response": {
+                  "$ref": "ListLocationsResponse"
+                }
+              }
+            },
+            "resources": {
+              "customRanges": {
+                "methods": {
+                  "create": {
+                    "id": "cloudnumberregistry.projects.locations.customRanges.create",
+                    "httpMethod": "POST",
+                    "path": "v1alpha/{+parent}/customRanges",
+                    "flatPath": "v1alpha/projects/{projectsId}/locations/{locationsId}/customRanges",
+                    "description": "Creates a new CustomRange in a given project and location.",
+                    "parameters": {
+                      "customRangeId": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "parent": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      },
+                      "requestId": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      }
+                    },
+                    "parameterOrder": [
+                      "parent"
+                    ],
+                    "request": {
+                      "$ref": "CustomRange"
+                    },
+                    "response": {
+                      "$ref": "Operation"
+                    }
+                  },
+                  "delete": {
+                    "id": "cloudnumberregistry.projects.locations.customRanges.delete",
+                    "httpMethod": "DELETE",
+                    "path": "v1alpha/{+name}",
+                    "flatPath": "v1alpha/projects/{projectsId}/locations/{locationsId}/customRanges/{customRangesId}",
+                    "description": "Deletes a single CustomRange.",
+                    "parameters": {
+                      "force": {
+                        "type": "boolean",
+                        "location": "query",
+                        "required": false
+                      },
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      },
+                      "requestId": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "Operation"
+                    }
+                  },
+                  "findFreeIpRanges": {
+                    "id": "cloudnumberregistry.projects.locations.customRanges.findFreeIpRanges",
+                    "httpMethod": "GET",
+                    "path": "v1alpha/{+name}:findFreeIpRanges",
+                    "flatPath": "v1alpha/projects/{projectsId}/locations/{locationsId}/customRanges/{customRangesId}:findFreeIpRanges",
+                    "description": "Finds free IP ranges in a single CustomRange.",
+                    "parameters": {
+                      "cidrPrefixLength": {
+                        "type": "integer",
+                        "location": "query",
+                        "required": false
+                      },
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      },
+                      "rangeCount": {
+                        "type": "integer",
+                        "location": "query",
+                        "required": false
+                      },
+                      "requestId": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "FindCustomRangeFreeIpRangesResponse"
+                    }
+                  },
+                  "get": {
+                    "id": "cloudnumberregistry.projects.locations.customRanges.get",
+                    "httpMethod": "GET",
+                    "path": "v1alpha/{+name}",
+                    "flatPath": "v1alpha/projects/{projectsId}/locations/{locationsId}/customRanges/{customRangesId}",
+                    "description": "Gets details of a single CustomRange.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "CustomRange"
+                    }
+                  },
+                  "list": {
+                    "id": "cloudnumberregistry.projects.locations.customRanges.list",
+                    "httpMethod": "GET",
+                    "path": "v1alpha/{+parent}/customRanges",
+                    "flatPath": "v1alpha/projects/{projectsId}/locations/{locationsId}/customRanges",
+                    "description": "Lists CustomRanges in a given project and location.",
+                    "parameters": {
+                      "filter": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "orderBy": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "pageSize": {
+                        "type": "integer",
+                        "location": "query",
+                        "required": false
+                      },
+                      "pageToken": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "parent": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "parent"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "ListCustomRangesResponse"
+                    }
+                  },
+                  "patch": {
+                    "id": "cloudnumberregistry.projects.locations.customRanges.patch",
+                    "httpMethod": "PATCH",
+                    "path": "v1alpha/{+name}",
+                    "flatPath": "v1alpha/projects/{projectsId}/locations/{locationsId}/customRanges/{customRangesId}",
+                    "description": "Updates the parameters of a single CustomRange.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      },
+                      "requestId": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "updateMask": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": {
+                      "$ref": "CustomRange"
+                    },
+                    "response": {
+                      "$ref": "Operation"
+                    }
+                  },
+                  "showUtilization": {
+                    "id": "cloudnumberregistry.projects.locations.customRanges.showUtilization",
+                    "httpMethod": "GET",
+                    "path": "v1alpha/{+name}:showUtilization",
+                    "flatPath": "v1alpha/projects/{projectsId}/locations/{locationsId}/customRanges/{customRangesId}:showUtilization",
+                    "description": "Gets the details of a single CustomRange and its utilization.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "ShowCustomRangeUtilizationResponse"
+                    }
+                  }
+                },
+                "resources": null
+              },
+              "discoveredRanges": {
+                "methods": {
+                  "findFreeIpRanges": {
+                    "id": "cloudnumberregistry.projects.locations.discoveredRanges.findFreeIpRanges",
+                    "httpMethod": "GET",
+                    "path": "v1alpha/{+name}:findFreeIpRanges",
+                    "flatPath": "v1alpha/projects/{projectsId}/locations/{locationsId}/discoveredRanges/{discoveredRangesId}:findFreeIpRanges",
+                    "description": "Finds free IP ranges in a single DiscoveredRange.",
+                    "parameters": {
+                      "cidrPrefixLength": {
+                        "type": "integer",
+                        "location": "query",
+                        "required": false
+                      },
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      },
+                      "rangeCount": {
+                        "type": "integer",
+                        "location": "query",
+                        "required": false
+                      },
+                      "requestId": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "FindDiscoveredRangeFreeIpRangesResponse"
+                    }
+                  },
+                  "get": {
+                    "id": "cloudnumberregistry.projects.locations.discoveredRanges.get",
+                    "httpMethod": "GET",
+                    "path": "v1alpha/{+name}",
+                    "flatPath": "v1alpha/projects/{projectsId}/locations/{locationsId}/discoveredRanges/{discoveredRangesId}",
+                    "description": "Gets details of a single DiscoveredRange.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "DiscoveredRange"
+                    }
+                  },
+                  "list": {
+                    "id": "cloudnumberregistry.projects.locations.discoveredRanges.list",
+                    "httpMethod": "GET",
+                    "path": "v1alpha/{+parent}/discoveredRanges",
+                    "flatPath": "v1alpha/projects/{projectsId}/locations/{locationsId}/discoveredRanges",
+                    "description": "Lists DiscoveredRanges in a given project and location.",
+                    "parameters": {
+                      "filter": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "orderBy": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "pageSize": {
+                        "type": "integer",
+                        "location": "query",
+                        "required": false
+                      },
+                      "pageToken": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "parent": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "parent"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "ListDiscoveredRangesResponse"
+                    }
+                  },
+                  "showUtilization": {
+                    "id": "cloudnumberregistry.projects.locations.discoveredRanges.showUtilization",
+                    "httpMethod": "GET",
+                    "path": "v1alpha/{+name}:showUtilization",
+                    "flatPath": "v1alpha/projects/{projectsId}/locations/{locationsId}/discoveredRanges/{discoveredRangesId}:showUtilization",
+                    "description": "Gets the details of a single DiscoveredRange and its utilization.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "ShowDiscoveredRangeUtilizationResponse"
+                    }
+                  }
+                },
+                "resources": null
+              },
+              "ipamAdminScopes": {
+                "methods": {
+                  "checkAvailability": {
+                    "id": "cloudnumberregistry.projects.locations.ipamAdminScopes.checkAvailability",
+                    "httpMethod": "GET",
+                    "path": "v1alpha/{+parent}/ipamAdminScopes:checkAvailability",
+                    "flatPath": "v1alpha/projects/{projectsId}/locations/{locationsId}/ipamAdminScopes:checkAvailability",
+                    "description": "Checks the availability of IpamAdminScopes in a given project and location.",
+                    "parameters": {
+                      "parent": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      },
+                      "scopes": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      }
+                    },
+                    "parameterOrder": [
+                      "parent"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "CheckAvailabilityIpamAdminScopesResponse"
+                    }
+                  },
+                  "cleanup": {
+                    "id": "cloudnumberregistry.projects.locations.ipamAdminScopes.cleanup",
+                    "httpMethod": "POST",
+                    "path": "v1alpha/{+name}:cleanup",
+                    "flatPath": "v1alpha/projects/{projectsId}/locations/{locationsId}/ipamAdminScopes/{ipamAdminScopesId}:cleanup",
+                    "description": "Cleans up a single IpamAdminScope.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": {
+                      "$ref": "CleanupIpamAdminScopeRequest"
+                    },
+                    "response": {
+                      "$ref": "Operation"
+                    }
+                  },
+                  "create": {
+                    "id": "cloudnumberregistry.projects.locations.ipamAdminScopes.create",
+                    "httpMethod": "POST",
+                    "path": "v1alpha/{+parent}/ipamAdminScopes",
+                    "flatPath": "v1alpha/projects/{projectsId}/locations/{locationsId}/ipamAdminScopes",
+                    "description": "Creates a new IpamAdminScope in a given project and location.",
+                    "parameters": {
+                      "ipamAdminScopeId": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "parent": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      },
+                      "requestId": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      }
+                    },
+                    "parameterOrder": [
+                      "parent"
+                    ],
+                    "request": {
+                      "$ref": "IpamAdminScope"
+                    },
+                    "response": {
+                      "$ref": "Operation"
+                    }
+                  },
+                  "delete": {
+                    "id": "cloudnumberregistry.projects.locations.ipamAdminScopes.delete",
+                    "httpMethod": "DELETE",
+                    "path": "v1alpha/{+name}",
+                    "flatPath": "v1alpha/projects/{projectsId}/locations/{locationsId}/ipamAdminScopes/{ipamAdminScopesId}",
+                    "description": "Deletes a single IpamAdminScope.",
+                    "parameters": {
+                      "force": {
+                        "type": "boolean",
+                        "location": "query",
+                        "required": false
+                      },
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      },
+                      "requestId": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "Operation"
+                    }
+                  },
+                  "disable": {
+                    "id": "cloudnumberregistry.projects.locations.ipamAdminScopes.disable",
+                    "httpMethod": "POST",
+                    "path": "v1alpha/{+name}:disable",
+                    "flatPath": "v1alpha/projects/{projectsId}/locations/{locationsId}/ipamAdminScopes/{ipamAdminScopesId}:disable",
+                    "description": "Disables a single IpamAdminScope.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": {
+                      "$ref": "DisableIpamAdminScopeRequest"
+                    },
+                    "response": {
+                      "$ref": "Operation"
+                    }
+                  },
+                  "get": {
+                    "id": "cloudnumberregistry.projects.locations.ipamAdminScopes.get",
+                    "httpMethod": "GET",
+                    "path": "v1alpha/{+name}",
+                    "flatPath": "v1alpha/projects/{projectsId}/locations/{locationsId}/ipamAdminScopes/{ipamAdminScopesId}",
+                    "description": "Gets details of a single IpamAdminScope.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "IpamAdminScope"
+                    }
+                  },
+                  "list": {
+                    "id": "cloudnumberregistry.projects.locations.ipamAdminScopes.list",
+                    "httpMethod": "GET",
+                    "path": "v1alpha/{+parent}/ipamAdminScopes",
+                    "flatPath": "v1alpha/projects/{projectsId}/locations/{locationsId}/ipamAdminScopes",
+                    "description": "Lists IpamAdminScopes in a given project and location.",
+                    "parameters": {
+                      "filter": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "orderBy": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "pageSize": {
+                        "type": "integer",
+                        "location": "query",
+                        "required": false
+                      },
+                      "pageToken": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "parent": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "parent"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "ListIpamAdminScopesResponse"
+                    }
+                  },
+                  "patch": {
+                    "id": "cloudnumberregistry.projects.locations.ipamAdminScopes.patch",
+                    "httpMethod": "PATCH",
+                    "path": "v1alpha/{+name}",
+                    "flatPath": "v1alpha/projects/{projectsId}/locations/{locationsId}/ipamAdminScopes/{ipamAdminScopesId}",
+                    "description": "Updates the parameters of a single IpamAdminScope.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      },
+                      "requestId": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "updateMask": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": {
+                      "$ref": "IpamAdminScope"
+                    },
+                    "response": {
+                      "$ref": "Operation"
+                    }
+                  }
+                },
+                "resources": null
+              },
+              "operations": {
+                "methods": {
+                  "cancel": {
+                    "id": "cloudnumberregistry.projects.locations.operations.cancel",
+                    "httpMethod": "POST",
+                    "path": "v1alpha/{+name}:cancel",
+                    "flatPath": "v1alpha/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}:cancel",
+                    "description": "Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": {
+                      "$ref": "CancelOperationRequest"
+                    },
+                    "response": {
+                      "$ref": "Empty"
+                    }
+                  },
+                  "delete": {
+                    "id": "cloudnumberregistry.projects.locations.operations.delete",
+                    "httpMethod": "DELETE",
+                    "path": "v1alpha/{+name}",
+                    "flatPath": "v1alpha/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
+                    "description": "Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "Empty"
+                    }
+                  },
+                  "get": {
+                    "id": "cloudnumberregistry.projects.locations.operations.get",
+                    "httpMethod": "GET",
+                    "path": "v1alpha/{+name}",
+                    "flatPath": "v1alpha/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
+                    "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "Operation"
+                    }
+                  },
+                  "list": {
+                    "id": "cloudnumberregistry.projects.locations.operations.list",
+                    "httpMethod": "GET",
+                    "path": "v1alpha/{+name}/operations",
+                    "flatPath": "v1alpha/projects/{projectsId}/locations/{locationsId}/operations",
+                    "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.",
+                    "parameters": {
+                      "filter": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      },
+                      "pageSize": {
+                        "type": "integer",
+                        "location": "query",
+                        "required": false
+                      },
+                      "pageToken": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "returnPartialSuccess": {
+                        "type": "boolean",
+                        "location": "query",
+                        "required": false
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "ListOperationsResponse"
+                    }
+                  }
+                },
+                "resources": null
+              },
+              "realms": {
+                "methods": {
+                  "create": {
+                    "id": "cloudnumberregistry.projects.locations.realms.create",
+                    "httpMethod": "POST",
+                    "path": "v1alpha/{+parent}/realms",
+                    "flatPath": "v1alpha/projects/{projectsId}/locations/{locationsId}/realms",
+                    "description": "Creates a new Realm in a given project and location.",
+                    "parameters": {
+                      "parent": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      },
+                      "realmId": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "requestId": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      }
+                    },
+                    "parameterOrder": [
+                      "parent"
+                    ],
+                    "request": {
+                      "$ref": "Realm"
+                    },
+                    "response": {
+                      "$ref": "Operation"
+                    }
+                  },
+                  "delete": {
+                    "id": "cloudnumberregistry.projects.locations.realms.delete",
+                    "httpMethod": "DELETE",
+                    "path": "v1alpha/{+name}",
+                    "flatPath": "v1alpha/projects/{projectsId}/locations/{locationsId}/realms/{realmsId}",
+                    "description": "Deletes a single Realm.",
+                    "parameters": {
+                      "force": {
+                        "type": "boolean",
+                        "location": "query",
+                        "required": false
+                      },
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      },
+                      "requestId": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "Operation"
+                    }
+                  },
+                  "get": {
+                    "id": "cloudnumberregistry.projects.locations.realms.get",
+                    "httpMethod": "GET",
+                    "path": "v1alpha/{+name}",
+                    "flatPath": "v1alpha/projects/{projectsId}/locations/{locationsId}/realms/{realmsId}",
+                    "description": "Gets details of a single Realm.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      },
+                      "view": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "Realm"
+                    }
+                  },
+                  "list": {
+                    "id": "cloudnumberregistry.projects.locations.realms.list",
+                    "httpMethod": "GET",
+                    "path": "v1alpha/{+parent}/realms",
+                    "flatPath": "v1alpha/projects/{projectsId}/locations/{locationsId}/realms",
+                    "description": "Lists Realms in a given project and location.",
+                    "parameters": {
+                      "filter": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "orderBy": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "pageSize": {
+                        "type": "integer",
+                        "location": "query",
+                        "required": false
+                      },
+                      "pageToken": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "parent": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      },
+                      "view": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      }
+                    },
+                    "parameterOrder": [
+                      "parent"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "ListRealmsResponse"
+                    }
+                  },
+                  "patch": {
+                    "id": "cloudnumberregistry.projects.locations.realms.patch",
+                    "httpMethod": "PATCH",
+                    "path": "v1alpha/{+name}",
+                    "flatPath": "v1alpha/projects/{projectsId}/locations/{locationsId}/realms/{realmsId}",
+                    "description": "Updates the parameters of a single Realm.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      },
+                      "requestId": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "updateMask": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": {
+                      "$ref": "Realm"
+                    },
+                    "response": {
+                      "$ref": "Operation"
+                    }
+                  }
+                },
+                "resources": null
+              },
+              "registryBooks": {
+                "methods": {
+                  "create": {
+                    "id": "cloudnumberregistry.projects.locations.registryBooks.create",
+                    "httpMethod": "POST",
+                    "path": "v1alpha/{+parent}/registryBooks",
+                    "flatPath": "v1alpha/projects/{projectsId}/locations/{locationsId}/registryBooks",
+                    "description": "Creates a new RegistryBook in a given project and location.",
+                    "parameters": {
+                      "parent": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      },
+                      "registryBookId": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "requestId": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      }
+                    },
+                    "parameterOrder": [
+                      "parent"
+                    ],
+                    "request": {
+                      "$ref": "RegistryBook"
+                    },
+                    "response": {
+                      "$ref": "Operation"
+                    }
+                  },
+                  "delete": {
+                    "id": "cloudnumberregistry.projects.locations.registryBooks.delete",
+                    "httpMethod": "DELETE",
+                    "path": "v1alpha/{+name}",
+                    "flatPath": "v1alpha/projects/{projectsId}/locations/{locationsId}/registryBooks/{registryBooksId}",
+                    "description": "Deletes a single RegistryBook.",
+                    "parameters": {
+                      "force": {
+                        "type": "boolean",
+                        "location": "query",
+                        "required": false
+                      },
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      },
+                      "requestId": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "Operation"
+                    }
+                  },
+                  "get": {
+                    "id": "cloudnumberregistry.projects.locations.registryBooks.get",
+                    "httpMethod": "GET",
+                    "path": "v1alpha/{+name}",
+                    "flatPath": "v1alpha/projects/{projectsId}/locations/{locationsId}/registryBooks/{registryBooksId}",
+                    "description": "Gets details of a single RegistryBook.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      },
+                      "view": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "RegistryBook"
+                    }
+                  },
+                  "list": {
+                    "id": "cloudnumberregistry.projects.locations.registryBooks.list",
+                    "httpMethod": "GET",
+                    "path": "v1alpha/{+parent}/registryBooks",
+                    "flatPath": "v1alpha/projects/{projectsId}/locations/{locationsId}/registryBooks",
+                    "description": "Lists RegistryBooks in a given project and location.",
+                    "parameters": {
+                      "filter": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "orderBy": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "pageSize": {
+                        "type": "integer",
+                        "location": "query",
+                        "required": false
+                      },
+                      "pageToken": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "parent": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      },
+                      "view": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      }
+                    },
+                    "parameterOrder": [
+                      "parent"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "ListRegistryBooksResponse"
+                    }
+                  },
+                  "patch": {
+                    "id": "cloudnumberregistry.projects.locations.registryBooks.patch",
+                    "httpMethod": "PATCH",
+                    "path": "v1alpha/{+name}",
+                    "flatPath": "v1alpha/projects/{projectsId}/locations/{locationsId}/registryBooks/{registryBooksId}",
+                    "description": "Updates the parameters of a single RegistryBook.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      },
+                      "requestId": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "updateMask": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": {
+                      "$ref": "RegistryBook"
+                    },
+                    "response": {
+                      "$ref": "Operation"
+                    }
+                  },
+                  "searchIpResources": {
+                    "id": "cloudnumberregistry.projects.locations.registryBooks.searchIpResources",
+                    "httpMethod": "POST",
+                    "path": "v1alpha/{+name}:searchIpResources",
+                    "flatPath": "v1alpha/projects/{projectsId}/locations/{locationsId}/registryBooks/{registryBooksId}:searchIpResources",
+                    "description": "Searches IP resources in a given RegistryBook.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": {
+                      "$ref": "SearchIpResourcesRequest"
+                    },
+                    "response": {
+                      "$ref": "SearchIpResourcesResponse"
+                    }
+                  }
+                },
+                "resources": null
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

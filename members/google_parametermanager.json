@@ -1,0 +1,1733 @@
+{
+  "schema_source": "discovery_docs",
+  "mode": "resource",
+  "auth": {
+    "Type": "",
+    "Params": null
+  },
+  "base_url": "https://parametermanager.googleapis.com",
+  "retry": {
+    "MaxAttempts": 0,
+    "InitialBackoff": "",
+    "MaxBackoff": "",
+    "Jitter": null,
+    "RespectRetryAfter": null,
+    "RateLimitResetHeader": ""
+  },
+  "timeouts": {
+    "Create": "",
+    "Read": "",
+    "Update": "",
+    "Delete": "",
+    "Default": ""
+  },
+  "wire_name": "google_parametermanager",
+  "raw_spec": {
+    "name": "parametermanager",
+    "revision": "20260812",
+    "discoveryVersion": "v1",
+    "baseUrl": "https://parametermanager.googleapis.com/",
+    "rootUrl": "https://parametermanager.googleapis.com/",
+    "servicePath": "",
+    "schemas": {
+      "Empty": {
+        "type": "object",
+        "format": "",
+        "description": "A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }",
+        "$ref": "",
+        "properties": {},
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ListLocationsResponse": {
+        "type": "object",
+        "format": "",
+        "description": "The response message for Locations.ListLocations.",
+        "$ref": "",
+        "properties": {
+          "locations": {
+            "type": "array",
+            "format": "",
+            "description": "A list of locations that matches the specified filter in the request.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Location",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "The standard List next-page token.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ListParameterVersionsResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Message for response to listing ParameterVersions",
+        "$ref": "",
+        "properties": {
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "A token identifying a page of results the server should return.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "parameterVersions": {
+            "type": "array",
+            "format": "",
+            "description": "The list of ParameterVersions",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "ParameterVersion",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "unreachable": {
+            "type": "array",
+            "format": "",
+            "description": "Unordered list. Locations that could not be reached.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ListParametersResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Message for response to listing Parameters",
+        "$ref": "",
+        "properties": {
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "A token identifying a page of results the server should return.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "parameters": {
+            "type": "array",
+            "format": "",
+            "description": "The list of Parameters",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Parameter",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "unreachable": {
+            "type": "array",
+            "format": "",
+            "description": "Unordered list. Locations that could not be reached.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ListTemplateVersionsResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Message for response to listing TemplateVersions",
+        "$ref": "",
+        "properties": {
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "A token identifying a page of results the server should return.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "templateVersions": {
+            "type": "array",
+            "format": "",
+            "description": "The list of TemplateVersions",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "TemplateVersion",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "unreachable": {
+            "type": "array",
+            "format": "",
+            "description": "Unordered list. Locations that could not be reached.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ListTemplatesResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Message for response to listing Templates",
+        "$ref": "",
+        "properties": {
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "A token identifying a page of results the server should return.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "templates": {
+            "type": "array",
+            "format": "",
+            "description": "The list of Templates",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Template",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "unreachable": {
+            "type": "array",
+            "format": "",
+            "description": "Unordered list. Locations that could not be reached.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Location": {
+        "type": "object",
+        "format": "",
+        "description": "A resource that represents a Google Cloud location.",
+        "$ref": "",
+        "properties": {
+          "displayName": {
+            "type": "string",
+            "format": "",
+            "description": "The friendly name for this location, typically a nearby city name. For example, \"Tokyo\".",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "labels": {
+            "type": "object",
+            "format": "",
+            "description": "Cross-service attributes for the location. For example {\"cloud.googleapis.com/region\": \"us-east1\"}",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "locationId": {
+            "type": "string",
+            "format": "",
+            "description": "The canonical id for this location. For example: `\"us-east1\"`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "metadata": {
+            "type": "object",
+            "format": "",
+            "description": "Service-specific metadata. For example the available capacity at the given location.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "any",
+              "format": "",
+              "description": "Properties of the object. Contains field @type with type URL.",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "Resource name for the location, which may vary between implementations. For example: `\"projects/example-project/locations/us-east1\"`",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Parameter": {
+        "type": "object",
+        "format": "",
+        "description": "Message describing Parameter resource",
+        "$ref": "",
+        "properties": {
+          "createTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. [Output only] Create time stamp",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "format": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Specifies the format of a Parameter.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "PARAMETER_FORMAT_UNSPECIFIED",
+              "UNFORMATTED",
+              "YAML",
+              "JSON"
+            ],
+            "readOnly": false
+          },
+          "kmsKey": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Customer managed encryption key (CMEK) to use for encrypting the Parameter Versions. If not set, the default Google-managed encryption key will be used. Cloud KMS CryptoKeys must reside in the same location as the Parameter. The expected format is `projects/*/locations/*/keyRings/*/cryptoKeys/*`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "labels": {
+            "type": "object",
+            "format": "",
+            "description": "Optional. Labels as key value pairs",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "Identifier. [Output only] The resource name of the Parameter in the format `projects/*/locations/*/parameters/*`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "policyMember": {
+            "type": "",
+            "format": "",
+            "description": "Output only. [Output-only] policy member strings of a Google Cloud resource.",
+            "$ref": "ResourcePolicyMember",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "updateTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. [Output only] Update time stamp",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ParameterVersion": {
+        "type": "object",
+        "format": "",
+        "description": "Message describing ParameterVersion resource",
+        "$ref": "",
+        "properties": {
+          "createTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. [Output only] Create time stamp",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "disabled": {
+            "type": "boolean",
+            "format": "",
+            "description": "Optional. Disabled boolean to determine if a ParameterVersion acts as a metadata only resource (payload is never returned if disabled is true). If true any calls will always default to BASIC view even if the user explicitly passes FULL view as part of the request. A render call on a disabled resource fails with an error. Default value is False.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "kmsKeyVersion": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Output only. [Output only] The resource name of the KMS key version used to encrypt the ParameterVersion payload. This field is populated only if the Parameter resource has customer managed encryption key (CMEK) configured.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "Identifier. [Output only] The resource name of the ParameterVersion in the format `projects/*/locations/*/parameters/*/versions/*`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "payload": {
+            "type": "",
+            "format": "",
+            "description": "Required. Immutable. Payload content of a ParameterVersion resource. This is only returned when the request provides the View value of FULL (default for GET request).",
+            "$ref": "ParameterVersionPayload",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "updateTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. [Output only] Update time stamp",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ParameterVersionPayload": {
+        "type": "object",
+        "format": "",
+        "description": "Message for storing a ParameterVersion resource's payload data",
+        "$ref": "",
+        "properties": {
+          "data": {
+            "type": "string",
+            "format": "byte",
+            "description": "Required. bytes data for storing payload.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "RenderParameterVersionResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Message describing RenderParameterVersionResponse resource",
+        "$ref": "",
+        "properties": {
+          "parameterVersion": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. Resource identifier of a ParameterVersion in the format `projects/*/locations/*/parameters/*/versions/*`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "payload": {
+            "type": "",
+            "format": "",
+            "description": "Payload content of a ParameterVersion resource.",
+            "$ref": "ParameterVersionPayload",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "renderedPayload": {
+            "type": "string",
+            "format": "byte",
+            "description": "Output only. Server generated rendered version of the user provided payload data (ParameterVersionPayload) which has substitutions of all (if any) references to a SecretManager SecretVersion resources. This substitution only works for a Parameter which is in JSON or YAML format.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "RenderTemplateVersionResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Message describing RenderTemplateVersionResponse resource",
+        "$ref": "",
+        "properties": {
+          "parameterVersion": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The resource name of the ParameterVersion used to render the template version in the format `projects/*/locations/*/parameters/*/versions/*`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "payload": {
+            "type": "",
+            "format": "",
+            "description": "Payload content of a TemplateVersion resource.",
+            "$ref": "TemplateVersionPayload",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "renderedPayload": {
+            "type": "string",
+            "format": "byte",
+            "description": "Output only. Server generated rendered version of the user provided payload data (TemplateVersionPayload) which has all the variables resolved using the provided parameter version.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "templateFormat": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. Format of the template version.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "TEMPLATE_FORMAT_UNSPECIFIED",
+              "TEMPLATE_FORMAT_YAML",
+              "TEMPLATE_FORMAT_JSON"
+            ],
+            "readOnly": true
+          },
+          "templateVersion": {
+            "type": "string",
+            "format": "",
+            "description": "Resource identifier of a TemplateVersion in the format `projects/*/locations/*/templates/*/versions/*`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ResourcePolicyMember": {
+        "type": "object",
+        "format": "",
+        "description": "Output-only policy member strings of a Google Cloud resource's built-in identity.",
+        "$ref": "",
+        "properties": {
+          "iamPolicyNamePrincipal": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. IAM policy binding member referring to a Google Cloud resource by user-assigned name (https://google.aip.dev/122). If a resource is deleted and recreated with the same name, the binding will be applicable to the new resource. Example: `principal://parametermanager.googleapis.com/projects/12345/name/locations/us-central1-a/parameters/my-parameter`",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "iamPolicyUidPrincipal": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. IAM policy binding member referring to a Google Cloud resource by system-assigned unique identifier (https://google.aip.dev/148#uid). If a resource is deleted and recreated with the same name, the binding will not be applicable to the new resource Example: `principal://parametermanager.googleapis.com/projects/12345/uid/locations/us-central1-a/parameters/a918fed5`",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Template": {
+        "type": "object",
+        "format": "",
+        "description": "Message describing Template resource",
+        "$ref": "",
+        "properties": {
+          "createTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. Create time stamp",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "format": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Specifies the format of a Template.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "TEMPLATE_FORMAT_UNSPECIFIED",
+              "TEMPLATE_FORMAT_YAML",
+              "TEMPLATE_FORMAT_JSON"
+            ],
+            "readOnly": false
+          },
+          "labels": {
+            "type": "object",
+            "format": "",
+            "description": "Optional. Labels as key value pairs",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "Identifier. The resource name of the Template in the format `projects/*/locations/*/templates/*`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "updateTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. Update time stamp",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "TemplateVersion": {
+        "type": "object",
+        "format": "",
+        "description": "Message describing TemplateVersion resource",
+        "$ref": "",
+        "properties": {
+          "createTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. Create time stamp",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "disabled": {
+            "type": "boolean",
+            "format": "",
+            "description": "Optional. Disabled boolean to determine if a TemplateVersion acts as a metadata only resource (payload is never returned if disabled is true).",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "Identifier. The resource name of the TemplateVersion in the format `projects/*/locations/*/templates/*/versions/*`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "payload": {
+            "type": "",
+            "format": "",
+            "description": "Required. Immutable. Payload content of a TemplateVersion resource.",
+            "$ref": "TemplateVersionPayload",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "updateTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. Update time stamp",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "TemplateVersionPayload": {
+        "type": "object",
+        "format": "",
+        "description": "Message for storing a TemplateVersion resource's payload data",
+        "$ref": "",
+        "properties": {
+          "data": {
+            "type": "string",
+            "format": "byte",
+            "description": "Required. bytes data for storing payload.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      }
+    },
+    "resources": {
+      "projects": {
+        "methods": null,
+        "resources": {
+          "locations": {
+            "methods": {
+              "get": {
+                "id": "parametermanager.projects.locations.get",
+                "httpMethod": "GET",
+                "path": "v1/{+name}",
+                "flatPath": "v1/projects/{projectsId}/locations/{locationsId}",
+                "description": "Gets information about a location.",
+                "parameters": {
+                  "name": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  }
+                },
+                "parameterOrder": [
+                  "name"
+                ],
+                "request": null,
+                "response": {
+                  "$ref": "Location"
+                }
+              },
+              "list": {
+                "id": "parametermanager.projects.locations.list",
+                "httpMethod": "GET",
+                "path": "v1/{+name}/locations",
+                "flatPath": "v1/projects/{projectsId}/locations",
+                "description": "Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the ListLocationsRequest.name field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version.",
+                "parameters": {
+                  "extraLocationTypes": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false
+                  },
+                  "filter": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false
+                  },
+                  "name": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  },
+                  "pageSize": {
+                    "type": "integer",
+                    "location": "query",
+                    "required": false
+                  },
+                  "pageToken": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false
+                  }
+                },
+                "parameterOrder": [
+                  "name"
+                ],
+                "request": null,
+                "response": {
+                  "$ref": "ListLocationsResponse"
+                }
+              }
+            },
+            "resources": {
+              "parameters": {
+                "methods": {
+                  "create": {
+                    "id": "parametermanager.projects.locations.parameters.create",
+                    "httpMethod": "POST",
+                    "path": "v1/{+parent}/parameters",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/parameters",
+                    "description": "Creates a new Parameter in a given project and location.",
+                    "parameters": {
+                      "parameterId": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "parent": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      },
+                      "requestId": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      }
+                    },
+                    "parameterOrder": [
+                      "parent"
+                    ],
+                    "request": {
+                      "$ref": "Parameter"
+                    },
+                    "response": {
+                      "$ref": "Parameter"
+                    }
+                  },
+                  "delete": {
+                    "id": "parametermanager.projects.locations.parameters.delete",
+                    "httpMethod": "DELETE",
+                    "path": "v1/{+name}",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/parameters/{parametersId}",
+                    "description": "Deletes a single Parameter.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      },
+                      "requestId": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "Empty"
+                    }
+                  },
+                  "get": {
+                    "id": "parametermanager.projects.locations.parameters.get",
+                    "httpMethod": "GET",
+                    "path": "v1/{+name}",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/parameters/{parametersId}",
+                    "description": "Gets details of a single Parameter.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "Parameter"
+                    }
+                  },
+                  "list": {
+                    "id": "parametermanager.projects.locations.parameters.list",
+                    "httpMethod": "GET",
+                    "path": "v1/{+parent}/parameters",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/parameters",
+                    "description": "Lists Parameters in a given project and location.",
+                    "parameters": {
+                      "filter": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "orderBy": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "pageSize": {
+                        "type": "integer",
+                        "location": "query",
+                        "required": false
+                      },
+                      "pageToken": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "parent": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "parent"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "ListParametersResponse"
+                    }
+                  },
+                  "patch": {
+                    "id": "parametermanager.projects.locations.parameters.patch",
+                    "httpMethod": "PATCH",
+                    "path": "v1/{+name}",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/parameters/{parametersId}",
+                    "description": "Updates a single Parameter.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      },
+                      "requestId": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "updateMask": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": {
+                      "$ref": "Parameter"
+                    },
+                    "response": {
+                      "$ref": "Parameter"
+                    }
+                  }
+                },
+                "resources": {
+                  "versions": {
+                    "methods": {
+                      "create": {
+                        "id": "parametermanager.projects.locations.parameters.versions.create",
+                        "httpMethod": "POST",
+                        "path": "v1/{+parent}/versions",
+                        "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/parameters/{parametersId}/versions",
+                        "description": "Creates a new ParameterVersion in a given project, location, and parameter.",
+                        "parameters": {
+                          "parameterVersionId": {
+                            "type": "string",
+                            "location": "query",
+                            "required": false
+                          },
+                          "parent": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          },
+                          "requestId": {
+                            "type": "string",
+                            "location": "query",
+                            "required": false
+                          }
+                        },
+                        "parameterOrder": [
+                          "parent"
+                        ],
+                        "request": {
+                          "$ref": "ParameterVersion"
+                        },
+                        "response": {
+                          "$ref": "ParameterVersion"
+                        }
+                      },
+                      "delete": {
+                        "id": "parametermanager.projects.locations.parameters.versions.delete",
+                        "httpMethod": "DELETE",
+                        "path": "v1/{+name}",
+                        "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/parameters/{parametersId}/versions/{versionsId}",
+                        "description": "Deletes a single ParameterVersion.",
+                        "parameters": {
+                          "name": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          },
+                          "requestId": {
+                            "type": "string",
+                            "location": "query",
+                            "required": false
+                          }
+                        },
+                        "parameterOrder": [
+                          "name"
+                        ],
+                        "request": null,
+                        "response": {
+                          "$ref": "Empty"
+                        }
+                      },
+                      "get": {
+                        "id": "parametermanager.projects.locations.parameters.versions.get",
+                        "httpMethod": "GET",
+                        "path": "v1/{+name}",
+                        "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/parameters/{parametersId}/versions/{versionsId}",
+                        "description": "Gets details of a single ParameterVersion.",
+                        "parameters": {
+                          "name": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          },
+                          "view": {
+                            "type": "string",
+                            "location": "query",
+                            "required": false
+                          }
+                        },
+                        "parameterOrder": [
+                          "name"
+                        ],
+                        "request": null,
+                        "response": {
+                          "$ref": "ParameterVersion"
+                        }
+                      },
+                      "list": {
+                        "id": "parametermanager.projects.locations.parameters.versions.list",
+                        "httpMethod": "GET",
+                        "path": "v1/{+parent}/versions",
+                        "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/parameters/{parametersId}/versions",
+                        "description": "Lists ParameterVersions in a given project, location, and parameter.",
+                        "parameters": {
+                          "filter": {
+                            "type": "string",
+                            "location": "query",
+                            "required": false
+                          },
+                          "orderBy": {
+                            "type": "string",
+                            "location": "query",
+                            "required": false
+                          },
+                          "pageSize": {
+                            "type": "integer",
+                            "location": "query",
+                            "required": false
+                          },
+                          "pageToken": {
+                            "type": "string",
+                            "location": "query",
+                            "required": false
+                          },
+                          "parent": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          }
+                        },
+                        "parameterOrder": [
+                          "parent"
+                        ],
+                        "request": null,
+                        "response": {
+                          "$ref": "ListParameterVersionsResponse"
+                        }
+                      },
+                      "patch": {
+                        "id": "parametermanager.projects.locations.parameters.versions.patch",
+                        "httpMethod": "PATCH",
+                        "path": "v1/{+name}",
+                        "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/parameters/{parametersId}/versions/{versionsId}",
+                        "description": "Updates a single ParameterVersion.",
+                        "parameters": {
+                          "name": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          },
+                          "requestId": {
+                            "type": "string",
+                            "location": "query",
+                            "required": false
+                          },
+                          "updateMask": {
+                            "type": "string",
+                            "location": "query",
+                            "required": false
+                          }
+                        },
+                        "parameterOrder": [
+                          "name"
+                        ],
+                        "request": {
+                          "$ref": "ParameterVersion"
+                        },
+                        "response": {
+                          "$ref": "ParameterVersion"
+                        }
+                      },
+                      "render": {
+                        "id": "parametermanager.projects.locations.parameters.versions.render",
+                        "httpMethod": "GET",
+                        "path": "v1/{+name}:render",
+                        "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/parameters/{parametersId}/versions/{versionsId}:render",
+                        "description": "Gets rendered version of a ParameterVersion.",
+                        "parameters": {
+                          "name": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          }
+                        },
+                        "parameterOrder": [
+                          "name"
+                        ],
+                        "request": null,
+                        "response": {
+                          "$ref": "RenderParameterVersionResponse"
+                        }
+                      }
+                    },
+                    "resources": null
+                  }
+                }
+              },
+              "templates": {
+                "methods": {
+                  "create": {
+                    "id": "parametermanager.projects.locations.templates.create",
+                    "httpMethod": "POST",
+                    "path": "v1/{+parent}/templates",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/templates",
+                    "description": "Creates a new Template in a given project and location.",
+                    "parameters": {
+                      "parent": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      },
+                      "requestId": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "templateId": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      }
+                    },
+                    "parameterOrder": [
+                      "parent"
+                    ],
+                    "request": {
+                      "$ref": "Template"
+                    },
+                    "response": {
+                      "$ref": "Template"
+                    }
+                  },
+                  "delete": {
+                    "id": "parametermanager.projects.locations.templates.delete",
+                    "httpMethod": "DELETE",
+                    "path": "v1/{+name}",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/templates/{templatesId}",
+                    "description": "Deletes a single Template.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      },
+                      "requestId": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "Empty"
+                    }
+                  },
+                  "get": {
+                    "id": "parametermanager.projects.locations.templates.get",
+                    "httpMethod": "GET",
+                    "path": "v1/{+name}",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/templates/{templatesId}",
+                    "description": "Gets details of a single Template.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "Template"
+                    }
+                  },
+                  "list": {
+                    "id": "parametermanager.projects.locations.templates.list",
+                    "httpMethod": "GET",
+                    "path": "v1/{+parent}/templates",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/templates",
+                    "description": "Lists Templates in a given project and location.",
+                    "parameters": {
+                      "filter": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "orderBy": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "pageSize": {
+                        "type": "integer",
+                        "location": "query",
+                        "required": false
+                      },
+                      "pageToken": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "parent": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "parent"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "ListTemplatesResponse"
+                    }
+                  },
+                  "patch": {
+                    "id": "parametermanager.projects.locations.templates.patch",
+                    "httpMethod": "PATCH",
+                    "path": "v1/{+name}",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/templates/{templatesId}",
+                    "description": "Updates a single Template.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      },
+                      "requestId": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "updateMask": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": {
+                      "$ref": "Template"
+                    },
+                    "response": {
+                      "$ref": "Template"
+                    }
+                  }
+                },
+                "resources": {
+                  "versions": {
+                    "methods": {
+                      "create": {
+                        "id": "parametermanager.projects.locations.templates.versions.create",
+                        "httpMethod": "POST",
+                        "path": "v1/{+parent}/versions",
+                        "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/templates/{templatesId}/versions",
+                        "description": "Creates a new TemplateVersion in a given project, location, and template.",
+                        "parameters": {
+                          "parent": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          },
+                          "requestId": {
+                            "type": "string",
+                            "location": "query",
+                            "required": false
+                          },
+                          "templateVersionId": {
+                            "type": "string",
+                            "location": "query",
+                            "required": false
+                          }
+                        },
+                        "parameterOrder": [
+                          "parent"
+                        ],
+                        "request": {
+                          "$ref": "TemplateVersion"
+                        },
+                        "response": {
+                          "$ref": "TemplateVersion"
+                        }
+                      },
+                      "delete": {
+                        "id": "parametermanager.projects.locations.templates.versions.delete",
+                        "httpMethod": "DELETE",
+                        "path": "v1/{+name}",
+                        "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/templates/{templatesId}/versions/{versionsId}",
+                        "description": "Deletes a single TemplateVersion.",
+                        "parameters": {
+                          "name": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          },
+                          "requestId": {
+                            "type": "string",
+                            "location": "query",
+                            "required": false
+                          }
+                        },
+                        "parameterOrder": [
+                          "name"
+                        ],
+                        "request": null,
+                        "response": {
+                          "$ref": "Empty"
+                        }
+                      },
+                      "get": {
+                        "id": "parametermanager.projects.locations.templates.versions.get",
+                        "httpMethod": "GET",
+                        "path": "v1/{+name}",
+                        "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/templates/{templatesId}/versions/{versionsId}",
+                        "description": "Gets details of a single TemplateVersion.",
+                        "parameters": {
+                          "name": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          },
+                          "view": {
+                            "type": "string",
+                            "location": "query",
+                            "required": false
+                          }
+                        },
+                        "parameterOrder": [
+                          "name"
+                        ],
+                        "request": null,
+                        "response": {
+                          "$ref": "TemplateVersion"
+                        }
+                      },
+                      "list": {
+                        "id": "parametermanager.projects.locations.templates.versions.list",
+                        "httpMethod": "GET",
+                        "path": "v1/{+parent}/versions",
+                        "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/templates/{templatesId}/versions",
+                        "description": "Lists TemplateVersions in a given project, location, and template.",
+                        "parameters": {
+                          "filter": {
+                            "type": "string",
+                            "location": "query",
+                            "required": false
+                          },
+                          "orderBy": {
+                            "type": "string",
+                            "location": "query",
+                            "required": false
+                          },
+                          "pageSize": {
+                            "type": "integer",
+                            "location": "query",
+                            "required": false
+                          },
+                          "pageToken": {
+                            "type": "string",
+                            "location": "query",
+                            "required": false
+                          },
+                          "parent": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          }
+                        },
+                        "parameterOrder": [
+                          "parent"
+                        ],
+                        "request": null,
+                        "response": {
+                          "$ref": "ListTemplateVersionsResponse"
+                        }
+                      },
+                      "patch": {
+                        "id": "parametermanager.projects.locations.templates.versions.patch",
+                        "httpMethod": "PATCH",
+                        "path": "v1/{+name}",
+                        "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/templates/{templatesId}/versions/{versionsId}",
+                        "description": "Updates a single TemplateVersion.",
+                        "parameters": {
+                          "name": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          },
+                          "requestId": {
+                            "type": "string",
+                            "location": "query",
+                            "required": false
+                          },
+                          "updateMask": {
+                            "type": "string",
+                            "location": "query",
+                            "required": false
+                          }
+                        },
+                        "parameterOrder": [
+                          "name"
+                        ],
+                        "request": {
+                          "$ref": "TemplateVersion"
+                        },
+                        "response": {
+                          "$ref": "TemplateVersion"
+                        }
+                      },
+                      "render": {
+                        "id": "parametermanager.projects.locations.templates.versions.render",
+                        "httpMethod": "GET",
+                        "path": "v1/{+name}:render",
+                        "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/templates/{templatesId}/versions/{versionsId}:render",
+                        "description": "Gets rendered version of a TemplateVersion.",
+                        "parameters": {
+                          "name": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          },
+                          "parameterVersion": {
+                            "type": "string",
+                            "location": "query",
+                            "required": false
+                          }
+                        },
+                        "parameterOrder": [
+                          "name"
+                        ],
+                        "request": null,
+                        "response": {
+                          "$ref": "RenderTemplateVersionResponse"
+                        }
+                      }
+                    },
+                    "resources": null
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

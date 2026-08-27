@@ -1,0 +1,1779 @@
+{
+  "schema_source": "discovery_docs",
+  "mode": "resource",
+  "auth": {
+    "Type": "",
+    "Params": null
+  },
+  "base_url": "https://orgpolicy.googleapis.com",
+  "retry": {
+    "MaxAttempts": 0,
+    "InitialBackoff": "",
+    "MaxBackoff": "",
+    "Jitter": null,
+    "RespectRetryAfter": null,
+    "RateLimitResetHeader": ""
+  },
+  "timeouts": {
+    "Create": "",
+    "Read": "",
+    "Update": "",
+    "Delete": "",
+    "Default": ""
+  },
+  "wire_name": "google_orgpolicy",
+  "raw_spec": {
+    "name": "orgpolicy",
+    "revision": "20260821",
+    "discoveryVersion": "v1",
+    "baseUrl": "https://orgpolicy.googleapis.com/",
+    "rootUrl": "https://orgpolicy.googleapis.com/",
+    "servicePath": "",
+    "schemas": {
+      "GoogleCloudOrgpolicyV2AlternatePolicySpec": {
+        "type": "object",
+        "format": "",
+        "description": "Similar to PolicySpec but with an extra 'launch' field for launch reference. The PolicySpec here is specific for dry-run.",
+        "$ref": "",
+        "properties": {
+          "launch": {
+            "type": "string",
+            "format": "",
+            "description": "Reference to the launch that will be used while audit logging and to control the launch. Set only in the alternate policy.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "spec": {
+            "type": "",
+            "format": "",
+            "description": "Specify constraint for configurations of Google Cloud resources.",
+            "$ref": "GoogleCloudOrgpolicyV2PolicySpec",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudOrgpolicyV2Constraint": {
+        "type": "object",
+        "format": "",
+        "description": "A constraint describes a way to restrict a resource's configuration. For example, you could enforce a constraint that controls which Google Cloud services can be activated across an organization, or whether a Compute Engine instance can have serial port connections established. Constraints can be configured by the organization policy administrator to fit the needs of the organization by setting a policy that includes constraints at different locations in the organization's resource hierarchy. Policies are inherited down the resource hierarchy from higher levels, but can also be overridden. For details about the inheritance rules, see `Policy`. Constraints have a default behavior determined by the `constraint_default` field, which is the enforcement behavior that is used in the absence of a policy being defined or inherited for the resource in question.",
+        "$ref": "",
+        "properties": {
+          "booleanConstraint": {
+            "type": "",
+            "format": "",
+            "description": "Defines this constraint as being a boolean constraint.",
+            "$ref": "GoogleCloudOrgpolicyV2ConstraintBooleanConstraint",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "constraintDefault": {
+            "type": "string",
+            "format": "",
+            "description": "The evaluation behavior of this constraint in the absence of a policy.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "CONSTRAINT_DEFAULT_UNSPECIFIED",
+              "ALLOW",
+              "DENY"
+            ],
+            "readOnly": false
+          },
+          "description": {
+            "type": "string",
+            "format": "",
+            "description": "Detailed description of what this constraint controls as well as how and where it is enforced. Mutable.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "displayName": {
+            "type": "string",
+            "format": "",
+            "description": "The human readable name. Mutable.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "equivalentConstraint": {
+            "type": "string",
+            "format": "",
+            "description": "Defines the equivalent constraint name, if it exists. Managed constraints can have an equivalent legacy managed constraint, and legacy managed constraints can have an equivalent managed constraint. For example, \"constraints/iam.disableServiceAccountKeyUpload\" is equivalent to \"constraints/iam.managed.disableServiceAccountKeyUpload\".",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "listConstraint": {
+            "type": "",
+            "format": "",
+            "description": "Defines this constraint as being a list constraint.",
+            "$ref": "GoogleCloudOrgpolicyV2ConstraintListConstraint",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "Immutable. The resource name of the constraint. Must be in one of the following forms: * `projects/{project_number}/constraints/{constraint_name}` * `folders/{folder_number}/constraints/{constraint_name}` * `organizations/{organization_number}/constraints/{constraint_name}` For example, \"/projects/123/constraints/compute.disableSerialPortAccess\".",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "supportsDryRun": {
+            "type": "boolean",
+            "format": "",
+            "description": "Shows if dry run is supported for this constraint or not.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "supportsSimulation": {
+            "type": "boolean",
+            "format": "",
+            "description": "Shows if simulation is supported for this constraint or not.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudOrgpolicyV2ConstraintBooleanConstraint": {
+        "type": "object",
+        "format": "",
+        "description": "A constraint type is enforced or not enforced, which is configured in the `PolicyRule`. If `customConstraintDefinition` is defined, this constraint is a managed constraint.",
+        "$ref": "",
+        "properties": {
+          "customConstraintDefinition": {
+            "type": "",
+            "format": "",
+            "description": "Custom constraint definition. Defines this as a managed constraint.",
+            "$ref": "GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinition",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinition": {
+        "type": "object",
+        "format": "",
+        "description": "Custom constraint definition. Defines this as a managed constraint.",
+        "$ref": "",
+        "properties": {
+          "actionType": {
+            "type": "string",
+            "format": "",
+            "description": "Allow or deny type.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "ACTION_TYPE_UNSPECIFIED",
+              "ALLOW",
+              "DENY"
+            ],
+            "readOnly": false
+          },
+          "condition": {
+            "type": "string",
+            "format": "",
+            "description": "Org policy condition/expression. For example: `resource.instanceName.matches(\"(production|test)_(.+_)?[\\d]+\")` or, `resource.management.auto_upgrade == true` The max length of the condition is 1000 characters.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "methodTypes": {
+            "type": "array",
+            "format": "",
+            "description": "All the operations being applied for this constraint.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": [
+                "METHOD_TYPE_UNSPECIFIED",
+                "CREATE",
+                "UPDATE",
+                "DELETE",
+                "REMOVE_GRANT",
+                "GOVERN_TAGS"
+              ],
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "parameters": {
+            "type": "object",
+            "format": "",
+            "description": "Stores the structure of `Parameters` used by the constraint condition. The key of `map` represents the name of the parameter.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameter",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "resourceTypes": {
+            "type": "array",
+            "format": "",
+            "description": "The resource instance type that this policy applies to, in the format `/`. Example: * `compute.googleapis.com/Instance`.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameter": {
+        "type": "object",
+        "format": "",
+        "description": "Defines a parameter structure.",
+        "$ref": "",
+        "properties": {
+          "defaultValue": {
+            "type": "any",
+            "format": "",
+            "description": "Sets the value of the parameter in an assignment if no value is given.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "item": {
+            "type": "string",
+            "format": "",
+            "description": "Determines the parameter's value structure. For example, `LIST` can be specified by defining `type: LIST`, and `item: STRING`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "TYPE_UNSPECIFIED",
+              "LIST",
+              "STRING",
+              "BOOLEAN"
+            ],
+            "readOnly": false
+          },
+          "metadata": {
+            "type": "",
+            "format": "",
+            "description": "Defines subproperties primarily used by the UI to display user-friendly information.",
+            "$ref": "GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameterMetadata",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "type": {
+            "type": "string",
+            "format": "",
+            "description": "Type of the parameter.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "TYPE_UNSPECIFIED",
+              "LIST",
+              "STRING",
+              "BOOLEAN"
+            ],
+            "readOnly": false
+          },
+          "validValuesExpr": {
+            "type": "string",
+            "format": "",
+            "description": "Provides a CEL expression to specify the acceptable parameter values during assignment. For example, parameterName in (\"parameterValue1\", \"parameterValue2\").",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameterMetadata": {
+        "type": "object",
+        "format": "",
+        "description": "Defines Metadata structure.",
+        "$ref": "",
+        "properties": {
+          "description": {
+            "type": "string",
+            "format": "",
+            "description": "Detailed description of what this `parameter` is and its use. Mutable.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudOrgpolicyV2ConstraintListConstraint": {
+        "type": "object",
+        "format": "",
+        "description": "A constraint type that allows or disallows a list of string values, which are configured in the `PolicyRule`.",
+        "$ref": "",
+        "properties": {
+          "supportsIn": {
+            "type": "boolean",
+            "format": "",
+            "description": "Indicates whether values grouped into categories can be used in `Policy.allowed_values` and `Policy.denied_values`. For example, `\"in:Python\"` would match any value in the 'Python' group.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "supportsUnder": {
+            "type": "boolean",
+            "format": "",
+            "description": "Indicates whether subtrees of the Resource Manager resource hierarchy can be used in `Policy.allowed_values` and `Policy.denied_values`. For example, `\"under:folders/123\"` would match any resource under the 'folders/123' folder.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudOrgpolicyV2CustomConstraint": {
+        "type": "object",
+        "format": "",
+        "description": "A custom constraint defined by customers which can *only* be applied to the given resource types and organization. By creating a custom constraint, customers can apply policies of this custom constraint. *Creating a custom constraint itself does NOT apply any policy enforcement*.",
+        "$ref": "",
+        "properties": {
+          "actionType": {
+            "type": "string",
+            "format": "",
+            "description": "Allow or deny type.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "ACTION_TYPE_UNSPECIFIED",
+              "ALLOW",
+              "DENY"
+            ],
+            "readOnly": false
+          },
+          "condition": {
+            "type": "string",
+            "format": "",
+            "description": "A Common Expression Language (CEL) condition which is used in the evaluation of the constraint. For example: `resource.instanceName.matches(\"(production|test)_(.+_)?[\\d]+\")` or, `resource.management.auto_upgrade == true` The max length of the condition is 1000 characters.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "description": {
+            "type": "string",
+            "format": "",
+            "description": "Detailed information about this custom policy constraint. The max length of the description is 2000 characters.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "displayName": {
+            "type": "string",
+            "format": "",
+            "description": "One line display name for the UI. The max length of the display_name is 200 characters.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "methodTypes": {
+            "type": "array",
+            "format": "",
+            "description": "All the operations being applied for this constraint.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": [
+                "METHOD_TYPE_UNSPECIFIED",
+                "CREATE",
+                "UPDATE",
+                "DELETE",
+                "REMOVE_GRANT",
+                "GOVERN_TAGS"
+              ],
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "Immutable. Name of the constraint. This is unique within the organization. The name must be of the form: * `organizations/{organization_id}/customConstraints/{custom_constraint_id}` Example: `organizations/123/customConstraints/custom.createOnlyE2TypeVms` The max length is 71 characters and the minimum length is 1. Note that the prefix `organizations/{organization_id}/customConstraints/custom.` is not counted.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "resourceTypes": {
+            "type": "array",
+            "format": "",
+            "description": "Immutable. The resource instance type on which this policy applies. Format will be of the form : `/` Example: * `compute.googleapis.com/Instance`.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "updateTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. The last time this custom constraint was updated. This represents the last time that the `CreateCustomConstraint` or `UpdateCustomConstraint` methods were called.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudOrgpolicyV2ListConstraintsResponse": {
+        "type": "object",
+        "format": "",
+        "description": "The response returned from the ListConstraints method.",
+        "$ref": "",
+        "properties": {
+          "constraints": {
+            "type": "array",
+            "format": "",
+            "description": "The collection of constraints that are available on the targeted resource.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "GoogleCloudOrgpolicyV2Constraint",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "Page token used to retrieve the next page. This is not used.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudOrgpolicyV2ListCustomConstraintsResponse": {
+        "type": "object",
+        "format": "",
+        "description": "The response returned from the ListCustomConstraints method. It will be empty if no custom or managed constraints are set on the organization resource.",
+        "$ref": "",
+        "properties": {
+          "customConstraints": {
+            "type": "array",
+            "format": "",
+            "description": "All custom and managed constraints that exist on the organization resource. It will be empty if no custom constraints are set.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "GoogleCloudOrgpolicyV2CustomConstraint",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "Page token used to retrieve the next page. This is not used, but the server may at any point start supplying a valid token.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudOrgpolicyV2ListPoliciesResponse": {
+        "type": "object",
+        "format": "",
+        "description": "The response returned from the ListPolicies method. It will be empty if no policies are set on the resource.",
+        "$ref": "",
+        "properties": {
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "Page token used to retrieve the next page. This is not used, but the server may at any point start supplying a valid token.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "policies": {
+            "type": "array",
+            "format": "",
+            "description": "All policies that exist on the resource. It will be empty if no policies are set.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "GoogleCloudOrgpolicyV2Policy",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudOrgpolicyV2Policy": {
+        "type": "object",
+        "format": "",
+        "description": "Defines an organization policy that is used to specify constraints for configurations of Google Cloud resources.",
+        "$ref": "",
+        "properties": {
+          "alternate": {
+            "type": "",
+            "format": "",
+            "description": "Deprecated.",
+            "$ref": "GoogleCloudOrgpolicyV2AlternatePolicySpec",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "dryRunSpec": {
+            "type": "",
+            "format": "",
+            "description": "Dry-run policy. Audit-only policy, can be used to monitor how the policy would have impacted the existing and future resources if it's enforced.",
+            "$ref": "GoogleCloudOrgpolicyV2PolicySpec",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "etag": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. An opaque tag indicating the current state of the policy, used for concurrency control. This entity tag (ETag) is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "Immutable. The resource name of the policy. Must be one of the following forms, where `constraint_name` is the name of the constraint that this policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_number}/policies/{constraint_name}` * `organizations/{organization_number}/policies/{constraint_name}` For example, `projects/123/policies/compute.disableSerialPortAccess`. Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "spec": {
+            "type": "",
+            "format": "",
+            "description": "Basic information about the organization policy.",
+            "$ref": "GoogleCloudOrgpolicyV2PolicySpec",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudOrgpolicyV2PolicySpec": {
+        "type": "object",
+        "format": "",
+        "description": "Defines a Google Cloud policy specification that is used to specify constraints for configurations of Google Cloud resources.",
+        "$ref": "",
+        "properties": {
+          "etag": {
+            "type": "string",
+            "format": "",
+            "description": "An opaque tag indicating the current version of the policySpec, used for concurrency control. This field is ignored if used in a `CreatePolicy` request. When the policy is returned from either a `GetPolicy` or a `ListPolicies` request, this entity tag (ETag) indicates the version of the current policySpec to use when executing a read-modify-write loop. When the policy is returned from a `GetEffectivePolicy` request, the ETag will be unset.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "inheritFromParent": {
+            "type": "boolean",
+            "format": "",
+            "description": "Determines the inheritance behavior for this policy. If `inherit_from_parent` is true, policy rules set higher up in the hierarchy (up to the closest root) are inherited and present in the effective policy. If it is false, then no rules are inherited, and this policy becomes the new root for evaluation. This field can be set only for policies that configure list constraints.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "reset": {
+            "type": "boolean",
+            "format": "",
+            "description": "Ignores policies set above this resource and restores the `constraint_default` enforcement behavior of the specific constraint at this resource. This field can be set in policies for either list or boolean constraints. If set, `rules` must be empty and `inherit_from_parent` must be set to false.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "rules": {
+            "type": "array",
+            "format": "",
+            "description": "In policies for boolean constraints, the following requirements apply: - There must be exactly one policy rule where a condition is unset. - Boolean policy rules with conditions must set `enforced` to the opposite of the policy rule without a condition. - During policy evaluation, policy rules with conditions that are true for a target resource take precedence.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "GoogleCloudOrgpolicyV2PolicySpecPolicyRule",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "updateTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. The time stamp this was previously updated. This represents the last time a call to `CreatePolicy` or `UpdatePolicy` was made for that policy.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudOrgpolicyV2PolicySpecPolicyRule": {
+        "type": "object",
+        "format": "",
+        "description": "A rule used to express this policy.",
+        "$ref": "",
+        "properties": {
+          "allowAll": {
+            "type": "boolean",
+            "format": "",
+            "description": "Setting this to true means that all values are allowed. This field can be set only in policies for list constraints.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "condition": {
+            "type": "",
+            "format": "",
+            "description": "A condition that determines whether this rule is used to evaluate the policy. When set, the google.type.Expr.expression field must contain 1 to 10 subexpressions, joined by the `||` or `\u0026\u0026` operators. Each subexpression must use the `resource.matchTag()`, `resource.matchTagId()`, `resource.hasTagKey()`, or `resource.hasTagKeyId()` Common Expression Language (CEL) function. The `resource.matchTag()` function takes the following arguments: * `key_name`: the namespaced name of the tag key, with the organization ID and a slash (`/`) as a prefix; for example, `123456789012/environment` * `value_name`: the short name of the tag value For example: `resource.matchTag('123456789012/environment, 'prod')` The `resource.matchTagId()` function takes the following arguments: * `key_id`: the permanent ID of the tag key; for example, `tagKeys/123456789012` * `value_id`: the permanent ID of the tag value; for example, `tagValues/567890123456` For example: `resource.matchTagId('tagKeys/123456789012', 'tagValues/567890123456')` The `resource.hasTagKey()` function takes the following argument: * `key_name`: the namespaced name of the tag key, with the organization ID and a slash (`/`) as a prefix; for example, `123456789012/environment` For example: `resource.hasTagKey('123456789012/environment')` The `resource.hasTagKeyId()` function takes the following arguments: * `key_id`: the permanent ID of the tag key; for example, `tagKeys/123456789012` For example: `resource.hasTagKeyId('tagKeys/123456789012')`",
+            "$ref": "GoogleTypeExpr",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "denyAll": {
+            "type": "boolean",
+            "format": "",
+            "description": "Setting this to true means that all values are denied. This field can be set only in policies for list constraints.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "enforce": {
+            "type": "boolean",
+            "format": "",
+            "description": "If `true`, then the policy is enforced. If `false`, then any configuration is acceptable. This field can be set in policies for boolean constraints, custom constraints and managed constraints.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "parameters": {
+            "type": "object",
+            "format": "",
+            "description": "Optional. Required for managed constraints if parameters are defined. Passes parameter values when policy enforcement is enabled. Ensure that parameter value types match those defined in the constraint definition. For example: ``` { \"allowedLocations\" : [\"us-east1\", \"us-west1\"], \"allowAll\" : true } ```",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "any",
+              "format": "",
+              "description": "Properties of the object.",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "values": {
+            "type": "",
+            "format": "",
+            "description": "List of values to be used for this policy rule. This field can be set only in policies for list constraints.",
+            "$ref": "GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues": {
+        "type": "object",
+        "format": "",
+        "description": "A message that holds specific allowed and denied values. This message can define specific values and subtrees of the Resource Manager resource hierarchy (`Organizations`, `Folders`, `Projects`) that are allowed or denied. This is achieved by using the `under:` and optional `is:` prefixes. The `under:` prefix is used to denote resource subtree values. The `is:` prefix is used to denote specific values, and is required only if the value contains a \":\". Values prefixed with \"is:\" are treated the same as values with no prefix. Ancestry subtrees must be in one of the following formats: - `projects/` (for example, `projects/tokyo-rain-123`) - `folders/` (for example, `folders/1234`) - `organizations/` (for example, `organizations/1234`) The `supports_under` field of the associated `Constraint` defines whether ancestry prefixes can be used.",
+        "$ref": "",
+        "properties": {
+          "allowedValues": {
+            "type": "array",
+            "format": "",
+            "description": "List of values allowed at this resource.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "deniedValues": {
+            "type": "array",
+            "format": "",
+            "description": "List of values denied at this resource.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleProtobufEmpty": {
+        "type": "object",
+        "format": "",
+        "description": "A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }",
+        "$ref": "",
+        "properties": {},
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleTypeExpr": {
+        "type": "object",
+        "format": "",
+        "description": "Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: \"Summary size limit\" description: \"Determines if a summary is less than 100 chars\" expression: \"document.summary.size() \u003c 100\" Example (Equality): title: \"Requestor is owner\" description: \"Determines if requestor is the document owner\" expression: \"document.owner == request.auth.claims.email\" Example (Logic): title: \"Public documents\" description: \"Determine whether the document should be publicly visible\" expression: \"document.type != 'private' \u0026\u0026 document.type != 'internal'\" Example (Data Manipulation): title: \"Notification string\" description: \"Create a notification string with a timestamp.\" expression: \"'New message received at ' + string(document.create_time)\" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.",
+        "$ref": "",
+        "properties": {
+          "description": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "expression": {
+            "type": "string",
+            "format": "",
+            "description": "Textual representation of an expression in Common Expression Language syntax.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "location": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "title": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      }
+    },
+    "resources": {
+      "folders": {
+        "methods": null,
+        "resources": {
+          "constraints": {
+            "methods": {
+              "list": {
+                "id": "orgpolicy.folders.constraints.list",
+                "httpMethod": "GET",
+                "path": "v2/{+parent}/constraints",
+                "flatPath": "v2/folders/{foldersId}/constraints",
+                "description": "Lists constraints that could be applied on the specified resource.",
+                "parameters": {
+                  "pageSize": {
+                    "type": "integer",
+                    "location": "query",
+                    "required": false
+                  },
+                  "pageToken": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false
+                  },
+                  "parent": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  }
+                },
+                "parameterOrder": [
+                  "parent"
+                ],
+                "request": null,
+                "response": {
+                  "$ref": "GoogleCloudOrgpolicyV2ListConstraintsResponse"
+                }
+              }
+            },
+            "resources": null
+          },
+          "policies": {
+            "methods": {
+              "create": {
+                "id": "orgpolicy.folders.policies.create",
+                "httpMethod": "POST",
+                "path": "v2/{+parent}/policies",
+                "flatPath": "v2/folders/{foldersId}/policies",
+                "description": "Creates a policy. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the constraint does not exist. Returns a `google.rpc.Status` with `google.rpc.Code.ALREADY_EXISTS` if the policy already exists on the given Google Cloud resource.",
+                "parameters": {
+                  "parent": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  }
+                },
+                "parameterOrder": [
+                  "parent"
+                ],
+                "request": {
+                  "$ref": "GoogleCloudOrgpolicyV2Policy"
+                },
+                "response": {
+                  "$ref": "GoogleCloudOrgpolicyV2Policy"
+                }
+              },
+              "delete": {
+                "id": "orgpolicy.folders.policies.delete",
+                "httpMethod": "DELETE",
+                "path": "v2/{+name}",
+                "flatPath": "v2/folders/{foldersId}/policies/{policiesId}",
+                "description": "Deletes a policy. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the constraint or organization policy does not exist.",
+                "parameters": {
+                  "etag": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false
+                  },
+                  "name": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  }
+                },
+                "parameterOrder": [
+                  "name"
+                ],
+                "request": null,
+                "response": {
+                  "$ref": "GoogleProtobufEmpty"
+                }
+              },
+              "get": {
+                "id": "orgpolicy.folders.policies.get",
+                "httpMethod": "GET",
+                "path": "v2/{+name}",
+                "flatPath": "v2/folders/{foldersId}/policies/{policiesId}",
+                "description": "Gets a policy on a resource. If no policy is set on the resource, `NOT_FOUND` is returned. The entity tag (ETag) can be used with `UpdatePolicy()` to update a policy during read-modify-write.",
+                "parameters": {
+                  "name": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  }
+                },
+                "parameterOrder": [
+                  "name"
+                ],
+                "request": null,
+                "response": {
+                  "$ref": "GoogleCloudOrgpolicyV2Policy"
+                }
+              },
+              "getEffectivePolicy": {
+                "id": "orgpolicy.folders.policies.getEffectivePolicy",
+                "httpMethod": "GET",
+                "path": "v2/{+name}:getEffectivePolicy",
+                "flatPath": "v2/folders/{foldersId}/policies/{policiesId}:getEffectivePolicy",
+                "description": "Gets the effective policy on a resource. This is the result of merging policies in the resource hierarchy and evaluating conditions. The returned policy will not have an ETag or `condition` set because it is an evaluated policy across multiple resources. Subtrees of Resource Manager resource hierarchy with 'under:' prefix will not be expanded.",
+                "parameters": {
+                  "name": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  }
+                },
+                "parameterOrder": [
+                  "name"
+                ],
+                "request": null,
+                "response": {
+                  "$ref": "GoogleCloudOrgpolicyV2Policy"
+                }
+              },
+              "list": {
+                "id": "orgpolicy.folders.policies.list",
+                "httpMethod": "GET",
+                "path": "v2/{+parent}/policies",
+                "flatPath": "v2/folders/{foldersId}/policies",
+                "description": "Retrieves all of the policies that exist on a particular resource.",
+                "parameters": {
+                  "pageSize": {
+                    "type": "integer",
+                    "location": "query",
+                    "required": false
+                  },
+                  "pageToken": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false
+                  },
+                  "parent": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  }
+                },
+                "parameterOrder": [
+                  "parent"
+                ],
+                "request": null,
+                "response": {
+                  "$ref": "GoogleCloudOrgpolicyV2ListPoliciesResponse"
+                }
+              },
+              "patch": {
+                "id": "orgpolicy.folders.policies.patch",
+                "httpMethod": "PATCH",
+                "path": "v2/{+name}",
+                "flatPath": "v2/folders/{foldersId}/policies/{policiesId}",
+                "description": "Updates a policy. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the constraint or the policy doesn't exist. Returns a `google.rpc.Status` with `google.rpc.Code.ABORTED` if the ETag supplied in the request doesn't match the persisted ETag of the policy. Note: the supplied policy will perform a full overwrite of all fields.",
+                "parameters": {
+                  "name": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  },
+                  "updateMask": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false
+                  }
+                },
+                "parameterOrder": [
+                  "name"
+                ],
+                "request": {
+                  "$ref": "GoogleCloudOrgpolicyV2Policy"
+                },
+                "response": {
+                  "$ref": "GoogleCloudOrgpolicyV2Policy"
+                }
+              }
+            },
+            "resources": null
+          }
+        }
+      },
+      "organizations": {
+        "methods": null,
+        "resources": {
+          "constraints": {
+            "methods": {
+              "list": {
+                "id": "orgpolicy.organizations.constraints.list",
+                "httpMethod": "GET",
+                "path": "v2/{+parent}/constraints",
+                "flatPath": "v2/organizations/{organizationsId}/constraints",
+                "description": "Lists constraints that could be applied on the specified resource.",
+                "parameters": {
+                  "pageSize": {
+                    "type": "integer",
+                    "location": "query",
+                    "required": false
+                  },
+                  "pageToken": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false
+                  },
+                  "parent": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  }
+                },
+                "parameterOrder": [
+                  "parent"
+                ],
+                "request": null,
+                "response": {
+                  "$ref": "GoogleCloudOrgpolicyV2ListConstraintsResponse"
+                }
+              }
+            },
+            "resources": null
+          },
+          "customConstraints": {
+            "methods": {
+              "create": {
+                "id": "orgpolicy.organizations.customConstraints.create",
+                "httpMethod": "POST",
+                "path": "v2/{+parent}/customConstraints",
+                "flatPath": "v2/organizations/{organizationsId}/customConstraints",
+                "description": "Creates a custom constraint. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the organization does not exist. Returns a `google.rpc.Status` with `google.rpc.Code.ALREADY_EXISTS` if the constraint already exists on the given organization.",
+                "parameters": {
+                  "parent": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  }
+                },
+                "parameterOrder": [
+                  "parent"
+                ],
+                "request": {
+                  "$ref": "GoogleCloudOrgpolicyV2CustomConstraint"
+                },
+                "response": {
+                  "$ref": "GoogleCloudOrgpolicyV2CustomConstraint"
+                }
+              },
+              "delete": {
+                "id": "orgpolicy.organizations.customConstraints.delete",
+                "httpMethod": "DELETE",
+                "path": "v2/{+name}",
+                "flatPath": "v2/organizations/{organizationsId}/customConstraints/{customConstraintsId}",
+                "description": "Deletes a custom constraint. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the constraint does not exist.",
+                "parameters": {
+                  "name": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  }
+                },
+                "parameterOrder": [
+                  "name"
+                ],
+                "request": null,
+                "response": {
+                  "$ref": "GoogleProtobufEmpty"
+                }
+              },
+              "get": {
+                "id": "orgpolicy.organizations.customConstraints.get",
+                "httpMethod": "GET",
+                "path": "v2/{+name}",
+                "flatPath": "v2/organizations/{organizationsId}/customConstraints/{customConstraintsId}",
+                "description": "Gets a custom or managed constraint. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the custom or managed constraint does not exist.",
+                "parameters": {
+                  "name": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  }
+                },
+                "parameterOrder": [
+                  "name"
+                ],
+                "request": null,
+                "response": {
+                  "$ref": "GoogleCloudOrgpolicyV2CustomConstraint"
+                }
+              },
+              "list": {
+                "id": "orgpolicy.organizations.customConstraints.list",
+                "httpMethod": "GET",
+                "path": "v2/{+parent}/customConstraints",
+                "flatPath": "v2/organizations/{organizationsId}/customConstraints",
+                "description": "Retrieves all of the custom constraints that exist on a particular organization resource.",
+                "parameters": {
+                  "pageSize": {
+                    "type": "integer",
+                    "location": "query",
+                    "required": false
+                  },
+                  "pageToken": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false
+                  },
+                  "parent": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  }
+                },
+                "parameterOrder": [
+                  "parent"
+                ],
+                "request": null,
+                "response": {
+                  "$ref": "GoogleCloudOrgpolicyV2ListCustomConstraintsResponse"
+                }
+              },
+              "patch": {
+                "id": "orgpolicy.organizations.customConstraints.patch",
+                "httpMethod": "PATCH",
+                "path": "v2/{+name}",
+                "flatPath": "v2/organizations/{organizationsId}/customConstraints/{customConstraintsId}",
+                "description": "Updates a custom constraint. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the constraint does not exist. Note: the supplied policy will perform a full overwrite of all fields.",
+                "parameters": {
+                  "name": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  }
+                },
+                "parameterOrder": [
+                  "name"
+                ],
+                "request": {
+                  "$ref": "GoogleCloudOrgpolicyV2CustomConstraint"
+                },
+                "response": {
+                  "$ref": "GoogleCloudOrgpolicyV2CustomConstraint"
+                }
+              }
+            },
+            "resources": null
+          },
+          "policies": {
+            "methods": {
+              "create": {
+                "id": "orgpolicy.organizations.policies.create",
+                "httpMethod": "POST",
+                "path": "v2/{+parent}/policies",
+                "flatPath": "v2/organizations/{organizationsId}/policies",
+                "description": "Creates a policy. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the constraint does not exist. Returns a `google.rpc.Status` with `google.rpc.Code.ALREADY_EXISTS` if the policy already exists on the given Google Cloud resource.",
+                "parameters": {
+                  "parent": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  }
+                },
+                "parameterOrder": [
+                  "parent"
+                ],
+                "request": {
+                  "$ref": "GoogleCloudOrgpolicyV2Policy"
+                },
+                "response": {
+                  "$ref": "GoogleCloudOrgpolicyV2Policy"
+                }
+              },
+              "delete": {
+                "id": "orgpolicy.organizations.policies.delete",
+                "httpMethod": "DELETE",
+                "path": "v2/{+name}",
+                "flatPath": "v2/organizations/{organizationsId}/policies/{policiesId}",
+                "description": "Deletes a policy. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the constraint or organization policy does not exist.",
+                "parameters": {
+                  "etag": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false
+                  },
+                  "name": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  }
+                },
+                "parameterOrder": [
+                  "name"
+                ],
+                "request": null,
+                "response": {
+                  "$ref": "GoogleProtobufEmpty"
+                }
+              },
+              "get": {
+                "id": "orgpolicy.organizations.policies.get",
+                "httpMethod": "GET",
+                "path": "v2/{+name}",
+                "flatPath": "v2/organizations/{organizationsId}/policies/{policiesId}",
+                "description": "Gets a policy on a resource. If no policy is set on the resource, `NOT_FOUND` is returned. The entity tag (ETag) can be used with `UpdatePolicy()` to update a policy during read-modify-write.",
+                "parameters": {
+                  "name": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  }
+                },
+                "parameterOrder": [
+                  "name"
+                ],
+                "request": null,
+                "response": {
+                  "$ref": "GoogleCloudOrgpolicyV2Policy"
+                }
+              },
+              "getEffectivePolicy": {
+                "id": "orgpolicy.organizations.policies.getEffectivePolicy",
+                "httpMethod": "GET",
+                "path": "v2/{+name}:getEffectivePolicy",
+                "flatPath": "v2/organizations/{organizationsId}/policies/{policiesId}:getEffectivePolicy",
+                "description": "Gets the effective policy on a resource. This is the result of merging policies in the resource hierarchy and evaluating conditions. The returned policy will not have an ETag or `condition` set because it is an evaluated policy across multiple resources. Subtrees of Resource Manager resource hierarchy with 'under:' prefix will not be expanded.",
+                "parameters": {
+                  "name": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  }
+                },
+                "parameterOrder": [
+                  "name"
+                ],
+                "request": null,
+                "response": {
+                  "$ref": "GoogleCloudOrgpolicyV2Policy"
+                }
+              },
+              "list": {
+                "id": "orgpolicy.organizations.policies.list",
+                "httpMethod": "GET",
+                "path": "v2/{+parent}/policies",
+                "flatPath": "v2/organizations/{organizationsId}/policies",
+                "description": "Retrieves all of the policies that exist on a particular resource.",
+                "parameters": {
+                  "pageSize": {
+                    "type": "integer",
+                    "location": "query",
+                    "required": false
+                  },
+                  "pageToken": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false
+                  },
+                  "parent": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  }
+                },
+                "parameterOrder": [
+                  "parent"
+                ],
+                "request": null,
+                "response": {
+                  "$ref": "GoogleCloudOrgpolicyV2ListPoliciesResponse"
+                }
+              },
+              "patch": {
+                "id": "orgpolicy.organizations.policies.patch",
+                "httpMethod": "PATCH",
+                "path": "v2/{+name}",
+                "flatPath": "v2/organizations/{organizationsId}/policies/{policiesId}",
+                "description": "Updates a policy. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the constraint or the policy doesn't exist. Returns a `google.rpc.Status` with `google.rpc.Code.ABORTED` if the ETag supplied in the request doesn't match the persisted ETag of the policy. Note: the supplied policy will perform a full overwrite of all fields.",
+                "parameters": {
+                  "name": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  },
+                  "updateMask": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false
+                  }
+                },
+                "parameterOrder": [
+                  "name"
+                ],
+                "request": {
+                  "$ref": "GoogleCloudOrgpolicyV2Policy"
+                },
+                "response": {
+                  "$ref": "GoogleCloudOrgpolicyV2Policy"
+                }
+              }
+            },
+            "resources": null
+          }
+        }
+      },
+      "projects": {
+        "methods": null,
+        "resources": {
+          "constraints": {
+            "methods": {
+              "list": {
+                "id": "orgpolicy.projects.constraints.list",
+                "httpMethod": "GET",
+                "path": "v2/{+parent}/constraints",
+                "flatPath": "v2/projects/{projectsId}/constraints",
+                "description": "Lists constraints that could be applied on the specified resource.",
+                "parameters": {
+                  "pageSize": {
+                    "type": "integer",
+                    "location": "query",
+                    "required": false
+                  },
+                  "pageToken": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false
+                  },
+                  "parent": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  }
+                },
+                "parameterOrder": [
+                  "parent"
+                ],
+                "request": null,
+                "response": {
+                  "$ref": "GoogleCloudOrgpolicyV2ListConstraintsResponse"
+                }
+              }
+            },
+            "resources": null
+          },
+          "policies": {
+            "methods": {
+              "create": {
+                "id": "orgpolicy.projects.policies.create",
+                "httpMethod": "POST",
+                "path": "v2/{+parent}/policies",
+                "flatPath": "v2/projects/{projectsId}/policies",
+                "description": "Creates a policy. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the constraint does not exist. Returns a `google.rpc.Status` with `google.rpc.Code.ALREADY_EXISTS` if the policy already exists on the given Google Cloud resource.",
+                "parameters": {
+                  "parent": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  }
+                },
+                "parameterOrder": [
+                  "parent"
+                ],
+                "request": {
+                  "$ref": "GoogleCloudOrgpolicyV2Policy"
+                },
+                "response": {
+                  "$ref": "GoogleCloudOrgpolicyV2Policy"
+                }
+              },
+              "delete": {
+                "id": "orgpolicy.projects.policies.delete",
+                "httpMethod": "DELETE",
+                "path": "v2/{+name}",
+                "flatPath": "v2/projects/{projectsId}/policies/{policiesId}",
+                "description": "Deletes a policy. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the constraint or organization policy does not exist.",
+                "parameters": {
+                  "etag": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false
+                  },
+                  "name": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  }
+                },
+                "parameterOrder": [
+                  "name"
+                ],
+                "request": null,
+                "response": {
+                  "$ref": "GoogleProtobufEmpty"
+                }
+              },
+              "get": {
+                "id": "orgpolicy.projects.policies.get",
+                "httpMethod": "GET",
+                "path": "v2/{+name}",
+                "flatPath": "v2/projects/{projectsId}/policies/{policiesId}",
+                "description": "Gets a policy on a resource. If no policy is set on the resource, `NOT_FOUND` is returned. The entity tag (ETag) can be used with `UpdatePolicy()` to update a policy during read-modify-write.",
+                "parameters": {
+                  "name": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  }
+                },
+                "parameterOrder": [
+                  "name"
+                ],
+                "request": null,
+                "response": {
+                  "$ref": "GoogleCloudOrgpolicyV2Policy"
+                }
+              },
+              "getEffectivePolicy": {
+                "id": "orgpolicy.projects.policies.getEffectivePolicy",
+                "httpMethod": "GET",
+                "path": "v2/{+name}:getEffectivePolicy",
+                "flatPath": "v2/projects/{projectsId}/policies/{policiesId}:getEffectivePolicy",
+                "description": "Gets the effective policy on a resource. This is the result of merging policies in the resource hierarchy and evaluating conditions. The returned policy will not have an ETag or `condition` set because it is an evaluated policy across multiple resources. Subtrees of Resource Manager resource hierarchy with 'under:' prefix will not be expanded.",
+                "parameters": {
+                  "name": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  }
+                },
+                "parameterOrder": [
+                  "name"
+                ],
+                "request": null,
+                "response": {
+                  "$ref": "GoogleCloudOrgpolicyV2Policy"
+                }
+              },
+              "list": {
+                "id": "orgpolicy.projects.policies.list",
+                "httpMethod": "GET",
+                "path": "v2/{+parent}/policies",
+                "flatPath": "v2/projects/{projectsId}/policies",
+                "description": "Retrieves all of the policies that exist on a particular resource.",
+                "parameters": {
+                  "pageSize": {
+                    "type": "integer",
+                    "location": "query",
+                    "required": false
+                  },
+                  "pageToken": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false
+                  },
+                  "parent": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  }
+                },
+                "parameterOrder": [
+                  "parent"
+                ],
+                "request": null,
+                "response": {
+                  "$ref": "GoogleCloudOrgpolicyV2ListPoliciesResponse"
+                }
+              },
+              "patch": {
+                "id": "orgpolicy.projects.policies.patch",
+                "httpMethod": "PATCH",
+                "path": "v2/{+name}",
+                "flatPath": "v2/projects/{projectsId}/policies/{policiesId}",
+                "description": "Updates a policy. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the constraint or the policy doesn't exist. Returns a `google.rpc.Status` with `google.rpc.Code.ABORTED` if the ETag supplied in the request doesn't match the persisted ETag of the policy. Note: the supplied policy will perform a full overwrite of all fields.",
+                "parameters": {
+                  "name": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  },
+                  "updateMask": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false
+                  }
+                },
+                "parameterOrder": [
+                  "name"
+                ],
+                "request": {
+                  "$ref": "GoogleCloudOrgpolicyV2Policy"
+                },
+                "response": {
+                  "$ref": "GoogleCloudOrgpolicyV2Policy"
+                }
+              }
+            },
+            "resources": null
+          }
+        }
+      }
+    }
+  }
+}

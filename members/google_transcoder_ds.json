@@ -1,0 +1,3875 @@
+{
+  "schema_source": "discovery_docs",
+  "mode": "data_source",
+  "auth": {
+    "Type": "",
+    "Params": null
+  },
+  "base_url": "https://transcoder.googleapis.com",
+  "retry": {
+    "MaxAttempts": 0,
+    "InitialBackoff": "",
+    "MaxBackoff": "",
+    "Jitter": null,
+    "RespectRetryAfter": null,
+    "RateLimitResetHeader": ""
+  },
+  "timeouts": {
+    "Create": "",
+    "Read": "",
+    "Update": "",
+    "Delete": "",
+    "Default": ""
+  },
+  "wire_name": "google_transcoder",
+  "raw_spec": {
+    "name": "transcoder",
+    "revision": "20260819",
+    "discoveryVersion": "v1",
+    "baseUrl": "https://transcoder.googleapis.com/",
+    "rootUrl": "https://transcoder.googleapis.com/",
+    "servicePath": "",
+    "schemas": {
+      "AdBreak": {
+        "type": "object",
+        "format": "",
+        "description": "Ad break.",
+        "$ref": "",
+        "properties": {
+          "startTimeOffset": {
+            "type": "string",
+            "format": "google-duration",
+            "description": "Start time in seconds for the ad break, relative to the output file timeline. The default is `0s`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Aes128Encryption": {
+        "type": "object",
+        "format": "",
+        "description": "Configuration for AES-128 encryption.",
+        "$ref": "",
+        "properties": {},
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Animation": {
+        "type": "object",
+        "format": "",
+        "description": "Animation types.",
+        "$ref": "",
+        "properties": {
+          "animationEnd": {
+            "type": "",
+            "format": "",
+            "description": "End previous animation.",
+            "$ref": "AnimationEnd",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "animationFade": {
+            "type": "",
+            "format": "",
+            "description": "Display overlay object with fade animation.",
+            "$ref": "AnimationFade",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "animationStatic": {
+            "type": "",
+            "format": "",
+            "description": "Display static overlay object.",
+            "$ref": "AnimationStatic",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "AnimationEnd": {
+        "type": "object",
+        "format": "",
+        "description": "End previous overlay animation from the video. Without `AnimationEnd`, the overlay object will keep the state of previous animation until the end of the video.",
+        "$ref": "",
+        "properties": {
+          "startTimeOffset": {
+            "type": "string",
+            "format": "google-duration",
+            "description": "The time to end overlay object, in seconds. Default: 0",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "AnimationFade": {
+        "type": "object",
+        "format": "",
+        "description": "Display overlay object with fade animation.",
+        "$ref": "",
+        "properties": {
+          "endTimeOffset": {
+            "type": "string",
+            "format": "google-duration",
+            "description": "The time to end the fade animation, in seconds. Default: `start_time_offset` + 1s",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "fadeType": {
+            "type": "string",
+            "format": "",
+            "description": "Required. Type of fade animation: `FADE_IN` or `FADE_OUT`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "FADE_TYPE_UNSPECIFIED",
+              "FADE_IN",
+              "FADE_OUT"
+            ],
+            "readOnly": false
+          },
+          "startTimeOffset": {
+            "type": "string",
+            "format": "google-duration",
+            "description": "The time to start the fade animation, in seconds. Default: 0",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "xy": {
+            "type": "",
+            "format": "",
+            "description": "Normalized coordinates based on output video resolution. Valid values: `0.0`–`1.0`. `xy` is the upper-left coordinate of the overlay object. For example, use the x and y coordinates {0,0} to position the top-left corner of the overlay animation in the top-left corner of the output video.",
+            "$ref": "NormalizedCoordinate",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "AnimationStatic": {
+        "type": "object",
+        "format": "",
+        "description": "Display static overlay object.",
+        "$ref": "",
+        "properties": {
+          "startTimeOffset": {
+            "type": "string",
+            "format": "google-duration",
+            "description": "The time to start displaying the overlay object, in seconds. Default: 0",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "xy": {
+            "type": "",
+            "format": "",
+            "description": "Normalized coordinates based on output video resolution. Valid values: `0.0`–`1.0`. `xy` is the upper-left coordinate of the overlay object. For example, use the x and y coordinates {0,0} to position the top-left corner of the overlay animation in the top-left corner of the output video.",
+            "$ref": "NormalizedCoordinate",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Audio": {
+        "type": "object",
+        "format": "",
+        "description": "Audio preprocessing configuration.",
+        "$ref": "",
+        "properties": {
+          "highBoost": {
+            "type": "boolean",
+            "format": "",
+            "description": "Enable boosting high frequency components. The default is `false`. **Note:** This field is not supported.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "lowBoost": {
+            "type": "boolean",
+            "format": "",
+            "description": "Enable boosting low frequency components. The default is `false`. **Note:** This field is not supported.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "lufs": {
+            "type": "number",
+            "format": "double",
+            "description": "Specify audio loudness normalization in loudness units relative to full scale (LUFS). Enter a value between -24 and 0 (the default), where: * -24 is the Advanced Television Systems Committee (ATSC A/85) standard * -23 is the EU R128 broadcast standard * -19 is the prior standard for online mono audio * -18 is the ReplayGain standard * -16 is the prior standard for stereo audio * -14 is the new online audio standard recommended by Spotify, as well as Amazon Echo * 0 disables normalization",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "AudioMapping": {
+        "type": "object",
+        "format": "",
+        "description": "The mapping for the JobConfig.edit_list atoms with audio EditAtom.inputs.",
+        "$ref": "",
+        "properties": {
+          "atomKey": {
+            "type": "string",
+            "format": "",
+            "description": "Required. The EditAtom.key that references the atom with audio inputs in the JobConfig.edit_list.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "gainDb": {
+            "type": "number",
+            "format": "double",
+            "description": "Audio volume control in dB. Negative values decrease volume, positive values increase. The default is 0.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "inputChannel": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Required. The zero-based index of the channel in the input audio stream.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "inputKey": {
+            "type": "string",
+            "format": "",
+            "description": "Required. The Input.key that identifies the input file.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "inputTrack": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Required. The zero-based index of the track in the input file.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "outputChannel": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Required. The zero-based index of the channel in the output audio stream.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "AudioStream": {
+        "type": "object",
+        "format": "",
+        "description": "Audio stream resource.",
+        "$ref": "",
+        "properties": {
+          "bitrateBps": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Required. Audio bitrate in bits per second. Must be between 1 and 10,000,000.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "channelCount": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Number of audio channels. Must be between 1 and 6. The default is 2.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "channelLayout": {
+            "type": "array",
+            "format": "",
+            "description": "A list of channel names specifying layout of the audio channels. This only affects the metadata embedded in the container headers, if supported by the specified format. The default is `[\"fl\", \"fr\"]`. Supported channel names: - `fl` - Front left channel - `fr` - Front right channel - `sl` - Side left channel - `sr` - Side right channel - `fc` - Front center channel - `lfe` - Low frequency",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "codec": {
+            "type": "string",
+            "format": "",
+            "description": "The codec for this audio stream. The default is `aac`. Supported audio codecs: - `aac` - `aac-he` - `aac-he-v2` - `mp3` - `ac3` - `eac3` - `vorbis`",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "displayName": {
+            "type": "string",
+            "format": "",
+            "description": "The name for this particular audio stream that will be added to the HLS/DASH manifest. Not supported in MP4 files.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "languageCode": {
+            "type": "string",
+            "format": "",
+            "description": "The BCP-47 language code, such as `en-US` or `sr-Latn`. For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier. Not supported in MP4 files.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "mapping": {
+            "type": "array",
+            "format": "",
+            "description": "The mapping for the JobConfig.edit_list atoms with audio EditAtom.inputs.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "AudioMapping",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "sampleRateHertz": {
+            "type": "integer",
+            "format": "int32",
+            "description": "The audio sample rate in Hertz. The default is 48000 Hertz.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "BwdifConfig": {
+        "type": "object",
+        "format": "",
+        "description": "Bob Weaver Deinterlacing Filter Configuration.",
+        "$ref": "",
+        "properties": {
+          "deinterlaceAllFrames": {
+            "type": "boolean",
+            "format": "",
+            "description": "Deinterlace all frames rather than just the frames identified as interlaced. The default is `false`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "mode": {
+            "type": "string",
+            "format": "",
+            "description": "Specifies the deinterlacing mode to adopt. The default is `send_frame`. Supported values: - `send_frame`: Output one frame for each frame - `send_field`: Output one frame for each field",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "parity": {
+            "type": "string",
+            "format": "",
+            "description": "The picture field parity assumed for the input interlaced video. The default is `auto`. Supported values: - `tff`: Assume the top field is first - `bff`: Assume the bottom field is first - `auto`: Enable automatic detection of field parity",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Clearkey": {
+        "type": "object",
+        "format": "",
+        "description": "Clearkey configuration.",
+        "$ref": "",
+        "properties": {},
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Color": {
+        "type": "object",
+        "format": "",
+        "description": "Color preprocessing configuration. **Note:** This configuration is not supported.",
+        "$ref": "",
+        "properties": {
+          "brightness": {
+            "type": "number",
+            "format": "double",
+            "description": "Control brightness of the video. Enter a value between -1 and 1, where -1 is minimum brightness and 1 is maximum brightness. 0 is no change. The default is 0.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "contrast": {
+            "type": "number",
+            "format": "double",
+            "description": "Control black and white contrast of the video. Enter a value between -1 and 1, where -1 is minimum contrast and 1 is maximum contrast. 0 is no change. The default is 0.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "saturation": {
+            "type": "number",
+            "format": "double",
+            "description": "Control color saturation of the video. Enter a value between -1 and 1, where -1 is fully desaturated and 1 is maximum saturation. 0 is no change. The default is 0.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Crop": {
+        "type": "object",
+        "format": "",
+        "description": "Video cropping configuration for the input video. The cropped input video is scaled to match the output resolution.",
+        "$ref": "",
+        "properties": {
+          "bottomPixels": {
+            "type": "integer",
+            "format": "int32",
+            "description": "The number of pixels to crop from the bottom. The default is 0.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "leftPixels": {
+            "type": "integer",
+            "format": "int32",
+            "description": "The number of pixels to crop from the left. The default is 0.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "rightPixels": {
+            "type": "integer",
+            "format": "int32",
+            "description": "The number of pixels to crop from the right. The default is 0.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "topPixels": {
+            "type": "integer",
+            "format": "int32",
+            "description": "The number of pixels to crop from the top. The default is 0.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "DashConfig": {
+        "type": "object",
+        "format": "",
+        "description": "`DASH` manifest configuration.",
+        "$ref": "",
+        "properties": {
+          "segmentReferenceScheme": {
+            "type": "string",
+            "format": "",
+            "description": "The segment reference scheme for a `DASH` manifest. The default is `SEGMENT_LIST`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "SEGMENT_REFERENCE_SCHEME_UNSPECIFIED",
+              "SEGMENT_LIST",
+              "SEGMENT_TEMPLATE_NUMBER"
+            ],
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Deblock": {
+        "type": "object",
+        "format": "",
+        "description": "Deblock preprocessing configuration. **Note:** This configuration is not supported.",
+        "$ref": "",
+        "properties": {
+          "enabled": {
+            "type": "boolean",
+            "format": "",
+            "description": "Enable deblocker. The default is `false`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "strength": {
+            "type": "number",
+            "format": "double",
+            "description": "Set strength of the deblocker. Enter a value between 0 and 1. The higher the value, the stronger the block removal. 0 is no deblocking. The default is 0.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Deinterlace": {
+        "type": "object",
+        "format": "",
+        "description": "Deinterlace configuration for input video.",
+        "$ref": "",
+        "properties": {
+          "bwdif": {
+            "type": "",
+            "format": "",
+            "description": "Specifies the Bob Weaver Deinterlacing Filter Configuration.",
+            "$ref": "BwdifConfig",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "yadif": {
+            "type": "",
+            "format": "",
+            "description": "Specifies the Yet Another Deinterlacing Filter Configuration.",
+            "$ref": "YadifConfig",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Denoise": {
+        "type": "object",
+        "format": "",
+        "description": "Denoise preprocessing configuration. **Note:** This configuration is not supported.",
+        "$ref": "",
+        "properties": {
+          "strength": {
+            "type": "number",
+            "format": "double",
+            "description": "Set strength of the denoise. Enter a value between 0 and 1. The higher the value, the smoother the image. 0 is no denoising. The default is 0.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "tune": {
+            "type": "string",
+            "format": "",
+            "description": "Set the denoiser mode. The default is `standard`. Supported denoiser modes: - `standard` - `grain`",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "DrmSystems": {
+        "type": "object",
+        "format": "",
+        "description": "Defines configuration for DRM systems in use.",
+        "$ref": "",
+        "properties": {
+          "clearkey": {
+            "type": "",
+            "format": "",
+            "description": "Clearkey configuration.",
+            "$ref": "Clearkey",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "fairplay": {
+            "type": "",
+            "format": "",
+            "description": "Fairplay configuration.",
+            "$ref": "Fairplay",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "playready": {
+            "type": "",
+            "format": "",
+            "description": "Playready configuration.",
+            "$ref": "Playready",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "widevine": {
+            "type": "",
+            "format": "",
+            "description": "Widevine configuration.",
+            "$ref": "Widevine",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "EditAtom": {
+        "type": "object",
+        "format": "",
+        "description": "Edit atom.",
+        "$ref": "",
+        "properties": {
+          "endTimeOffset": {
+            "type": "string",
+            "format": "google-duration",
+            "description": "End time in seconds for the atom, relative to the input file timeline. When `end_time_offset` is not specified, the `inputs` are used until the end of the atom.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "inputs": {
+            "type": "array",
+            "format": "",
+            "description": "List of Input.key values identifying files that should be used in this atom. The listed `inputs` must have the same timeline.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "key": {
+            "type": "string",
+            "format": "",
+            "description": "A unique key for this atom. Must be specified when using advanced mapping.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "startTimeOffset": {
+            "type": "string",
+            "format": "google-duration",
+            "description": "Start time in seconds for the atom, relative to the input file timeline. The default is `0s`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ElementaryStream": {
+        "type": "object",
+        "format": "",
+        "description": "Encoding of an input file such as an audio, video, or text track. Elementary streams must be packaged before mapping and sharing between different output formats.",
+        "$ref": "",
+        "properties": {
+          "audioStream": {
+            "type": "",
+            "format": "",
+            "description": "Encoding of an audio stream.",
+            "$ref": "AudioStream",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "key": {
+            "type": "string",
+            "format": "",
+            "description": "A unique key for this elementary stream.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "textStream": {
+            "type": "",
+            "format": "",
+            "description": "Encoding of a text stream. For example, closed captions or subtitles.",
+            "$ref": "TextStream",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "videoStream": {
+            "type": "",
+            "format": "",
+            "description": "Encoding of a video stream.",
+            "$ref": "VideoStream",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Empty": {
+        "type": "object",
+        "format": "",
+        "description": "A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }",
+        "$ref": "",
+        "properties": {},
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Encryption": {
+        "type": "object",
+        "format": "",
+        "description": "Encryption settings.",
+        "$ref": "",
+        "properties": {
+          "aes128": {
+            "type": "",
+            "format": "",
+            "description": "Configuration for AES-128 encryption.",
+            "$ref": "Aes128Encryption",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "drmSystems": {
+            "type": "",
+            "format": "",
+            "description": "Required. DRM system(s) to use; at least one must be specified. If a DRM system is omitted, it is considered disabled.",
+            "$ref": "DrmSystems",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "id": {
+            "type": "string",
+            "format": "",
+            "description": "Required. Identifier for this set of encryption options.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "mpegCenc": {
+            "type": "",
+            "format": "",
+            "description": "Configuration for MPEG Common Encryption (MPEG-CENC).",
+            "$ref": "MpegCommonEncryption",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "sampleAes": {
+            "type": "",
+            "format": "",
+            "description": "Configuration for SAMPLE-AES encryption.",
+            "$ref": "SampleAesEncryption",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "secretManagerKeySource": {
+            "type": "",
+            "format": "",
+            "description": "Keys are stored in Google Secret Manager.",
+            "$ref": "SecretManagerSource",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Fairplay": {
+        "type": "object",
+        "format": "",
+        "description": "Fairplay configuration.",
+        "$ref": "",
+        "properties": {},
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Fmp4Config": {
+        "type": "object",
+        "format": "",
+        "description": "`fmp4` container configuration.",
+        "$ref": "",
+        "properties": {
+          "codecTag": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Specify the codec tag string that will be used in the media bitstream. When not specified, the codec appropriate value is used. Supported H265 codec tags: - `hvc1` (default) - `hev1`",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "H264CodecSettings": {
+        "type": "object",
+        "format": "",
+        "description": "H264 codec settings.",
+        "$ref": "",
+        "properties": {
+          "allowOpenGop": {
+            "type": "boolean",
+            "format": "",
+            "description": "Specifies whether an open Group of Pictures (GOP) structure should be allowed or not. The default is `false`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "aqStrength": {
+            "type": "number",
+            "format": "double",
+            "description": "Specify the intensity of the adaptive quantizer (AQ). Must be between 0 and 1, where 0 disables the quantizer and 1 maximizes the quantizer. A higher value equals a lower bitrate but smoother image. The default is 0.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "bFrameCount": {
+            "type": "integer",
+            "format": "int32",
+            "description": "The number of consecutive B-frames. Must be greater than or equal to zero. Must be less than H264CodecSettings.gop_frame_count if set. The default is 0.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "bPyramid": {
+            "type": "boolean",
+            "format": "",
+            "description": "Allow B-pyramid for reference frame selection. This may not be supported on all decoders. The default is `false`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "bitrateBps": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Required. The video bitrate in bits per second. The minimum value is 1,000. The maximum value is 800,000,000.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "crfLevel": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Target CRF level. Must be between 10 and 36, where 10 is the highest quality and 36 is the most efficient compression. The default is 21.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "enableTwoPass": {
+            "type": "boolean",
+            "format": "",
+            "description": "Use two-pass encoding strategy to achieve better video quality. H264CodecSettings.rate_control_mode must be `vbr`. The default is `false`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "entropyCoder": {
+            "type": "string",
+            "format": "",
+            "description": "The entropy coder to use. The default is `cabac`. Supported entropy coders: - `cavlc` - `cabac`",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "frameRate": {
+            "type": "number",
+            "format": "double",
+            "description": "Required. The target video frame rate in frames per second (FPS). Must be less than or equal to 120.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "frameRateConversionStrategy": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Frame rate conversion strategy for desired frame rate. The default is `DOWNSAMPLE`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "FRAME_RATE_CONVERSION_STRATEGY_UNSPECIFIED",
+              "DOWNSAMPLE",
+              "DROP_DUPLICATE"
+            ],
+            "readOnly": false
+          },
+          "gopDuration": {
+            "type": "string",
+            "format": "google-duration",
+            "description": "Select the GOP size based on the specified duration. The default is `3s`. Note that `gopDuration` must be less than or equal to [`segmentDuration`](#SegmentSettings), and [`segmentDuration`](#SegmentSettings) must be divisible by `gopDuration`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "gopFrameCount": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Select the GOP size based on the specified frame count. Must be greater than zero.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "heightPixels": {
+            "type": "integer",
+            "format": "int32",
+            "description": "The height of the video in pixels. Must be an even integer. When not specified, the height is adjusted to match the specified width and input aspect ratio. If both are omitted, the input height is used. For portrait videos that contain horizontal ASR and rotation metadata, provide the height, in pixels, per the horizontal ASR. The API calculates the width per the horizontal ASR. The API detects any rotation metadata and swaps the requested height and width for the output.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "hlg": {
+            "type": "",
+            "format": "",
+            "description": "Optional. HLG color format setting for H264.",
+            "$ref": "H264ColorFormatHLG",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "pixelFormat": {
+            "type": "string",
+            "format": "",
+            "description": "Pixel format to use. The default is `yuv420p`. Supported pixel formats: - `yuv420p` pixel format - `yuv422p` pixel format - `yuv444p` pixel format - `yuv420p10` 10-bit HDR pixel format - `yuv422p10` 10-bit HDR pixel format - `yuv444p10` 10-bit HDR pixel format - `yuv420p12` 12-bit HDR pixel format - `yuv422p12` 12-bit HDR pixel format - `yuv444p12` 12-bit HDR pixel format",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "preset": {
+            "type": "string",
+            "format": "",
+            "description": "Enforces the specified codec preset. The default is `veryfast`. The available options are [FFmpeg-compatible](https://trac.ffmpeg.org/wiki/Encode/H.264#Preset). Note that certain values for this field may cause the transcoder to override other fields you set in the `H264CodecSettings` message.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "profile": {
+            "type": "string",
+            "format": "",
+            "description": "Enforces the specified codec profile. The following profiles are supported: * `baseline` * `main` * `high` (default) The available options are [FFmpeg-compatible](https://trac.ffmpeg.org/wiki/Encode/H.264#Tune). Note that certain values for this field may cause the transcoder to override other fields you set in the `H264CodecSettings` message.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "rateControlMode": {
+            "type": "string",
+            "format": "",
+            "description": "Specify the mode. The default is `vbr`. Supported rate control modes: - `vbr` - variable bitrate - `crf` - constant rate factor",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "sdr": {
+            "type": "",
+            "format": "",
+            "description": "Optional. SDR color format setting for H264.",
+            "$ref": "H264ColorFormatSDR",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "tune": {
+            "type": "string",
+            "format": "",
+            "description": "Enforces the specified codec tune. The available options are [FFmpeg-compatible](https://trac.ffmpeg.org/wiki/Encode/H.264#Tune). Note that certain values for this field may cause the transcoder to override other fields you set in the `H264CodecSettings` message.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "vbvFullnessBits": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Initial fullness of the Video Buffering Verifier (VBV) buffer in bits. Must be greater than zero. The default is equal to 90% of H264CodecSettings.vbv_size_bits.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "vbvSizeBits": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Size of the Video Buffering Verifier (VBV) buffer in bits. Must be greater than zero. The default is equal to H264CodecSettings.bitrate_bps.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "widthPixels": {
+            "type": "integer",
+            "format": "int32",
+            "description": "The width of the video in pixels. Must be an even integer. When not specified, the width is adjusted to match the specified height and input aspect ratio. If both are omitted, the input width is used. For portrait videos that contain horizontal ASR and rotation metadata, provide the width, in pixels, per the horizontal ASR. The API calculates the height per the horizontal ASR. The API detects any rotation metadata and swaps the requested height and width for the output.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "H264ColorFormatHLG": {
+        "type": "object",
+        "format": "",
+        "description": "Convert the input video to a Hybrid Log Gamma (HLG) video.",
+        "$ref": "",
+        "properties": {},
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "H264ColorFormatSDR": {
+        "type": "object",
+        "format": "",
+        "description": "Convert the input video to a Standard Dynamic Range (SDR) video.",
+        "$ref": "",
+        "properties": {},
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "H265CodecSettings": {
+        "type": "object",
+        "format": "",
+        "description": "H265 codec settings.",
+        "$ref": "",
+        "properties": {
+          "allowOpenGop": {
+            "type": "boolean",
+            "format": "",
+            "description": "Specifies whether an open Group of Pictures (GOP) structure should be allowed or not. The default is `false`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "aqStrength": {
+            "type": "number",
+            "format": "double",
+            "description": "Specify the intensity of the adaptive quantizer (AQ). Must be between 0 and 1, where 0 disables the quantizer and 1 maximizes the quantizer. A higher value equals a lower bitrate but smoother image. The default is 0.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "bFrameCount": {
+            "type": "integer",
+            "format": "int32",
+            "description": "The number of consecutive B-frames. Must be greater than or equal to zero. Must be less than H265CodecSettings.gop_frame_count if set. The default is 0.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "bPyramid": {
+            "type": "boolean",
+            "format": "",
+            "description": "Allow B-pyramid for reference frame selection. This may not be supported on all decoders. The default is `false`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "bitrateBps": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Required. The video bitrate in bits per second. The minimum value is 1,000. The maximum value is 800,000,000.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "crfLevel": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Target CRF level. Must be between 10 and 36, where 10 is the highest quality and 36 is the most efficient compression. The default is 21.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "enableTwoPass": {
+            "type": "boolean",
+            "format": "",
+            "description": "Use two-pass encoding strategy to achieve better video quality. H265CodecSettings.rate_control_mode must be `vbr`. The default is `false`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "frameRate": {
+            "type": "number",
+            "format": "double",
+            "description": "Required. The target video frame rate in frames per second (FPS). Must be less than or equal to 120.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "frameRateConversionStrategy": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Frame rate conversion strategy for desired frame rate. The default is `DOWNSAMPLE`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "FRAME_RATE_CONVERSION_STRATEGY_UNSPECIFIED",
+              "DOWNSAMPLE",
+              "DROP_DUPLICATE"
+            ],
+            "readOnly": false
+          },
+          "gopDuration": {
+            "type": "string",
+            "format": "google-duration",
+            "description": "Select the GOP size based on the specified duration. The default is `3s`. Note that `gopDuration` must be less than or equal to [`segmentDuration`](#SegmentSettings), and [`segmentDuration`](#SegmentSettings) must be divisible by `gopDuration`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "gopFrameCount": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Select the GOP size based on the specified frame count. Must be greater than zero.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "hdr10": {
+            "type": "",
+            "format": "",
+            "description": "Optional. HDR10 color format setting for H265.",
+            "$ref": "H265ColorFormatHDR10",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "heightPixels": {
+            "type": "integer",
+            "format": "int32",
+            "description": "The height of the video in pixels. Must be an even integer. When not specified, the height is adjusted to match the specified width and input aspect ratio. If both are omitted, the input height is used. For portrait videos that contain horizontal ASR and rotation metadata, provide the height, in pixels, per the horizontal ASR. The API calculates the width per the horizontal ASR. The API detects any rotation metadata and swaps the requested height and width for the output.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "hlg": {
+            "type": "",
+            "format": "",
+            "description": "Optional. HLG color format setting for H265.",
+            "$ref": "H265ColorFormatHLG",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "pixelFormat": {
+            "type": "string",
+            "format": "",
+            "description": "Pixel format to use. The default is `yuv420p`. Supported pixel formats: - `yuv420p` pixel format - `yuv422p` pixel format - `yuv444p` pixel format - `yuv420p10` 10-bit HDR pixel format - `yuv422p10` 10-bit HDR pixel format - `yuv444p10` 10-bit HDR pixel format - `yuv420p12` 12-bit HDR pixel format - `yuv422p12` 12-bit HDR pixel format - `yuv444p12` 12-bit HDR pixel format",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "preset": {
+            "type": "string",
+            "format": "",
+            "description": "Enforces the specified codec preset. The default is `veryfast`. The available options are [FFmpeg-compatible](https://trac.ffmpeg.org/wiki/Encode/H.265). Note that certain values for this field may cause the transcoder to override other fields you set in the `H265CodecSettings` message.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "profile": {
+            "type": "string",
+            "format": "",
+            "description": "Enforces the specified codec profile. The following profiles are supported: * 8-bit profiles * `main` (default) * `main-intra` * `mainstillpicture` * 10-bit profiles * `main10` (default) * `main10-intra` * `main422-10` * `main422-10-intra` * `main444-10` * `main444-10-intra` * 12-bit profiles * `main12` (default) * `main12-intra` * `main422-12` * `main422-12-intra` * `main444-12` * `main444-12-intra` The available options are [FFmpeg-compatible](https://x265.readthedocs.io/). Note that certain values for this field may cause the transcoder to override other fields you set in the `H265CodecSettings` message.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "rateControlMode": {
+            "type": "string",
+            "format": "",
+            "description": "Specify the mode. The default is `vbr`. Supported rate control modes: - `vbr` - variable bitrate - `crf` - constant rate factor",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "sdr": {
+            "type": "",
+            "format": "",
+            "description": "Optional. SDR color format setting for H265.",
+            "$ref": "H265ColorFormatSDR",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "tune": {
+            "type": "string",
+            "format": "",
+            "description": "Enforces the specified codec tune. The available options are [FFmpeg-compatible](https://trac.ffmpeg.org/wiki/Encode/H.265). Note that certain values for this field may cause the transcoder to override other fields you set in the `H265CodecSettings` message.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "vbvFullnessBits": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Initial fullness of the Video Buffering Verifier (VBV) buffer in bits. Must be greater than zero. The default is equal to 90% of H265CodecSettings.vbv_size_bits.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "vbvSizeBits": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Size of the Video Buffering Verifier (VBV) buffer in bits. Must be greater than zero. The default is equal to `VideoStream.bitrate_bps`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "widthPixels": {
+            "type": "integer",
+            "format": "int32",
+            "description": "The width of the video in pixels. Must be an even integer. When not specified, the width is adjusted to match the specified height and input aspect ratio. If both are omitted, the input width is used. For portrait videos that contain horizontal ASR and rotation metadata, provide the width, in pixels, per the horizontal ASR. The API calculates the height per the horizontal ASR. The API detects any rotation metadata and swaps the requested height and width for the output.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "H265ColorFormatHDR10": {
+        "type": "object",
+        "format": "",
+        "description": "Convert the input video to a High Dynamic Range 10 (HDR10) video.",
+        "$ref": "",
+        "properties": {},
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "H265ColorFormatHLG": {
+        "type": "object",
+        "format": "",
+        "description": "Convert the input video to a Hybrid Log Gamma (HLG) video.",
+        "$ref": "",
+        "properties": {},
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "H265ColorFormatSDR": {
+        "type": "object",
+        "format": "",
+        "description": "Convert the input video to a Standard Dynamic Range (SDR) video.",
+        "$ref": "",
+        "properties": {},
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Image": {
+        "type": "object",
+        "format": "",
+        "description": "Overlaid image.",
+        "$ref": "",
+        "properties": {
+          "alpha": {
+            "type": "number",
+            "format": "double",
+            "description": "Target image opacity. Valid values are from `1.0` (solid, default) to `0.0` (transparent), exclusive. Set this to a value greater than `0.0`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "resolution": {
+            "type": "",
+            "format": "",
+            "description": "Normalized image resolution, based on output video resolution. Valid values: `0.0`–`1.0`. To respect the original image aspect ratio, set either `x` or `y` to `0.0`. To use the original image resolution, set both `x` and `y` to `0.0`.",
+            "$ref": "NormalizedCoordinate",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "uri": {
+            "type": "string",
+            "format": "",
+            "description": "Required. URI of the image in Cloud Storage. For example, `gs://bucket/inputs/image.png`. Only PNG and JPEG images are supported.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Input": {
+        "type": "object",
+        "format": "",
+        "description": "Input asset.",
+        "$ref": "",
+        "properties": {
+          "attributes": {
+            "type": "",
+            "format": "",
+            "description": "Optional. Input Attributes.",
+            "$ref": "InputAttributes",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "key": {
+            "type": "string",
+            "format": "",
+            "description": "A unique key for this input. Must be specified when using advanced mapping and edit lists.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "preprocessingConfig": {
+            "type": "",
+            "format": "",
+            "description": "Preprocessing configurations.",
+            "$ref": "PreprocessingConfig",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "uri": {
+            "type": "string",
+            "format": "",
+            "description": "URI of the media. Input files must be at least 5 seconds in duration and stored in Cloud Storage (for example, `gs://bucket/inputs/file.mp4`). If empty, the value is populated from Job.input_uri. See [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "InputAttributes": {
+        "type": "object",
+        "format": "",
+        "description": "Input attributes that provide additional information about the input asset.",
+        "$ref": "",
+        "properties": {
+          "trackDefinitions": {
+            "type": "array",
+            "format": "",
+            "description": "Optional. A list of track definitions for the input asset.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "TrackDefinition",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Job": {
+        "type": "object",
+        "format": "",
+        "description": "Transcoding job resource.",
+        "$ref": "",
+        "properties": {
+          "batchModePriority": {
+            "type": "integer",
+            "format": "int32",
+            "description": "The processing priority of a batch job. This field can only be set for batch mode jobs. The default value is 0. This value cannot be negative. Higher values correspond to higher priorities for the job.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "config": {
+            "type": "",
+            "format": "",
+            "description": "The configuration for this job.",
+            "$ref": "JobConfig",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "createTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. The time the job was created.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "endTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. The time the transcoding finished.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "error": {
+            "type": "",
+            "format": "",
+            "description": "Output only. An error object that describes the reason for the failure. This property is always present when ProcessingState is `FAILED`.",
+            "$ref": "Status",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "fillContentGaps": {
+            "type": "boolean",
+            "format": "",
+            "description": "Optional. Insert silence and duplicate frames when timestamp gaps are detected in a given stream.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "inputUri": {
+            "type": "string",
+            "format": "",
+            "description": "Input only. Specify the `input_uri` to populate empty `uri` fields in each element of `Job.config.inputs` or `JobTemplate.config.inputs` when using template. URI of the media. Input files must be at least 5 seconds in duration and stored in Cloud Storage (for example, `gs://bucket/inputs/file.mp4`). See [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "labels": {
+            "type": "object",
+            "format": "",
+            "description": "The labels associated with this job. You can use these to organize and group your jobs.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "mode": {
+            "type": "string",
+            "format": "",
+            "description": "The processing mode of the job. The default is `PROCESSING_MODE_INTERACTIVE`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "PROCESSING_MODE_UNSPECIFIED",
+              "PROCESSING_MODE_INTERACTIVE",
+              "PROCESSING_MODE_BATCH"
+            ],
+            "readOnly": false
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "The resource name of the job. Format: `projects/{project_number}/locations/{location}/jobs/{job}`",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "optimization": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The optimization strategy of the job. The default is `AUTODETECT`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "OPTIMIZATION_STRATEGY_UNSPECIFIED",
+              "AUTODETECT",
+              "DISABLED"
+            ],
+            "readOnly": false
+          },
+          "outputUri": {
+            "type": "string",
+            "format": "",
+            "description": "Input only. Specify the `output_uri` to populate an empty `Job.config.output.uri` or `JobTemplate.config.output.uri` when using template. URI for the output file(s). For example, `gs://my-bucket/outputs/`. See [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "startTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. The time the transcoding started.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "state": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The current state of the job.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "PROCESSING_STATE_UNSPECIFIED",
+              "PENDING",
+              "RUNNING",
+              "SUCCEEDED",
+              "FAILED"
+            ],
+            "readOnly": true
+          },
+          "templateId": {
+            "type": "string",
+            "format": "",
+            "description": "Input only. Specify the `template_id` to use for populating `Job.config`. The default is `preset/web-hd`, which is the only supported preset. User defined JobTemplate: `{job_template_id}`",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "ttlAfterCompletionDays": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Job time to live value in days, which will be effective after job completion. Job should be deleted automatically after the given TTL. Enter a value between 1 and 90. The default is 30.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "JobConfig": {
+        "type": "object",
+        "format": "",
+        "description": "Job configuration",
+        "$ref": "",
+        "properties": {
+          "adBreaks": {
+            "type": "array",
+            "format": "",
+            "description": "List of ad breaks. Specifies where to insert ad break tags in the output manifests.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "AdBreak",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "editList": {
+            "type": "array",
+            "format": "",
+            "description": "List of edit atoms. Defines the ultimate timeline of the resulting file or manifest.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "EditAtom",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "elementaryStreams": {
+            "type": "array",
+            "format": "",
+            "description": "List of elementary streams.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "ElementaryStream",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "encryptions": {
+            "type": "array",
+            "format": "",
+            "description": "List of encryption configurations for the content. Each configuration has an ID. Specify this ID in the MuxStream.encryption_id field to indicate the configuration to use for that `MuxStream` output.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Encryption",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "inputs": {
+            "type": "array",
+            "format": "",
+            "description": "List of input assets stored in Cloud Storage.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Input",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "manifests": {
+            "type": "array",
+            "format": "",
+            "description": "List of output manifests.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Manifest",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "muxStreams": {
+            "type": "array",
+            "format": "",
+            "description": "List of multiplexing settings for output streams.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "MuxStream",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "output": {
+            "type": "",
+            "format": "",
+            "description": "Output configuration.",
+            "$ref": "Output",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "overlays": {
+            "type": "array",
+            "format": "",
+            "description": "List of overlays on the output video, in descending Z-order.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Overlay",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "pubsubDestination": {
+            "type": "",
+            "format": "",
+            "description": "Destination on Pub/Sub.",
+            "$ref": "PubsubDestination",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "spriteSheets": {
+            "type": "array",
+            "format": "",
+            "description": "List of output sprite sheets. Spritesheets require at least one VideoStream in the Jobconfig.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "SpriteSheet",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "JobTemplate": {
+        "type": "object",
+        "format": "",
+        "description": "Transcoding job template resource.",
+        "$ref": "",
+        "properties": {
+          "config": {
+            "type": "",
+            "format": "",
+            "description": "The configuration for this template.",
+            "$ref": "JobConfig",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "labels": {
+            "type": "object",
+            "format": "",
+            "description": "The labels associated with this job template. You can use these to organize and group your job templates.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "The resource name of the job template. Format: `projects/{project_number}/locations/{location}/jobTemplates/{job_template}`",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ListJobTemplatesResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Response message for `TranscoderService.ListJobTemplates`.",
+        "$ref": "",
+        "properties": {
+          "jobTemplates": {
+            "type": "array",
+            "format": "",
+            "description": "List of job templates in the specified region.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "JobTemplate",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "The pagination token.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "unreachable": {
+            "type": "array",
+            "format": "",
+            "description": "List of regions that could not be reached.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ListJobsResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Response message for `TranscoderService.ListJobs`.",
+        "$ref": "",
+        "properties": {
+          "jobs": {
+            "type": "array",
+            "format": "",
+            "description": "List of jobs in the specified region.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Job",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "The pagination token.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "unreachable": {
+            "type": "array",
+            "format": "",
+            "description": "List of regions that could not be reached.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Manifest": {
+        "type": "object",
+        "format": "",
+        "description": "Manifest configuration.",
+        "$ref": "",
+        "properties": {
+          "dash": {
+            "type": "",
+            "format": "",
+            "description": "`DASH` manifest configuration.",
+            "$ref": "DashConfig",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "fileName": {
+            "type": "string",
+            "format": "",
+            "description": "The name of the generated file. The default is `manifest` with the extension suffix corresponding to the Manifest.type.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "muxStreams": {
+            "type": "array",
+            "format": "",
+            "description": "Required. List of user supplied MuxStream.key values that should appear in this manifest. When Manifest.type is `HLS`, a media manifest with name MuxStream.key and `.m3u8` extension is generated for each element in this list.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "type": {
+            "type": "string",
+            "format": "",
+            "description": "Required. Type of the manifest.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "MANIFEST_TYPE_UNSPECIFIED",
+              "HLS",
+              "DASH"
+            ],
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "MpegCommonEncryption": {
+        "type": "object",
+        "format": "",
+        "description": "Configuration for MPEG Common Encryption (MPEG-CENC).",
+        "$ref": "",
+        "properties": {
+          "scheme": {
+            "type": "string",
+            "format": "",
+            "description": "Required. Specify the encryption scheme. Supported encryption schemes: - `cenc` - `cbcs`",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "MuxStream": {
+        "type": "object",
+        "format": "",
+        "description": "Multiplexing settings for output stream.",
+        "$ref": "",
+        "properties": {
+          "container": {
+            "type": "string",
+            "format": "",
+            "description": "The container format. The default is `mp4` Supported streaming formats: - `ts` - `fmp4`- the corresponding file extension is `.m4s` Supported standalone file formats: - `mp4` - `mp3` - `ogg` - `vtt` See also: [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats)",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "elementaryStreams": {
+            "type": "array",
+            "format": "",
+            "description": "List of ElementaryStream.key values multiplexed in this stream.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "encryptionId": {
+            "type": "string",
+            "format": "",
+            "description": "Identifier of the encryption configuration to use. If omitted, output will be unencrypted.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "fileName": {
+            "type": "string",
+            "format": "",
+            "description": "The name of the generated file. The default is MuxStream.key with the extension suffix corresponding to the MuxStream.container. Individual segments also have an incremental 10-digit zero-padded suffix starting from 0 before the extension, such as `mux_stream0000000123.ts`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "fmp4": {
+            "type": "",
+            "format": "",
+            "description": "Optional. `fmp4` container configuration.",
+            "$ref": "Fmp4Config",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "key": {
+            "type": "string",
+            "format": "",
+            "description": "A unique key for this multiplexed stream.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "segmentSettings": {
+            "type": "",
+            "format": "",
+            "description": "Segment settings for `ts`, `fmp4` and `vtt`.",
+            "$ref": "SegmentSettings",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "NormalizedCoordinate": {
+        "type": "object",
+        "format": "",
+        "description": "2D normalized coordinates. Default: `{0.0, 0.0}`",
+        "$ref": "",
+        "properties": {
+          "x": {
+            "type": "number",
+            "format": "double",
+            "description": "Normalized x coordinate.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "y": {
+            "type": "number",
+            "format": "double",
+            "description": "Normalized y coordinate.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Output": {
+        "type": "object",
+        "format": "",
+        "description": "Location of output file(s) in a Cloud Storage bucket.",
+        "$ref": "",
+        "properties": {
+          "uri": {
+            "type": "string",
+            "format": "",
+            "description": "URI for the output file(s). For example, `gs://my-bucket/outputs/`. Must be a directory and not a top-level bucket. If empty, the value is populated from Job.output_uri. See [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Overlay": {
+        "type": "object",
+        "format": "",
+        "description": "Overlay configuration.",
+        "$ref": "",
+        "properties": {
+          "animations": {
+            "type": "array",
+            "format": "",
+            "description": "List of animations. The list should be chronological, without any time overlap.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Animation",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "image": {
+            "type": "",
+            "format": "",
+            "description": "Image overlay.",
+            "$ref": "Image",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Pad": {
+        "type": "object",
+        "format": "",
+        "description": "Pad filter configuration for the input video. The padded input video is scaled after padding with black to match the output resolution.",
+        "$ref": "",
+        "properties": {
+          "bottomPixels": {
+            "type": "integer",
+            "format": "int32",
+            "description": "The number of pixels to add to the bottom. The default is 0.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "leftPixels": {
+            "type": "integer",
+            "format": "int32",
+            "description": "The number of pixels to add to the left. The default is 0.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "rightPixels": {
+            "type": "integer",
+            "format": "int32",
+            "description": "The number of pixels to add to the right. The default is 0.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "topPixels": {
+            "type": "integer",
+            "format": "int32",
+            "description": "The number of pixels to add to the top. The default is 0.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Playready": {
+        "type": "object",
+        "format": "",
+        "description": "Playready configuration.",
+        "$ref": "",
+        "properties": {},
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "PreprocessingConfig": {
+        "type": "object",
+        "format": "",
+        "description": "Preprocessing configurations.",
+        "$ref": "",
+        "properties": {
+          "audio": {
+            "type": "",
+            "format": "",
+            "description": "Audio preprocessing configuration.",
+            "$ref": "Audio",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "color": {
+            "type": "",
+            "format": "",
+            "description": "Color preprocessing configuration.",
+            "$ref": "Color",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "crop": {
+            "type": "",
+            "format": "",
+            "description": "Specify the video cropping configuration.",
+            "$ref": "Crop",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "deblock": {
+            "type": "",
+            "format": "",
+            "description": "Deblock preprocessing configuration.",
+            "$ref": "Deblock",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "deinterlace": {
+            "type": "",
+            "format": "",
+            "description": "Specify the video deinterlace configuration.",
+            "$ref": "Deinterlace",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "denoise": {
+            "type": "",
+            "format": "",
+            "description": "Denoise preprocessing configuration.",
+            "$ref": "Denoise",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "pad": {
+            "type": "",
+            "format": "",
+            "description": "Specify the video pad filter configuration.",
+            "$ref": "Pad",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "PubsubDestination": {
+        "type": "object",
+        "format": "",
+        "description": "A Pub/Sub destination.",
+        "$ref": "",
+        "properties": {
+          "topic": {
+            "type": "string",
+            "format": "",
+            "description": "The name of the Pub/Sub topic to publish job completion notification to. For example: `projects/{project}/topics/{topic}`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "SampleAesEncryption": {
+        "type": "object",
+        "format": "",
+        "description": "Configuration for SAMPLE-AES encryption.",
+        "$ref": "",
+        "properties": {},
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "SecretManagerSource": {
+        "type": "object",
+        "format": "",
+        "description": "Configuration for secrets stored in Google Secret Manager.",
+        "$ref": "",
+        "properties": {
+          "secretVersion": {
+            "type": "string",
+            "format": "",
+            "description": "Required. The name of the Secret Version containing the encryption key in the following format: `projects/{project}/secrets/{secret_id}/versions/{version_number}` Note that only numbered versions are supported. Aliases like \"latest\" are not supported.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "SegmentSettings": {
+        "type": "object",
+        "format": "",
+        "description": "Segment settings for `ts`, `fmp4` and `vtt`.",
+        "$ref": "",
+        "properties": {
+          "individualSegments": {
+            "type": "boolean",
+            "format": "",
+            "description": "Required. Create an individual segment file. The default is `false`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "segmentDuration": {
+            "type": "string",
+            "format": "google-duration",
+            "description": "Duration of the segments in seconds. The default is `6.0s`. Note that `segmentDuration` must be greater than or equal to [`gopDuration`](#videostream), and `segmentDuration` must be divisible by [`gopDuration`](#videostream).",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "SpriteSheet": {
+        "type": "object",
+        "format": "",
+        "description": "Sprite sheet configuration.",
+        "$ref": "",
+        "properties": {
+          "columnCount": {
+            "type": "integer",
+            "format": "int32",
+            "description": "The maximum number of sprites per row in a sprite sheet. The default is 0, which indicates no maximum limit.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "endTimeOffset": {
+            "type": "string",
+            "format": "google-duration",
+            "description": "End time in seconds, relative to the output file timeline. When `end_time_offset` is not specified, the sprites are generated until the end of the output file.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "filePrefix": {
+            "type": "string",
+            "format": "",
+            "description": "Required. File name prefix for the generated sprite sheets. Each sprite sheet has an incremental 10-digit zero-padded suffix starting from 0 before the extension, such as `sprite_sheet0000000123.jpeg`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "format": {
+            "type": "string",
+            "format": "",
+            "description": "Format type. The default is `jpeg`. Supported formats: - `jpeg`",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "interval": {
+            "type": "string",
+            "format": "google-duration",
+            "description": "Starting from `0s`, create sprites at regular intervals. Specify the interval value in seconds.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "quality": {
+            "type": "integer",
+            "format": "int32",
+            "description": "The quality of the generated sprite sheet. Enter a value between 1 and 100, where 1 is the lowest quality and 100 is the highest quality. The default is 100. A high quality value corresponds to a low image data compression ratio.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "rowCount": {
+            "type": "integer",
+            "format": "int32",
+            "description": "The maximum number of rows per sprite sheet. When the sprite sheet is full, a new sprite sheet is created. The default is 0, which indicates no maximum limit.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "spriteHeightPixels": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Required. The height of sprite in pixels. Must be an even integer. To preserve the source aspect ratio, set the SpriteSheet.sprite_height_pixels field or the SpriteSheet.sprite_width_pixels field, but not both (the API will automatically calculate the missing field). For portrait videos that contain horizontal ASR and rotation metadata, provide the height, in pixels, per the horizontal ASR. The API calculates the width per the horizontal ASR. The API detects any rotation metadata and swaps the requested height and width for the output.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "spriteWidthPixels": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Required. The width of sprite in pixels. Must be an even integer. To preserve the source aspect ratio, set the SpriteSheet.sprite_width_pixels field or the SpriteSheet.sprite_height_pixels field, but not both (the API will automatically calculate the missing field). For portrait videos that contain horizontal ASR and rotation metadata, provide the width, in pixels, per the horizontal ASR. The API calculates the height per the horizontal ASR. The API detects any rotation metadata and swaps the requested height and width for the output.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "startTimeOffset": {
+            "type": "string",
+            "format": "google-duration",
+            "description": "Start time in seconds, relative to the output file timeline. Determines the first sprite to pick. The default is `0s`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "totalCount": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Total number of sprites. Create the specified number of sprites distributed evenly across the timeline of the output media. The default is 100.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Status": {
+        "type": "object",
+        "format": "",
+        "description": "The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).",
+        "$ref": "",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32",
+            "description": "The status code, which should be an enum value of google.rpc.Code.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "details": {
+            "type": "array",
+            "format": "",
+            "description": "A list of messages that carry the error details. There is a common set of message types for APIs to use.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "object",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": {
+                "type": "any",
+                "format": "",
+                "description": "Properties of the object. Contains field @type with type URL.",
+                "$ref": "",
+                "properties": null,
+                "items": null,
+                "additionalProperties": null,
+                "enum": null,
+                "readOnly": false
+              },
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "message": {
+            "type": "string",
+            "format": "",
+            "description": "A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "TextMapping": {
+        "type": "object",
+        "format": "",
+        "description": "The mapping for the JobConfig.edit_list atoms with text EditAtom.inputs.",
+        "$ref": "",
+        "properties": {
+          "atomKey": {
+            "type": "string",
+            "format": "",
+            "description": "Required. The EditAtom.key that references atom with text inputs in the JobConfig.edit_list.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "inputKey": {
+            "type": "string",
+            "format": "",
+            "description": "Required. The Input.key that identifies the input file.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "inputTrack": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Required. The zero-based index of the track in the input file.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "TextStream": {
+        "type": "object",
+        "format": "",
+        "description": "Encoding of a text stream. For example, closed captions or subtitles.",
+        "$ref": "",
+        "properties": {
+          "codec": {
+            "type": "string",
+            "format": "",
+            "description": "The codec for this text stream. The default is `webvtt`. Supported text codecs: - `srt` - `ttml` - `cea608` - `cea708` - `webvtt`",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "displayName": {
+            "type": "string",
+            "format": "",
+            "description": "The name for this particular text stream that will be added to the HLS/DASH manifest. Not supported in MP4 files.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "languageCode": {
+            "type": "string",
+            "format": "",
+            "description": "The BCP-47 language code, such as `en-US` or `sr-Latn`. For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier. Not supported in MP4 files.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "mapping": {
+            "type": "array",
+            "format": "",
+            "description": "The mapping for the JobConfig.edit_list atoms with text EditAtom.inputs.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "TextMapping",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "TrackDefinition": {
+        "type": "object",
+        "format": "",
+        "description": "Track definition for the input asset.",
+        "$ref": "",
+        "properties": {
+          "detectLanguages": {
+            "type": "boolean",
+            "format": "",
+            "description": "Optional. Whether to automatically detect the languages present in the track. If true, the system will attempt to identify all the languages present in the track and populate the languages field.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "detectedLanguages": {
+            "type": "array",
+            "format": "",
+            "description": "Output only. A list of languages detected in the input asset, represented by a BCP 47 language code, such as \"en-US\" or \"sr-Latn\". For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier. This field is only populated if the detect_languages field is set to true.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "inputTrack": {
+            "type": "integer",
+            "format": "int32",
+            "description": "The input track.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "languages": {
+            "type": "array",
+            "format": "",
+            "description": "Optional. A list of languages spoken in the input asset, represented by a BCP 47 language code, such as \"en-US\" or \"sr-Latn\". For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "VideoStream": {
+        "type": "object",
+        "format": "",
+        "description": "Video stream resource.",
+        "$ref": "",
+        "properties": {
+          "h264": {
+            "type": "",
+            "format": "",
+            "description": "H264 codec settings.",
+            "$ref": "H264CodecSettings",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "h265": {
+            "type": "",
+            "format": "",
+            "description": "H265 codec settings.",
+            "$ref": "H265CodecSettings",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "vp9": {
+            "type": "",
+            "format": "",
+            "description": "VP9 codec settings.",
+            "$ref": "Vp9CodecSettings",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Vp9CodecSettings": {
+        "type": "object",
+        "format": "",
+        "description": "VP9 codec settings.",
+        "$ref": "",
+        "properties": {
+          "bitrateBps": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Required. The video bitrate in bits per second. The minimum value is 1,000. The maximum value is 480,000,000.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "crfLevel": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Target CRF level. Must be between 10 and 36, where 10 is the highest quality and 36 is the most efficient compression. The default is 21. **Note:** This field is not supported.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "frameRate": {
+            "type": "number",
+            "format": "double",
+            "description": "Required. The target video frame rate in frames per second (FPS). Must be less than or equal to 120.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "frameRateConversionStrategy": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Frame rate conversion strategy for desired frame rate. The default is `DOWNSAMPLE`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "FRAME_RATE_CONVERSION_STRATEGY_UNSPECIFIED",
+              "DOWNSAMPLE",
+              "DROP_DUPLICATE"
+            ],
+            "readOnly": false
+          },
+          "gopDuration": {
+            "type": "string",
+            "format": "google-duration",
+            "description": "Select the GOP size based on the specified duration. The default is `3s`. Note that `gopDuration` must be less than or equal to [`segmentDuration`](#SegmentSettings), and [`segmentDuration`](#SegmentSettings) must be divisible by `gopDuration`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "gopFrameCount": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Select the GOP size based on the specified frame count. Must be greater than zero.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "heightPixels": {
+            "type": "integer",
+            "format": "int32",
+            "description": "The height of the video in pixels. Must be an even integer. When not specified, the height is adjusted to match the specified width and input aspect ratio. If both are omitted, the input height is used. For portrait videos that contain horizontal ASR and rotation metadata, provide the height, in pixels, per the horizontal ASR. The API calculates the width per the horizontal ASR. The API detects any rotation metadata and swaps the requested height and width for the output.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "hlg": {
+            "type": "",
+            "format": "",
+            "description": "Optional. HLG color format setting for VP9.",
+            "$ref": "Vp9ColorFormatHLG",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "pixelFormat": {
+            "type": "string",
+            "format": "",
+            "description": "Pixel format to use. The default is `yuv420p`. Supported pixel formats: - `yuv420p` pixel format - `yuv422p` pixel format - `yuv444p` pixel format - `yuv420p10` 10-bit HDR pixel format - `yuv422p10` 10-bit HDR pixel format - `yuv444p10` 10-bit HDR pixel format - `yuv420p12` 12-bit HDR pixel format - `yuv422p12` 12-bit HDR pixel format - `yuv444p12` 12-bit HDR pixel format",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "profile": {
+            "type": "string",
+            "format": "",
+            "description": "Enforces the specified codec profile. The following profiles are supported: * `profile0` (default) * `profile1` * `profile2` * `profile3` The available options are [WebM-compatible](https://www.webmproject.org/vp9/profiles/). Note that certain values for this field may cause the transcoder to override other fields you set in the `Vp9CodecSettings` message.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "rateControlMode": {
+            "type": "string",
+            "format": "",
+            "description": "Specify the mode. The default is `vbr`. Supported rate control modes: - `vbr` - variable bitrate",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "sdr": {
+            "type": "",
+            "format": "",
+            "description": "Optional. SDR color format setting for VP9.",
+            "$ref": "Vp9ColorFormatSDR",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "widthPixels": {
+            "type": "integer",
+            "format": "int32",
+            "description": "The width of the video in pixels. Must be an even integer. When not specified, the width is adjusted to match the specified height and input aspect ratio. If both are omitted, the input width is used. For portrait videos that contain horizontal ASR and rotation metadata, provide the width, in pixels, per the horizontal ASR. The API calculates the height per the horizontal ASR. The API detects any rotation metadata and swaps the requested height and width for the output.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Vp9ColorFormatHLG": {
+        "type": "object",
+        "format": "",
+        "description": "Convert the input video to a Hybrid Log Gamma (HLG) video.",
+        "$ref": "",
+        "properties": {},
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Vp9ColorFormatSDR": {
+        "type": "object",
+        "format": "",
+        "description": "Convert the input video to a Standard Dynamic Range (SDR) video.",
+        "$ref": "",
+        "properties": {},
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Widevine": {
+        "type": "object",
+        "format": "",
+        "description": "Widevine configuration.",
+        "$ref": "",
+        "properties": {},
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "YadifConfig": {
+        "type": "object",
+        "format": "",
+        "description": "Yet Another Deinterlacing Filter Configuration.",
+        "$ref": "",
+        "properties": {
+          "deinterlaceAllFrames": {
+            "type": "boolean",
+            "format": "",
+            "description": "Deinterlace all frames rather than just the frames identified as interlaced. The default is `false`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "disableSpatialInterlacing": {
+            "type": "boolean",
+            "format": "",
+            "description": "Disable spacial interlacing. The default is `false`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "mode": {
+            "type": "string",
+            "format": "",
+            "description": "Specifies the deinterlacing mode to adopt. The default is `send_frame`. Supported values: - `send_frame`: Output one frame for each frame - `send_field`: Output one frame for each field",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "parity": {
+            "type": "string",
+            "format": "",
+            "description": "The picture field parity assumed for the input interlaced video. The default is `auto`. Supported values: - `tff`: Assume the top field is first - `bff`: Assume the bottom field is first - `auto`: Enable automatic detection of field parity",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      }
+    },
+    "resources": {
+      "projects": {
+        "methods": null,
+        "resources": {
+          "locations": {
+            "methods": null,
+            "resources": {
+              "jobTemplates": {
+                "methods": {
+                  "create": {
+                    "id": "transcoder.projects.locations.jobTemplates.create",
+                    "httpMethod": "POST",
+                    "path": "v1/{+parent}/jobTemplates",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/jobTemplates",
+                    "description": "Creates a job template in the specified region.",
+                    "parameters": {
+                      "jobTemplateId": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "parent": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "parent"
+                    ],
+                    "request": {
+                      "$ref": "JobTemplate"
+                    },
+                    "response": {
+                      "$ref": "JobTemplate"
+                    }
+                  },
+                  "delete": {
+                    "id": "transcoder.projects.locations.jobTemplates.delete",
+                    "httpMethod": "DELETE",
+                    "path": "v1/{+name}",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/jobTemplates/{jobTemplatesId}",
+                    "description": "Deletes a job template.",
+                    "parameters": {
+                      "allowMissing": {
+                        "type": "boolean",
+                        "location": "query",
+                        "required": false
+                      },
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "Empty"
+                    }
+                  },
+                  "get": {
+                    "id": "transcoder.projects.locations.jobTemplates.get",
+                    "httpMethod": "GET",
+                    "path": "v1/{+name}",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/jobTemplates/{jobTemplatesId}",
+                    "description": "Returns the job template data.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "JobTemplate"
+                    }
+                  },
+                  "list": {
+                    "id": "transcoder.projects.locations.jobTemplates.list",
+                    "httpMethod": "GET",
+                    "path": "v1/{+parent}/jobTemplates",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/jobTemplates",
+                    "description": "Lists job templates in the specified region.",
+                    "parameters": {
+                      "filter": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "orderBy": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "pageSize": {
+                        "type": "integer",
+                        "location": "query",
+                        "required": false
+                      },
+                      "pageToken": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "parent": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "parent"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "ListJobTemplatesResponse"
+                    }
+                  }
+                },
+                "resources": null
+              },
+              "jobs": {
+                "methods": {
+                  "create": {
+                    "id": "transcoder.projects.locations.jobs.create",
+                    "httpMethod": "POST",
+                    "path": "v1/{+parent}/jobs",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/jobs",
+                    "description": "Creates a job in the specified region.",
+                    "parameters": {
+                      "parent": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "parent"
+                    ],
+                    "request": {
+                      "$ref": "Job"
+                    },
+                    "response": {
+                      "$ref": "Job"
+                    }
+                  },
+                  "delete": {
+                    "id": "transcoder.projects.locations.jobs.delete",
+                    "httpMethod": "DELETE",
+                    "path": "v1/{+name}",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/jobs/{jobsId}",
+                    "description": "Deletes a job.",
+                    "parameters": {
+                      "allowMissing": {
+                        "type": "boolean",
+                        "location": "query",
+                        "required": false
+                      },
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "Empty"
+                    }
+                  },
+                  "get": {
+                    "id": "transcoder.projects.locations.jobs.get",
+                    "httpMethod": "GET",
+                    "path": "v1/{+name}",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/jobs/{jobsId}",
+                    "description": "Returns the job data.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "Job"
+                    }
+                  },
+                  "list": {
+                    "id": "transcoder.projects.locations.jobs.list",
+                    "httpMethod": "GET",
+                    "path": "v1/{+parent}/jobs",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/jobs",
+                    "description": "Lists jobs in the specified region.",
+                    "parameters": {
+                      "filter": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "orderBy": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "pageSize": {
+                        "type": "integer",
+                        "location": "query",
+                        "required": false
+                      },
+                      "pageToken": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "parent": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "parent"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "ListJobsResponse"
+                    }
+                  }
+                },
+                "resources": null
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,136 @@
+name: publish
+
+# Manual-trigger only (matching every ubx-sdk-* repo's own publish.yml
+# convention): after a hash-watch regen PR merges, someone clicks "Run
+# workflow" to cut the real GitHub Release provider.AcquireSchema
+# (ubiquex's own provider/acquireschema.go) expects.
+#
+# UBI-182 group-container format: the COMMITTED files stay separate,
+# per-member (manifest.json + members/<name>.json) -- that's what makes
+# a version bump's own real git diff show which members actually
+# changed, the whole point of committing at all. The RELEASE packs them
+# into ONE compressed archive (snapshot.tar.gz) purely so a real pinned
+# resolution stays one real download regardless of member count -- a
+# real, measured problem this format solves: one flat file at AWS's
+# real 430-member scale would exceed the git hosting platform's own
+# real 100MB commit limit by more than 2x (ubx-schema-kubernetes' own
+# PR history has the real numbers). Exactly two release assets:
+# snapshot.tar.gz and SHA256SUMS (the checksum covers the ARCHIVE, not
+# each member file separately).
+#
+# The version published is always whatever's already committed in
+# manifest.json -- this workflow never bumps a version itself:
+# hash-watch.yml already derives and commits the real, mechanical
+# version bump before this ever runs.
+#
+# Release notes deliberately carry real, mechanically-computed COUNTS
+# (--dump-group-summary, built from the SAME merge every pinned
+# resolution already goes through), never an internal member name
+# ("google_ds") -- a real, live bug found in ubx-schema-kubernetes and
+# ubx-schema-datadog's own earlier release notes (both baked member
+# names in, inviting a reader to pin one directly, exactly the multi-pin
+# shape the resource/data-source collapse (UBI-182) exists to make
+# unnecessary) -- this repo is built with the fix from the start.
+
+on:
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out ubx-schema-google
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Check out ubx-provider-dynamic (to build it from source)
+        run: |
+          set -euo pipefail
+          git clone --depth=1 \
+            "https://github.com/Ubiquex/ubx-provider-dynamic.git" \
+            "${{ runner.temp }}/ubx-provider-dynamic-src"
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version-file: ${{ runner.temp }}/ubx-provider-dynamic-src/go.mod
+
+      - name: Build ubx-provider-dynamic
+        run: |
+          set -euo pipefail
+          go build -C "${{ runner.temp }}/ubx-provider-dynamic-src" \
+            -o "${{ runner.temp }}/ubx-provider-dynamic" \
+            ./cmd/ubx-provider-dynamic
+
+      - name: Read the version to publish from the committed manifest
+        id: version
+        run: |
+          set -euo pipefail
+          v="$(python3 -c "import json; print(json.load(open('manifest.json'))['version'])")"
+          echo "version=$v" >> "$GITHUB_OUTPUT"
+          echo "Publishing manifest.json's own committed version: $v"
+
+      - name: Refuse to republish an existing release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          v="${{ steps.version.outputs.version }}"
+          if gh release view "v$v" >/dev/null 2>&1; then
+            echo "v$v is already released -- nothing to do (a real hash-watch regen bumps manifest.json's own version before this can run again)" >&2
+            exit 1
+          fi
+
+      - name: Pack the committed group into one real archive
+        run: |
+          set -euo pipefail
+          tar czf snapshot.tar.gz manifest.json members/
+          sha256sum snapshot.tar.gz > SHA256SUMS
+
+      - name: Summarize the real, committed group -- counts only, never a member name
+        id: summary
+        run: |
+          set -euo pipefail
+          "${{ runner.temp }}/ubx-provider-dynamic" --dump-group-summary="$PWD" > "${{ runner.temp }}/summary.json"
+          cat "${{ runner.temp }}/summary.json"
+          r="$(python3 -c "import json; print(json.load(open('${{ runner.temp }}/summary.json'))['resources'])")"
+          d="$(python3 -c "import json; print(json.load(open('${{ runner.temp }}/summary.json'))['data_sources'])")"
+          echo "resources=$r" >> "$GITHUB_OUTPUT"
+          echo "data_sources=$d" >> "$GITHUB_OUTPUT"
+
+      - name: Create the GitHub Release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          v="${{ steps.version.outputs.version }}"
+          fmt="$(python3 -c "import json; print(json.load(open('manifest.json'))['schema_format'])")"
+          gh release create "v$v" snapshot.tar.gz SHA256SUMS \
+            --title "v$v" \
+            --notes "Google provider schema snapshot v$v (schema_format $fmt, ${{ steps.summary.outputs.resources }} real resource types, ${{ steps.summary.outputs.data_sources }} real data source types).
+
+          One real pin covers the whole group -- the resource/data-source split is an internal discovery-time detail, never something a user writes a second config block for:
+
+          \`\`\`toml
+          [providers.google]
+          source  = \"ubiquex/google\"
+          version = \"$v\"
+          \`\`\`"
+
+      - name: Verify the release is real and carries exactly the two expected assets, queried independently
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          v="${{ steps.version.outputs.version }}"
+          gh release view "v$v" --json assets --jq '.assets[].name' | sort > "${{ runner.temp }}/got-assets"
+          printf '%s\n' "SHA256SUMS" "snapshot.tar.gz" | sort > "${{ runner.temp }}/want-assets"
+          if ! diff -u "${{ runner.temp }}/want-assets" "${{ runner.temp }}/got-assets"; then
+            echo "release v$v does not have exactly the two expected assets" >&2
+            exit 1
+          fi
+          echo "v$v published with exactly the two expected assets."

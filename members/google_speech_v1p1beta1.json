@@ -1,0 +1,2527 @@
+{
+  "schema_source": "discovery_docs",
+  "mode": "resource",
+  "auth": {
+    "Type": "",
+    "Params": null
+  },
+  "base_url": "https://speech.googleapis.com",
+  "retry": {
+    "MaxAttempts": 0,
+    "InitialBackoff": "",
+    "MaxBackoff": "",
+    "Jitter": null,
+    "RespectRetryAfter": null,
+    "RateLimitResetHeader": ""
+  },
+  "timeouts": {
+    "Create": "",
+    "Read": "",
+    "Update": "",
+    "Delete": "",
+    "Default": ""
+  },
+  "wire_name": "google_speech_v1p1beta1",
+  "version_qualifier": "v1p1beta1",
+  "raw_spec": {
+    "name": "speech",
+    "revision": "20260708",
+    "discoveryVersion": "v1",
+    "baseUrl": "https://speech.googleapis.com/",
+    "rootUrl": "https://speech.googleapis.com/",
+    "servicePath": "",
+    "schemas": {
+      "ABNFGrammar": {
+        "type": "object",
+        "format": "",
+        "description": "",
+        "$ref": "",
+        "properties": {
+          "abnfStrings": {
+            "type": "array",
+            "format": "",
+            "description": "All declarations and rules of an ABNF grammar broken up into multiple strings that will end up concatenated.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ClassItem": {
+        "type": "object",
+        "format": "",
+        "description": "An item of the class.",
+        "$ref": "",
+        "properties": {
+          "value": {
+            "type": "string",
+            "format": "",
+            "description": "The class item's value.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "CreateCustomClassRequest": {
+        "type": "object",
+        "format": "",
+        "description": "Message sent by the client for the `CreateCustomClass` method.",
+        "$ref": "",
+        "properties": {
+          "customClass": {
+            "type": "",
+            "format": "",
+            "description": "Required. The custom class to create.",
+            "$ref": "CustomClass",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "customClassId": {
+            "type": "string",
+            "format": "",
+            "description": "Required. The ID to use for the custom class, which will become the final component of the custom class' resource name. This value should restrict to letters, numbers, and hyphens, with the first character a letter, the last a letter or a number, and be 4-63 characters.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "CreatePhraseSetRequest": {
+        "type": "object",
+        "format": "",
+        "description": "Message sent by the client for the `CreatePhraseSet` method.",
+        "$ref": "",
+        "properties": {
+          "phraseSet": {
+            "type": "",
+            "format": "",
+            "description": "Required. The phrase set to create.",
+            "$ref": "PhraseSet",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "phraseSetId": {
+            "type": "string",
+            "format": "",
+            "description": "Required. The ID to use for the phrase set, which will become the final component of the phrase set's resource name. This value should restrict to letters, numbers, and hyphens, with the first character a letter, the last a letter or a number, and be 4-63 characters.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "CustomClass": {
+        "type": "object",
+        "format": "",
+        "description": "A set of words or phrases that represents a common concept likely to appear in your audio, for example a list of passenger ship names. CustomClass items can be substituted into placeholders that you set in PhraseSet phrases.",
+        "$ref": "",
+        "properties": {
+          "annotations": {
+            "type": "object",
+            "format": "",
+            "description": "Output only. Allows users to store small amounts of arbitrary data. Both the key and the value must be 63 characters or less each. At most 100 annotations. This field is not used.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": true
+          },
+          "customClassId": {
+            "type": "string",
+            "format": "",
+            "description": "If this custom class is a resource, the custom_class_id is the resource id of the CustomClass. Case sensitive.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "deleteTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. The time at which this resource was requested for deletion. This field is not used.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "displayName": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. User-settable, human-readable name for the CustomClass. Must be 63 characters or less. This field is not used.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "etag": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. This checksum is computed by the server based on the value of other fields. This may be sent on update, undelete, and delete requests to ensure the client has an up-to-date value before proceeding. This field is not used.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "expireTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. The time at which this resource will be purged. This field is not used.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "items": {
+            "type": "array",
+            "format": "",
+            "description": "A collection of class items.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "ClassItem",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "kmsKeyName": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The [KMS key name](https://cloud.google.com/kms/docs/resource-hierarchy#keys) with which the content of the ClassItem is encrypted. The expected format is `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "kmsKeyVersionName": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The [KMS key version name](https://cloud.google.com/kms/docs/resource-hierarchy#key_versions) with which content of the ClassItem is encrypted. The expected format is `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}/cryptoKeyVersions/{crypto_key_version}`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "The resource name of the custom class.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "reconciling": {
+            "type": "boolean",
+            "format": "",
+            "description": "Output only. Whether or not this CustomClass is in the process of being updated. This field is not used.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "state": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The CustomClass lifecycle state. This field is not used.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "STATE_UNSPECIFIED",
+              "ACTIVE",
+              "DELETED"
+            ],
+            "readOnly": true
+          },
+          "uid": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. System-assigned unique identifier for the CustomClass. This field is not used.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Empty": {
+        "type": "object",
+        "format": "",
+        "description": "A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }",
+        "$ref": "",
+        "properties": {},
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Entry": {
+        "type": "object",
+        "format": "",
+        "description": "A single replacement configuration.",
+        "$ref": "",
+        "properties": {
+          "caseSensitive": {
+            "type": "boolean",
+            "format": "",
+            "description": "Whether the search is case sensitive.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "replace": {
+            "type": "string",
+            "format": "",
+            "description": "What to replace with. Max length is 100 characters.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "search": {
+            "type": "string",
+            "format": "",
+            "description": "What to replace. Max length is 100 characters.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ListCustomClassesResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Message returned to the client by the `ListCustomClasses` method.",
+        "$ref": "",
+        "properties": {
+          "customClasses": {
+            "type": "array",
+            "format": "",
+            "description": "The custom classes.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "CustomClass",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ListOperationsResponse": {
+        "type": "object",
+        "format": "",
+        "description": "The response message for Operations.ListOperations.",
+        "$ref": "",
+        "properties": {
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "The standard List next-page token.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "operations": {
+            "type": "array",
+            "format": "",
+            "description": "A list of operations that matches the specified filter in the request.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Operation",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "unreachable": {
+            "type": "array",
+            "format": "",
+            "description": "Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ListPhraseSetResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Message returned to the client by the `ListPhraseSet` method.",
+        "$ref": "",
+        "properties": {
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "phraseSets": {
+            "type": "array",
+            "format": "",
+            "description": "The phrase set.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "PhraseSet",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "LongRunningRecognizeMetadata": {
+        "type": "object",
+        "format": "",
+        "description": "Describes the progress of a long-running `LongRunningRecognize` call. It is included in the `metadata` field of the `Operation` returned by the `GetOperation` call of the `google::longrunning::Operations` service.",
+        "$ref": "",
+        "properties": {
+          "lastUpdateTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Time of the most recent processing update.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "outputConfig": {
+            "type": "",
+            "format": "",
+            "description": "Output only. A copy of the TranscriptOutputConfig if it was set in the request.",
+            "$ref": "TranscriptOutputConfig",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "progressPercent": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Approximate percentage of audio processed thus far. Guaranteed to be 100 when the audio is fully processed and the results are available.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "startTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Time when the request was received.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "uri": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The URI of the audio file being transcribed. Empty if the audio was sent as byte content.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "LongRunningRecognizeRequest": {
+        "type": "object",
+        "format": "",
+        "description": "The top-level message sent by the client for the `LongRunningRecognize` method.",
+        "$ref": "",
+        "properties": {
+          "audio": {
+            "type": "",
+            "format": "",
+            "description": "Required. The audio data to be recognized.",
+            "$ref": "RecognitionAudio",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "config": {
+            "type": "",
+            "format": "",
+            "description": "Required. Provides information to the recognizer that specifies how to process the request.",
+            "$ref": "RecognitionConfig",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "outputConfig": {
+            "type": "",
+            "format": "",
+            "description": "Optional. Specifies an optional destination for the recognition results.",
+            "$ref": "TranscriptOutputConfig",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "LongRunningRecognizeResponse": {
+        "type": "object",
+        "format": "",
+        "description": "The only message returned to the client by the `LongRunningRecognize` method. It contains the result as zero or more sequential `SpeechRecognitionResult` messages. It is included in the `result.response` field of the `Operation` returned by the `GetOperation` call of the `google::longrunning::Operations` service.",
+        "$ref": "",
+        "properties": {
+          "outputConfig": {
+            "type": "",
+            "format": "",
+            "description": "Original output config if present in the request.",
+            "$ref": "TranscriptOutputConfig",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "outputError": {
+            "type": "",
+            "format": "",
+            "description": "If the transcript output fails this field contains the relevant error.",
+            "$ref": "Status",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "requestId": {
+            "type": "string",
+            "format": "int64",
+            "description": "The ID associated with the request. This is a unique ID specific only to the given request.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "results": {
+            "type": "array",
+            "format": "",
+            "description": "Sequential list of transcription results corresponding to sequential portions of audio.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "SpeechRecognitionResult",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "speechAdaptationInfo": {
+            "type": "",
+            "format": "",
+            "description": "Provides information on speech adaptation behavior in response",
+            "$ref": "SpeechAdaptationInfo",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "totalBilledTime": {
+            "type": "string",
+            "format": "google-duration",
+            "description": "When available, billed audio seconds for the corresponding request.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Operation": {
+        "type": "object",
+        "format": "",
+        "description": "This resource represents a long-running operation that is the result of a network API call.",
+        "$ref": "",
+        "properties": {
+          "done": {
+            "type": "boolean",
+            "format": "",
+            "description": "If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "error": {
+            "type": "",
+            "format": "",
+            "description": "The error result of the operation in case of failure or cancellation.",
+            "$ref": "Status",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "metadata": {
+            "type": "object",
+            "format": "",
+            "description": "Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "any",
+              "format": "",
+              "description": "Properties of the object. Contains field @type with type URL.",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "response": {
+            "type": "object",
+            "format": "",
+            "description": "The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "any",
+              "format": "",
+              "description": "Properties of the object. Contains field @type with type URL.",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Phrase": {
+        "type": "object",
+        "format": "",
+        "description": "A phrases containing words and phrase \"hints\" so that the speech recognition is more likely to recognize them. This can be used to improve the accuracy for specific words and phrases, for example, if specific commands are typically spoken by the user. This can also be used to add additional words to the vocabulary of the recognizer. See [usage limits](https://cloud.google.com/speech-to-text/quotas#content). List items can also include pre-built or custom classes containing groups of words that represent common concepts that occur in natural language. For example, rather than providing a phrase hint for every month of the year (e.g. \"i was born in january\", \"i was born in febuary\", ...), use the pre-built `$MONTH` class improves the likelihood of correctly transcribing audio that includes months (e.g. \"i was born in $month\"). To refer to pre-built classes, use the class' symbol prepended with `$` e.g. `$MONTH`. To refer to custom classes that were defined inline in the request, set the class's `custom_class_id` to a string unique to all class resources and inline classes. Then use the class' id wrapped in $`{...}` e.g. \"${my-months}\". To refer to custom classes resources, use the class' id wrapped in `${}` (e.g. `${my-months}`). Speech-to-Text supports three locations: `global`, `us` (US North America), and `eu` (Europe). If you are calling the `speech.googleapis.com` endpoint, use the `global` location. To specify a region, use a [regional endpoint](https://cloud.google.com/speech-to-text/docs/endpoints) with matching `us` or `eu` location value.",
+        "$ref": "",
+        "properties": {
+          "boost": {
+            "type": "number",
+            "format": "float",
+            "description": "Hint Boost. Overrides the boost set at the phrase set level. Positive value will increase the probability that a specific phrase will be recognized over other similar sounding phrases. The higher the boost, the higher the chance of false positive recognition as well. Negative boost will simply be ignored. Though `boost` can accept a wide range of positive values, most use cases are best served with values between 0 and 20. We recommend using a binary search approach to finding the optimal value for your use case as well as adding phrases both with and without boost to your requests.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "value": {
+            "type": "string",
+            "format": "",
+            "description": "The phrase itself.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "PhraseSet": {
+        "type": "object",
+        "format": "",
+        "description": "Provides \"hints\" to the speech recognizer to favor specific words and phrases in the results.",
+        "$ref": "",
+        "properties": {
+          "annotations": {
+            "type": "object",
+            "format": "",
+            "description": "Output only. Allows users to store small amounts of arbitrary data. Both the key and the value must be 63 characters or less each. At most 100 annotations. This field is not used.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": true
+          },
+          "boost": {
+            "type": "number",
+            "format": "float",
+            "description": "Hint Boost. Positive value will increase the probability that a specific phrase will be recognized over other similar sounding phrases. The higher the boost, the higher the chance of false positive recognition as well. Negative boost values would correspond to anti-biasing. Anti-biasing is not enabled, so negative boost will simply be ignored. Though `boost` can accept a wide range of positive values, most use cases are best served with values between 0 (exclusive) and 20. We recommend using a binary search approach to finding the optimal value for your use case as well as adding phrases both with and without boost to your requests.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "deleteTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. The time at which this resource was requested for deletion. This field is not used.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "displayName": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. User-settable, human-readable name for the PhraseSet. Must be 63 characters or less. This field is not used.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "etag": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. This checksum is computed by the server based on the value of other fields. This may be sent on update, undelete, and delete requests to ensure the client has an up-to-date value before proceeding. This field is not used.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "expireTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. The time at which this resource will be purged. This field is not used.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "kmsKeyName": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The [KMS key name](https://cloud.google.com/kms/docs/resource-hierarchy#keys) with which the content of the PhraseSet is encrypted. The expected format is `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "kmsKeyVersionName": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The [KMS key version name](https://cloud.google.com/kms/docs/resource-hierarchy#key_versions) with which content of the PhraseSet is encrypted. The expected format is `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}/cryptoKeyVersions/{crypto_key_version}`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "The resource name of the phrase set.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "phrases": {
+            "type": "array",
+            "format": "",
+            "description": "A list of word and phrases.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Phrase",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "reconciling": {
+            "type": "boolean",
+            "format": "",
+            "description": "Output only. Whether or not this PhraseSet is in the process of being updated. This field is not used.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "state": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The CustomClass lifecycle state. This field is not used.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "STATE_UNSPECIFIED",
+              "ACTIVE",
+              "DELETED"
+            ],
+            "readOnly": true
+          },
+          "uid": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. System-assigned unique identifier for the PhraseSet. This field is not used.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "RecognitionAudio": {
+        "type": "object",
+        "format": "",
+        "description": "Contains audio data in the encoding specified in the `RecognitionConfig`. Either `content` or `uri` must be supplied. Supplying both or neither returns google.rpc.Code.INVALID_ARGUMENT. See [content limits](https://cloud.google.com/speech-to-text/quotas#content).",
+        "$ref": "",
+        "properties": {
+          "content": {
+            "type": "string",
+            "format": "byte",
+            "description": "The audio data bytes encoded as specified in `RecognitionConfig`. Note: as with all bytes fields, proto buffers use a pure binary representation, whereas JSON representations use base64.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "uri": {
+            "type": "string",
+            "format": "",
+            "description": "URI that points to a file that contains audio data bytes as specified in `RecognitionConfig`. The file must not be compressed (for example, gzip). Currently, only Google Cloud Storage URIs are supported, which must be specified in the following format: `gs://bucket_name/object_name` (other URI formats return google.rpc.Code.INVALID_ARGUMENT). For more information, see [Request URIs](https://cloud.google.com/storage/docs/reference-uris).",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "RecognitionConfig": {
+        "type": "object",
+        "format": "",
+        "description": "Provides information to the recognizer that specifies how to process the request.",
+        "$ref": "",
+        "properties": {
+          "adaptation": {
+            "type": "",
+            "format": "",
+            "description": "Speech adaptation configuration improves the accuracy of speech recognition. For more information, see the [speech adaptation](https://cloud.google.com/speech-to-text/docs/adaptation) documentation. When speech adaptation is set it supersedes the `speech_contexts` field.",
+            "$ref": "SpeechAdaptation",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "alternativeLanguageCodes": {
+            "type": "array",
+            "format": "",
+            "description": "A list of up to 3 additional [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tags, listing possible alternative languages of the supplied audio. See [Language Support](https://cloud.google.com/speech-to-text/docs/languages) for a list of the currently supported language codes. If alternative languages are listed, recognition result will contain recognition in the most likely language detected including the main language_code. The recognition result will include the language tag of the language detected in the audio. Note: This feature is only supported for Voice Command and Voice Search use cases and performance may vary for other use cases (e.g., phone call transcription).",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "audioChannelCount": {
+            "type": "integer",
+            "format": "int32",
+            "description": "The number of channels in the input audio data. ONLY set this for MULTI-CHANNEL recognition. Valid values for LINEAR16, OGG_OPUS and FLAC are `1`-`8`. Valid value for MULAW, AMR, AMR_WB and SPEEX_WITH_HEADER_BYTE is only `1`. If `0` or omitted, defaults to one channel (mono). Note: We only recognize the first channel by default. To perform independent recognition on each channel set `enable_separate_recognition_per_channel` to 'true'.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "diarizationConfig": {
+            "type": "",
+            "format": "",
+            "description": "Config to enable speaker diarization and set additional parameters to make diarization better suited for your application. Note: When this is enabled, we send all the words from the beginning of the audio for the top alternative in every consecutive STREAMING responses. This is done in order to improve our speaker tags as our models learn to identify the speakers in the conversation over time. For non-streaming requests, the diarization results will be provided only in the top alternative of the FINAL SpeechRecognitionResult.",
+            "$ref": "SpeakerDiarizationConfig",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "diarizationSpeakerCount": {
+            "type": "integer",
+            "format": "int32",
+            "description": "If set, specifies the estimated number of speakers in the conversation. Defaults to '2'. Ignored unless enable_speaker_diarization is set to true. Note: Use diarization_config instead.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "enableAutomaticPunctuation": {
+            "type": "boolean",
+            "format": "",
+            "description": "If 'true', adds punctuation to recognition result hypotheses. This feature is only available in select languages. Setting this for requests in other languages has no effect at all. The default 'false' value does not add punctuation to result hypotheses.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "enableSeparateRecognitionPerChannel": {
+            "type": "boolean",
+            "format": "",
+            "description": "This needs to be set to `true` explicitly and `audio_channel_count` \u003e 1 to get each channel recognized separately. The recognition result will contain a `channel_tag` field to state which channel that result belongs to. If this is not true, we will only recognize the first channel. The request is billed cumulatively for all channels recognized: `audio_channel_count` multiplied by the length of the audio.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "enableSpeakerDiarization": {
+            "type": "boolean",
+            "format": "",
+            "description": "If 'true', enables speaker detection for each recognized word in the top alternative of the recognition result using a speaker_label provided in the WordInfo. Note: Use diarization_config instead.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "enableSpokenEmojis": {
+            "type": "boolean",
+            "format": "",
+            "description": "The spoken emoji behavior for the call If not set, uses default behavior based on model of choice If 'true', adds spoken emoji formatting for the request. This will replace spoken emojis with the corresponding Unicode symbols in the final transcript. If 'false', spoken emojis are not replaced.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "enableSpokenPunctuation": {
+            "type": "boolean",
+            "format": "",
+            "description": "The spoken punctuation behavior for the call If not set, uses default behavior based on model of choice e.g. command_and_search will enable spoken punctuation by default If 'true', replaces spoken punctuation with the corresponding symbols in the request. For example, \"how are you question mark\" becomes \"how are you?\". See https://cloud.google.com/speech-to-text/docs/spoken-punctuation for support. If 'false', spoken punctuation is not replaced.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "enableWordConfidence": {
+            "type": "boolean",
+            "format": "",
+            "description": "If `true`, the top result includes a list of words and the confidence for those words. If `false`, no word-level confidence information is returned. The default is `false`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "enableWordTimeOffsets": {
+            "type": "boolean",
+            "format": "",
+            "description": "If `true`, the top result includes a list of words and the start and end time offsets (timestamps) for those words. If `false`, no word-level time offset information is returned. The default is `false`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "encoding": {
+            "type": "string",
+            "format": "",
+            "description": "Encoding of audio data sent in all `RecognitionAudio` messages. This field is optional for `FLAC` and `WAV` audio files and required for all other audio formats. For details, see AudioEncoding.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "ENCODING_UNSPECIFIED",
+              "LINEAR16",
+              "FLAC",
+              "MULAW",
+              "AMR",
+              "AMR_WB",
+              "OGG_OPUS",
+              "SPEEX_WITH_HEADER_BYTE",
+              "MP3",
+              "WEBM_OPUS",
+              "ALAW"
+            ],
+            "readOnly": false
+          },
+          "languageCode": {
+            "type": "string",
+            "format": "",
+            "description": "Required. The language of the supplied audio as a [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag. Example: \"en-US\". See [Language Support](https://cloud.google.com/speech-to-text/docs/languages) for a list of the currently supported language codes.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "maxAlternatives": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Maximum number of recognition hypotheses to be returned. Specifically, the maximum number of `SpeechRecognitionAlternative` messages within each `SpeechRecognitionResult`. The server may return fewer than `max_alternatives`. Valid values are `0`-`30`. A value of `0` or `1` will return a maximum of one. If omitted, will return a maximum of one.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "metadata": {
+            "type": "",
+            "format": "",
+            "description": "Metadata regarding this request.",
+            "$ref": "RecognitionMetadata",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "model": {
+            "type": "string",
+            "format": "",
+            "description": "Which model to select for the given request. Select the model best suited to your domain to get best results. If a model is not explicitly specified, then we auto-select a model based on the parameters in the RecognitionConfig. *Model* *Description* latest_long Best for long form content like media or conversation. latest_short Best for short form content like commands or single shot directed speech. command_and_search Best for short queries such as voice commands or voice search. phone_call Best for audio that originated from a phone call (typically recorded at an 8khz sampling rate). video Best for audio that originated from video or includes multiple speakers. Ideally the audio is recorded at a 16khz or greater sampling rate. This is a premium model that costs more than the standard rate. default Best for audio that is not one of the specific audio models. For example, long-form audio. Ideally the audio is high-fidelity, recorded at a 16khz or greater sampling rate. medical_conversation Best for audio that originated from a conversation between a medical provider and patient. medical_dictation Best for audio that originated from dictation notes by a medical provider. ",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "profanityFilter": {
+            "type": "boolean",
+            "format": "",
+            "description": "If set to `true`, the server will attempt to filter out profanities, replacing all but the initial character in each filtered word with asterisks, e.g. \"f***\". If set to `false` or omitted, profanities won't be filtered out.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "sampleRateHertz": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Sample rate in Hertz of the audio data sent in all `RecognitionAudio` messages. Valid values are: 8000-48000. 16000 is optimal. For best results, set the sampling rate of the audio source to 16000 Hz. If that's not possible, use the native sample rate of the audio source (instead of re-sampling). This field is optional for FLAC and WAV audio files, but is required for all other audio formats. For details, see AudioEncoding.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "speechContexts": {
+            "type": "array",
+            "format": "",
+            "description": "Array of SpeechContext. A means to provide context to assist the speech recognition. For more information, see [speech adaptation](https://cloud.google.com/speech-to-text/docs/adaptation).",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "SpeechContext",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "transcriptNormalization": {
+            "type": "",
+            "format": "",
+            "description": "Optional. Use transcription normalization to automatically replace parts of the transcript with phrases of your choosing. For StreamingRecognize, this normalization only applies to stable partial transcripts (stability \u003e 0.8) and final transcripts.",
+            "$ref": "TranscriptNormalization",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "useEnhanced": {
+            "type": "boolean",
+            "format": "",
+            "description": "Set to true to use an enhanced model for speech recognition. If `use_enhanced` is set to true and the `model` field is not set, then an appropriate enhanced model is chosen if an enhanced model exists for the audio. If `use_enhanced` is true and an enhanced version of the specified model does not exist, then the speech is recognized using the standard version of the specified model.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "RecognitionMetadata": {
+        "type": "object",
+        "format": "",
+        "description": "Description of audio data to be recognized.",
+        "$ref": "",
+        "properties": {
+          "audioTopic": {
+            "type": "string",
+            "format": "",
+            "description": "Description of the content. Eg. \"Recordings of federal supreme court hearings from 2012\".",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "industryNaicsCodeOfAudio": {
+            "type": "integer",
+            "format": "uint32",
+            "description": "The industry vertical to which this speech recognition request most closely applies. This is most indicative of the topics contained in the audio. Use the 6-digit NAICS code to identify the industry vertical - see https://www.naics.com/search/.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "interactionType": {
+            "type": "string",
+            "format": "",
+            "description": "The use case most closely describing the audio content to be recognized.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "INTERACTION_TYPE_UNSPECIFIED",
+              "DISCUSSION",
+              "PRESENTATION",
+              "PHONE_CALL",
+              "VOICEMAIL",
+              "PROFESSIONALLY_PRODUCED",
+              "VOICE_SEARCH",
+              "VOICE_COMMAND",
+              "DICTATION"
+            ],
+            "readOnly": false
+          },
+          "microphoneDistance": {
+            "type": "string",
+            "format": "",
+            "description": "The audio type that most closely describes the audio being recognized.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "MICROPHONE_DISTANCE_UNSPECIFIED",
+              "NEARFIELD",
+              "MIDFIELD",
+              "FARFIELD"
+            ],
+            "readOnly": false
+          },
+          "obfuscatedId": {
+            "type": "string",
+            "format": "int64",
+            "description": "Obfuscated (privacy-protected) ID of the user, to identify number of unique users using the service.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "originalMediaType": {
+            "type": "string",
+            "format": "",
+            "description": "The original media the speech was recorded on.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "ORIGINAL_MEDIA_TYPE_UNSPECIFIED",
+              "AUDIO",
+              "VIDEO"
+            ],
+            "readOnly": false
+          },
+          "originalMimeType": {
+            "type": "string",
+            "format": "",
+            "description": "Mime type of the original audio file. For example `audio/m4a`, `audio/x-alaw-basic`, `audio/mp3`, `audio/3gpp`. A list of possible audio mime types is maintained at http://www.iana.org/assignments/media-types/media-types.xhtml#audio",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "recordingDeviceName": {
+            "type": "string",
+            "format": "",
+            "description": "The device used to make the recording. Examples 'Nexus 5X' or 'Polycom SoundStation IP 6000' or 'POTS' or 'VoIP' or 'Cardioid Microphone'.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "recordingDeviceType": {
+            "type": "string",
+            "format": "",
+            "description": "The type of device the speech was recorded with.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "RECORDING_DEVICE_TYPE_UNSPECIFIED",
+              "SMARTPHONE",
+              "PC",
+              "PHONE_LINE",
+              "VEHICLE",
+              "OTHER_OUTDOOR_DEVICE",
+              "OTHER_INDOOR_DEVICE"
+            ],
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "RecognizeRequest": {
+        "type": "object",
+        "format": "",
+        "description": "The top-level message sent by the client for the `Recognize` method.",
+        "$ref": "",
+        "properties": {
+          "audio": {
+            "type": "",
+            "format": "",
+            "description": "Required. The audio data to be recognized.",
+            "$ref": "RecognitionAudio",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "config": {
+            "type": "",
+            "format": "",
+            "description": "Required. Provides information to the recognizer that specifies how to process the request.",
+            "$ref": "RecognitionConfig",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "RecognizeResponse": {
+        "type": "object",
+        "format": "",
+        "description": "The only message returned to the client by the `Recognize` method. It contains the result as zero or more sequential `SpeechRecognitionResult` messages.",
+        "$ref": "",
+        "properties": {
+          "requestId": {
+            "type": "string",
+            "format": "int64",
+            "description": "The ID associated with the request. This is a unique ID specific only to the given request.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "results": {
+            "type": "array",
+            "format": "",
+            "description": "Sequential list of transcription results corresponding to sequential portions of audio.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "SpeechRecognitionResult",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "speechAdaptationInfo": {
+            "type": "",
+            "format": "",
+            "description": "Provides information on adaptation behavior in response",
+            "$ref": "SpeechAdaptationInfo",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "totalBilledTime": {
+            "type": "string",
+            "format": "google-duration",
+            "description": "When available, billed audio seconds for the corresponding request.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "usingLegacyModels": {
+            "type": "boolean",
+            "format": "",
+            "description": "Whether request used legacy asr models (was not automatically migrated to use conformer models).",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "SpeakerDiarizationConfig": {
+        "type": "object",
+        "format": "",
+        "description": "Config to enable speaker diarization.",
+        "$ref": "",
+        "properties": {
+          "enableSpeakerDiarization": {
+            "type": "boolean",
+            "format": "",
+            "description": "If 'true', enables speaker detection for each recognized word in the top alternative of the recognition result using a speaker_label provided in the WordInfo.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "maxSpeakerCount": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Maximum number of speakers in the conversation. This range gives you more flexibility by allowing the system to automatically determine the correct number of speakers. If not set, the default value is 6.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "minSpeakerCount": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Minimum number of speakers in the conversation. This range gives you more flexibility by allowing the system to automatically determine the correct number of speakers. If not set, the default value is 2.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "speakerTag": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Output only. Unused.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "SpeechAdaptation": {
+        "type": "object",
+        "format": "",
+        "description": "Speech adaptation configuration.",
+        "$ref": "",
+        "properties": {
+          "abnfGrammar": {
+            "type": "",
+            "format": "",
+            "description": "Augmented Backus-Naur form (ABNF) is a standardized grammar notation comprised by a set of derivation rules. See specifications: https://www.w3.org/TR/speech-grammar",
+            "$ref": "ABNFGrammar",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "customClasses": {
+            "type": "array",
+            "format": "",
+            "description": "A collection of custom classes. To specify the classes inline, leave the class' `name` blank and fill in the rest of its fields, giving it a unique `custom_class_id`. Refer to the inline defined class in phrase hints by its `custom_class_id`.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "CustomClass",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "phraseSetReferences": {
+            "type": "array",
+            "format": "",
+            "description": "A collection of phrase set resource names to use.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "phraseSets": {
+            "type": "array",
+            "format": "",
+            "description": "A collection of phrase sets. To specify the hints inline, leave the phrase set's `name` blank and fill in the rest of its fields. Any phrase set can use any custom class.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "PhraseSet",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "SpeechAdaptationInfo": {
+        "type": "object",
+        "format": "",
+        "description": "Information on speech adaptation use in results",
+        "$ref": "",
+        "properties": {
+          "adaptationTimeout": {
+            "type": "boolean",
+            "format": "",
+            "description": "Whether there was a timeout when applying speech adaptation. If true, adaptation had no effect in the response transcript.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "timeoutMessage": {
+            "type": "string",
+            "format": "",
+            "description": "If set, returns a message specifying which part of the speech adaptation request timed out.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "SpeechContext": {
+        "type": "object",
+        "format": "",
+        "description": "Provides \"hints\" to the speech recognizer to favor specific words and phrases in the results.",
+        "$ref": "",
+        "properties": {
+          "boost": {
+            "type": "number",
+            "format": "float",
+            "description": "Hint Boost. Positive value will increase the probability that a specific phrase will be recognized over other similar sounding phrases. The higher the boost, the higher the chance of false positive recognition as well. Negative boost values would correspond to anti-biasing. Anti-biasing is not enabled, so negative boost will simply be ignored. Though `boost` can accept a wide range of positive values, most use cases are best served with values between 0 and 20. We recommend using a binary search approach to finding the optimal value for your use case.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "phrases": {
+            "type": "array",
+            "format": "",
+            "description": "A list of strings containing words and phrases \"hints\" so that the speech recognition is more likely to recognize them. This can be used to improve the accuracy for specific words and phrases, for example, if specific commands are typically spoken by the user. This can also be used to add additional words to the vocabulary of the recognizer. See [usage limits](https://cloud.google.com/speech-to-text/quotas#content). List items can also be set to classes for groups of words that represent common concepts that occur in natural language. For example, rather than providing phrase hints for every month of the year, using the $MONTH class improves the likelihood of correctly transcribing audio that includes months.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "SpeechRecognitionAlternative": {
+        "type": "object",
+        "format": "",
+        "description": "Alternative hypotheses (a.k.a. n-best list).",
+        "$ref": "",
+        "properties": {
+          "confidence": {
+            "type": "number",
+            "format": "float",
+            "description": "The confidence estimate between 0.0 and 1.0. A higher number indicates an estimated greater likelihood that the recognized words are correct. This field is set only for the top alternative of a non-streaming result or, of a streaming result where `is_final=true`. This field is not guaranteed to be accurate and users should not rely on it to be always provided. The default of 0.0 is a sentinel value indicating `confidence` was not set.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "transcript": {
+            "type": "string",
+            "format": "",
+            "description": "Transcript text representing the words that the user spoke. In languages that use spaces to separate words, the transcript might have a leading space if it isn't the first result. You can concatenate each result to obtain the full transcript without using a separator.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "words": {
+            "type": "array",
+            "format": "",
+            "description": "A list of word-specific information for each recognized word. Note: When `enable_speaker_diarization` is true, you will see all the words from the beginning of the audio.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "WordInfo",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "SpeechRecognitionResult": {
+        "type": "object",
+        "format": "",
+        "description": "A speech recognition result corresponding to a portion of the audio.",
+        "$ref": "",
+        "properties": {
+          "alternatives": {
+            "type": "array",
+            "format": "",
+            "description": "May contain one or more recognition hypotheses (up to the maximum specified in `max_alternatives`). These alternatives are ordered in terms of accuracy, with the top (first) alternative being the most probable, as ranked by the recognizer.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "SpeechRecognitionAlternative",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "channelTag": {
+            "type": "integer",
+            "format": "int32",
+            "description": "For multi-channel audio, this is the channel number corresponding to the recognized result for the audio from that channel. For audio_channel_count = N, its output values can range from '1' to 'N'.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "languageCode": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag of the language in this result. This language code was detected to have the most likelihood of being spoken in the audio.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "resultEndTime": {
+            "type": "string",
+            "format": "google-duration",
+            "description": "Time offset of the end of this result relative to the beginning of the audio.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Status": {
+        "type": "object",
+        "format": "",
+        "description": "The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).",
+        "$ref": "",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32",
+            "description": "The status code, which should be an enum value of google.rpc.Code.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "details": {
+            "type": "array",
+            "format": "",
+            "description": "A list of messages that carry the error details. There is a common set of message types for APIs to use.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "object",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": {
+                "type": "any",
+                "format": "",
+                "description": "Properties of the object. Contains field @type with type URL.",
+                "$ref": "",
+                "properties": null,
+                "items": null,
+                "additionalProperties": null,
+                "enum": null,
+                "readOnly": false
+              },
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "message": {
+            "type": "string",
+            "format": "",
+            "description": "A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "TranscriptNormalization": {
+        "type": "object",
+        "format": "",
+        "description": "Transcription normalization configuration. Use transcription normalization to automatically replace parts of the transcript with phrases of your choosing. For StreamingRecognize, this normalization only applies to stable partial transcripts (stability \u003e 0.8) and final transcripts.",
+        "$ref": "",
+        "properties": {
+          "entries": {
+            "type": "array",
+            "format": "",
+            "description": "A list of replacement entries. We will perform replacement with one entry at a time. For example, the second entry in [\"cat\" =\u003e \"dog\", \"mountain cat\" =\u003e \"mountain dog\"] will never be applied because we will always process the first entry before it. At most 100 entries.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Entry",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "TranscriptOutputConfig": {
+        "type": "object",
+        "format": "",
+        "description": "Specifies an optional destination for the recognition results.",
+        "$ref": "",
+        "properties": {
+          "gcsUri": {
+            "type": "string",
+            "format": "",
+            "description": "Specifies a Cloud Storage URI for the recognition results. Must be specified in the format: `gs://bucket_name/object_name`, and the bucket must already exist.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "WordInfo": {
+        "type": "object",
+        "format": "",
+        "description": "Word-specific information for recognized words.",
+        "$ref": "",
+        "properties": {
+          "confidence": {
+            "type": "number",
+            "format": "float",
+            "description": "The confidence estimate between 0.0 and 1.0. A higher number indicates an estimated greater likelihood that the recognized words are correct. This field is set only for the top alternative of a non-streaming result or, of a streaming result where `is_final=true`. This field is not guaranteed to be accurate and users should not rely on it to be always provided. The default of 0.0 is a sentinel value indicating `confidence` was not set.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "endTime": {
+            "type": "string",
+            "format": "google-duration",
+            "description": "Time offset relative to the beginning of the audio, and corresponding to the end of the spoken word. This field is only set if `enable_word_time_offsets=true` and only in the top hypothesis. This is an experimental feature and the accuracy of the time offset can vary.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "speakerLabel": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. A label value assigned for every unique speaker within the audio. This field specifies which speaker was detected to have spoken this word. For some models, like medical_conversation this can be actual speaker role, for example \"patient\" or \"provider\", but generally this would be a number identifying a speaker. This field is only set if enable_speaker_diarization = 'true' and only for the top alternative.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "speakerTag": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Output only. A distinct integer value is assigned for every speaker within the audio. This field specifies which one of those speakers was detected to have spoken this word. Value ranges from '1' to diarization_speaker_count. speaker_tag is set if enable_speaker_diarization = 'true' and only for the top alternative. Note: Use speaker_label instead.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "startTime": {
+            "type": "string",
+            "format": "google-duration",
+            "description": "Time offset relative to the beginning of the audio, and corresponding to the start of the spoken word. This field is only set if `enable_word_time_offsets=true` and only in the top hypothesis. This is an experimental feature and the accuracy of the time offset can vary.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "word": {
+            "type": "string",
+            "format": "",
+            "description": "The word corresponding to this set of information.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      }
+    },
+    "resources": {
+      "operations": {
+        "methods": {
+          "get": {
+            "id": "speech.operations.get",
+            "httpMethod": "GET",
+            "path": "v1p1beta1/operations/{+name}",
+            "flatPath": "v1p1beta1/operations/{operationsId}",
+            "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
+            "parameters": {
+              "name": {
+                "type": "string",
+                "location": "path",
+                "required": true
+              }
+            },
+            "parameterOrder": [
+              "name"
+            ],
+            "request": null,
+            "response": {
+              "$ref": "Operation"
+            }
+          },
+          "list": {
+            "id": "speech.operations.list",
+            "httpMethod": "GET",
+            "path": "v1p1beta1/operations",
+            "flatPath": "v1p1beta1/operations",
+            "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.",
+            "parameters": {
+              "filter": {
+                "type": "string",
+                "location": "query",
+                "required": false
+              },
+              "name": {
+                "type": "string",
+                "location": "query",
+                "required": false
+              },
+              "pageSize": {
+                "type": "integer",
+                "location": "query",
+                "required": false
+              },
+              "pageToken": {
+                "type": "string",
+                "location": "query",
+                "required": false
+              },
+              "returnPartialSuccess": {
+                "type": "boolean",
+                "location": "query",
+                "required": false
+              }
+            },
+            "parameterOrder": [],
+            "request": null,
+            "response": {
+              "$ref": "ListOperationsResponse"
+            }
+          }
+        },
+        "resources": null
+      },
+      "projects": {
+        "methods": null,
+        "resources": {
+          "locations": {
+            "methods": null,
+            "resources": {
+              "customClasses": {
+                "methods": {
+                  "create": {
+                    "id": "speech.projects.locations.customClasses.create",
+                    "httpMethod": "POST",
+                    "path": "v1p1beta1/{+parent}/customClasses",
+                    "flatPath": "v1p1beta1/projects/{projectsId}/locations/{locationsId}/customClasses",
+                    "description": "Create a custom class.",
+                    "parameters": {
+                      "parent": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "parent"
+                    ],
+                    "request": {
+                      "$ref": "CreateCustomClassRequest"
+                    },
+                    "response": {
+                      "$ref": "CustomClass"
+                    }
+                  },
+                  "delete": {
+                    "id": "speech.projects.locations.customClasses.delete",
+                    "httpMethod": "DELETE",
+                    "path": "v1p1beta1/{+name}",
+                    "flatPath": "v1p1beta1/projects/{projectsId}/locations/{locationsId}/customClasses/{customClassesId}",
+                    "description": "Delete a custom class.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "Empty"
+                    }
+                  },
+                  "get": {
+                    "id": "speech.projects.locations.customClasses.get",
+                    "httpMethod": "GET",
+                    "path": "v1p1beta1/{+name}",
+                    "flatPath": "v1p1beta1/projects/{projectsId}/locations/{locationsId}/customClasses/{customClassesId}",
+                    "description": "Get a custom class.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "CustomClass"
+                    }
+                  },
+                  "list": {
+                    "id": "speech.projects.locations.customClasses.list",
+                    "httpMethod": "GET",
+                    "path": "v1p1beta1/{+parent}/customClasses",
+                    "flatPath": "v1p1beta1/projects/{projectsId}/locations/{locationsId}/customClasses",
+                    "description": "List custom classes.",
+                    "parameters": {
+                      "pageSize": {
+                        "type": "integer",
+                        "location": "query",
+                        "required": false
+                      },
+                      "pageToken": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "parent": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "parent"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "ListCustomClassesResponse"
+                    }
+                  },
+                  "patch": {
+                    "id": "speech.projects.locations.customClasses.patch",
+                    "httpMethod": "PATCH",
+                    "path": "v1p1beta1/{+name}",
+                    "flatPath": "v1p1beta1/projects/{projectsId}/locations/{locationsId}/customClasses/{customClassesId}",
+                    "description": "Update a custom class.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      },
+                      "updateMask": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": {
+                      "$ref": "CustomClass"
+                    },
+                    "response": {
+                      "$ref": "CustomClass"
+                    }
+                  }
+                },
+                "resources": null
+              },
+              "phraseSets": {
+                "methods": {
+                  "create": {
+                    "id": "speech.projects.locations.phraseSets.create",
+                    "httpMethod": "POST",
+                    "path": "v1p1beta1/{+parent}/phraseSets",
+                    "flatPath": "v1p1beta1/projects/{projectsId}/locations/{locationsId}/phraseSets",
+                    "description": "Create a set of phrase hints. Each item in the set can be a single word or a multi-word phrase. The items in the PhraseSet are favored by the recognition model when you send a call that includes the PhraseSet.",
+                    "parameters": {
+                      "parent": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "parent"
+                    ],
+                    "request": {
+                      "$ref": "CreatePhraseSetRequest"
+                    },
+                    "response": {
+                      "$ref": "PhraseSet"
+                    }
+                  },
+                  "delete": {
+                    "id": "speech.projects.locations.phraseSets.delete",
+                    "httpMethod": "DELETE",
+                    "path": "v1p1beta1/{+name}",
+                    "flatPath": "v1p1beta1/projects/{projectsId}/locations/{locationsId}/phraseSets/{phraseSetsId}",
+                    "description": "Delete a phrase set.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "Empty"
+                    }
+                  },
+                  "get": {
+                    "id": "speech.projects.locations.phraseSets.get",
+                    "httpMethod": "GET",
+                    "path": "v1p1beta1/{+name}",
+                    "flatPath": "v1p1beta1/projects/{projectsId}/locations/{locationsId}/phraseSets/{phraseSetsId}",
+                    "description": "Get a phrase set.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "PhraseSet"
+                    }
+                  },
+                  "list": {
+                    "id": "speech.projects.locations.phraseSets.list",
+                    "httpMethod": "GET",
+                    "path": "v1p1beta1/{+parent}/phraseSets",
+                    "flatPath": "v1p1beta1/projects/{projectsId}/locations/{locationsId}/phraseSets",
+                    "description": "List phrase sets.",
+                    "parameters": {
+                      "pageSize": {
+                        "type": "integer",
+                        "location": "query",
+                        "required": false
+                      },
+                      "pageToken": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "parent": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "parent"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "ListPhraseSetResponse"
+                    }
+                  },
+                  "patch": {
+                    "id": "speech.projects.locations.phraseSets.patch",
+                    "httpMethod": "PATCH",
+                    "path": "v1p1beta1/{+name}",
+                    "flatPath": "v1p1beta1/projects/{projectsId}/locations/{locationsId}/phraseSets/{phraseSetsId}",
+                    "description": "Update a phrase set.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      },
+                      "updateMask": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": {
+                      "$ref": "PhraseSet"
+                    },
+                    "response": {
+                      "$ref": "PhraseSet"
+                    }
+                  }
+                },
+                "resources": null
+              }
+            }
+          }
+        }
+      },
+      "speech": {
+        "methods": {
+          "longrunningrecognize": {
+            "id": "speech.speech.longrunningrecognize",
+            "httpMethod": "POST",
+            "path": "v1p1beta1/speech:longrunningrecognize",
+            "flatPath": "v1p1beta1/speech:longrunningrecognize",
+            "description": "Performs asynchronous speech recognition: receive results via the google.longrunning.Operations interface. Returns either an `Operation.error` or an `Operation.response` which contains a `LongRunningRecognizeResponse` message. For more information on asynchronous speech recognition, see the [how-to](https://cloud.google.com/speech-to-text/docs/async-recognize).",
+            "parameters": {},
+            "parameterOrder": [],
+            "request": {
+              "$ref": "LongRunningRecognizeRequest"
+            },
+            "response": {
+              "$ref": "Operation"
+            }
+          },
+          "recognize": {
+            "id": "speech.speech.recognize",
+            "httpMethod": "POST",
+            "path": "v1p1beta1/speech:recognize",
+            "flatPath": "v1p1beta1/speech:recognize",
+            "description": "Performs synchronous speech recognition: receive results after all audio has been sent and processed.",
+            "parameters": {},
+            "parameterOrder": [],
+            "request": {
+              "$ref": "RecognizeRequest"
+            },
+            "response": {
+              "$ref": "RecognizeResponse"
+            }
+          }
+        },
+        "resources": null
+      }
+    }
+  }
+}

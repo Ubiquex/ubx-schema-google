@@ -1,0 +1,590 @@
+{
+  "schema_source": "discovery_docs",
+  "mode": "data_source",
+  "auth": {
+    "Type": "",
+    "Params": null
+  },
+  "base_url": "https://workflowexecutions.googleapis.com",
+  "retry": {
+    "MaxAttempts": 0,
+    "InitialBackoff": "",
+    "MaxBackoff": "",
+    "Jitter": null,
+    "RespectRetryAfter": null,
+    "RateLimitResetHeader": ""
+  },
+  "timeouts": {
+    "Create": "",
+    "Read": "",
+    "Update": "",
+    "Delete": "",
+    "Default": ""
+  },
+  "wire_name": "google_workflowexecutions_v1beta",
+  "version_qualifier": "v1beta",
+  "raw_spec": {
+    "name": "workflowexecutions",
+    "revision": "20260812",
+    "discoveryVersion": "v1",
+    "baseUrl": "https://workflowexecutions.googleapis.com/",
+    "rootUrl": "https://workflowexecutions.googleapis.com/",
+    "servicePath": "",
+    "schemas": {
+      "CancelExecutionRequest": {
+        "type": "object",
+        "format": "",
+        "description": "Request for the CancelExecution method.",
+        "$ref": "",
+        "properties": {},
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Error": {
+        "type": "object",
+        "format": "",
+        "description": "Error describes why the execution was abnormally terminated.",
+        "$ref": "",
+        "properties": {
+          "context": {
+            "type": "string",
+            "format": "",
+            "description": "Human-readable stack trace string.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "payload": {
+            "type": "string",
+            "format": "",
+            "description": "Error message and data returned represented as a JSON string.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "stackTrace": {
+            "type": "",
+            "format": "",
+            "description": "Stack trace with detailed information of where error was generated.",
+            "$ref": "StackTrace",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Execution": {
+        "type": "object",
+        "format": "",
+        "description": "A running instance of a [Workflow](/workflows/docs/reference/rest/v1beta/projects.locations.workflows).",
+        "$ref": "",
+        "properties": {
+          "argument": {
+            "type": "string",
+            "format": "",
+            "description": "Input parameters of the execution represented as a JSON string. The size limit is 32KB. *Note*: If you are using the REST API directly to run your workflow, you must escape any JSON string value of `argument`. Example: `'{\"argument\":\"{\\\"firstName\\\":\\\"FIRST\\\",\\\"lastName\\\":\\\"LAST\\\"}\"}'`",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "callLogLevel": {
+            "type": "string",
+            "format": "",
+            "description": "The call logging level associated to this execution.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "CALL_LOG_LEVEL_UNSPECIFIED",
+              "LOG_ALL_CALLS",
+              "LOG_ERRORS_ONLY"
+            ],
+            "readOnly": false
+          },
+          "endTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. Marks the end of execution, successful or not.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "error": {
+            "type": "",
+            "format": "",
+            "description": "Output only. The error which caused the execution to finish prematurely. The value is only present if the execution's state is `FAILED` or `CANCELLED`.",
+            "$ref": "Error",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The resource name of the execution. Format: projects/{project}/locations/{location}/workflows/{workflow}/executions/{execution}",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "result": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. Output of the execution represented as a JSON string. The value can only be present if the execution's state is `SUCCEEDED`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "startTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. Marks the beginning of execution.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "state": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. Current state of the execution.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "STATE_UNSPECIFIED",
+              "ACTIVE",
+              "SUCCEEDED",
+              "FAILED",
+              "CANCELLED",
+              "UNAVAILABLE",
+              "QUEUED"
+            ],
+            "readOnly": true
+          },
+          "status": {
+            "type": "",
+            "format": "",
+            "description": "Output only. Status tracks the current steps and progress data of this execution.",
+            "$ref": "Status",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "workflowRevisionId": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. Revision of the workflow this execution is using.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ListExecutionsResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Response for the ListExecutions method.",
+        "$ref": "",
+        "properties": {
+          "executions": {
+            "type": "array",
+            "format": "",
+            "description": "The executions which match the request.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Execution",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Position": {
+        "type": "object",
+        "format": "",
+        "description": "Position contains source position information about the stack trace element such as line number, column number and length of the code block in bytes.",
+        "$ref": "",
+        "properties": {
+          "column": {
+            "type": "string",
+            "format": "int64",
+            "description": "The source code column position (of the line) the current instruction was generated from.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "length": {
+            "type": "string",
+            "format": "int64",
+            "description": "The number of bytes of source code making up this stack trace element.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "line": {
+            "type": "string",
+            "format": "int64",
+            "description": "The source code line number the current instruction was generated from.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "StackTrace": {
+        "type": "object",
+        "format": "",
+        "description": "A collection of stack elements (frames) where an error occurred.",
+        "$ref": "",
+        "properties": {
+          "elements": {
+            "type": "array",
+            "format": "",
+            "description": "An array of stack elements.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "StackTraceElement",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "StackTraceElement": {
+        "type": "object",
+        "format": "",
+        "description": "A single stack element (frame) where an error occurred.",
+        "$ref": "",
+        "properties": {
+          "position": {
+            "type": "",
+            "format": "",
+            "description": "The source position information of the stack trace element.",
+            "$ref": "Position",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "routine": {
+            "type": "string",
+            "format": "",
+            "description": "The routine where the error occurred.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "step": {
+            "type": "string",
+            "format": "",
+            "description": "The step the error occurred at.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Status": {
+        "type": "object",
+        "format": "",
+        "description": "Represents the current status of this execution.",
+        "$ref": "",
+        "properties": {
+          "currentSteps": {
+            "type": "array",
+            "format": "",
+            "description": "A list of currently executing or last executed step names for the workflow execution currently running. If the workflow has succeeded or failed, this is the last attempted or executed step. Presently, if the current step is inside a subworkflow, the list only includes that step. In the future, the list will contain items for each step in the call stack, starting with the outermost step in the `main` subworkflow, and ending with the most deeply nested step.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Step",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Step": {
+        "type": "object",
+        "format": "",
+        "description": "Represents a step of the workflow this execution is running.",
+        "$ref": "",
+        "properties": {
+          "routine": {
+            "type": "string",
+            "format": "",
+            "description": "Name of a routine within the workflow.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "step": {
+            "type": "string",
+            "format": "",
+            "description": "Name of a step within the routine.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      }
+    },
+    "resources": {
+      "projects": {
+        "methods": null,
+        "resources": {
+          "locations": {
+            "methods": null,
+            "resources": {
+              "workflows": {
+                "methods": null,
+                "resources": {
+                  "executions": {
+                    "methods": {
+                      "cancel": {
+                        "id": "workflowexecutions.projects.locations.workflows.executions.cancel",
+                        "httpMethod": "POST",
+                        "path": "v1beta/{+name}:cancel",
+                        "flatPath": "v1beta/projects/{projectsId}/locations/{locationsId}/workflows/{workflowsId}/executions/{executionsId}:cancel",
+                        "description": "Cancels an execution of the given name.",
+                        "parameters": {
+                          "name": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          }
+                        },
+                        "parameterOrder": [
+                          "name"
+                        ],
+                        "request": {
+                          "$ref": "CancelExecutionRequest"
+                        },
+                        "response": {
+                          "$ref": "Execution"
+                        }
+                      },
+                      "create": {
+                        "id": "workflowexecutions.projects.locations.workflows.executions.create",
+                        "httpMethod": "POST",
+                        "path": "v1beta/{+parent}/executions",
+                        "flatPath": "v1beta/projects/{projectsId}/locations/{locationsId}/workflows/{workflowsId}/executions",
+                        "description": "Creates a new execution using the latest revision of the given workflow.",
+                        "parameters": {
+                          "parent": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          }
+                        },
+                        "parameterOrder": [
+                          "parent"
+                        ],
+                        "request": {
+                          "$ref": "Execution"
+                        },
+                        "response": {
+                          "$ref": "Execution"
+                        }
+                      },
+                      "get": {
+                        "id": "workflowexecutions.projects.locations.workflows.executions.get",
+                        "httpMethod": "GET",
+                        "path": "v1beta/{+name}",
+                        "flatPath": "v1beta/projects/{projectsId}/locations/{locationsId}/workflows/{workflowsId}/executions/{executionsId}",
+                        "description": "Returns an execution of the given name.",
+                        "parameters": {
+                          "name": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          },
+                          "view": {
+                            "type": "string",
+                            "location": "query",
+                            "required": false
+                          }
+                        },
+                        "parameterOrder": [
+                          "name"
+                        ],
+                        "request": null,
+                        "response": {
+                          "$ref": "Execution"
+                        }
+                      },
+                      "list": {
+                        "id": "workflowexecutions.projects.locations.workflows.executions.list",
+                        "httpMethod": "GET",
+                        "path": "v1beta/{+parent}/executions",
+                        "flatPath": "v1beta/projects/{projectsId}/locations/{locationsId}/workflows/{workflowsId}/executions",
+                        "description": "Returns a list of executions which belong to the workflow with the given name. The method returns executions of all workflow revisions. Returned executions are ordered by their start time (newest first).",
+                        "parameters": {
+                          "pageSize": {
+                            "type": "integer",
+                            "location": "query",
+                            "required": false
+                          },
+                          "pageToken": {
+                            "type": "string",
+                            "location": "query",
+                            "required": false
+                          },
+                          "parent": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          },
+                          "view": {
+                            "type": "string",
+                            "location": "query",
+                            "required": false
+                          }
+                        },
+                        "parameterOrder": [
+                          "parent"
+                        ],
+                        "request": null,
+                        "response": {
+                          "$ref": "ListExecutionsResponse"
+                        }
+                      }
+                    },
+                    "resources": null
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

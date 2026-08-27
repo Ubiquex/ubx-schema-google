@@ -1,0 +1,1537 @@
+name: hash-watch
+
+# Google Cloud's own real published identity is a GROUP of 524 members --
+# one resource-mode and one data-source-mode member per real, distinct
+# Discovery Document (one merged document per product/version, unlike
+# Azure's own per-domain-file split) -- ubx-provider-dynamic's own
+# --generate-snapshot-group regenerates every real member from its own
+# ONE config entry's single fetch (config.Provider.DataSources' own doc
+# comment, ubx-provider-dynamic: UBI-182's own resource/data-source
+# collapse) and assembles them into one real, versioned group container
+# (internal/snapshot's own AssembleGroup: the highest real change level
+# across every member, never hand-picked). --prev-snapshot points at
+# THIS checkout's own root (already the real manifest.json + members/
+# shape a real group needs), so a content change that doesn't affect
+# any member's own translated schema produces NoChange and no PR.
+#
+# Never auto-merges, matching every other repo in this org.
+
+on:
+  schedule:
+    - cron: "0 6 * * 1" # every Monday, 06:00 UTC
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  check-and-regenerate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out ubx-schema-google
+        uses: actions/checkout@v4
+
+      - name: Check out ubx-provider-dynamic (to build it from source)
+        run: |
+          set -euo pipefail
+          git clone --depth=1 \
+            "https://github.com/Ubiquex/ubx-provider-dynamic.git" \
+            "${{ runner.temp }}/ubx-provider-dynamic-src"
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version-file: ${{ runner.temp }}/ubx-provider-dynamic-src/go.mod
+
+      - name: Build ubx-provider-dynamic
+        run: |
+          set -euo pipefail
+          go build -C "${{ runner.temp }}/ubx-provider-dynamic-src" \
+            -o "${{ runner.temp }}/ubx-provider-dynamic" \
+            ./cmd/ubx-provider-dynamic
+
+      - name: Read the committed group version before regenerating
+        id: before
+        run: |
+          set -euo pipefail
+          current="$(python3 -c "import json; print(json.load(open('manifest.json'))['version'])")"
+          echo "current=$current" >> "$GITHUB_OUTPUT"
+          echo "Committed manifest.json is at version $current"
+
+      - name: Regenerate all real members and assemble the group
+        id: gen
+        run: |
+          set -euo pipefail
+          mkdir -p "${{ runner.temp }}/gen/.ubx"
+          cat > "${{ runner.temp }}/gen/.ubx/config" <<'EOF'
+          [dynamic_providers.google_agentidentity_v1alpha]
+          schema_source = "discovery_docs"
+          schema_url = "https://agentidentity.googleapis.com/$discovery/rest?version=v1alpha"
+          base_url = "https://agentidentity.googleapis.com"
+          version_qualifier = "v1alpha"
+
+          [dynamic_providers.google_agentidentity_v1beta]
+          schema_source = "discovery_docs"
+          schema_url = "https://agentidentity.googleapis.com/$discovery/rest?version=v1beta"
+          base_url = "https://agentidentity.googleapis.com"
+          version_qualifier = "v1beta"
+
+          [dynamic_providers.google_agentregistry_v1alpha]
+          schema_source = "discovery_docs"
+          schema_url = "https://agentregistry.googleapis.com/$discovery/rest?version=v1alpha"
+          base_url = "https://agentregistry.googleapis.com"
+          version_qualifier = "v1alpha"
+
+          [dynamic_providers.google_aiplatform_v1beta1]
+          schema_source = "discovery_docs"
+          schema_url = "https://aiplatform.googleapis.com/$discovery/rest?version=v1beta1"
+          base_url = "https://aiplatform.googleapis.com"
+          version_qualifier = "v1beta1"
+
+          [dynamic_providers.google_alloydb_v1alpha]
+          schema_source = "discovery_docs"
+          schema_url = "https://alloydb.googleapis.com/$discovery/rest?version=v1alpha"
+          base_url = "https://alloydb.googleapis.com"
+          version_qualifier = "v1alpha"
+
+          [dynamic_providers.google_alloydb_v1beta]
+          schema_source = "discovery_docs"
+          schema_url = "https://alloydb.googleapis.com/$discovery/rest?version=v1beta"
+          base_url = "https://alloydb.googleapis.com"
+          version_qualifier = "v1beta"
+
+          [dynamic_providers.google_appengine_v1alpha]
+          schema_source = "discovery_docs"
+          schema_url = "https://appengine.googleapis.com/$discovery/rest?version=v1alpha"
+          base_url = "https://appengine.googleapis.com"
+          version_qualifier = "v1alpha"
+
+          [dynamic_providers.google_appengine_v1beta]
+          schema_source = "discovery_docs"
+          schema_url = "https://appengine.googleapis.com/$discovery/rest?version=v1beta"
+          base_url = "https://appengine.googleapis.com"
+          version_qualifier = "v1beta"
+
+          [dynamic_providers.google_apphub_v1alpha]
+          schema_source = "discovery_docs"
+          schema_url = "https://apphub.googleapis.com/$discovery/rest?version=v1alpha"
+          base_url = "https://apphub.googleapis.com"
+          version_qualifier = "v1alpha"
+
+          [dynamic_providers.google_artifactregistry_v1beta1]
+          schema_source = "discovery_docs"
+          schema_url = "https://artifactregistry.googleapis.com/$discovery/rest?version=v1beta1"
+          base_url = "https://artifactregistry.googleapis.com"
+          version_qualifier = "v1beta1"
+
+          [dynamic_providers.google_artifactregistry_v1beta2]
+          schema_source = "discovery_docs"
+          schema_url = "https://artifactregistry.googleapis.com/$discovery/rest?version=v1beta2"
+          base_url = "https://artifactregistry.googleapis.com"
+          version_qualifier = "v1beta2"
+
+          [dynamic_providers.google_assuredworkloads_v1beta1]
+          schema_source = "discovery_docs"
+          schema_url = "https://assuredworkloads.googleapis.com/$discovery/rest?version=v1beta1"
+          base_url = "https://assuredworkloads.googleapis.com"
+          version_qualifier = "v1beta1"
+
+          [dynamic_providers.google_beyondcorp_v1alpha]
+          schema_source = "discovery_docs"
+          schema_url = "https://beyondcorp.googleapis.com/$discovery/rest?version=v1alpha"
+          base_url = "https://beyondcorp.googleapis.com"
+          version_qualifier = "v1alpha"
+
+          [dynamic_providers.google_bigqueryconnection_v1beta1]
+          schema_source = "discovery_docs"
+          schema_url = "https://bigqueryconnection.googleapis.com/$discovery/rest?version=v1beta1"
+          base_url = "https://bigqueryconnection.googleapis.com"
+          version_qualifier = "v1beta1"
+
+          [dynamic_providers.google_billingbudgets_v1beta1]
+          schema_source = "discovery_docs"
+          schema_url = "https://billingbudgets.googleapis.com/$discovery/rest?version=v1beta1"
+          base_url = "https://billingbudgets.googleapis.com"
+          version_qualifier = "v1beta1"
+
+          [dynamic_providers.google_binaryauthorization_v1beta1]
+          schema_source = "discovery_docs"
+          schema_url = "https://binaryauthorization.googleapis.com/$discovery/rest?version=v1beta1"
+          base_url = "https://binaryauthorization.googleapis.com"
+          version_qualifier = "v1beta1"
+
+          [dynamic_providers.google_ces_v1beta]
+          schema_source = "discovery_docs"
+          schema_url = "https://ces.googleapis.com/$discovery/rest?version=v1beta"
+          base_url = "https://ces.googleapis.com"
+          version_qualifier = "v1beta"
+
+          [dynamic_providers.google_cloudfunctions_v2alpha]
+          schema_source = "discovery_docs"
+          schema_url = "https://cloudfunctions.googleapis.com/$discovery/rest?version=v2alpha"
+          base_url = "https://cloudfunctions.googleapis.com"
+          version_qualifier = "v2alpha"
+
+          [dynamic_providers.google_cloudfunctions_v2beta]
+          schema_source = "discovery_docs"
+          schema_url = "https://cloudfunctions.googleapis.com/$discovery/rest?version=v2beta"
+          base_url = "https://cloudfunctions.googleapis.com"
+          version_qualifier = "v2beta"
+
+          [dynamic_providers.google_cloudidentity_v1beta1]
+          schema_source = "discovery_docs"
+          schema_url = "https://cloudidentity.googleapis.com/$discovery/rest?version=v1beta1"
+          base_url = "https://cloudidentity.googleapis.com"
+          version_qualifier = "v1beta1"
+
+          [dynamic_providers.google_cloudresourcemanager_v1beta1]
+          schema_source = "discovery_docs"
+          schema_url = "https://cloudresourcemanager.googleapis.com/$discovery/rest?version=v1beta1"
+          base_url = "https://cloudresourcemanager.googleapis.com"
+          version_qualifier = "v1beta1"
+
+          [dynamic_providers.google_cloudresourcemanager_v2beta1]
+          schema_source = "discovery_docs"
+          schema_url = "https://cloudresourcemanager.googleapis.com/$discovery/rest?version=v2beta1"
+          base_url = "https://cloudresourcemanager.googleapis.com"
+          version_qualifier = "v2beta1"
+
+          [dynamic_providers.google_cloudscheduler_v1beta1]
+          schema_source = "discovery_docs"
+          schema_url = "https://cloudscheduler.googleapis.com/$discovery/rest?version=v1beta1"
+          base_url = "https://cloudscheduler.googleapis.com"
+          version_qualifier = "v1beta1"
+
+          [dynamic_providers.google_cloudtasks_v2beta2]
+          schema_source = "discovery_docs"
+          schema_url = "https://cloudtasks.googleapis.com/$discovery/rest?version=v2beta2"
+          base_url = "https://cloudtasks.googleapis.com"
+          version_qualifier = "v2beta2"
+
+          [dynamic_providers.google_cloudtasks_v2beta3]
+          schema_source = "discovery_docs"
+          schema_url = "https://cloudtasks.googleapis.com/$discovery/rest?version=v2beta3"
+          base_url = "https://cloudtasks.googleapis.com"
+          version_qualifier = "v2beta3"
+
+          [dynamic_providers.google_composer_v1beta1]
+          schema_source = "discovery_docs"
+          schema_url = "https://composer.googleapis.com/$discovery/rest?version=v1beta1"
+          base_url = "https://composer.googleapis.com"
+          version_qualifier = "v1beta1"
+
+          [dynamic_providers.google_container_v1beta1]
+          schema_source = "discovery_docs"
+          schema_url = "https://container.googleapis.com/$discovery/rest?version=v1beta1"
+          base_url = "https://container.googleapis.com"
+          version_qualifier = "v1beta1"
+
+          [dynamic_providers.google_containeranalysis_v1alpha1]
+          schema_source = "discovery_docs"
+          schema_url = "https://containeranalysis.googleapis.com/$discovery/rest?version=v1alpha1"
+          base_url = "https://containeranalysis.googleapis.com"
+          version_qualifier = "v1alpha1"
+
+          [dynamic_providers.google_containeranalysis_v1beta1]
+          schema_source = "discovery_docs"
+          schema_url = "https://containeranalysis.googleapis.com/$discovery/rest?version=v1beta1"
+          base_url = "https://containeranalysis.googleapis.com"
+          version_qualifier = "v1beta1"
+
+          [dynamic_providers.google_datacatalog_v1beta1]
+          schema_source = "discovery_docs"
+          schema_url = "https://datacatalog.googleapis.com/$discovery/rest?version=v1beta1"
+          base_url = "https://datacatalog.googleapis.com"
+          version_qualifier = "v1beta1"
+
+          [dynamic_providers.google_dataform_v1beta1]
+          schema_source = "discovery_docs"
+          schema_url = "https://dataform.googleapis.com/$discovery/rest?version=v1beta1"
+          base_url = "https://dataform.googleapis.com"
+          version_qualifier = "v1beta1"
+
+          [dynamic_providers.google_datafusion_v1beta1]
+          schema_source = "discovery_docs"
+          schema_url = "https://datafusion.googleapis.com/$discovery/rest?version=v1beta1"
+          base_url = "https://datafusion.googleapis.com"
+          version_qualifier = "v1beta1"
+
+          [dynamic_providers.google_datastream_v1alpha1]
+          schema_source = "discovery_docs"
+          schema_url = "https://datastream.googleapis.com/$discovery/rest?version=v1alpha1"
+          base_url = "https://datastream.googleapis.com"
+          version_qualifier = "v1alpha1"
+
+          [dynamic_providers.google_deploymentmanager_alpha]
+          schema_source = "discovery_docs"
+          schema_url = "https://deploymentmanager.googleapis.com/$discovery/rest?version=alpha"
+          base_url = "https://deploymentmanager.googleapis.com"
+          version_qualifier = "alpha"
+
+          [dynamic_providers.google_deploymentmanager_v2beta]
+          schema_source = "discovery_docs"
+          schema_url = "https://deploymentmanager.googleapis.com/$discovery/rest?version=v2beta"
+          base_url = "https://deploymentmanager.googleapis.com"
+          version_qualifier = "v2beta"
+
+          [dynamic_providers.google_dialogflow_v2beta1]
+          schema_source = "discovery_docs"
+          schema_url = "https://dialogflow.googleapis.com/$discovery/rest?version=v2beta1"
+          base_url = "https://dialogflow.googleapis.com"
+          version_qualifier = "v2beta1"
+
+          [dynamic_providers.google_dialogflow_v3beta1]
+          schema_source = "discovery_docs"
+          schema_url = "https://dialogflow.googleapis.com/$discovery/rest?version=v3beta1"
+          base_url = "https://dialogflow.googleapis.com"
+          version_qualifier = "v3beta1"
+
+          [dynamic_providers.google_discoveryengine_v1alpha]
+          schema_source = "discovery_docs"
+          schema_url = "https://discoveryengine.googleapis.com/$discovery/rest?version=v1alpha"
+          base_url = "https://discoveryengine.googleapis.com"
+          version_qualifier = "v1alpha"
+
+          [dynamic_providers.google_discoveryengine_v1beta]
+          schema_source = "discovery_docs"
+          schema_url = "https://discoveryengine.googleapis.com/$discovery/rest?version=v1beta"
+          base_url = "https://discoveryengine.googleapis.com"
+          version_qualifier = "v1beta"
+
+          [dynamic_providers.google_dns_v1beta2]
+          schema_source = "discovery_docs"
+          schema_url = "https://dns.googleapis.com/$discovery/rest?version=v1beta2"
+          base_url = "https://dns.googleapis.com"
+          version_qualifier = "v1beta2"
+
+          [dynamic_providers.google_documentai_v1beta3]
+          schema_source = "discovery_docs"
+          schema_url = "https://documentai.googleapis.com/$discovery/rest?version=v1beta3"
+          base_url = "https://documentai.googleapis.com"
+          version_qualifier = "v1beta3"
+
+          [dynamic_providers.google_file_v1beta1]
+          schema_source = "discovery_docs"
+          schema_url = "https://file.googleapis.com/$discovery/rest?version=v1beta1"
+          base_url = "https://file.googleapis.com"
+          version_qualifier = "v1beta1"
+
+          [dynamic_providers.google_firebaseappcheck_v1beta]
+          schema_source = "discovery_docs"
+          schema_url = "https://firebaseappcheck.googleapis.com/$discovery/rest?version=v1beta"
+          base_url = "https://firebaseappcheck.googleapis.com"
+          version_qualifier = "v1beta"
+
+          [dynamic_providers.google_firebaseapphosting_v1beta]
+          schema_source = "discovery_docs"
+          schema_url = "https://firebaseapphosting.googleapis.com/$discovery/rest?version=v1beta"
+          base_url = "https://firebaseapphosting.googleapis.com"
+          version_qualifier = "v1beta"
+
+          [dynamic_providers.google_firebasedataconnect_v1beta]
+          schema_source = "discovery_docs"
+          schema_url = "https://firebasedataconnect.googleapis.com/$discovery/rest?version=v1beta"
+          base_url = "https://firebasedataconnect.googleapis.com"
+          version_qualifier = "v1beta"
+
+          [dynamic_providers.google_firestore_v1beta1]
+          schema_source = "discovery_docs"
+          schema_url = "https://firestore.googleapis.com/$discovery/rest?version=v1beta1"
+          base_url = "https://firestore.googleapis.com"
+          version_qualifier = "v1beta1"
+
+          [dynamic_providers.google_firestore_v1beta2]
+          schema_source = "discovery_docs"
+          schema_url = "https://firestore.googleapis.com/$discovery/rest?version=v1beta2"
+          base_url = "https://firestore.googleapis.com"
+          version_qualifier = "v1beta2"
+
+          [dynamic_providers.google_gkehub_v1alpha]
+          schema_source = "discovery_docs"
+          schema_url = "https://gkehub.googleapis.com/$discovery/rest?version=v1alpha"
+          base_url = "https://gkehub.googleapis.com"
+          version_qualifier = "v1alpha"
+
+          [dynamic_providers.google_gkehub_v2alpha]
+          schema_source = "discovery_docs"
+          schema_url = "https://gkehub.googleapis.com/$discovery/rest?version=v2alpha"
+          base_url = "https://gkehub.googleapis.com"
+          version_qualifier = "v2alpha"
+
+          [dynamic_providers.google_gkehub_v1beta]
+          schema_source = "discovery_docs"
+          schema_url = "https://gkehub.googleapis.com/$discovery/rest?version=v1beta"
+          base_url = "https://gkehub.googleapis.com"
+          version_qualifier = "v1beta"
+
+          [dynamic_providers.google_gkehub_v1beta1]
+          schema_source = "discovery_docs"
+          schema_url = "https://gkehub.googleapis.com/$discovery/rest?version=v1beta1"
+          base_url = "https://gkehub.googleapis.com"
+          version_qualifier = "v1beta1"
+
+          [dynamic_providers.google_gkehub_v2beta]
+          schema_source = "discovery_docs"
+          schema_url = "https://gkehub.googleapis.com/$discovery/rest?version=v2beta"
+          base_url = "https://gkehub.googleapis.com"
+          version_qualifier = "v2beta"
+
+          [dynamic_providers.google_healthcare_v1beta1]
+          schema_source = "discovery_docs"
+          schema_url = "https://healthcare.googleapis.com/$discovery/rest?version=v1beta1"
+          base_url = "https://healthcare.googleapis.com"
+          version_qualifier = "v1beta1"
+
+          [dynamic_providers.google_managedidentities_v1alpha1]
+          schema_source = "discovery_docs"
+          schema_url = "https://managedidentities.googleapis.com/$discovery/rest?version=v1alpha1"
+          base_url = "https://managedidentities.googleapis.com"
+          version_qualifier = "v1alpha1"
+
+          [dynamic_providers.google_managedidentities_v1beta1]
+          schema_source = "discovery_docs"
+          schema_url = "https://managedidentities.googleapis.com/$discovery/rest?version=v1beta1"
+          base_url = "https://managedidentities.googleapis.com"
+          version_qualifier = "v1beta1"
+
+          [dynamic_providers.google_memcache_v1beta2]
+          schema_source = "discovery_docs"
+          schema_url = "https://memcache.googleapis.com/$discovery/rest?version=v1beta2"
+          base_url = "https://memcache.googleapis.com"
+          version_qualifier = "v1beta2"
+
+          [dynamic_providers.google_migrationcenter_v1alpha1]
+          schema_source = "discovery_docs"
+          schema_url = "https://migrationcenter.googleapis.com/$discovery/rest?version=v1alpha1"
+          base_url = "https://migrationcenter.googleapis.com"
+          version_qualifier = "v1alpha1"
+
+          [dynamic_providers.google_netapp_v1beta1]
+          schema_source = "discovery_docs"
+          schema_url = "https://netapp.googleapis.com/$discovery/rest?version=v1beta1"
+          base_url = "https://netapp.googleapis.com"
+          version_qualifier = "v1beta1"
+
+          [dynamic_providers.google_networkconnectivity_v1alpha1]
+          schema_source = "discovery_docs"
+          schema_url = "https://networkconnectivity.googleapis.com/$discovery/rest?version=v1alpha1"
+          base_url = "https://networkconnectivity.googleapis.com"
+          version_qualifier = "v1alpha1"
+
+          [dynamic_providers.google_networkmanagement_v1beta1]
+          schema_source = "discovery_docs"
+          schema_url = "https://networkmanagement.googleapis.com/$discovery/rest?version=v1beta1"
+          base_url = "https://networkmanagement.googleapis.com"
+          version_qualifier = "v1beta1"
+
+          [dynamic_providers.google_networksecurity_v1beta1]
+          schema_source = "discovery_docs"
+          schema_url = "https://networksecurity.googleapis.com/$discovery/rest?version=v1beta1"
+          base_url = "https://networksecurity.googleapis.com"
+          version_qualifier = "v1beta1"
+
+          [dynamic_providers.google_networkservices_v1beta1]
+          schema_source = "discovery_docs"
+          schema_url = "https://networkservices.googleapis.com/$discovery/rest?version=v1beta1"
+          base_url = "https://networkservices.googleapis.com"
+          version_qualifier = "v1beta1"
+
+          [dynamic_providers.google_osconfig_v1alpha]
+          schema_source = "discovery_docs"
+          schema_url = "https://osconfig.googleapis.com/$discovery/rest?version=v1alpha"
+          base_url = "https://osconfig.googleapis.com"
+          version_qualifier = "v1alpha"
+
+          [dynamic_providers.google_osconfig_v1beta]
+          schema_source = "discovery_docs"
+          schema_url = "https://osconfig.googleapis.com/$discovery/rest?version=v1beta"
+          base_url = "https://osconfig.googleapis.com"
+          version_qualifier = "v1beta"
+
+          [dynamic_providers.google_osconfig_v2beta]
+          schema_source = "discovery_docs"
+          schema_url = "https://osconfig.googleapis.com/$discovery/rest?version=v2beta"
+          base_url = "https://osconfig.googleapis.com"
+          version_qualifier = "v2beta"
+
+          [dynamic_providers.google_oslogin_v1alpha]
+          schema_source = "discovery_docs"
+          schema_url = "https://oslogin.googleapis.com/$discovery/rest?version=v1alpha"
+          base_url = "https://oslogin.googleapis.com"
+          version_qualifier = "v1alpha"
+
+          [dynamic_providers.google_oslogin_v1beta]
+          schema_source = "discovery_docs"
+          schema_url = "https://oslogin.googleapis.com/$discovery/rest?version=v1beta"
+          base_url = "https://oslogin.googleapis.com"
+          version_qualifier = "v1beta"
+
+          [dynamic_providers.google_parallelstore_v1beta]
+          schema_source = "discovery_docs"
+          schema_url = "https://parallelstore.googleapis.com/$discovery/rest?version=v1beta"
+          base_url = "https://parallelstore.googleapis.com"
+          version_qualifier = "v1beta"
+
+          [dynamic_providers.google_pubsub_v1beta1a]
+          schema_source = "discovery_docs"
+          schema_url = "https://pubsub.googleapis.com/$discovery/rest?version=v1beta1a"
+          base_url = "https://pubsub.googleapis.com"
+          version_qualifier = "v1beta1a"
+
+          [dynamic_providers.google_pubsub_v1beta2]
+          schema_source = "discovery_docs"
+          schema_url = "https://pubsub.googleapis.com/$discovery/rest?version=v1beta2"
+          base_url = "https://pubsub.googleapis.com"
+          version_qualifier = "v1beta2"
+
+          [dynamic_providers.google_redis_v1beta1]
+          schema_source = "discovery_docs"
+          schema_url = "https://redis.googleapis.com/$discovery/rest?version=v1beta1"
+          base_url = "https://redis.googleapis.com"
+          version_qualifier = "v1beta1"
+
+          [dynamic_providers.google_secretmanager_v1beta1]
+          schema_source = "discovery_docs"
+          schema_url = "https://secretmanager.googleapis.com/$discovery/rest?version=v1beta1"
+          base_url = "https://secretmanager.googleapis.com"
+          version_qualifier = "v1beta1"
+
+          [dynamic_providers.google_secretmanager_v1beta2]
+          schema_source = "discovery_docs"
+          schema_url = "https://secretmanager.googleapis.com/$discovery/rest?version=v1beta2"
+          base_url = "https://secretmanager.googleapis.com"
+          version_qualifier = "v1beta2"
+
+          [dynamic_providers.google_securitycenter_v1beta1]
+          schema_source = "discovery_docs"
+          schema_url = "https://securitycenter.googleapis.com/$discovery/rest?version=v1beta1"
+          base_url = "https://securitycenter.googleapis.com"
+          version_qualifier = "v1beta1"
+
+          [dynamic_providers.google_servicedirectory_v1beta1]
+          schema_source = "discovery_docs"
+          schema_url = "https://servicedirectory.googleapis.com/$discovery/rest?version=v1beta1"
+          base_url = "https://servicedirectory.googleapis.com"
+          version_qualifier = "v1beta1"
+
+          [dynamic_providers.google_sqladmin_v1beta4]
+          schema_source = "discovery_docs"
+          schema_url = "https://sqladmin.googleapis.com/$discovery/rest?version=v1beta4"
+          base_url = "https://sqladmin.googleapis.com"
+          version_qualifier = "v1beta4"
+
+          [dynamic_providers.google_vpcaccess_v1beta1]
+          schema_source = "discovery_docs"
+          schema_url = "https://vpcaccess.googleapis.com/$discovery/rest?version=v1beta1"
+          base_url = "https://vpcaccess.googleapis.com"
+          version_qualifier = "v1beta1"
+
+          [dynamic_providers.google_workflows_v1beta]
+          schema_source = "discovery_docs"
+          schema_url = "https://workflows.googleapis.com/$discovery/rest?version=v1beta"
+          base_url = "https://workflows.googleapis.com"
+          version_qualifier = "v1beta"
+
+          [dynamic_providers.google_workstations_v1beta]
+          schema_source = "discovery_docs"
+          schema_url = "https://workstations.googleapis.com/$discovery/rest?version=v1beta"
+          base_url = "https://workstations.googleapis.com"
+          version_qualifier = "v1beta"
+
+          [dynamic_providers.google_iam_v2beta]
+          schema_source = "discovery_docs"
+          schema_url = "https://iam.googleapis.com/$discovery/rest?version=v2beta"
+          base_url = "https://iam.googleapis.com"
+          version_qualifier = "v2beta"
+
+          [dynamic_providers.google_datamigration_v1beta1]
+          schema_source = "discovery_docs"
+          schema_url = "https://datamigration.googleapis.com/$discovery/rest?version=v1beta1"
+          base_url = "https://datamigration.googleapis.com"
+          version_qualifier = "v1beta1"
+
+          [dynamic_providers.google_analyticshub_v1beta1]
+          schema_source = "discovery_docs"
+          schema_url = "https://analyticshub.googleapis.com/$discovery/rest?version=v1beta1"
+          base_url = "https://analyticshub.googleapis.com"
+          version_qualifier = "v1beta1"
+
+          [dynamic_providers.google_apigateway_v1beta]
+          schema_source = "discovery_docs"
+          schema_url = "https://apigateway.googleapis.com/$discovery/rest?version=v1beta"
+          base_url = "https://apigateway.googleapis.com"
+          version_qualifier = "v1beta"
+
+          [dynamic_providers.google_cloudcontrolspartner_v1beta]
+          schema_source = "discovery_docs"
+          schema_url = "https://cloudcontrolspartner.googleapis.com/$discovery/rest?version=v1beta"
+          base_url = "https://cloudcontrolspartner.googleapis.com"
+          version_qualifier = "v1beta"
+
+          [dynamic_providers.google_cloudsupport_v2beta]
+          schema_source = "discovery_docs"
+          schema_url = "https://cloudsupport.googleapis.com/$discovery/rest?version=v2beta"
+          base_url = "https://cloudsupport.googleapis.com"
+          version_qualifier = "v2beta"
+
+          [dynamic_providers.google_firebaseappdistribution_v1alpha]
+          schema_source = "discovery_docs"
+          schema_url = "https://firebaseappdistribution.googleapis.com/$discovery/rest?version=v1alpha"
+          base_url = "https://firebaseappdistribution.googleapis.com"
+          version_qualifier = "v1alpha"
+
+          [dynamic_providers.google_ftp_v1alpha]
+          schema_source = "discovery_docs"
+          schema_url = "https://ftp.googleapis.com/$discovery/rest?version=v1alpha"
+          base_url = "https://ftp.googleapis.com"
+          version_qualifier = "v1alpha"
+
+          [dynamic_providers.google_metastore_v1alpha]
+          schema_source = "discovery_docs"
+          schema_url = "https://metastore.googleapis.com/$discovery/rest?version=v1alpha"
+          base_url = "https://metastore.googleapis.com"
+          version_qualifier = "v1alpha"
+
+          [dynamic_providers.google_metastore_v1beta]
+          schema_source = "discovery_docs"
+          schema_url = "https://metastore.googleapis.com/$discovery/rest?version=v1beta"
+          base_url = "https://metastore.googleapis.com"
+          version_qualifier = "v1beta"
+
+          [dynamic_providers.google_policysimulator_v1beta]
+          schema_source = "discovery_docs"
+          schema_url = "https://policysimulator.googleapis.com/$discovery/rest?version=v1beta"
+          base_url = "https://policysimulator.googleapis.com"
+          version_qualifier = "v1beta"
+
+          [dynamic_providers.google_saasservicemgmt_v1beta1]
+          schema_source = "discovery_docs"
+          schema_url = "https://saasservicemgmt.googleapis.com/$discovery/rest?version=v1beta1"
+          base_url = "https://saasservicemgmt.googleapis.com"
+          version_qualifier = "v1beta1"
+
+          [dynamic_providers.google_speech_v1p1beta1]
+          schema_source = "discovery_docs"
+          schema_url = "https://speech.googleapis.com/$discovery/rest?version=v1p1beta1"
+          base_url = "https://speech.googleapis.com"
+          version_qualifier = "v1p1beta1"
+
+          [dynamic_providers.google_tpu_v1alpha1]
+          schema_source = "discovery_docs"
+          schema_url = "https://tpu.googleapis.com/$discovery/rest?version=v1alpha1"
+          base_url = "https://tpu.googleapis.com"
+          version_qualifier = "v1alpha1"
+
+          [dynamic_providers.google_tpu_v2alpha1]
+          schema_source = "discovery_docs"
+          schema_url = "https://tpu.googleapis.com/$discovery/rest?version=v2alpha1"
+          base_url = "https://tpu.googleapis.com"
+          version_qualifier = "v2alpha1"
+
+          [dynamic_providers.google_vmmigration_v1alpha1]
+          schema_source = "discovery_docs"
+          schema_url = "https://vmmigration.googleapis.com/$discovery/rest?version=v1alpha1"
+          base_url = "https://vmmigration.googleapis.com"
+          version_qualifier = "v1alpha1"
+
+          [dynamic_providers.google_websecurityscanner_v1alpha]
+          schema_source = "discovery_docs"
+          schema_url = "https://websecurityscanner.googleapis.com/$discovery/rest?version=v1alpha"
+          base_url = "https://websecurityscanner.googleapis.com"
+          version_qualifier = "v1alpha"
+
+          [dynamic_providers.google_websecurityscanner_v1beta]
+          schema_source = "discovery_docs"
+          schema_url = "https://websecurityscanner.googleapis.com/$discovery/rest?version=v1beta"
+          base_url = "https://websecurityscanner.googleapis.com"
+          version_qualifier = "v1beta"
+
+          [dynamic_providers.google_workflowexecutions_v1beta]
+          schema_source = "discovery_docs"
+          schema_url = "https://workflowexecutions.googleapis.com/$discovery/rest?version=v1beta"
+          base_url = "https://workflowexecutions.googleapis.com"
+          version_qualifier = "v1beta"
+
+          [dynamic_providers.google]
+          schema_source = "discovery_docs"
+          schema_url = "https://www.googleapis.com/discovery/v1/apis/compute/v1/rest"
+          base_url = "https://compute.googleapis.com/compute/v1"
+
+          [dynamic_providers.google_compute_beta]
+          schema_source = "discovery_docs"
+          schema_url = "https://www.googleapis.com/discovery/v1/apis/compute/beta/rest"
+          base_url = "https://compute.googleapis.com/compute/beta"
+          version_qualifier = "beta"
+
+          [dynamic_providers.google_compute_alpha]
+          schema_source = "discovery_docs"
+          schema_url = "https://www.googleapis.com/discovery/v1/apis/compute/alpha/rest"
+          base_url = "https://compute.googleapis.com/compute/alpha"
+          version_qualifier = "alpha"
+
+          [dynamic_providers.google_accesscontextmanager]
+          schema_source = "discovery_docs"
+          schema_url = "https://accesscontextmanager.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://accesscontextmanager.googleapis.com"
+
+          [dynamic_providers.google_agentidentity]
+          schema_source = "discovery_docs"
+          schema_url = "https://agentidentity.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://agentidentity.googleapis.com"
+
+          [dynamic_providers.google_agentregistry]
+          schema_source = "discovery_docs"
+          schema_url = "https://agentregistry.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://agentregistry.googleapis.com"
+
+          [dynamic_providers.google_aiplatform]
+          schema_source = "discovery_docs"
+          schema_url = "https://aiplatform.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://aiplatform.googleapis.com"
+
+          [dynamic_providers.google_alloydb]
+          schema_source = "discovery_docs"
+          schema_url = "https://alloydb.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://alloydb.googleapis.com"
+
+          [dynamic_providers.google_analyticshub]
+          schema_source = "discovery_docs"
+          schema_url = "https://analyticshub.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://analyticshub.googleapis.com"
+
+          [dynamic_providers.google_androiddeviceprovisioning]
+          schema_source = "discovery_docs"
+          schema_url = "https://androiddeviceprovisioning.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://androiddeviceprovisioning.googleapis.com"
+
+          [dynamic_providers.google_androidenterprise]
+          schema_source = "discovery_docs"
+          schema_url = "https://androidenterprise.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://androidenterprise.googleapis.com"
+
+          [dynamic_providers.google_androidmanagement]
+          schema_source = "discovery_docs"
+          schema_url = "https://androidmanagement.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://androidmanagement.googleapis.com"
+
+          [dynamic_providers.google_apigateway]
+          schema_source = "discovery_docs"
+          schema_url = "https://apigateway.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://apigateway.googleapis.com"
+
+          [dynamic_providers.google_apigee]
+          schema_source = "discovery_docs"
+          schema_url = "https://apigee.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://apigee.googleapis.com"
+
+          [dynamic_providers.google_apihub]
+          schema_source = "discovery_docs"
+          schema_url = "https://apihub.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://apihub.googleapis.com"
+
+          [dynamic_providers.google_apikeys]
+          schema_source = "discovery_docs"
+          schema_url = "https://apikeys.googleapis.com/$discovery/rest?version=v2"
+          base_url = "https://apikeys.googleapis.com"
+
+          [dynamic_providers.google_apim]
+          schema_source = "discovery_docs"
+          schema_url = "https://apim.googleapis.com/$discovery/rest?version=v1alpha"
+          base_url = "https://apim.googleapis.com"
+
+          [dynamic_providers.google_appengine]
+          schema_source = "discovery_docs"
+          schema_url = "https://appengine.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://appengine.googleapis.com"
+
+          [dynamic_providers.google_apphub]
+          schema_source = "discovery_docs"
+          schema_url = "https://apphub.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://apphub.googleapis.com"
+
+          [dynamic_providers.google_artifactregistry]
+          schema_source = "discovery_docs"
+          schema_url = "https://artifactregistry.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://artifactregistry.googleapis.com"
+
+          [dynamic_providers.google_assuredworkloads]
+          schema_source = "discovery_docs"
+          schema_url = "https://assuredworkloads.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://assuredworkloads.googleapis.com"
+
+          [dynamic_providers.google_backupdr]
+          schema_source = "discovery_docs"
+          schema_url = "https://backupdr.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://backupdr.googleapis.com"
+
+          [dynamic_providers.google_baremetalsolution]
+          schema_source = "discovery_docs"
+          schema_url = "https://baremetalsolution.googleapis.com/$discovery/rest?version=v2"
+          base_url = "https://baremetalsolution.googleapis.com"
+
+          [dynamic_providers.google_batch]
+          schema_source = "discovery_docs"
+          schema_url = "https://batch.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://batch.googleapis.com"
+
+          [dynamic_providers.google_beyondcorp]
+          schema_source = "discovery_docs"
+          schema_url = "https://beyondcorp.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://beyondcorp.googleapis.com"
+
+          [dynamic_providers.google_biglake]
+          schema_source = "discovery_docs"
+          schema_url = "https://biglake.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://biglake.googleapis.com"
+
+          [dynamic_providers.google_bigquery]
+          schema_source = "discovery_docs"
+          schema_url = "https://bigquery.googleapis.com/$discovery/rest?version=v2"
+          base_url = "https://bigquery.googleapis.com/bigquery/v2"
+
+          [dynamic_providers.google_bigqueryconnection]
+          schema_source = "discovery_docs"
+          schema_url = "https://bigqueryconnection.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://bigqueryconnection.googleapis.com"
+
+          [dynamic_providers.google_bigquerydatapolicy]
+          schema_source = "discovery_docs"
+          schema_url = "https://bigquerydatapolicy.googleapis.com/$discovery/rest?version=v2"
+          base_url = "https://bigquerydatapolicy.googleapis.com"
+
+          [dynamic_providers.google_bigquerydatatransfer]
+          schema_source = "discovery_docs"
+          schema_url = "https://bigquerydatatransfer.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://bigquerydatatransfer.googleapis.com"
+
+          [dynamic_providers.google_bigqueryreservation]
+          schema_source = "discovery_docs"
+          schema_url = "https://bigqueryreservation.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://bigqueryreservation.googleapis.com"
+
+          [dynamic_providers.google_bigtableadmin]
+          schema_source = "discovery_docs"
+          schema_url = "https://bigtableadmin.googleapis.com/$discovery/rest?version=v2"
+          base_url = "https://bigtableadmin.googleapis.com"
+
+          [dynamic_providers.google_billingbudgets]
+          schema_source = "discovery_docs"
+          schema_url = "https://billingbudgets.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://billingbudgets.googleapis.com"
+
+          [dynamic_providers.google_binaryauthorization]
+          schema_source = "discovery_docs"
+          schema_url = "https://binaryauthorization.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://binaryauthorization.googleapis.com"
+
+          [dynamic_providers.google_blockchainnodeengine]
+          schema_source = "discovery_docs"
+          schema_url = "https://blockchainnodeengine.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://blockchainnodeengine.googleapis.com"
+
+          [dynamic_providers.google_certificatemanager]
+          schema_source = "discovery_docs"
+          schema_url = "https://certificatemanager.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://certificatemanager.googleapis.com"
+
+          [dynamic_providers.google_ces]
+          schema_source = "discovery_docs"
+          schema_url = "https://ces.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://ces.googleapis.com"
+
+          [dynamic_providers.google_chromemanagement]
+          schema_source = "discovery_docs"
+          schema_url = "https://chromemanagement.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://chromemanagement.googleapis.com"
+
+          [dynamic_providers.google_cloudasset]
+          schema_source = "discovery_docs"
+          schema_url = "https://cloudasset.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://cloudasset.googleapis.com"
+
+          [dynamic_providers.google_cloudbilling]
+          schema_source = "discovery_docs"
+          schema_url = "https://cloudbilling.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://cloudbilling.googleapis.com"
+
+          [dynamic_providers.google_cloudbuild]
+          schema_source = "discovery_docs"
+          schema_url = "https://cloudbuild.googleapis.com/$discovery/rest?version=v2"
+          base_url = "https://cloudbuild.googleapis.com"
+
+          [dynamic_providers.google_cloudchannel]
+          schema_source = "discovery_docs"
+          schema_url = "https://cloudchannel.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://cloudchannel.googleapis.com"
+
+          [dynamic_providers.google_cloudcontrolspartner]
+          schema_source = "discovery_docs"
+          schema_url = "https://cloudcontrolspartner.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://cloudcontrolspartner.googleapis.com"
+
+          [dynamic_providers.google_clouddeploy]
+          schema_source = "discovery_docs"
+          schema_url = "https://clouddeploy.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://clouddeploy.googleapis.com"
+
+          [dynamic_providers.google_cloudfunctions]
+          schema_source = "discovery_docs"
+          schema_url = "https://cloudfunctions.googleapis.com/$discovery/rest?version=v2"
+          base_url = "https://cloudfunctions.googleapis.com"
+
+          [dynamic_providers.google_cloudidentity]
+          schema_source = "discovery_docs"
+          schema_url = "https://cloudidentity.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://cloudidentity.googleapis.com"
+
+          [dynamic_providers.google_cloudkms]
+          schema_source = "discovery_docs"
+          schema_url = "https://cloudkms.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://cloudkms.googleapis.com"
+
+          [dynamic_providers.google_cloudnumberregistry]
+          schema_source = "discovery_docs"
+          schema_url = "https://cloudnumberregistry.googleapis.com/$discovery/rest?version=v1alpha"
+          base_url = "https://cloudnumberregistry.googleapis.com"
+
+          [dynamic_providers.google_cloudquotas]
+          schema_source = "discovery_docs"
+          schema_url = "https://cloudquotas.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://cloudquotas.googleapis.com"
+
+          [dynamic_providers.google_cloudresourcemanager]
+          schema_source = "discovery_docs"
+          schema_url = "https://cloudresourcemanager.googleapis.com/$discovery/rest?version=v3"
+          base_url = "https://cloudresourcemanager.googleapis.com"
+
+          [dynamic_providers.google_cloudscheduler]
+          schema_source = "discovery_docs"
+          schema_url = "https://cloudscheduler.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://cloudscheduler.googleapis.com"
+
+          [dynamic_providers.google_cloudsupport]
+          schema_source = "discovery_docs"
+          schema_url = "https://cloudsupport.googleapis.com/$discovery/rest?version=v2"
+          base_url = "https://cloudsupport.googleapis.com"
+
+          [dynamic_providers.google_cloudtasks]
+          schema_source = "discovery_docs"
+          schema_url = "https://cloudtasks.googleapis.com/$discovery/rest?version=v2"
+          base_url = "https://cloudtasks.googleapis.com"
+
+          [dynamic_providers.google_composer]
+          schema_source = "discovery_docs"
+          schema_url = "https://composer.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://composer.googleapis.com"
+
+          [dynamic_providers.google_config]
+          schema_source = "discovery_docs"
+          schema_url = "https://config.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://config.googleapis.com"
+
+          [dynamic_providers.google_connectors]
+          schema_source = "discovery_docs"
+          schema_url = "https://connectors.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://connectors.googleapis.com"
+
+          [dynamic_providers.google_contactcenteraiplatform]
+          schema_source = "discovery_docs"
+          schema_url = "https://contactcenteraiplatform.googleapis.com/$discovery/rest?version=v1alpha1"
+          base_url = "https://contactcenteraiplatform.googleapis.com"
+
+          [dynamic_providers.google_contactcenterinsights]
+          schema_source = "discovery_docs"
+          schema_url = "https://contactcenterinsights.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://contactcenterinsights.googleapis.com"
+
+          [dynamic_providers.google_container]
+          schema_source = "discovery_docs"
+          schema_url = "https://container.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://container.googleapis.com"
+
+          [dynamic_providers.google_containeranalysis]
+          schema_source = "discovery_docs"
+          schema_url = "https://containeranalysis.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://containeranalysis.googleapis.com"
+
+          [dynamic_providers.google_contentwarehouse]
+          schema_source = "discovery_docs"
+          schema_url = "https://contentwarehouse.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://contentwarehouse.googleapis.com"
+
+          [dynamic_providers.google_datacatalog]
+          schema_source = "discovery_docs"
+          schema_url = "https://datacatalog.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://datacatalog.googleapis.com"
+
+          [dynamic_providers.google_dataflow]
+          schema_source = "discovery_docs"
+          schema_url = "https://dataflow.googleapis.com/$discovery/rest?version=v1b3"
+          base_url = "https://dataflow.googleapis.com"
+
+          [dynamic_providers.google_dataform]
+          schema_source = "discovery_docs"
+          schema_url = "https://dataform.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://dataform.googleapis.com"
+
+          [dynamic_providers.google_datafusion]
+          schema_source = "discovery_docs"
+          schema_url = "https://datafusion.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://datafusion.googleapis.com"
+
+          [dynamic_providers.google_datalineage]
+          schema_source = "discovery_docs"
+          schema_url = "https://datalineage.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://datalineage.googleapis.com"
+
+          [dynamic_providers.google_datamigration]
+          schema_source = "discovery_docs"
+          schema_url = "https://datamigration.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://datamigration.googleapis.com"
+
+          [dynamic_providers.google_datapipelines]
+          schema_source = "discovery_docs"
+          schema_url = "https://datapipelines.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://datapipelines.googleapis.com"
+
+          [dynamic_providers.google_dataplex]
+          schema_source = "discovery_docs"
+          schema_url = "https://dataplex.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://dataplex.googleapis.com"
+
+          [dynamic_providers.google_dataproc]
+          schema_source = "discovery_docs"
+          schema_url = "https://dataproc.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://dataproc.googleapis.com"
+
+          [dynamic_providers.google_datastore]
+          schema_source = "discovery_docs"
+          schema_url = "https://datastore.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://datastore.googleapis.com"
+
+          [dynamic_providers.google_datastream]
+          schema_source = "discovery_docs"
+          schema_url = "https://datastream.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://datastream.googleapis.com"
+
+          [dynamic_providers.google_deploymentmanager]
+          schema_source = "discovery_docs"
+          schema_url = "https://deploymentmanager.googleapis.com/$discovery/rest?version=v2"
+          base_url = "https://deploymentmanager.googleapis.com"
+
+          [dynamic_providers.google_developerconnect]
+          schema_source = "discovery_docs"
+          schema_url = "https://developerconnect.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://developerconnect.googleapis.com"
+
+          [dynamic_providers.google_dialogflow]
+          schema_source = "discovery_docs"
+          schema_url = "https://dialogflow.googleapis.com/$discovery/rest?version=v3"
+          base_url = "https://dialogflow.googleapis.com"
+
+          [dynamic_providers.google_discoveryengine]
+          schema_source = "discovery_docs"
+          schema_url = "https://discoveryengine.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://discoveryengine.googleapis.com"
+
+          [dynamic_providers.google_dlp]
+          schema_source = "discovery_docs"
+          schema_url = "https://dlp.googleapis.com/$discovery/rest?version=v2"
+          base_url = "https://dlp.googleapis.com"
+
+          [dynamic_providers.google_dns]
+          schema_source = "discovery_docs"
+          schema_url = "https://dns.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://dns.googleapis.com"
+
+          [dynamic_providers.google_documentai]
+          schema_source = "discovery_docs"
+          schema_url = "https://documentai.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://documentai.googleapis.com"
+
+          [dynamic_providers.google_essentialcontacts]
+          schema_source = "discovery_docs"
+          schema_url = "https://essentialcontacts.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://essentialcontacts.googleapis.com"
+
+          [dynamic_providers.google_eventarc]
+          schema_source = "discovery_docs"
+          schema_url = "https://eventarc.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://eventarc.googleapis.com"
+
+          [dynamic_providers.google_file]
+          schema_source = "discovery_docs"
+          schema_url = "https://file.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://file.googleapis.com"
+
+          [dynamic_providers.google_firebase]
+          schema_source = "discovery_docs"
+          schema_url = "https://firebase.googleapis.com/$discovery/rest?version=v1beta1"
+          base_url = "https://firebase.googleapis.com"
+
+          [dynamic_providers.google_firebaseappcheck]
+          schema_source = "discovery_docs"
+          schema_url = "https://firebaseappcheck.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://firebaseappcheck.googleapis.com"
+
+          [dynamic_providers.google_firebaseappdistribution]
+          schema_source = "discovery_docs"
+          schema_url = "https://firebaseappdistribution.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://firebaseappdistribution.googleapis.com"
+
+          [dynamic_providers.google_firebaseapphosting]
+          schema_source = "discovery_docs"
+          schema_url = "https://firebaseapphosting.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://firebaseapphosting.googleapis.com"
+
+          [dynamic_providers.google_firebasedatabase]
+          schema_source = "discovery_docs"
+          schema_url = "https://firebasedatabase.googleapis.com/$discovery/rest?version=v1beta"
+          base_url = "https://firebasedatabase.googleapis.com"
+
+          [dynamic_providers.google_firebasedataconnect]
+          schema_source = "discovery_docs"
+          schema_url = "https://firebasedataconnect.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://firebasedataconnect.googleapis.com"
+
+          [dynamic_providers.google_firebaserules]
+          schema_source = "discovery_docs"
+          schema_url = "https://firebaserules.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://firebaserules.googleapis.com"
+
+          [dynamic_providers.google_firestore]
+          schema_source = "discovery_docs"
+          schema_url = "https://firestore.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://firestore.googleapis.com"
+
+          [dynamic_providers.google_ftp]
+          schema_source = "discovery_docs"
+          schema_url = "https://ftp.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://ftp.googleapis.com"
+
+          [dynamic_providers.google_gkebackup]
+          schema_source = "discovery_docs"
+          schema_url = "https://gkebackup.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://gkebackup.googleapis.com"
+
+          [dynamic_providers.google_gkehub]
+          schema_source = "discovery_docs"
+          schema_url = "https://gkehub.googleapis.com/$discovery/rest?version=v2"
+          base_url = "https://gkehub.googleapis.com"
+
+          [dynamic_providers.google_gkeonprem]
+          schema_source = "discovery_docs"
+          schema_url = "https://gkeonprem.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://gkeonprem.googleapis.com"
+
+          [dynamic_providers.google_healthcare]
+          schema_source = "discovery_docs"
+          schema_url = "https://healthcare.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://healthcare.googleapis.com"
+
+          [dynamic_providers.google_hypercomputecluster]
+          schema_source = "discovery_docs"
+          schema_url = "https://hypercomputecluster.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://hypercomputecluster.googleapis.com"
+
+          [dynamic_providers.google_iam]
+          schema_source = "discovery_docs"
+          schema_url = "https://iam.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://iam.googleapis.com"
+
+          [dynamic_providers.google_iampolicies]
+          schema_source = "discovery_docs"
+          schema_url = "https://iam.googleapis.com/$discovery/rest?version=v2"
+          base_url = "https://iam.googleapis.com"
+
+          [dynamic_providers.google_iap]
+          schema_source = "discovery_docs"
+          schema_url = "https://iap.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://iap.googleapis.com"
+
+          [dynamic_providers.google_identitytoolkit]
+          schema_source = "discovery_docs"
+          schema_url = "https://identitytoolkit.googleapis.com/$discovery/rest?version=v2"
+          base_url = "https://identitytoolkit.googleapis.com"
+
+          [dynamic_providers.google_ids]
+          schema_source = "discovery_docs"
+          schema_url = "https://ids.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://ids.googleapis.com"
+
+          [dynamic_providers.google_logging]
+          schema_source = "discovery_docs"
+          schema_url = "https://logging.googleapis.com/$discovery/rest?version=v2"
+          base_url = "https://logging.googleapis.com"
+
+          [dynamic_providers.google_looker]
+          schema_source = "discovery_docs"
+          schema_url = "https://looker.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://looker.googleapis.com"
+
+          [dynamic_providers.google_lustre]
+          schema_source = "discovery_docs"
+          schema_url = "https://lustre.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://lustre.googleapis.com"
+
+          [dynamic_providers.google_managedidentities]
+          schema_source = "discovery_docs"
+          schema_url = "https://managedidentities.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://managedidentities.googleapis.com"
+
+          [dynamic_providers.google_managedkafka]
+          schema_source = "discovery_docs"
+          schema_url = "https://managedkafka.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://managedkafka.googleapis.com"
+
+          [dynamic_providers.google_memcache]
+          schema_source = "discovery_docs"
+          schema_url = "https://memcache.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://memcache.googleapis.com"
+
+          [dynamic_providers.google_metastore]
+          schema_source = "discovery_docs"
+          schema_url = "https://metastore.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://metastore.googleapis.com"
+
+          [dynamic_providers.google_migrationcenter]
+          schema_source = "discovery_docs"
+          schema_url = "https://migrationcenter.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://migrationcenter.googleapis.com"
+
+          [dynamic_providers.google_ml]
+          schema_source = "discovery_docs"
+          schema_url = "https://ml.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://ml.googleapis.com"
+
+          [dynamic_providers.google_modelarmor]
+          schema_source = "discovery_docs"
+          schema_url = "https://modelarmor.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://modelarmor.googleapis.com"
+
+          [dynamic_providers.google_monitoring]
+          schema_source = "discovery_docs"
+          schema_url = "https://monitoring.googleapis.com/$discovery/rest?version=v3"
+          base_url = "https://monitoring.googleapis.com"
+
+          [dynamic_providers.google_netapp]
+          schema_source = "discovery_docs"
+          schema_url = "https://netapp.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://netapp.googleapis.com"
+
+          [dynamic_providers.google_networkconnectivity]
+          schema_source = "discovery_docs"
+          schema_url = "https://networkconnectivity.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://networkconnectivity.googleapis.com"
+
+          [dynamic_providers.google_networkmanagement]
+          schema_source = "discovery_docs"
+          schema_url = "https://networkmanagement.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://networkmanagement.googleapis.com"
+
+          [dynamic_providers.google_networksecurity]
+          schema_source = "discovery_docs"
+          schema_url = "https://networksecurity.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://networksecurity.googleapis.com"
+
+          [dynamic_providers.google_networkservices]
+          schema_source = "discovery_docs"
+          schema_url = "https://networkservices.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://networkservices.googleapis.com"
+
+          [dynamic_providers.google_notebooks]
+          schema_source = "discovery_docs"
+          schema_url = "https://notebooks.googleapis.com/$discovery/rest?version=v2"
+          base_url = "https://notebooks.googleapis.com"
+
+          [dynamic_providers.google_observability]
+          schema_source = "discovery_docs"
+          schema_url = "https://observability.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://observability.googleapis.com"
+
+          [dynamic_providers.google_oracledatabase]
+          schema_source = "discovery_docs"
+          schema_url = "https://oracledatabase.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://oracledatabase.googleapis.com"
+
+          [dynamic_providers.google_orgpolicy]
+          schema_source = "discovery_docs"
+          schema_url = "https://orgpolicy.googleapis.com/$discovery/rest?version=v2"
+          base_url = "https://orgpolicy.googleapis.com"
+
+          [dynamic_providers.google_osconfig]
+          schema_source = "discovery_docs"
+          schema_url = "https://osconfig.googleapis.com/$discovery/rest?version=v2"
+          base_url = "https://osconfig.googleapis.com"
+
+          [dynamic_providers.google_oslogin]
+          schema_source = "discovery_docs"
+          schema_url = "https://oslogin.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://oslogin.googleapis.com"
+
+          [dynamic_providers.google_parallelstore]
+          schema_source = "discovery_docs"
+          schema_url = "https://parallelstore.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://parallelstore.googleapis.com"
+
+          [dynamic_providers.google_parametermanager]
+          schema_source = "discovery_docs"
+          schema_url = "https://parametermanager.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://parametermanager.googleapis.com"
+
+          [dynamic_providers.google_policysimulator]
+          schema_source = "discovery_docs"
+          schema_url = "https://policysimulator.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://policysimulator.googleapis.com"
+
+          [dynamic_providers.google_privateca]
+          schema_source = "discovery_docs"
+          schema_url = "https://privateca.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://privateca.googleapis.com"
+
+          [dynamic_providers.google_privilegedaccessmanager]
+          schema_source = "discovery_docs"
+          schema_url = "https://privilegedaccessmanager.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://privilegedaccessmanager.googleapis.com"
+
+          [dynamic_providers.google_pubsub]
+          schema_source = "discovery_docs"
+          schema_url = "https://pubsub.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://pubsub.googleapis.com"
+
+          [dynamic_providers.google_pubsublite]
+          schema_source = "discovery_docs"
+          schema_url = "https://pubsublite.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://pubsublite.googleapis.com"
+
+          [dynamic_providers.google_rapidmigrationassessment]
+          schema_source = "discovery_docs"
+          schema_url = "https://rapidmigrationassessment.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://rapidmigrationassessment.googleapis.com"
+
+          [dynamic_providers.google_recaptchaenterprise]
+          schema_source = "discovery_docs"
+          schema_url = "https://recaptchaenterprise.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://recaptchaenterprise.googleapis.com"
+
+          [dynamic_providers.google_redis]
+          schema_source = "discovery_docs"
+          schema_url = "https://redis.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://redis.googleapis.com"
+
+          [dynamic_providers.google_run]
+          schema_source = "discovery_docs"
+          schema_url = "https://run.googleapis.com/$discovery/rest?version=v2"
+          base_url = "https://run.googleapis.com"
+
+          [dynamic_providers.google_saasservicemgmt]
+          schema_source = "discovery_docs"
+          schema_url = "https://saasservicemgmt.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://saasservicemgmt.googleapis.com"
+
+          [dynamic_providers.google_sasportal]
+          schema_source = "discovery_docs"
+          schema_url = "https://sasportal.googleapis.com/$discovery/rest?version=v1alpha1"
+          base_url = "https://sasportal.googleapis.com"
+
+          [dynamic_providers.google_secretmanager]
+          schema_source = "discovery_docs"
+          schema_url = "https://secretmanager.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://secretmanager.googleapis.com"
+
+          [dynamic_providers.google_securesourcemanager]
+          schema_source = "discovery_docs"
+          schema_url = "https://securesourcemanager.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://securesourcemanager.googleapis.com"
+
+          [dynamic_providers.google_securitycenter]
+          schema_source = "discovery_docs"
+          schema_url = "https://securitycenter.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://securitycenter.googleapis.com"
+
+          [dynamic_providers.google_securityposture]
+          schema_source = "discovery_docs"
+          schema_url = "https://securityposture.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://securityposture.googleapis.com"
+
+          [dynamic_providers.google_servicedirectory]
+          schema_source = "discovery_docs"
+          schema_url = "https://servicedirectory.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://servicedirectory.googleapis.com"
+
+          [dynamic_providers.google_servicemanagement]
+          schema_source = "discovery_docs"
+          schema_url = "https://servicemanagement.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://servicemanagement.googleapis.com"
+
+          [dynamic_providers.google_siteverification]
+          schema_source = "discovery_docs"
+          schema_url = "https://siteverification.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://www.googleapis.com/siteVerification/v1"
+
+          [dynamic_providers.google_sourcerepo]
+          schema_source = "discovery_docs"
+          schema_url = "https://sourcerepo.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://sourcerepo.googleapis.com"
+
+          [dynamic_providers.google_spanner]
+          schema_source = "discovery_docs"
+          schema_url = "https://spanner.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://spanner.googleapis.com"
+
+          [dynamic_providers.google_speech]
+          schema_source = "discovery_docs"
+          schema_url = "https://speech.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://speech.googleapis.com"
+
+          [dynamic_providers.google_sqladmin]
+          schema_source = "discovery_docs"
+          schema_url = "https://sqladmin.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://sqladmin.googleapis.com"
+
+          [dynamic_providers.google_storage]
+          schema_source = "discovery_docs"
+          schema_url = "https://storage.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://storage.googleapis.com/storage/v1"
+
+          [dynamic_providers.google_storagebatchoperations]
+          schema_source = "discovery_docs"
+          schema_url = "https://storagebatchoperations.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://storagebatchoperations.googleapis.com"
+
+          [dynamic_providers.google_storagetransfer]
+          schema_source = "discovery_docs"
+          schema_url = "https://storagetransfer.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://storagetransfer.googleapis.com"
+
+          [dynamic_providers.google_testing]
+          schema_source = "discovery_docs"
+          schema_url = "https://testing.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://testing.googleapis.com"
+
+          [dynamic_providers.google_toolresults]
+          schema_source = "discovery_docs"
+          schema_url = "https://toolresults.googleapis.com/$discovery/rest?version=v1beta3"
+          base_url = "https://toolresults.googleapis.com"
+
+          [dynamic_providers.google_tpu]
+          schema_source = "discovery_docs"
+          schema_url = "https://tpu.googleapis.com/$discovery/rest?version=v2"
+          base_url = "https://tpu.googleapis.com"
+
+          [dynamic_providers.google_transcoder]
+          schema_source = "discovery_docs"
+          schema_url = "https://transcoder.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://transcoder.googleapis.com"
+
+          [dynamic_providers.google_translate]
+          schema_source = "discovery_docs"
+          schema_url = "https://translation.googleapis.com/$discovery/rest?version=v3"
+          base_url = "https://translation.googleapis.com"
+
+          [dynamic_providers.google_vision]
+          schema_source = "discovery_docs"
+          schema_url = "https://vision.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://vision.googleapis.com"
+
+          [dynamic_providers.google_vmmigration]
+          schema_source = "discovery_docs"
+          schema_url = "https://vmmigration.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://vmmigration.googleapis.com"
+
+          [dynamic_providers.google_vmwareengine]
+          schema_source = "discovery_docs"
+          schema_url = "https://vmwareengine.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://vmwareengine.googleapis.com"
+
+          [dynamic_providers.google_vpcaccess]
+          schema_source = "discovery_docs"
+          schema_url = "https://vpcaccess.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://vpcaccess.googleapis.com"
+
+          [dynamic_providers.google_websecurityscanner]
+          schema_source = "discovery_docs"
+          schema_url = "https://websecurityscanner.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://websecurityscanner.googleapis.com"
+
+          [dynamic_providers.google_workflowexecutions]
+          schema_source = "discovery_docs"
+          schema_url = "https://workflowexecutions.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://workflowexecutions.googleapis.com"
+
+          [dynamic_providers.google_workflows]
+          schema_source = "discovery_docs"
+          schema_url = "https://workflows.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://workflows.googleapis.com"
+
+          [dynamic_providers.google_workloadmanager]
+          schema_source = "discovery_docs"
+          schema_url = "https://workloadmanager.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://workloadmanager.googleapis.com"
+
+          [dynamic_providers.google_workstations]
+          schema_source = "discovery_docs"
+          schema_url = "https://workstations.googleapis.com/$discovery/rest?version=v1"
+          base_url = "https://workstations.googleapis.com"
+          EOF
+
+          # UBI-182's own real collapse: each entry's own single fetch
+          # now produces both real members (resource mode under its own
+          # name, data-source mode synthesized under "<name>_ds") -- no
+          # separate "*_ds" tables exist in this repo's own driving
+          # config at all, matching the SAME collapse ubiquex's own
+          # sdk/providers/.ubx/config already went through.
+          rm -rf "${{ runner.temp }}/new-group"
+          ( cd "${{ runner.temp }}/gen" && \
+            "${{ runner.temp }}/ubx-provider-dynamic" \
+              --generate-snapshot-group="${{ runner.temp }}/new-group" \
+              --group-repo-name=google \
+              --group-members=google_agentidentity_v1alpha,google_agentidentity_v1beta,google_agentregistry_v1alpha,google_aiplatform_v1beta1,google_alloydb_v1alpha,google_alloydb_v1beta,google_appengine_v1alpha,google_appengine_v1beta,google_apphub_v1alpha,google_artifactregistry_v1beta1,google_artifactregistry_v1beta2,google_assuredworkloads_v1beta1,google_beyondcorp_v1alpha,google_bigqueryconnection_v1beta1,google_billingbudgets_v1beta1,google_binaryauthorization_v1beta1,google_ces_v1beta,google_cloudfunctions_v2alpha,google_cloudfunctions_v2beta,google_cloudidentity_v1beta1,google_cloudresourcemanager_v1beta1,google_cloudresourcemanager_v2beta1,google_cloudscheduler_v1beta1,google_cloudtasks_v2beta2,google_cloudtasks_v2beta3,google_composer_v1beta1,google_container_v1beta1,google_containeranalysis_v1alpha1,google_containeranalysis_v1beta1,google_datacatalog_v1beta1,google_dataform_v1beta1,google_datafusion_v1beta1,google_datastream_v1alpha1,google_deploymentmanager_alpha,google_deploymentmanager_v2beta,google_dialogflow_v2beta1,google_dialogflow_v3beta1,google_discoveryengine_v1alpha,google_discoveryengine_v1beta,google_dns_v1beta2,google_documentai_v1beta3,google_file_v1beta1,google_firebaseappcheck_v1beta,google_firebaseapphosting_v1beta,google_firebasedataconnect_v1beta,google_firestore_v1beta1,google_firestore_v1beta2,google_gkehub_v1alpha,google_gkehub_v2alpha,google_gkehub_v1beta,google_gkehub_v1beta1,google_gkehub_v2beta,google_healthcare_v1beta1,google_managedidentities_v1alpha1,google_managedidentities_v1beta1,google_memcache_v1beta2,google_migrationcenter_v1alpha1,google_netapp_v1beta1,google_networkconnectivity_v1alpha1,google_networkmanagement_v1beta1,google_networksecurity_v1beta1,google_networkservices_v1beta1,google_osconfig_v1alpha,google_osconfig_v1beta,google_osconfig_v2beta,google_oslogin_v1alpha,google_oslogin_v1beta,google_parallelstore_v1beta,google_pubsub_v1beta1a,google_pubsub_v1beta2,google_redis_v1beta1,google_secretmanager_v1beta1,google_secretmanager_v1beta2,google_securitycenter_v1beta1,google_servicedirectory_v1beta1,google_sqladmin_v1beta4,google_vpcaccess_v1beta1,google_workflows_v1beta,google_workstations_v1beta,google_iam_v2beta,google_datamigration_v1beta1,google_analyticshub_v1beta1,google_apigateway_v1beta,google_cloudcontrolspartner_v1beta,google_cloudsupport_v2beta,google_firebaseappdistribution_v1alpha,google_ftp_v1alpha,google_metastore_v1alpha,google_metastore_v1beta,google_policysimulator_v1beta,google_saasservicemgmt_v1beta1,google_speech_v1p1beta1,google_tpu_v1alpha1,google_tpu_v2alpha1,google_vmmigration_v1alpha1,google_websecurityscanner_v1alpha,google_websecurityscanner_v1beta,google_workflowexecutions_v1beta,google,google_compute_beta,google_compute_alpha,google_accesscontextmanager,google_agentidentity,google_agentregistry,google_aiplatform,google_alloydb,google_analyticshub,google_androiddeviceprovisioning,google_androidenterprise,google_androidmanagement,google_apigateway,google_apigee,google_apihub,google_apikeys,google_apim,google_appengine,google_apphub,google_artifactregistry,google_assuredworkloads,google_backupdr,google_baremetalsolution,google_batch,google_beyondcorp,google_biglake,google_bigquery,google_bigqueryconnection,google_bigquerydatapolicy,google_bigquerydatatransfer,google_bigqueryreservation,google_bigtableadmin,google_billingbudgets,google_binaryauthorization,google_blockchainnodeengine,google_certificatemanager,google_ces,google_chromemanagement,google_cloudasset,google_cloudbilling,google_cloudbuild,google_cloudchannel,google_cloudcontrolspartner,google_clouddeploy,google_cloudfunctions,google_cloudidentity,google_cloudkms,google_cloudnumberregistry,google_cloudquotas,google_cloudresourcemanager,google_cloudscheduler,google_cloudsupport,google_cloudtasks,google_composer,google_config,google_connectors,google_contactcenteraiplatform,google_contactcenterinsights,google_container,google_containeranalysis,google_contentwarehouse,google_datacatalog,google_dataflow,google_dataform,google_datafusion,google_datalineage,google_datamigration,google_datapipelines,google_dataplex,google_dataproc,google_datastore,google_datastream,google_deploymentmanager,google_developerconnect,google_dialogflow,google_discoveryengine,google_dlp,google_dns,google_documentai,google_essentialcontacts,google_eventarc,google_file,google_firebase,google_firebaseappcheck,google_firebaseappdistribution,google_firebaseapphosting,google_firebasedatabase,google_firebasedataconnect,google_firebaserules,google_firestore,google_ftp,google_gkebackup,google_gkehub,google_gkeonprem,google_healthcare,google_hypercomputecluster,google_iam,google_iampolicies,google_iap,google_identitytoolkit,google_ids,google_logging,google_looker,google_lustre,google_managedidentities,google_managedkafka,google_memcache,google_metastore,google_migrationcenter,google_ml,google_modelarmor,google_monitoring,google_netapp,google_networkconnectivity,google_networkmanagement,google_networksecurity,google_networkservices,google_notebooks,google_observability,google_oracledatabase,google_orgpolicy,google_osconfig,google_oslogin,google_parallelstore,google_parametermanager,google_policysimulator,google_privateca,google_privilegedaccessmanager,google_pubsub,google_pubsublite,google_rapidmigrationassessment,google_recaptchaenterprise,google_redis,google_run,google_saasservicemgmt,google_sasportal,google_secretmanager,google_securesourcemanager,google_securitycenter,google_securityposture,google_servicedirectory,google_servicemanagement,google_siteverification,google_sourcerepo,google_spanner,google_speech,google_sqladmin,google_storage,google_storagebatchoperations,google_storagetransfer,google_testing,google_toolresults,google_tpu,google_transcoder,google_translate,google_vision,google_vmmigration,google_vmwareengine,google_vpcaccess,google_websecurityscanner,google_workflowexecutions,google_workflows,google_workloadmanager,google_workstations \
+              --prev-snapshot="$GITHUB_WORKSPACE" )
+
+          new="$(python3 -c "import json; print(json.load(open('${{ runner.temp }}/new-group/manifest.json'))['version'])")"
+          echo "new=$new" >> "$GITHUB_OUTPUT"
+          if [ "$new" = "${{ steps.before.outputs.current }}" ]; then
+            echo "newer=false" >> "$GITHUB_OUTPUT"
+            echo "Already current at ${{ steps.before.outputs.current }} -- nothing to do."
+          else
+            echo "newer=true" >> "$GITHUB_OUTPUT"
+            echo "Real version change: ${{ steps.before.outputs.current }} -> $new"
+          fi
+
+      - name: Report which real members changed
+        if: steps.gen.outputs.newer == 'true'
+        run: |
+          set -euo pipefail
+          for f in "${{ runner.temp }}"/new-group/members/*.json; do
+            name="$(basename "$f" .json)"
+            if ! diff -q "$f" "members/$name.json" > /dev/null 2>&1; then
+              echo "changed member: $name"
+            fi
+          done
+
+      - name: Open PR
+        if: steps.gen.outputs.newer == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          cp "${{ runner.temp }}/new-group/manifest.json" manifest.json
+          cp "${{ runner.temp }}"/new-group/members/*.json members/
+          git config user.name "ubx-bot"
+          git config user.email "actions@users.noreply.github.com"
+          branch="snapshot-regen/google-${{ steps.gen.outputs.new }}"
+          git checkout -b "$branch"
+          git add manifest.json members/
+          git commit -m "snapshot: regenerate from Google Cloud's own live Discovery Documents, ${{ steps.before.outputs.current }} -> ${{ steps.gen.outputs.new }}"
+          git push origin "$branch" --force
+          gh pr create \
+            --title "snapshot: regenerate from Google Cloud's own live Discovery Documents (${{ steps.before.outputs.current }} -> ${{ steps.gen.outputs.new }})" \
+            --body "Automated regeneration (\`.github/workflows/hash-watch.yml\`), triggered by re-running ubx-provider-dynamic's own \`--generate-snapshot-group\` against Google Cloud's own live Discovery Documents (every real member, resource and data-source mode together) and diffing mechanically against the previously committed group.
+
+          Previous version: \`${{ steps.before.outputs.current }}\`
+          New version: \`${{ steps.gen.outputs.new }}\`
+
+          Only the real, changed members/*.json files are touched -- unaffected members stay byte-identical. Never auto-merges -- review the diff before merging. After merge, dispatch \`publish.yml\` to cut the real GitHub Release." \
+            --base main --head "$branch"

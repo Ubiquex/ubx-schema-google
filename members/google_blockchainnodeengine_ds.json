@@ -1,0 +1,1337 @@
+{
+  "schema_source": "discovery_docs",
+  "mode": "data_source",
+  "auth": {
+    "Type": "",
+    "Params": null
+  },
+  "base_url": "https://blockchainnodeengine.googleapis.com",
+  "retry": {
+    "MaxAttempts": 0,
+    "InitialBackoff": "",
+    "MaxBackoff": "",
+    "Jitter": null,
+    "RespectRetryAfter": null,
+    "RateLimitResetHeader": ""
+  },
+  "timeouts": {
+    "Create": "",
+    "Read": "",
+    "Update": "",
+    "Delete": "",
+    "Default": ""
+  },
+  "wire_name": "google_blockchainnodeengine",
+  "raw_spec": {
+    "name": "blockchainnodeengine",
+    "revision": "20250507",
+    "discoveryVersion": "v1",
+    "baseUrl": "https://blockchainnodeengine.googleapis.com/",
+    "rootUrl": "https://blockchainnodeengine.googleapis.com/",
+    "servicePath": "",
+    "schemas": {
+      "BlockchainNode": {
+        "type": "object",
+        "format": "",
+        "description": "A representation of a blockchain node.",
+        "$ref": "",
+        "properties": {
+          "blockchainType": {
+            "type": "string",
+            "format": "",
+            "description": "Immutable. The blockchain type of the node.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "BLOCKCHAIN_TYPE_UNSPECIFIED",
+              "ETHEREUM"
+            ],
+            "readOnly": false
+          },
+          "connectionInfo": {
+            "type": "",
+            "format": "",
+            "description": "Output only. The connection information used to interact with a blockchain node.",
+            "$ref": "ConnectionInfo",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "createTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. The timestamp at which the blockchain node was first created.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "ethereumDetails": {
+            "type": "",
+            "format": "",
+            "description": "Ethereum-specific blockchain node details.",
+            "$ref": "EthereumDetails",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "labels": {
+            "type": "object",
+            "format": "",
+            "description": "User-provided key-value pairs.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The fully qualified name of the blockchain node. e.g. `projects/my-project/locations/us-central1/blockchainNodes/my-node`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "privateServiceConnectEnabled": {
+            "type": "boolean",
+            "format": "",
+            "description": "Optional. When true, the node is only accessible via Private Service Connect; no public endpoints are exposed. Otherwise, the node is only accessible via public endpoints. Warning: These nodes are deprecated, please use public endpoints instead.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "state": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. A status representing the state of the node.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "STATE_UNSPECIFIED",
+              "CREATING",
+              "DELETING",
+              "RUNNING",
+              "ERROR",
+              "UPDATING",
+              "REPAIRING",
+              "RECONCILING",
+              "SYNCING"
+            ],
+            "readOnly": true
+          },
+          "updateTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. The timestamp at which the blockchain node was last updated.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "CancelOperationRequest": {
+        "type": "object",
+        "format": "",
+        "description": "The request message for Operations.CancelOperation.",
+        "$ref": "",
+        "properties": {},
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ConnectionInfo": {
+        "type": "object",
+        "format": "",
+        "description": "The connection information through which to interact with a blockchain node.",
+        "$ref": "",
+        "properties": {
+          "endpointInfo": {
+            "type": "",
+            "format": "",
+            "description": "Output only. The endpoint information through which to interact with a blockchain node.",
+            "$ref": "EndpointInfo",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "serviceAttachment": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. A service attachment that exposes a node, and has the following format: projects/{project}/regions/{region}/serviceAttachments/{service_attachment_name}",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "EndpointInfo": {
+        "type": "object",
+        "format": "",
+        "description": "Contains endpoint information through which to interact with a blockchain node.",
+        "$ref": "",
+        "properties": {
+          "jsonRpcApiEndpoint": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The assigned URL for the node JSON-RPC API endpoint.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "websocketsApiEndpoint": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The assigned URL for the node WebSockets API endpoint.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "EthereumDetails": {
+        "type": "object",
+        "format": "",
+        "description": "Ethereum-specific blockchain node details.",
+        "$ref": "",
+        "properties": {
+          "additionalEndpoints": {
+            "type": "",
+            "format": "",
+            "description": "Output only. Ethereum-specific endpoint information.",
+            "$ref": "EthereumEndpoints",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "apiEnableAdmin": {
+            "type": "boolean",
+            "format": "",
+            "description": "Immutable. Enables JSON-RPC access to functions in the `admin` namespace. Defaults to `false`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "apiEnableDebug": {
+            "type": "boolean",
+            "format": "",
+            "description": "Immutable. Enables JSON-RPC access to functions in the `debug` namespace. Defaults to `false`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "consensusClient": {
+            "type": "string",
+            "format": "",
+            "description": "Immutable. The consensus client.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "CONSENSUS_CLIENT_UNSPECIFIED",
+              "LIGHTHOUSE",
+              "ERIGON_EMBEDDED_CONSENSUS_LAYER"
+            ],
+            "readOnly": false
+          },
+          "executionClient": {
+            "type": "string",
+            "format": "",
+            "description": "Immutable. The execution client",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "EXECUTION_CLIENT_UNSPECIFIED",
+              "GETH",
+              "ERIGON"
+            ],
+            "readOnly": false
+          },
+          "gethDetails": {
+            "type": "",
+            "format": "",
+            "description": "Details for the Geth execution client.",
+            "$ref": "GethDetails",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "network": {
+            "type": "string",
+            "format": "",
+            "description": "Immutable. The Ethereum environment being accessed.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "NETWORK_UNSPECIFIED",
+              "MAINNET",
+              "TESTNET_GOERLI_PRATER",
+              "TESTNET_SEPOLIA",
+              "TESTNET_HOLESKY"
+            ],
+            "readOnly": false
+          },
+          "nodeType": {
+            "type": "string",
+            "format": "",
+            "description": "Immutable. The type of Ethereum node.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "NODE_TYPE_UNSPECIFIED",
+              "LIGHT",
+              "FULL",
+              "ARCHIVE"
+            ],
+            "readOnly": false
+          },
+          "validatorConfig": {
+            "type": "",
+            "format": "",
+            "description": "Configuration for validator-related parameters on the beacon client, and for any GCP-managed validator client.",
+            "$ref": "ValidatorConfig",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "EthereumEndpoints": {
+        "type": "object",
+        "format": "",
+        "description": "Contains endpoint information specific to Ethereum nodes.",
+        "$ref": "",
+        "properties": {
+          "beaconApiEndpoint": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The assigned URL for the node's Beacon API endpoint.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "beaconPrometheusMetricsApiEndpoint": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The assigned URL for the node's Beacon Prometheus metrics endpoint. See [Prometheus Metrics](https://lighthouse-book.sigmaprime.io/advanced_metrics.html) for more details.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "executionClientPrometheusMetricsApiEndpoint": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The assigned URL for the node's execution client's Prometheus metrics endpoint.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GethDetails": {
+        "type": "object",
+        "format": "",
+        "description": "Options for the Geth execution client. See [Command-line Options](https://geth.ethereum.org/docs/fundamentals/command-line-options) for more details.",
+        "$ref": "",
+        "properties": {
+          "garbageCollectionMode": {
+            "type": "string",
+            "format": "",
+            "description": "Immutable. Blockchain garbage collection mode.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "GARBAGE_COLLECTION_MODE_UNSPECIFIED",
+              "FULL",
+              "ARCHIVE"
+            ],
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleProtobufEmpty": {
+        "type": "object",
+        "format": "",
+        "description": "A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }",
+        "$ref": "",
+        "properties": {},
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ListBlockchainNodesResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Message for response to listing blockchain nodes.",
+        "$ref": "",
+        "properties": {
+          "blockchainNodes": {
+            "type": "array",
+            "format": "",
+            "description": "The list of nodes",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "BlockchainNode",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "A token identifying a page of results the server should return.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "unreachable": {
+            "type": "array",
+            "format": "",
+            "description": "Locations that could not be reached.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ListLocationsResponse": {
+        "type": "object",
+        "format": "",
+        "description": "The response message for Locations.ListLocations.",
+        "$ref": "",
+        "properties": {
+          "locations": {
+            "type": "array",
+            "format": "",
+            "description": "A list of locations that matches the specified filter in the request.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Location",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "The standard List next-page token.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ListOperationsResponse": {
+        "type": "object",
+        "format": "",
+        "description": "The response message for Operations.ListOperations.",
+        "$ref": "",
+        "properties": {
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "The standard List next-page token.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "operations": {
+            "type": "array",
+            "format": "",
+            "description": "A list of operations that matches the specified filter in the request.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Operation",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Location": {
+        "type": "object",
+        "format": "",
+        "description": "A resource that represents a Google Cloud location.",
+        "$ref": "",
+        "properties": {
+          "displayName": {
+            "type": "string",
+            "format": "",
+            "description": "The friendly name for this location, typically a nearby city name. For example, \"Tokyo\".",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "labels": {
+            "type": "object",
+            "format": "",
+            "description": "Cross-service attributes for the location. For example {\"cloud.googleapis.com/region\": \"us-east1\"}",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "locationId": {
+            "type": "string",
+            "format": "",
+            "description": "The canonical id for this location. For example: `\"us-east1\"`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "metadata": {
+            "type": "object",
+            "format": "",
+            "description": "Service-specific metadata. For example the available capacity at the given location.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "any",
+              "format": "",
+              "description": "Properties of the object. Contains field @type with type URL.",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "Resource name for the location, which may vary between implementations. For example: `\"projects/example-project/locations/us-east1\"`",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Operation": {
+        "type": "object",
+        "format": "",
+        "description": "This resource represents a long-running operation that is the result of a network API call.",
+        "$ref": "",
+        "properties": {
+          "done": {
+            "type": "boolean",
+            "format": "",
+            "description": "If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "error": {
+            "type": "",
+            "format": "",
+            "description": "The error result of the operation in case of failure or cancellation.",
+            "$ref": "Status",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "metadata": {
+            "type": "object",
+            "format": "",
+            "description": "Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "any",
+              "format": "",
+              "description": "Properties of the object. Contains field @type with type URL.",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "response": {
+            "type": "object",
+            "format": "",
+            "description": "The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "any",
+              "format": "",
+              "description": "Properties of the object. Contains field @type with type URL.",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "OperationMetadata": {
+        "type": "object",
+        "format": "",
+        "description": "Represents the metadata of the long-running operation.",
+        "$ref": "",
+        "properties": {
+          "apiVersion": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. API version used to start the operation.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "createTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. The time the operation was created.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "endTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. The time the operation finished running.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "requestedCancellation": {
+            "type": "boolean",
+            "format": "",
+            "description": "Output only. Identifies whether the user has requested cancellation of the operation. Operations that have been cancelled successfully have `Operation.error` value with a `google.rpc.Status.code` of `1`, corresponding to `Code.CANCELLED`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "statusMessage": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. Human-readable status of the operation, if any.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "target": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. Server-defined resource path for the target of the operation.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "verb": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. Name of the verb executed by the operation.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Status": {
+        "type": "object",
+        "format": "",
+        "description": "The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).",
+        "$ref": "",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32",
+            "description": "The status code, which should be an enum value of google.rpc.Code.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "details": {
+            "type": "array",
+            "format": "",
+            "description": "A list of messages that carry the error details. There is a common set of message types for APIs to use.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "object",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": {
+                "type": "any",
+                "format": "",
+                "description": "Properties of the object. Contains field @type with type URL.",
+                "$ref": "",
+                "properties": null,
+                "items": null,
+                "additionalProperties": null,
+                "enum": null,
+                "readOnly": false
+              },
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "message": {
+            "type": "string",
+            "format": "",
+            "description": "A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ValidatorConfig": {
+        "type": "object",
+        "format": "",
+        "description": "Configuration for validator-related parameters on the beacon client, and for any GCP-managed validator client.",
+        "$ref": "",
+        "properties": {
+          "beaconFeeRecipient": {
+            "type": "string",
+            "format": "",
+            "description": "An Ethereum address which the beacon client will send fee rewards to if no recipient is configured in the validator client. See https://lighthouse-book.sigmaprime.io/suggested-fee-recipient.html or https://docs.prylabs.network/docs/execution-node/fee-recipient for examples of how this is used. Note that while this is often described as \"suggested\", as we run the execution node we can trust the execution node, and therefore this is considered enforced.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "managedValidatorClient": {
+            "type": "boolean",
+            "format": "",
+            "description": "Immutable. When true, deploys a GCP-managed validator client alongside the beacon client.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "mevRelayUrls": {
+            "type": "array",
+            "format": "",
+            "description": "URLs for MEV-relay services to use for block building. When set, a GCP-managed MEV-boost service is configured on the beacon client.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      }
+    },
+    "resources": {
+      "projects": {
+        "methods": null,
+        "resources": {
+          "locations": {
+            "methods": {
+              "get": {
+                "id": "blockchainnodeengine.projects.locations.get",
+                "httpMethod": "GET",
+                "path": "v1/{+name}",
+                "flatPath": "v1/projects/{projectsId}/locations/{locationsId}",
+                "description": "Gets information about a location.",
+                "parameters": {
+                  "name": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  }
+                },
+                "parameterOrder": [
+                  "name"
+                ],
+                "request": null,
+                "response": {
+                  "$ref": "Location"
+                }
+              },
+              "list": {
+                "id": "blockchainnodeengine.projects.locations.list",
+                "httpMethod": "GET",
+                "path": "v1/{+name}/locations",
+                "flatPath": "v1/projects/{projectsId}/locations",
+                "description": "Lists information about the supported locations for this service.",
+                "parameters": {
+                  "extraLocationTypes": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false
+                  },
+                  "filter": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false
+                  },
+                  "name": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  },
+                  "pageSize": {
+                    "type": "integer",
+                    "location": "query",
+                    "required": false
+                  },
+                  "pageToken": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false
+                  }
+                },
+                "parameterOrder": [
+                  "name"
+                ],
+                "request": null,
+                "response": {
+                  "$ref": "ListLocationsResponse"
+                }
+              }
+            },
+            "resources": {
+              "blockchainNodes": {
+                "methods": {
+                  "create": {
+                    "id": "blockchainnodeengine.projects.locations.blockchainNodes.create",
+                    "httpMethod": "POST",
+                    "path": "v1/{+parent}/blockchainNodes",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/blockchainNodes",
+                    "description": "Creates a new blockchain node in a given project and location.",
+                    "parameters": {
+                      "blockchainNodeId": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "parent": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      },
+                      "requestId": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      }
+                    },
+                    "parameterOrder": [
+                      "parent"
+                    ],
+                    "request": {
+                      "$ref": "BlockchainNode"
+                    },
+                    "response": {
+                      "$ref": "Operation"
+                    }
+                  },
+                  "delete": {
+                    "id": "blockchainnodeengine.projects.locations.blockchainNodes.delete",
+                    "httpMethod": "DELETE",
+                    "path": "v1/{+name}",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/blockchainNodes/{blockchainNodesId}",
+                    "description": "Deletes a single blockchain node.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      },
+                      "requestId": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "Operation"
+                    }
+                  },
+                  "get": {
+                    "id": "blockchainnodeengine.projects.locations.blockchainNodes.get",
+                    "httpMethod": "GET",
+                    "path": "v1/{+name}",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/blockchainNodes/{blockchainNodesId}",
+                    "description": "Gets details of a single blockchain node.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "BlockchainNode"
+                    }
+                  },
+                  "list": {
+                    "id": "blockchainnodeengine.projects.locations.blockchainNodes.list",
+                    "httpMethod": "GET",
+                    "path": "v1/{+parent}/blockchainNodes",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/blockchainNodes",
+                    "description": "Lists blockchain nodes in a given project and location.",
+                    "parameters": {
+                      "filter": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "orderBy": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "pageSize": {
+                        "type": "integer",
+                        "location": "query",
+                        "required": false
+                      },
+                      "pageToken": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "parent": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "parent"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "ListBlockchainNodesResponse"
+                    }
+                  },
+                  "patch": {
+                    "id": "blockchainnodeengine.projects.locations.blockchainNodes.patch",
+                    "httpMethod": "PATCH",
+                    "path": "v1/{+name}",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/blockchainNodes/{blockchainNodesId}",
+                    "description": "Updates the parameters of a single blockchain node.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      },
+                      "requestId": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "updateMask": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": {
+                      "$ref": "BlockchainNode"
+                    },
+                    "response": {
+                      "$ref": "Operation"
+                    }
+                  }
+                },
+                "resources": null
+              },
+              "operations": {
+                "methods": {
+                  "cancel": {
+                    "id": "blockchainnodeengine.projects.locations.operations.cancel",
+                    "httpMethod": "POST",
+                    "path": "v1/{+name}:cancel",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}:cancel",
+                    "description": "Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": {
+                      "$ref": "CancelOperationRequest"
+                    },
+                    "response": {
+                      "$ref": "GoogleProtobufEmpty"
+                    }
+                  },
+                  "delete": {
+                    "id": "blockchainnodeengine.projects.locations.operations.delete",
+                    "httpMethod": "DELETE",
+                    "path": "v1/{+name}",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
+                    "description": "Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "GoogleProtobufEmpty"
+                    }
+                  },
+                  "get": {
+                    "id": "blockchainnodeengine.projects.locations.operations.get",
+                    "httpMethod": "GET",
+                    "path": "v1/{+name}",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
+                    "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "Operation"
+                    }
+                  },
+                  "list": {
+                    "id": "blockchainnodeengine.projects.locations.operations.list",
+                    "httpMethod": "GET",
+                    "path": "v1/{+name}/operations",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/operations",
+                    "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.",
+                    "parameters": {
+                      "filter": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      },
+                      "pageSize": {
+                        "type": "integer",
+                        "location": "query",
+                        "required": false
+                      },
+                      "pageToken": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "ListOperationsResponse"
+                    }
+                  }
+                },
+                "resources": null
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

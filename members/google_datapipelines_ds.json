@@ -1,0 +1,1665 @@
+{
+  "schema_source": "discovery_docs",
+  "mode": "data_source",
+  "auth": {
+    "Type": "",
+    "Params": null
+  },
+  "base_url": "https://datapipelines.googleapis.com",
+  "retry": {
+    "MaxAttempts": 0,
+    "InitialBackoff": "",
+    "MaxBackoff": "",
+    "Jitter": null,
+    "RespectRetryAfter": null,
+    "RateLimitResetHeader": ""
+  },
+  "timeouts": {
+    "Create": "",
+    "Read": "",
+    "Update": "",
+    "Delete": "",
+    "Default": ""
+  },
+  "wire_name": "google_datapipelines",
+  "raw_spec": {
+    "name": "datapipelines",
+    "revision": "20260816",
+    "discoveryVersion": "v1",
+    "baseUrl": "https://datapipelines.googleapis.com/",
+    "rootUrl": "https://datapipelines.googleapis.com/",
+    "servicePath": "",
+    "schemas": {
+      "GoogleCloudDatapipelinesV1DataflowJobDetails": {
+        "type": "object",
+        "format": "",
+        "description": "Pipeline job details specific to the Dataflow API. This is encapsulated here to allow for more executors to store their specific details separately.",
+        "$ref": "",
+        "properties": {
+          "currentWorkers": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Output only. The current number of workers used to run the jobs. Only set to a value if the job is still running.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "resourceInfo": {
+            "type": "object",
+            "format": "",
+            "description": "Cached version of all the metrics of interest for the job. This value gets stored here when the job is terminated. As long as the job is running, this field is populated from the Dataflow API.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "number",
+              "format": "double",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "sdkVersion": {
+            "type": "",
+            "format": "",
+            "description": "Output only. The SDK version used to run the job.",
+            "$ref": "GoogleCloudDatapipelinesV1SdkVersion",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironment": {
+        "type": "object",
+        "format": "",
+        "description": "The environment values to be set at runtime for a Flex Template.",
+        "$ref": "",
+        "properties": {
+          "additionalExperiments": {
+            "type": "array",
+            "format": "",
+            "description": "Additional experiment flags for the job.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "additionalUserLabels": {
+            "type": "object",
+            "format": "",
+            "description": "Additional user labels to be specified for the job. Keys and values must follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions). An object containing a list of key/value pairs. Example: `{ \"name\": \"wrench\", \"mass\": \"1kg\", \"count\": \"3\" }`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "enableStreamingEngine": {
+            "type": "boolean",
+            "format": "",
+            "description": "Whether to enable Streaming Engine for the job.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "flexrsGoal": {
+            "type": "string",
+            "format": "",
+            "description": "Set FlexRS goal for the job. https://cloud.google.com/dataflow/docs/guides/flexrs",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "FLEXRS_UNSPECIFIED",
+              "FLEXRS_SPEED_OPTIMIZED",
+              "FLEXRS_COST_OPTIMIZED"
+            ],
+            "readOnly": false
+          },
+          "ipConfiguration": {
+            "type": "string",
+            "format": "",
+            "description": "Configuration for VM IPs.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "WORKER_IP_UNSPECIFIED",
+              "WORKER_IP_PUBLIC",
+              "WORKER_IP_PRIVATE"
+            ],
+            "readOnly": false
+          },
+          "kmsKeyName": {
+            "type": "string",
+            "format": "",
+            "description": "Name for the Cloud KMS key for the job. Key format is: projects//locations//keyRings//cryptoKeys/",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "machineType": {
+            "type": "string",
+            "format": "",
+            "description": "The machine type to use for the job. Defaults to the value from the template if not specified.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "maxWorkers": {
+            "type": "integer",
+            "format": "int32",
+            "description": "The maximum number of Compute Engine instances to be made available to your pipeline during execution, from 1 to 1000.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "network": {
+            "type": "string",
+            "format": "",
+            "description": "Network to which VMs will be assigned. If empty or unspecified, the service will use the network \"default\".",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "numWorkers": {
+            "type": "integer",
+            "format": "int32",
+            "description": "The initial number of Compute Engine instances for the job.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "serviceAccountEmail": {
+            "type": "string",
+            "format": "",
+            "description": "The email address of the service account to run the job as.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "subnetwork": {
+            "type": "string",
+            "format": "",
+            "description": "Subnetwork to which VMs will be assigned, if desired. You can specify a subnetwork using either a complete URL or an abbreviated path. Expected to be of the form \"https://www.googleapis.com/compute/v1/projects/HOST_PROJECT_ID/regions/REGION/subnetworks/SUBNETWORK\" or \"regions/REGION/subnetworks/SUBNETWORK\". If the subnetwork is located in a Shared VPC network, you must use the complete URL.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "tempLocation": {
+            "type": "string",
+            "format": "",
+            "description": "The Cloud Storage path to use for temporary files. Must be a valid Cloud Storage URL, beginning with `gs://`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "workerRegion": {
+            "type": "string",
+            "format": "",
+            "description": "The Compute Engine region (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which worker processing should occur, e.g. \"us-west1\". Mutually exclusive with worker_zone. If neither worker_region nor worker_zone is specified, defaults to the control plane region.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "workerZone": {
+            "type": "string",
+            "format": "",
+            "description": "The Compute Engine zone (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which worker processing should occur, e.g. \"us-west1-a\". Mutually exclusive with worker_region. If neither worker_region nor worker_zone is specified, a zone in the control plane region is chosen based on available capacity. If both `worker_zone` and `zone` are set, `worker_zone` takes precedence.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "zone": {
+            "type": "string",
+            "format": "",
+            "description": "The Compute Engine [availability zone](https://cloud.google.com/compute/docs/regions-zones/regions-zones) for launching worker instances to run your pipeline. In the future, worker_zone will take precedence.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudDatapipelinesV1Job": {
+        "type": "object",
+        "format": "",
+        "description": "Definition of the job information maintained by the pipeline. Fields in this entity are retrieved from the executor API (e.g. Dataflow API).",
+        "$ref": "",
+        "properties": {
+          "createTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. The time of job creation.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "dataflowJobDetails": {
+            "type": "",
+            "format": "",
+            "description": "All the details that are specific to a Dataflow job.",
+            "$ref": "GoogleCloudDatapipelinesV1DataflowJobDetails",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "endTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. The time of job termination. This is absent if the job is still running.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "id": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The internal ID for the job.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "Required. The fully qualified resource name for the job.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "state": {
+            "type": "string",
+            "format": "",
+            "description": "The current state of the job.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "STATE_UNSPECIFIED",
+              "STATE_PENDING",
+              "STATE_RUNNING",
+              "STATE_DONE",
+              "STATE_FAILED",
+              "STATE_CANCELLED"
+            ],
+            "readOnly": false
+          },
+          "status": {
+            "type": "",
+            "format": "",
+            "description": "Status capturing any error code or message related to job creation or execution.",
+            "$ref": "GoogleRpcStatus",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudDatapipelinesV1LaunchFlexTemplateParameter": {
+        "type": "object",
+        "format": "",
+        "description": "Launch Flex Template parameter.",
+        "$ref": "",
+        "properties": {
+          "containerSpecGcsPath": {
+            "type": "string",
+            "format": "",
+            "description": "Cloud Storage path to a file with a JSON-serialized ContainerSpec as content.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "environment": {
+            "type": "",
+            "format": "",
+            "description": "The runtime environment for the Flex Template job.",
+            "$ref": "GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironment",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "jobName": {
+            "type": "string",
+            "format": "",
+            "description": "Required. The job name to use for the created job. For an update job request, the job name should be the same as the existing running job.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "launchOptions": {
+            "type": "object",
+            "format": "",
+            "description": "Launch options for this Flex Template job. This is a common set of options across languages and templates. This should not be used to pass job parameters.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "parameters": {
+            "type": "object",
+            "format": "",
+            "description": "The parameters for the Flex Template. Example: `{\"num_workers\":\"5\"}`",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "transformNameMappings": {
+            "type": "object",
+            "format": "",
+            "description": "Use this to pass transform name mappings for streaming update jobs. Example: `{\"oldTransformName\":\"newTransformName\",...}`",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "update": {
+            "type": "boolean",
+            "format": "",
+            "description": "Set this to true if you are sending a request to update a running streaming job. When set, the job name should be the same as the running job.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudDatapipelinesV1LaunchFlexTemplateRequest": {
+        "type": "object",
+        "format": "",
+        "description": "A request to launch a Dataflow job from a Flex Template.",
+        "$ref": "",
+        "properties": {
+          "launchParameter": {
+            "type": "",
+            "format": "",
+            "description": "Required. Parameter to launch a job from a Flex Template.",
+            "$ref": "GoogleCloudDatapipelinesV1LaunchFlexTemplateParameter",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "location": {
+            "type": "string",
+            "format": "",
+            "description": "Required. The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) to which to direct the request. For example, `us-central1`, `us-west1`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "projectId": {
+            "type": "string",
+            "format": "",
+            "description": "Required. The ID of the Cloud Platform project that the job belongs to.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "validateOnly": {
+            "type": "boolean",
+            "format": "",
+            "description": "If true, the request is validated but not actually executed. Defaults to false.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudDatapipelinesV1LaunchTemplateParameters": {
+        "type": "object",
+        "format": "",
+        "description": "Parameters to provide to the template being launched.",
+        "$ref": "",
+        "properties": {
+          "environment": {
+            "type": "",
+            "format": "",
+            "description": "The runtime environment for the job.",
+            "$ref": "GoogleCloudDatapipelinesV1RuntimeEnvironment",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "jobName": {
+            "type": "string",
+            "format": "",
+            "description": "Required. The job name to use for the created job.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "parameters": {
+            "type": "object",
+            "format": "",
+            "description": "The runtime parameters to pass to the job.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "transformNameMapping": {
+            "type": "object",
+            "format": "",
+            "description": "Map of transform name prefixes of the job to be replaced to the corresponding name prefixes of the new job. Only applicable when updating a pipeline.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "update": {
+            "type": "boolean",
+            "format": "",
+            "description": "If set, replace the existing pipeline with the name specified by jobName with this pipeline, preserving state.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudDatapipelinesV1LaunchTemplateRequest": {
+        "type": "object",
+        "format": "",
+        "description": "A request to launch a template.",
+        "$ref": "",
+        "properties": {
+          "gcsPath": {
+            "type": "string",
+            "format": "",
+            "description": "A Cloud Storage path to the template from which to create the job. Must be a valid Cloud Storage URL, beginning with 'gs://'.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "launchParameters": {
+            "type": "",
+            "format": "",
+            "description": "The parameters of the template to launch. This should be part of the body of the POST request.",
+            "$ref": "GoogleCloudDatapipelinesV1LaunchTemplateParameters",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "location": {
+            "type": "string",
+            "format": "",
+            "description": "The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) to which to direct the request.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "projectId": {
+            "type": "string",
+            "format": "",
+            "description": "Required. The ID of the Cloud Platform project that the job belongs to.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "validateOnly": {
+            "type": "boolean",
+            "format": "",
+            "description": "If true, the request is validated but not actually executed. Defaults to false.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudDatapipelinesV1ListJobsResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Response message for ListJobs",
+        "$ref": "",
+        "properties": {
+          "jobs": {
+            "type": "array",
+            "format": "",
+            "description": "Results that were accessible to the caller. Results are always in descending order of job creation date.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "GoogleCloudDatapipelinesV1Job",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudDatapipelinesV1ListPipelinesResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Response message for ListPipelines.",
+        "$ref": "",
+        "properties": {
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "pipelines": {
+            "type": "array",
+            "format": "",
+            "description": "Results that matched the filter criteria and were accessible to the caller. Results are always in descending order of pipeline creation date.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "GoogleCloudDatapipelinesV1Pipeline",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudDatapipelinesV1Pipeline": {
+        "type": "object",
+        "format": "",
+        "description": "The main pipeline entity and all the necessary metadata for launching and managing linked jobs.",
+        "$ref": "",
+        "properties": {
+          "createTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. Immutable. The timestamp when the pipeline was initially created. Set by the Data Pipelines service.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "displayName": {
+            "type": "string",
+            "format": "",
+            "description": "Required. The display name of the pipeline. It can contain only letters ([A-Za-z]), numbers ([0-9]), hyphens (-), and underscores (_).",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "jobCount": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Output only. Number of jobs.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "lastUpdateTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. Immutable. The timestamp when the pipeline was last modified. Set by the Data Pipelines service.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "The pipeline name. For example: `projects/PROJECT_ID/locations/LOCATION_ID/pipelines/PIPELINE_ID`. * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]), hyphens (-), colons (:), and periods (.). For more information, see [Identifying projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects). * `LOCATION_ID` is the canonical ID for the pipeline's location. The list of available locations can be obtained by calling `google.cloud.location.Locations.ListLocations`. Note that the Data Pipelines service is not available in all regions. It depends on Cloud Scheduler, an App Engine application, so it's only available in [App Engine regions](https://cloud.google.com/about/locations#region). * `PIPELINE_ID` is the ID of the pipeline. Must be unique for the selected project and location.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "pipelineSources": {
+            "type": "object",
+            "format": "",
+            "description": "Immutable. The sources of the pipeline (for example, Knowledge Catalog). The keys and values are set by the corresponding sources during pipeline creation.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "scheduleInfo": {
+            "type": "",
+            "format": "",
+            "description": "Internal scheduling information for a pipeline. If this information is provided, periodic jobs will be created per the schedule. If not, users are responsible for creating jobs externally.",
+            "$ref": "GoogleCloudDatapipelinesV1ScheduleSpec",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "schedulerServiceAccountEmail": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. A service account email to be used with the Cloud Scheduler job. If not specified, the default compute engine service account will be used.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "state": {
+            "type": "string",
+            "format": "",
+            "description": "Required. The state of the pipeline. When the pipeline is created, the state is set to 'PIPELINE_STATE_ACTIVE' by default. State changes can be requested by setting the state to stopping, paused, or resuming. State cannot be changed through UpdatePipeline requests.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "STATE_UNSPECIFIED",
+              "STATE_RESUMING",
+              "STATE_ACTIVE",
+              "STATE_STOPPING",
+              "STATE_ARCHIVED",
+              "STATE_PAUSED"
+            ],
+            "readOnly": false
+          },
+          "type": {
+            "type": "string",
+            "format": "",
+            "description": "Required. The type of the pipeline. This field affects the scheduling of the pipeline and the type of metrics to show for the pipeline.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "PIPELINE_TYPE_UNSPECIFIED",
+              "PIPELINE_TYPE_BATCH",
+              "PIPELINE_TYPE_STREAMING"
+            ],
+            "readOnly": false
+          },
+          "workload": {
+            "type": "",
+            "format": "",
+            "description": "Workload information for creating new jobs.",
+            "$ref": "GoogleCloudDatapipelinesV1Workload",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudDatapipelinesV1RunPipelineRequest": {
+        "type": "object",
+        "format": "",
+        "description": "Request message for RunPipeline",
+        "$ref": "",
+        "properties": {},
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudDatapipelinesV1RunPipelineResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Response message for RunPipeline",
+        "$ref": "",
+        "properties": {
+          "job": {
+            "type": "",
+            "format": "",
+            "description": "Job that was created as part of RunPipeline operation.",
+            "$ref": "GoogleCloudDatapipelinesV1Job",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudDatapipelinesV1RuntimeEnvironment": {
+        "type": "object",
+        "format": "",
+        "description": "The environment values to set at runtime.",
+        "$ref": "",
+        "properties": {
+          "additionalExperiments": {
+            "type": "array",
+            "format": "",
+            "description": "Additional experiment flags for the job.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "additionalUserLabels": {
+            "type": "object",
+            "format": "",
+            "description": "Additional user labels to be specified for the job. Keys and values should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page. An object containing a list of key/value pairs. Example: { \"name\": \"wrench\", \"mass\": \"1kg\", \"count\": \"3\" }.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "bypassTempDirValidation": {
+            "type": "boolean",
+            "format": "",
+            "description": "Whether to bypass the safety checks for the job's temporary directory. Use with caution.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "enableStreamingEngine": {
+            "type": "boolean",
+            "format": "",
+            "description": "Whether to enable Streaming Engine for the job.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "ipConfiguration": {
+            "type": "string",
+            "format": "",
+            "description": "Configuration for VM IPs.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "WORKER_IP_UNSPECIFIED",
+              "WORKER_IP_PUBLIC",
+              "WORKER_IP_PRIVATE"
+            ],
+            "readOnly": false
+          },
+          "kmsKeyName": {
+            "type": "string",
+            "format": "",
+            "description": "Name for the Cloud KMS key for the job. The key format is: projects//locations//keyRings//cryptoKeys/",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "machineType": {
+            "type": "string",
+            "format": "",
+            "description": "The machine type to use for the job. Defaults to the value from the template if not specified.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "maxWorkers": {
+            "type": "integer",
+            "format": "int32",
+            "description": "The maximum number of Compute Engine instances to be made available to your pipeline during execution, from 1 to 1000.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "network": {
+            "type": "string",
+            "format": "",
+            "description": "Network to which VMs will be assigned. If empty or unspecified, the service will use the network \"default\".",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "numWorkers": {
+            "type": "integer",
+            "format": "int32",
+            "description": "The initial number of Compute Engine instances for the job.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "serviceAccountEmail": {
+            "type": "string",
+            "format": "",
+            "description": "The email address of the service account to run the job as.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "subnetwork": {
+            "type": "string",
+            "format": "",
+            "description": "Subnetwork to which VMs will be assigned, if desired. You can specify a subnetwork using either a complete URL or an abbreviated path. Expected to be of the form \"https://www.googleapis.com/compute/v1/projects/HOST_PROJECT_ID/regions/REGION/subnetworks/SUBNETWORK\" or \"regions/REGION/subnetworks/SUBNETWORK\". If the subnetwork is located in a Shared VPC network, you must use the complete URL.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "tempLocation": {
+            "type": "string",
+            "format": "",
+            "description": "The Cloud Storage path to use for temporary files. Must be a valid Cloud Storage URL, beginning with `gs://`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "workerRegion": {
+            "type": "string",
+            "format": "",
+            "description": "The Compute Engine region (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which worker processing should occur, e.g. \"us-west1\". Mutually exclusive with worker_zone. If neither worker_region nor worker_zone is specified, default to the control plane's region.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "workerZone": {
+            "type": "string",
+            "format": "",
+            "description": "The Compute Engine zone (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which worker processing should occur, e.g. \"us-west1-a\". Mutually exclusive with worker_region. If neither worker_region nor worker_zone is specified, a zone in the control plane's region is chosen based on available capacity. If both `worker_zone` and `zone` are set, `worker_zone` takes precedence.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "zone": {
+            "type": "string",
+            "format": "",
+            "description": "The Compute Engine [availability zone](https://cloud.google.com/compute/docs/regions-zones/regions-zones) for launching worker instances to run your pipeline. In the future, worker_zone will take precedence.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudDatapipelinesV1ScheduleSpec": {
+        "type": "object",
+        "format": "",
+        "description": "Details of the schedule the pipeline runs on.",
+        "$ref": "",
+        "properties": {
+          "nextJobTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. When the next Scheduler job is going to run.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "schedule": {
+            "type": "string",
+            "format": "",
+            "description": "Unix-cron format of the schedule. This information is retrieved from the linked Cloud Scheduler.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "timeZone": {
+            "type": "string",
+            "format": "",
+            "description": "Timezone ID. This matches the timezone IDs used by the Cloud Scheduler API. If empty, UTC time is assumed.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudDatapipelinesV1SdkVersion": {
+        "type": "object",
+        "format": "",
+        "description": "The version of the SDK used to run the job.",
+        "$ref": "",
+        "properties": {
+          "sdkSupportStatus": {
+            "type": "string",
+            "format": "",
+            "description": "The support status for this SDK version.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "UNKNOWN",
+              "SUPPORTED",
+              "STALE",
+              "DEPRECATED",
+              "UNSUPPORTED"
+            ],
+            "readOnly": false
+          },
+          "version": {
+            "type": "string",
+            "format": "",
+            "description": "The version of the SDK used to run the job.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "versionDisplayName": {
+            "type": "string",
+            "format": "",
+            "description": "A readable string describing the version of the SDK.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudDatapipelinesV1StopPipelineRequest": {
+        "type": "object",
+        "format": "",
+        "description": "Request message for StopPipeline.",
+        "$ref": "",
+        "properties": {},
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudDatapipelinesV1Workload": {
+        "type": "object",
+        "format": "",
+        "description": "Workload details for creating the pipeline jobs.",
+        "$ref": "",
+        "properties": {
+          "dataflowFlexTemplateRequest": {
+            "type": "",
+            "format": "",
+            "description": "Template information and additional parameters needed to launch a Dataflow job using the flex launch API.",
+            "$ref": "GoogleCloudDatapipelinesV1LaunchFlexTemplateRequest",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "dataflowLaunchTemplateRequest": {
+            "type": "",
+            "format": "",
+            "description": "Template information and additional parameters needed to launch a Dataflow job using the standard launch API.",
+            "$ref": "GoogleCloudDatapipelinesV1LaunchTemplateRequest",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleProtobufEmpty": {
+        "type": "object",
+        "format": "",
+        "description": "A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }",
+        "$ref": "",
+        "properties": {},
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleRpcStatus": {
+        "type": "object",
+        "format": "",
+        "description": "The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).",
+        "$ref": "",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32",
+            "description": "The status code, which should be an enum value of google.rpc.Code.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "details": {
+            "type": "array",
+            "format": "",
+            "description": "A list of messages that carry the error details. There is a common set of message types for APIs to use.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "object",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": {
+                "type": "any",
+                "format": "",
+                "description": "Properties of the object. Contains field @type with type URL.",
+                "$ref": "",
+                "properties": null,
+                "items": null,
+                "additionalProperties": null,
+                "enum": null,
+                "readOnly": false
+              },
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "message": {
+            "type": "string",
+            "format": "",
+            "description": "A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      }
+    },
+    "resources": {
+      "projects": {
+        "methods": null,
+        "resources": {
+          "locations": {
+            "methods": null,
+            "resources": {
+              "pipelines": {
+                "methods": {
+                  "create": {
+                    "id": "datapipelines.projects.locations.pipelines.create",
+                    "httpMethod": "POST",
+                    "path": "v1/{+parent}/pipelines",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/pipelines",
+                    "description": "Creates a pipeline. For a batch pipeline, you can pass scheduler information. Data Pipelines uses the scheduler information to create an internal scheduler that runs jobs periodically. If the internal scheduler is not configured, you can use RunPipeline to run jobs.",
+                    "parameters": {
+                      "parent": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "parent"
+                    ],
+                    "request": {
+                      "$ref": "GoogleCloudDatapipelinesV1Pipeline"
+                    },
+                    "response": {
+                      "$ref": "GoogleCloudDatapipelinesV1Pipeline"
+                    }
+                  },
+                  "delete": {
+                    "id": "datapipelines.projects.locations.pipelines.delete",
+                    "httpMethod": "DELETE",
+                    "path": "v1/{+name}",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/pipelines/{pipelinesId}",
+                    "description": "Deletes a pipeline. If a scheduler job is attached to the pipeline, it will be deleted.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "GoogleProtobufEmpty"
+                    }
+                  },
+                  "get": {
+                    "id": "datapipelines.projects.locations.pipelines.get",
+                    "httpMethod": "GET",
+                    "path": "v1/{+name}",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/pipelines/{pipelinesId}",
+                    "description": "Looks up a single pipeline. Returns a \"NOT_FOUND\" error if no such pipeline exists. Returns a \"FORBIDDEN\" error if the caller doesn't have permission to access it.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "GoogleCloudDatapipelinesV1Pipeline"
+                    }
+                  },
+                  "list": {
+                    "id": "datapipelines.projects.locations.pipelines.list",
+                    "httpMethod": "GET",
+                    "path": "v1/{+parent}/pipelines",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/pipelines",
+                    "description": "Lists pipelines. Returns a \"FORBIDDEN\" error if the caller doesn't have permission to access it.",
+                    "parameters": {
+                      "filter": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "pageSize": {
+                        "type": "integer",
+                        "location": "query",
+                        "required": false
+                      },
+                      "pageToken": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "parent": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "parent"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "GoogleCloudDatapipelinesV1ListPipelinesResponse"
+                    }
+                  },
+                  "patch": {
+                    "id": "datapipelines.projects.locations.pipelines.patch",
+                    "httpMethod": "PATCH",
+                    "path": "v1/{+name}",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/pipelines/{pipelinesId}",
+                    "description": "Updates a pipeline. If successful, the updated Pipeline is returned. Returns `NOT_FOUND` if the pipeline doesn't exist. If UpdatePipeline does not return successfully, you can retry the UpdatePipeline request until you receive a successful response.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      },
+                      "updateMask": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": {
+                      "$ref": "GoogleCloudDatapipelinesV1Pipeline"
+                    },
+                    "response": {
+                      "$ref": "GoogleCloudDatapipelinesV1Pipeline"
+                    }
+                  },
+                  "run": {
+                    "id": "datapipelines.projects.locations.pipelines.run",
+                    "httpMethod": "POST",
+                    "path": "v1/{+name}:run",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/pipelines/{pipelinesId}:run",
+                    "description": "Creates a job for the specified pipeline directly. You can use this method when the internal scheduler is not configured and you want to trigger the job directly or through an external system. Returns a \"NOT_FOUND\" error if the pipeline doesn't exist. Returns a \"FORBIDDEN\" error if the user doesn't have permission to access the pipeline or run jobs for the pipeline.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": {
+                      "$ref": "GoogleCloudDatapipelinesV1RunPipelineRequest"
+                    },
+                    "response": {
+                      "$ref": "GoogleCloudDatapipelinesV1RunPipelineResponse"
+                    }
+                  },
+                  "stop": {
+                    "id": "datapipelines.projects.locations.pipelines.stop",
+                    "httpMethod": "POST",
+                    "path": "v1/{+name}:stop",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/pipelines/{pipelinesId}:stop",
+                    "description": "Freezes pipeline execution permanently. If there's a corresponding scheduler entry, it's deleted, and the pipeline state is changed to \"ARCHIVED\". However, pipeline metadata is retained.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": {
+                      "$ref": "GoogleCloudDatapipelinesV1StopPipelineRequest"
+                    },
+                    "response": {
+                      "$ref": "GoogleCloudDatapipelinesV1Pipeline"
+                    }
+                  }
+                },
+                "resources": {
+                  "jobs": {
+                    "methods": {
+                      "list": {
+                        "id": "datapipelines.projects.locations.pipelines.jobs.list",
+                        "httpMethod": "GET",
+                        "path": "v1/{+parent}/jobs",
+                        "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/pipelines/{pipelinesId}/jobs",
+                        "description": "Lists jobs for a given pipeline. Throws a \"FORBIDDEN\" error if the caller doesn't have permission to access it.",
+                        "parameters": {
+                          "pageSize": {
+                            "type": "integer",
+                            "location": "query",
+                            "required": false
+                          },
+                          "pageToken": {
+                            "type": "string",
+                            "location": "query",
+                            "required": false
+                          },
+                          "parent": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          }
+                        },
+                        "parameterOrder": [
+                          "parent"
+                        ],
+                        "request": null,
+                        "response": {
+                          "$ref": "GoogleCloudDatapipelinesV1ListJobsResponse"
+                        }
+                      }
+                    },
+                    "resources": null
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,1909 @@
+{
+  "schema_source": "discovery_docs",
+  "mode": "resource",
+  "auth": {
+    "Type": "",
+    "Params": null
+  },
+  "base_url": "https://ftp.googleapis.com",
+  "retry": {
+    "MaxAttempts": 0,
+    "InitialBackoff": "",
+    "MaxBackoff": "",
+    "Jitter": null,
+    "RespectRetryAfter": null,
+    "RateLimitResetHeader": ""
+  },
+  "timeouts": {
+    "Create": "",
+    "Read": "",
+    "Update": "",
+    "Delete": "",
+    "Default": ""
+  },
+  "wire_name": "google_ftp_v1alpha",
+  "version_qualifier": "v1alpha",
+  "raw_spec": {
+    "name": "ftp",
+    "revision": "20260822",
+    "discoveryVersion": "v1",
+    "baseUrl": "https://ftp.googleapis.com/",
+    "rootUrl": "https://ftp.googleapis.com/",
+    "servicePath": "",
+    "schemas": {
+      "AllowedConsumer": {
+        "type": "object",
+        "format": "",
+        "description": "A consumer project or network that is permitted to connect to the server via PSC.",
+        "$ref": "",
+        "properties": {
+          "connectionLimit": {
+            "type": "string",
+            "format": "int64",
+            "description": "Required. The connection limit for the consumer. Value must be greater than 0.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "project": {
+            "type": "string",
+            "format": "",
+            "description": "The project ID or number of the consumer project. Must be in the format: `projects/{project}`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "CancelOperationRequest": {
+        "type": "object",
+        "format": "",
+        "description": "The request message for Operations.CancelOperation.",
+        "$ref": "",
+        "properties": {},
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "DeniedConsumer": {
+        "type": "object",
+        "format": "",
+        "description": "A consumer project or network that is denied to connect to the server via PSC.",
+        "$ref": "",
+        "properties": {
+          "project": {
+            "type": "string",
+            "format": "",
+            "description": "The project ID or number of the consumer project. Must be in the format: `projects/{project}`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Empty": {
+        "type": "object",
+        "format": "",
+        "description": "A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }",
+        "$ref": "",
+        "properties": {},
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ExternalServerConfig": {
+        "type": "object",
+        "format": "",
+        "description": "Configuration for external server.",
+        "$ref": "",
+        "properties": {
+          "allowedCidrBlocks": {
+            "type": "array",
+            "format": "",
+            "description": "Optional. List of CIDR blocks that are allowed to access the Server. A CIDR range consists of an IP Address and a prefix length to construct the subnet mask. By default, the prefix length is 32 (i.e. matches a single IP address). For now, only IPV4 addresses are supported. Examples: \"203.0.113.0/24\" - matches with the IP addresses in the range 203.0.113.0 - 203.0.113.255. \"0.0.0.0/0\" - matches against any IP address. This field must contain at least one entry if the access type is EXTERNAL. The number of allowed CIDR blocks cannot exceed 500. Example: 192.168.0.0/16",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "ipAddress": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. IP address of the LB via which clients will connect.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "InternalServerConfig": {
+        "type": "object",
+        "format": "",
+        "description": "Configuration for private server accessible via PSC.",
+        "$ref": "",
+        "properties": {
+          "consumerAcceptList": {
+            "type": "array",
+            "format": "",
+            "description": "Required. A list of projects that are permitted to connect. At least one project is required in the allow list.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "AllowedConsumer",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "consumerRejectList": {
+            "type": "array",
+            "format": "",
+            "description": "Optional. A list of projects that are denied connection. Format: \"projects/sample_project_id\" or \"projects/1234567890\" Projects in this list will be denied access, even if they are included in the `allow_list`. If this list is empty, no projects are explicitly rejected.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "DeniedConsumer",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "pscEndpoints": {
+            "type": "array",
+            "format": "",
+            "description": "Output only. Details of endpoints created by the customer.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "PscEndpoint",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "serviceAttachment": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The resource name of the service attachment. Format: `projects/{project}/regions/{region}/serviceAttachments/{service_attachment}`",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ListLocationsResponse": {
+        "type": "object",
+        "format": "",
+        "description": "The response message for Locations.ListLocations.",
+        "$ref": "",
+        "properties": {
+          "locations": {
+            "type": "array",
+            "format": "",
+            "description": "A list of locations that matches the specified filter in the request.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Location",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "The standard List next-page token.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ListOperationsResponse": {
+        "type": "object",
+        "format": "",
+        "description": "The response message for Operations.ListOperations.",
+        "$ref": "",
+        "properties": {
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "The standard List next-page token.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "operations": {
+            "type": "array",
+            "format": "",
+            "description": "A list of operations that matches the specified filter in the request.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Operation",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "unreachable": {
+            "type": "array",
+            "format": "",
+            "description": "Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ListServersResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Message for response to listing Servers",
+        "$ref": "",
+        "properties": {
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "A token identifying a page of results the server should return.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "servers": {
+            "type": "array",
+            "format": "",
+            "description": "The list of Server",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Server",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "unreachable": {
+            "type": "array",
+            "format": "",
+            "description": "Unordered list. Locations that could not be reached.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ListUsersResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Message for response to listing Users",
+        "$ref": "",
+        "properties": {
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "A token identifying a page of results the user should return.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "unreachable": {
+            "type": "array",
+            "format": "",
+            "description": "Unordered list. Locations that could not be reached.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "users": {
+            "type": "array",
+            "format": "",
+            "description": "The list of User",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "User",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Location": {
+        "type": "object",
+        "format": "",
+        "description": "A resource that represents a Google Cloud location.",
+        "$ref": "",
+        "properties": {
+          "displayName": {
+            "type": "string",
+            "format": "",
+            "description": "The friendly name for this location, typically a nearby city name. For example, \"Tokyo\".",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "labels": {
+            "type": "object",
+            "format": "",
+            "description": "Cross-service attributes for the location. For example {\"cloud.googleapis.com/region\": \"us-east1\"}",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "locationId": {
+            "type": "string",
+            "format": "",
+            "description": "The canonical id for this location. For example: `\"us-east1\"`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "metadata": {
+            "type": "object",
+            "format": "",
+            "description": "Service-specific metadata. For example the available capacity at the given location.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "any",
+              "format": "",
+              "description": "Properties of the object. Contains field @type with type URL.",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "Resource name for the location, which may vary between implementations. For example: `\"projects/example-project/locations/us-east1\"`",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Operation": {
+        "type": "object",
+        "format": "",
+        "description": "This resource represents a long-running operation that is the result of a network API call.",
+        "$ref": "",
+        "properties": {
+          "done": {
+            "type": "boolean",
+            "format": "",
+            "description": "If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "error": {
+            "type": "",
+            "format": "",
+            "description": "The error result of the operation in case of failure or cancellation.",
+            "$ref": "Status",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "metadata": {
+            "type": "object",
+            "format": "",
+            "description": "Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "any",
+              "format": "",
+              "description": "Properties of the object. Contains field @type with type URL.",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "response": {
+            "type": "object",
+            "format": "",
+            "description": "The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "any",
+              "format": "",
+              "description": "Properties of the object. Contains field @type with type URL.",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "OperationMetadata": {
+        "type": "object",
+        "format": "",
+        "description": "Represents the metadata of the long-running operation.",
+        "$ref": "",
+        "properties": {
+          "apiVersion": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. API version used to start the operation.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "createTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. The time the operation was created.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "endTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. The time the operation finished running.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "requestedCancellation": {
+            "type": "boolean",
+            "format": "",
+            "description": "Output only. Identifies whether the user has requested cancellation of the operation. Operations that have been cancelled successfully have google.longrunning.Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "statusMessage": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. Human-readable status of the operation, if any.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "target": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. Server-defined resource path for the target of the operation.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "verb": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. Name of the verb executed by the operation.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "PscEndpoint": {
+        "type": "object",
+        "format": "",
+        "description": "Details of PSC endpoint created by customer.",
+        "$ref": "",
+        "properties": {
+          "endpoint": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. This is a Resource name for Private Service Connect endpoint. Format: `projects/{project}/regions/{region}/forwardingRules/{forwarding_rule}`",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "network": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The consumer network. Format: `projects/{project}/locations/{location}/networks/{network}`",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "status": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The status of the connected endpoint.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Server": {
+        "type": "object",
+        "format": "",
+        "description": "Message describing Server object",
+        "$ref": "",
+        "properties": {
+          "accessType": {
+            "type": "string",
+            "format": "",
+            "description": "Required. The access type of the Server.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "ACCESS_TYPE_UNSPECIFIED",
+              "EXTERNAL",
+              "INTERNAL"
+            ],
+            "readOnly": false
+          },
+          "createTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. [Output only] Create time stamp",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "displayName": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Display name of the Server",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "externalConfig": {
+            "type": "",
+            "format": "",
+            "description": "Configuration for external access.",
+            "$ref": "ExternalServerConfig",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "googleManagedServerCredential": {
+            "type": "",
+            "format": "",
+            "description": "Output only. Credentials of the FTP Server.",
+            "$ref": "ServerCredential",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "internalConfig": {
+            "type": "",
+            "format": "",
+            "description": "Configuration for internal access.",
+            "$ref": "InternalServerConfig",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "labels": {
+            "type": "object",
+            "format": "",
+            "description": "Optional. Labels as key value pairs",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "Identifier. name of resource",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "satisfiesPzi": {
+            "type": "boolean",
+            "format": "",
+            "description": "Output only. Whether the Server satisfies Physical Zone Isolation (PZI) requirements.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "satisfiesPzs": {
+            "type": "boolean",
+            "format": "",
+            "description": "Output only. Whether the Server satisfies Physical Zone Separation (PZS) requirements.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "serviceAgent": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. Service agent used to access the customer bucket.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "state": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The state of the server.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "STATE_UNSPECIFIED",
+              "CREATING",
+              "STARTING",
+              "ACTIVE",
+              "STOPPING",
+              "STOPPED",
+              "DELETING",
+              "ERROR",
+              "UPDATING"
+            ],
+            "readOnly": true
+          },
+          "updateTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. [Output only] Update time stamp",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ServerCredential": {
+        "type": "object",
+        "format": "",
+        "description": "Represents credentials of an FTP Server.",
+        "$ref": "",
+        "properties": {
+          "asymmetricAlgorithm": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. Asymmetric algorithm used by the public key. Possible values (can be expanded in future): - ssh-ed25519",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "fingerprint": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The fingerprint is a hash of the public key, and is displayed when clients access the server for the first time to verify the server's identity.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "StartServerRequest": {
+        "type": "object",
+        "format": "",
+        "description": "Request message for starting a Server.",
+        "$ref": "",
+        "properties": {},
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Status": {
+        "type": "object",
+        "format": "",
+        "description": "The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).",
+        "$ref": "",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32",
+            "description": "The status code, which should be an enum value of google.rpc.Code.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "details": {
+            "type": "array",
+            "format": "",
+            "description": "A list of messages that carry the error details. There is a common set of message types for APIs to use.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "object",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": {
+                "type": "any",
+                "format": "",
+                "description": "Properties of the object. Contains field @type with type URL.",
+                "$ref": "",
+                "properties": null,
+                "items": null,
+                "additionalProperties": null,
+                "enum": null,
+                "readOnly": false
+              },
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "message": {
+            "type": "string",
+            "format": "",
+            "description": "A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "StopServerRequest": {
+        "type": "object",
+        "format": "",
+        "description": "Request message for stopping a Server.",
+        "$ref": "",
+        "properties": {},
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "StorageDirectoryMapping": {
+        "type": "object",
+        "format": "",
+        "description": "Mapping of backing Cloud Storage path to the directory where the user lands in the SFTP server. If directory is not specified, it'll default to '/'. Eg 1 - (bucket_name: bucket, bucket_prefix: path1/path2, directory: /abc/def/username) The user will land at /abcd/def/username, and the view there will match that of /bucket/path1/path2. The user will not be aware of Cloud Storage prefix '/bucket/path1' and there will be no such directory in the view. Eg 2 - (bucket_name: bucket, bucket_prefix: path1/path2, directory: '') The user will land at '/', and the view there will match that of /bucket/path1/path2. The user will not be aware of Cloud Storage prefix '/bucket/path1/path2' and there will be no such directory in the view.",
+        "$ref": "",
+        "properties": {
+          "bucket": {
+            "type": "string",
+            "format": "",
+            "description": "Required. Name of the bucket.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "bucketPrefix": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Prefix inside the bucket.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "directory": {
+            "type": "string",
+            "format": "",
+            "description": "Required. Directory where the user lands in the SFTP server.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "permission": {
+            "type": "string",
+            "format": "",
+            "description": "Required. Permission to the bucket.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "PERMISSION_UNSPECIFIED",
+              "READ_ONLY",
+              "READ_WRITE"
+            ],
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "User": {
+        "type": "object",
+        "format": "",
+        "description": "Message describing User object",
+        "$ref": "",
+        "properties": {
+          "createTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. [Output only] Create time stamp",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "customerServiceAccount": {
+            "type": "string",
+            "format": "",
+            "description": "Required. Service account in customer project attached to this SFTP User.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "labels": {
+            "type": "object",
+            "format": "",
+            "description": "Optional. Labels as key value pairs",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "Identifier. User-friendly name via which User will be identified. projects/{project}/locations/{location}/servers/{server}/users/{user}",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "state": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. Tracks user creation.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "STATE_UNSPECIFIED",
+              "CREATING",
+              "ACTIVE",
+              "ERROR",
+              "UPDATING",
+              "DELETING"
+            ],
+            "readOnly": true
+          },
+          "storageDirectoryMappings": {
+            "type": "array",
+            "format": "",
+            "description": "Required. Mapping of Cloud Storage buckets to directories where the user will land in the SFTP server.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "StorageDirectoryMapping",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "updateTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. [Output only] Update time stamp",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "userCredentials": {
+            "type": "array",
+            "format": "",
+            "description": "Required. User credential for the user. The maximum number of user credentials is 10.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "UserCredential",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "username": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. [Output only] The username of the user.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "UserCredential": {
+        "type": "object",
+        "format": "",
+        "description": "Message describing UserCredential object",
+        "$ref": "",
+        "properties": {
+          "credentialName": {
+            "type": "string",
+            "format": "",
+            "description": "Required. Name of the user credential.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "credentialType": {
+            "type": "string",
+            "format": "",
+            "description": "Required. Type of credential.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "TYPE_UNSPECIFIED",
+              "PUBLIC_KEY"
+            ],
+            "readOnly": false
+          },
+          "sshPublicKeyBody": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. SSH public key body in OpenSSH format. Example: \"ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQ...\"",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      }
+    },
+    "resources": {
+      "projects": {
+        "methods": null,
+        "resources": {
+          "locations": {
+            "methods": {
+              "get": {
+                "id": "ftp.projects.locations.get",
+                "httpMethod": "GET",
+                "path": "v1alpha/{+name}",
+                "flatPath": "v1alpha/projects/{projectsId}/locations/{locationsId}",
+                "description": "Gets information about a location.",
+                "parameters": {
+                  "name": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  }
+                },
+                "parameterOrder": [
+                  "name"
+                ],
+                "request": null,
+                "response": {
+                  "$ref": "Location"
+                }
+              },
+              "list": {
+                "id": "ftp.projects.locations.list",
+                "httpMethod": "GET",
+                "path": "v1alpha/{+name}/locations",
+                "flatPath": "v1alpha/projects/{projectsId}/locations",
+                "description": "Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the ListLocationsRequest.name field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version.",
+                "parameters": {
+                  "extraLocationTypes": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false
+                  },
+                  "filter": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false
+                  },
+                  "name": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  },
+                  "pageSize": {
+                    "type": "integer",
+                    "location": "query",
+                    "required": false
+                  },
+                  "pageToken": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false
+                  }
+                },
+                "parameterOrder": [
+                  "name"
+                ],
+                "request": null,
+                "response": {
+                  "$ref": "ListLocationsResponse"
+                }
+              }
+            },
+            "resources": {
+              "operations": {
+                "methods": {
+                  "cancel": {
+                    "id": "ftp.projects.locations.operations.cancel",
+                    "httpMethod": "POST",
+                    "path": "v1alpha/{+name}:cancel",
+                    "flatPath": "v1alpha/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}:cancel",
+                    "description": "Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": {
+                      "$ref": "CancelOperationRequest"
+                    },
+                    "response": {
+                      "$ref": "Empty"
+                    }
+                  },
+                  "delete": {
+                    "id": "ftp.projects.locations.operations.delete",
+                    "httpMethod": "DELETE",
+                    "path": "v1alpha/{+name}",
+                    "flatPath": "v1alpha/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
+                    "description": "Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "Empty"
+                    }
+                  },
+                  "get": {
+                    "id": "ftp.projects.locations.operations.get",
+                    "httpMethod": "GET",
+                    "path": "v1alpha/{+name}",
+                    "flatPath": "v1alpha/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
+                    "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "Operation"
+                    }
+                  },
+                  "list": {
+                    "id": "ftp.projects.locations.operations.list",
+                    "httpMethod": "GET",
+                    "path": "v1alpha/{+name}/operations",
+                    "flatPath": "v1alpha/projects/{projectsId}/locations/{locationsId}/operations",
+                    "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.",
+                    "parameters": {
+                      "filter": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      },
+                      "pageSize": {
+                        "type": "integer",
+                        "location": "query",
+                        "required": false
+                      },
+                      "pageToken": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "returnPartialSuccess": {
+                        "type": "boolean",
+                        "location": "query",
+                        "required": false
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "ListOperationsResponse"
+                    }
+                  }
+                },
+                "resources": null
+              },
+              "servers": {
+                "methods": {
+                  "create": {
+                    "id": "ftp.projects.locations.servers.create",
+                    "httpMethod": "POST",
+                    "path": "v1alpha/{+parent}/servers",
+                    "flatPath": "v1alpha/projects/{projectsId}/locations/{locationsId}/servers",
+                    "description": "Creates a new Server in a given project and location.",
+                    "parameters": {
+                      "parent": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      },
+                      "requestId": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "serverId": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      }
+                    },
+                    "parameterOrder": [
+                      "parent"
+                    ],
+                    "request": {
+                      "$ref": "Server"
+                    },
+                    "response": {
+                      "$ref": "Operation"
+                    }
+                  },
+                  "delete": {
+                    "id": "ftp.projects.locations.servers.delete",
+                    "httpMethod": "DELETE",
+                    "path": "v1alpha/{+name}",
+                    "flatPath": "v1alpha/projects/{projectsId}/locations/{locationsId}/servers/{serversId}",
+                    "description": "Deletes a single Server.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "Operation"
+                    }
+                  },
+                  "get": {
+                    "id": "ftp.projects.locations.servers.get",
+                    "httpMethod": "GET",
+                    "path": "v1alpha/{+name}",
+                    "flatPath": "v1alpha/projects/{projectsId}/locations/{locationsId}/servers/{serversId}",
+                    "description": "Gets details of a single Server.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      },
+                      "view": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "Server"
+                    }
+                  },
+                  "list": {
+                    "id": "ftp.projects.locations.servers.list",
+                    "httpMethod": "GET",
+                    "path": "v1alpha/{+parent}/servers",
+                    "flatPath": "v1alpha/projects/{projectsId}/locations/{locationsId}/servers",
+                    "description": "Lists Servers in a given project and location.",
+                    "parameters": {
+                      "filter": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "orderBy": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "pageSize": {
+                        "type": "integer",
+                        "location": "query",
+                        "required": false
+                      },
+                      "pageToken": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "parent": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      },
+                      "view": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      }
+                    },
+                    "parameterOrder": [
+                      "parent"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "ListServersResponse"
+                    }
+                  },
+                  "patch": {
+                    "id": "ftp.projects.locations.servers.patch",
+                    "httpMethod": "PATCH",
+                    "path": "v1alpha/{+name}",
+                    "flatPath": "v1alpha/projects/{projectsId}/locations/{locationsId}/servers/{serversId}",
+                    "description": "Updates the parameters of a single Server.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      },
+                      "requestId": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "updateMask": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": {
+                      "$ref": "Server"
+                    },
+                    "response": {
+                      "$ref": "Operation"
+                    }
+                  },
+                  "start": {
+                    "id": "ftp.projects.locations.servers.start",
+                    "httpMethod": "POST",
+                    "path": "v1alpha/{+name}:start",
+                    "flatPath": "v1alpha/projects/{projectsId}/locations/{locationsId}/servers/{serversId}:start",
+                    "description": "Starts a stopping/stopped Server.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": {
+                      "$ref": "StartServerRequest"
+                    },
+                    "response": {
+                      "$ref": "Operation"
+                    }
+                  },
+                  "stop": {
+                    "id": "ftp.projects.locations.servers.stop",
+                    "httpMethod": "POST",
+                    "path": "v1alpha/{+name}:stop",
+                    "flatPath": "v1alpha/projects/{projectsId}/locations/{locationsId}/servers/{serversId}:stop",
+                    "description": "Stops an active Server.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": {
+                      "$ref": "StopServerRequest"
+                    },
+                    "response": {
+                      "$ref": "Operation"
+                    }
+                  }
+                },
+                "resources": {
+                  "users": {
+                    "methods": {
+                      "create": {
+                        "id": "ftp.projects.locations.servers.users.create",
+                        "httpMethod": "POST",
+                        "path": "v1alpha/{+parent}/users",
+                        "flatPath": "v1alpha/projects/{projectsId}/locations/{locationsId}/servers/{serversId}/users",
+                        "description": "Creates a new User in a given project and location and Server.",
+                        "parameters": {
+                          "parent": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          },
+                          "requestId": {
+                            "type": "string",
+                            "location": "query",
+                            "required": false
+                          },
+                          "userId": {
+                            "type": "string",
+                            "location": "query",
+                            "required": false
+                          }
+                        },
+                        "parameterOrder": [
+                          "parent"
+                        ],
+                        "request": {
+                          "$ref": "User"
+                        },
+                        "response": {
+                          "$ref": "Operation"
+                        }
+                      },
+                      "delete": {
+                        "id": "ftp.projects.locations.servers.users.delete",
+                        "httpMethod": "DELETE",
+                        "path": "v1alpha/{+name}",
+                        "flatPath": "v1alpha/projects/{projectsId}/locations/{locationsId}/servers/{serversId}/users/{usersId}",
+                        "description": "Deletes a single User.",
+                        "parameters": {
+                          "force": {
+                            "type": "boolean",
+                            "location": "query",
+                            "required": false
+                          },
+                          "name": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          }
+                        },
+                        "parameterOrder": [
+                          "name"
+                        ],
+                        "request": null,
+                        "response": {
+                          "$ref": "Operation"
+                        }
+                      },
+                      "get": {
+                        "id": "ftp.projects.locations.servers.users.get",
+                        "httpMethod": "GET",
+                        "path": "v1alpha/{+name}",
+                        "flatPath": "v1alpha/projects/{projectsId}/locations/{locationsId}/servers/{serversId}/users/{usersId}",
+                        "description": "Gets details of a single User.",
+                        "parameters": {
+                          "name": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          },
+                          "view": {
+                            "type": "string",
+                            "location": "query",
+                            "required": false
+                          }
+                        },
+                        "parameterOrder": [
+                          "name"
+                        ],
+                        "request": null,
+                        "response": {
+                          "$ref": "User"
+                        }
+                      },
+                      "list": {
+                        "id": "ftp.projects.locations.servers.users.list",
+                        "httpMethod": "GET",
+                        "path": "v1alpha/{+parent}/users",
+                        "flatPath": "v1alpha/projects/{projectsId}/locations/{locationsId}/servers/{serversId}/users",
+                        "description": "Lists Users in a given project and location.",
+                        "parameters": {
+                          "filter": {
+                            "type": "string",
+                            "location": "query",
+                            "required": false
+                          },
+                          "orderBy": {
+                            "type": "string",
+                            "location": "query",
+                            "required": false
+                          },
+                          "pageSize": {
+                            "type": "integer",
+                            "location": "query",
+                            "required": false
+                          },
+                          "pageToken": {
+                            "type": "string",
+                            "location": "query",
+                            "required": false
+                          },
+                          "parent": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          },
+                          "view": {
+                            "type": "string",
+                            "location": "query",
+                            "required": false
+                          }
+                        },
+                        "parameterOrder": [
+                          "parent"
+                        ],
+                        "request": null,
+                        "response": {
+                          "$ref": "ListUsersResponse"
+                        }
+                      },
+                      "patch": {
+                        "id": "ftp.projects.locations.servers.users.patch",
+                        "httpMethod": "PATCH",
+                        "path": "v1alpha/{+name}",
+                        "flatPath": "v1alpha/projects/{projectsId}/locations/{locationsId}/servers/{serversId}/users/{usersId}",
+                        "description": "Updates the parameters of a single User.",
+                        "parameters": {
+                          "name": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          },
+                          "updateMask": {
+                            "type": "string",
+                            "location": "query",
+                            "required": false
+                          }
+                        },
+                        "parameterOrder": [
+                          "name"
+                        ],
+                        "request": {
+                          "$ref": "User"
+                        },
+                        "response": {
+                          "$ref": "Operation"
+                        }
+                      }
+                    },
+                    "resources": null
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

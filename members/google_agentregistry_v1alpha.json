@@ -1,0 +1,4115 @@
+{
+  "schema_source": "discovery_docs",
+  "mode": "resource",
+  "auth": {
+    "Type": "",
+    "Params": null
+  },
+  "base_url": "https://agentregistry.googleapis.com",
+  "retry": {
+    "MaxAttempts": 0,
+    "InitialBackoff": "",
+    "MaxBackoff": "",
+    "Jitter": null,
+    "RespectRetryAfter": null,
+    "RateLimitResetHeader": ""
+  },
+  "timeouts": {
+    "Create": "",
+    "Read": "",
+    "Update": "",
+    "Delete": "",
+    "Default": ""
+  },
+  "wire_name": "google_agentregistry_v1alpha",
+  "version_qualifier": "v1alpha",
+  "raw_spec": {
+    "name": "agentregistry",
+    "revision": "20260812",
+    "discoveryVersion": "v1",
+    "baseUrl": "https://agentregistry.googleapis.com/",
+    "rootUrl": "https://agentregistry.googleapis.com/",
+    "servicePath": "",
+    "schemas": {
+      "A2ASkill": {
+        "type": "object",
+        "format": "",
+        "description": "Represents the skills of an Agent.",
+        "$ref": "",
+        "properties": {
+          "description": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. A more detailed description of the skill.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "examples": {
+            "type": "array",
+            "format": "",
+            "description": "Output only. Example prompts or scenarios this skill can handle.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "id": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. A unique identifier for the agent's skill.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. A human-readable name for the agent's skill.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "tags": {
+            "type": "array",
+            "format": "",
+            "description": "Output only. Keywords describing the skill.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Agent": {
+        "type": "object",
+        "format": "",
+        "description": "Represents an Agent. \"A2A\" below refers to the Agent-to-Agent protocol.",
+        "$ref": "",
+        "properties": {
+          "agentId": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. A stable, globally unique identifier for agents.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "attributes": {
+            "type": "object",
+            "format": "",
+            "description": "Output only. Attributes of the Agent. Valid values: * `agentregistry.googleapis.com/system/Framework`: {\"framework\": \"google-adk\"} - the agent framework used to develop the Agent. Example values: \"google-adk\", \"langchain\", \"custom\". * `agentregistry.googleapis.com/system/RuntimeIdentity`: {\"principal\": \"principal://...\"} - the runtime identity associated with the Agent. * `agentregistry.googleapis.com/system/RuntimeReference`: {\"uri\": \"//...\"} - the URI of the underlying resource hosting the Agent, for example, the Reasoning Engine URI.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "object",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": {
+                "type": "any",
+                "format": "",
+                "description": "Properties of the object.",
+                "$ref": "",
+                "properties": null,
+                "items": null,
+                "additionalProperties": null,
+                "enum": null,
+                "readOnly": false
+              },
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": true
+          },
+          "card": {
+            "type": "",
+            "format": "",
+            "description": "Output only. Full Agent Card payload, when available.",
+            "$ref": "Card",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "createTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. Create time.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "description": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The description of the Agent, often obtained from the A2A Agent Card. Empty if Agent Card has no description.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "displayName": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The display name of the agent, often obtained from the A2A Agent Card.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "location": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The location where agent is hosted. The value is defined by the hosting environment (i.e. cloud provider).",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "Identifier. The resource name of an Agent. Format: `projects/{project}/locations/{location}/agents/{agent}`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "protocols": {
+            "type": "array",
+            "format": "",
+            "description": "Output only. The connection details for the Agent.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Protocol",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "skills": {
+            "type": "array",
+            "format": "",
+            "description": "Output only. Skills the agent possesses, often obtained from the A2A Agent Card.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "A2ASkill",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "uid": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. A universally unique identifier for the Agent.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "updateTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. Update time.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "version": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The version of the Agent, often obtained from the A2A Agent Card. Empty if Agent Card has no version or agent is not an A2A Agent.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "AgentSpec": {
+        "type": "object",
+        "format": "",
+        "description": "The spec of the agent.",
+        "$ref": "",
+        "properties": {
+          "content": {
+            "type": "object",
+            "format": "",
+            "description": "Optional. The content of the Agent spec in the JSON format. This payload is validated against the schema for the specified type. The content size is limited to `10KB`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "any",
+              "format": "",
+              "description": "Properties of the object.",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "type": {
+            "type": "string",
+            "format": "",
+            "description": "Required. The type of the agent spec content.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "TYPE_UNSPECIFIED",
+              "NO_SPEC",
+              "A2A_AGENT_CARD"
+            ],
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Annotations": {
+        "type": "object",
+        "format": "",
+        "description": "Annotations describing the characteristics and behavior of a tool or operation.",
+        "$ref": "",
+        "properties": {
+          "destructiveHint": {
+            "type": "boolean",
+            "format": "",
+            "description": "Output only. If true, the tool may perform destructive updates to its environment. If false, the tool performs only additive updates. NOTE: This property is meaningful only when `read_only_hint == false` Default: true",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "idempotentHint": {
+            "type": "boolean",
+            "format": "",
+            "description": "Output only. If true, calling the tool repeatedly with the same arguments will have no additional effect on its environment. NOTE: This property is meaningful only when `read_only_hint == false` Default: false",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "openWorldHint": {
+            "type": "boolean",
+            "format": "",
+            "description": "Output only. If true, this tool may interact with an \"open world\" of external entities. If false, the tool's domain of interaction is closed. For example, the world of a web search tool is open, whereas that of a memory tool is not. Default: true",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "readOnlyHint": {
+            "type": "boolean",
+            "format": "",
+            "description": "Output only. If true, the tool does not modify its environment. Default: false",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "title": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. A human-readable title for the tool.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ArchiveUploadSource": {
+        "type": "object",
+        "format": "",
+        "description": "Direct write-only raw archive payload upload.",
+        "$ref": "",
+        "properties": {
+          "archiveContent": {
+            "type": "string",
+            "format": "byte",
+            "description": "Required. Input only. Write-only raw ZIP/TAR archive payload bytes containing the skill package.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "AuthProviderBinding": {
+        "type": "object",
+        "format": "",
+        "description": "The AuthProvider of the Binding.",
+        "$ref": "",
+        "properties": {
+          "authProvider": {
+            "type": "string",
+            "format": "",
+            "description": "Required. The resource name of the target AuthProvider. Format: * `projects/{project}/locations/{location}/authProviders/{auth_provider}`",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "continueUri": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The continue URI of the AuthProvider. The URI is used to reauthenticate the user and finalize the managed OAuth flow.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "scopes": {
+            "type": "array",
+            "format": "",
+            "description": "Optional. The list of OAuth2 scopes of the AuthProvider.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Binding": {
+        "type": "object",
+        "format": "",
+        "description": "Represents a user-defined Binding.",
+        "$ref": "",
+        "properties": {
+          "authProviderBinding": {
+            "type": "",
+            "format": "",
+            "description": "The binding for AuthProvider.",
+            "$ref": "AuthProviderBinding",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "createTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. Timestamp when this binding was created.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "description": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. User-defined description of a Binding. Can have a maximum length of `2048` characters.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "displayName": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. User-defined display name for the Binding. Can have a maximum length of `63` characters.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "Required. Identifier. The resource name of the Binding. Format: `projects/{project}/locations/{location}/bindings/{binding}`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "source": {
+            "type": "",
+            "format": "",
+            "description": "Required. The target Agent of the Binding.",
+            "$ref": "Source",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "target": {
+            "type": "",
+            "format": "",
+            "description": "Required. The target Agent Registry Resource of the Binding.",
+            "$ref": "Target",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "updateTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. Timestamp when this binding was last updated.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "CancelOperationRequest": {
+        "type": "object",
+        "format": "",
+        "description": "The request message for Operations.CancelOperation.",
+        "$ref": "",
+        "properties": {},
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Card": {
+        "type": "object",
+        "format": "",
+        "description": "Full Agent Card payload, often obtained from the A2A Agent Card.",
+        "$ref": "",
+        "properties": {
+          "content": {
+            "type": "object",
+            "format": "",
+            "description": "Output only. The content of the agent card.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "any",
+              "format": "",
+              "description": "Properties of the object.",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": true
+          },
+          "type": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The type of agent card.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "TYPE_UNSPECIFIED",
+              "A2A_AGENT_CARD"
+            ],
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Empty": {
+        "type": "object",
+        "format": "",
+        "description": "A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }",
+        "$ref": "",
+        "properties": {},
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Endpoint": {
+        "type": "object",
+        "format": "",
+        "description": "Represents an Endpoint.",
+        "$ref": "",
+        "properties": {
+          "attributes": {
+            "type": "object",
+            "format": "",
+            "description": "Output only. Attributes of the Endpoint. Valid values: * `agentregistry.googleapis.com/system/RuntimeReference`: {\"uri\": \"//...\"} - the URI of the underlying resource hosting the Endpoint, for example, the GKE Deployment.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "object",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": {
+                "type": "any",
+                "format": "",
+                "description": "Properties of the object.",
+                "$ref": "",
+                "properties": null,
+                "items": null,
+                "additionalProperties": null,
+                "enum": null,
+                "readOnly": false
+              },
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": true
+          },
+          "createTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. Create time.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "description": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. Description of an Endpoint.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "displayName": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. Display name for the Endpoint.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "endpointId": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. A stable, globally unique identifier for Endpoint.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "interfaces": {
+            "type": "array",
+            "format": "",
+            "description": "Required. The connection details for the Endpoint.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Interface",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "Identifier. The resource name of the Endpoint. Format: `projects/{project}/locations/{location}/endpoints/{endpoint}`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "updateTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. Update time.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "EndpointSpec": {
+        "type": "object",
+        "format": "",
+        "description": "The spec of the endpoint.",
+        "$ref": "",
+        "properties": {
+          "content": {
+            "type": "object",
+            "format": "",
+            "description": "Optional. The content of the endpoint spec. Reserved for future use.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "any",
+              "format": "",
+              "description": "Properties of the object.",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "type": {
+            "type": "string",
+            "format": "",
+            "description": "Required. The type of the endpoint spec content.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "TYPE_UNSPECIFIED",
+              "NO_SPEC"
+            ],
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "FetchAvailableBindingsResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Message for response to fetching available Bindings.",
+        "$ref": "",
+        "properties": {
+          "bindings": {
+            "type": "array",
+            "format": "",
+            "description": "The list of Bindings.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Binding",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "A token identifying a page of results the server should return.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Frontmatter": {
+        "type": "object",
+        "format": "",
+        "description": "Structured metadata attributes extracted from the package's local SKILL.md frontmatter.",
+        "$ref": "",
+        "properties": {
+          "compatibility": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Environmental dependencies or local sidecars.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "description": {
+            "type": "string",
+            "format": "",
+            "description": "Required. Functional description.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "license": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. License.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "metadata": {
+            "type": "object",
+            "format": "",
+            "description": "Optional. Extensible flattened map mapping custom tags, authors, and version parameters.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "Required. The name of the skill.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GcsSource": {
+        "type": "object",
+        "format": "",
+        "description": "Specifications for Cloud Storage objects.",
+        "$ref": "",
+        "properties": {
+          "generation": {
+            "type": "string",
+            "format": "int64",
+            "description": "Optional. Cloud Storage object generation ID. If not specified, the latest generation is used.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "uri": {
+            "type": "string",
+            "format": "",
+            "description": "Required. Cloud Storage object URI. Format: `gs://{bucket_name}/{object_name}`",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Interface": {
+        "type": "object",
+        "format": "",
+        "description": "Represents the connection details for an Agent or MCP Server.",
+        "$ref": "",
+        "properties": {
+          "protocolBinding": {
+            "type": "string",
+            "format": "",
+            "description": "Required. The protocol binding of the interface.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "PROTOCOL_BINDING_UNSPECIFIED",
+              "JSONRPC",
+              "GRPC",
+              "HTTP_JSON"
+            ],
+            "readOnly": false
+          },
+          "url": {
+            "type": "string",
+            "format": "",
+            "description": "Required. The destination URL.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ListAgentsResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Message for response to listing Agents",
+        "$ref": "",
+        "properties": {
+          "agents": {
+            "type": "array",
+            "format": "",
+            "description": "The list of Agents.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Agent",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "A token identifying a page of results the server should return.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ListBindingsResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Message for response to listing Bindings",
+        "$ref": "",
+        "properties": {
+          "bindings": {
+            "type": "array",
+            "format": "",
+            "description": "The list of Binding resources matching the parent and filter criteria in the request. Each Binding resource follows the format: `projects/{project}/locations/{location}/bindings/{binding}`.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Binding",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "A token identifying a page of results the server should return. Used in page_token.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ListEndpointsResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Message for response to listing Endpoints",
+        "$ref": "",
+        "properties": {
+          "endpoints": {
+            "type": "array",
+            "format": "",
+            "description": "The list of Endpoint resources matching the parent and filter criteria in the request. Each Endpoint resource follows the format: `projects/{project}/locations/{location}/endpoints/{endpoint}`.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Endpoint",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "A token identifying a page of results the server should return. Used in page_token.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ListLocationsResponse": {
+        "type": "object",
+        "format": "",
+        "description": "The response message for Locations.ListLocations.",
+        "$ref": "",
+        "properties": {
+          "locations": {
+            "type": "array",
+            "format": "",
+            "description": "A list of locations that matches the specified filter in the request.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Location",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "The standard List next-page token.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ListMcpServersResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Message for response to listing McpServers",
+        "$ref": "",
+        "properties": {
+          "mcpServers": {
+            "type": "array",
+            "format": "",
+            "description": "The list of McpServers.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "McpServer",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "A token identifying a page of results the server should return.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ListOperationsResponse": {
+        "type": "object",
+        "format": "",
+        "description": "The response message for Operations.ListOperations.",
+        "$ref": "",
+        "properties": {
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "The standard List next-page token.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "operations": {
+            "type": "array",
+            "format": "",
+            "description": "A list of operations that matches the specified filter in the request.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Operation",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "unreachable": {
+            "type": "array",
+            "format": "",
+            "description": "Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ListPublishersResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Response listing Publishers.",
+        "$ref": "",
+        "properties": {
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "Page offset continuation token.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "publishers": {
+            "type": "array",
+            "format": "",
+            "description": "The returned list of Publishers.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Publisher",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ListServicesResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Message for response to listing Services",
+        "$ref": "",
+        "properties": {
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "A token identifying a page of results the server should return. Used in page_token.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "services": {
+            "type": "array",
+            "format": "",
+            "description": "The list of Service resources matching the parent and filter criteria in the request. Each Service resource follows the format: `projects/{project}/locations/{location}/services/{service}`.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Service",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ListSkillRevisionsResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Response listing Revisions.",
+        "$ref": "",
+        "properties": {
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "Page offset continuation token.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "skillRevisions": {
+            "type": "array",
+            "format": "",
+            "description": "Returned version snapshot list.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "SkillRevision",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ListSkillsResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Response structure listing logical Skills.",
+        "$ref": "",
+        "properties": {
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "Page continuation continuation token.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "skills": {
+            "type": "array",
+            "format": "",
+            "description": "Returned container list.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Skill",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "unreachable": {
+            "type": "array",
+            "format": "",
+            "description": "Unreachable locations or failures.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Location": {
+        "type": "object",
+        "format": "",
+        "description": "A resource that represents a Google Cloud location.",
+        "$ref": "",
+        "properties": {
+          "displayName": {
+            "type": "string",
+            "format": "",
+            "description": "The friendly name for this location, typically a nearby city name. For example, \"Tokyo\".",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "labels": {
+            "type": "object",
+            "format": "",
+            "description": "Cross-service attributes for the location. For example {\"cloud.googleapis.com/region\": \"us-east1\"}",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "locationId": {
+            "type": "string",
+            "format": "",
+            "description": "The canonical id for this location. For example: `\"us-east1\"`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "metadata": {
+            "type": "object",
+            "format": "",
+            "description": "Service-specific metadata. For example the available capacity at the given location.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "any",
+              "format": "",
+              "description": "Properties of the object. Contains field @type with type URL.",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "Resource name for the location, which may vary between implementations. For example: `\"projects/example-project/locations/us-east1\"`",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "McpServer": {
+        "type": "object",
+        "format": "",
+        "description": "Represents an MCP (Model Context Protocol) Server.",
+        "$ref": "",
+        "properties": {
+          "attributes": {
+            "type": "object",
+            "format": "",
+            "description": "Output only. Attributes of the MCP Server. Valid values: * `agentregistry.googleapis.com/system/RuntimeIdentity`: {\"principal\": \"principal://...\"} - the runtime identity associated with the MCP Server. * `agentregistry.googleapis.com/system/RuntimeReference`: {\"uri\": \"//...\"} - the URI of the underlying resource hosting the MCP Server, for example, the GKE Deployment.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "object",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": {
+                "type": "any",
+                "format": "",
+                "description": "Properties of the object.",
+                "$ref": "",
+                "properties": null,
+                "items": null,
+                "additionalProperties": null,
+                "enum": null,
+                "readOnly": false
+              },
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": true
+          },
+          "createTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. Create time.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "description": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The description of the MCP Server.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "displayName": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The display name of the MCP Server.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "interfaces": {
+            "type": "array",
+            "format": "",
+            "description": "Output only. The connection details for the MCP Server.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Interface",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "mcpServerId": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. A stable, globally unique identifier for MCP Servers.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "Identifier. The resource name of the MCP Server. Format: `projects/{project}/locations/{location}/mcpServers/{mcp_server}`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "tools": {
+            "type": "array",
+            "format": "",
+            "description": "Output only. Tools provided by the MCP Server.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Tool",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "updateTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. Update time.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "McpServerSpec": {
+        "type": "object",
+        "format": "",
+        "description": "The spec of the MCP Server.",
+        "$ref": "",
+        "properties": {
+          "content": {
+            "type": "object",
+            "format": "",
+            "description": "Optional. The content of the MCP Server spec. This payload is validated against the schema for the specified type. The content size is limited to `10KB`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "any",
+              "format": "",
+              "description": "Properties of the object.",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "type": {
+            "type": "string",
+            "format": "",
+            "description": "Required. The type of the MCP Server spec content.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "TYPE_UNSPECIFIED",
+              "NO_SPEC",
+              "TOOL_SPEC"
+            ],
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Operation": {
+        "type": "object",
+        "format": "",
+        "description": "This resource represents a long-running operation that is the result of a network API call.",
+        "$ref": "",
+        "properties": {
+          "done": {
+            "type": "boolean",
+            "format": "",
+            "description": "If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "error": {
+            "type": "",
+            "format": "",
+            "description": "The error result of the operation in case of failure or cancellation.",
+            "$ref": "Status",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "metadata": {
+            "type": "object",
+            "format": "",
+            "description": "Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "any",
+              "format": "",
+              "description": "Properties of the object. Contains field @type with type URL.",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "response": {
+            "type": "object",
+            "format": "",
+            "description": "The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "any",
+              "format": "",
+              "description": "Properties of the object. Contains field @type with type URL.",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "OperationMetadata": {
+        "type": "object",
+        "format": "",
+        "description": "Represents the metadata of the long-running operation.",
+        "$ref": "",
+        "properties": {
+          "apiVersion": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. API version used to start the operation.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "createTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. The time the operation was created.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "endTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. The time the operation finished running.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "requestedCancellation": {
+            "type": "boolean",
+            "format": "",
+            "description": "Output only. Identifies whether the user has requested cancellation of the operation. Operations that have been cancelled successfully have google.longrunning.Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "statusMessage": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. Human-readable status of the operation, if any.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "target": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. Server-defined resource path for the target of the operation.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "verb": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. Name of the verb executed by the operation.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Protocol": {
+        "type": "object",
+        "format": "",
+        "description": "Represents the protocol of an Agent.",
+        "$ref": "",
+        "properties": {
+          "interfaces": {
+            "type": "array",
+            "format": "",
+            "description": "Output only. The connection details for the Agent.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Interface",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "protocolVersion": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The version of the protocol, for example, the A2A Agent Card version.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "type": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The type of the protocol.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "TYPE_UNSPECIFIED",
+              "A2A_AGENT",
+              "CUSTOM"
+            ],
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Publisher": {
+        "type": "object",
+        "format": "",
+        "description": "Represents a verified Publisher of Skills. Prepopulated publishers include `publishers/cloud.google.com` and `publishers/workspace.google.com`.",
+        "$ref": "",
+        "properties": {
+          "displayName": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Human readable display name of the publisher.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "documentationUri": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. URI pointing to official publisher documentation.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "Identifier. Resource name of the publisher. Format: `projects/{project}/locations/{location}/publishers/{publisher}`",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "publisherTier": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The curation tier of the publisher.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "PUBLISHER_TIER_UNSPECIFIED",
+              "FIRST_PARTY",
+              "THIRD_PARTY",
+              "PRIVATE"
+            ],
+            "readOnly": true
+          },
+          "supportUri": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. URI pointing to the support portal or email.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "verifiedPrefix": {
+            "type": "string",
+            "format": "",
+            "description": "Required. The verified prefix (e.g. \"snowflake-\", \"google-\") associated with this publisher. The system uses this prefix to enforce name-squatting rules during Skill registration. Must be globally unique across all publishers.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "SearchAgentsRequest": {
+        "type": "object",
+        "format": "",
+        "description": "Message for searching Agents",
+        "$ref": "",
+        "properties": {
+          "pageSize": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Optional. The maximum number of search results to return per page. The page size is capped at `100`, even if a larger value is specified. A negative value will result in an `INVALID_ARGUMENT` error. If unspecified or set to `0`, a default value of `20` will be used. The server may return fewer results than requested.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "pageToken": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. If present, retrieve the next batch of results from the preceding call to this method. `page_token` must be the value of `next_page_token` from the previous response. The values of all other method parameters, must be identical to those in the previous call.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "searchString": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Search criteria used to select the Agents to return. If no search criteria is specified then all accessible Agents will be returned. Search expressions can be used to restrict results based upon searchable fields, where the operators can be used along with the suffix wildcard symbol `*`. See [instructions](https://docs.cloud.google.com/agent-registry/search-agents-and-tools) for more details. Allowed operators: `=`, `:`, `NOT`, `AND`, `OR`, and `()`. Searchable fields: | Field | `=` | `:` | `*` | Keyword Search | |--------------------|-----|-----|-----|----------------| | agentId | Yes | Yes | Yes | Included | | name | No | Yes | Yes | Included | | displayName | No | Yes | Yes | Included | | description | No | Yes | No | Included | | skills | No | Yes | No | Included | | skills.id | No | Yes | No | Included | | skills.name | No | Yes | No | Included | | skills.description | No | Yes | No | Included | | skills.tags | No | Yes | No | Included | | skills.examples | No | Yes | No | Included | Examples: * `agentId=\"urn:agent:projects-123:projects:123:locations:us-central1:reasoningEngines:1234\"` to find the agent with the specified agent ID. * `name:important` to find agents whose name contains `important` as a word. * `displayName:works*` to find agents whose display name contains words that start with `works`. * `skills.tags:test` to find agents whose skills tags contain `test`. * `planner OR booking` to find agents whose metadata contains the words `planner` or `booking`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "SearchAgentsResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Message for response to searching Agents",
+        "$ref": "",
+        "properties": {
+          "agents": {
+            "type": "array",
+            "format": "",
+            "description": "A list of Agents that match the `search_string`.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Agent",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "If there are more results than those appearing in this response, then `next_page_token` is included. To get the next set of results, call this method again using the value of `next_page_token` as `page_token`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "SearchMcpServersRequest": {
+        "type": "object",
+        "format": "",
+        "description": "Message for searching MCP Servers",
+        "$ref": "",
+        "properties": {
+          "pageSize": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Optional. The maximum number of search results to return per page. The page size is capped at `100`, even if a larger value is specified. A negative value will result in an `INVALID_ARGUMENT` error. If unspecified or set to `0`, a default value of `20` will be used. The server may return fewer results than requested.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "pageToken": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. If present, retrieve the next batch of results from the preceding call to this method. `page_token` must be the value of `next_page_token` from the previous response. The values of all other method parameters, must be identical to those in the previous call.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "searchString": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Search criteria used to select the MCP Servers to return. If no search criteria is specified then all accessible MCP Servers will be returned. Search expressions can be used to restrict results based upon searchable fields, where the operators can be used along with the suffix wildcard symbol `*`. See [instructions](https://docs.cloud.google.com/agent-registry/search-agents-and-tools) for more details. Allowed operators: `=`, `:`, `NOT`, `AND`, `OR`, and `()`. Searchable fields: | Field | `=` | `:` | `*` | Keyword Search | |--------------------|-----|-----|-----|----------------| | mcpServerId | Yes | Yes | Yes | Included | | name | No | Yes | Yes | Included | | displayName | No | Yes | Yes | Included | Examples: * `mcpServerId=\"urn:mcp:projects-123:projects:123:locations:us-central1:agentregistry:services:service-id\"` to find the MCP Server with the specified MCP Server ID. * `name:important` to find MCP Servers whose name contains `important` as a word. * `displayName:works*` to find MCP Servers whose display name contains words that start with `works`. * `planner OR booking` to find MCP Servers whose metadata contains the words `planner` or `booking`. * `mcpServerId:service-id AND (displayName:planner OR displayName:booking)` to find MCP Servers whose MCP Server ID contains `service-id` and whose display name contains `planner` or `booking`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "SearchMcpServersResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Message for response to searching MCP Servers",
+        "$ref": "",
+        "properties": {
+          "mcpServers": {
+            "type": "array",
+            "format": "",
+            "description": "A list of McpServers that match the `search_string`.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "McpServer",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "If there are more results than those appearing in this response, then `next_page_token` is included. To get the next set of results, call this method again using the value of `next_page_token` as `page_token`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "SearchSkillsResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Response listing searched Skills.",
+        "$ref": "",
+        "properties": {
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "Query page offset continuation token.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "skills": {
+            "type": "array",
+            "format": "",
+            "description": "Matched Skills list.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Skill",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Service": {
+        "type": "object",
+        "format": "",
+        "description": "Represents a user-defined Service.",
+        "$ref": "",
+        "properties": {
+          "agentSpec": {
+            "type": "",
+            "format": "",
+            "description": "Optional. The spec of the Agent. When `agent_spec` is set, the type of the service is Agent.",
+            "$ref": "AgentSpec",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "createTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. Create time.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "description": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. User-defined description of an Service. Can have a maximum length of `2048` characters.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "displayName": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. User-defined display name for the Service. Can have a maximum length of `63` characters.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "endpointSpec": {
+            "type": "",
+            "format": "",
+            "description": "Optional. The spec of the Endpoint. When `endpoint_spec` is set, the type of the service is Endpoint.",
+            "$ref": "EndpointSpec",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "interfaces": {
+            "type": "array",
+            "format": "",
+            "description": "Optional. The connection details for the Service.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Interface",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "mcpServerSpec": {
+            "type": "",
+            "format": "",
+            "description": "Optional. The spec of the MCP Server. When `mcp_server_spec` is set, the type of the service is MCP Server.",
+            "$ref": "McpServerSpec",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "Identifier. The resource name of the Service. Format: `projects/{project}/locations/{location}/services/{service}`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "registryResource": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The resource name of the resulting Agent, MCP Server, or Endpoint. Format: * `projects/{project}/locations/{location}/mcpServers/{mcp_server}` * `projects/{project}/locations/{location}/agents/{agent}` * `projects/{project}/locations/{location}/endpoints/{endpoint}`",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "updateTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. Update time.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Skill": {
+        "type": "object",
+        "format": "",
+        "description": "Represents an Executable Agent Skill or a Composite Tool Suite (Bundle). Sibling resource with Agent and McpServer under agentregistry.googleapis.com.",
+        "$ref": "",
+        "properties": {
+          "createTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. Create time.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "defaultRevision": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The full resource name of the revision currently served by default (floating track). Format: `projects/{project}/locations/{location}/skills/{skill}/revisions/{revision}`",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "description": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Brief summary describing the capabilities of the skill. Maximum length is 2048 characters.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "displayName": {
+            "type": "string",
+            "format": "",
+            "description": "Required. Human-readable display name of the skill. Maximum length is 128 characters.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "frontmatter": {
+            "type": "",
+            "format": "",
+            "description": "Output only. Lightweight frontmatter metadata attributes copied from the default revision.",
+            "$ref": "Frontmatter",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "initialRevision": {
+            "type": "",
+            "format": "",
+            "description": "Optional. Input only. Optional nested initial revision payload to support standard one-shot creation. The server processes this field on input during creation but must never return it in responses.",
+            "$ref": "SkillRevision",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "Identifier. Resource name of the Skill. Format: `projects/{project}/locations/{location}/skills/{skill}` The `{skill}` segment acts as the resource ID. If the skill is associated with a Publisher, this segment typically uses a hyphenated namespace prefix corresponding to the publisher (e.g., `google-workspace-create-docs`).",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "publisher": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The publisher resource associated with this skill. Format: `projects/{project}/locations/{location}/publishers/{publisher}` The publisher dictates the allowed namespace prefixes for the skill's name and logical `skill_id` (e.g., Publisher `google` authorizes the `google-*` prefix).",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "skillId": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. A stable, globally unique logical identifier for the skill. It is securely constructed by the backend by combining the associated `publisher`'s verified namespace and the skill's resource ID to enforce strict ownership. For example, the prefix `google-` is reserved exclusively for first-party Google publishers to prevent namespace squatting. Example: `urn:skill:google-workspace:create-docs`",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "state": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The system-managed state of the skill.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "STATE_UNSPECIFIED",
+              "STATE_CREATING",
+              "STATE_DRAFT",
+              "STATE_ACTIVE",
+              "STATE_DISABLED",
+              "STATE_DEPRECATED",
+              "STATE_DECOMMISSIONED",
+              "STATE_DELETING"
+            ],
+            "readOnly": true
+          },
+          "targetState": {
+            "type": "string",
+            "format": "",
+            "description": "Required. User-managed target state of the skill.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "TARGET_STATE_UNSPECIFIED",
+              "TARGET_STATE_DRAFT",
+              "TARGET_STATE_ACTIVE",
+              "TARGET_STATE_DISABLED",
+              "TARGET_STATE_DEPRECATED",
+              "TARGET_STATE_DECOMMISSIONED"
+            ],
+            "readOnly": false
+          },
+          "type": {
+            "type": "string",
+            "format": "",
+            "description": "Required. Structural deployment type (SIMPLE leaf vs COMPOSITE bundle).",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "TYPE_UNSPECIFIED",
+              "SIMPLE"
+            ],
+            "readOnly": false
+          },
+          "uid": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. Universally unique identifier (UUID4) for the logical container.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "updateTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. Update time.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "SkillRevision": {
+        "type": "object",
+        "format": "",
+        "description": "Represents an immutable, versioned snapshot of a Skill package.",
+        "$ref": "",
+        "properties": {
+          "archiveUploadSource": {
+            "type": "",
+            "format": "",
+            "description": "Optional. Immutable. Direct write-only raw archive upload source.",
+            "$ref": "ArchiveUploadSource",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "createTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. Revision creation timestamp.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "frontmatter": {
+            "type": "",
+            "format": "",
+            "description": "Output only. Extracted YAML frontmatter configuration snapshot.",
+            "$ref": "Frontmatter",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "gcsSource": {
+            "type": "",
+            "format": "",
+            "description": "Optional. Immutable. Cloud Storage object generation URI.",
+            "$ref": "GcsSource",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "Identifier. Resource name of the SkillRevision. Format: `projects/{project}/locations/{location}/skills/{skill}/revisions/{revision}`",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "sha256Hash": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. Cryptographic SHA-256 integrity and deduplication digest of the payload zip.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "sizeBytes": {
+            "type": "string",
+            "format": "int64",
+            "description": "Output only. Size of the compiled zip payload in bytes (assists client download progress).",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "state": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The system-managed lifecycle state of this revision.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "STATE_UNSPECIFIED",
+              "CREATING",
+              "ACTIVE",
+              "FAILED",
+              "DELETING"
+            ],
+            "readOnly": true
+          },
+          "uid": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. Universally unique identifier (UUID4) for the skill revision.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Source": {
+        "type": "object",
+        "format": "",
+        "description": "The source of the Binding.",
+        "$ref": "",
+        "properties": {
+          "identifier": {
+            "type": "string",
+            "format": "",
+            "description": "The identifier of the source Agent. Format: * `urn:agent:{publisher}:{namespace}:{name}`",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Status": {
+        "type": "object",
+        "format": "",
+        "description": "The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).",
+        "$ref": "",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32",
+            "description": "The status code, which should be an enum value of google.rpc.Code.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "details": {
+            "type": "array",
+            "format": "",
+            "description": "A list of messages that carry the error details. There is a common set of message types for APIs to use.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "object",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": {
+                "type": "any",
+                "format": "",
+                "description": "Properties of the object. Contains field @type with type URL.",
+                "$ref": "",
+                "properties": null,
+                "items": null,
+                "additionalProperties": null,
+                "enum": null,
+                "readOnly": false
+              },
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "message": {
+            "type": "string",
+            "format": "",
+            "description": "A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Target": {
+        "type": "object",
+        "format": "",
+        "description": "The target of the Binding.",
+        "$ref": "",
+        "properties": {
+          "identifier": {
+            "type": "string",
+            "format": "",
+            "description": "The identifier of the target Agent, MCP Server, or Endpoint. Format: * `urn:agent:{publisher}:{namespace}:{name}` * `urn:mcp:{publisher}:{namespace}:{name}` * `urn:endpoint:{publisher}:{namespace}:{name}`",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Tool": {
+        "type": "object",
+        "format": "",
+        "description": "Represents a single tool provided by an MCP Server.",
+        "$ref": "",
+        "properties": {
+          "annotations": {
+            "type": "",
+            "format": "",
+            "description": "Output only. Annotations associated with the tool.",
+            "$ref": "Annotations",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "description": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. Description of what the tool does.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. Human-readable name of the tool.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      }
+    },
+    "resources": {
+      "projects": {
+        "methods": null,
+        "resources": {
+          "locations": {
+            "methods": {
+              "get": {
+                "id": "agentregistry.projects.locations.get",
+                "httpMethod": "GET",
+                "path": "v1alpha/{+name}",
+                "flatPath": "v1alpha/projects/{projectsId}/locations/{locationsId}",
+                "description": "Gets information about a location.",
+                "parameters": {
+                  "name": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  }
+                },
+                "parameterOrder": [
+                  "name"
+                ],
+                "request": null,
+                "response": {
+                  "$ref": "Location"
+                }
+              },
+              "list": {
+                "id": "agentregistry.projects.locations.list",
+                "httpMethod": "GET",
+                "path": "v1alpha/{+name}/locations",
+                "flatPath": "v1alpha/projects/{projectsId}/locations",
+                "description": "Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the ListLocationsRequest.name field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version.",
+                "parameters": {
+                  "extraLocationTypes": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false
+                  },
+                  "filter": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false
+                  },
+                  "name": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  },
+                  "pageSize": {
+                    "type": "integer",
+                    "location": "query",
+                    "required": false
+                  },
+                  "pageToken": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false
+                  }
+                },
+                "parameterOrder": [
+                  "name"
+                ],
+                "request": null,
+                "response": {
+                  "$ref": "ListLocationsResponse"
+                }
+              }
+            },
+            "resources": {
+              "agents": {
+                "methods": {
+                  "get": {
+                    "id": "agentregistry.projects.locations.agents.get",
+                    "httpMethod": "GET",
+                    "path": "v1alpha/{+name}",
+                    "flatPath": "v1alpha/projects/{projectsId}/locations/{locationsId}/agents/{agentsId}",
+                    "description": "Gets details of a single Agent.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "Agent"
+                    }
+                  },
+                  "list": {
+                    "id": "agentregistry.projects.locations.agents.list",
+                    "httpMethod": "GET",
+                    "path": "v1alpha/{+parent}/agents",
+                    "flatPath": "v1alpha/projects/{projectsId}/locations/{locationsId}/agents",
+                    "description": "Lists Agents in a given project and location.",
+                    "parameters": {
+                      "filter": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "orderBy": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "pageSize": {
+                        "type": "integer",
+                        "location": "query",
+                        "required": false
+                      },
+                      "pageToken": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "parent": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "parent"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "ListAgentsResponse"
+                    }
+                  },
+                  "search": {
+                    "id": "agentregistry.projects.locations.agents.search",
+                    "httpMethod": "POST",
+                    "path": "v1alpha/{+parent}/agents:search",
+                    "flatPath": "v1alpha/projects/{projectsId}/locations/{locationsId}/agents:search",
+                    "description": "Searches Agents in a given project and location.",
+                    "parameters": {
+                      "parent": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "parent"
+                    ],
+                    "request": {
+                      "$ref": "SearchAgentsRequest"
+                    },
+                    "response": {
+                      "$ref": "SearchAgentsResponse"
+                    }
+                  }
+                },
+                "resources": null
+              },
+              "bindings": {
+                "methods": {
+                  "create": {
+                    "id": "agentregistry.projects.locations.bindings.create",
+                    "httpMethod": "POST",
+                    "path": "v1alpha/{+parent}/bindings",
+                    "flatPath": "v1alpha/projects/{projectsId}/locations/{locationsId}/bindings",
+                    "description": "Creates a new Binding in a given project and location.",
+                    "parameters": {
+                      "bindingId": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "parent": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      },
+                      "requestId": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      }
+                    },
+                    "parameterOrder": [
+                      "parent"
+                    ],
+                    "request": {
+                      "$ref": "Binding"
+                    },
+                    "response": {
+                      "$ref": "Operation"
+                    }
+                  },
+                  "delete": {
+                    "id": "agentregistry.projects.locations.bindings.delete",
+                    "httpMethod": "DELETE",
+                    "path": "v1alpha/{+name}",
+                    "flatPath": "v1alpha/projects/{projectsId}/locations/{locationsId}/bindings/{bindingsId}",
+                    "description": "Deletes a single Binding.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      },
+                      "requestId": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "Operation"
+                    }
+                  },
+                  "fetchAvailable": {
+                    "id": "agentregistry.projects.locations.bindings.fetchAvailable",
+                    "httpMethod": "GET",
+                    "path": "v1alpha/{+parent}/bindings:fetchAvailable",
+                    "flatPath": "v1alpha/projects/{projectsId}/locations/{locationsId}/bindings:fetchAvailable",
+                    "description": "Fetches available Bindings.",
+                    "parameters": {
+                      "pageSize": {
+                        "type": "integer",
+                        "location": "query",
+                        "required": false
+                      },
+                      "pageToken": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "parent": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      },
+                      "sourceIdentifier": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "targetIdentifier": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      }
+                    },
+                    "parameterOrder": [
+                      "parent"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "FetchAvailableBindingsResponse"
+                    }
+                  },
+                  "get": {
+                    "id": "agentregistry.projects.locations.bindings.get",
+                    "httpMethod": "GET",
+                    "path": "v1alpha/{+name}",
+                    "flatPath": "v1alpha/projects/{projectsId}/locations/{locationsId}/bindings/{bindingsId}",
+                    "description": "Gets details of a single Binding.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "Binding"
+                    }
+                  },
+                  "list": {
+                    "id": "agentregistry.projects.locations.bindings.list",
+                    "httpMethod": "GET",
+                    "path": "v1alpha/{+parent}/bindings",
+                    "flatPath": "v1alpha/projects/{projectsId}/locations/{locationsId}/bindings",
+                    "description": "Lists Bindings in a given project and location.",
+                    "parameters": {
+                      "filter": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "orderBy": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "pageSize": {
+                        "type": "integer",
+                        "location": "query",
+                        "required": false
+                      },
+                      "pageToken": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "parent": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "parent"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "ListBindingsResponse"
+                    }
+                  },
+                  "patch": {
+                    "id": "agentregistry.projects.locations.bindings.patch",
+                    "httpMethod": "PATCH",
+                    "path": "v1alpha/{+name}",
+                    "flatPath": "v1alpha/projects/{projectsId}/locations/{locationsId}/bindings/{bindingsId}",
+                    "description": "Updates the parameters of a single Binding.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      },
+                      "requestId": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "updateMask": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": {
+                      "$ref": "Binding"
+                    },
+                    "response": {
+                      "$ref": "Operation"
+                    }
+                  }
+                },
+                "resources": null
+              },
+              "endpoints": {
+                "methods": {
+                  "get": {
+                    "id": "agentregistry.projects.locations.endpoints.get",
+                    "httpMethod": "GET",
+                    "path": "v1alpha/{+name}",
+                    "flatPath": "v1alpha/projects/{projectsId}/locations/{locationsId}/endpoints/{endpointsId}",
+                    "description": "Gets details of a single Endpoint.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "Endpoint"
+                    }
+                  },
+                  "list": {
+                    "id": "agentregistry.projects.locations.endpoints.list",
+                    "httpMethod": "GET",
+                    "path": "v1alpha/{+parent}/endpoints",
+                    "flatPath": "v1alpha/projects/{projectsId}/locations/{locationsId}/endpoints",
+                    "description": "Lists Endpoints in a given project and location.",
+                    "parameters": {
+                      "filter": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "pageSize": {
+                        "type": "integer",
+                        "location": "query",
+                        "required": false
+                      },
+                      "pageToken": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "parent": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "parent"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "ListEndpointsResponse"
+                    }
+                  }
+                },
+                "resources": null
+              },
+              "mcpServers": {
+                "methods": {
+                  "get": {
+                    "id": "agentregistry.projects.locations.mcpServers.get",
+                    "httpMethod": "GET",
+                    "path": "v1alpha/{+name}",
+                    "flatPath": "v1alpha/projects/{projectsId}/locations/{locationsId}/mcpServers/{mcpServersId}",
+                    "description": "Gets details of a single McpServer.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "McpServer"
+                    }
+                  },
+                  "list": {
+                    "id": "agentregistry.projects.locations.mcpServers.list",
+                    "httpMethod": "GET",
+                    "path": "v1alpha/{+parent}/mcpServers",
+                    "flatPath": "v1alpha/projects/{projectsId}/locations/{locationsId}/mcpServers",
+                    "description": "Lists McpServers in a given project and location.",
+                    "parameters": {
+                      "filter": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "orderBy": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "pageSize": {
+                        "type": "integer",
+                        "location": "query",
+                        "required": false
+                      },
+                      "pageToken": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "parent": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "parent"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "ListMcpServersResponse"
+                    }
+                  },
+                  "search": {
+                    "id": "agentregistry.projects.locations.mcpServers.search",
+                    "httpMethod": "POST",
+                    "path": "v1alpha/{+parent}/mcpServers:search",
+                    "flatPath": "v1alpha/projects/{projectsId}/locations/{locationsId}/mcpServers:search",
+                    "description": "Searches McpServers in a given project and location.",
+                    "parameters": {
+                      "parent": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "parent"
+                    ],
+                    "request": {
+                      "$ref": "SearchMcpServersRequest"
+                    },
+                    "response": {
+                      "$ref": "SearchMcpServersResponse"
+                    }
+                  }
+                },
+                "resources": null
+              },
+              "operations": {
+                "methods": {
+                  "cancel": {
+                    "id": "agentregistry.projects.locations.operations.cancel",
+                    "httpMethod": "POST",
+                    "path": "v1alpha/{+name}:cancel",
+                    "flatPath": "v1alpha/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}:cancel",
+                    "description": "Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": {
+                      "$ref": "CancelOperationRequest"
+                    },
+                    "response": {
+                      "$ref": "Empty"
+                    }
+                  },
+                  "delete": {
+                    "id": "agentregistry.projects.locations.operations.delete",
+                    "httpMethod": "DELETE",
+                    "path": "v1alpha/{+name}",
+                    "flatPath": "v1alpha/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
+                    "description": "Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "Empty"
+                    }
+                  },
+                  "get": {
+                    "id": "agentregistry.projects.locations.operations.get",
+                    "httpMethod": "GET",
+                    "path": "v1alpha/{+name}",
+                    "flatPath": "v1alpha/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
+                    "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "Operation"
+                    }
+                  },
+                  "list": {
+                    "id": "agentregistry.projects.locations.operations.list",
+                    "httpMethod": "GET",
+                    "path": "v1alpha/{+name}/operations",
+                    "flatPath": "v1alpha/projects/{projectsId}/locations/{locationsId}/operations",
+                    "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.",
+                    "parameters": {
+                      "filter": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      },
+                      "pageSize": {
+                        "type": "integer",
+                        "location": "query",
+                        "required": false
+                      },
+                      "pageToken": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "returnPartialSuccess": {
+                        "type": "boolean",
+                        "location": "query",
+                        "required": false
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "ListOperationsResponse"
+                    }
+                  }
+                },
+                "resources": null
+              },
+              "publishers": {
+                "methods": {
+                  "get": {
+                    "id": "agentregistry.projects.locations.publishers.get",
+                    "httpMethod": "GET",
+                    "path": "v1alpha/{+name}",
+                    "flatPath": "v1alpha/projects/{projectsId}/locations/{locationsId}/publishers/{publishersId}",
+                    "description": "Fetches details of a specific Publisher.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "Publisher"
+                    }
+                  },
+                  "list": {
+                    "id": "agentregistry.projects.locations.publishers.list",
+                    "httpMethod": "GET",
+                    "path": "v1alpha/{+parent}/publishers",
+                    "flatPath": "v1alpha/projects/{projectsId}/locations/{locationsId}/publishers",
+                    "description": "Lists all Publishers in a location.",
+                    "parameters": {
+                      "pageSize": {
+                        "type": "integer",
+                        "location": "query",
+                        "required": false
+                      },
+                      "pageToken": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "parent": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "parent"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "ListPublishersResponse"
+                    }
+                  }
+                },
+                "resources": null
+              },
+              "services": {
+                "methods": {
+                  "create": {
+                    "id": "agentregistry.projects.locations.services.create",
+                    "httpMethod": "POST",
+                    "path": "v1alpha/{+parent}/services",
+                    "flatPath": "v1alpha/projects/{projectsId}/locations/{locationsId}/services",
+                    "description": "Creates a new Service in a given project and location.",
+                    "parameters": {
+                      "parent": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      },
+                      "requestId": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "serviceId": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      }
+                    },
+                    "parameterOrder": [
+                      "parent"
+                    ],
+                    "request": {
+                      "$ref": "Service"
+                    },
+                    "response": {
+                      "$ref": "Operation"
+                    }
+                  },
+                  "delete": {
+                    "id": "agentregistry.projects.locations.services.delete",
+                    "httpMethod": "DELETE",
+                    "path": "v1alpha/{+name}",
+                    "flatPath": "v1alpha/projects/{projectsId}/locations/{locationsId}/services/{servicesId}",
+                    "description": "Deletes a single Service.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      },
+                      "requestId": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "Operation"
+                    }
+                  },
+                  "get": {
+                    "id": "agentregistry.projects.locations.services.get",
+                    "httpMethod": "GET",
+                    "path": "v1alpha/{+name}",
+                    "flatPath": "v1alpha/projects/{projectsId}/locations/{locationsId}/services/{servicesId}",
+                    "description": "Gets details of a single Service.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "Service"
+                    }
+                  },
+                  "list": {
+                    "id": "agentregistry.projects.locations.services.list",
+                    "httpMethod": "GET",
+                    "path": "v1alpha/{+parent}/services",
+                    "flatPath": "v1alpha/projects/{projectsId}/locations/{locationsId}/services",
+                    "description": "Lists Services in a given project and location.",
+                    "parameters": {
+                      "filter": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "pageSize": {
+                        "type": "integer",
+                        "location": "query",
+                        "required": false
+                      },
+                      "pageToken": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "parent": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "parent"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "ListServicesResponse"
+                    }
+                  },
+                  "patch": {
+                    "id": "agentregistry.projects.locations.services.patch",
+                    "httpMethod": "PATCH",
+                    "path": "v1alpha/{+name}",
+                    "flatPath": "v1alpha/projects/{projectsId}/locations/{locationsId}/services/{servicesId}",
+                    "description": "Updates the parameters of a single Service.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      },
+                      "requestId": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "updateMask": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": {
+                      "$ref": "Service"
+                    },
+                    "response": {
+                      "$ref": "Operation"
+                    }
+                  }
+                },
+                "resources": null
+              },
+              "skills": {
+                "methods": {
+                  "create": {
+                    "id": "agentregistry.projects.locations.skills.create",
+                    "httpMethod": "POST",
+                    "path": "v1alpha/{+parent}/skills",
+                    "flatPath": "v1alpha/projects/{projectsId}/locations/{locationsId}/skills",
+                    "description": "========================================================================= # Skills Collection APIs Creates a Skill resource container, optionally publishing the initial SkillRevision inline in a single, atomic CRUD roundtrip.",
+                    "parameters": {
+                      "parent": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      },
+                      "requestId": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "skillId": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      }
+                    },
+                    "parameterOrder": [
+                      "parent"
+                    ],
+                    "request": {
+                      "$ref": "Skill"
+                    },
+                    "response": {
+                      "$ref": "Operation"
+                    }
+                  },
+                  "delete": {
+                    "id": "agentregistry.projects.locations.skills.delete",
+                    "httpMethod": "DELETE",
+                    "path": "v1alpha/{+name}",
+                    "flatPath": "v1alpha/projects/{projectsId}/locations/{locationsId}/skills/{skillsId}",
+                    "description": "Deletes a Skill container along with all its revisions.",
+                    "parameters": {
+                      "force": {
+                        "type": "boolean",
+                        "location": "query",
+                        "required": false
+                      },
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      },
+                      "requestId": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "Operation"
+                    }
+                  },
+                  "get": {
+                    "id": "agentregistry.projects.locations.skills.get",
+                    "httpMethod": "GET",
+                    "path": "v1alpha/{+name}",
+                    "flatPath": "v1alpha/projects/{projectsId}/locations/{locationsId}/skills/{skillsId}",
+                    "description": "Fetches the active configuration and metadata of a Skill.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "Skill"
+                    }
+                  },
+                  "list": {
+                    "id": "agentregistry.projects.locations.skills.list",
+                    "httpMethod": "GET",
+                    "path": "v1alpha/{+parent}/skills",
+                    "flatPath": "v1alpha/projects/{projectsId}/locations/{locationsId}/skills",
+                    "description": "Lists logical Skills available in a project.",
+                    "parameters": {
+                      "filter": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "orderBy": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "pageSize": {
+                        "type": "integer",
+                        "location": "query",
+                        "required": false
+                      },
+                      "pageToken": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "parent": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "parent"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "ListSkillsResponse"
+                    }
+                  },
+                  "patch": {
+                    "id": "agentregistry.projects.locations.skills.patch",
+                    "httpMethod": "PATCH",
+                    "path": "v1alpha/{+name}",
+                    "flatPath": "v1alpha/projects/{projectsId}/locations/{locationsId}/skills/{skillsId}",
+                    "description": "Updates Skill metadata or overrides active pointers/state using REST standard PATCH.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      },
+                      "requestId": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "updateMask": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": {
+                      "$ref": "Skill"
+                    },
+                    "response": {
+                      "$ref": "Operation"
+                    }
+                  },
+                  "search": {
+                    "id": "agentregistry.projects.locations.skills.search",
+                    "httpMethod": "GET",
+                    "path": "v1alpha/{+parent}/skills:search",
+                    "flatPath": "v1alpha/projects/{projectsId}/locations/{locationsId}/skills:search",
+                    "description": "Custom deep-search method to filter by frontmatter or query SKILL.md text blobs.",
+                    "parameters": {
+                      "filter": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "pageSize": {
+                        "type": "integer",
+                        "location": "query",
+                        "required": false
+                      },
+                      "pageToken": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "parent": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      },
+                      "searchString": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "searchType": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      }
+                    },
+                    "parameterOrder": [
+                      "parent"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "SearchSkillsResponse"
+                    }
+                  }
+                },
+                "resources": {
+                  "revisions": {
+                    "methods": {
+                      "create": {
+                        "id": "agentregistry.projects.locations.skills.revisions.create",
+                        "httpMethod": "POST",
+                        "path": "v1alpha/{+parent}/revisions",
+                        "flatPath": "v1alpha/projects/{projectsId}/locations/{locationsId}/skills/{skillsId}/revisions",
+                        "description": "Creates a new immutable revision and triggers validation pipelines.",
+                        "parameters": {
+                          "parent": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          },
+                          "requestId": {
+                            "type": "string",
+                            "location": "query",
+                            "required": false
+                          },
+                          "skillRevisionId": {
+                            "type": "string",
+                            "location": "query",
+                            "required": false
+                          }
+                        },
+                        "parameterOrder": [
+                          "parent"
+                        ],
+                        "request": {
+                          "$ref": "SkillRevision"
+                        },
+                        "response": {
+                          "$ref": "Operation"
+                        }
+                      },
+                      "delete": {
+                        "id": "agentregistry.projects.locations.skills.revisions.delete",
+                        "httpMethod": "DELETE",
+                        "path": "v1alpha/{+name}",
+                        "flatPath": "v1alpha/projects/{projectsId}/locations/{locationsId}/skills/{skillsId}/revisions/{revisionsId}",
+                        "description": "Deletes a specific revision (restricted to admins to purge accidentally committed secrets).",
+                        "parameters": {
+                          "name": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          },
+                          "requestId": {
+                            "type": "string",
+                            "location": "query",
+                            "required": false
+                          }
+                        },
+                        "parameterOrder": [
+                          "name"
+                        ],
+                        "request": null,
+                        "response": {
+                          "$ref": "Operation"
+                        }
+                      },
+                      "get": {
+                        "id": "agentregistry.projects.locations.skills.revisions.get",
+                        "httpMethod": "GET",
+                        "path": "v1alpha/{+name}",
+                        "flatPath": "v1alpha/projects/{projectsId}/locations/{locationsId}/skills/{skillsId}/revisions/{revisionsId}",
+                        "description": "Gets details of a single immutable Revision.",
+                        "parameters": {
+                          "name": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          }
+                        },
+                        "parameterOrder": [
+                          "name"
+                        ],
+                        "request": null,
+                        "response": {
+                          "$ref": "SkillRevision"
+                        }
+                      },
+                      "list": {
+                        "id": "agentregistry.projects.locations.skills.revisions.list",
+                        "httpMethod": "GET",
+                        "path": "v1alpha/{+parent}/revisions",
+                        "flatPath": "v1alpha/projects/{projectsId}/locations/{locationsId}/skills/{skillsId}/revisions",
+                        "description": "Lists all revisions belonging to a parent Skill.",
+                        "parameters": {
+                          "pageSize": {
+                            "type": "integer",
+                            "location": "query",
+                            "required": false
+                          },
+                          "pageToken": {
+                            "type": "string",
+                            "location": "query",
+                            "required": false
+                          },
+                          "parent": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          }
+                        },
+                        "parameterOrder": [
+                          "parent"
+                        ],
+                        "request": null,
+                        "response": {
+                          "$ref": "ListSkillRevisionsResponse"
+                        }
+                      }
+                    },
+                    "resources": null
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

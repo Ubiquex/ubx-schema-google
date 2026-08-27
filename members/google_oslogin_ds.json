@@ -1,0 +1,713 @@
+{
+  "schema_source": "discovery_docs",
+  "mode": "data_source",
+  "auth": {
+    "Type": "",
+    "Params": null
+  },
+  "base_url": "https://oslogin.googleapis.com",
+  "retry": {
+    "MaxAttempts": 0,
+    "InitialBackoff": "",
+    "MaxBackoff": "",
+    "Jitter": null,
+    "RespectRetryAfter": null,
+    "RateLimitResetHeader": ""
+  },
+  "timeouts": {
+    "Create": "",
+    "Read": "",
+    "Update": "",
+    "Delete": "",
+    "Default": ""
+  },
+  "wire_name": "google_oslogin",
+  "raw_spec": {
+    "name": "oslogin",
+    "revision": "20260816",
+    "discoveryVersion": "v1",
+    "baseUrl": "https://oslogin.googleapis.com/",
+    "rootUrl": "https://oslogin.googleapis.com/",
+    "servicePath": "",
+    "schemas": {
+      "Empty": {
+        "type": "object",
+        "format": "",
+        "description": "A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }",
+        "$ref": "",
+        "properties": {},
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ImportSshPublicKeyResponse": {
+        "type": "object",
+        "format": "",
+        "description": "A response message for importing an SSH public key.",
+        "$ref": "",
+        "properties": {
+          "details": {
+            "type": "string",
+            "format": "",
+            "description": "Detailed information about import results.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "loginProfile": {
+            "type": "",
+            "format": "",
+            "description": "The login profile information for the user.",
+            "$ref": "LoginProfile",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "LoginProfile": {
+        "type": "object",
+        "format": "",
+        "description": "The user profile information used for logging in to a virtual machine on Google Compute Engine.",
+        "$ref": "",
+        "properties": {
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "Required. A unique user ID.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "posixAccounts": {
+            "type": "array",
+            "format": "",
+            "description": "The list of POSIX accounts associated with the user.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "PosixAccount",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "sshPublicKeys": {
+            "type": "object",
+            "format": "",
+            "description": "A map from SSH public key fingerprint to the associated key object.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "SshPublicKey",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "PosixAccount": {
+        "type": "object",
+        "format": "",
+        "description": "The POSIX account information associated with a Google account.",
+        "$ref": "",
+        "properties": {
+          "accountId": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. A POSIX account identifier.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "gecos": {
+            "type": "string",
+            "format": "",
+            "description": "The GECOS (user information) entry for this account.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "gid": {
+            "type": "string",
+            "format": "int64",
+            "description": "The default group ID.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "homeDirectory": {
+            "type": "string",
+            "format": "",
+            "description": "The path to the home directory for this account.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The canonical resource name.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "operatingSystemType": {
+            "type": "string",
+            "format": "",
+            "description": "The operating system type where this account applies.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "OPERATING_SYSTEM_TYPE_UNSPECIFIED",
+              "LINUX",
+              "WINDOWS"
+            ],
+            "readOnly": false
+          },
+          "primary": {
+            "type": "boolean",
+            "format": "",
+            "description": "Only one POSIX account can be marked as primary.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "shell": {
+            "type": "string",
+            "format": "",
+            "description": "The path to the logic shell for this account.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "systemId": {
+            "type": "string",
+            "format": "",
+            "description": "System identifier for which account the username or uid applies to. By default, the empty value is used.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "uid": {
+            "type": "string",
+            "format": "int64",
+            "description": "The user ID.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "username": {
+            "type": "string",
+            "format": "",
+            "description": "The username of the POSIX account.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ProvisionPosixAccountRequest": {
+        "type": "object",
+        "format": "",
+        "description": "A request message for creating a POSIX account entry.",
+        "$ref": "",
+        "properties": {
+          "regions": {
+            "type": "array",
+            "format": "",
+            "description": "Optional. The regions to wait for a POSIX account to be written to before returning a response. If unspecified, defaults to all regions. Regions are listed at https://cloud.google.com/about/locations#region.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "SignSshPublicKeyRequest": {
+        "type": "object",
+        "format": "",
+        "description": "A request message for signing an SSH public key.",
+        "$ref": "",
+        "properties": {
+          "appEngineInstance": {
+            "type": "string",
+            "format": "",
+            "description": "The App Engine instance to sign the SSH public key for. Expected format: apps/{app}/services/{service}/versions/{version}/instances/{instance}",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "cloudRunResource": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The Cloud Run resource to sign the SSH public key for. Expected formats: - `projects/{project}/locations/{location}/services/{service}` - `projects/{project}/locations/{location}/workerPools/{worker_pool}` - `projects/{project}/locations/{location}/jobs/{job}` - `projects/{project}/locations/{location}/instances/{instance}`",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "computeInstance": {
+            "type": "string",
+            "format": "",
+            "description": "The Compute instance to sign the SSH public key for. Expected format: projects/{project}/zones/{zone}/instances/{numeric_instance_id}",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "serviceAccount": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The service account for the instance. If the instance in question does not have a service account, this field should be left empty. If the wrong service account is provided, this operation will return a signed certificate that will not be accepted by the VM.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "sshPublicKey": {
+            "type": "string",
+            "format": "",
+            "description": "Required. The SSH public key to sign.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "SignSshPublicKeyResponse": {
+        "type": "object",
+        "format": "",
+        "description": "The response message for signing an SSH public key.",
+        "$ref": "",
+        "properties": {
+          "signedSshPublicKey": {
+            "type": "string",
+            "format": "",
+            "description": "The signed SSH public key to use in the SSH handshake.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "SshPublicKey": {
+        "type": "object",
+        "format": "",
+        "description": "The SSH public key information associated with a Google account.",
+        "$ref": "",
+        "properties": {
+          "expirationTimeUsec": {
+            "type": "string",
+            "format": "int64",
+            "description": "An expiration time in microseconds since epoch.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "fingerprint": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The SHA-256 fingerprint of the SSH public key.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "key": {
+            "type": "string",
+            "format": "",
+            "description": "Required. Public key text in SSH format, defined by [RFC4253](https://www.ietf.org/rfc/rfc4253.txt) section 6.6.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The canonical resource name.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      }
+    },
+    "resources": {
+      "projects": {
+        "methods": null,
+        "resources": {
+          "locations": {
+            "methods": {
+              "signSshPublicKey": {
+                "id": "oslogin.projects.locations.signSshPublicKey",
+                "httpMethod": "POST",
+                "path": "v1/{+parent}:signSshPublicKey",
+                "flatPath": "v1/projects/{projectsId}/locations/{locationsId}:signSshPublicKey",
+                "description": "Signs an SSH public key for a user to authenticate to a virtual machine on Google Compute Engine.",
+                "parameters": {
+                  "parent": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  }
+                },
+                "parameterOrder": [
+                  "parent"
+                ],
+                "request": {
+                  "$ref": "SignSshPublicKeyRequest"
+                },
+                "response": {
+                  "$ref": "SignSshPublicKeyResponse"
+                }
+              }
+            },
+            "resources": null
+          }
+        }
+      },
+      "users": {
+        "methods": {
+          "getLoginProfile": {
+            "id": "oslogin.users.getLoginProfile",
+            "httpMethod": "GET",
+            "path": "v1/{+name}/loginProfile",
+            "flatPath": "v1/users/{usersId}/loginProfile",
+            "description": "Retrieves the profile information used for logging in to a virtual machine on Google Compute Engine.",
+            "parameters": {
+              "name": {
+                "type": "string",
+                "location": "path",
+                "required": true
+              },
+              "projectId": {
+                "type": "string",
+                "location": "query",
+                "required": false
+              },
+              "systemId": {
+                "type": "string",
+                "location": "query",
+                "required": false
+              }
+            },
+            "parameterOrder": [
+              "name"
+            ],
+            "request": null,
+            "response": {
+              "$ref": "LoginProfile"
+            }
+          },
+          "importSshPublicKey": {
+            "id": "oslogin.users.importSshPublicKey",
+            "httpMethod": "POST",
+            "path": "v1/{+parent}:importSshPublicKey",
+            "flatPath": "v1/users/{usersId}:importSshPublicKey",
+            "description": "Adds an SSH public key and returns the profile information. Default POSIX account information is set when no username and UID exist as part of the login profile.",
+            "parameters": {
+              "parent": {
+                "type": "string",
+                "location": "path",
+                "required": true
+              },
+              "projectId": {
+                "type": "string",
+                "location": "query",
+                "required": false
+              },
+              "regions": {
+                "type": "string",
+                "location": "query",
+                "required": false
+              }
+            },
+            "parameterOrder": [
+              "parent"
+            ],
+            "request": {
+              "$ref": "SshPublicKey"
+            },
+            "response": {
+              "$ref": "ImportSshPublicKeyResponse"
+            }
+          }
+        },
+        "resources": {
+          "projects": {
+            "methods": {
+              "delete": {
+                "id": "oslogin.users.projects.delete",
+                "httpMethod": "DELETE",
+                "path": "v1/{+name}",
+                "flatPath": "v1/users/{usersId}/projects/{projectsId}",
+                "description": "Deletes a POSIX account.",
+                "parameters": {
+                  "name": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  }
+                },
+                "parameterOrder": [
+                  "name"
+                ],
+                "request": null,
+                "response": {
+                  "$ref": "Empty"
+                }
+              },
+              "provisionPosixAccount": {
+                "id": "oslogin.users.projects.provisionPosixAccount",
+                "httpMethod": "POST",
+                "path": "v1/{+name}",
+                "flatPath": "v1/users/{usersId}/projects/{projectsId}",
+                "description": "Adds a POSIX account and returns the profile information. Default POSIX account information is set when no username and UID exist as part of the login profile.",
+                "parameters": {
+                  "name": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  }
+                },
+                "parameterOrder": [
+                  "name"
+                ],
+                "request": {
+                  "$ref": "ProvisionPosixAccountRequest"
+                },
+                "response": {
+                  "$ref": "PosixAccount"
+                }
+              }
+            },
+            "resources": null
+          },
+          "sshPublicKeys": {
+            "methods": {
+              "create": {
+                "id": "oslogin.users.sshPublicKeys.create",
+                "httpMethod": "POST",
+                "path": "v1/{+parent}/sshPublicKeys",
+                "flatPath": "v1/users/{usersId}/sshPublicKeys",
+                "description": "Create an SSH public key",
+                "parameters": {
+                  "parent": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  }
+                },
+                "parameterOrder": [
+                  "parent"
+                ],
+                "request": {
+                  "$ref": "SshPublicKey"
+                },
+                "response": {
+                  "$ref": "SshPublicKey"
+                }
+              },
+              "delete": {
+                "id": "oslogin.users.sshPublicKeys.delete",
+                "httpMethod": "DELETE",
+                "path": "v1/{+name}",
+                "flatPath": "v1/users/{usersId}/sshPublicKeys/{sshPublicKeysId}",
+                "description": "Deletes an SSH public key.",
+                "parameters": {
+                  "name": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  }
+                },
+                "parameterOrder": [
+                  "name"
+                ],
+                "request": null,
+                "response": {
+                  "$ref": "Empty"
+                }
+              },
+              "get": {
+                "id": "oslogin.users.sshPublicKeys.get",
+                "httpMethod": "GET",
+                "path": "v1/{+name}",
+                "flatPath": "v1/users/{usersId}/sshPublicKeys/{sshPublicKeysId}",
+                "description": "Retrieves an SSH public key.",
+                "parameters": {
+                  "name": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  }
+                },
+                "parameterOrder": [
+                  "name"
+                ],
+                "request": null,
+                "response": {
+                  "$ref": "SshPublicKey"
+                }
+              },
+              "patch": {
+                "id": "oslogin.users.sshPublicKeys.patch",
+                "httpMethod": "PATCH",
+                "path": "v1/{+name}",
+                "flatPath": "v1/users/{usersId}/sshPublicKeys/{sshPublicKeysId}",
+                "description": "Updates an SSH public key and returns the profile information. This method supports patch semantics.",
+                "parameters": {
+                  "name": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  },
+                  "updateMask": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false
+                  }
+                },
+                "parameterOrder": [
+                  "name"
+                ],
+                "request": {
+                  "$ref": "SshPublicKey"
+                },
+                "response": {
+                  "$ref": "SshPublicKey"
+                }
+              }
+            },
+            "resources": null
+          }
+        }
+      }
+    }
+  }
+}

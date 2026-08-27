@@ -1,0 +1,2646 @@
+{
+  "schema_source": "discovery_docs",
+  "mode": "data_source",
+  "auth": {
+    "Type": "",
+    "Params": null
+  },
+  "base_url": "https://bigqueryreservation.googleapis.com",
+  "retry": {
+    "MaxAttempts": 0,
+    "InitialBackoff": "",
+    "MaxBackoff": "",
+    "Jitter": null,
+    "RespectRetryAfter": null,
+    "RateLimitResetHeader": ""
+  },
+  "timeouts": {
+    "Create": "",
+    "Read": "",
+    "Update": "",
+    "Delete": "",
+    "Default": ""
+  },
+  "wire_name": "google_bigqueryreservation",
+  "raw_spec": {
+    "name": "bigqueryreservation",
+    "revision": "20260819",
+    "discoveryVersion": "v1",
+    "baseUrl": "https://bigqueryreservation.googleapis.com/",
+    "rootUrl": "https://bigqueryreservation.googleapis.com/",
+    "servicePath": "",
+    "schemas": {
+      "Assignment": {
+        "type": "object",
+        "format": "",
+        "description": "An assignment allows a project to submit jobs of a certain type using slots from the specified reservation.",
+        "$ref": "",
+        "properties": {
+          "assignee": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The resource which will use the reservation. E.g. `projects/myproject`, `folders/123`, or `organizations/456`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "condition": {
+            "type": "",
+            "format": "",
+            "description": "Optional. Common Expression Language (CEL) condition that defines the matching criteria for this assignment. The condition must resolve to a boolean value. Supported variables will be added later.",
+            "$ref": "Expr",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "enableGeminiInBigquery": {
+            "type": "boolean",
+            "format": "",
+            "description": "Optional. Deprecated: \"Gemini in BigQuery\" is now available by default for all BigQuery editions and should not be explicitly set. Controls if \"Gemini in BigQuery\" (https://cloud.google.com/gemini/docs/bigquery/overview) features should be enabled for this reservation assignment.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "jobType": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Which type of jobs will use the reservation.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "JOB_TYPE_UNSPECIFIED",
+              "PIPELINE",
+              "QUERY",
+              "ML_EXTERNAL",
+              "BACKGROUND",
+              "CONTINUOUS",
+              "BACKGROUND_CHANGE_DATA_CAPTURE",
+              "BACKGROUND_COLUMN_METADATA_INDEX",
+              "BACKGROUND_SEARCH_INDEX_REFRESH",
+              "AUTOMATIC_MATERIALIZED_VIEW_REFRESH"
+            ],
+            "readOnly": false
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. Name of the resource. E.g.: `projects/myproject/locations/US/reservations/team1-prod/assignments/123`. The assignment_id must only contain lower case alphanumeric characters or dashes and the max length is 64 characters.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "precedence": {
+            "type": "string",
+            "format": "int64",
+            "description": "Optional. Specifies the priority precedence for this assignment. Used to resolve ambiguity when multiple assignments match a single job. Higher numerical values represent higher priority (e.g., 20 is higher than 10). If unspecified, it defaults to 0. Multiple assignments can share the same precedence, but it is recommended to use unique precedence values for assignments within the same assignee scope.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "principal": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Represents the principal for this assignment. If not empty, jobs run by this principal will utilize the associated reservation. Otherwise, jobs will fall back to using the reservation assigned to the project, folder, or organization (in that order). If no reservation is assigned at any of these levels, on-demand capacity will be used. The supported formats are: * `principal://goog/subject/USER_EMAIL_ADDRESS` for users, * `principal://iam.googleapis.com/projects/-/serviceAccounts/SA_EMAIL_ADDRESS` for service accounts, * `principal://iam.googleapis.com/projects/PROJECT_NUMBER/locations/global/workloadIdentityPools/POOL_ID/subject/SUBJECT_ID` for workload identity pool identities. * The special value `unknown_or_deleted_user` represents principals which cannot be read from the user info service, for example deleted users.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "schedulingPolicy": {
+            "type": "",
+            "format": "",
+            "description": "Optional. The scheduling policy to use for jobs and queries of this assignee when running under the associated reservation. The scheduling policy controls how the reservation's resources are distributed. This overrides the default scheduling policy specified on the reservation. This feature is not yet generally available.",
+            "$ref": "SchedulingPolicy",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "state": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. State of the assignment.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "STATE_UNSPECIFIED",
+              "PENDING",
+              "ACTIVE"
+            ],
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "AuditConfig": {
+        "type": "object",
+        "format": "",
+        "description": "Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { \"audit_configs\": [ { \"service\": \"allServices\", \"audit_log_configs\": [ { \"log_type\": \"DATA_READ\", \"exempted_members\": [ \"user:jose@example.com\" ] }, { \"log_type\": \"DATA_WRITE\" }, { \"log_type\": \"ADMIN_READ\" } ] }, { \"service\": \"sampleservice.googleapis.com\", \"audit_log_configs\": [ { \"log_type\": \"DATA_READ\" }, { \"log_type\": \"DATA_WRITE\", \"exempted_members\": [ \"user:aliya@example.com\" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging.",
+        "$ref": "",
+        "properties": {
+          "auditLogConfigs": {
+            "type": "array",
+            "format": "",
+            "description": "The configuration for logging of each type of permission.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "AuditLogConfig",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "service": {
+            "type": "string",
+            "format": "",
+            "description": "Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "AuditLogConfig": {
+        "type": "object",
+        "format": "",
+        "description": "Provides the configuration for logging a type of permissions. Example: { \"audit_log_configs\": [ { \"log_type\": \"DATA_READ\", \"exempted_members\": [ \"user:jose@example.com\" ] }, { \"log_type\": \"DATA_WRITE\" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.",
+        "$ref": "",
+        "properties": {
+          "exemptedMembers": {
+            "type": "array",
+            "format": "",
+            "description": "Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "logType": {
+            "type": "string",
+            "format": "",
+            "description": "The log type that this config enables.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "LOG_TYPE_UNSPECIFIED",
+              "ADMIN_READ",
+              "DATA_WRITE",
+              "DATA_READ"
+            ],
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Autoscale": {
+        "type": "object",
+        "format": "",
+        "description": "Auto scaling settings.",
+        "$ref": "",
+        "properties": {
+          "currentSlots": {
+            "type": "string",
+            "format": "int64",
+            "description": "Output only. The slot capacity added to this reservation when autoscale happens. Will be between [0, max_slots]. Note: after users reduce max_slots, it may take a while before it can be propagated, so current_slots may stay in the original value and could be larger than max_slots for that brief period (less than one minute)",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "maxSlots": {
+            "type": "string",
+            "format": "int64",
+            "description": "Optional. Number of slots to be scaled when needed.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "BiReservation": {
+        "type": "object",
+        "format": "",
+        "description": "Represents a BI Reservation.",
+        "$ref": "",
+        "properties": {
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "Identifier. The resource name of the singleton BI reservation. Reservation names have the form `projects/{project_id}/locations/{location_id}/biReservation`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "preferredTables": {
+            "type": "array",
+            "format": "",
+            "description": "Optional. Preferred tables to use BI capacity for.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "TableReference",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "size": {
+            "type": "string",
+            "format": "int64",
+            "description": "Optional. Size of a reservation, in bytes.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "updateTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. The last update timestamp of a reservation.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Binding": {
+        "type": "object",
+        "format": "",
+        "description": "Associates `members`, or principals, with a `role`.",
+        "$ref": "",
+        "properties": {
+          "condition": {
+            "type": "",
+            "format": "",
+            "description": "The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).",
+            "$ref": "Expr",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "members": {
+            "type": "array",
+            "format": "",
+            "description": "Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "role": {
+            "type": "string",
+            "format": "",
+            "description": "Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "CapacityCommitment": {
+        "type": "object",
+        "format": "",
+        "description": "Capacity commitment is a way to purchase compute capacity for BigQuery jobs (in the form of slots) with some committed period of usage. Annual commitments renew by default. Commitments can be removed after their commitment end time passes. In order to remove annual commitment, its plan needs to be changed to monthly or flex first. A capacity commitment resource exists as a child resource of the admin project.",
+        "$ref": "",
+        "properties": {
+          "commitmentEndTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. The end of the current commitment period. It is applicable only for ACTIVE capacity commitments. Note after renewal, commitment_end_time is the time the renewed commitment expires. So itwould be at a time after commitment_start_time + committed period, because we don't change commitment_start_time ,",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "commitmentStartTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. The start of the current commitment period. It is applicable only for ACTIVE capacity commitments. Note after the commitment is renewed, commitment_start_time won't be changed. It refers to the start time of the original commitment.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "edition": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Edition of the capacity commitment.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "EDITION_UNSPECIFIED",
+              "STANDARD",
+              "ENTERPRISE",
+              "ENTERPRISE_PLUS"
+            ],
+            "readOnly": false
+          },
+          "failureStatus": {
+            "type": "",
+            "format": "",
+            "description": "Output only. For FAILED commitment plan, provides the reason of failure.",
+            "$ref": "Status",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "isFlatRate": {
+            "type": "boolean",
+            "format": "",
+            "description": "Output only. If true, the commitment is a flat-rate commitment, otherwise, it's an edition commitment.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "multiRegionAuxiliary": {
+            "type": "boolean",
+            "format": "",
+            "description": "Applicable only for commitments located within one of the BigQuery multi-regions (US or EU). If set to true, this commitment is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this commitment is placed in the organization's default region. NOTE: this is a preview feature. Project must be allow-listed in order to set this field.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The resource name of the capacity commitment, e.g., `projects/myproject/locations/US/capacityCommitments/123` The commitment_id must only contain lower case alphanumeric characters or dashes. It must start with a letter and must not end with a dash. Its maximum length is 64 characters.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "plan": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Capacity commitment commitment plan.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "COMMITMENT_PLAN_UNSPECIFIED",
+              "FLEX",
+              "FLEX_FLAT_RATE",
+              "TRIAL",
+              "MONTHLY",
+              "MONTHLY_FLAT_RATE",
+              "ANNUAL",
+              "ANNUAL_FLAT_RATE",
+              "THREE_YEAR",
+              "NONE"
+            ],
+            "readOnly": false
+          },
+          "renewalPlan": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The plan this capacity commitment is converted to after commitment_end_time passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable for ANNUAL and TRIAL commitments.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "COMMITMENT_PLAN_UNSPECIFIED",
+              "FLEX",
+              "FLEX_FLAT_RATE",
+              "TRIAL",
+              "MONTHLY",
+              "MONTHLY_FLAT_RATE",
+              "ANNUAL",
+              "ANNUAL_FLAT_RATE",
+              "THREE_YEAR",
+              "NONE"
+            ],
+            "readOnly": false
+          },
+          "slotCount": {
+            "type": "string",
+            "format": "int64",
+            "description": "Optional. Number of slots in this commitment.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "state": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. State of the commitment.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "STATE_UNSPECIFIED",
+              "PENDING",
+              "ACTIVE",
+              "FAILED"
+            ],
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Empty": {
+        "type": "object",
+        "format": "",
+        "description": "A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }",
+        "$ref": "",
+        "properties": {},
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Expr": {
+        "type": "object",
+        "format": "",
+        "description": "Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: \"Summary size limit\" description: \"Determines if a summary is less than 100 chars\" expression: \"document.summary.size() \u003c 100\" Example (Equality): title: \"Requestor is owner\" description: \"Determines if requestor is the document owner\" expression: \"document.owner == request.auth.claims.email\" Example (Logic): title: \"Public documents\" description: \"Determine whether the document should be publicly visible\" expression: \"document.type != 'private' \u0026\u0026 document.type != 'internal'\" Example (Data Manipulation): title: \"Notification string\" description: \"Create a notification string with a timestamp.\" expression: \"'New message received at ' + string(document.create_time)\" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.",
+        "$ref": "",
+        "properties": {
+          "description": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "expression": {
+            "type": "string",
+            "format": "",
+            "description": "Textual representation of an expression in Common Expression Language syntax.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "location": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "title": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "FailoverReservationRequest": {
+        "type": "object",
+        "format": "",
+        "description": "The request for ReservationService.FailoverReservation.",
+        "$ref": "",
+        "properties": {
+          "failoverMode": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. A parameter that determines how writes that are pending replication are handled after a failover is initiated. If not specified, HARD failover mode is used by default.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "FAILOVER_MODE_UNSPECIFIED",
+              "SOFT",
+              "HARD"
+            ],
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ListAssignmentsResponse": {
+        "type": "object",
+        "format": "",
+        "description": "The response for ReservationService.ListAssignments.",
+        "$ref": "",
+        "properties": {
+          "assignments": {
+            "type": "array",
+            "format": "",
+            "description": "List of assignments visible to the user.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Assignment",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "Token to retrieve the next page of results, or empty if there are no more results in the list.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ListCapacityCommitmentsResponse": {
+        "type": "object",
+        "format": "",
+        "description": "The response for ReservationService.ListCapacityCommitments.",
+        "$ref": "",
+        "properties": {
+          "capacityCommitments": {
+            "type": "array",
+            "format": "",
+            "description": "List of capacity commitments visible to the user.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "CapacityCommitment",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "Token to retrieve the next page of results, or empty if there are no more results in the list.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ListReservationGroupsResponse": {
+        "type": "object",
+        "format": "",
+        "description": "The response for ReservationService.ListReservationGroups.",
+        "$ref": "",
+        "properties": {
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "Token to retrieve the next page of results, or empty if there are no more results in the list.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "reservationGroups": {
+            "type": "array",
+            "format": "",
+            "description": "List of reservations visible to the user.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "ReservationGroup",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ListReservationsResponse": {
+        "type": "object",
+        "format": "",
+        "description": "The response for ReservationService.ListReservations.",
+        "$ref": "",
+        "properties": {
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "Token to retrieve the next page of results, or empty if there are no more results in the list.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "reservations": {
+            "type": "array",
+            "format": "",
+            "description": "List of reservations visible to the user.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Reservation",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "MergeCapacityCommitmentsRequest": {
+        "type": "object",
+        "format": "",
+        "description": "The request for ReservationService.MergeCapacityCommitments.",
+        "$ref": "",
+        "properties": {
+          "capacityCommitmentId": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The optional resulting capacity commitment ID. Capacity commitment name will be generated automatically if this field is empty. This field must only contain lower case alphanumeric characters or dashes. The first and last character cannot be a dash. Max length is 64 characters.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "capacityCommitmentIds": {
+            "type": "array",
+            "format": "",
+            "description": "Ids of capacity commitments to merge. These capacity commitments must exist under admin project and location specified in the parent. ID is the last portion of capacity commitment name e.g., 'abc' for projects/myproject/locations/US/capacityCommitments/abc",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "MoveAssignmentRequest": {
+        "type": "object",
+        "format": "",
+        "description": "The request for ReservationService.MoveAssignment. **Note**: \"bigquery.reservationAssignments.create\" permission is required on the destination_id. **Note**: \"bigquery.reservationAssignments.create\" and \"bigquery.reservationAssignments.delete\" permission are required on the related assignee.",
+        "$ref": "",
+        "properties": {
+          "assignmentId": {
+            "type": "string",
+            "format": "",
+            "description": "The optional assignment ID. A new assignment name is generated if this field is empty. This field can contain only lowercase alphanumeric characters or dashes. Max length is 64 characters.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "destinationId": {
+            "type": "string",
+            "format": "",
+            "description": "The new reservation ID, e.g.: `projects/myotherproject/locations/US/reservations/team2-prod`",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Policy": {
+        "type": "object",
+        "format": "",
+        "description": "An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { \"bindings\": [ { \"role\": \"roles/resourcemanager.organizationAdmin\", \"members\": [ \"user:mike@example.com\", \"group:admins@example.com\", \"domain:google.com\", \"serviceAccount:my-project-id@appspot.gserviceaccount.com\" ] }, { \"role\": \"roles/resourcemanager.organizationViewer\", \"members\": [ \"user:eve@example.com\" ], \"condition\": { \"title\": \"expirable access\", \"description\": \"Does not grant access after Sep 2020\", \"expression\": \"request.time \u003c timestamp('2020-10-01T00:00:00.000Z')\", } } ], \"etag\": \"BwWWja0YfJA=\", \"version\": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time \u003c timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/).",
+        "$ref": "",
+        "properties": {
+          "auditConfigs": {
+            "type": "array",
+            "format": "",
+            "description": "Specifies cloud audit logging configuration for this policy.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "AuditConfig",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "bindings": {
+            "type": "array",
+            "format": "",
+            "description": "Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Binding",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "etag": {
+            "type": "string",
+            "format": "byte",
+            "description": "`etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "version": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ReplicationStatus": {
+        "type": "object",
+        "format": "",
+        "description": "Disaster Recovery(DR) replication status of the reservation.",
+        "$ref": "",
+        "properties": {
+          "error": {
+            "type": "",
+            "format": "",
+            "description": "Output only. The last error encountered while trying to replicate changes from the primary to the secondary. This field is only available if the replication has not succeeded since.",
+            "$ref": "Status",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "lastErrorTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. The time at which the last error was encountered while trying to replicate changes from the primary to the secondary. This field is only available if the replication has not succeeded since.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "lastReplicationTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. A timestamp corresponding to the last change on the primary that was successfully replicated to the secondary.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "softFailoverStartTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. The time at which a soft failover for the reservation and its associated datasets was initiated. After this field is set, all subsequent changes to the reservation will be rejected unless a hard failover overrides this operation. This field will be cleared once the failover is complete.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Reservation": {
+        "type": "object",
+        "format": "",
+        "description": "A reservation is a mechanism used to guarantee slots to users.",
+        "$ref": "",
+        "properties": {
+          "autoscale": {
+            "type": "",
+            "format": "",
+            "description": "Optional. The configuration parameters for the auto scaling feature.",
+            "$ref": "Autoscale",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "concurrency": {
+            "type": "string",
+            "format": "int64",
+            "description": "Optional. Job concurrency target which sets a soft upper bound on the number of jobs that can run concurrently in this reservation. This is a soft target due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency target will be automatically computed by the system. NOTE: this field is exposed as target job concurrency in the Information Schema, DDL and BigQuery CLI.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "creationTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. Creation time of the reservation.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "edition": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Edition of the reservation.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "EDITION_UNSPECIFIED",
+              "STANDARD",
+              "ENTERPRISE",
+              "ENTERPRISE_PLUS"
+            ],
+            "readOnly": false
+          },
+          "ignoreIdleSlots": {
+            "type": "boolean",
+            "format": "",
+            "description": "Optional. If false, any query or pipeline job using this reservation will use idle slots from other reservations within the same admin project. If true, a query or pipeline job using this reservation will execute with the slot capacity specified in the slot_capacity field at most.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "labels": {
+            "type": "object",
+            "format": "",
+            "description": "Optional. The labels associated with this reservation. You can use these to organize and group your reservations. You can set this property when you create or update a reservation.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "maxSlots": {
+            "type": "string",
+            "format": "int64",
+            "description": "Optional. The overall max slots for the reservation, covering slot_capacity (baseline), idle slots (if ignore_idle_slots is false) and scaled slots. If present, the reservation won't use more than the specified number of slots, even if there is demand and supply (from idle slots). NOTE: capping a reservation's idle slot usage is best effort and its usage may exceed the max_slots value. However, in terms of autoscale.current_slots (which accounts for the additional added slots), it will never exceed the max_slots - baseline. This field must be set together with the scaling_mode enum value, otherwise the request will be rejected with error code `google.rpc.Code.INVALID_ARGUMENT`. If the max_slots and scaling_mode are set, the autoscale or autoscale.max_slots field must be unset. Otherwise the request will be rejected with error code `google.rpc.Code.INVALID_ARGUMENT`. However, the autoscale field may still be in the output. The autopscale.max_slots will always show as 0 and the autoscaler.current_slots will represent the current slots from autoscaler excluding idle slots. For example, if the max_slots is 1000 and scaling_mode is AUTOSCALE_ONLY, then in the output, the autoscaler.max_slots will be 0 and the autoscaler.current_slots may be any value between 0 and 1000. If the max_slots is 1000, scaling_mode is ALL_SLOTS, the baseline is 100 and idle slots usage is 200, then in the output, the autoscaler.max_slots will be 0 and the autoscaler.current_slots will not be higher than 700. If the max_slots is 1000, scaling_mode is IDLE_SLOTS_ONLY, then in the output, the autoscaler field will be null. If the max_slots and scaling_mode are set, then the ignore_idle_slots field must be aligned with the scaling_mode enum value.(See details in ScalingMode comments). Otherwise the request will be rejected with error code `google.rpc.Code.INVALID_ARGUMENT`. Please note, the max_slots is for user to manage the part of slots greater than the baseline. Therefore, we don't allow users to set max_slots smaller or equal to the baseline as it will not be meaningful. If the field is present and slot_capacity\u003e=max_slots, requests will be rejected with error code `google.rpc.Code.INVALID_ARGUMENT`. Please note that if max_slots is set to 0, we will treat it as unset. Customers can set max_slots to 0 and set scaling_mode to SCALING_MODE_UNSPECIFIED to disable the max_slots feature.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "multiRegionAuxiliary": {
+            "type": "boolean",
+            "format": "",
+            "description": "Applicable only for reservations located within one of the BigQuery multi-regions (US or EU). If set to true, this reservation is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this reservation is placed in the organization's default region. NOTE: this is a preview feature. Project must be allow-listed in order to set this field.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "Identifier. The resource name of the reservation, e.g., `projects/*/locations/*/reservations/team1-prod`. The reservation_id must only contain lower case alphanumeric characters or dashes. It must start with a letter and must not end with a dash. Its maximum length is 64 characters.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "originalPrimaryLocation": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The location where the reservation was originally created. This is set only during the failover reservation's creation. All billing charges for the failover reservation will be applied to this location.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "primaryLocation": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The current location of the reservation's primary replica. This field is only set for reservations using the managed disaster recovery feature.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "replicationStatus": {
+            "type": "",
+            "format": "",
+            "description": "Output only. The Disaster Recovery(DR) replication status of the reservation. This is only available for the primary replicas of DR/failover reservations and provides information about the both the staleness of the secondary and the last error encountered while trying to replicate changes from the primary to the secondary. If this field is blank, it means that the reservation is either not a DR reservation or the reservation is a DR secondary or that any replication operations on the reservation have succeeded.",
+            "$ref": "ReplicationStatus",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "reservationGroup": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The reservation group that this reservation belongs to. You can set this property when you create or update a reservation. Reservations do not need to belong to a reservation group. Format: projects/{project}/locations/{location}/reservationGroups/{reservation_group} or just {reservation_group}",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "reservationGroupPath": {
+            "type": "array",
+            "format": "",
+            "description": "Output only. The reservation group path of the reservation from root to leaf. The order of elements matters: the first element is the top level group and the last element is the direct parent reservation group. For example, if a reservation is under group-1 -\u003e group-2 -\u003e group-3, then the reservation group path is [\"group-1\", \"group-2\", \"group-3\"].",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "scalingMode": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The scaling mode for the reservation. If the field is present but max_slots is not present, requests will be rejected with error code `google.rpc.Code.INVALID_ARGUMENT`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "SCALING_MODE_UNSPECIFIED",
+              "AUTOSCALE_ONLY",
+              "IDLE_SLOTS_ONLY",
+              "ALL_SLOTS"
+            ],
+            "readOnly": false
+          },
+          "schedulingPolicy": {
+            "type": "",
+            "format": "",
+            "description": "Optional. The scheduling policy to use for jobs and queries running under this reservation. The scheduling policy controls how the reservation's resources are distributed. This feature is not yet generally available.",
+            "$ref": "SchedulingPolicy",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "secondaryLocation": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The current location of the reservation's secondary replica. This field is only set for reservations using the managed disaster recovery feature. Users can set this in create reservation calls to create a failover reservation or in update reservation calls to convert a non-failover reservation to a failover reservation(or vice versa).",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "slotCapacity": {
+            "type": "string",
+            "format": "int64",
+            "description": "Optional. Baseline slots available to this reservation. A slot is a unit of computational power in BigQuery, and serves as the unit of parallelism. Queries using this reservation might use more slots during runtime if ignore_idle_slots is set to false, or autoscaling is enabled. The total slot_capacity of the reservation and its siblings may exceed the total slot_count of capacity commitments. In that case, the exceeding slots will be charged with the autoscale SKU. You can increase the number of baseline slots in a reservation every few minutes. If you want to decrease your baseline slots, you are limited to once an hour if you have recently changed your baseline slot capacity and your baseline slots exceed your committed slots. Otherwise, you can decrease your baseline slots every few minutes.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "updateTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. Last update time of the reservation.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ReservationGroup": {
+        "type": "object",
+        "format": "",
+        "description": "A reservation group is a container for reservations.",
+        "$ref": "",
+        "properties": {
+          "creationTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. Creation time of the reservation group.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "Identifier. The resource name of the reservation group, e.g., `projects/*/locations/*/reservationGroups/team1-prod`. The reservation_group_id must only contain lower case alphanumeric characters or dashes. It must start with a letter and must not end with a dash. Its maximum length is 64 characters.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "parentGroup": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The parent reservation group of the reservation group. Format: `projects/*/locations/*/reservationGroups/team1-prod` for non-root reservation groups, or `projects/*/locations/*` for root reservation groups.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "updateTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. Last update time of the reservation group via a user operation. This timestamp is updated only when an update operation explicitly targets this reservation group directly. It is not updated when parent or child groups are created, updated, or deleted.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "SchedulingPolicy": {
+        "type": "object",
+        "format": "",
+        "description": "The scheduling policy controls how a reservation's resources are distributed.",
+        "$ref": "",
+        "properties": {
+          "concurrency": {
+            "type": "string",
+            "format": "int64",
+            "description": "Optional. If present and \u003e 0, the reservation will attempt to limit the concurrency of jobs running for any particular project within it to the given value. This feature is not yet generally available.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "maxSlots": {
+            "type": "string",
+            "format": "int64",
+            "description": "Optional. If present and \u003e 0, the reservation will attempt to limit the slot consumption of queries running for any particular project within it to the given value. This feature is not yet generally available.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "SearchAllAssignmentsResponse": {
+        "type": "object",
+        "format": "",
+        "description": "The response for ReservationService.SearchAllAssignments.",
+        "$ref": "",
+        "properties": {
+          "assignments": {
+            "type": "array",
+            "format": "",
+            "description": "List of assignments visible to the user.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Assignment",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "Token to retrieve the next page of results, or empty if there are no more results in the list.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "SearchAssignmentsResponse": {
+        "type": "object",
+        "format": "",
+        "description": "The response for ReservationService.SearchAssignments.",
+        "$ref": "",
+        "properties": {
+          "assignments": {
+            "type": "array",
+            "format": "",
+            "description": "List of assignments visible to the user.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Assignment",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "Token to retrieve the next page of results, or empty if there are no more results in the list.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "SetIamPolicyRequest": {
+        "type": "object",
+        "format": "",
+        "description": "Request message for `SetIamPolicy` method.",
+        "$ref": "",
+        "properties": {
+          "policy": {
+            "type": "",
+            "format": "",
+            "description": "REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them.",
+            "$ref": "Policy",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "updateMask": {
+            "type": "string",
+            "format": "google-fieldmask",
+            "description": "OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used: `paths: \"bindings, etag\"`",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "SplitCapacityCommitmentRequest": {
+        "type": "object",
+        "format": "",
+        "description": "The request for ReservationService.SplitCapacityCommitment.",
+        "$ref": "",
+        "properties": {
+          "slotCount": {
+            "type": "string",
+            "format": "int64",
+            "description": "Number of slots in the capacity commitment after the split.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "SplitCapacityCommitmentResponse": {
+        "type": "object",
+        "format": "",
+        "description": "The response for ReservationService.SplitCapacityCommitment.",
+        "$ref": "",
+        "properties": {
+          "first": {
+            "type": "",
+            "format": "",
+            "description": "First capacity commitment, result of a split.",
+            "$ref": "CapacityCommitment",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "second": {
+            "type": "",
+            "format": "",
+            "description": "Second capacity commitment, result of a split.",
+            "$ref": "CapacityCommitment",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Status": {
+        "type": "object",
+        "format": "",
+        "description": "The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).",
+        "$ref": "",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32",
+            "description": "The status code, which should be an enum value of google.rpc.Code.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "details": {
+            "type": "array",
+            "format": "",
+            "description": "A list of messages that carry the error details. There is a common set of message types for APIs to use.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "object",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": {
+                "type": "any",
+                "format": "",
+                "description": "Properties of the object. Contains field @type with type URL.",
+                "$ref": "",
+                "properties": null,
+                "items": null,
+                "additionalProperties": null,
+                "enum": null,
+                "readOnly": false
+              },
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "message": {
+            "type": "string",
+            "format": "",
+            "description": "A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "TableReference": {
+        "type": "object",
+        "format": "",
+        "description": "Fully qualified reference to BigQuery table. Internally stored as google.cloud.bi.v1.BqTableReference.",
+        "$ref": "",
+        "properties": {
+          "datasetId": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The ID of the dataset in the above project.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "projectId": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The assigned project ID of the project.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "tableId": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The ID of the table in the above dataset.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "TestIamPermissionsRequest": {
+        "type": "object",
+        "format": "",
+        "description": "Request message for `TestIamPermissions` method.",
+        "$ref": "",
+        "properties": {
+          "permissions": {
+            "type": "array",
+            "format": "",
+            "description": "The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "TestIamPermissionsResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Response message for `TestIamPermissions` method.",
+        "$ref": "",
+        "properties": {
+          "permissions": {
+            "type": "array",
+            "format": "",
+            "description": "A subset of `TestPermissionsRequest.permissions` that the caller is allowed.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      }
+    },
+    "resources": {
+      "projects": {
+        "methods": null,
+        "resources": {
+          "locations": {
+            "methods": {
+              "getBiReservation": {
+                "id": "bigqueryreservation.projects.locations.getBiReservation",
+                "httpMethod": "GET",
+                "path": "v1/{+name}",
+                "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/biReservation",
+                "description": "Retrieves a BI reservation.",
+                "parameters": {
+                  "name": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  }
+                },
+                "parameterOrder": [
+                  "name"
+                ],
+                "request": null,
+                "response": {
+                  "$ref": "BiReservation"
+                }
+              },
+              "searchAllAssignments": {
+                "id": "bigqueryreservation.projects.locations.searchAllAssignments",
+                "httpMethod": "GET",
+                "path": "v1/{+parent}:searchAllAssignments",
+                "flatPath": "v1/projects/{projectsId}/locations/{locationsId}:searchAllAssignments",
+                "description": "Looks up assignments for a specified resource for a particular region. If the request is about a project: 1. Assignments created on the project will be returned if they exist. 2. Otherwise assignments created on the closest ancestor will be returned. 3. Assignments for different JobTypes will all be returned. The same logic applies if the request is about a folder. If the request is about an organization, then assignments created on the organization will be returned (organization doesn't have ancestors). Comparing to ListAssignments, there are some behavior differences: 1. permission on the assignee will be verified in this API. 2. Hierarchy lookup (project-\u003efolder-\u003eorganization) happens in this API. 3. Parent here is `projects/*/locations/*`, instead of `projects/*/locations/*reservations/*`.",
+                "parameters": {
+                  "pageSize": {
+                    "type": "integer",
+                    "location": "query",
+                    "required": false
+                  },
+                  "pageToken": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false
+                  },
+                  "parent": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  },
+                  "query": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false
+                  }
+                },
+                "parameterOrder": [
+                  "parent"
+                ],
+                "request": null,
+                "response": {
+                  "$ref": "SearchAllAssignmentsResponse"
+                }
+              },
+              "searchAssignments": {
+                "id": "bigqueryreservation.projects.locations.searchAssignments",
+                "httpMethod": "GET",
+                "path": "v1/{+parent}:searchAssignments",
+                "flatPath": "v1/projects/{projectsId}/locations/{locationsId}:searchAssignments",
+                "description": "Deprecated: Looks up assignments for a specified resource for a particular region. If the request is about a project: 1. Assignments created on the project will be returned if they exist. 2. Otherwise assignments created on the closest ancestor will be returned. 3. Assignments for different JobTypes will all be returned. The same logic applies if the request is about a folder. If the request is about an organization, then assignments created on the organization will be returned (organization doesn't have ancestors). Comparing to ListAssignments, there are some behavior differences: 1. permission on the assignee will be verified in this API. 2. Hierarchy lookup (project-\u003efolder-\u003eorganization) happens in this API. 3. Parent here is `projects/*/locations/*`, instead of `projects/*/locations/*reservations/*`. **Note** \"-\" cannot be used for projects nor locations.",
+                "parameters": {
+                  "pageSize": {
+                    "type": "integer",
+                    "location": "query",
+                    "required": false
+                  },
+                  "pageToken": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false
+                  },
+                  "parent": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  },
+                  "query": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false
+                  }
+                },
+                "parameterOrder": [
+                  "parent"
+                ],
+                "request": null,
+                "response": {
+                  "$ref": "SearchAssignmentsResponse"
+                }
+              },
+              "updateBiReservation": {
+                "id": "bigqueryreservation.projects.locations.updateBiReservation",
+                "httpMethod": "PATCH",
+                "path": "v1/{+name}",
+                "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/biReservation",
+                "description": "Updates a BI reservation. Only fields specified in the `field_mask` are updated. A singleton BI reservation always exists with default size 0. In order to reserve BI capacity it needs to be updated to an amount greater than 0. In order to release BI capacity reservation size must be set to 0.",
+                "parameters": {
+                  "name": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  },
+                  "updateMask": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false
+                  }
+                },
+                "parameterOrder": [
+                  "name"
+                ],
+                "request": {
+                  "$ref": "BiReservation"
+                },
+                "response": {
+                  "$ref": "BiReservation"
+                }
+              }
+            },
+            "resources": {
+              "capacityCommitments": {
+                "methods": {
+                  "create": {
+                    "id": "bigqueryreservation.projects.locations.capacityCommitments.create",
+                    "httpMethod": "POST",
+                    "path": "v1/{+parent}/capacityCommitments",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/capacityCommitments",
+                    "description": "Creates a new capacity commitment resource.",
+                    "parameters": {
+                      "capacityCommitmentId": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "enforceSingleAdminProjectPerOrg": {
+                        "type": "boolean",
+                        "location": "query",
+                        "required": false
+                      },
+                      "parent": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "parent"
+                    ],
+                    "request": {
+                      "$ref": "CapacityCommitment"
+                    },
+                    "response": {
+                      "$ref": "CapacityCommitment"
+                    }
+                  },
+                  "delete": {
+                    "id": "bigqueryreservation.projects.locations.capacityCommitments.delete",
+                    "httpMethod": "DELETE",
+                    "path": "v1/{+name}",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/capacityCommitments/{capacityCommitmentsId}",
+                    "description": "Deletes a capacity commitment. Attempting to delete capacity commitment before its commitment_end_time will fail with the error code `google.rpc.Code.FAILED_PRECONDITION`.",
+                    "parameters": {
+                      "force": {
+                        "type": "boolean",
+                        "location": "query",
+                        "required": false
+                      },
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "Empty"
+                    }
+                  },
+                  "get": {
+                    "id": "bigqueryreservation.projects.locations.capacityCommitments.get",
+                    "httpMethod": "GET",
+                    "path": "v1/{+name}",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/capacityCommitments/{capacityCommitmentsId}",
+                    "description": "Returns information about the capacity commitment.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "CapacityCommitment"
+                    }
+                  },
+                  "list": {
+                    "id": "bigqueryreservation.projects.locations.capacityCommitments.list",
+                    "httpMethod": "GET",
+                    "path": "v1/{+parent}/capacityCommitments",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/capacityCommitments",
+                    "description": "Lists all the capacity commitments for the admin project.",
+                    "parameters": {
+                      "pageSize": {
+                        "type": "integer",
+                        "location": "query",
+                        "required": false
+                      },
+                      "pageToken": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "parent": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "parent"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "ListCapacityCommitmentsResponse"
+                    }
+                  },
+                  "merge": {
+                    "id": "bigqueryreservation.projects.locations.capacityCommitments.merge",
+                    "httpMethod": "POST",
+                    "path": "v1/{+parent}/capacityCommitments:merge",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/capacityCommitments:merge",
+                    "description": "Merges capacity commitments of the same plan into a single commitment. The resulting capacity commitment has the greater commitment_end_time out of the to-be-merged capacity commitments. Attempting to merge capacity commitments of different plan will fail with the error code `google.rpc.Code.FAILED_PRECONDITION`.",
+                    "parameters": {
+                      "parent": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "parent"
+                    ],
+                    "request": {
+                      "$ref": "MergeCapacityCommitmentsRequest"
+                    },
+                    "response": {
+                      "$ref": "CapacityCommitment"
+                    }
+                  },
+                  "patch": {
+                    "id": "bigqueryreservation.projects.locations.capacityCommitments.patch",
+                    "httpMethod": "PATCH",
+                    "path": "v1/{+name}",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/capacityCommitments/{capacityCommitmentsId}",
+                    "description": "Updates an existing capacity commitment. Only `plan` and `renewal_plan` fields can be updated. Plan can only be changed to a plan of a longer commitment period. Attempting to change to a plan with shorter commitment period will fail with the error code `google.rpc.Code.FAILED_PRECONDITION`.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      },
+                      "updateMask": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": {
+                      "$ref": "CapacityCommitment"
+                    },
+                    "response": {
+                      "$ref": "CapacityCommitment"
+                    }
+                  },
+                  "split": {
+                    "id": "bigqueryreservation.projects.locations.capacityCommitments.split",
+                    "httpMethod": "POST",
+                    "path": "v1/{+name}:split",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/capacityCommitments/{capacityCommitmentsId}:split",
+                    "description": "Splits capacity commitment to two commitments of the same plan and `commitment_end_time`. A common use case is to enable downgrading commitments. For example, in order to downgrade from 10000 slots to 8000, you might split a 10000 capacity commitment into commitments of 2000 and 8000. Then, you delete the first one after the commitment end time passes.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": {
+                      "$ref": "SplitCapacityCommitmentRequest"
+                    },
+                    "response": {
+                      "$ref": "SplitCapacityCommitmentResponse"
+                    }
+                  }
+                },
+                "resources": null
+              },
+              "reservationGroups": {
+                "methods": {
+                  "create": {
+                    "id": "bigqueryreservation.projects.locations.reservationGroups.create",
+                    "httpMethod": "POST",
+                    "path": "v1/{+parent}/reservationGroups",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/reservationGroups",
+                    "description": "Creates a new reservation group.",
+                    "parameters": {
+                      "parent": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      },
+                      "reservationGroupId": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      }
+                    },
+                    "parameterOrder": [
+                      "parent"
+                    ],
+                    "request": {
+                      "$ref": "ReservationGroup"
+                    },
+                    "response": {
+                      "$ref": "ReservationGroup"
+                    }
+                  },
+                  "delete": {
+                    "id": "bigqueryreservation.projects.locations.reservationGroups.delete",
+                    "httpMethod": "DELETE",
+                    "path": "v1/{+name}",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/reservationGroups/{reservationGroupsId}",
+                    "description": "Deletes a reservation. Returns `google.rpc.Code.FAILED_PRECONDITION` when reservation has assignments.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "Empty"
+                    }
+                  },
+                  "get": {
+                    "id": "bigqueryreservation.projects.locations.reservationGroups.get",
+                    "httpMethod": "GET",
+                    "path": "v1/{+name}",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/reservationGroups/{reservationGroupsId}",
+                    "description": "Returns information about the reservation group.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "ReservationGroup"
+                    }
+                  },
+                  "list": {
+                    "id": "bigqueryreservation.projects.locations.reservationGroups.list",
+                    "httpMethod": "GET",
+                    "path": "v1/{+parent}/reservationGroups",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/reservationGroups",
+                    "description": "Lists all the reservation groups for the project in the specified location.",
+                    "parameters": {
+                      "pageSize": {
+                        "type": "integer",
+                        "location": "query",
+                        "required": false
+                      },
+                      "pageToken": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "parent": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "parent"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "ListReservationGroupsResponse"
+                    }
+                  },
+                  "patch": {
+                    "id": "bigqueryreservation.projects.locations.reservationGroups.patch",
+                    "httpMethod": "PATCH",
+                    "path": "v1/{+name}",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/reservationGroups/{reservationGroupsId}",
+                    "description": "Updates an existing reservation group resource.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      },
+                      "updateMask": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": {
+                      "$ref": "ReservationGroup"
+                    },
+                    "response": {
+                      "$ref": "ReservationGroup"
+                    }
+                  }
+                },
+                "resources": null
+              },
+              "reservations": {
+                "methods": {
+                  "create": {
+                    "id": "bigqueryreservation.projects.locations.reservations.create",
+                    "httpMethod": "POST",
+                    "path": "v1/{+parent}/reservations",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/reservations",
+                    "description": "Creates a new reservation resource.",
+                    "parameters": {
+                      "parent": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      },
+                      "reservationId": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      }
+                    },
+                    "parameterOrder": [
+                      "parent"
+                    ],
+                    "request": {
+                      "$ref": "Reservation"
+                    },
+                    "response": {
+                      "$ref": "Reservation"
+                    }
+                  },
+                  "delete": {
+                    "id": "bigqueryreservation.projects.locations.reservations.delete",
+                    "httpMethod": "DELETE",
+                    "path": "v1/{+name}",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/reservations/{reservationsId}",
+                    "description": "Deletes a reservation. Returns `google.rpc.Code.FAILED_PRECONDITION` when reservation has assignments.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "Empty"
+                    }
+                  },
+                  "failoverReservation": {
+                    "id": "bigqueryreservation.projects.locations.reservations.failoverReservation",
+                    "httpMethod": "POST",
+                    "path": "v1/{+name}:failoverReservation",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/reservations/{reservationsId}:failoverReservation",
+                    "description": "Fail over a reservation to the secondary location. The operation should be done in the current secondary location, which will be promoted to the new primary location for the reservation. Attempting to failover a reservation in the current primary location will fail with the error code `google.rpc.Code.FAILED_PRECONDITION`.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": {
+                      "$ref": "FailoverReservationRequest"
+                    },
+                    "response": {
+                      "$ref": "Reservation"
+                    }
+                  },
+                  "get": {
+                    "id": "bigqueryreservation.projects.locations.reservations.get",
+                    "httpMethod": "GET",
+                    "path": "v1/{+name}",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/reservations/{reservationsId}",
+                    "description": "Returns information about the reservation.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "Reservation"
+                    }
+                  },
+                  "getIamPolicy": {
+                    "id": "bigqueryreservation.projects.locations.reservations.getIamPolicy",
+                    "httpMethod": "GET",
+                    "path": "v1/{+resource}:getIamPolicy",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/reservations/{reservationsId}:getIamPolicy",
+                    "description": "Gets the access control policy for a resource. May return: * A`NOT_FOUND` error if the resource doesn't exist or you don't have the permission to view it. * An empty policy if the resource exists but doesn't have a set policy. Supported resources are: - Reservations - ReservationAssignments To call this method, you must have the following Google IAM permissions: - `bigqueryreservation.reservations.getIamPolicy` to get policies on reservations.",
+                    "parameters": {
+                      "options.requestedPolicyVersion": {
+                        "type": "integer",
+                        "location": "query",
+                        "required": false
+                      },
+                      "resource": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "resource"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "Policy"
+                    }
+                  },
+                  "list": {
+                    "id": "bigqueryreservation.projects.locations.reservations.list",
+                    "httpMethod": "GET",
+                    "path": "v1/{+parent}/reservations",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/reservations",
+                    "description": "Lists all the reservations for the project in the specified location.",
+                    "parameters": {
+                      "pageSize": {
+                        "type": "integer",
+                        "location": "query",
+                        "required": false
+                      },
+                      "pageToken": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "parent": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "parent"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "ListReservationsResponse"
+                    }
+                  },
+                  "patch": {
+                    "id": "bigqueryreservation.projects.locations.reservations.patch",
+                    "httpMethod": "PATCH",
+                    "path": "v1/{+name}",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/reservations/{reservationsId}",
+                    "description": "Updates an existing reservation resource.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      },
+                      "updateMask": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": {
+                      "$ref": "Reservation"
+                    },
+                    "response": {
+                      "$ref": "Reservation"
+                    }
+                  },
+                  "setIamPolicy": {
+                    "id": "bigqueryreservation.projects.locations.reservations.setIamPolicy",
+                    "httpMethod": "POST",
+                    "path": "v1/{+resource}:setIamPolicy",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/reservations/{reservationsId}:setIamPolicy",
+                    "description": "Sets an access control policy for a resource. Replaces any existing policy. Supported resources are: - Reservations To call this method, you must have the following Google IAM permissions: - `bigqueryreservation.reservations.setIamPolicy` to set policies on reservations.",
+                    "parameters": {
+                      "resource": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "resource"
+                    ],
+                    "request": {
+                      "$ref": "SetIamPolicyRequest"
+                    },
+                    "response": {
+                      "$ref": "Policy"
+                    }
+                  },
+                  "testIamPermissions": {
+                    "id": "bigqueryreservation.projects.locations.reservations.testIamPermissions",
+                    "httpMethod": "POST",
+                    "path": "v1/{+resource}:testIamPermissions",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/reservations/{reservationsId}:testIamPermissions",
+                    "description": "Gets your permissions on a resource. Returns an empty set of permissions if the resource doesn't exist. Supported resources are: - Reservations No Google IAM permissions are required to call this method.",
+                    "parameters": {
+                      "resource": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "resource"
+                    ],
+                    "request": {
+                      "$ref": "TestIamPermissionsRequest"
+                    },
+                    "response": {
+                      "$ref": "TestIamPermissionsResponse"
+                    }
+                  }
+                },
+                "resources": {
+                  "assignments": {
+                    "methods": {
+                      "create": {
+                        "id": "bigqueryreservation.projects.locations.reservations.assignments.create",
+                        "httpMethod": "POST",
+                        "path": "v1/{+parent}/assignments",
+                        "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/reservations/{reservationsId}/assignments",
+                        "description": "Creates an assignment object which allows the given project to submit jobs of a certain type using slots from the specified reservation. Currently a resource (project, folder, organization) can only have one assignment per each (job_type, location) combination, and that reservation will be used for all jobs of the matching type. Different assignments can be created on different levels of the projects, folders or organization hierarchy. During query execution, the assignment is looked up at the project, folder and organization levels in that order. The first assignment found is applied to the query. When creating assignments, it does not matter if other assignments exist at higher levels. Example: * The organization `organizationA` contains two projects, `project1` and `project2`. * Assignments for all three entities (`organizationA`, `project1`, and `project2`) could all be created and mapped to the same or different reservations. \"None\" assignments represent an absence of the assignment. Projects assigned to None use on-demand pricing. To create a \"None\" assignment, use \"none\" as a reservation_id in the parent. Example parent: `projects/myproject/locations/US/reservations/none`. Returns `google.rpc.Code.PERMISSION_DENIED` if user does not have 'bigquery.admin' permissions on the project using the reservation and the project that owns this reservation. Returns `google.rpc.Code.INVALID_ARGUMENT` when location of the assignment does not match location of the reservation.",
+                        "parameters": {
+                          "assignmentId": {
+                            "type": "string",
+                            "location": "query",
+                            "required": false
+                          },
+                          "parent": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          }
+                        },
+                        "parameterOrder": [
+                          "parent"
+                        ],
+                        "request": {
+                          "$ref": "Assignment"
+                        },
+                        "response": {
+                          "$ref": "Assignment"
+                        }
+                      },
+                      "delete": {
+                        "id": "bigqueryreservation.projects.locations.reservations.assignments.delete",
+                        "httpMethod": "DELETE",
+                        "path": "v1/{+name}",
+                        "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/reservations/{reservationsId}/assignments/{assignmentsId}",
+                        "description": "Deletes a assignment. No expansion will happen. Example: * Organization `organizationA` contains two projects, `project1` and `project2`. * Reservation `res1` exists and was created previously. * CreateAssignment was used previously to define the following associations between entities and reservations: `` and `` In this example, deletion of the `` assignment won't affect the other assignment ``. After said deletion, queries from `project1` will still use `res1` while queries from `project2` will switch to use on-demand mode.",
+                        "parameters": {
+                          "name": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          }
+                        },
+                        "parameterOrder": [
+                          "name"
+                        ],
+                        "request": null,
+                        "response": {
+                          "$ref": "Empty"
+                        }
+                      },
+                      "getIamPolicy": {
+                        "id": "bigqueryreservation.projects.locations.reservations.assignments.getIamPolicy",
+                        "httpMethod": "GET",
+                        "path": "v1/{+resource}:getIamPolicy",
+                        "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/reservations/{reservationsId}/assignments/{assignmentsId}:getIamPolicy",
+                        "description": "Gets the access control policy for a resource. May return: * A`NOT_FOUND` error if the resource doesn't exist or you don't have the permission to view it. * An empty policy if the resource exists but doesn't have a set policy. Supported resources are: - Reservations - ReservationAssignments To call this method, you must have the following Google IAM permissions: - `bigqueryreservation.reservations.getIamPolicy` to get policies on reservations.",
+                        "parameters": {
+                          "options.requestedPolicyVersion": {
+                            "type": "integer",
+                            "location": "query",
+                            "required": false
+                          },
+                          "resource": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          }
+                        },
+                        "parameterOrder": [
+                          "resource"
+                        ],
+                        "request": null,
+                        "response": {
+                          "$ref": "Policy"
+                        }
+                      },
+                      "list": {
+                        "id": "bigqueryreservation.projects.locations.reservations.assignments.list",
+                        "httpMethod": "GET",
+                        "path": "v1/{+parent}/assignments",
+                        "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/reservations/{reservationsId}/assignments",
+                        "description": "Lists assignments. Only explicitly created assignments will be returned. Example: * Organization `organizationA` contains two projects, `project1` and `project2`. * Reservation `res1` exists and was created previously. * CreateAssignment was used previously to define the following associations between entities and reservations: `` and `` In this example, ListAssignments will just return the above two assignments for reservation `res1`, and no expansion/merge will happen. The wildcard \"-\" can be used for reservations in the request. In that case all assignments belongs to the specified project and location will be listed. **Note** \"-\" cannot be used for projects nor locations.",
+                        "parameters": {
+                          "pageSize": {
+                            "type": "integer",
+                            "location": "query",
+                            "required": false
+                          },
+                          "pageToken": {
+                            "type": "string",
+                            "location": "query",
+                            "required": false
+                          },
+                          "parent": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          }
+                        },
+                        "parameterOrder": [
+                          "parent"
+                        ],
+                        "request": null,
+                        "response": {
+                          "$ref": "ListAssignmentsResponse"
+                        }
+                      },
+                      "move": {
+                        "id": "bigqueryreservation.projects.locations.reservations.assignments.move",
+                        "httpMethod": "POST",
+                        "path": "v1/{+name}:move",
+                        "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/reservations/{reservationsId}/assignments/{assignmentsId}:move",
+                        "description": "Moves an assignment under a new reservation. This differs from removing an existing assignment and recreating a new one by providing a transactional change that ensures an assignee always has an associated reservation.",
+                        "parameters": {
+                          "name": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          }
+                        },
+                        "parameterOrder": [
+                          "name"
+                        ],
+                        "request": {
+                          "$ref": "MoveAssignmentRequest"
+                        },
+                        "response": {
+                          "$ref": "Assignment"
+                        }
+                      },
+                      "patch": {
+                        "id": "bigqueryreservation.projects.locations.reservations.assignments.patch",
+                        "httpMethod": "PATCH",
+                        "path": "v1/{+name}",
+                        "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/reservations/{reservationsId}/assignments/{assignmentsId}",
+                        "description": "Updates an existing assignment. Only the `priority` field can be updated.",
+                        "parameters": {
+                          "name": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          },
+                          "updateMask": {
+                            "type": "string",
+                            "location": "query",
+                            "required": false
+                          }
+                        },
+                        "parameterOrder": [
+                          "name"
+                        ],
+                        "request": {
+                          "$ref": "Assignment"
+                        },
+                        "response": {
+                          "$ref": "Assignment"
+                        }
+                      },
+                      "setIamPolicy": {
+                        "id": "bigqueryreservation.projects.locations.reservations.assignments.setIamPolicy",
+                        "httpMethod": "POST",
+                        "path": "v1/{+resource}:setIamPolicy",
+                        "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/reservations/{reservationsId}/assignments/{assignmentsId}:setIamPolicy",
+                        "description": "Sets an access control policy for a resource. Replaces any existing policy. Supported resources are: - Reservations To call this method, you must have the following Google IAM permissions: - `bigqueryreservation.reservations.setIamPolicy` to set policies on reservations.",
+                        "parameters": {
+                          "resource": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          }
+                        },
+                        "parameterOrder": [
+                          "resource"
+                        ],
+                        "request": {
+                          "$ref": "SetIamPolicyRequest"
+                        },
+                        "response": {
+                          "$ref": "Policy"
+                        }
+                      },
+                      "testIamPermissions": {
+                        "id": "bigqueryreservation.projects.locations.reservations.assignments.testIamPermissions",
+                        "httpMethod": "POST",
+                        "path": "v1/{+resource}:testIamPermissions",
+                        "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/reservations/{reservationsId}/assignments/{assignmentsId}:testIamPermissions",
+                        "description": "Gets your permissions on a resource. Returns an empty set of permissions if the resource doesn't exist. Supported resources are: - Reservations No Google IAM permissions are required to call this method.",
+                        "parameters": {
+                          "resource": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          }
+                        },
+                        "parameterOrder": [
+                          "resource"
+                        ],
+                        "request": {
+                          "$ref": "TestIamPermissionsRequest"
+                        },
+                        "response": {
+                          "$ref": "TestIamPermissionsResponse"
+                        }
+                      }
+                    },
+                    "resources": null
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
