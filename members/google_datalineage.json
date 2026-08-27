@@ -1,0 +1,2799 @@
+{
+  "schema_source": "discovery_docs",
+  "mode": "resource",
+  "auth": {
+    "Type": "",
+    "Params": null
+  },
+  "base_url": "https://datalineage.googleapis.com",
+  "retry": {
+    "MaxAttempts": 0,
+    "InitialBackoff": "",
+    "MaxBackoff": "",
+    "Jitter": null,
+    "RespectRetryAfter": null,
+    "RateLimitResetHeader": ""
+  },
+  "timeouts": {
+    "Create": "",
+    "Read": "",
+    "Update": "",
+    "Delete": "",
+    "Default": ""
+  },
+  "wire_name": "google_datalineage",
+  "raw_spec": {
+    "name": "datalineage",
+    "revision": "20260808",
+    "discoveryVersion": "v1",
+    "baseUrl": "https://datalineage.googleapis.com/",
+    "rootUrl": "https://datalineage.googleapis.com/",
+    "servicePath": "",
+    "schemas": {
+      "GoogleCloudDatacatalogLineageConfigmanagementV1Config": {
+        "type": "object",
+        "format": "",
+        "description": "Configuration for Data Lineage. Defines different configuration options for Lineage customers to control behaviour of lineage systems.",
+        "$ref": "",
+        "properties": {
+          "etag": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a config from overwriting each other. It is required that systems make use of the `etag` in the read-modify-write cycle to perform config updates in order to avoid race conditions: An `etag` is returned in the response to `GetConfig`, and systems are expected to put that etag in the request to `UpdateConfig` to ensure that their change will be applied to the same version of the config. If an `etag` is not provided in the call to `UpdateConfig`, then the existing config, if any, will be overwritten.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "ingestion": {
+            "type": "",
+            "format": "",
+            "description": "Optional. Ingestion rule for Data Lineage ingestion.",
+            "$ref": "GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestion",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "Identifier. The resource name of the config. Format: `organizations/{organization_id}/locations/global/config` `folders/{folder_id}/locations/global/config` `projects/{project_id}/locations/global/config` `projects/{project_number}/locations/global/config`",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestion": {
+        "type": "object",
+        "format": "",
+        "description": "Defines how Lineage should be ingested for a given resource.",
+        "$ref": "",
+        "properties": {
+          "rules": {
+            "type": "array",
+            "format": "",
+            "description": "Optional. List of rules for Data Lineage ingestion.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRule",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRule": {
+        "type": "object",
+        "format": "",
+        "description": "Ingestion rule for Data Lineage ingestion.",
+        "$ref": "",
+        "properties": {
+          "integrationSelector": {
+            "type": "",
+            "format": "",
+            "description": "Required. Integration selector of the rule. The rule is only applied to the Integration selected by the selector.",
+            "$ref": "GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRuleIntegrationSelector",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "lineageEnablement": {
+            "type": "",
+            "format": "",
+            "description": "Required. Lineage enablement configuration. Defines configurations for the ingestion of lineage for the resource and its children. If unspecified, the ingestion will be enabled only if it was configured in the resource's parent.",
+            "$ref": "GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRuleLineageEnablement",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRuleIntegrationSelector": {
+        "type": "object",
+        "format": "",
+        "description": "Integration selector of the rule. The rule is only applied to the Integration selected by the selector.",
+        "$ref": "",
+        "properties": {
+          "integration": {
+            "type": "string",
+            "format": "",
+            "description": "Required. Integration to which the rule applies. This field can be used to specify the integration against which the ingestion rule should be applied.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "INTEGRATION_UNSPECIFIED",
+              "BIGQUERY",
+              "DATAPROC",
+              "LOOKER_CORE",
+              "MANAGED_AIRFLOW"
+            ],
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRuleLineageEnablement": {
+        "type": "object",
+        "format": "",
+        "description": "Lineage enablement configuration. Defines configurations for the ingestion of lineage for the resource and its children.",
+        "$ref": "",
+        "properties": {
+          "enabled": {
+            "type": "boolean",
+            "format": "",
+            "description": "Optional. If true, ingestion of lineage should be enabled. If false, it should be disabled. If unspecified, the system default value is used.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudDatacatalogLineageV1BatchSearchLinkProcessesRequest": {
+        "type": "object",
+        "format": "",
+        "description": "Request message for BatchSearchLinkProcesses.",
+        "$ref": "",
+        "properties": {
+          "links": {
+            "type": "array",
+            "format": "",
+            "description": "Required. An array of links to check for their associated LineageProcesses. The maximum number of items in this array is 100. If the request contains more than 100 links, it returns the `INVALID_ARGUMENT` error. Format: `projects/{project}/locations/{location}/links/{link}`.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "pageSize": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Optional. The maximum number of processes to return in a single page of the response. A page may contain fewer results than this value.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "pageToken": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The page token received from a previous `BatchSearchLinkProcesses` call. Use it to get the next page. When requesting subsequent pages of a response, remember that all parameters must match the values you provided in the original request.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudDatacatalogLineageV1BatchSearchLinkProcessesResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Response message for BatchSearchLinkProcesses.",
+        "$ref": "",
+        "properties": {
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "The token to specify as `page_token` in the subsequent call to get the next page. Omitted if there are no more pages in the response.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "processLinks": {
+            "type": "array",
+            "format": "",
+            "description": "An array of processes associated with the specified links.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "GoogleCloudDatacatalogLineageV1ProcessLinks",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudDatacatalogLineageV1DependencyInfo": {
+        "type": "object",
+        "format": "",
+        "description": "Dependency info describes how one entity depends on another.",
+        "$ref": "",
+        "properties": {
+          "dependencyType": {
+            "type": "string",
+            "format": "",
+            "description": "Required. Type of dependency.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "DEPENDENCY_TYPE_UNSPECIFIED",
+              "EXACT_COPY",
+              "OTHER"
+            ],
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudDatacatalogLineageV1EntityReference": {
+        "type": "object",
+        "format": "",
+        "description": "The soft reference to everything you can attach a lineage event to.",
+        "$ref": "",
+        "properties": {
+          "field": {
+            "type": "array",
+            "format": "",
+            "description": "Optional. Field path within the entity. Each nesting level should be a separate value in the repeated field. The order matters. Must be empty for asset level lineage For example to address \"salary.net\" subfield where \"salary\" is a column and \"net\" is a proto field two values in the `field` should be reported, the first is \"salary\" and the second is \"net\". Each field length is limited to 500 characters. Maximum supported nesting level is 20.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "fullyQualifiedName": {
+            "type": "string",
+            "format": "",
+            "description": "Required. [Fully Qualified Name (FQN)](https://cloud.google.com/dataplex/docs/fully-qualified-names) of the entity.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudDatacatalogLineageV1EventLink": {
+        "type": "object",
+        "format": "",
+        "description": "A lineage between source and target entities.",
+        "$ref": "",
+        "properties": {
+          "dependencyInfo": {
+            "type": "",
+            "format": "",
+            "description": "Optional. Describes how the target depends on the source.",
+            "$ref": "GoogleCloudDatacatalogLineageV1DependencyInfo",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "source": {
+            "type": "",
+            "format": "",
+            "description": "Required. Reference to the source entity",
+            "$ref": "GoogleCloudDatacatalogLineageV1EntityReference",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "target": {
+            "type": "",
+            "format": "",
+            "description": "Required. Reference to the target entity",
+            "$ref": "GoogleCloudDatacatalogLineageV1EntityReference",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudDatacatalogLineageV1LineageEvent": {
+        "type": "object",
+        "format": "",
+        "description": "A lineage event represents an operation on assets. Within the operation, the data flows from the source to the target defined in the links field.",
+        "$ref": "",
+        "properties": {
+          "endTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Optional. The end of the transformation which resulted in this lineage event. For streaming scenarios, it should be the end of the period from which the lineage is being reported.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "links": {
+            "type": "array",
+            "format": "",
+            "description": "Optional. List of source-target pairs. Can't contain more than 100 tuples.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "GoogleCloudDatacatalogLineageV1EventLink",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "Immutable. The resource name of the lineage event. Format: `projects/{project}/locations/{location}/processes/{process}/runs/{run}/lineageEvents/{lineage_event}`. Can be specified or auto-assigned. {lineage_event} must be not longer than 200 characters and only contain characters in a set: `a-zA-Z0-9_-:.`",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "startTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Required. The beginning of the transformation which resulted in this lineage event. For streaming scenarios, it should be the beginning of the period from which the lineage is being reported.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudDatacatalogLineageV1LineageLink": {
+        "type": "object",
+        "format": "",
+        "description": "Lineage link between two entities.",
+        "$ref": "",
+        "properties": {
+          "dependencyInfo": {
+            "type": "array",
+            "format": "",
+            "description": "Describes how the target entity is dependent on the source entity.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "GoogleCloudDatacatalogLineageV1LineageLinkDependencyInfo",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "depth": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Depth of the current link in the graph starting from 1.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "location": {
+            "type": "string",
+            "format": "",
+            "description": "The location where the LineageEvent that created the link is stored.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "processes": {
+            "type": "array",
+            "format": "",
+            "description": "Processes metadata associated with the link.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "GoogleCloudDatacatalogLineageV1LineageLinkLineageProcess",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "source": {
+            "type": "",
+            "format": "",
+            "description": "The entity that is the **source** of this link.",
+            "$ref": "GoogleCloudDatacatalogLineageV1EntityReference",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "target": {
+            "type": "",
+            "format": "",
+            "description": "The entity that is the **target** of this link.",
+            "$ref": "GoogleCloudDatacatalogLineageV1EntityReference",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudDatacatalogLineageV1LineageLinkDependencyInfo": {
+        "type": "object",
+        "format": "",
+        "description": "Dependency info describes how one entity is dependent on another.",
+        "$ref": "",
+        "properties": {
+          "dependencyType": {
+            "type": "string",
+            "format": "",
+            "description": "The type of dependency.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "DEPENDENCY_TYPE_UNSPECIFIED",
+              "EXACT_COPY",
+              "OTHER"
+            ],
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudDatacatalogLineageV1LineageLinkLineageProcess": {
+        "type": "object",
+        "format": "",
+        "description": "Process metadata for the link.",
+        "$ref": "",
+        "properties": {
+          "process": {
+            "type": "",
+            "format": "",
+            "description": "Process that created the link.",
+            "$ref": "GoogleCloudDatacatalogLineageV1Process",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudDatacatalogLineageV1Link": {
+        "type": "object",
+        "format": "",
+        "description": "Links represent the data flow between **source** (upstream) and **target** (downstream) assets in transformation pipelines. Links are created when LineageEvents record data transformation between related assets.",
+        "$ref": "",
+        "properties": {
+          "dependencyInfo": {
+            "type": "array",
+            "format": "",
+            "description": "Optional. The dependency info of the link (applies only to column level links).",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "GoogleCloudDatacatalogLineageV1LinkDependencyInfo",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "endTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "The end of the last event establishing this link.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. Immutable. The name of the link. Format: `projects/{project}/locations/{location}/links/{link}`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "source": {
+            "type": "",
+            "format": "",
+            "description": "The pointer to the entity that is the **source** of this link.",
+            "$ref": "GoogleCloudDatacatalogLineageV1EntityReference",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "startTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "The start of the first event establishing this link.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "target": {
+            "type": "",
+            "format": "",
+            "description": "The pointer to the entity that is the **target** of this link.",
+            "$ref": "GoogleCloudDatacatalogLineageV1EntityReference",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudDatacatalogLineageV1LinkDependencyInfo": {
+        "type": "object",
+        "format": "",
+        "description": "Dependency info describes how one entity depends on another.",
+        "$ref": "",
+        "properties": {
+          "dependencyType": {
+            "type": "string",
+            "format": "",
+            "description": "The type of dependency.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "DEPENDENCY_TYPE_UNSPECIFIED",
+              "EXACT_COPY",
+              "OTHER"
+            ],
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudDatacatalogLineageV1ListLineageEventsResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Response message for ListLineageEvents.",
+        "$ref": "",
+        "properties": {
+          "lineageEvents": {
+            "type": "array",
+            "format": "",
+            "description": "Lineage events from the specified project and location.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "GoogleCloudDatacatalogLineageV1LineageEvent",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "The token to specify as `page_token` in the next call to get the next page. If this field is omitted, there are no subsequent pages.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudDatacatalogLineageV1ListProcessesResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Response message for ListProcesses.",
+        "$ref": "",
+        "properties": {
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "The token to specify as `page_token` in the next call to get the next page. If this field is omitted, there are no subsequent pages.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "processes": {
+            "type": "array",
+            "format": "",
+            "description": "The processes from the specified project and location.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "GoogleCloudDatacatalogLineageV1Process",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudDatacatalogLineageV1ListRunsResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Response message for ListRuns.",
+        "$ref": "",
+        "properties": {
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "The token to specify as `page_token` in the next call to get the next page. If this field is omitted, there are no subsequent pages.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "runs": {
+            "type": "array",
+            "format": "",
+            "description": "The runs from the specified project and location.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "GoogleCloudDatacatalogLineageV1Run",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudDatacatalogLineageV1MultipleEntityReference": {
+        "type": "object",
+        "format": "",
+        "description": "Multiple entity reference for SearchLinksRequest.",
+        "$ref": "",
+        "properties": {
+          "entities": {
+            "type": "array",
+            "format": "",
+            "description": "Optional. The list of entities to search for links. The maximum number of entities is 20.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "GoogleCloudDatacatalogLineageV1EntityReference",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudDatacatalogLineageV1OperationMetadata": {
+        "type": "object",
+        "format": "",
+        "description": "Metadata describing the operation.",
+        "$ref": "",
+        "properties": {
+          "createTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. The timestamp of the operation submission to the server.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "endTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. The timestamp of the operation termination, regardless of its success. This field is unset if the operation is still ongoing.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "operationType": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The type of the operation being performed.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "TYPE_UNSPECIFIED",
+              "DELETE",
+              "CREATE"
+            ],
+            "readOnly": true
+          },
+          "resource": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The [relative name] (https://cloud.google.com//apis/design/resource_names#relative_resource_name) of the resource being operated on.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "resourceUuid": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The UUID of the resource being operated on.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "state": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The current operation state.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "STATE_UNSPECIFIED",
+              "PENDING",
+              "RUNNING",
+              "SUCCEEDED",
+              "FAILED"
+            ],
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudDatacatalogLineageV1Origin": {
+        "type": "object",
+        "format": "",
+        "description": "Origin of a process.",
+        "$ref": "",
+        "properties": {
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "If the source_type isn't CUSTOM, the value of this field should be a Google Cloud resource name of the system, which reports lineage. The project and location parts of the resource name must match the project and location of the lineage resource being created. Examples: - `{source_type: COMPOSER, name: \"projects/foo/locations/us/environments/bar\"}` - `{source_type: BIGQUERY, name: \"projects/foo/locations/eu\"}` - `{source_type: CUSTOM, name: \"myCustomIntegration\"}`",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "sourceType": {
+            "type": "string",
+            "format": "",
+            "description": "Type of the source. Use of a source_type other than `CUSTOM` for process creation or updating is highly discouraged. It might be restricted in the future without notice. There will be increase in cost if you use any of the source types other than `CUSTOM`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "SOURCE_TYPE_UNSPECIFIED",
+              "CUSTOM",
+              "BIGQUERY",
+              "DATA_FUSION",
+              "COMPOSER",
+              "LOOKER_STUDIO",
+              "DATAPROC",
+              "VERTEX_AI",
+              "DATAFLOW",
+              "LOOKER_CORE"
+            ],
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudDatacatalogLineageV1Process": {
+        "type": "object",
+        "format": "",
+        "description": "A process is the definition of a data transformation operation.",
+        "$ref": "",
+        "properties": {
+          "attributes": {
+            "type": "object",
+            "format": "",
+            "description": "Optional. The attributes of the process. Should only be used for the purpose of non-semantic management (classifying, describing or labeling the process). Up to 100 attributes are allowed.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "any",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "displayName": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. A human-readable name you can set to display in a user interface. Must be not longer than 200 characters and only contain UTF-8 letters or numbers, spaces or characters like `_-:\u0026.`",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "Immutable. The resource name of the lineage process. Format: `projects/{project}/locations/{location}/processes/{process}`. Can be specified or auto-assigned. {process} must be not longer than 200 characters and only contain characters in a set: `a-zA-Z0-9_-:.`",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "origin": {
+            "type": "",
+            "format": "",
+            "description": "Optional. The origin of this process and its runs and lineage events.",
+            "$ref": "GoogleCloudDatacatalogLineageV1Origin",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudDatacatalogLineageV1ProcessLinkInfo": {
+        "type": "object",
+        "format": "",
+        "description": "Link details.",
+        "$ref": "",
+        "properties": {
+          "endTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "The end of the last event establishing this link-process tuple.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "link": {
+            "type": "string",
+            "format": "",
+            "description": "The name of the link in the format of `projects/{project}/locations/{location}/links/{link}`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "startTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "The start of the first event establishing this link-process tuple.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudDatacatalogLineageV1ProcessLinks": {
+        "type": "object",
+        "format": "",
+        "description": "Links associated with a specific process.",
+        "$ref": "",
+        "properties": {
+          "links": {
+            "type": "array",
+            "format": "",
+            "description": "An array containing link details objects of the links provided in the original request. A single process can result in creating multiple links. If any of the links you provide in the request are created by the same process, they all are included in this array.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "GoogleCloudDatacatalogLineageV1ProcessLinkInfo",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "process": {
+            "type": "string",
+            "format": "",
+            "description": "The process name in the format of `projects/{project}/locations/{location}/processes/{process}`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudDatacatalogLineageV1ProcessOpenLineageRunEventResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Response message for ProcessOpenLineageRunEvent.",
+        "$ref": "",
+        "properties": {
+          "lineageEvents": {
+            "type": "array",
+            "format": "",
+            "description": "Created lineage event names. Format: `projects/{project}/locations/{location}/processes/{process}/runs/{run}/lineageEvents/{lineage_event}`.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "process": {
+            "type": "string",
+            "format": "",
+            "description": "Created process name. Format: `projects/{project}/locations/{location}/processes/{process}`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "run": {
+            "type": "string",
+            "format": "",
+            "description": "Created run name. Format: `projects/{project}/locations/{location}/processes/{process}/runs/{run}`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudDatacatalogLineageV1Run": {
+        "type": "object",
+        "format": "",
+        "description": "A lineage run represents an execution of a process that creates lineage events.",
+        "$ref": "",
+        "properties": {
+          "attributes": {
+            "type": "object",
+            "format": "",
+            "description": "Optional. The attributes of the run. Should only be used for the purpose of non-semantic management (classifying, describing or labeling the run). Up to 100 attributes are allowed.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "any",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "displayName": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. A human-readable name you can set to display in a user interface. Must be not longer than 200 characters and only contain UTF-8 letters or numbers, spaces or characters like `_-:\u0026.`",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "endTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Optional. The timestamp of the end of the run.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "Immutable. The resource name of the run. Format: `projects/{project}/locations/{location}/processes/{process}/runs/{run}`. Can be specified or auto-assigned. {run} must be not longer than 200 characters and only contain characters in a set: `a-zA-Z0-9_-:.`",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "startTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Required. The timestamp of the start of the run.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "state": {
+            "type": "string",
+            "format": "",
+            "description": "Required. The state of the run.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "UNKNOWN",
+              "STARTED",
+              "COMPLETED",
+              "FAILED",
+              "ABORTED"
+            ],
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequest": {
+        "type": "object",
+        "format": "",
+        "description": "Request message for SearchLineageStreaming.",
+        "$ref": "",
+        "properties": {
+          "direction": {
+            "type": "string",
+            "format": "",
+            "description": "Required. Direction of the search.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "SEARCH_DIRECTION_UNSPECIFIED",
+              "DOWNSTREAM",
+              "UPSTREAM"
+            ],
+            "readOnly": false
+          },
+          "filters": {
+            "type": "",
+            "format": "",
+            "description": "Optional. Filters for the search.",
+            "$ref": "GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestSearchFilters",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "limits": {
+            "type": "",
+            "format": "",
+            "description": "Optional. Limits for the search.",
+            "$ref": "GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestSearchLimits",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "locations": {
+            "type": "array",
+            "format": "",
+            "description": "Required. The locations to search in. This list should contain the location from the `parent` field.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "rootCriteria": {
+            "type": "",
+            "format": "",
+            "description": "Required. Criteria for the root of the search.",
+            "$ref": "GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestRootCriteria",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestRootCriteria": {
+        "type": "object",
+        "format": "",
+        "description": "Criteria for the root of the search.",
+        "$ref": "",
+        "properties": {
+          "entities": {
+            "type": "",
+            "format": "",
+            "description": "Optional. The entities to initiate the search from. Entities can be specified by FQN only, or by FQN and field. To search by FQN and all available fields for that FQN, use the wildcard `*` as the field value.",
+            "$ref": "GoogleCloudDatacatalogLineageV1MultipleEntityReference",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestSearchFilters": {
+        "type": "object",
+        "format": "",
+        "description": "Filters for the search.",
+        "$ref": "",
+        "properties": {
+          "dependencyTypes": {
+            "type": "array",
+            "format": "",
+            "description": "Optional. Types of dependencies between entities to retrieve. If unspecified, all dependency types are returned.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": [
+                "DEPENDENCY_TYPE_UNSPECIFIED",
+                "EXACT_COPY",
+                "OTHER"
+              ],
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "entitySet": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Entity set restriction. If unspecified, the method returns all entities.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "ENTITY_SET_UNSPECIFIED",
+              "ENTITIES"
+            ],
+            "readOnly": false
+          },
+          "timeRange": {
+            "type": "",
+            "format": "",
+            "description": "Optional. Time interval to search for lineage. If unspecified, all lineage is returned. Currently, at most one of `start_time` and `end_time` can be set.",
+            "$ref": "GoogleTypeInterval",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestSearchLimits": {
+        "type": "object",
+        "format": "",
+        "description": "Limits for the search results.",
+        "$ref": "",
+        "properties": {
+          "maxDepth": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Optional. The maximum depth of the search. The default value is 5 and maximum value is 100.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "maxProcessPerLink": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Optional. The maximum number of processes to return per link. The default value is 0 and the maximum value is 100. If this value is non-zero, the response will contain process names for the links. To retrieve full process details in the response, include `links.processes.process` in the [FieldMask](https://developers.google.com/workspace/docs/api/how-tos/field-masks#read_with_a_field_mask).",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "maxResults": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Optional. The maximum number of links to return in the response. The default value is 1_000 and the maximum value is 10_000.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudDatacatalogLineageV1SearchLineageStreamingResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Response message for SearchLineageStreaming.",
+        "$ref": "",
+        "properties": {
+          "links": {
+            "type": "array",
+            "format": "",
+            "description": "Output only. The lineage links that match the search criteria. Can be empty if no links match.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "GoogleCloudDatacatalogLineageV1LineageLink",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "unreachable": {
+            "type": "array",
+            "format": "",
+            "description": "Unordered list. Unreachable resources. If non-empty, the result set might be incomplete. Currently, only locations are supported. Format: `projects/[PROJECT_NUMBER]/locations/[LOCATION]` Example: projects/123456789/locations/us-east1",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudDatacatalogLineageV1SearchLinksRequest": {
+        "type": "object",
+        "format": "",
+        "description": "Request message for SearchLinks.",
+        "$ref": "",
+        "properties": {
+          "pageSize": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Optional. The maximum number of links to return in a single page of the response. A page may contain fewer links than this value. If unspecified, at most 10 links are returned. Maximum value is 100; values greater than 100 are reduced to 100.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "pageToken": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The page token received from a previous `SearchLinksRequest` call. Use it to get the next page. When requesting subsequent pages of a response, remember that all parameters must match the values you provided in the original request.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "source": {
+            "type": "",
+            "format": "",
+            "description": "Optional. Send asset information in the **source** field to retrieve all links that lead from the specified asset to downstream assets.",
+            "$ref": "GoogleCloudDatacatalogLineageV1EntityReference",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "sources": {
+            "type": "",
+            "format": "",
+            "description": "Optional. Send a list of asset information in the **sources** field to retrieve all links that lead from the specified assets to downstream assets. This field is similar to the `source` source field but allows providing multiple entities. All entities within the `MultipleEntityReference` must have the same `fully_qualified_name`.",
+            "$ref": "GoogleCloudDatacatalogLineageV1MultipleEntityReference",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "target": {
+            "type": "",
+            "format": "",
+            "description": "Optional. Send asset information in the **target** field to retrieve all links that lead from upstream assets to the specified asset.",
+            "$ref": "GoogleCloudDatacatalogLineageV1EntityReference",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "targets": {
+            "type": "",
+            "format": "",
+            "description": "Optional. Send a list of asset information in the **targets** field to retrieve all links that lead from upstream assets to the specified assets. This field is similar to the `target` target field but allows providing multiple entities. All entities within the `MultipleEntityReference` must have the same `fully_qualified_name`.",
+            "$ref": "GoogleCloudDatacatalogLineageV1MultipleEntityReference",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudDatacatalogLineageV1SearchLinksResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Response message for SearchLinks.",
+        "$ref": "",
+        "properties": {
+          "links": {
+            "type": "array",
+            "format": "",
+            "description": "The list of links for a given asset. Can be empty if the asset has no relations of requested type (source or target).",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "GoogleCloudDatacatalogLineageV1Link",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "The token to specify as `page_token` in the subsequent call to get the next page. Omitted if there are no more pages in the response.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleLongrunningCancelOperationRequest": {
+        "type": "object",
+        "format": "",
+        "description": "The request message for Operations.CancelOperation.",
+        "$ref": "",
+        "properties": {},
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleLongrunningListOperationsResponse": {
+        "type": "object",
+        "format": "",
+        "description": "The response message for Operations.ListOperations.",
+        "$ref": "",
+        "properties": {
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "The standard List next-page token.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "operations": {
+            "type": "array",
+            "format": "",
+            "description": "A list of operations that matches the specified filter in the request.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "GoogleLongrunningOperation",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "unreachable": {
+            "type": "array",
+            "format": "",
+            "description": "Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleLongrunningOperation": {
+        "type": "object",
+        "format": "",
+        "description": "This resource represents a long-running operation that is the result of a network API call.",
+        "$ref": "",
+        "properties": {
+          "done": {
+            "type": "boolean",
+            "format": "",
+            "description": "If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "error": {
+            "type": "",
+            "format": "",
+            "description": "The error result of the operation in case of failure or cancellation.",
+            "$ref": "GoogleRpcStatus",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "metadata": {
+            "type": "object",
+            "format": "",
+            "description": "Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "any",
+              "format": "",
+              "description": "Properties of the object. Contains field @type with type URL.",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "response": {
+            "type": "object",
+            "format": "",
+            "description": "The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "any",
+              "format": "",
+              "description": "Properties of the object. Contains field @type with type URL.",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleProtobufEmpty": {
+        "type": "object",
+        "format": "",
+        "description": "A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }",
+        "$ref": "",
+        "properties": {},
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleRpcStatus": {
+        "type": "object",
+        "format": "",
+        "description": "The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).",
+        "$ref": "",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32",
+            "description": "The status code, which should be an enum value of google.rpc.Code.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "details": {
+            "type": "array",
+            "format": "",
+            "description": "A list of messages that carry the error details. There is a common set of message types for APIs to use.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "object",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": {
+                "type": "any",
+                "format": "",
+                "description": "Properties of the object. Contains field @type with type URL.",
+                "$ref": "",
+                "properties": null,
+                "items": null,
+                "additionalProperties": null,
+                "enum": null,
+                "readOnly": false
+              },
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "message": {
+            "type": "string",
+            "format": "",
+            "description": "A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleTypeInterval": {
+        "type": "object",
+        "format": "",
+        "description": "Represents a time interval, encoded as a Timestamp start (inclusive) and a Timestamp end (exclusive). The start must be less than or equal to the end. When the start equals the end, the interval is empty (matches no time). When both start and end are unspecified, the interval matches any time.",
+        "$ref": "",
+        "properties": {
+          "endTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Optional. Exclusive end of the interval. If specified, a Timestamp matching this interval will have to be before the end.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "startTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Optional. Inclusive start of the interval. If specified, a Timestamp matching this interval will have to be the same or after the start.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      }
+    },
+    "resources": {
+      "folders": {
+        "methods": null,
+        "resources": {
+          "locations": {
+            "methods": null,
+            "resources": {
+              "config": {
+                "methods": {
+                  "get": {
+                    "id": "datalineage.folders.locations.config.get",
+                    "httpMethod": "GET",
+                    "path": "v1/{+name}",
+                    "flatPath": "v1/folders/{foldersId}/locations/{locationsId}/config",
+                    "description": "Get the Config for a given resource.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "GoogleCloudDatacatalogLineageConfigmanagementV1Config"
+                    }
+                  },
+                  "patch": {
+                    "id": "datalineage.folders.locations.config.patch",
+                    "httpMethod": "PATCH",
+                    "path": "v1/{+name}",
+                    "flatPath": "v1/folders/{foldersId}/locations/{locationsId}/config",
+                    "description": "Update the Config for a given resource.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": {
+                      "$ref": "GoogleCloudDatacatalogLineageConfigmanagementV1Config"
+                    },
+                    "response": {
+                      "$ref": "GoogleCloudDatacatalogLineageConfigmanagementV1Config"
+                    }
+                  }
+                },
+                "resources": null
+              }
+            }
+          }
+        }
+      },
+      "organizations": {
+        "methods": null,
+        "resources": {
+          "locations": {
+            "methods": null,
+            "resources": {
+              "config": {
+                "methods": {
+                  "get": {
+                    "id": "datalineage.organizations.locations.config.get",
+                    "httpMethod": "GET",
+                    "path": "v1/{+name}",
+                    "flatPath": "v1/organizations/{organizationsId}/locations/{locationsId}/config",
+                    "description": "Get the Config for a given resource.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "GoogleCloudDatacatalogLineageConfigmanagementV1Config"
+                    }
+                  },
+                  "patch": {
+                    "id": "datalineage.organizations.locations.config.patch",
+                    "httpMethod": "PATCH",
+                    "path": "v1/{+name}",
+                    "flatPath": "v1/organizations/{organizationsId}/locations/{locationsId}/config",
+                    "description": "Update the Config for a given resource.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": {
+                      "$ref": "GoogleCloudDatacatalogLineageConfigmanagementV1Config"
+                    },
+                    "response": {
+                      "$ref": "GoogleCloudDatacatalogLineageConfigmanagementV1Config"
+                    }
+                  }
+                },
+                "resources": null
+              }
+            }
+          }
+        }
+      },
+      "projects": {
+        "methods": null,
+        "resources": {
+          "locations": {
+            "methods": {
+              "batchSearchLinkProcesses": {
+                "id": "datalineage.projects.locations.batchSearchLinkProcesses",
+                "httpMethod": "POST",
+                "path": "v1/{+parent}:batchSearchLinkProcesses",
+                "flatPath": "v1/projects/{projectsId}/locations/{locationsId}:batchSearchLinkProcesses",
+                "description": "Retrieve information about LineageProcesses associated with specific links. LineageProcesses are transformation pipelines that result in data flowing from **source** to **target** assets. Links between assets represent this operation. If you have specific link names, you can use this method to verify which LineageProcesses contribute to creating those links. See the SearchLinks method for more information on how to retrieve link name. You can retrieve the LineageProcess information in every project where you have the `datalineage.events.get` permission. The project provided in the URL is used for Billing and Quota.",
+                "parameters": {
+                  "parent": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  }
+                },
+                "parameterOrder": [
+                  "parent"
+                ],
+                "request": {
+                  "$ref": "GoogleCloudDatacatalogLineageV1BatchSearchLinkProcessesRequest"
+                },
+                "response": {
+                  "$ref": "GoogleCloudDatacatalogLineageV1BatchSearchLinkProcessesResponse"
+                }
+              },
+              "processOpenLineageRunEvent": {
+                "id": "datalineage.projects.locations.processOpenLineageRunEvent",
+                "httpMethod": "POST",
+                "path": "v1/{+parent}:processOpenLineageRunEvent",
+                "flatPath": "v1/projects/{projectsId}/locations/{locationsId}:processOpenLineageRunEvent",
+                "description": "Creates new lineage events together with their parents: process and run. Updates the process and run if they already exist. Mapped from Open Lineage specification: https://github.com/OpenLineage/OpenLineage/blob/main/spec/OpenLineage.json.",
+                "parameters": {
+                  "parent": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  },
+                  "requestId": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false
+                  }
+                },
+                "parameterOrder": [
+                  "parent"
+                ],
+                "request": {
+                  "$ref": ""
+                },
+                "response": {
+                  "$ref": "GoogleCloudDatacatalogLineageV1ProcessOpenLineageRunEventResponse"
+                }
+              },
+              "searchLineageStreaming": {
+                "id": "datalineage.projects.locations.searchLineageStreaming",
+                "httpMethod": "POST",
+                "path": "v1/{+parent}:searchLineageStreaming",
+                "flatPath": "v1/projects/{projectsId}/locations/{locationsId}:searchLineageStreaming",
+                "description": "Retrieves a streaming response of lineage links connected to the requested assets by performing a breadth-first search in the given direction. Links represent the data flow between **source** (upstream) and **target** (downstream) assets in transformation pipelines. Links are stored in the same project as the Lineage Events that create them. This method retrieves links from all valid locations provided in the request. This method supports Column-Level Lineage (CLL) along with wildcard support to retrieve all CLL for an Entity FQN. Following permissions are required to retrieve links: * `datalineage.events.get` permission for the project where the link is stored for entity-level lineage. * `datalineage.events.getFields` permission for the project where the link is stored for column-level lineage. This method also returns processes that created the links if explicitly requested by setting [max_process_per_link](google.cloud.datacatalog.lineage.v1.SearchLineageStreamingRequest.limits.max_process_per_link) is non-zero and full process details are requested via `links.processes.process` in the [FieldMask](https://developers.google.com/workspace/docs/api/how-tos/field-masks#read_with_a_field_mask). Permission required to retrieve processes: * `datalineage.processes.get` permission for the project where the process is stored.",
+                "parameters": {
+                  "parent": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  }
+                },
+                "parameterOrder": [
+                  "parent"
+                ],
+                "request": {
+                  "$ref": "GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequest"
+                },
+                "response": {
+                  "$ref": "GoogleCloudDatacatalogLineageV1SearchLineageStreamingResponse"
+                }
+              },
+              "searchLinks": {
+                "id": "datalineage.projects.locations.searchLinks",
+                "httpMethod": "POST",
+                "path": "v1/{+parent}:searchLinks",
+                "flatPath": "v1/projects/{projectsId}/locations/{locationsId}:searchLinks",
+                "description": "Retrieve a list of links connected to a specific asset. Links represent the data flow between **source** (upstream) and **target** (downstream) assets in transformation pipelines. Links are stored in the same project as the Lineage Events that create them. You can retrieve links in every project where you have the `datalineage.events.get` permission. The project provided in the URL is used for Billing and Quota.",
+                "parameters": {
+                  "parent": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  }
+                },
+                "parameterOrder": [
+                  "parent"
+                ],
+                "request": {
+                  "$ref": "GoogleCloudDatacatalogLineageV1SearchLinksRequest"
+                },
+                "response": {
+                  "$ref": "GoogleCloudDatacatalogLineageV1SearchLinksResponse"
+                }
+              }
+            },
+            "resources": {
+              "config": {
+                "methods": {
+                  "get": {
+                    "id": "datalineage.projects.locations.config.get",
+                    "httpMethod": "GET",
+                    "path": "v1/{+name}",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/config",
+                    "description": "Get the Config for a given resource.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "GoogleCloudDatacatalogLineageConfigmanagementV1Config"
+                    }
+                  },
+                  "patch": {
+                    "id": "datalineage.projects.locations.config.patch",
+                    "httpMethod": "PATCH",
+                    "path": "v1/{+name}",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/config",
+                    "description": "Update the Config for a given resource.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": {
+                      "$ref": "GoogleCloudDatacatalogLineageConfigmanagementV1Config"
+                    },
+                    "response": {
+                      "$ref": "GoogleCloudDatacatalogLineageConfigmanagementV1Config"
+                    }
+                  }
+                },
+                "resources": null
+              },
+              "operations": {
+                "methods": {
+                  "cancel": {
+                    "id": "datalineage.projects.locations.operations.cancel",
+                    "httpMethod": "POST",
+                    "path": "v1/{+name}:cancel",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}:cancel",
+                    "description": "Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": {
+                      "$ref": "GoogleLongrunningCancelOperationRequest"
+                    },
+                    "response": {
+                      "$ref": "GoogleProtobufEmpty"
+                    }
+                  },
+                  "delete": {
+                    "id": "datalineage.projects.locations.operations.delete",
+                    "httpMethod": "DELETE",
+                    "path": "v1/{+name}",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
+                    "description": "Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "GoogleProtobufEmpty"
+                    }
+                  },
+                  "get": {
+                    "id": "datalineage.projects.locations.operations.get",
+                    "httpMethod": "GET",
+                    "path": "v1/{+name}",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
+                    "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "GoogleLongrunningOperation"
+                    }
+                  },
+                  "list": {
+                    "id": "datalineage.projects.locations.operations.list",
+                    "httpMethod": "GET",
+                    "path": "v1/{+name}/operations",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/operations",
+                    "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.",
+                    "parameters": {
+                      "filter": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      },
+                      "pageSize": {
+                        "type": "integer",
+                        "location": "query",
+                        "required": false
+                      },
+                      "pageToken": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "returnPartialSuccess": {
+                        "type": "boolean",
+                        "location": "query",
+                        "required": false
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "GoogleLongrunningListOperationsResponse"
+                    }
+                  }
+                },
+                "resources": null
+              },
+              "processes": {
+                "methods": {
+                  "create": {
+                    "id": "datalineage.projects.locations.processes.create",
+                    "httpMethod": "POST",
+                    "path": "v1/{+parent}/processes",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/processes",
+                    "description": "Creates a new process.",
+                    "parameters": {
+                      "parent": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      },
+                      "requestId": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      }
+                    },
+                    "parameterOrder": [
+                      "parent"
+                    ],
+                    "request": {
+                      "$ref": "GoogleCloudDatacatalogLineageV1Process"
+                    },
+                    "response": {
+                      "$ref": "GoogleCloudDatacatalogLineageV1Process"
+                    }
+                  },
+                  "delete": {
+                    "id": "datalineage.projects.locations.processes.delete",
+                    "httpMethod": "DELETE",
+                    "path": "v1/{+name}",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/processes/{processesId}",
+                    "description": "Deletes the process with the specified name.",
+                    "parameters": {
+                      "allowMissing": {
+                        "type": "boolean",
+                        "location": "query",
+                        "required": false
+                      },
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "GoogleLongrunningOperation"
+                    }
+                  },
+                  "get": {
+                    "id": "datalineage.projects.locations.processes.get",
+                    "httpMethod": "GET",
+                    "path": "v1/{+name}",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/processes/{processesId}",
+                    "description": "Gets the details of the specified process.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "GoogleCloudDatacatalogLineageV1Process"
+                    }
+                  },
+                  "list": {
+                    "id": "datalineage.projects.locations.processes.list",
+                    "httpMethod": "GET",
+                    "path": "v1/{+parent}/processes",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/processes",
+                    "description": "List processes in the given project and location. List order is descending by insertion time.",
+                    "parameters": {
+                      "pageSize": {
+                        "type": "integer",
+                        "location": "query",
+                        "required": false
+                      },
+                      "pageToken": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "parent": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "parent"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "GoogleCloudDatacatalogLineageV1ListProcessesResponse"
+                    }
+                  },
+                  "patch": {
+                    "id": "datalineage.projects.locations.processes.patch",
+                    "httpMethod": "PATCH",
+                    "path": "v1/{+name}",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/processes/{processesId}",
+                    "description": "Updates a process.",
+                    "parameters": {
+                      "allowMissing": {
+                        "type": "boolean",
+                        "location": "query",
+                        "required": false
+                      },
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      },
+                      "requestId": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "updateMask": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": {
+                      "$ref": "GoogleCloudDatacatalogLineageV1Process"
+                    },
+                    "response": {
+                      "$ref": "GoogleCloudDatacatalogLineageV1Process"
+                    }
+                  }
+                },
+                "resources": {
+                  "runs": {
+                    "methods": {
+                      "create": {
+                        "id": "datalineage.projects.locations.processes.runs.create",
+                        "httpMethod": "POST",
+                        "path": "v1/{+parent}/runs",
+                        "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/processes/{processesId}/runs",
+                        "description": "Creates a new run.",
+                        "parameters": {
+                          "parent": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          },
+                          "requestId": {
+                            "type": "string",
+                            "location": "query",
+                            "required": false
+                          }
+                        },
+                        "parameterOrder": [
+                          "parent"
+                        ],
+                        "request": {
+                          "$ref": "GoogleCloudDatacatalogLineageV1Run"
+                        },
+                        "response": {
+                          "$ref": "GoogleCloudDatacatalogLineageV1Run"
+                        }
+                      },
+                      "delete": {
+                        "id": "datalineage.projects.locations.processes.runs.delete",
+                        "httpMethod": "DELETE",
+                        "path": "v1/{+name}",
+                        "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/processes/{processesId}/runs/{runsId}",
+                        "description": "Deletes the run with the specified name.",
+                        "parameters": {
+                          "allowMissing": {
+                            "type": "boolean",
+                            "location": "query",
+                            "required": false
+                          },
+                          "name": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          }
+                        },
+                        "parameterOrder": [
+                          "name"
+                        ],
+                        "request": null,
+                        "response": {
+                          "$ref": "GoogleLongrunningOperation"
+                        }
+                      },
+                      "get": {
+                        "id": "datalineage.projects.locations.processes.runs.get",
+                        "httpMethod": "GET",
+                        "path": "v1/{+name}",
+                        "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/processes/{processesId}/runs/{runsId}",
+                        "description": "Gets the details of the specified run.",
+                        "parameters": {
+                          "name": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          }
+                        },
+                        "parameterOrder": [
+                          "name"
+                        ],
+                        "request": null,
+                        "response": {
+                          "$ref": "GoogleCloudDatacatalogLineageV1Run"
+                        }
+                      },
+                      "list": {
+                        "id": "datalineage.projects.locations.processes.runs.list",
+                        "httpMethod": "GET",
+                        "path": "v1/{+parent}/runs",
+                        "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/processes/{processesId}/runs",
+                        "description": "Lists runs in the given project and location. List order is descending by `start_time`.",
+                        "parameters": {
+                          "pageSize": {
+                            "type": "integer",
+                            "location": "query",
+                            "required": false
+                          },
+                          "pageToken": {
+                            "type": "string",
+                            "location": "query",
+                            "required": false
+                          },
+                          "parent": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          }
+                        },
+                        "parameterOrder": [
+                          "parent"
+                        ],
+                        "request": null,
+                        "response": {
+                          "$ref": "GoogleCloudDatacatalogLineageV1ListRunsResponse"
+                        }
+                      },
+                      "patch": {
+                        "id": "datalineage.projects.locations.processes.runs.patch",
+                        "httpMethod": "PATCH",
+                        "path": "v1/{+name}",
+                        "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/processes/{processesId}/runs/{runsId}",
+                        "description": "Updates a run.",
+                        "parameters": {
+                          "allowMissing": {
+                            "type": "boolean",
+                            "location": "query",
+                            "required": false
+                          },
+                          "name": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          },
+                          "updateMask": {
+                            "type": "string",
+                            "location": "query",
+                            "required": false
+                          }
+                        },
+                        "parameterOrder": [
+                          "name"
+                        ],
+                        "request": {
+                          "$ref": "GoogleCloudDatacatalogLineageV1Run"
+                        },
+                        "response": {
+                          "$ref": "GoogleCloudDatacatalogLineageV1Run"
+                        }
+                      }
+                    },
+                    "resources": {
+                      "lineageEvents": {
+                        "methods": {
+                          "create": {
+                            "id": "datalineage.projects.locations.processes.runs.lineageEvents.create",
+                            "httpMethod": "POST",
+                            "path": "v1/{+parent}/lineageEvents",
+                            "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/processes/{processesId}/runs/{runsId}/lineageEvents",
+                            "description": "Creates a new lineage event.",
+                            "parameters": {
+                              "parent": {
+                                "type": "string",
+                                "location": "path",
+                                "required": true
+                              },
+                              "requestId": {
+                                "type": "string",
+                                "location": "query",
+                                "required": false
+                              }
+                            },
+                            "parameterOrder": [
+                              "parent"
+                            ],
+                            "request": {
+                              "$ref": "GoogleCloudDatacatalogLineageV1LineageEvent"
+                            },
+                            "response": {
+                              "$ref": "GoogleCloudDatacatalogLineageV1LineageEvent"
+                            }
+                          },
+                          "delete": {
+                            "id": "datalineage.projects.locations.processes.runs.lineageEvents.delete",
+                            "httpMethod": "DELETE",
+                            "path": "v1/{+name}",
+                            "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/processes/{processesId}/runs/{runsId}/lineageEvents/{lineageEventsId}",
+                            "description": "Deletes the lineage event with the specified name.",
+                            "parameters": {
+                              "allowMissing": {
+                                "type": "boolean",
+                                "location": "query",
+                                "required": false
+                              },
+                              "name": {
+                                "type": "string",
+                                "location": "path",
+                                "required": true
+                              }
+                            },
+                            "parameterOrder": [
+                              "name"
+                            ],
+                            "request": null,
+                            "response": {
+                              "$ref": "GoogleProtobufEmpty"
+                            }
+                          },
+                          "get": {
+                            "id": "datalineage.projects.locations.processes.runs.lineageEvents.get",
+                            "httpMethod": "GET",
+                            "path": "v1/{+name}",
+                            "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/processes/{processesId}/runs/{runsId}/lineageEvents/{lineageEventsId}",
+                            "description": "Gets details of a specified lineage event.",
+                            "parameters": {
+                              "name": {
+                                "type": "string",
+                                "location": "path",
+                                "required": true
+                              }
+                            },
+                            "parameterOrder": [
+                              "name"
+                            ],
+                            "request": null,
+                            "response": {
+                              "$ref": "GoogleCloudDatacatalogLineageV1LineageEvent"
+                            }
+                          },
+                          "list": {
+                            "id": "datalineage.projects.locations.processes.runs.lineageEvents.list",
+                            "httpMethod": "GET",
+                            "path": "v1/{+parent}/lineageEvents",
+                            "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/processes/{processesId}/runs/{runsId}/lineageEvents",
+                            "description": "Lists lineage events in the given project and location. The list order is not defined.",
+                            "parameters": {
+                              "pageSize": {
+                                "type": "integer",
+                                "location": "query",
+                                "required": false
+                              },
+                              "pageToken": {
+                                "type": "string",
+                                "location": "query",
+                                "required": false
+                              },
+                              "parent": {
+                                "type": "string",
+                                "location": "path",
+                                "required": true
+                              }
+                            },
+                            "parameterOrder": [
+                              "parent"
+                            ],
+                            "request": null,
+                            "response": {
+                              "$ref": "GoogleCloudDatacatalogLineageV1ListLineageEventsResponse"
+                            }
+                          }
+                        },
+                        "resources": null
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

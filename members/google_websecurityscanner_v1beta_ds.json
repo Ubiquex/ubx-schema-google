@@ -1,0 +1,2018 @@
+{
+  "schema_source": "discovery_docs",
+  "mode": "data_source",
+  "auth": {
+    "Type": "",
+    "Params": null
+  },
+  "base_url": "https://websecurityscanner.googleapis.com",
+  "retry": {
+    "MaxAttempts": 0,
+    "InitialBackoff": "",
+    "MaxBackoff": "",
+    "Jitter": null,
+    "RespectRetryAfter": null,
+    "RateLimitResetHeader": ""
+  },
+  "timeouts": {
+    "Create": "",
+    "Read": "",
+    "Update": "",
+    "Delete": "",
+    "Default": ""
+  },
+  "wire_name": "google_websecurityscanner_v1beta",
+  "version_qualifier": "v1beta",
+  "raw_spec": {
+    "name": "websecurityscanner",
+    "revision": "20260806",
+    "discoveryVersion": "v1",
+    "baseUrl": "https://websecurityscanner.googleapis.com/",
+    "rootUrl": "https://websecurityscanner.googleapis.com/",
+    "servicePath": "",
+    "schemas": {
+      "Authentication": {
+        "type": "object",
+        "format": "",
+        "description": "Scan authentication configuration.",
+        "$ref": "",
+        "properties": {
+          "customAccount": {
+            "type": "",
+            "format": "",
+            "description": "Authentication using a custom account.",
+            "$ref": "CustomAccount",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "googleAccount": {
+            "type": "",
+            "format": "",
+            "description": "Authentication using a Google account.",
+            "$ref": "GoogleAccount",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "iapCredential": {
+            "type": "",
+            "format": "",
+            "description": "Authentication using Identity-Aware-Proxy (IAP).",
+            "$ref": "IapCredential",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "CrawledUrl": {
+        "type": "object",
+        "format": "",
+        "description": "A CrawledUrl resource represents a URL that was crawled during a ScanRun. Web Security Scanner Service crawls the web applications, following all links within the scope of sites, to find the URLs to test against.",
+        "$ref": "",
+        "properties": {
+          "body": {
+            "type": "string",
+            "format": "",
+            "description": "The body of the request that was used to visit the URL.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "httpMethod": {
+            "type": "string",
+            "format": "",
+            "description": "The http method of the request that was used to visit the URL, in uppercase.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "url": {
+            "type": "string",
+            "format": "",
+            "description": "The URL that was crawled.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "CustomAccount": {
+        "type": "object",
+        "format": "",
+        "description": "Describes authentication configuration that uses a custom account.",
+        "$ref": "",
+        "properties": {
+          "loginUrl": {
+            "type": "string",
+            "format": "",
+            "description": "Required. The login form URL of the website.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "password": {
+            "type": "string",
+            "format": "",
+            "description": "Required. Input only. The password of the custom account. The credential is stored encrypted and not returned in any response nor included in audit logs.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "username": {
+            "type": "string",
+            "format": "",
+            "description": "Required. The user name of the custom account.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Empty": {
+        "type": "object",
+        "format": "",
+        "description": "A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }",
+        "$ref": "",
+        "properties": {},
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Finding": {
+        "type": "object",
+        "format": "",
+        "description": "A Finding resource represents a vulnerability instance identified during a ScanRun.",
+        "$ref": "",
+        "properties": {
+          "body": {
+            "type": "string",
+            "format": "",
+            "description": "The body of the request that triggered the vulnerability.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "description": {
+            "type": "string",
+            "format": "",
+            "description": "The description of the vulnerability.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "finalUrl": {
+            "type": "string",
+            "format": "",
+            "description": "The URL where the browser lands when the vulnerability is detected.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "findingType": {
+            "type": "string",
+            "format": "",
+            "description": "The type of the Finding. Detailed and up-to-date information on findings can be found here: https://cloud.google.com/security-command-center/docs/how-to-remediate-web-security-scanner",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "form": {
+            "type": "",
+            "format": "",
+            "description": "An addon containing information reported for a vulnerability with an HTML form, if any.",
+            "$ref": "Form",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "frameUrl": {
+            "type": "string",
+            "format": "",
+            "description": "If the vulnerability was originated from nested IFrame, the immediate parent IFrame is reported.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "fuzzedUrl": {
+            "type": "string",
+            "format": "",
+            "description": "The URL produced by the server-side fuzzer and used in the request that triggered the vulnerability.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "httpMethod": {
+            "type": "string",
+            "format": "",
+            "description": "The http method of the request that triggered the vulnerability, in uppercase.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "The resource name of the Finding. The name follows the format of 'projects/{projectId}/scanConfigs/{scanConfigId}/scanruns/{scanRunId}/findings/{findingId}'. The finding IDs are generated by the system.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "outdatedLibrary": {
+            "type": "",
+            "format": "",
+            "description": "An addon containing information about outdated libraries.",
+            "$ref": "OutdatedLibrary",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "reproductionUrl": {
+            "type": "string",
+            "format": "",
+            "description": "The URL containing human-readable payload that user can leverage to reproduce the vulnerability.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "severity": {
+            "type": "string",
+            "format": "",
+            "description": "The severity level of the reported vulnerability.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "SEVERITY_UNSPECIFIED",
+              "CRITICAL",
+              "HIGH",
+              "MEDIUM",
+              "LOW"
+            ],
+            "readOnly": false
+          },
+          "trackingId": {
+            "type": "string",
+            "format": "",
+            "description": "The tracking ID uniquely identifies a vulnerability instance across multiple ScanRuns.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "violatingResource": {
+            "type": "",
+            "format": "",
+            "description": "An addon containing detailed information regarding any resource causing the vulnerability such as JavaScript sources, image, audio files, etc.",
+            "$ref": "ViolatingResource",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "vulnerableHeaders": {
+            "type": "",
+            "format": "",
+            "description": "An addon containing information about vulnerable or missing HTTP headers.",
+            "$ref": "VulnerableHeaders",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "vulnerableParameters": {
+            "type": "",
+            "format": "",
+            "description": "An addon containing information about request parameters which were found to be vulnerable.",
+            "$ref": "VulnerableParameters",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "xss": {
+            "type": "",
+            "format": "",
+            "description": "An addon containing information reported for an XSS, if any.",
+            "$ref": "Xss",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "xxe": {
+            "type": "",
+            "format": "",
+            "description": "An addon containing information reported for an XXE, if any.",
+            "$ref": "Xxe",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "FindingTypeStats": {
+        "type": "object",
+        "format": "",
+        "description": "A FindingTypeStats resource represents stats regarding a specific FindingType of Findings under a given ScanRun.",
+        "$ref": "",
+        "properties": {
+          "findingCount": {
+            "type": "integer",
+            "format": "int32",
+            "description": "The count of findings belonging to this finding type.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "findingType": {
+            "type": "string",
+            "format": "",
+            "description": "The finding type associated with the stats.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Form": {
+        "type": "object",
+        "format": "",
+        "description": "! Information about a vulnerability with an HTML.",
+        "$ref": "",
+        "properties": {
+          "actionUri": {
+            "type": "string",
+            "format": "",
+            "description": "! The URI where to send the form when it's submitted.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "fields": {
+            "type": "array",
+            "format": "",
+            "description": "! The names of form fields related to the vulnerability.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleAccount": {
+        "type": "object",
+        "format": "",
+        "description": "Describes authentication configuration that uses a Google account.",
+        "$ref": "",
+        "properties": {
+          "password": {
+            "type": "string",
+            "format": "",
+            "description": "Required. Input only. The password of the Google account. The credential is stored encrypted and not returned in any response nor included in audit logs.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "username": {
+            "type": "string",
+            "format": "",
+            "description": "Required. The user name of the Google account.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Header": {
+        "type": "object",
+        "format": "",
+        "description": "Describes a HTTP Header.",
+        "$ref": "",
+        "properties": {
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "Header name.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "value": {
+            "type": "string",
+            "format": "",
+            "description": "Header value.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "IapCredential": {
+        "type": "object",
+        "format": "",
+        "description": "Describes authentication configuration for Identity-Aware-Proxy (IAP).",
+        "$ref": "",
+        "properties": {
+          "iapTestServiceAccountInfo": {
+            "type": "",
+            "format": "",
+            "description": "Authentication configuration when Web-Security-Scanner service account is added in Identity-Aware-Proxy (IAP) access policies.",
+            "$ref": "IapTestServiceAccountInfo",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "IapTestServiceAccountInfo": {
+        "type": "object",
+        "format": "",
+        "description": "Describes authentication configuration when Web-Security-Scanner service account is added in Identity-Aware-Proxy (IAP) access policies.",
+        "$ref": "",
+        "properties": {
+          "targetAudienceClientId": {
+            "type": "string",
+            "format": "",
+            "description": "Required. Describes OAuth2 Client ID of resources protected by Identity-Aware-Proxy(IAP).",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ListCrawledUrlsResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Response for the `ListCrawledUrls` method.",
+        "$ref": "",
+        "properties": {
+          "crawledUrls": {
+            "type": "array",
+            "format": "",
+            "description": "The list of CrawledUrls returned.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "CrawledUrl",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "Token to retrieve the next page of results, or empty if there are no more results in the list.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ListFindingTypeStatsResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Response for the `ListFindingTypeStats` method.",
+        "$ref": "",
+        "properties": {
+          "findingTypeStats": {
+            "type": "array",
+            "format": "",
+            "description": "The list of FindingTypeStats returned.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "FindingTypeStats",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ListFindingsResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Response for the `ListFindings` method.",
+        "$ref": "",
+        "properties": {
+          "findings": {
+            "type": "array",
+            "format": "",
+            "description": "The list of Findings returned.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Finding",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "Token to retrieve the next page of results, or empty if there are no more results in the list.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ListScanConfigsResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Response for the `ListScanConfigs` method.",
+        "$ref": "",
+        "properties": {
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "Token to retrieve the next page of results, or empty if there are no more results in the list.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "scanConfigs": {
+            "type": "array",
+            "format": "",
+            "description": "The list of ScanConfigs returned.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "ScanConfig",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ListScanRunsResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Response for the `ListScanRuns` method.",
+        "$ref": "",
+        "properties": {
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "Token to retrieve the next page of results, or empty if there are no more results in the list.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "scanRuns": {
+            "type": "array",
+            "format": "",
+            "description": "The list of ScanRuns returned.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "ScanRun",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "OutdatedLibrary": {
+        "type": "object",
+        "format": "",
+        "description": "Information reported for an outdated library.",
+        "$ref": "",
+        "properties": {
+          "learnMoreUrls": {
+            "type": "array",
+            "format": "",
+            "description": "URLs to learn more information about the vulnerabilities in the library.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "libraryName": {
+            "type": "string",
+            "format": "",
+            "description": "The name of the outdated library.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "version": {
+            "type": "string",
+            "format": "",
+            "description": "The version number.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ScanConfig": {
+        "type": "object",
+        "format": "",
+        "description": "A ScanConfig resource contains the configurations to launch a scan.",
+        "$ref": "",
+        "properties": {
+          "authentication": {
+            "type": "",
+            "format": "",
+            "description": "The authentication configuration. If specified, service will use the authentication configuration during scanning.",
+            "$ref": "Authentication",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "blacklistPatterns": {
+            "type": "array",
+            "format": "",
+            "description": "The excluded URL patterns as described in https://cloud.google.com/security-command-center/docs/how-to-use-web-security-scanner#excluding_urls",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "displayName": {
+            "type": "string",
+            "format": "",
+            "description": "Required. The user provided display name of the ScanConfig.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "exportToSecurityCommandCenter": {
+            "type": "string",
+            "format": "",
+            "description": "Controls export of scan configurations and results to Security Command Center.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "EXPORT_TO_SECURITY_COMMAND_CENTER_UNSPECIFIED",
+              "ENABLED",
+              "DISABLED"
+            ],
+            "readOnly": false
+          },
+          "ignoreHttpStatusErrors": {
+            "type": "boolean",
+            "format": "",
+            "description": "Whether to keep scanning even if most requests return HTTP error codes.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "latestRun": {
+            "type": "",
+            "format": "",
+            "description": "Latest ScanRun if available.",
+            "$ref": "ScanRun",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "managedScan": {
+            "type": "boolean",
+            "format": "",
+            "description": "Whether the scan config is managed by Web Security Scanner, output only.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "maxQps": {
+            "type": "integer",
+            "format": "int32",
+            "description": "The maximum QPS during scanning. A valid value ranges from 5 to 20 inclusively. If the field is unspecified or its value is set 0, server will default to 15. Other values outside of [5, 20] range will be rejected with INVALID_ARGUMENT error.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "The resource name of the ScanConfig. The name follows the format of 'projects/{projectId}/scanConfigs/{scanConfigId}'. The ScanConfig IDs are generated by the system.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "riskLevel": {
+            "type": "string",
+            "format": "",
+            "description": "The risk level selected for the scan",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "RISK_LEVEL_UNSPECIFIED",
+              "NORMAL",
+              "LOW"
+            ],
+            "readOnly": false
+          },
+          "schedule": {
+            "type": "",
+            "format": "",
+            "description": "The schedule of the ScanConfig.",
+            "$ref": "Schedule",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "startingUrls": {
+            "type": "array",
+            "format": "",
+            "description": "Required. The starting URLs from which the scanner finds site pages.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "staticIpScan": {
+            "type": "boolean",
+            "format": "",
+            "description": "Whether the scan configuration has enabled static IP address scan feature. If enabled, the scanner will access applications from static IP addresses.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "targetPlatforms": {
+            "type": "array",
+            "format": "",
+            "description": "Set of Google Cloud platforms targeted by the scan. If empty, APP_ENGINE will be used as a default.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": [
+                "TARGET_PLATFORM_UNSPECIFIED",
+                "APP_ENGINE",
+                "COMPUTE",
+                "CLOUD_RUN",
+                "CLOUD_FUNCTIONS"
+              ],
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "userAgent": {
+            "type": "string",
+            "format": "",
+            "description": "The user agent used during scanning.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "USER_AGENT_UNSPECIFIED",
+              "CHROME_LINUX",
+              "CHROME_ANDROID",
+              "SAFARI_IPHONE"
+            ],
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ScanConfigError": {
+        "type": "object",
+        "format": "",
+        "description": "Defines a custom error message used by CreateScanConfig and UpdateScanConfig APIs when scan configuration validation fails. It is also reported as part of a ScanRunErrorTrace message if scan validation fails due to a scan configuration error.",
+        "$ref": "",
+        "properties": {
+          "code": {
+            "type": "string",
+            "format": "",
+            "description": "Indicates the reason code for a configuration failure.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "CODE_UNSPECIFIED",
+              "OK",
+              "INTERNAL_ERROR",
+              "APPENGINE_API_BACKEND_ERROR",
+              "APPENGINE_API_NOT_ACCESSIBLE",
+              "APPENGINE_DEFAULT_HOST_MISSING",
+              "CANNOT_USE_GOOGLE_COM_ACCOUNT",
+              "CANNOT_USE_OWNER_ACCOUNT",
+              "COMPUTE_API_BACKEND_ERROR",
+              "COMPUTE_API_NOT_ACCESSIBLE",
+              "CUSTOM_LOGIN_URL_DOES_NOT_BELONG_TO_CURRENT_PROJECT",
+              "CUSTOM_LOGIN_URL_MALFORMED",
+              "CUSTOM_LOGIN_URL_MAPPED_TO_NON_ROUTABLE_ADDRESS",
+              "CUSTOM_LOGIN_URL_MAPPED_TO_UNRESERVED_ADDRESS",
+              "CUSTOM_LOGIN_URL_HAS_NON_ROUTABLE_IP_ADDRESS",
+              "CUSTOM_LOGIN_URL_HAS_UNRESERVED_IP_ADDRESS",
+              "DUPLICATE_SCAN_NAME",
+              "INVALID_FIELD_VALUE",
+              "FAILED_TO_AUTHENTICATE_TO_TARGET",
+              "FINDING_TYPE_UNSPECIFIED",
+              "FORBIDDEN_TO_SCAN_COMPUTE",
+              "FORBIDDEN_UPDATE_TO_MANAGED_SCAN",
+              "MALFORMED_FILTER",
+              "MALFORMED_RESOURCE_NAME",
+              "PROJECT_INACTIVE",
+              "REQUIRED_FIELD",
+              "RESOURCE_NAME_INCONSISTENT",
+              "SCAN_ALREADY_RUNNING",
+              "SCAN_NOT_RUNNING",
+              "SEED_URL_DOES_NOT_BELONG_TO_CURRENT_PROJECT",
+              "SEED_URL_MALFORMED",
+              "SEED_URL_MAPPED_TO_NON_ROUTABLE_ADDRESS",
+              "SEED_URL_MAPPED_TO_UNRESERVED_ADDRESS",
+              "SEED_URL_HAS_NON_ROUTABLE_IP_ADDRESS",
+              "SEED_URL_HAS_UNRESERVED_IP_ADDRESS",
+              "SERVICE_ACCOUNT_NOT_CONFIGURED",
+              "TOO_MANY_SCANS",
+              "UNABLE_TO_RESOLVE_PROJECT_INFO",
+              "UNSUPPORTED_BLACKLIST_PATTERN_FORMAT",
+              "UNSUPPORTED_FILTER",
+              "UNSUPPORTED_FINDING_TYPE",
+              "UNSUPPORTED_URL_SCHEME",
+              "CLOUD_ASSET_INVENTORY_ASSET_NOT_FOUND"
+            ],
+            "readOnly": false
+          },
+          "fieldName": {
+            "type": "string",
+            "format": "",
+            "description": "Indicates the full name of the ScanConfig field that triggers this error, for example \"scan_config.max_qps\". This field is provided for troubleshooting purposes only and its actual value can change in the future.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ScanRun": {
+        "type": "object",
+        "format": "",
+        "description": "A ScanRun is a output-only resource representing an actual run of the scan. Next id: 12",
+        "$ref": "",
+        "properties": {
+          "endTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "The time at which the ScanRun reached termination state - that the ScanRun is either finished or stopped by user.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "errorTrace": {
+            "type": "",
+            "format": "",
+            "description": "If result_state is an ERROR, this field provides the primary reason for scan's termination and more details, if such are available.",
+            "$ref": "ScanRunErrorTrace",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "executionState": {
+            "type": "string",
+            "format": "",
+            "description": "The execution state of the ScanRun.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "EXECUTION_STATE_UNSPECIFIED",
+              "QUEUED",
+              "SCANNING",
+              "FINISHED"
+            ],
+            "readOnly": false
+          },
+          "hasVulnerabilities": {
+            "type": "boolean",
+            "format": "",
+            "description": "Whether the scan run has found any vulnerabilities.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "The resource name of the ScanRun. The name follows the format of 'projects/{projectId}/scanConfigs/{scanConfigId}/scanRuns/{scanRunId}'. The ScanRun IDs are generated by the system.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "progressPercent": {
+            "type": "integer",
+            "format": "int32",
+            "description": "The percentage of total completion ranging from 0 to 100. If the scan is in queue, the value is 0. If the scan is running, the value ranges from 0 to 100. If the scan is finished, the value is 100.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "resultState": {
+            "type": "string",
+            "format": "",
+            "description": "The result state of the ScanRun. This field is only available after the execution state reaches \"FINISHED\".",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "RESULT_STATE_UNSPECIFIED",
+              "SUCCESS",
+              "ERROR",
+              "KILLED"
+            ],
+            "readOnly": false
+          },
+          "startTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "The time at which the ScanRun started.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "urlsCrawledCount": {
+            "type": "string",
+            "format": "int64",
+            "description": "The number of URLs crawled during this ScanRun. If the scan is in progress, the value represents the number of URLs crawled up to now.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "urlsTestedCount": {
+            "type": "string",
+            "format": "int64",
+            "description": "The number of URLs tested during this ScanRun. If the scan is in progress, the value represents the number of URLs tested up to now. The number of URLs tested is usually larger than the number URLS crawled because typically a crawled URL is tested with multiple test payloads.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "warningTraces": {
+            "type": "array",
+            "format": "",
+            "description": "A list of warnings, if such are encountered during this scan run.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "ScanRunWarningTrace",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ScanRunErrorTrace": {
+        "type": "object",
+        "format": "",
+        "description": "Output only. Defines an error trace message for a ScanRun.",
+        "$ref": "",
+        "properties": {
+          "code": {
+            "type": "string",
+            "format": "",
+            "description": "Indicates the error reason code.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "CODE_UNSPECIFIED",
+              "INTERNAL_ERROR",
+              "SCAN_CONFIG_ISSUE",
+              "AUTHENTICATION_CONFIG_ISSUE",
+              "TIMED_OUT_WHILE_SCANNING",
+              "TOO_MANY_REDIRECTS",
+              "TOO_MANY_HTTP_ERRORS",
+              "STARTING_URLS_CRAWL_HTTP_ERRORS"
+            ],
+            "readOnly": false
+          },
+          "mostCommonHttpErrorCode": {
+            "type": "integer",
+            "format": "int32",
+            "description": "If the scan encounters TOO_MANY_HTTP_ERRORS, this field indicates the most common HTTP error code, if such is available. For example, if this code is 404, the scan has encountered too many NOT_FOUND responses.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "scanConfigError": {
+            "type": "",
+            "format": "",
+            "description": "If the scan encounters SCAN_CONFIG_ISSUE error, this field has the error message encountered during scan configuration validation that is performed before each scan run.",
+            "$ref": "ScanConfigError",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ScanRunWarningTrace": {
+        "type": "object",
+        "format": "",
+        "description": "Output only. Defines a warning trace message for ScanRun. Warning traces provide customers with useful information that helps make the scanning process more effective.",
+        "$ref": "",
+        "properties": {
+          "code": {
+            "type": "string",
+            "format": "",
+            "description": "Indicates the warning code.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "CODE_UNSPECIFIED",
+              "INSUFFICIENT_CRAWL_RESULTS",
+              "TOO_MANY_CRAWL_RESULTS",
+              "TOO_MANY_FUZZ_TASKS",
+              "BLOCKED_BY_IAP",
+              "NO_STARTING_URL_FOUND_FOR_MANAGED_SCAN"
+            ],
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Schedule": {
+        "type": "object",
+        "format": "",
+        "description": "Scan schedule configuration.",
+        "$ref": "",
+        "properties": {
+          "intervalDurationDays": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Required. The duration of time between executions in days.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "scheduleTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "A timestamp indicates when the next run will be scheduled. The value is refreshed by the server after each run. If unspecified, it will default to current server time, which means the scan will be scheduled to start immediately.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "StartScanRunRequest": {
+        "type": "object",
+        "format": "",
+        "description": "Request for the `StartScanRun` method.",
+        "$ref": "",
+        "properties": {},
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "StopScanRunRequest": {
+        "type": "object",
+        "format": "",
+        "description": "Request for the `StopScanRun` method.",
+        "$ref": "",
+        "properties": {},
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ViolatingResource": {
+        "type": "object",
+        "format": "",
+        "description": "Information regarding any resource causing the vulnerability such as JavaScript sources, image, audio files, etc.",
+        "$ref": "",
+        "properties": {
+          "contentType": {
+            "type": "string",
+            "format": "",
+            "description": "The MIME type of this resource.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "resourceUrl": {
+            "type": "string",
+            "format": "",
+            "description": "URL of this violating resource.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "VulnerableHeaders": {
+        "type": "object",
+        "format": "",
+        "description": "Information about vulnerable or missing HTTP Headers.",
+        "$ref": "",
+        "properties": {
+          "headers": {
+            "type": "array",
+            "format": "",
+            "description": "List of vulnerable headers.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Header",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "missingHeaders": {
+            "type": "array",
+            "format": "",
+            "description": "List of missing headers.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Header",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "VulnerableParameters": {
+        "type": "object",
+        "format": "",
+        "description": "Information about vulnerable request parameters.",
+        "$ref": "",
+        "properties": {
+          "parameterNames": {
+            "type": "array",
+            "format": "",
+            "description": "The vulnerable parameter names.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Xss": {
+        "type": "object",
+        "format": "",
+        "description": "Information reported for an XSS.",
+        "$ref": "",
+        "properties": {
+          "errorMessage": {
+            "type": "string",
+            "format": "",
+            "description": "An error message generated by a javascript breakage.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "stackTraces": {
+            "type": "array",
+            "format": "",
+            "description": "Stack traces leading to the point where the XSS occurred.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Xxe": {
+        "type": "object",
+        "format": "",
+        "description": "Information reported for an XXE.",
+        "$ref": "",
+        "properties": {
+          "payloadLocation": {
+            "type": "string",
+            "format": "",
+            "description": "Location within the request where the payload was placed.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "LOCATION_UNSPECIFIED",
+              "COMPLETE_REQUEST_BODY"
+            ],
+            "readOnly": false
+          },
+          "payloadValue": {
+            "type": "string",
+            "format": "",
+            "description": "The XML string that triggered the XXE vulnerability. Non-payload values might be redacted.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      }
+    },
+    "resources": {
+      "projects": {
+        "methods": null,
+        "resources": {
+          "scanConfigs": {
+            "methods": {
+              "create": {
+                "id": "websecurityscanner.projects.scanConfigs.create",
+                "httpMethod": "POST",
+                "path": "v1beta/{+parent}/scanConfigs",
+                "flatPath": "v1beta/projects/{projectsId}/scanConfigs",
+                "description": "Creates a new ScanConfig.",
+                "parameters": {
+                  "parent": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  }
+                },
+                "parameterOrder": [
+                  "parent"
+                ],
+                "request": {
+                  "$ref": "ScanConfig"
+                },
+                "response": {
+                  "$ref": "ScanConfig"
+                }
+              },
+              "delete": {
+                "id": "websecurityscanner.projects.scanConfigs.delete",
+                "httpMethod": "DELETE",
+                "path": "v1beta/{+name}",
+                "flatPath": "v1beta/projects/{projectsId}/scanConfigs/{scanConfigsId}",
+                "description": "Deletes an existing ScanConfig and its child resources.",
+                "parameters": {
+                  "name": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  }
+                },
+                "parameterOrder": [
+                  "name"
+                ],
+                "request": null,
+                "response": {
+                  "$ref": "Empty"
+                }
+              },
+              "get": {
+                "id": "websecurityscanner.projects.scanConfigs.get",
+                "httpMethod": "GET",
+                "path": "v1beta/{+name}",
+                "flatPath": "v1beta/projects/{projectsId}/scanConfigs/{scanConfigsId}",
+                "description": "Gets a ScanConfig.",
+                "parameters": {
+                  "name": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  }
+                },
+                "parameterOrder": [
+                  "name"
+                ],
+                "request": null,
+                "response": {
+                  "$ref": "ScanConfig"
+                }
+              },
+              "list": {
+                "id": "websecurityscanner.projects.scanConfigs.list",
+                "httpMethod": "GET",
+                "path": "v1beta/{+parent}/scanConfigs",
+                "flatPath": "v1beta/projects/{projectsId}/scanConfigs",
+                "description": "Lists ScanConfigs under a given project.",
+                "parameters": {
+                  "pageSize": {
+                    "type": "integer",
+                    "location": "query",
+                    "required": false
+                  },
+                  "pageToken": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false
+                  },
+                  "parent": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  }
+                },
+                "parameterOrder": [
+                  "parent"
+                ],
+                "request": null,
+                "response": {
+                  "$ref": "ListScanConfigsResponse"
+                }
+              },
+              "patch": {
+                "id": "websecurityscanner.projects.scanConfigs.patch",
+                "httpMethod": "PATCH",
+                "path": "v1beta/{+name}",
+                "flatPath": "v1beta/projects/{projectsId}/scanConfigs/{scanConfigsId}",
+                "description": "Updates a ScanConfig. This method support partial update of a ScanConfig.",
+                "parameters": {
+                  "name": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  },
+                  "updateMask": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false
+                  }
+                },
+                "parameterOrder": [
+                  "name"
+                ],
+                "request": {
+                  "$ref": "ScanConfig"
+                },
+                "response": {
+                  "$ref": "ScanConfig"
+                }
+              },
+              "start": {
+                "id": "websecurityscanner.projects.scanConfigs.start",
+                "httpMethod": "POST",
+                "path": "v1beta/{+name}:start",
+                "flatPath": "v1beta/projects/{projectsId}/scanConfigs/{scanConfigsId}:start",
+                "description": "Start a ScanRun according to the given ScanConfig.",
+                "parameters": {
+                  "name": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  }
+                },
+                "parameterOrder": [
+                  "name"
+                ],
+                "request": {
+                  "$ref": "StartScanRunRequest"
+                },
+                "response": {
+                  "$ref": "ScanRun"
+                }
+              }
+            },
+            "resources": {
+              "scanRuns": {
+                "methods": {
+                  "get": {
+                    "id": "websecurityscanner.projects.scanConfigs.scanRuns.get",
+                    "httpMethod": "GET",
+                    "path": "v1beta/{+name}",
+                    "flatPath": "v1beta/projects/{projectsId}/scanConfigs/{scanConfigsId}/scanRuns/{scanRunsId}",
+                    "description": "Gets a ScanRun.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "ScanRun"
+                    }
+                  },
+                  "list": {
+                    "id": "websecurityscanner.projects.scanConfigs.scanRuns.list",
+                    "httpMethod": "GET",
+                    "path": "v1beta/{+parent}/scanRuns",
+                    "flatPath": "v1beta/projects/{projectsId}/scanConfigs/{scanConfigsId}/scanRuns",
+                    "description": "Lists ScanRuns under a given ScanConfig, in descending order of ScanRun stop time.",
+                    "parameters": {
+                      "pageSize": {
+                        "type": "integer",
+                        "location": "query",
+                        "required": false
+                      },
+                      "pageToken": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "parent": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "parent"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "ListScanRunsResponse"
+                    }
+                  },
+                  "stop": {
+                    "id": "websecurityscanner.projects.scanConfigs.scanRuns.stop",
+                    "httpMethod": "POST",
+                    "path": "v1beta/{+name}:stop",
+                    "flatPath": "v1beta/projects/{projectsId}/scanConfigs/{scanConfigsId}/scanRuns/{scanRunsId}:stop",
+                    "description": "Stops a ScanRun. The stopped ScanRun is returned.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": {
+                      "$ref": "StopScanRunRequest"
+                    },
+                    "response": {
+                      "$ref": "ScanRun"
+                    }
+                  }
+                },
+                "resources": {
+                  "crawledUrls": {
+                    "methods": {
+                      "list": {
+                        "id": "websecurityscanner.projects.scanConfigs.scanRuns.crawledUrls.list",
+                        "httpMethod": "GET",
+                        "path": "v1beta/{+parent}/crawledUrls",
+                        "flatPath": "v1beta/projects/{projectsId}/scanConfigs/{scanConfigsId}/scanRuns/{scanRunsId}/crawledUrls",
+                        "description": "List CrawledUrls under a given ScanRun.",
+                        "parameters": {
+                          "pageSize": {
+                            "type": "integer",
+                            "location": "query",
+                            "required": false
+                          },
+                          "pageToken": {
+                            "type": "string",
+                            "location": "query",
+                            "required": false
+                          },
+                          "parent": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          }
+                        },
+                        "parameterOrder": [
+                          "parent"
+                        ],
+                        "request": null,
+                        "response": {
+                          "$ref": "ListCrawledUrlsResponse"
+                        }
+                      }
+                    },
+                    "resources": null
+                  },
+                  "findingTypeStats": {
+                    "methods": {
+                      "list": {
+                        "id": "websecurityscanner.projects.scanConfigs.scanRuns.findingTypeStats.list",
+                        "httpMethod": "GET",
+                        "path": "v1beta/{+parent}/findingTypeStats",
+                        "flatPath": "v1beta/projects/{projectsId}/scanConfigs/{scanConfigsId}/scanRuns/{scanRunsId}/findingTypeStats",
+                        "description": "List all FindingTypeStats under a given ScanRun.",
+                        "parameters": {
+                          "parent": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          }
+                        },
+                        "parameterOrder": [
+                          "parent"
+                        ],
+                        "request": null,
+                        "response": {
+                          "$ref": "ListFindingTypeStatsResponse"
+                        }
+                      }
+                    },
+                    "resources": null
+                  },
+                  "findings": {
+                    "methods": {
+                      "get": {
+                        "id": "websecurityscanner.projects.scanConfigs.scanRuns.findings.get",
+                        "httpMethod": "GET",
+                        "path": "v1beta/{+name}",
+                        "flatPath": "v1beta/projects/{projectsId}/scanConfigs/{scanConfigsId}/scanRuns/{scanRunsId}/findings/{findingsId}",
+                        "description": "Gets a Finding.",
+                        "parameters": {
+                          "name": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          }
+                        },
+                        "parameterOrder": [
+                          "name"
+                        ],
+                        "request": null,
+                        "response": {
+                          "$ref": "Finding"
+                        }
+                      },
+                      "list": {
+                        "id": "websecurityscanner.projects.scanConfigs.scanRuns.findings.list",
+                        "httpMethod": "GET",
+                        "path": "v1beta/{+parent}/findings",
+                        "flatPath": "v1beta/projects/{projectsId}/scanConfigs/{scanConfigsId}/scanRuns/{scanRunsId}/findings",
+                        "description": "List Findings under a given ScanRun.",
+                        "parameters": {
+                          "filter": {
+                            "type": "string",
+                            "location": "query",
+                            "required": false
+                          },
+                          "pageSize": {
+                            "type": "integer",
+                            "location": "query",
+                            "required": false
+                          },
+                          "pageToken": {
+                            "type": "string",
+                            "location": "query",
+                            "required": false
+                          },
+                          "parent": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          }
+                        },
+                        "parameterOrder": [
+                          "parent"
+                        ],
+                        "request": null,
+                        "response": {
+                          "$ref": "ListFindingsResponse"
+                        }
+                      }
+                    },
+                    "resources": null
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

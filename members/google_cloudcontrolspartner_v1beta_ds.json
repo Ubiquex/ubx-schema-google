@@ -1,0 +1,2037 @@
+{
+  "schema_source": "discovery_docs",
+  "mode": "data_source",
+  "auth": {
+    "Type": "",
+    "Params": null
+  },
+  "base_url": "https://cloudcontrolspartner.googleapis.com",
+  "retry": {
+    "MaxAttempts": 0,
+    "InitialBackoff": "",
+    "MaxBackoff": "",
+    "Jitter": null,
+    "RespectRetryAfter": null,
+    "RateLimitResetHeader": ""
+  },
+  "timeouts": {
+    "Create": "",
+    "Read": "",
+    "Update": "",
+    "Delete": "",
+    "Default": ""
+  },
+  "wire_name": "google_cloudcontrolspartner_v1beta",
+  "version_qualifier": "v1beta",
+  "raw_spec": {
+    "name": "cloudcontrolspartner",
+    "revision": "20260819",
+    "discoveryVersion": "v1",
+    "baseUrl": "https://cloudcontrolspartner.googleapis.com/",
+    "rootUrl": "https://cloudcontrolspartner.googleapis.com/",
+    "servicePath": "",
+    "schemas": {
+      "AccessApprovalRequest": {
+        "type": "object",
+        "format": "",
+        "description": "Details about the Access request.",
+        "$ref": "",
+        "properties": {
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "Identifier. Format: `organizations/{organization}/locations/{location}/customers/{customer}/workloads/{workload}/accessApprovalRequests/{access_approval_request}`",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "requestTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "The time at which approval was requested.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "requestedExpirationTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "The requested expiration for the approval. If the request is approved, access will be granted from the time of approval until the expiration time.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "requestedReason": {
+            "type": "",
+            "format": "",
+            "description": "The justification for which approval is being requested.",
+            "$ref": "AccessReason",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "AccessReason": {
+        "type": "object",
+        "format": "",
+        "description": "Reason for the access.",
+        "$ref": "",
+        "properties": {
+          "detail": {
+            "type": "string",
+            "format": "",
+            "description": "More detail about certain reason types. See comments for each type above.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "type": {
+            "type": "string",
+            "format": "",
+            "description": "Type of access justification.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "TYPE_UNSPECIFIED",
+              "CUSTOMER_INITIATED_SUPPORT",
+              "GOOGLE_INITIATED_SERVICE",
+              "GOOGLE_INITIATED_REVIEW",
+              "THIRD_PARTY_DATA_REQUEST",
+              "GOOGLE_RESPONSE_TO_PRODUCTION_ALERT",
+              "CLOUD_INITIATED_ACCESS"
+            ],
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ConnectionError": {
+        "type": "object",
+        "format": "",
+        "description": "Information around the error that occurred if the connection state is anything other than available or unspecified",
+        "$ref": "",
+        "properties": {
+          "errorDomain": {
+            "type": "string",
+            "format": "",
+            "description": "The error domain for the error",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "errorMessage": {
+            "type": "string",
+            "format": "",
+            "description": "The error message for the error",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Console": {
+        "type": "object",
+        "format": "",
+        "description": "Remediation instructions to resolve violation via cloud console",
+        "$ref": "",
+        "properties": {
+          "additionalLinks": {
+            "type": "array",
+            "format": "",
+            "description": "Additional urls for more information about steps",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "consoleUris": {
+            "type": "array",
+            "format": "",
+            "description": "Link to console page where violations can be resolved",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "steps": {
+            "type": "array",
+            "format": "",
+            "description": "Steps to resolve violation via cloud console",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Customer": {
+        "type": "object",
+        "format": "",
+        "description": "Contains metadata around a Cloud Controls Partner Customer",
+        "$ref": "",
+        "properties": {
+          "customerOnboardingState": {
+            "type": "",
+            "format": "",
+            "description": "Output only. Container for customer onboarding steps",
+            "$ref": "CustomerOnboardingState",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "displayName": {
+            "type": "string",
+            "format": "",
+            "description": "Required. Display name for the customer",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "isOnboarded": {
+            "type": "boolean",
+            "format": "",
+            "description": "Output only. Indicates whether a customer is fully onboarded",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "Identifier. Format: `organizations/{organization}/locations/{location}/customers/{customer}`",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "organizationDomain": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The customer organization domain, extracted from CRM Organization’s display_name field. e.g. \"google.com\"",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "CustomerOnboardingState": {
+        "type": "object",
+        "format": "",
+        "description": "Container for customer onboarding steps",
+        "$ref": "",
+        "properties": {
+          "onboardingSteps": {
+            "type": "array",
+            "format": "",
+            "description": "List of customer onboarding steps",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "CustomerOnboardingStep",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "CustomerOnboardingStep": {
+        "type": "object",
+        "format": "",
+        "description": "Container for customer onboarding information",
+        "$ref": "",
+        "properties": {
+          "completionState": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. Current state of the step",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "COMPLETION_STATE_UNSPECIFIED",
+              "PENDING",
+              "SUCCEEDED",
+              "FAILED",
+              "NOT_APPLICABLE"
+            ],
+            "readOnly": true
+          },
+          "completionTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "The completion time of the onboarding step",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "startTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "The starting time of the onboarding step",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "step": {
+            "type": "string",
+            "format": "",
+            "description": "The onboarding step",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "STEP_UNSPECIFIED",
+              "KAJ_ENROLLMENT",
+              "CUSTOMER_ENVIRONMENT"
+            ],
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "EkmConnection": {
+        "type": "object",
+        "format": "",
+        "description": "Details about the EKM connection",
+        "$ref": "",
+        "properties": {
+          "connectionError": {
+            "type": "",
+            "format": "",
+            "description": "The connection error that occurred if any",
+            "$ref": "ConnectionError",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "connectionName": {
+            "type": "string",
+            "format": "",
+            "description": "Resource name of the EKM connection in the format: projects/{project}/locations/{location}/ekmConnections/{ekm_connection}",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "connectionState": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The connection state",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "CONNECTION_STATE_UNSPECIFIED",
+              "AVAILABLE",
+              "NOT_AVAILABLE",
+              "ERROR",
+              "PERMISSION_DENIED"
+            ],
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "EkmConnections": {
+        "type": "object",
+        "format": "",
+        "description": "The EKM connections associated with a workload",
+        "$ref": "",
+        "properties": {
+          "ekmConnections": {
+            "type": "array",
+            "format": "",
+            "description": "The EKM connections associated with the workload",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "EkmConnection",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "Identifier. Format: `organizations/{organization}/locations/{location}/customers/{customer}/workloads/{workload}/ekmConnections`",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "EkmMetadata": {
+        "type": "object",
+        "format": "",
+        "description": "Holds information needed by Mudbray to use partner EKMs for workloads.",
+        "$ref": "",
+        "properties": {
+          "ekmEndpointUri": {
+            "type": "string",
+            "format": "",
+            "description": "Endpoint for sending requests to the EKM for key provisioning during Assured Workload creation.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "ekmSolution": {
+            "type": "string",
+            "format": "",
+            "description": "The Cloud EKM partner.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "EKM_SOLUTION_UNSPECIFIED",
+              "FORTANIX",
+              "FUTUREX",
+              "THALES",
+              "VIRTRU"
+            ],
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Empty": {
+        "type": "object",
+        "format": "",
+        "description": "A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }",
+        "$ref": "",
+        "properties": {},
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Gcloud": {
+        "type": "object",
+        "format": "",
+        "description": "Remediation instructions to resolve violation via gcloud cli",
+        "$ref": "",
+        "properties": {
+          "additionalLinks": {
+            "type": "array",
+            "format": "",
+            "description": "Additional urls for more information about steps",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "gcloudCommands": {
+            "type": "array",
+            "format": "",
+            "description": "Gcloud command to resolve violation",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "steps": {
+            "type": "array",
+            "format": "",
+            "description": "Steps to resolve violation via gcloud cli",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Instructions": {
+        "type": "object",
+        "format": "",
+        "description": "Instructions to remediate violation",
+        "$ref": "",
+        "properties": {
+          "consoleInstructions": {
+            "type": "",
+            "format": "",
+            "description": "Remediation instructions to resolve violation via cloud console",
+            "$ref": "Console",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "gcloudInstructions": {
+            "type": "",
+            "format": "",
+            "description": "Remediation instructions to resolve violation via gcloud cli",
+            "$ref": "Gcloud",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ListAccessApprovalRequestsResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Response message for list access requests.",
+        "$ref": "",
+        "properties": {
+          "accessApprovalRequests": {
+            "type": "array",
+            "format": "",
+            "description": "List of access approval requests",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "AccessApprovalRequest",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "unreachable": {
+            "type": "array",
+            "format": "",
+            "description": "Locations that could not be reached.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ListCustomersResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Response message for list customer Customers requests",
+        "$ref": "",
+        "properties": {
+          "customers": {
+            "type": "array",
+            "format": "",
+            "description": "List of customers",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Customer",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "unreachable": {
+            "type": "array",
+            "format": "",
+            "description": "Locations that could not be reached.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ListViolationsResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Response message for list customer violation requests",
+        "$ref": "",
+        "properties": {
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "unreachable": {
+            "type": "array",
+            "format": "",
+            "description": "Workloads that could not be reached due to permission errors or any other error. Ref: https://google.aip.dev/217",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "violations": {
+            "type": "array",
+            "format": "",
+            "description": "List of violation",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Violation",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ListWorkloadsResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Response message for list customer workloads requests.",
+        "$ref": "",
+        "properties": {
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "unreachable": {
+            "type": "array",
+            "format": "",
+            "description": "Locations that could not be reached.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "workloads": {
+            "type": "array",
+            "format": "",
+            "description": "List of customer workloads",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Workload",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "OperationMetadata": {
+        "type": "object",
+        "format": "",
+        "description": "Represents the metadata of the long-running operation.",
+        "$ref": "",
+        "properties": {
+          "apiVersion": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. API version used to start the operation.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "createTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. The time the operation was created.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "endTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. The time the operation finished running.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "requestedCancellation": {
+            "type": "boolean",
+            "format": "",
+            "description": "Output only. Identifies whether the user has requested cancellation of the operation. Operations that have been cancelled successfully have Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "statusMessage": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. Human-readable status of the operation, if any.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "target": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. Server-defined resource path for the target of the operation.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "verb": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. Name of the verb executed by the operation.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Partner": {
+        "type": "object",
+        "format": "",
+        "description": "Message describing Partner resource",
+        "$ref": "",
+        "properties": {
+          "createTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. Time the resource was created",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "ekmSolutions": {
+            "type": "array",
+            "format": "",
+            "description": "List of Google Cloud supported EKM partners supported by the partner",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "EkmMetadata",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "Identifier. The resource name of the partner. Format: `organizations/{organization}/locations/{location}/partner` Example: \"organizations/123456/locations/us-central1/partner\"",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "operatedCloudRegions": {
+            "type": "array",
+            "format": "",
+            "description": "List of Google Cloud regions that the partner sells services to customers. Valid Google Cloud regions found here: https://cloud.google.com/compute/docs/regions-zones",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "partnerProjectId": {
+            "type": "string",
+            "format": "",
+            "description": "Google Cloud project ID in the partner's Google Cloud organization for receiving enhanced Logs for Partners.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "skus": {
+            "type": "array",
+            "format": "",
+            "description": "List of SKUs the partner is offering",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Sku",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "updateTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. The last time the resource was updated",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "PartnerPermissions": {
+        "type": "object",
+        "format": "",
+        "description": "The permissions granted to the partner for a workload",
+        "$ref": "",
+        "properties": {
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "Identifier. Format: `organizations/{organization}/locations/{location}/customers/{customer}/workloads/{workload}/partnerPermissions`",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "partnerPermissions": {
+            "type": "array",
+            "format": "",
+            "description": "The partner permissions granted for the workload",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": [
+                "PERMISSION_UNSPECIFIED",
+                "ACCESS_TRANSPARENCY_AND_EMERGENCY_ACCESS_LOGS",
+                "ASSURED_WORKLOADS_MONITORING",
+                "ACCESS_APPROVAL_REQUESTS",
+                "ASSURED_WORKLOADS_EKM_CONNECTION_STATUS",
+                "ACCESS_TRANSPARENCY_LOGS_SUPPORT_CASE_VIEWER"
+              ],
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Remediation": {
+        "type": "object",
+        "format": "",
+        "description": "Represents remediation guidance to resolve compliance violation for AssuredWorkload",
+        "$ref": "",
+        "properties": {
+          "compliantValues": {
+            "type": "array",
+            "format": "",
+            "description": "Values that can resolve the violation For example: for list org policy violations, this will either be the list of allowed or denied values",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "instructions": {
+            "type": "",
+            "format": "",
+            "description": "Required. Remediation instructions to resolve violations",
+            "$ref": "Instructions",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "remediationType": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. Remediation type based on the type of org policy values violated",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "REMEDIATION_TYPE_UNSPECIFIED",
+              "REMEDIATION_BOOLEAN_ORG_POLICY_VIOLATION",
+              "REMEDIATION_LIST_ALLOWED_VALUES_ORG_POLICY_VIOLATION",
+              "REMEDIATION_LIST_DENIED_VALUES_ORG_POLICY_VIOLATION",
+              "REMEDIATION_RESTRICT_CMEK_CRYPTO_KEY_PROJECTS_ORG_POLICY_VIOLATION",
+              "REMEDIATION_RESOURCE_VIOLATION"
+            ],
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Sku": {
+        "type": "object",
+        "format": "",
+        "description": "Represents the SKU a partner owns inside Google Cloud to sell to customers.",
+        "$ref": "",
+        "properties": {
+          "displayName": {
+            "type": "string",
+            "format": "",
+            "description": "Display name of the product identified by the SKU. A partner may want to show partner branded names for their offerings such as local sovereign cloud solutions.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "id": {
+            "type": "string",
+            "format": "",
+            "description": "Argentum product SKU, that is associated with the partner offerings to customers used by Syntro for billing purposes. SKUs can represent resold Google products or support services.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Violation": {
+        "type": "object",
+        "format": "",
+        "description": "Details of resource Violation",
+        "$ref": "",
+        "properties": {
+          "beginTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. Time of the event which triggered the Violation.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "category": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. Category under which this violation is mapped. e.g. Location, Service Usage, Access, Encryption, etc.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "description": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. Description for the Violation. e.g. OrgPolicy gcp.resourceLocations has non compliant value.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "folderId": {
+            "type": "string",
+            "format": "int64",
+            "description": "The folder_id of the violation",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "Identifier. Format: `organizations/{organization}/locations/{location}/customers/{customer}/workloads/{workload}/violations/{violation}`",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "nonCompliantOrgPolicy": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. Immutable. Name of the OrgPolicy which was modified with non-compliant change and resulted this violation. Format: `projects/{project_number}/policies/{constraint_name}` `folders/{folder_id}/policies/{constraint_name}` `organizations/{organization_id}/policies/{constraint_name}`",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "remediation": {
+            "type": "",
+            "format": "",
+            "description": "Output only. Compliance violation remediation",
+            "$ref": "Remediation",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "resolveTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. Time of the event which fixed the Violation. If the violation is ACTIVE this will be empty.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "state": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. State of the violation",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "STATE_UNSPECIFIED",
+              "RESOLVED",
+              "UNRESOLVED",
+              "EXCEPTION"
+            ],
+            "readOnly": true
+          },
+          "updateTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. The last time when the Violation record was updated.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Workload": {
+        "type": "object",
+        "format": "",
+        "description": "Contains metadata around the [Workload resource](https://cloud.google.com/assured-workloads/docs/reference/rest/Shared.Types/Workload) in the Assured Workloads API.",
+        "$ref": "",
+        "properties": {
+          "createTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. Time the resource was created.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "folder": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The name of container folder of the assured workload",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "folderId": {
+            "type": "string",
+            "format": "int64",
+            "description": "Output only. Folder id this workload is associated with",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "isOnboarded": {
+            "type": "boolean",
+            "format": "",
+            "description": "Indicates whether a workload is fully onboarded.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "keyManagementProjectId": {
+            "type": "string",
+            "format": "",
+            "description": "The project id of the key management project for the workload",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "location": {
+            "type": "string",
+            "format": "",
+            "description": "The Google Cloud location of the workload",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "Identifier. Format: `organizations/{organization}/locations/{location}/customers/{customer}/workloads/{workload}`",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "partner": {
+            "type": "string",
+            "format": "",
+            "description": "Partner associated with this workload.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "PARTNER_UNSPECIFIED",
+              "PARTNER_LOCAL_CONTROLS_BY_S3NS",
+              "PARTNER_SOVEREIGN_CONTROLS_BY_T_SYSTEMS",
+              "PARTNER_SOVEREIGN_CONTROLS_BY_SIA_MINSAIT",
+              "PARTNER_SOVEREIGN_CONTROLS_BY_PSN",
+              "PARTNER_SOVEREIGN_CONTROLS_BY_CNTXT",
+              "PARTNER_SOVEREIGN_CONTROLS_BY_CNTXT_NO_EKM",
+              "PARTNER_SPAIN_DATA_BOUNDARY_BY_TELEFONICA"
+            ],
+            "readOnly": false
+          },
+          "workloadOnboardingState": {
+            "type": "",
+            "format": "",
+            "description": "Container for workload onboarding steps.",
+            "$ref": "WorkloadOnboardingState",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "WorkloadOnboardingState": {
+        "type": "object",
+        "format": "",
+        "description": "Container for workload onboarding steps.",
+        "$ref": "",
+        "properties": {
+          "onboardingSteps": {
+            "type": "array",
+            "format": "",
+            "description": "List of workload onboarding steps.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "WorkloadOnboardingStep",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "WorkloadOnboardingStep": {
+        "type": "object",
+        "format": "",
+        "description": "Container for workload onboarding information.",
+        "$ref": "",
+        "properties": {
+          "completionState": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The completion state of the onboarding step.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "COMPLETION_STATE_UNSPECIFIED",
+              "PENDING",
+              "SUCCEEDED",
+              "FAILED",
+              "NOT_APPLICABLE"
+            ],
+            "readOnly": true
+          },
+          "completionTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "The completion time of the onboarding step.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "startTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "The starting time of the onboarding step.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "step": {
+            "type": "string",
+            "format": "",
+            "description": "The onboarding step.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "STEP_UNSPECIFIED",
+              "EKM_PROVISIONED",
+              "SIGNED_ACCESS_APPROVAL_CONFIGURED"
+            ],
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      }
+    },
+    "resources": {
+      "organizations": {
+        "methods": null,
+        "resources": {
+          "locations": {
+            "methods": {
+              "getPartner": {
+                "id": "cloudcontrolspartner.organizations.locations.getPartner",
+                "httpMethod": "GET",
+                "path": "v1beta/{+name}",
+                "flatPath": "v1beta/organizations/{organizationsId}/locations/{locationsId}/partner",
+                "description": "Get details of a Partner.",
+                "parameters": {
+                  "name": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  }
+                },
+                "parameterOrder": [
+                  "name"
+                ],
+                "request": null,
+                "response": {
+                  "$ref": "Partner"
+                }
+              }
+            },
+            "resources": {
+              "customers": {
+                "methods": {
+                  "create": {
+                    "id": "cloudcontrolspartner.organizations.locations.customers.create",
+                    "httpMethod": "POST",
+                    "path": "v1beta/{+parent}/customers",
+                    "flatPath": "v1beta/organizations/{organizationsId}/locations/{locationsId}/customers",
+                    "description": "Creates a new customer.",
+                    "parameters": {
+                      "customerId": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "parent": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "parent"
+                    ],
+                    "request": {
+                      "$ref": "Customer"
+                    },
+                    "response": {
+                      "$ref": "Customer"
+                    }
+                  },
+                  "delete": {
+                    "id": "cloudcontrolspartner.organizations.locations.customers.delete",
+                    "httpMethod": "DELETE",
+                    "path": "v1beta/{+name}",
+                    "flatPath": "v1beta/organizations/{organizationsId}/locations/{locationsId}/customers/{customersId}",
+                    "description": "Delete details of a single customer",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "Empty"
+                    }
+                  },
+                  "get": {
+                    "id": "cloudcontrolspartner.organizations.locations.customers.get",
+                    "httpMethod": "GET",
+                    "path": "v1beta/{+name}",
+                    "flatPath": "v1beta/organizations/{organizationsId}/locations/{locationsId}/customers/{customersId}",
+                    "description": "Gets details of a single customer",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "Customer"
+                    }
+                  },
+                  "list": {
+                    "id": "cloudcontrolspartner.organizations.locations.customers.list",
+                    "httpMethod": "GET",
+                    "path": "v1beta/{+parent}/customers",
+                    "flatPath": "v1beta/organizations/{organizationsId}/locations/{locationsId}/customers",
+                    "description": "Lists customers of a partner identified by its Google Cloud organization ID",
+                    "parameters": {
+                      "filter": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "orderBy": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "pageSize": {
+                        "type": "integer",
+                        "location": "query",
+                        "required": false
+                      },
+                      "pageToken": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "parent": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "parent"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "ListCustomersResponse"
+                    }
+                  },
+                  "patch": {
+                    "id": "cloudcontrolspartner.organizations.locations.customers.patch",
+                    "httpMethod": "PATCH",
+                    "path": "v1beta/{+name}",
+                    "flatPath": "v1beta/organizations/{organizationsId}/locations/{locationsId}/customers/{customersId}",
+                    "description": "Update details of a single customer",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      },
+                      "updateMask": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": {
+                      "$ref": "Customer"
+                    },
+                    "response": {
+                      "$ref": "Customer"
+                    }
+                  }
+                },
+                "resources": {
+                  "workloads": {
+                    "methods": {
+                      "get": {
+                        "id": "cloudcontrolspartner.organizations.locations.customers.workloads.get",
+                        "httpMethod": "GET",
+                        "path": "v1beta/{+name}",
+                        "flatPath": "v1beta/organizations/{organizationsId}/locations/{locationsId}/customers/{customersId}/workloads/{workloadsId}",
+                        "description": "Gets details of a single workload",
+                        "parameters": {
+                          "name": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          }
+                        },
+                        "parameterOrder": [
+                          "name"
+                        ],
+                        "request": null,
+                        "response": {
+                          "$ref": "Workload"
+                        }
+                      },
+                      "getEkmConnections": {
+                        "id": "cloudcontrolspartner.organizations.locations.customers.workloads.getEkmConnections",
+                        "httpMethod": "GET",
+                        "path": "v1beta/{+name}",
+                        "flatPath": "v1beta/organizations/{organizationsId}/locations/{locationsId}/customers/{customersId}/workloads/{workloadsId}/ekmConnections",
+                        "description": "Gets the EKM connections associated with a workload",
+                        "parameters": {
+                          "name": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          }
+                        },
+                        "parameterOrder": [
+                          "name"
+                        ],
+                        "request": null,
+                        "response": {
+                          "$ref": "EkmConnections"
+                        }
+                      },
+                      "getPartnerPermissions": {
+                        "id": "cloudcontrolspartner.organizations.locations.customers.workloads.getPartnerPermissions",
+                        "httpMethod": "GET",
+                        "path": "v1beta/{+name}",
+                        "flatPath": "v1beta/organizations/{organizationsId}/locations/{locationsId}/customers/{customersId}/workloads/{workloadsId}/partnerPermissions",
+                        "description": "Gets the partner permissions granted for a workload",
+                        "parameters": {
+                          "name": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          }
+                        },
+                        "parameterOrder": [
+                          "name"
+                        ],
+                        "request": null,
+                        "response": {
+                          "$ref": "PartnerPermissions"
+                        }
+                      },
+                      "list": {
+                        "id": "cloudcontrolspartner.organizations.locations.customers.workloads.list",
+                        "httpMethod": "GET",
+                        "path": "v1beta/{+parent}/workloads",
+                        "flatPath": "v1beta/organizations/{organizationsId}/locations/{locationsId}/customers/{customersId}/workloads",
+                        "description": "Lists customer workloads for a given customer org id",
+                        "parameters": {
+                          "filter": {
+                            "type": "string",
+                            "location": "query",
+                            "required": false
+                          },
+                          "orderBy": {
+                            "type": "string",
+                            "location": "query",
+                            "required": false
+                          },
+                          "pageSize": {
+                            "type": "integer",
+                            "location": "query",
+                            "required": false
+                          },
+                          "pageToken": {
+                            "type": "string",
+                            "location": "query",
+                            "required": false
+                          },
+                          "parent": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          }
+                        },
+                        "parameterOrder": [
+                          "parent"
+                        ],
+                        "request": null,
+                        "response": {
+                          "$ref": "ListWorkloadsResponse"
+                        }
+                      }
+                    },
+                    "resources": {
+                      "accessApprovalRequests": {
+                        "methods": {
+                          "list": {
+                            "id": "cloudcontrolspartner.organizations.locations.customers.workloads.accessApprovalRequests.list",
+                            "httpMethod": "GET",
+                            "path": "v1beta/{+parent}/accessApprovalRequests",
+                            "flatPath": "v1beta/organizations/{organizationsId}/locations/{locationsId}/customers/{customersId}/workloads/{workloadsId}/accessApprovalRequests",
+                            "description": "Deprecated: Only returns access approval requests directly associated with an assured workload folder.",
+                            "parameters": {
+                              "filter": {
+                                "type": "string",
+                                "location": "query",
+                                "required": false
+                              },
+                              "orderBy": {
+                                "type": "string",
+                                "location": "query",
+                                "required": false
+                              },
+                              "pageSize": {
+                                "type": "integer",
+                                "location": "query",
+                                "required": false
+                              },
+                              "pageToken": {
+                                "type": "string",
+                                "location": "query",
+                                "required": false
+                              },
+                              "parent": {
+                                "type": "string",
+                                "location": "path",
+                                "required": true
+                              }
+                            },
+                            "parameterOrder": [
+                              "parent"
+                            ],
+                            "request": null,
+                            "response": {
+                              "$ref": "ListAccessApprovalRequestsResponse"
+                            }
+                          }
+                        },
+                        "resources": null
+                      },
+                      "violations": {
+                        "methods": {
+                          "get": {
+                            "id": "cloudcontrolspartner.organizations.locations.customers.workloads.violations.get",
+                            "httpMethod": "GET",
+                            "path": "v1beta/{+name}",
+                            "flatPath": "v1beta/organizations/{organizationsId}/locations/{locationsId}/customers/{customersId}/workloads/{workloadsId}/violations/{violationsId}",
+                            "description": "Gets details of a single Violation.",
+                            "parameters": {
+                              "name": {
+                                "type": "string",
+                                "location": "path",
+                                "required": true
+                              }
+                            },
+                            "parameterOrder": [
+                              "name"
+                            ],
+                            "request": null,
+                            "response": {
+                              "$ref": "Violation"
+                            }
+                          },
+                          "list": {
+                            "id": "cloudcontrolspartner.organizations.locations.customers.workloads.violations.list",
+                            "httpMethod": "GET",
+                            "path": "v1beta/{+parent}/violations",
+                            "flatPath": "v1beta/organizations/{organizationsId}/locations/{locationsId}/customers/{customersId}/workloads/{workloadsId}/violations",
+                            "description": "Lists Violations for a workload Callers may also choose to read across multiple Customers or for a single customer as per [AIP-159](https://google.aip.dev/159) by using '-' (the hyphen or dash character) as a wildcard character instead of {customer} \u0026 {workload}. Format: `organizations/{organization}/locations/{location}/customers/{customer}/workloads/{workload}`",
+                            "parameters": {
+                              "filter": {
+                                "type": "string",
+                                "location": "query",
+                                "required": false
+                              },
+                              "interval.endTime": {
+                                "type": "string",
+                                "location": "query",
+                                "required": false
+                              },
+                              "interval.startTime": {
+                                "type": "string",
+                                "location": "query",
+                                "required": false
+                              },
+                              "orderBy": {
+                                "type": "string",
+                                "location": "query",
+                                "required": false
+                              },
+                              "pageSize": {
+                                "type": "integer",
+                                "location": "query",
+                                "required": false
+                              },
+                              "pageToken": {
+                                "type": "string",
+                                "location": "query",
+                                "required": false
+                              },
+                              "parent": {
+                                "type": "string",
+                                "location": "path",
+                                "required": true
+                              }
+                            },
+                            "parameterOrder": [
+                              "parent"
+                            ],
+                            "request": null,
+                            "response": {
+                              "$ref": "ListViolationsResponse"
+                            }
+                          }
+                        },
+                        "resources": null
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

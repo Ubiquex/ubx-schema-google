@@ -1,0 +1,3325 @@
+{
+  "schema_source": "discovery_docs",
+  "mode": "data_source",
+  "auth": {
+    "Type": "",
+    "Params": null
+  },
+  "base_url": "https://tpu.googleapis.com",
+  "retry": {
+    "MaxAttempts": 0,
+    "InitialBackoff": "",
+    "MaxBackoff": "",
+    "Jitter": null,
+    "RespectRetryAfter": null,
+    "RateLimitResetHeader": ""
+  },
+  "timeouts": {
+    "Create": "",
+    "Read": "",
+    "Update": "",
+    "Delete": "",
+    "Default": ""
+  },
+  "wire_name": "google_tpu",
+  "raw_spec": {
+    "name": "tpu",
+    "revision": "20260127",
+    "discoveryVersion": "v1",
+    "baseUrl": "https://tpu.googleapis.com/",
+    "rootUrl": "https://tpu.googleapis.com/",
+    "servicePath": "",
+    "schemas": {
+      "AcceleratorConfig": {
+        "type": "object",
+        "format": "",
+        "description": "A TPU accelerator configuration.",
+        "$ref": "",
+        "properties": {
+          "topology": {
+            "type": "string",
+            "format": "",
+            "description": "Required. Topology of TPU in chips.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "type": {
+            "type": "string",
+            "format": "",
+            "description": "Required. Type of TPU.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "TYPE_UNSPECIFIED",
+              "V2",
+              "V3",
+              "V4",
+              "V5LITE_POD",
+              "V5P",
+              "V6E"
+            ],
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "AcceleratorType": {
+        "type": "object",
+        "format": "",
+        "description": "A accelerator type that a Node can be configured with.",
+        "$ref": "",
+        "properties": {
+          "acceleratorConfigs": {
+            "type": "array",
+            "format": "",
+            "description": "The accelerator config.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "AcceleratorConfig",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "The resource name.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "type": {
+            "type": "string",
+            "format": "",
+            "description": "The accelerator type.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "AcceptedData": {
+        "type": "object",
+        "format": "",
+        "description": "Further data for the accepted state.",
+        "$ref": "",
+        "properties": {},
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "AccessConfig": {
+        "type": "object",
+        "format": "",
+        "description": "An access config attached to the TPU worker.",
+        "$ref": "",
+        "properties": {
+          "externalIp": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. An external IP address associated with the TPU worker.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ActiveData": {
+        "type": "object",
+        "format": "",
+        "description": "Further data for the active state.",
+        "$ref": "",
+        "properties": {},
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "AttachedDisk": {
+        "type": "object",
+        "format": "",
+        "description": "A node-attached disk resource. Next ID: 8;",
+        "$ref": "",
+        "properties": {
+          "mode": {
+            "type": "string",
+            "format": "",
+            "description": "The mode in which to attach this disk. If not specified, the default is READ_WRITE mode. Only applicable to data_disks.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "DISK_MODE_UNSPECIFIED",
+              "READ_WRITE",
+              "READ_ONLY"
+            ],
+            "readOnly": false
+          },
+          "sourceDisk": {
+            "type": "string",
+            "format": "",
+            "description": "Specifies the full path to an existing disk. For example: \"projects/my-project/zones/us-central1-c/disks/my-disk\".",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "BootDiskConfig": {
+        "type": "object",
+        "format": "",
+        "description": "Sets the boot disk configuration for the TPU node.",
+        "$ref": "",
+        "properties": {
+          "customerEncryptionKey": {
+            "type": "",
+            "format": "",
+            "description": "Optional. Customer encryption key for boot disk.",
+            "$ref": "CustomerEncryptionKey",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "CreatingData": {
+        "type": "object",
+        "format": "",
+        "description": "Further data for the creating state.",
+        "$ref": "",
+        "properties": {},
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "CustomerEncryptionKey": {
+        "type": "object",
+        "format": "",
+        "description": "Defines the customer encryption key for disk encryption.",
+        "$ref": "",
+        "properties": {
+          "kmsKeyName": {
+            "type": "string",
+            "format": "",
+            "description": "The name of the encryption key that is stored in Google Cloud KMS. For example: \"kmsKeyName\": \"projects/KMS_PROJECT_ID/locations/REGION/keyRings/KEY_REGION/cryptoKeys/KEY The fully-qualifed key name may be returned for resource GET requests. For example: \"kmsKeyName\": \"projects/KMS_PROJECT_ID/locations/REGION/keyRings/KEY_REGION/cryptoKeys/KEY/cryptoKeyVersions/1 ",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "DeletingData": {
+        "type": "object",
+        "format": "",
+        "description": "Further data for the deleting state.",
+        "$ref": "",
+        "properties": {},
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Empty": {
+        "type": "object",
+        "format": "",
+        "description": "A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }",
+        "$ref": "",
+        "properties": {},
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "FailedData": {
+        "type": "object",
+        "format": "",
+        "description": "Further data for the failed state.",
+        "$ref": "",
+        "properties": {
+          "error": {
+            "type": "",
+            "format": "",
+            "description": "Output only. The error that caused the queued resource to enter the FAILED state.",
+            "$ref": "Status",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GenerateServiceIdentityRequest": {
+        "type": "object",
+        "format": "",
+        "description": "Request for GenerateServiceIdentity.",
+        "$ref": "",
+        "properties": {},
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GenerateServiceIdentityResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Response for GenerateServiceIdentity.",
+        "$ref": "",
+        "properties": {
+          "identity": {
+            "type": "",
+            "format": "",
+            "description": "ServiceIdentity that was created or retrieved.",
+            "$ref": "ServiceIdentity",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GetGuestAttributesRequest": {
+        "type": "object",
+        "format": "",
+        "description": "Request for GetGuestAttributes.",
+        "$ref": "",
+        "properties": {
+          "queryPath": {
+            "type": "string",
+            "format": "",
+            "description": "The guest attributes path to be queried.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "workerIds": {
+            "type": "array",
+            "format": "",
+            "description": "The 0-based worker ID. If it is empty, all workers' GuestAttributes will be returned.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GetGuestAttributesResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Response for GetGuestAttributes.",
+        "$ref": "",
+        "properties": {
+          "guestAttributes": {
+            "type": "array",
+            "format": "",
+            "description": "The guest attributes for the TPU workers.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "GuestAttributes",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Guaranteed": {
+        "type": "object",
+        "format": "",
+        "description": "Guaranteed tier definition.",
+        "$ref": "",
+        "properties": {
+          "minDuration": {
+            "type": "string",
+            "format": "google-duration",
+            "description": "Optional. Defines the minimum duration of the guarantee. If specified, the requested resources will only be provisioned if they can be allocated for at least the given duration.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GuestAttributes": {
+        "type": "object",
+        "format": "",
+        "description": "A guest attributes.",
+        "$ref": "",
+        "properties": {
+          "queryPath": {
+            "type": "string",
+            "format": "",
+            "description": "The path to be queried. This can be the default namespace ('/') or a nested namespace ('/\\/') or a specified key ('/\\/\\')",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "queryValue": {
+            "type": "",
+            "format": "",
+            "description": "The value of the requested queried path.",
+            "$ref": "GuestAttributesValue",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GuestAttributesEntry": {
+        "type": "object",
+        "format": "",
+        "description": "A guest attributes namespace/key/value entry.",
+        "$ref": "",
+        "properties": {
+          "key": {
+            "type": "string",
+            "format": "",
+            "description": "Key for the guest attribute entry.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "namespace": {
+            "type": "string",
+            "format": "",
+            "description": "Namespace for the guest attribute entry.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "value": {
+            "type": "string",
+            "format": "",
+            "description": "Value for the guest attribute entry.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GuestAttributesValue": {
+        "type": "object",
+        "format": "",
+        "description": "Array of guest attribute namespace/key/value tuples.",
+        "$ref": "",
+        "properties": {
+          "items": {
+            "type": "array",
+            "format": "",
+            "description": "The list of guest attributes entries.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "GuestAttributesEntry",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Interval": {
+        "type": "object",
+        "format": "",
+        "description": "Represents a time interval, encoded as a Timestamp start (inclusive) and a Timestamp end (exclusive). The start must be less than or equal to the end. When the start equals the end, the interval is empty (matches no time). When both start and end are unspecified, the interval matches any time.",
+        "$ref": "",
+        "properties": {
+          "endTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Optional. Exclusive end of the interval. If specified, a Timestamp matching this interval will have to be before the end.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "startTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Optional. Inclusive start of the interval. If specified, a Timestamp matching this interval will have to be the same or after the start.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ListAcceleratorTypesResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Response for ListAcceleratorTypes.",
+        "$ref": "",
+        "properties": {
+          "acceleratorTypes": {
+            "type": "array",
+            "format": "",
+            "description": "The listed nodes.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "AcceleratorType",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "The next page token or empty if none.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "unreachable": {
+            "type": "array",
+            "format": "",
+            "description": "Locations that could not be reached.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ListLocationsResponse": {
+        "type": "object",
+        "format": "",
+        "description": "The response message for Locations.ListLocations.",
+        "$ref": "",
+        "properties": {
+          "locations": {
+            "type": "array",
+            "format": "",
+            "description": "A list of locations that matches the specified filter in the request.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Location",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "The standard List next-page token.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ListNodesResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Response for ListNodes.",
+        "$ref": "",
+        "properties": {
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "The next page token or empty if none.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "nodes": {
+            "type": "array",
+            "format": "",
+            "description": "The listed nodes.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Node",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "unreachable": {
+            "type": "array",
+            "format": "",
+            "description": "Locations that could not be reached.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ListOperationsResponse": {
+        "type": "object",
+        "format": "",
+        "description": "The response message for Operations.ListOperations.",
+        "$ref": "",
+        "properties": {
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "The standard List next-page token.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "operations": {
+            "type": "array",
+            "format": "",
+            "description": "A list of operations that matches the specified filter in the request.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Operation",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "unreachable": {
+            "type": "array",
+            "format": "",
+            "description": "Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ListQueuedResourcesResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Response for ListQueuedResources.",
+        "$ref": "",
+        "properties": {
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "The next page token or empty if none.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "queuedResources": {
+            "type": "array",
+            "format": "",
+            "description": "The listed queued resources.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "QueuedResource",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "unreachable": {
+            "type": "array",
+            "format": "",
+            "description": "Locations that could not be reached.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ListRuntimeVersionsResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Response for ListRuntimeVersions.",
+        "$ref": "",
+        "properties": {
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "The next page token or empty if none.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "runtimeVersions": {
+            "type": "array",
+            "format": "",
+            "description": "The listed nodes.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "RuntimeVersion",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "unreachable": {
+            "type": "array",
+            "format": "",
+            "description": "Locations that could not be reached.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Location": {
+        "type": "object",
+        "format": "",
+        "description": "A resource that represents a Google Cloud location.",
+        "$ref": "",
+        "properties": {
+          "displayName": {
+            "type": "string",
+            "format": "",
+            "description": "The friendly name for this location, typically a nearby city name. For example, \"Tokyo\".",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "labels": {
+            "type": "object",
+            "format": "",
+            "description": "Cross-service attributes for the location. For example {\"cloud.googleapis.com/region\": \"us-east1\"}",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "locationId": {
+            "type": "string",
+            "format": "",
+            "description": "The canonical id for this location. For example: `\"us-east1\"`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "metadata": {
+            "type": "object",
+            "format": "",
+            "description": "Service-specific metadata. For example the available capacity at the given location.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "any",
+              "format": "",
+              "description": "Properties of the object. Contains field @type with type URL.",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "Resource name for the location, which may vary between implementations. For example: `\"projects/example-project/locations/us-east1\"`",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "MultisliceParams": {
+        "type": "object",
+        "format": "",
+        "description": "Parameters to specify for multislice QueuedResource requests. This message must be populated in case of multislice requests instead of node_id.",
+        "$ref": "",
+        "properties": {
+          "nodeCount": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Required. Number of nodes with this spec. The system will attempt to provision \"node_count\" nodes as part of the request. This needs to be \u003e 1.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "nodeIdPrefix": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Prefix of node_ids in case of multislice request. Should follow the `^[A-Za-z0-9_.~+%-]+$` regex format. If node_count = 3 and node_id_prefix = \"np\", node ids of nodes created will be \"np-0\", \"np-1\", \"np-2\". If this field is not provided we use queued_resource_id as the node_id_prefix.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "NetworkConfig": {
+        "type": "object",
+        "format": "",
+        "description": "Network related configurations.",
+        "$ref": "",
+        "properties": {
+          "canIpForward": {
+            "type": "boolean",
+            "format": "",
+            "description": "Allows the TPU node to send and receive packets with non-matching destination or source IPs. This is required if you plan to use the TPU workers to forward routes.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "enableExternalIps": {
+            "type": "boolean",
+            "format": "",
+            "description": "Indicates that external IP addresses would be associated with the TPU workers. If set to false, the specified subnetwork or network should have Private Google Access enabled.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "network": {
+            "type": "string",
+            "format": "",
+            "description": "The name of the network for the TPU node. It must be a preexisting Google Compute Engine network. If none is provided, \"default\" will be used.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "queueCount": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Optional. Specifies networking queue count for TPU VM instance's network interface.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "subnetwork": {
+            "type": "string",
+            "format": "",
+            "description": "The name of the subnetwork for the TPU node. It must be a preexisting Google Compute Engine subnetwork. If none is provided, \"default\" will be used.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "NetworkEndpoint": {
+        "type": "object",
+        "format": "",
+        "description": "A network endpoint over which a TPU worker can be reached.",
+        "$ref": "",
+        "properties": {
+          "accessConfig": {
+            "type": "",
+            "format": "",
+            "description": "The access config for the TPU worker.",
+            "$ref": "AccessConfig",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "ipAddress": {
+            "type": "string",
+            "format": "",
+            "description": "The internal IP address of this network endpoint.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "port": {
+            "type": "integer",
+            "format": "int32",
+            "description": "The port of this network endpoint.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Node": {
+        "type": "object",
+        "format": "",
+        "description": "A TPU instance.",
+        "$ref": "",
+        "properties": {
+          "acceleratorConfig": {
+            "type": "",
+            "format": "",
+            "description": "The AccleratorConfig for the TPU Node.",
+            "$ref": "AcceleratorConfig",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "acceleratorType": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The type of hardware accelerators associated with this node.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "apiVersion": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The API version that created this Node.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "API_VERSION_UNSPECIFIED",
+              "V1_ALPHA1",
+              "V1",
+              "V2_ALPHA1",
+              "V2"
+            ],
+            "readOnly": true
+          },
+          "bootDiskConfig": {
+            "type": "",
+            "format": "",
+            "description": "Optional. Boot disk configuration.",
+            "$ref": "BootDiskConfig",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "cidrBlock": {
+            "type": "string",
+            "format": "",
+            "description": "The CIDR block that the TPU node will use when selecting an IP address. This CIDR block must be a /29 block; the Compute Engine networks API forbids a smaller block, and using a larger block would be wasteful (a node can only consume one IP address). Errors will occur if the CIDR block has already been used for a currently existing TPU node, the CIDR block conflicts with any subnetworks in the user's provided network, or the provided network is peered with another network that is using that CIDR block.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "createTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. The time when the node was created.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "dataDisks": {
+            "type": "array",
+            "format": "",
+            "description": "The additional data disks for the Node.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "AttachedDisk",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "description": {
+            "type": "string",
+            "format": "",
+            "description": "The user-supplied description of the TPU. Maximum of 512 characters.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "health": {
+            "type": "string",
+            "format": "",
+            "description": "The health status of the TPU node.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "HEALTH_UNSPECIFIED",
+              "HEALTHY",
+              "TIMEOUT",
+              "UNHEALTHY_TENSORFLOW",
+              "UNHEALTHY_MAINTENANCE"
+            ],
+            "readOnly": false
+          },
+          "healthDescription": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. If this field is populated, it contains a description of why the TPU Node is unhealthy.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "id": {
+            "type": "string",
+            "format": "int64",
+            "description": "Output only. The unique identifier for the TPU Node.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "labels": {
+            "type": "object",
+            "format": "",
+            "description": "Resource labels to represent user-provided metadata.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "metadata": {
+            "type": "object",
+            "format": "",
+            "description": "Custom metadata to apply to the TPU Node. Can set startup-script and shutdown-script",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "multisliceNode": {
+            "type": "boolean",
+            "format": "",
+            "description": "Output only. Whether the Node belongs to a Multislice group.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. Immutable. The name of the TPU.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "networkConfig": {
+            "type": "",
+            "format": "",
+            "description": "Network configurations for the TPU node. network_config and network_configs are mutually exclusive, you can only specify one of them. If both are specified, an error will be returned.",
+            "$ref": "NetworkConfig",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "networkConfigs": {
+            "type": "array",
+            "format": "",
+            "description": "Optional. Repeated network configurations for the TPU node. This field is used to specify multiple networks configs for the TPU node. network_config and network_configs are mutually exclusive, you can only specify one of them. If both are specified, an error will be returned.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "NetworkConfig",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "networkEndpoints": {
+            "type": "array",
+            "format": "",
+            "description": "Output only. The network endpoints where TPU workers can be accessed and sent work. It is recommended that runtime clients of the node reach out to the 0th entry in this map first.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "NetworkEndpoint",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "queuedResource": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The qualified name of the QueuedResource that requested this Node.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "runtimeVersion": {
+            "type": "string",
+            "format": "",
+            "description": "Required. The runtime version running in the Node.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "schedulingConfig": {
+            "type": "",
+            "format": "",
+            "description": "The scheduling options for this node.",
+            "$ref": "SchedulingConfig",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "serviceAccount": {
+            "type": "",
+            "format": "",
+            "description": "The Google Cloud Platform Service Account to be used by the TPU node VMs. If None is specified, the default compute service account will be used.",
+            "$ref": "ServiceAccount",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "shieldedInstanceConfig": {
+            "type": "",
+            "format": "",
+            "description": "Shielded Instance options.",
+            "$ref": "ShieldedInstanceConfig",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "state": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The current state for the TPU Node.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "STATE_UNSPECIFIED",
+              "CREATING",
+              "READY",
+              "RESTARTING",
+              "REIMAGING",
+              "DELETING",
+              "REPAIRING",
+              "STOPPED",
+              "STOPPING",
+              "STARTING",
+              "PREEMPTED",
+              "TERMINATED",
+              "HIDING",
+              "HIDDEN",
+              "UNHIDING",
+              "UNKNOWN"
+            ],
+            "readOnly": true
+          },
+          "symptoms": {
+            "type": "array",
+            "format": "",
+            "description": "Output only. The Symptoms that have occurred to the TPU Node.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Symptom",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "tags": {
+            "type": "array",
+            "format": "",
+            "description": "Tags to apply to the TPU Node. Tags are used to identify valid sources or targets for network firewalls.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "upcomingMaintenance": {
+            "type": "",
+            "format": "",
+            "description": "Output only. Upcoming maintenance on this TPU node.",
+            "$ref": "UpcomingMaintenance",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "NodeSpec": {
+        "type": "object",
+        "format": "",
+        "description": "Details of the TPU node(s) being requested. Users can request either a single node or multiple nodes. NodeSpec provides the specification for node(s) to be created.",
+        "$ref": "",
+        "properties": {
+          "multisliceParams": {
+            "type": "",
+            "format": "",
+            "description": "Optional. Fields to specify in case of multislice request.",
+            "$ref": "MultisliceParams",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "node": {
+            "type": "",
+            "format": "",
+            "description": "Required. The node.",
+            "$ref": "Node",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "nodeId": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The unqualified resource name. Should follow the `^[A-Za-z0-9_.~+%-]+$` regex format. This is only specified when requesting a single node. In case of multislice requests, multislice_params must be populated instead.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "parent": {
+            "type": "string",
+            "format": "",
+            "description": "Required. The parent resource name.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Operation": {
+        "type": "object",
+        "format": "",
+        "description": "This resource represents a long-running operation that is the result of a network API call.",
+        "$ref": "",
+        "properties": {
+          "done": {
+            "type": "boolean",
+            "format": "",
+            "description": "If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "error": {
+            "type": "",
+            "format": "",
+            "description": "The error result of the operation in case of failure or cancellation.",
+            "$ref": "Status",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "metadata": {
+            "type": "object",
+            "format": "",
+            "description": "Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "any",
+              "format": "",
+              "description": "Properties of the object. Contains field @type with type URL.",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "response": {
+            "type": "object",
+            "format": "",
+            "description": "The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "any",
+              "format": "",
+              "description": "Properties of the object. Contains field @type with type URL.",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "OperationMetadata": {
+        "type": "object",
+        "format": "",
+        "description": "Metadata describing an Operation",
+        "$ref": "",
+        "properties": {
+          "apiVersion": {
+            "type": "string",
+            "format": "",
+            "description": "API version.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "cancelRequested": {
+            "type": "boolean",
+            "format": "",
+            "description": "Specifies if cancellation was requested for the operation.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "createTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "The time the operation was created.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "endTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "The time the operation finished running.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "statusDetail": {
+            "type": "string",
+            "format": "",
+            "description": "Human-readable status of the operation, if any.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "target": {
+            "type": "string",
+            "format": "",
+            "description": "Target of the operation - for example projects/project-1/connectivityTests/test-1",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "verb": {
+            "type": "string",
+            "format": "",
+            "description": "Name of the verb executed by the operation.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ProvisioningData": {
+        "type": "object",
+        "format": "",
+        "description": "Further data for the provisioning state.",
+        "$ref": "",
+        "properties": {},
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "QueuedResource": {
+        "type": "object",
+        "format": "",
+        "description": "A QueuedResource represents a request for resources that will be placed in a queue and fulfilled when the necessary resources are available.",
+        "$ref": "",
+        "properties": {
+          "createTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. The time when the QueuedResource was created.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "guaranteed": {
+            "type": "",
+            "format": "",
+            "description": "Optional. The Guaranteed tier",
+            "$ref": "Guaranteed",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. Immutable. The name of the QueuedResource.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "queueingPolicy": {
+            "type": "",
+            "format": "",
+            "description": "Optional. The queueing policy of the QueuedRequest.",
+            "$ref": "QueueingPolicy",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "reservationName": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Name of the reservation in which the resource should be provisioned. Format: projects/{project}/locations/{zone}/reservations/{reservation}",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "spot": {
+            "type": "",
+            "format": "",
+            "description": "Optional. The Spot tier.",
+            "$ref": "Spot",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "state": {
+            "type": "",
+            "format": "",
+            "description": "Output only. State of the QueuedResource request.",
+            "$ref": "QueuedResourceState",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "tpu": {
+            "type": "",
+            "format": "",
+            "description": "Optional. Defines a TPU resource.",
+            "$ref": "Tpu",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "QueuedResourceState": {
+        "type": "object",
+        "format": "",
+        "description": "QueuedResourceState defines the details of the QueuedResource request.",
+        "$ref": "",
+        "properties": {
+          "acceptedData": {
+            "type": "",
+            "format": "",
+            "description": "Output only. Further data for the accepted state.",
+            "$ref": "AcceptedData",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "activeData": {
+            "type": "",
+            "format": "",
+            "description": "Output only. Further data for the active state.",
+            "$ref": "ActiveData",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "creatingData": {
+            "type": "",
+            "format": "",
+            "description": "Output only. Further data for the creating state.",
+            "$ref": "CreatingData",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "deletingData": {
+            "type": "",
+            "format": "",
+            "description": "Output only. Further data for the deleting state.",
+            "$ref": "DeletingData",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "failedData": {
+            "type": "",
+            "format": "",
+            "description": "Output only. Further data for the failed state.",
+            "$ref": "FailedData",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "provisioningData": {
+            "type": "",
+            "format": "",
+            "description": "Output only. Further data for the provisioning state.",
+            "$ref": "ProvisioningData",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "state": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. State of the QueuedResource request.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "STATE_UNSPECIFIED",
+              "CREATING",
+              "ACCEPTED",
+              "PROVISIONING",
+              "FAILED",
+              "DELETING",
+              "ACTIVE",
+              "SUSPENDING",
+              "SUSPENDED",
+              "WAITING_FOR_RESOURCES"
+            ],
+            "readOnly": true
+          },
+          "stateInitiator": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The initiator of the QueuedResources's current state. Used to indicate whether the SUSPENDING/SUSPENDED state was initiated by the user or the service.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "STATE_INITIATOR_UNSPECIFIED",
+              "USER",
+              "SERVICE"
+            ],
+            "readOnly": true
+          },
+          "suspendedData": {
+            "type": "",
+            "format": "",
+            "description": "Output only. Further data for the suspended state.",
+            "$ref": "SuspendedData",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "suspendingData": {
+            "type": "",
+            "format": "",
+            "description": "Output only. Further data for the suspending state.",
+            "$ref": "SuspendingData",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "QueueingPolicy": {
+        "type": "object",
+        "format": "",
+        "description": "Defines the policy of the QueuedRequest.",
+        "$ref": "",
+        "properties": {
+          "validAfterDuration": {
+            "type": "string",
+            "format": "google-duration",
+            "description": "Optional. A relative time after which resources may be created.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "validAfterTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Optional. An absolute time after which resources may be created.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "validInterval": {
+            "type": "",
+            "format": "",
+            "description": "Optional. An absolute time interval within which resources may be created.",
+            "$ref": "Interval",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "validUntilDuration": {
+            "type": "string",
+            "format": "google-duration",
+            "description": "Optional. A relative time after which resources should not be created. If the request cannot be fulfilled by this time the request will be failed.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "validUntilTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Optional. An absolute time after which resources should not be created. If the request cannot be fulfilled by this time the request will be failed.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ResetQueuedResourceRequest": {
+        "type": "object",
+        "format": "",
+        "description": "Request for ResetQueuedResource.",
+        "$ref": "",
+        "properties": {},
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "RuntimeVersion": {
+        "type": "object",
+        "format": "",
+        "description": "A runtime version that a Node can be configured with.",
+        "$ref": "",
+        "properties": {
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "The resource name.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "version": {
+            "type": "string",
+            "format": "",
+            "description": "The runtime version.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "SchedulingConfig": {
+        "type": "object",
+        "format": "",
+        "description": "Sets the scheduling options for this node.",
+        "$ref": "",
+        "properties": {
+          "preemptible": {
+            "type": "boolean",
+            "format": "",
+            "description": "Defines whether the node is preemptible.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "reserved": {
+            "type": "boolean",
+            "format": "",
+            "description": "Whether the node is created under a reservation.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "spot": {
+            "type": "boolean",
+            "format": "",
+            "description": "Optional. Defines whether the node is Spot VM.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ServiceAccount": {
+        "type": "object",
+        "format": "",
+        "description": "A service account.",
+        "$ref": "",
+        "properties": {
+          "email": {
+            "type": "string",
+            "format": "",
+            "description": "Email address of the service account. If empty, default Compute service account will be used.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "scope": {
+            "type": "array",
+            "format": "",
+            "description": "The list of scopes to be made available for this service account. If empty, access to all Cloud APIs will be allowed.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ServiceIdentity": {
+        "type": "object",
+        "format": "",
+        "description": "The per-product per-project service identity for Cloud TPU service.",
+        "$ref": "",
+        "properties": {
+          "email": {
+            "type": "string",
+            "format": "",
+            "description": "The email address of the service identity.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ShieldedInstanceConfig": {
+        "type": "object",
+        "format": "",
+        "description": "A set of Shielded Instance options.",
+        "$ref": "",
+        "properties": {
+          "enableSecureBoot": {
+            "type": "boolean",
+            "format": "",
+            "description": "Defines whether the instance has Secure Boot enabled.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Spot": {
+        "type": "object",
+        "format": "",
+        "description": "Spot tier definition.",
+        "$ref": "",
+        "properties": {},
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "StartNodeRequest": {
+        "type": "object",
+        "format": "",
+        "description": "Request for StartNode.",
+        "$ref": "",
+        "properties": {},
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Status": {
+        "type": "object",
+        "format": "",
+        "description": "The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).",
+        "$ref": "",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32",
+            "description": "The status code, which should be an enum value of google.rpc.Code.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "details": {
+            "type": "array",
+            "format": "",
+            "description": "A list of messages that carry the error details. There is a common set of message types for APIs to use.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "object",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": {
+                "type": "any",
+                "format": "",
+                "description": "Properties of the object. Contains field @type with type URL.",
+                "$ref": "",
+                "properties": null,
+                "items": null,
+                "additionalProperties": null,
+                "enum": null,
+                "readOnly": false
+              },
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "message": {
+            "type": "string",
+            "format": "",
+            "description": "A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "StopNodeRequest": {
+        "type": "object",
+        "format": "",
+        "description": "Request for StopNode.",
+        "$ref": "",
+        "properties": {},
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "SuspendedData": {
+        "type": "object",
+        "format": "",
+        "description": "Further data for the suspended state.",
+        "$ref": "",
+        "properties": {},
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "SuspendingData": {
+        "type": "object",
+        "format": "",
+        "description": "Further data for the suspending state.",
+        "$ref": "",
+        "properties": {},
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Symptom": {
+        "type": "object",
+        "format": "",
+        "description": "A Symptom instance.",
+        "$ref": "",
+        "properties": {
+          "createTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Timestamp when the Symptom is created.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "details": {
+            "type": "string",
+            "format": "",
+            "description": "Detailed information of the current Symptom.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "symptomType": {
+            "type": "string",
+            "format": "",
+            "description": "Type of the Symptom.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "SYMPTOM_TYPE_UNSPECIFIED",
+              "LOW_MEMORY",
+              "OUT_OF_MEMORY",
+              "EXECUTE_TIMED_OUT",
+              "MESH_BUILD_FAIL",
+              "HBM_OUT_OF_MEMORY",
+              "PROJECT_ABUSE"
+            ],
+            "readOnly": false
+          },
+          "workerId": {
+            "type": "string",
+            "format": "",
+            "description": "A string used to uniquely distinguish a worker within a TPU node.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Tpu": {
+        "type": "object",
+        "format": "",
+        "description": "Details of the TPU resource(s) being requested.",
+        "$ref": "",
+        "properties": {
+          "nodeSpec": {
+            "type": "array",
+            "format": "",
+            "description": "Optional. The TPU node(s) being requested.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "NodeSpec",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "UpcomingMaintenance": {
+        "type": "object",
+        "format": "",
+        "description": "Upcoming Maintenance notification information.",
+        "$ref": "",
+        "properties": {
+          "canReschedule": {
+            "type": "boolean",
+            "format": "",
+            "description": "Indicates if the maintenance can be customer triggered.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "latestWindowStartTime": {
+            "type": "string",
+            "format": "",
+            "description": "The latest time for the planned maintenance window to start. This timestamp value is in RFC3339 text format.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "maintenanceStatus": {
+            "type": "string",
+            "format": "",
+            "description": "The status of the maintenance.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "UNKNOWN",
+              "PENDING",
+              "ONGOING"
+            ],
+            "readOnly": false
+          },
+          "type": {
+            "type": "string",
+            "format": "",
+            "description": "Defines the type of maintenance.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "UNKNOWN_TYPE",
+              "SCHEDULED",
+              "UNSCHEDULED"
+            ],
+            "readOnly": false
+          },
+          "windowEndTime": {
+            "type": "string",
+            "format": "",
+            "description": "The time by which the maintenance disruption will be completed. This timestamp value is in RFC3339 text format.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "windowStartTime": {
+            "type": "string",
+            "format": "",
+            "description": "The current start time of the maintenance window. This timestamp value is in RFC3339 text format.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      }
+    },
+    "resources": {
+      "projects": {
+        "methods": null,
+        "resources": {
+          "locations": {
+            "methods": {
+              "generateServiceIdentity": {
+                "id": "tpu.projects.locations.generateServiceIdentity",
+                "httpMethod": "POST",
+                "path": "v2/{+parent}:generateServiceIdentity",
+                "flatPath": "v2/projects/{projectsId}/locations/{locationsId}:generateServiceIdentity",
+                "description": "Generates the Cloud TPU service identity for the project.",
+                "parameters": {
+                  "parent": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  }
+                },
+                "parameterOrder": [
+                  "parent"
+                ],
+                "request": {
+                  "$ref": "GenerateServiceIdentityRequest"
+                },
+                "response": {
+                  "$ref": "GenerateServiceIdentityResponse"
+                }
+              },
+              "get": {
+                "id": "tpu.projects.locations.get",
+                "httpMethod": "GET",
+                "path": "v2/{+name}",
+                "flatPath": "v2/projects/{projectsId}/locations/{locationsId}",
+                "description": "Gets information about a location.",
+                "parameters": {
+                  "name": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  }
+                },
+                "parameterOrder": [
+                  "name"
+                ],
+                "request": null,
+                "response": {
+                  "$ref": "Location"
+                }
+              },
+              "list": {
+                "id": "tpu.projects.locations.list",
+                "httpMethod": "GET",
+                "path": "v2/{+name}/locations",
+                "flatPath": "v2/projects/{projectsId}/locations",
+                "description": "Lists information about the supported locations for this service. This method can be called in two ways: * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:** Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as private or other locations specifically visible to the project.",
+                "parameters": {
+                  "extraLocationTypes": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false
+                  },
+                  "filter": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false
+                  },
+                  "name": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  },
+                  "pageSize": {
+                    "type": "integer",
+                    "location": "query",
+                    "required": false
+                  },
+                  "pageToken": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false
+                  }
+                },
+                "parameterOrder": [
+                  "name"
+                ],
+                "request": null,
+                "response": {
+                  "$ref": "ListLocationsResponse"
+                }
+              }
+            },
+            "resources": {
+              "acceleratorTypes": {
+                "methods": {
+                  "get": {
+                    "id": "tpu.projects.locations.acceleratorTypes.get",
+                    "httpMethod": "GET",
+                    "path": "v2/{+name}",
+                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/acceleratorTypes/{acceleratorTypesId}",
+                    "description": "Gets AcceleratorType.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "AcceleratorType"
+                    }
+                  },
+                  "list": {
+                    "id": "tpu.projects.locations.acceleratorTypes.list",
+                    "httpMethod": "GET",
+                    "path": "v2/{+parent}/acceleratorTypes",
+                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/acceleratorTypes",
+                    "description": "Lists accelerator types supported by this API.",
+                    "parameters": {
+                      "filter": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "orderBy": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "pageSize": {
+                        "type": "integer",
+                        "location": "query",
+                        "required": false
+                      },
+                      "pageToken": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "parent": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "parent"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "ListAcceleratorTypesResponse"
+                    }
+                  }
+                },
+                "resources": null
+              },
+              "nodes": {
+                "methods": {
+                  "create": {
+                    "id": "tpu.projects.locations.nodes.create",
+                    "httpMethod": "POST",
+                    "path": "v2/{+parent}/nodes",
+                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/nodes",
+                    "description": "Creates a node.",
+                    "parameters": {
+                      "nodeId": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "parent": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "parent"
+                    ],
+                    "request": {
+                      "$ref": "Node"
+                    },
+                    "response": {
+                      "$ref": "Operation"
+                    }
+                  },
+                  "delete": {
+                    "id": "tpu.projects.locations.nodes.delete",
+                    "httpMethod": "DELETE",
+                    "path": "v2/{+name}",
+                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/nodes/{nodesId}",
+                    "description": "Deletes a node.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "Operation"
+                    }
+                  },
+                  "get": {
+                    "id": "tpu.projects.locations.nodes.get",
+                    "httpMethod": "GET",
+                    "path": "v2/{+name}",
+                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/nodes/{nodesId}",
+                    "description": "Gets the details of a node.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "Node"
+                    }
+                  },
+                  "getGuestAttributes": {
+                    "id": "tpu.projects.locations.nodes.getGuestAttributes",
+                    "httpMethod": "POST",
+                    "path": "v2/{+name}:getGuestAttributes",
+                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/nodes/{nodesId}:getGuestAttributes",
+                    "description": "Retrieves the guest attributes for the node.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": {
+                      "$ref": "GetGuestAttributesRequest"
+                    },
+                    "response": {
+                      "$ref": "GetGuestAttributesResponse"
+                    }
+                  },
+                  "list": {
+                    "id": "tpu.projects.locations.nodes.list",
+                    "httpMethod": "GET",
+                    "path": "v2/{+parent}/nodes",
+                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/nodes",
+                    "description": "Lists nodes.",
+                    "parameters": {
+                      "pageSize": {
+                        "type": "integer",
+                        "location": "query",
+                        "required": false
+                      },
+                      "pageToken": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "parent": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "parent"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "ListNodesResponse"
+                    }
+                  },
+                  "patch": {
+                    "id": "tpu.projects.locations.nodes.patch",
+                    "httpMethod": "PATCH",
+                    "path": "v2/{+name}",
+                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/nodes/{nodesId}",
+                    "description": "Updates the configurations of a node.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      },
+                      "updateMask": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": {
+                      "$ref": "Node"
+                    },
+                    "response": {
+                      "$ref": "Operation"
+                    }
+                  },
+                  "start": {
+                    "id": "tpu.projects.locations.nodes.start",
+                    "httpMethod": "POST",
+                    "path": "v2/{+name}:start",
+                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/nodes/{nodesId}:start",
+                    "description": "Starts a node.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": {
+                      "$ref": "StartNodeRequest"
+                    },
+                    "response": {
+                      "$ref": "Operation"
+                    }
+                  },
+                  "stop": {
+                    "id": "tpu.projects.locations.nodes.stop",
+                    "httpMethod": "POST",
+                    "path": "v2/{+name}:stop",
+                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/nodes/{nodesId}:stop",
+                    "description": "Stops a node. This operation is only available with single TPU nodes.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": {
+                      "$ref": "StopNodeRequest"
+                    },
+                    "response": {
+                      "$ref": "Operation"
+                    }
+                  }
+                },
+                "resources": null
+              },
+              "operations": {
+                "methods": {
+                  "cancel": {
+                    "id": "tpu.projects.locations.operations.cancel",
+                    "httpMethod": "POST",
+                    "path": "v2/{+name}:cancel",
+                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}:cancel",
+                    "description": "Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "Empty"
+                    }
+                  },
+                  "delete": {
+                    "id": "tpu.projects.locations.operations.delete",
+                    "httpMethod": "DELETE",
+                    "path": "v2/{+name}",
+                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
+                    "description": "Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "Empty"
+                    }
+                  },
+                  "get": {
+                    "id": "tpu.projects.locations.operations.get",
+                    "httpMethod": "GET",
+                    "path": "v2/{+name}",
+                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
+                    "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "Operation"
+                    }
+                  },
+                  "list": {
+                    "id": "tpu.projects.locations.operations.list",
+                    "httpMethod": "GET",
+                    "path": "v2/{+name}/operations",
+                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/operations",
+                    "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.",
+                    "parameters": {
+                      "filter": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      },
+                      "pageSize": {
+                        "type": "integer",
+                        "location": "query",
+                        "required": false
+                      },
+                      "pageToken": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "returnPartialSuccess": {
+                        "type": "boolean",
+                        "location": "query",
+                        "required": false
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "ListOperationsResponse"
+                    }
+                  }
+                },
+                "resources": null
+              },
+              "queuedResources": {
+                "methods": {
+                  "create": {
+                    "id": "tpu.projects.locations.queuedResources.create",
+                    "httpMethod": "POST",
+                    "path": "v2/{+parent}/queuedResources",
+                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/queuedResources",
+                    "description": "Creates a QueuedResource TPU instance.",
+                    "parameters": {
+                      "parent": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      },
+                      "queuedResourceId": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "requestId": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      }
+                    },
+                    "parameterOrder": [
+                      "parent"
+                    ],
+                    "request": {
+                      "$ref": "QueuedResource"
+                    },
+                    "response": {
+                      "$ref": "Operation"
+                    }
+                  },
+                  "delete": {
+                    "id": "tpu.projects.locations.queuedResources.delete",
+                    "httpMethod": "DELETE",
+                    "path": "v2/{+name}",
+                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/queuedResources/{queuedResourcesId}",
+                    "description": "Deletes a QueuedResource TPU instance.",
+                    "parameters": {
+                      "force": {
+                        "type": "boolean",
+                        "location": "query",
+                        "required": false
+                      },
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      },
+                      "requestId": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "Operation"
+                    }
+                  },
+                  "get": {
+                    "id": "tpu.projects.locations.queuedResources.get",
+                    "httpMethod": "GET",
+                    "path": "v2/{+name}",
+                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/queuedResources/{queuedResourcesId}",
+                    "description": "Gets details of a queued resource.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "QueuedResource"
+                    }
+                  },
+                  "list": {
+                    "id": "tpu.projects.locations.queuedResources.list",
+                    "httpMethod": "GET",
+                    "path": "v2/{+parent}/queuedResources",
+                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/queuedResources",
+                    "description": "Lists queued resources.",
+                    "parameters": {
+                      "pageSize": {
+                        "type": "integer",
+                        "location": "query",
+                        "required": false
+                      },
+                      "pageToken": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "parent": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "parent"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "ListQueuedResourcesResponse"
+                    }
+                  },
+                  "reset": {
+                    "id": "tpu.projects.locations.queuedResources.reset",
+                    "httpMethod": "POST",
+                    "path": "v2/{+name}:reset",
+                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/queuedResources/{queuedResourcesId}:reset",
+                    "description": "Resets a QueuedResource TPU instance",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": {
+                      "$ref": "ResetQueuedResourceRequest"
+                    },
+                    "response": {
+                      "$ref": "Operation"
+                    }
+                  }
+                },
+                "resources": null
+              },
+              "runtimeVersions": {
+                "methods": {
+                  "get": {
+                    "id": "tpu.projects.locations.runtimeVersions.get",
+                    "httpMethod": "GET",
+                    "path": "v2/{+name}",
+                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/runtimeVersions/{runtimeVersionsId}",
+                    "description": "Gets a runtime version.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "RuntimeVersion"
+                    }
+                  },
+                  "list": {
+                    "id": "tpu.projects.locations.runtimeVersions.list",
+                    "httpMethod": "GET",
+                    "path": "v2/{+parent}/runtimeVersions",
+                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/runtimeVersions",
+                    "description": "Lists runtime versions supported by this API.",
+                    "parameters": {
+                      "filter": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "orderBy": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "pageSize": {
+                        "type": "integer",
+                        "location": "query",
+                        "required": false
+                      },
+                      "pageToken": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "parent": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "parent"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "ListRuntimeVersionsResponse"
+                    }
+                  }
+                },
+                "resources": null
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

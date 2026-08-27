@@ -1,0 +1,2796 @@
+{
+  "schema_source": "discovery_docs",
+  "mode": "data_source",
+  "auth": {
+    "Type": "",
+    "Params": null
+  },
+  "base_url": "https://looker.googleapis.com",
+  "retry": {
+    "MaxAttempts": 0,
+    "InitialBackoff": "",
+    "MaxBackoff": "",
+    "Jitter": null,
+    "RespectRetryAfter": null,
+    "RateLimitResetHeader": ""
+  },
+  "timeouts": {
+    "Create": "",
+    "Read": "",
+    "Update": "",
+    "Delete": "",
+    "Default": ""
+  },
+  "wire_name": "google_looker",
+  "raw_spec": {
+    "name": "looker",
+    "revision": "20260812",
+    "discoveryVersion": "v1",
+    "baseUrl": "https://looker.googleapis.com/",
+    "rootUrl": "https://looker.googleapis.com/",
+    "servicePath": "",
+    "schemas": {
+      "AdminSettings": {
+        "type": "object",
+        "format": "",
+        "description": "Looker instance Admin settings fields.",
+        "$ref": "",
+        "properties": {
+          "allowedEmailDomains": {
+            "type": "array",
+            "format": "",
+            "description": "Email domain allowlist for the instance.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "CancelOperationRequest": {
+        "type": "object",
+        "format": "",
+        "description": "The request message for Operations.CancelOperation.",
+        "$ref": "",
+        "properties": {},
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ControlledEgressConfig": {
+        "type": "object",
+        "format": "",
+        "description": "Controlled egress configuration.",
+        "$ref": "",
+        "properties": {
+          "egressFqdns": {
+            "type": "array",
+            "format": "",
+            "description": "Optional. List of fully qualified domain names to be added to the allowlist for outbound traffic.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "marketplaceEnabled": {
+            "type": "boolean",
+            "format": "",
+            "description": "Optional. Whether marketplace is enabled.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "webProxyIps": {
+            "type": "array",
+            "format": "",
+            "description": "Output only. The list of IP addresses used by Secure Web Proxy for outbound traffic.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "CustomDomain": {
+        "type": "object",
+        "format": "",
+        "description": "Custom domain information.",
+        "$ref": "",
+        "properties": {
+          "domain": {
+            "type": "string",
+            "format": "",
+            "description": "Domain name.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "state": {
+            "type": "string",
+            "format": "",
+            "description": "Domain state.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "CUSTOM_DOMAIN_STATE_UNSPECIFIED",
+              "UNVERIFIED",
+              "VERIFIED",
+              "MODIFYING",
+              "AVAILABLE",
+              "UNAVAILABLE",
+              "UNKNOWN"
+            ],
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Date": {
+        "type": "object",
+        "format": "",
+        "description": "Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp",
+        "$ref": "",
+        "properties": {
+          "day": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "month": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "year": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "DenyMaintenancePeriod": {
+        "type": "object",
+        "format": "",
+        "description": "Specifies the maintenance denial period.",
+        "$ref": "",
+        "properties": {
+          "endDate": {
+            "type": "",
+            "format": "",
+            "description": "Required. End date of the deny maintenance period.",
+            "$ref": "Date",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "startDate": {
+            "type": "",
+            "format": "",
+            "description": "Required. Start date of the deny maintenance period.",
+            "$ref": "Date",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "time": {
+            "type": "",
+            "format": "",
+            "description": "Required. Time in UTC when the period starts and ends.",
+            "$ref": "TimeOfDay",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Empty": {
+        "type": "object",
+        "format": "",
+        "description": "A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }",
+        "$ref": "",
+        "properties": {},
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "EncryptionConfig": {
+        "type": "object",
+        "format": "",
+        "description": "Encryption configuration (i.e. CMEK).",
+        "$ref": "",
+        "properties": {
+          "kmsKeyName": {
+            "type": "string",
+            "format": "",
+            "description": "Name of the CMEK key in KMS (input parameter).",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "kmsKeyNameVersion": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. Full name and version of the CMEK key currently in use to encrypt Looker data. Format: `projects/{project}/locations/{location}/keyRings/{ring}/cryptoKeys/{key}/cryptoKeyVersions/{version}`. Empty if CMEK is not configured in this instance.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "kmsKeyState": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. Status of the CMEK key.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "KMS_KEY_STATE_UNSPECIFIED",
+              "VALID",
+              "REVOKED"
+            ],
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ExportEncryptionConfig": {
+        "type": "object",
+        "format": "",
+        "description": "Configuration for Encryption - e.g. CMEK.",
+        "$ref": "",
+        "properties": {
+          "kmsKeyName": {
+            "type": "string",
+            "format": "",
+            "description": "Required. Name of the CMEK key in KMS.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ExportInstanceRequest": {
+        "type": "object",
+        "format": "",
+        "description": "Request options for exporting data of an Instance.",
+        "$ref": "",
+        "properties": {
+          "encryptionConfig": {
+            "type": "",
+            "format": "",
+            "description": "Required. Encryption configuration (CMEK). For CMEK enabled instances it should be same as looker CMEK.",
+            "$ref": "ExportEncryptionConfig",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "gcsUri": {
+            "type": "string",
+            "format": "",
+            "description": "The path to the folder in Google Cloud Storage where the export will be stored. The URI is in the form `gs://bucketName/folderName`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ExportMetadata": {
+        "type": "object",
+        "format": "",
+        "description": "ExportMetadata represents the metadata of the exported artifacts. The metadata.json file in export artifact can be parsed as this message",
+        "$ref": "",
+        "properties": {
+          "esaSourceDatasetId": {
+            "type": "string",
+            "format": "",
+            "description": "Source BigQuery dataset (formatted as `project_id:dataset_id`) for O2C Elite System Activity (ESA) direct dataset migration.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "exportEncryptionKey": {
+            "type": "",
+            "format": "",
+            "description": "Encryption key that was used to encrypt the export artifacts.",
+            "$ref": "ExportMetadataEncryptionKey",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "filePaths": {
+            "type": "array",
+            "format": "",
+            "description": "List of files created as part of export artifact (excluding the metadata). The paths are relative to the folder containing the metadata.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "lookerEncryptionKey": {
+            "type": "string",
+            "format": "",
+            "description": "Looker encryption key, encrypted with the provided export encryption key. This value will only be populated if the looker instance uses Looker managed encryption instead of CMEK.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "lookerInstance": {
+            "type": "string",
+            "format": "",
+            "description": "Name of the exported instance. Format: projects/{project}/locations/{location}/instances/{instance}",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "lookerPlatformEdition": {
+            "type": "string",
+            "format": "",
+            "description": "Platform edition of the exported instance.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "lookerVersion": {
+            "type": "string",
+            "format": "",
+            "description": "Version of instance when the export was created.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "source": {
+            "type": "string",
+            "format": "",
+            "description": "The source type of the migration.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "SOURCE_UNSPECIFIED",
+              "LOOKER_CORE",
+              "LOOKER_ORIGINAL"
+            ],
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ExportMetadataEncryptionKey": {
+        "type": "object",
+        "format": "",
+        "description": "Encryption key details for the exported artifact.",
+        "$ref": "",
+        "properties": {
+          "cmek": {
+            "type": "string",
+            "format": "",
+            "description": "Name of the CMEK.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "version": {
+            "type": "string",
+            "format": "",
+            "description": "Version of the CMEK.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ImportInstanceRequest": {
+        "type": "object",
+        "format": "",
+        "description": "Requestion options for importing looker data to an Instance",
+        "$ref": "",
+        "properties": {
+          "gcsUri": {
+            "type": "string",
+            "format": "",
+            "description": "Path to the import folder in Google Cloud Storage, in the form `gs://bucketName/folderName`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "IngressIpAllowlistConfig": {
+        "type": "object",
+        "format": "",
+        "description": "Ingress IP allowlist configuration.",
+        "$ref": "",
+        "properties": {
+          "allowlistRules": {
+            "type": "array",
+            "format": "",
+            "description": "Optional. List of IP range rules to allow ingress traffic.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "IngressIpAllowlistRule",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "enabled": {
+            "type": "boolean",
+            "format": "",
+            "description": "Optional. Whether ingress IP allowlist functionality is enabled on the Looker instance.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "googleServicesEnabled": {
+            "type": "boolean",
+            "format": "",
+            "description": "Optional. Whether google service connections are enabled for the instance.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "IngressIpAllowlistRule": {
+        "type": "object",
+        "format": "",
+        "description": "Ingress IP allowlist rule.",
+        "$ref": "",
+        "properties": {
+          "description": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Description for the IP range.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "ipRange": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The IP range to allow ingress traffic from.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Instance": {
+        "type": "object",
+        "format": "",
+        "description": "A Looker instance.",
+        "$ref": "",
+        "properties": {
+          "acceleratedSecurityPatchEnabled": {
+            "type": "boolean",
+            "format": "",
+            "description": "Optional. Accelerated security patch enabled for the instance.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "adminSettings": {
+            "type": "",
+            "format": "",
+            "description": "Looker Instance Admin settings.",
+            "$ref": "AdminSettings",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "catalogIntegrationOptOut": {
+            "type": "boolean",
+            "format": "",
+            "description": "Optional. Indicates whether catalog integration is disabled for the Looker instance.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "classType": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Storage class of the instance.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "CLASS_TYPE_UNSPECIFIED",
+              "R1",
+              "P1"
+            ],
+            "readOnly": false
+          },
+          "consumerNetwork": {
+            "type": "string",
+            "format": "",
+            "description": "Network name in the consumer project. Format: `projects/{project}/global/networks/{network}`. Note that the consumer network may be in a different GCP project than the consumer project that is hosting the Looker Instance.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "controlledEgressConfig": {
+            "type": "",
+            "format": "",
+            "description": "Optional. Controlled egress configuration.",
+            "$ref": "ControlledEgressConfig",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "controlledEgressEnabled": {
+            "type": "boolean",
+            "format": "",
+            "description": "Optional. Whether controlled egress is enabled on the Looker instance.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "createTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. The time when the Looker instance provisioning was first requested.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "customDomain": {
+            "type": "",
+            "format": "",
+            "description": "Custom domain configuration for the instance.",
+            "$ref": "CustomDomain",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "denyMaintenancePeriod": {
+            "type": "",
+            "format": "",
+            "description": "Maintenance denial period for this instance.",
+            "$ref": "DenyMaintenancePeriod",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "egressPublicIp": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. Public Egress IP (IPv4).",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "encryptionConfig": {
+            "type": "",
+            "format": "",
+            "description": "Encryption configuration (CMEK). Only set if CMEK has been enabled on the instance.",
+            "$ref": "EncryptionConfig",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "fipsEnabled": {
+            "type": "boolean",
+            "format": "",
+            "description": "Optional. Whether FIPS is enabled on the Looker instance.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "geminiEnabled": {
+            "type": "boolean",
+            "format": "",
+            "description": "Optional. Whether Gemini feature is enabled on the Looker instance or not.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "ingressIpAllowlistConfig": {
+            "type": "",
+            "format": "",
+            "description": "Optional. Ingress IP allowlist configuration for the Looker instance.",
+            "$ref": "IngressIpAllowlistConfig",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "ingressPrivateIp": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. Private Ingress IP (IPv4).",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "ingressPublicIp": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. Public Ingress IP (IPv4).",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "lastDenyMaintenancePeriod": {
+            "type": "",
+            "format": "",
+            "description": "Output only. Last computed maintenance denial period for this instance.",
+            "$ref": "DenyMaintenancePeriod",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "linkedLspProjectNumber": {
+            "type": "string",
+            "format": "int64",
+            "description": "Optional. Linked Google Cloud Project Number for Looker Studio Pro.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "lookerUri": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. Looker instance URI which can be used to access the Looker Instance UI.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "lookerVersion": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The Looker version that the instance is using.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "maintenanceSchedule": {
+            "type": "",
+            "format": "",
+            "description": "Maintenance schedule for this instance.",
+            "$ref": "MaintenanceSchedule",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "maintenanceWindow": {
+            "type": "",
+            "format": "",
+            "description": "Maintenance window for this instance.",
+            "$ref": "MaintenanceWindow",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. Format: `projects/{project}/locations/{location}/instances/{instance}`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "oauthConfig": {
+            "type": "",
+            "format": "",
+            "description": "Looker instance OAuth login settings.",
+            "$ref": "OAuthConfig",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "periodicExportConfig": {
+            "type": "",
+            "format": "",
+            "description": "Optional. Configuration for periodic export.",
+            "$ref": "PeriodicExportConfig",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "platformEdition": {
+            "type": "string",
+            "format": "",
+            "description": "Platform edition.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "PLATFORM_EDITION_UNSPECIFIED",
+              "LOOKER_CORE_TRIAL",
+              "LOOKER_CORE_STANDARD",
+              "LOOKER_CORE_STANDARD_ANNUAL",
+              "LOOKER_CORE_ENTERPRISE_ANNUAL",
+              "LOOKER_CORE_EMBED_ANNUAL",
+              "LOOKER_CORE_NONPROD_STANDARD_ANNUAL",
+              "LOOKER_CORE_NONPROD_ENTERPRISE_ANNUAL",
+              "LOOKER_CORE_NONPROD_EMBED_ANNUAL",
+              "LOOKER_CORE_TRIAL_STANDARD",
+              "LOOKER_CORE_TRIAL_ENTERPRISE",
+              "LOOKER_CORE_TRIAL_EMBED"
+            ],
+            "readOnly": false
+          },
+          "privateIpEnabled": {
+            "type": "boolean",
+            "format": "",
+            "description": "Whether private IP is enabled on the Looker instance.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "pscConfig": {
+            "type": "",
+            "format": "",
+            "description": "Optional. PSC configuration. Used when `psc_enabled` is true.",
+            "$ref": "PscConfig",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "pscEnabled": {
+            "type": "boolean",
+            "format": "",
+            "description": "Optional. Whether to use Private Service Connect (PSC) for private IP connectivity. If true, neither `public_ip_enabled` nor `private_ip_enabled` can be true.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "publicIpEnabled": {
+            "type": "boolean",
+            "format": "",
+            "description": "Whether public IP is enabled on the Looker instance.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "releaseChannel": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The selected release channel for the instance.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "RELEASE_CHANNEL_UNSPECIFIED",
+              "RAPID",
+              "REGULAR",
+              "STABLE"
+            ],
+            "readOnly": false
+          },
+          "reservedRange": {
+            "type": "string",
+            "format": "",
+            "description": "Name of a reserved IP address range within the Instance.consumer_network, to be used for private services access connection. May or may not be specified in a create request.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "satisfiesPzi": {
+            "type": "boolean",
+            "format": "",
+            "description": "Output only. Reserved for future use.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "satisfiesPzs": {
+            "type": "boolean",
+            "format": "",
+            "description": "Output only. Reserved for future use.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "softDeleteReason": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The reason for the instance being in a soft-deleted state.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "SOFT_DELETE_REASON_UNSPECIFIED",
+              "BILLING_ACCOUNT_ISSUE",
+              "TRIAL_EXPIRED",
+              "CUSTOMER_REQUEST"
+            ],
+            "readOnly": true
+          },
+          "state": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The state of the instance.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "STATE_UNSPECIFIED",
+              "ACTIVE",
+              "CREATING",
+              "FAILED",
+              "SUSPENDED",
+              "UPDATING",
+              "DELETING",
+              "EXPORTING",
+              "IMPORTING"
+            ],
+            "readOnly": true
+          },
+          "suspendedTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. The time when the Looker instance was suspended (soft deleted).",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "updateTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. The time when the Looker instance was last updated.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "userMetadata": {
+            "type": "",
+            "format": "",
+            "description": "Optional. User metadata.",
+            "$ref": "UserMetadata",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "InstanceBackup": {
+        "type": "object",
+        "format": "",
+        "description": "The details of a backup resource.",
+        "$ref": "",
+        "properties": {
+          "createTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. The time when the backup was started.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "encryptionConfig": {
+            "type": "",
+            "format": "",
+            "description": "Output only. Current status of the CMEK encryption",
+            "$ref": "EncryptionConfig",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "expireTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. The time when the backup will be deleted.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "Immutable. The relative resource name of the backup, in the following form: `projects/{project_number}/locations/{location_id}/instances/{instance_id}/backups/{backup}`",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "state": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The current state of the backup.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "STATE_UNSPECIFIED",
+              "CREATING",
+              "DELETING",
+              "ACTIVE",
+              "FAILED"
+            ],
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ListInstanceBackupsResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Response from listing Looker instance backups.",
+        "$ref": "",
+        "properties": {
+          "instanceBackups": {
+            "type": "array",
+            "format": "",
+            "description": "The list of instances matching the request filters, up to the requested `page_size`.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "InstanceBackup",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "If provided, a page token that can look up the next `page_size` results. If empty, the results list is exhausted.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "unreachable": {
+            "type": "array",
+            "format": "",
+            "description": "Locations that could not be reached.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ListInstancesResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Response from ListInstances.",
+        "$ref": "",
+        "properties": {
+          "instances": {
+            "type": "array",
+            "format": "",
+            "description": "The list of instances matching the request filters, up to the requested `pageSize`.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Instance",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "If provided, a page token that can look up the next `pageSize` results. If empty, the results list is exhausted.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "unreachable": {
+            "type": "array",
+            "format": "",
+            "description": "Locations that could not be reached.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ListLocationsResponse": {
+        "type": "object",
+        "format": "",
+        "description": "The response message for Locations.ListLocations.",
+        "$ref": "",
+        "properties": {
+          "locations": {
+            "type": "array",
+            "format": "",
+            "description": "A list of locations that matches the specified filter in the request.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Location",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "The standard List next-page token.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ListOperationsResponse": {
+        "type": "object",
+        "format": "",
+        "description": "The response message for Operations.ListOperations.",
+        "$ref": "",
+        "properties": {
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "The standard List next-page token.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "operations": {
+            "type": "array",
+            "format": "",
+            "description": "A list of operations that matches the specified filter in the request.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Operation",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "unreachable": {
+            "type": "array",
+            "format": "",
+            "description": "Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Location": {
+        "type": "object",
+        "format": "",
+        "description": "A resource that represents a Google Cloud location.",
+        "$ref": "",
+        "properties": {
+          "displayName": {
+            "type": "string",
+            "format": "",
+            "description": "The friendly name for this location, typically a nearby city name. For example, \"Tokyo\".",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "labels": {
+            "type": "object",
+            "format": "",
+            "description": "Cross-service attributes for the location. For example {\"cloud.googleapis.com/region\": \"us-east1\"}",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "locationId": {
+            "type": "string",
+            "format": "",
+            "description": "The canonical id for this location. For example: `\"us-east1\"`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "metadata": {
+            "type": "object",
+            "format": "",
+            "description": "Service-specific metadata. For example the available capacity at the given location.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "any",
+              "format": "",
+              "description": "Properties of the object. Contains field @type with type URL.",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "Resource name for the location, which may vary between implementations. For example: `\"projects/example-project/locations/us-east1\"`",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "MaintenanceSchedule": {
+        "type": "object",
+        "format": "",
+        "description": "Published upcoming future maintenance schedule.",
+        "$ref": "",
+        "properties": {
+          "endTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "The scheduled end time for the maintenance.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "startTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "The scheduled start time for the maintenance.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "MaintenanceWindow": {
+        "type": "object",
+        "format": "",
+        "description": "Specifies the recurring maintenance window.",
+        "$ref": "",
+        "properties": {
+          "dayOfWeek": {
+            "type": "string",
+            "format": "",
+            "description": "Required. Day of the week for this MaintenanceWindow (in UTC).",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "DAY_OF_WEEK_UNSPECIFIED",
+              "MONDAY",
+              "TUESDAY",
+              "WEDNESDAY",
+              "THURSDAY",
+              "FRIDAY",
+              "SATURDAY",
+              "SUNDAY"
+            ],
+            "readOnly": false
+          },
+          "startTime": {
+            "type": "",
+            "format": "",
+            "description": "Required. Time in UTC when the period starts. Maintenance will be scheduled within 60 minutes.",
+            "$ref": "TimeOfDay",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "OAuthConfig": {
+        "type": "object",
+        "format": "",
+        "description": "Looker instance OAuth login settings.",
+        "$ref": "",
+        "properties": {
+          "clientId": {
+            "type": "string",
+            "format": "",
+            "description": "Input only. Client ID from an external OAuth application. This is an input-only field, and thus will not be set in any responses.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "clientSecret": {
+            "type": "string",
+            "format": "",
+            "description": "Input only. Client secret from an external OAuth application. This is an input-only field, and thus will not be set in any responses.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "sharedOauthClientEnabled": {
+            "type": "boolean",
+            "format": "",
+            "description": "Optional. Whether to use the shared OAuth client. Instances specifying this field do not need to provide client_id and client_secret.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Operation": {
+        "type": "object",
+        "format": "",
+        "description": "This resource represents a long-running operation that is the result of a network API call.",
+        "$ref": "",
+        "properties": {
+          "done": {
+            "type": "boolean",
+            "format": "",
+            "description": "If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "error": {
+            "type": "",
+            "format": "",
+            "description": "The error result of the operation in case of failure or cancellation.",
+            "$ref": "Status",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "metadata": {
+            "type": "object",
+            "format": "",
+            "description": "Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "any",
+              "format": "",
+              "description": "Properties of the object. Contains field @type with type URL.",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "response": {
+            "type": "object",
+            "format": "",
+            "description": "The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "any",
+              "format": "",
+              "description": "Properties of the object. Contains field @type with type URL.",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "OperationMetadata": {
+        "type": "object",
+        "format": "",
+        "description": "Represents the metadata of the long-running operation.",
+        "$ref": "",
+        "properties": {
+          "apiVersion": {
+            "type": "string",
+            "format": "",
+            "description": "API version used to start the operation.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "createTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "The time the operation was created.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "endTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "The time the operation finished running.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "requestedCancellation": {
+            "type": "boolean",
+            "format": "",
+            "description": "Identifies whether the user has requested cancellation of the operation. Operations that have successfully been cancelled have Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "statusMessage": {
+            "type": "string",
+            "format": "",
+            "description": "Human-readable status of the operation, if any.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "target": {
+            "type": "string",
+            "format": "",
+            "description": "Server-defined resource path for the target of the operation.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "verb": {
+            "type": "string",
+            "format": "",
+            "description": "Name of the verb executed by the operation.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "PeriodicExportConfig": {
+        "type": "object",
+        "format": "",
+        "description": "Configuration for periodic export.",
+        "$ref": "",
+        "properties": {
+          "gcsUri": {
+            "type": "string",
+            "format": "",
+            "description": "Required. Cloud Storage bucket URI for periodic export. Format: gs://{bucket_name}",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "kmsKey": {
+            "type": "string",
+            "format": "",
+            "description": "Required. Name of the CMEK key in KMS. Format: projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "startTime": {
+            "type": "",
+            "format": "",
+            "description": "Required. Time in UTC to start the periodic export job.",
+            "$ref": "TimeOfDay",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "PscConfig": {
+        "type": "object",
+        "format": "",
+        "description": "Information for Private Service Connect (PSC) setup for a Looker instance.",
+        "$ref": "",
+        "properties": {
+          "allowedVpcs": {
+            "type": "array",
+            "format": "",
+            "description": "Optional. List of VPCs that are allowed ingress into looker. Format: projects/{project}/global/networks/{network}",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "lookerServiceAttachmentUri": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. URI of the Looker service attachment.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "serviceAttachments": {
+            "type": "array",
+            "format": "",
+            "description": "Optional. List of egress service attachment configurations.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "ServiceAttachment",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "RestartInstanceRequest": {
+        "type": "object",
+        "format": "",
+        "description": "Request options for restarting an instance.",
+        "$ref": "",
+        "properties": {},
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "RestoreInstanceRequest": {
+        "type": "object",
+        "format": "",
+        "description": "Request options for restoring an instance",
+        "$ref": "",
+        "properties": {
+          "backup": {
+            "type": "string",
+            "format": "",
+            "description": "Required. Backup being used to restore the instance Format: projects/{project}/locations/{location}/instances/{instance}/backups/{backup}",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ServiceAttachment": {
+        "type": "object",
+        "format": "",
+        "description": "Service attachment configuration.",
+        "$ref": "",
+        "properties": {
+          "connectionStatus": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. Connection status.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "UNKNOWN",
+              "ACCEPTED",
+              "PENDING",
+              "REJECTED",
+              "NEEDS_ATTENTION",
+              "CLOSED"
+            ],
+            "readOnly": true
+          },
+          "failureReason": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. Reason the service attachment creation failed. This value will only be populated if the service attachment encounters an issue during provisioning.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "localFqdn": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Fully qualified domain name that will be used in the private DNS record created for the service attachment.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "localFqdns": {
+            "type": "array",
+            "format": "",
+            "description": "Optional. List of fully qualified domain names that will be used in the private DNS record created for the service attachment.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "targetServiceAttachmentUri": {
+            "type": "string",
+            "format": "",
+            "description": "Required. URI of the service attachment to connect to. Format: projects/{project}/regions/{region}/serviceAttachments/{service_attachment}",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Status": {
+        "type": "object",
+        "format": "",
+        "description": "The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).",
+        "$ref": "",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32",
+            "description": "The status code, which should be an enum value of google.rpc.Code.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "details": {
+            "type": "array",
+            "format": "",
+            "description": "A list of messages that carry the error details. There is a common set of message types for APIs to use.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "object",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": {
+                "type": "any",
+                "format": "",
+                "description": "Properties of the object. Contains field @type with type URL.",
+                "$ref": "",
+                "properties": null,
+                "items": null,
+                "additionalProperties": null,
+                "enum": null,
+                "readOnly": false
+              },
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "message": {
+            "type": "string",
+            "format": "",
+            "description": "A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "TimeOfDay": {
+        "type": "object",
+        "format": "",
+        "description": "Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API may choose to allow leap seconds. Related types are google.type.Date and `google.protobuf.Timestamp`.",
+        "$ref": "",
+        "properties": {
+          "hours": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Hours of a day in 24 hour format. Must be greater than or equal to 0 and typically must be less than or equal to 23. An API may choose to allow the value \"24:00:00\" for scenarios like business closing time.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "minutes": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Minutes of an hour. Must be greater than or equal to 0 and less than or equal to 59.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "nanos": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Fractions of seconds, in nanoseconds. Must be greater than or equal to 0 and less than or equal to 999,999,999.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "seconds": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Seconds of a minute. Must be greater than or equal to 0 and typically must be less than or equal to 59. An API may allow the value 60 if it allows leap-seconds.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "UndeleteInstanceRequest": {
+        "type": "object",
+        "format": "",
+        "description": "Request options for undeleting an instance.",
+        "$ref": "",
+        "properties": {},
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "UserMetadata": {
+        "type": "object",
+        "format": "",
+        "description": "Metadata about users for a Looker instance.",
+        "$ref": "",
+        "properties": {
+          "additionalDeveloperUserCount": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Optional. The number of additional developer users the instance owner has purchased.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "additionalStandardUserCount": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Optional. The number of additional standard users the instance owner has purchased.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "additionalViewerUserCount": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Optional. The number of additional viewer users the instance owner has purchased.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      }
+    },
+    "resources": {
+      "projects": {
+        "methods": null,
+        "resources": {
+          "locations": {
+            "methods": {
+              "get": {
+                "id": "looker.projects.locations.get",
+                "httpMethod": "GET",
+                "path": "v1/{+name}",
+                "flatPath": "v1/projects/{projectsId}/locations/{locationsId}",
+                "description": "Gets information about a location.",
+                "parameters": {
+                  "name": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  }
+                },
+                "parameterOrder": [
+                  "name"
+                ],
+                "request": null,
+                "response": {
+                  "$ref": "Location"
+                }
+              },
+              "list": {
+                "id": "looker.projects.locations.list",
+                "httpMethod": "GET",
+                "path": "v1/{+name}/locations",
+                "flatPath": "v1/projects/{projectsId}/locations",
+                "description": "Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the ListLocationsRequest.name field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version.",
+                "parameters": {
+                  "extraLocationTypes": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false
+                  },
+                  "filter": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false
+                  },
+                  "name": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  },
+                  "pageSize": {
+                    "type": "integer",
+                    "location": "query",
+                    "required": false
+                  },
+                  "pageToken": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false
+                  }
+                },
+                "parameterOrder": [
+                  "name"
+                ],
+                "request": null,
+                "response": {
+                  "$ref": "ListLocationsResponse"
+                }
+              }
+            },
+            "resources": {
+              "instances": {
+                "methods": {
+                  "create": {
+                    "id": "looker.projects.locations.instances.create",
+                    "httpMethod": "POST",
+                    "path": "v1/{+parent}/instances",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/instances",
+                    "description": "Creates a new Instance in a given project and location.",
+                    "parameters": {
+                      "instanceId": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "parent": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "parent"
+                    ],
+                    "request": {
+                      "$ref": "Instance"
+                    },
+                    "response": {
+                      "$ref": "Operation"
+                    }
+                  },
+                  "delete": {
+                    "id": "looker.projects.locations.instances.delete",
+                    "httpMethod": "DELETE",
+                    "path": "v1/{+name}",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}",
+                    "description": "Delete instance.",
+                    "parameters": {
+                      "force": {
+                        "type": "boolean",
+                        "location": "query",
+                        "required": false
+                      },
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "Operation"
+                    }
+                  },
+                  "export": {
+                    "id": "looker.projects.locations.instances.export",
+                    "httpMethod": "POST",
+                    "path": "v1/{+name}:export",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}:export",
+                    "description": "Export instance.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": {
+                      "$ref": "ExportInstanceRequest"
+                    },
+                    "response": {
+                      "$ref": "Operation"
+                    }
+                  },
+                  "get": {
+                    "id": "looker.projects.locations.instances.get",
+                    "httpMethod": "GET",
+                    "path": "v1/{+name}",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}",
+                    "description": "Gets details of a single Instance.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "Instance"
+                    }
+                  },
+                  "import": {
+                    "id": "looker.projects.locations.instances.import",
+                    "httpMethod": "POST",
+                    "path": "v1/{+name}:import",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}:import",
+                    "description": "Import instance.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": {
+                      "$ref": "ImportInstanceRequest"
+                    },
+                    "response": {
+                      "$ref": "Operation"
+                    }
+                  },
+                  "list": {
+                    "id": "looker.projects.locations.instances.list",
+                    "httpMethod": "GET",
+                    "path": "v1/{+parent}/instances",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/instances",
+                    "description": "Lists Instances in a given project and location.",
+                    "parameters": {
+                      "pageSize": {
+                        "type": "integer",
+                        "location": "query",
+                        "required": false
+                      },
+                      "pageToken": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "parent": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      },
+                      "showDeleted": {
+                        "type": "boolean",
+                        "location": "query",
+                        "required": false
+                      }
+                    },
+                    "parameterOrder": [
+                      "parent"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "ListInstancesResponse"
+                    }
+                  },
+                  "patch": {
+                    "id": "looker.projects.locations.instances.patch",
+                    "httpMethod": "PATCH",
+                    "path": "v1/{+name}",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}",
+                    "description": "Update Instance.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      },
+                      "updateMask": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": {
+                      "$ref": "Instance"
+                    },
+                    "response": {
+                      "$ref": "Operation"
+                    }
+                  },
+                  "restart": {
+                    "id": "looker.projects.locations.instances.restart",
+                    "httpMethod": "POST",
+                    "path": "v1/{+name}:restart",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}:restart",
+                    "description": "Restart instance.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": {
+                      "$ref": "RestartInstanceRequest"
+                    },
+                    "response": {
+                      "$ref": "Operation"
+                    }
+                  },
+                  "restore": {
+                    "id": "looker.projects.locations.instances.restore",
+                    "httpMethod": "POST",
+                    "path": "v1/{+name}:restore",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}:restore",
+                    "description": "Restore Looker instance.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": {
+                      "$ref": "RestoreInstanceRequest"
+                    },
+                    "response": {
+                      "$ref": "Operation"
+                    }
+                  },
+                  "undelete": {
+                    "id": "looker.projects.locations.instances.undelete",
+                    "httpMethod": "POST",
+                    "path": "v1/{+name}:undelete",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}:undelete",
+                    "description": "Undeletes Looker instance.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": {
+                      "$ref": "UndeleteInstanceRequest"
+                    },
+                    "response": {
+                      "$ref": "Operation"
+                    }
+                  }
+                },
+                "resources": {
+                  "backups": {
+                    "methods": {
+                      "create": {
+                        "id": "looker.projects.locations.instances.backups.create",
+                        "httpMethod": "POST",
+                        "path": "v1/{+parent}/backups",
+                        "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}/backups",
+                        "description": "Backup Looker instance.",
+                        "parameters": {
+                          "parent": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          }
+                        },
+                        "parameterOrder": [
+                          "parent"
+                        ],
+                        "request": {
+                          "$ref": "InstanceBackup"
+                        },
+                        "response": {
+                          "$ref": "Operation"
+                        }
+                      },
+                      "delete": {
+                        "id": "looker.projects.locations.instances.backups.delete",
+                        "httpMethod": "DELETE",
+                        "path": "v1/{+name}",
+                        "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}/backups/{backupsId}",
+                        "description": "Delete backup.",
+                        "parameters": {
+                          "name": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          }
+                        },
+                        "parameterOrder": [
+                          "name"
+                        ],
+                        "request": null,
+                        "response": {
+                          "$ref": "Operation"
+                        }
+                      },
+                      "get": {
+                        "id": "looker.projects.locations.instances.backups.get",
+                        "httpMethod": "GET",
+                        "path": "v1/{+name}",
+                        "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}/backups/{backupsId}",
+                        "description": "",
+                        "parameters": {
+                          "name": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          }
+                        },
+                        "parameterOrder": [
+                          "name"
+                        ],
+                        "request": null,
+                        "response": {
+                          "$ref": "InstanceBackup"
+                        }
+                      },
+                      "list": {
+                        "id": "looker.projects.locations.instances.backups.list",
+                        "httpMethod": "GET",
+                        "path": "v1/{+parent}/backups",
+                        "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}/backups",
+                        "description": "List backups of Looker instance.",
+                        "parameters": {
+                          "orderBy": {
+                            "type": "string",
+                            "location": "query",
+                            "required": false
+                          },
+                          "pageSize": {
+                            "type": "integer",
+                            "location": "query",
+                            "required": false
+                          },
+                          "pageToken": {
+                            "type": "string",
+                            "location": "query",
+                            "required": false
+                          },
+                          "parent": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          }
+                        },
+                        "parameterOrder": [
+                          "parent"
+                        ],
+                        "request": null,
+                        "response": {
+                          "$ref": "ListInstanceBackupsResponse"
+                        }
+                      }
+                    },
+                    "resources": null
+                  }
+                }
+              },
+              "operations": {
+                "methods": {
+                  "cancel": {
+                    "id": "looker.projects.locations.operations.cancel",
+                    "httpMethod": "POST",
+                    "path": "v1/{+name}:cancel",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}:cancel",
+                    "description": "Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": {
+                      "$ref": "CancelOperationRequest"
+                    },
+                    "response": {
+                      "$ref": "Empty"
+                    }
+                  },
+                  "delete": {
+                    "id": "looker.projects.locations.operations.delete",
+                    "httpMethod": "DELETE",
+                    "path": "v1/{+name}",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
+                    "description": "Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "Empty"
+                    }
+                  },
+                  "get": {
+                    "id": "looker.projects.locations.operations.get",
+                    "httpMethod": "GET",
+                    "path": "v1/{+name}",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
+                    "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "Operation"
+                    }
+                  },
+                  "list": {
+                    "id": "looker.projects.locations.operations.list",
+                    "httpMethod": "GET",
+                    "path": "v1/{+name}/operations",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/operations",
+                    "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.",
+                    "parameters": {
+                      "filter": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      },
+                      "pageSize": {
+                        "type": "integer",
+                        "location": "query",
+                        "required": false
+                      },
+                      "pageToken": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "returnPartialSuccess": {
+                        "type": "boolean",
+                        "location": "query",
+                        "required": false
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "ListOperationsResponse"
+                    }
+                  }
+                },
+                "resources": null
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

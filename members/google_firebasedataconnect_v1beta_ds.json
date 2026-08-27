@@ -1,0 +1,3583 @@
+{
+  "schema_source": "discovery_docs",
+  "mode": "data_source",
+  "auth": {
+    "Type": "",
+    "Params": null
+  },
+  "base_url": "https://firebasedataconnect.googleapis.com",
+  "retry": {
+    "MaxAttempts": 0,
+    "InitialBackoff": "",
+    "MaxBackoff": "",
+    "Jitter": null,
+    "RespectRetryAfter": null,
+    "RateLimitResetHeader": ""
+  },
+  "timeouts": {
+    "Create": "",
+    "Read": "",
+    "Update": "",
+    "Delete": "",
+    "Default": ""
+  },
+  "wire_name": "google_firebasedataconnect_v1beta",
+  "version_qualifier": "v1beta",
+  "raw_spec": {
+    "name": "firebasedataconnect",
+    "revision": "20260823",
+    "discoveryVersion": "v1",
+    "baseUrl": "https://firebasedataconnect.googleapis.com/",
+    "rootUrl": "https://firebasedataconnect.googleapis.com/",
+    "servicePath": "",
+    "schemas": {
+      "CancelOperationRequest": {
+        "type": "object",
+        "format": "",
+        "description": "The request message for Operations.CancelOperation.",
+        "$ref": "",
+        "properties": {},
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ClientCache": {
+        "type": "object",
+        "format": "",
+        "description": "Client caching settings of a connector.",
+        "$ref": "",
+        "properties": {
+          "entityIdIncluded": {
+            "type": "boolean",
+            "format": "",
+            "description": "Optional. A field that, if true, means that responses served by this connector will include entityIds in GraphQL response extensions. This helps the client SDK cache responses in an improved way, known as \"normalized caching\", if caching is enabled on the client. Each entityId is a stable key based on primary key values. Therefore, this field should only be set to true if the primary keys of accessed tables do not contain sensitive information.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "strictValidationEnabled": {
+            "type": "boolean",
+            "format": "",
+            "description": "Optional. A field that, if true, enables stricter validation on the connector source code to make sure the operation response shapes are suitable for client-side caching. This can include additional errors and warnings. For example, using the same alias for different fields is disallowed, as it may cause conflicts or confusion with normalized caching. (This field is off by default for compatibility, but enabling it is highly recommended to catch common caching pitfalls.)",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "CloudSqlInstance": {
+        "type": "object",
+        "format": "",
+        "description": "Settings for CloudSQL instance configuration.",
+        "$ref": "",
+        "properties": {
+          "edition": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. [Output only] The Cloud SQL instance edition.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "EDITION_UNSPECIFIED",
+              "EDITION_ENTERPRISE",
+              "EDITION_ENTERPRISE_PLUS",
+              "EDITION_DEVELOPER"
+            ],
+            "readOnly": true
+          },
+          "instance": {
+            "type": "string",
+            "format": "",
+            "description": "Required. Name of the CloudSQL instance, in the format: ``` projects/{project}/locations/{location}/instances/{instance} ```",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "CodeChunk": {
+        "type": "object",
+        "format": "",
+        "description": "A chunk of code.",
+        "$ref": "",
+        "properties": {
+          "code": {
+            "type": "string",
+            "format": "",
+            "description": "Required. The code content string.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "languageCode": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Specifies the language if we expand support beyond GraphQL (e.g., SQL or JSON) The standard is BCP-47 language code.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Connector": {
+        "type": "object",
+        "format": "",
+        "description": "Connector consists of a set of operations, i.e. queries and mutations.",
+        "$ref": "",
+        "properties": {
+          "annotations": {
+            "type": "object",
+            "format": "",
+            "description": "Optional. Stores small amounts of arbitrary data.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "clientCache": {
+            "type": "",
+            "format": "",
+            "description": "Optional. The client cache settings of the connector.",
+            "$ref": "ClientCache",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "createTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. [Output only] Create time stamp.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "displayName": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Mutable human-readable name. 63 character limit.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "etag": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding. [AIP-154](https://google.aip.dev/154)",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "labels": {
+            "type": "object",
+            "format": "",
+            "description": "Optional. Labels as key value pairs.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "Identifier. The relative resource name of the connector, in the format: ``` projects/{project}/locations/{location}/services/{service}/connectors/{connector} ```",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "reconciling": {
+            "type": "boolean",
+            "format": "",
+            "description": "Output only. A field that if true, indicates that the system is working to compile and deploy the connector.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "source": {
+            "type": "",
+            "format": "",
+            "description": "Required. The source files that comprise the connector.",
+            "$ref": "Source",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "uid": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. System-assigned, unique identifier.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "updateTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. [Output only] Update time stamp.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "DataConnectProperties": {
+        "type": "object",
+        "format": "",
+        "description": "SQL Connect specific properties for a path under response.data.",
+        "$ref": "",
+        "properties": {
+          "entityId": {
+            "type": "string",
+            "format": "",
+            "description": "A single Entity ID. Set if the path points to a single entity.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "entityIds": {
+            "type": "array",
+            "format": "",
+            "description": "A list of Entity IDs. Set if the path points to an array of entities. An ID is present for each element of the array at the corresponding index.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "maxAge": {
+            "type": "string",
+            "format": "google-duration",
+            "description": "The server-suggested duration before data under path is considered stale.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "path": {
+            "type": "array",
+            "format": "",
+            "description": "The path under response.data where the rest of the fields apply. Each element may be a string (field name) or number (array index). The root of response.data is denoted by the empty list `[]`.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "any",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Datasource": {
+        "type": "object",
+        "format": "",
+        "description": "A data source that backs Firebase SQL Connect services.",
+        "$ref": "",
+        "properties": {
+          "httpGraphql": {
+            "type": "",
+            "format": "",
+            "description": "HTTP GraphQL server webhook configurations.",
+            "$ref": "HttpGraphql",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "postgresql": {
+            "type": "",
+            "format": "",
+            "description": "PostgreSQL configurations.",
+            "$ref": "PostgreSql",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Empty": {
+        "type": "object",
+        "format": "",
+        "description": "A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }",
+        "$ref": "",
+        "properties": {},
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ExecuteMutationRequest": {
+        "type": "object",
+        "format": "",
+        "description": "The ExecuteMutation request to Firebase SQL Connect.",
+        "$ref": "",
+        "properties": {
+          "operationName": {
+            "type": "string",
+            "format": "",
+            "description": "Required. The name of the GraphQL operation name. Required because all Connector operations must be named. See https://graphql.org/learn/queries/#operation-name.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "variables": {
+            "type": "object",
+            "format": "",
+            "description": "Optional. Values for GraphQL variables provided in this request.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "any",
+              "format": "",
+              "description": "Properties of the object.",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ExecuteMutationResponse": {
+        "type": "object",
+        "format": "",
+        "description": "The ExecuteMutation response from Firebase SQL Connect.",
+        "$ref": "",
+        "properties": {
+          "data": {
+            "type": "object",
+            "format": "",
+            "description": "The result of executing the requested operation.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "any",
+              "format": "",
+              "description": "Properties of the object.",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "errors": {
+            "type": "array",
+            "format": "",
+            "description": "Errors of this response.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "GraphqlError",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "extensions": {
+            "type": "",
+            "format": "",
+            "description": "Additional response information.",
+            "$ref": "GraphqlResponseExtensions",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ExecuteQueryRequest": {
+        "type": "object",
+        "format": "",
+        "description": "The ExecuteQuery request to Firebase SQL Connect.",
+        "$ref": "",
+        "properties": {
+          "operationName": {
+            "type": "string",
+            "format": "",
+            "description": "Required. The name of the GraphQL operation name. Required because all Connector operations must be named. See https://graphql.org/learn/queries/#operation-name.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "variables": {
+            "type": "object",
+            "format": "",
+            "description": "Optional. Values for GraphQL variables provided in this request.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "any",
+              "format": "",
+              "description": "Properties of the object.",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ExecuteQueryResponse": {
+        "type": "object",
+        "format": "",
+        "description": "The ExecuteQuery response from Firebase SQL Connect.",
+        "$ref": "",
+        "properties": {
+          "data": {
+            "type": "object",
+            "format": "",
+            "description": "The result of executing the requested operation.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "any",
+              "format": "",
+              "description": "Properties of the object.",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "errors": {
+            "type": "array",
+            "format": "",
+            "description": "Errors of this response.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "GraphqlError",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "extensions": {
+            "type": "",
+            "format": "",
+            "description": "Additional response information.",
+            "$ref": "GraphqlResponseExtensions",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "File": {
+        "type": "object",
+        "format": "",
+        "description": "Individual files.",
+        "$ref": "",
+        "properties": {
+          "content": {
+            "type": "string",
+            "format": "",
+            "description": "Required. The file's textual content.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "path": {
+            "type": "string",
+            "format": "",
+            "description": "Required. The file name including folder path, if applicable. The path should be relative to a local workspace (e.g. dataconnect/(schema|connector)/*.gql) and not an absolute path (e.g. /absolute/path/(schema|connector)/*.gql).",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GenerateQueryRequest": {
+        "type": "object",
+        "format": "",
+        "description": "Request message for GenerateQuery.",
+        "$ref": "",
+        "properties": {
+          "prompt": {
+            "type": "string",
+            "format": "",
+            "description": "Required. The natural language description of the desired query. Example: \"Find all users who signed up in the last 7 days.\"",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "schemas": {
+            "type": "array",
+            "format": "",
+            "description": "Optional. The user's locally defined FDC Schema(s). If not defined, the backend will fetch the user's deployed schema.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Schema",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GenerateQueryResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Output for streaming generate query requests",
+        "$ref": "",
+        "properties": {
+          "part": {
+            "type": "",
+            "format": "",
+            "description": "Required. The content from the current conversational turn.",
+            "$ref": "Part",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "status": {
+            "type": "",
+            "format": "",
+            "description": "Essential for providing responsive UI feedback (e.g., a spinner or \"Analyzing schema...\" step).",
+            "$ref": "GenerationStatus",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GenerateSchemaRequest": {
+        "type": "object",
+        "format": "",
+        "description": "Request message for GenerateSchema.",
+        "$ref": "",
+        "properties": {
+          "prompt": {
+            "type": "string",
+            "format": "",
+            "description": "Required. The natural language description of the data model to generate. Example: \"A blog system with Users, Posts, and Comments. Users can have multiple posts.\"",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GenerateSchemaResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Output for streaming generate schema requests",
+        "$ref": "",
+        "properties": {
+          "part": {
+            "type": "",
+            "format": "",
+            "description": "The content from the current conversational turn.",
+            "$ref": "Part",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "status": {
+            "type": "",
+            "format": "",
+            "description": "Essential for providing responsive UI feedback (e.g., a spinner or \"Analyzing schema...\" step).",
+            "$ref": "GenerationStatus",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GenerationStatus": {
+        "type": "object",
+        "format": "",
+        "description": "Represents the progress of the server side generation request.",
+        "$ref": "",
+        "properties": {
+          "message": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. A message providing more details about the state.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "state": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The state of generation.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "STATE_UNSPECIFIED",
+              "ANALYZING_CODE",
+              "GENERATING_CODE",
+              "COMPLETED"
+            ],
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GraphqlError": {
+        "type": "object",
+        "format": "",
+        "description": "GraphqlError conforms to the GraphQL error spec. https://spec.graphql.org/draft/#sec-Errors Firebase SQL Connect API surfaces `GraphqlError` in various APIs: - Upon compile error, `UpdateSchema` and `UpdateConnector` return Code.Invalid_Argument with a list of `GraphqlError` in error details. - Upon query compile error, `ExecuteGraphql`, `ExecuteGraphqlRead` and `IntrospectGraphql` return Code.OK with a list of `GraphqlError` in response body. - Upon query execution error, `ExecuteGraphql`, `ExecuteGraphqlRead`, `ExecuteMutation`, `ExecuteQuery`, `IntrospectGraphql`, `ImpersonateQuery` and `ImpersonateMutation` all return Code.OK with a list of `GraphqlError` in response body.",
+        "$ref": "",
+        "properties": {
+          "extensions": {
+            "type": "",
+            "format": "",
+            "description": "Additional error information.",
+            "$ref": "GraphqlErrorExtensions",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "locations": {
+            "type": "array",
+            "format": "",
+            "description": "The source locations where the error occurred. Locations should help developers and toolings identify the source of error quickly. Included in admin endpoints (`ExecuteGraphql`, `ExecuteGraphqlRead`, `IntrospectGraphql`, `ImpersonateQuery`, `ImpersonateMutation`, `UpdateSchema` and `UpdateConnector`) to reference the provided GraphQL GQL document. Omitted in `ExecuteMutation` and `ExecuteQuery` since the caller shouldn't have access access the underlying GQL source.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "SourceLocation",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "message": {
+            "type": "string",
+            "format": "",
+            "description": "The detailed error message. The message should help developer understand the underlying problem without leaking internal data.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "path": {
+            "type": "array",
+            "format": "",
+            "description": "The result field which could not be populated due to error. Clients can use path to identify whether a null result is intentional or caused by a runtime error. It should be a list of string or index from the root of GraphQL query document.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "any",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GraphqlErrorExtensions": {
+        "type": "object",
+        "format": "",
+        "description": "GraphqlErrorExtensions contains additional information of `GraphqlError`.",
+        "$ref": "",
+        "properties": {
+          "code": {
+            "type": "string",
+            "format": "",
+            "description": "Maps to canonical gRPC codes. If not specified, it represents `Code.INTERNAL`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "OK",
+              "CANCELLED",
+              "UNKNOWN",
+              "INVALID_ARGUMENT",
+              "DEADLINE_EXCEEDED",
+              "NOT_FOUND",
+              "ALREADY_EXISTS",
+              "PERMISSION_DENIED",
+              "UNAUTHENTICATED",
+              "RESOURCE_EXHAUSTED",
+              "FAILED_PRECONDITION",
+              "ABORTED",
+              "OUT_OF_RANGE",
+              "UNIMPLEMENTED",
+              "INTERNAL",
+              "UNAVAILABLE",
+              "DATA_LOSS"
+            ],
+            "readOnly": false
+          },
+          "debugDetails": {
+            "type": "string",
+            "format": "",
+            "description": "More detailed error message to assist debugging. It contains application business logic that are inappropriate to leak publicly. In the emulator, SQL Connect API always includes it to assist local development and debugging. In the backend, ConnectorService always hides it. GraphqlService without impersonation always include it. GraphqlService with impersonation includes it only if explicitly opted-in with `include_debug_details` in `GraphqlRequestExtensions`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "file": {
+            "type": "string",
+            "format": "",
+            "description": "The source file name where the error occurred. Included only for `UpdateSchema` and `UpdateConnector`, it corresponds to `File.path` of the provided `Source`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "warningLevel": {
+            "type": "string",
+            "format": "",
+            "description": "Warning level describes the severity and required action to suppress this warning when Firebase CLI run into it.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "WARNING_LEVEL_UNKNOWN",
+              "LOG_ONLY",
+              "INTERACTIVE_ACK",
+              "REQUIRE_ACK",
+              "REQUIRE_FORCE"
+            ],
+            "readOnly": false
+          },
+          "workarounds": {
+            "type": "array",
+            "format": "",
+            "description": "Workarounds provide suggestions to address the compile errors or warnings.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Workaround",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GraphqlRequest": {
+        "type": "object",
+        "format": "",
+        "description": "The GraphQL request to Firebase SQL Connect. It strives to match the GraphQL over HTTP spec. https://github.com/graphql/graphql-over-http/blob/main/spec/GraphQLOverHTTP.md#post",
+        "$ref": "",
+        "properties": {
+          "extensions": {
+            "type": "",
+            "format": "",
+            "description": "Optional. Additional GraphQL request information.",
+            "$ref": "GraphqlRequestExtensions",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "operationName": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The name of the GraphQL operation name. Required only if `query` contains multiple operations. See https://graphql.org/learn/queries/#operation-name.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "query": {
+            "type": "string",
+            "format": "",
+            "description": "Required. The GraphQL query document source.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "variables": {
+            "type": "object",
+            "format": "",
+            "description": "Optional. Values for GraphQL variables provided in this request.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "any",
+              "format": "",
+              "description": "Properties of the object.",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GraphqlRequestExtensions": {
+        "type": "object",
+        "format": "",
+        "description": "GraphqlRequestExtensions contains additional information of `GraphqlRequest`.",
+        "$ref": "",
+        "properties": {
+          "impersonate": {
+            "type": "",
+            "format": "",
+            "description": "Optional. If set, impersonate a request with given Firebase Auth context and evaluate the auth policies on the operation. If omitted, bypass any defined auth policies.",
+            "$ref": "Impersonation",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GraphqlResponse": {
+        "type": "object",
+        "format": "",
+        "description": "The GraphQL response from Firebase SQL Connect. It strives to match the GraphQL over HTTP spec. Note: Firebase SQL Connect always responds with `Content-Type: application/json`. https://github.com/graphql/graphql-over-http/blob/main/spec/GraphQLOverHTTP.md#body",
+        "$ref": "",
+        "properties": {
+          "data": {
+            "type": "object",
+            "format": "",
+            "description": "The result of the execution of the requested operation. If an error was raised before execution begins, the data entry should not be present in the result. (a request error: https://spec.graphql.org/draft/#sec-Errors.Request-Errors) If an error was raised during the execution that prevented a valid response, the data entry in the response should be null. (a field error: https://spec.graphql.org/draft/#sec-Errors.Error-Result-Format)",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "any",
+              "format": "",
+              "description": "Properties of the object.",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "errors": {
+            "type": "array",
+            "format": "",
+            "description": "Errors of this response. If the data entry in the response is not present, the errors entry must be present. It conforms to https://spec.graphql.org/draft/#sec-Errors .",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "GraphqlError",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "extensions": {
+            "type": "",
+            "format": "",
+            "description": "Additional response information. It conforms to https://spec.graphql.org/draft/#sec-Extensions .",
+            "$ref": "GraphqlResponseExtensions",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GraphqlResponseExtensions": {
+        "type": "object",
+        "format": "",
+        "description": "GraphqlResponseExtensions contains additional information of `GraphqlResponse` or `ExecuteQueryResponse`.",
+        "$ref": "",
+        "properties": {
+          "dataConnect": {
+            "type": "array",
+            "format": "",
+            "description": "SQL Connect specific GraphQL extension, a list of paths and properties.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "DataConnectProperties",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "HttpGraphql": {
+        "type": "object",
+        "format": "",
+        "description": "Settings for HTTP GraphQL server webhook.",
+        "$ref": "",
+        "properties": {
+          "timeout": {
+            "type": "string",
+            "format": "google-duration",
+            "description": "Optional. Timeout duration for the HTTP request.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "uri": {
+            "type": "string",
+            "format": "",
+            "description": "Required. The endpoint of the HTTP GraphQL server.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ImpersonateRequest": {
+        "type": "object",
+        "format": "",
+        "description": "The Impersonate request to Firebase SQL Connect.",
+        "$ref": "",
+        "properties": {
+          "extensions": {
+            "type": "",
+            "format": "",
+            "description": "Optional. Additional GraphQL request information.",
+            "$ref": "GraphqlRequestExtensions",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "operationName": {
+            "type": "string",
+            "format": "",
+            "description": "Required. The name of the GraphQL operation name. Required because all Connector operations must be named. See https://graphql.org/learn/queries/#operation-name.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "variables": {
+            "type": "object",
+            "format": "",
+            "description": "Optional. Values for GraphQL variables provided in this request.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "any",
+              "format": "",
+              "description": "Properties of the object.",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Impersonation": {
+        "type": "object",
+        "format": "",
+        "description": "Impersonation configures the Firebase Auth context to impersonate.",
+        "$ref": "",
+        "properties": {
+          "authClaims": {
+            "type": "object",
+            "format": "",
+            "description": "Evaluate the auth policy with a customized JWT auth token. Should follow the Firebase Auth token format. https://firebase.google.com/docs/rules/rules-and-auth For example: a verified user may have auth_claims of {\"sub\": , \"email_verified\": true}",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "any",
+              "format": "",
+              "description": "Properties of the object.",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "includeDebugDetails": {
+            "type": "boolean",
+            "format": "",
+            "description": "Optional. If set, include debug details in GraphQL error extensions.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "unauthenticated": {
+            "type": "boolean",
+            "format": "",
+            "description": "Evaluate the auth policy as an unauthenticated request. Can only be set to true.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ListConnectorsResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Message for response to listing Connectors. By default, `connectors.source` will not be included in the response. To specify the fields included in the response, the response field mask can be provided by using the query parameter `$fields` or the header `X-Goog-FieldMask`.",
+        "$ref": "",
+        "properties": {
+          "connectors": {
+            "type": "array",
+            "format": "",
+            "description": "The list of Connectors.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Connector",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "unreachable": {
+            "type": "array",
+            "format": "",
+            "description": "Locations that could not be reached.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ListLocationsResponse": {
+        "type": "object",
+        "format": "",
+        "description": "The response message for Locations.ListLocations.",
+        "$ref": "",
+        "properties": {
+          "locations": {
+            "type": "array",
+            "format": "",
+            "description": "A list of locations that matches the specified filter in the request.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Location",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "The standard List next-page token.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ListOperationsResponse": {
+        "type": "object",
+        "format": "",
+        "description": "The response message for Operations.ListOperations.",
+        "$ref": "",
+        "properties": {
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "The standard List next-page token.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "operations": {
+            "type": "array",
+            "format": "",
+            "description": "A list of operations that matches the specified filter in the request.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Operation",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "unreachable": {
+            "type": "array",
+            "format": "",
+            "description": "Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ListSchemasResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Message for response to listing Schemas. By default, `schemas.source` will not be included in the response. To specify the fields included in the response, the response field mask can be provided by using the query parameter `$fields` or the header `X-Goog-FieldMask`.",
+        "$ref": "",
+        "properties": {
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "schemas": {
+            "type": "array",
+            "format": "",
+            "description": "The list of Schemas.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Schema",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "unreachable": {
+            "type": "array",
+            "format": "",
+            "description": "Locations that could not be reached.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ListServicesResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Message for response to listing Services.",
+        "$ref": "",
+        "properties": {
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "services": {
+            "type": "array",
+            "format": "",
+            "description": "The list of Services.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Service",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "unreachable": {
+            "type": "array",
+            "format": "",
+            "description": "Locations that could not be reached.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Location": {
+        "type": "object",
+        "format": "",
+        "description": "A resource that represents a Google Cloud location.",
+        "$ref": "",
+        "properties": {
+          "displayName": {
+            "type": "string",
+            "format": "",
+            "description": "The friendly name for this location, typically a nearby city name. For example, \"Tokyo\".",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "labels": {
+            "type": "object",
+            "format": "",
+            "description": "Cross-service attributes for the location. For example {\"cloud.googleapis.com/region\": \"us-east1\"}",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "locationId": {
+            "type": "string",
+            "format": "",
+            "description": "The canonical id for this location. For example: `\"us-east1\"`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "metadata": {
+            "type": "object",
+            "format": "",
+            "description": "Service-specific metadata. For example the available capacity at the given location.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "any",
+              "format": "",
+              "description": "Properties of the object. Contains field @type with type URL.",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "Resource name for the location, which may vary between implementations. For example: `\"projects/example-project/locations/us-east1\"`",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Operation": {
+        "type": "object",
+        "format": "",
+        "description": "This resource represents a long-running operation that is the result of a network API call.",
+        "$ref": "",
+        "properties": {
+          "done": {
+            "type": "boolean",
+            "format": "",
+            "description": "If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "error": {
+            "type": "",
+            "format": "",
+            "description": "The error result of the operation in case of failure or cancellation.",
+            "$ref": "Status",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "metadata": {
+            "type": "object",
+            "format": "",
+            "description": "Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "any",
+              "format": "",
+              "description": "Properties of the object. Contains field @type with type URL.",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "response": {
+            "type": "object",
+            "format": "",
+            "description": "The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "any",
+              "format": "",
+              "description": "Properties of the object. Contains field @type with type URL.",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "OperationMetadata": {
+        "type": "object",
+        "format": "",
+        "description": "Represents the metadata of the long-running operation. Note: This message is auto-generated by CCFE. CCFE's storage, called Resource Metadata Store (RMS), holds metadata about long-running operations (i.e. OperationMetadata) and resources (i.e. ResourceMetadata). OperationMetadata documents the status of the operation. See [CCFE documentation for sidechannel data](https://g3doc.corp.google.com/cloud/control2/g3doc/dev/codelab_extras/sidechannel.md?cl=head#sidechannel-data) and yaqs/4289526912465764352.",
+        "$ref": "",
+        "properties": {
+          "apiVersion": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. API version used to start the operation.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "createTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. The time the operation was created.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "endTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. The time the operation finished running.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "requestedCancellation": {
+            "type": "boolean",
+            "format": "",
+            "description": "Output only. Identifies whether the user has requested cancellation of the operation. Operations that have been cancelled successfully have Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "statusMessage": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. Human-readable status of the operation, if any.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "target": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. Server-defined resource path for the target of the operation.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "verb": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. Name of the verb executed by the operation.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Part": {
+        "type": "object",
+        "format": "",
+        "description": "Represents a chunk of content.",
+        "$ref": "",
+        "properties": {
+          "codeChunk": {
+            "type": "",
+            "format": "",
+            "description": "Optional. A chunk of code.",
+            "$ref": "CodeChunk",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "textChunk": {
+            "type": "",
+            "format": "",
+            "description": "Optional. A chunk of text.",
+            "$ref": "TextChunk",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "PostgreSql": {
+        "type": "object",
+        "format": "",
+        "description": "Settings for PostgreSQL data source.",
+        "$ref": "",
+        "properties": {
+          "cloudSql": {
+            "type": "",
+            "format": "",
+            "description": "Cloud SQL configurations.",
+            "$ref": "CloudSqlInstance",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "database": {
+            "type": "string",
+            "format": "",
+            "description": "Required. Name of the PostgreSQL database.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "ephemeral": {
+            "type": "boolean",
+            "format": "",
+            "description": "Output only. Ephemeral is true if this SQL Connect service is served from temporary in-memory emulation of Postgres. While Cloud SQL is being provisioned, the SQL Connect service provides the ephemeral service to help developers get started. Once the Cloud SQL is provisioned, SQL Connect service will transfer its data on a best-effort basis to the Cloud SQL instance. WARNING: Ephemeral data sources will expire after 24 hour. The data will be lost if they aren't transferred to the Cloud SQL instance. WARNING: When `ephemeral=true`, mutations to the database are not guaranteed to be durably persisted, even if an OK status code is returned. All or parts of the data may be lost or reverted to earlier versions.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "schema": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. User-configured PostgreSQL schema. Defaults to \"public\" if not specified.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "schemaMigration": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Configure how to perform automatic PostgreSQL schema migration before deploying the FDC schema. This is an additive-only operation.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "SQL_SCHEMA_MIGRATION_UNSPECIFIED",
+              "MIGRATE_COMPATIBLE"
+            ],
+            "readOnly": false
+          },
+          "schemaValidation": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Configure how much PostgreSQL schema validation to perform against the live database before deploying the FDC schema.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "SQL_SCHEMA_VALIDATION_UNSPECIFIED",
+              "NONE",
+              "STRICT",
+              "COMPATIBLE"
+            ],
+            "readOnly": false
+          },
+          "unlinked": {
+            "type": "boolean",
+            "format": "",
+            "description": "No Postgres data source is linked. If set, don't allow `database` and `schema_validation` to be configured.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Schema": {
+        "type": "object",
+        "format": "",
+        "description": "The application schema of a Firebase SQL Connect service.",
+        "$ref": "",
+        "properties": {
+          "annotations": {
+            "type": "object",
+            "format": "",
+            "description": "Optional. Stores small amounts of arbitrary data.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "createTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. [Output only] Create time stamp.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "datasources": {
+            "type": "array",
+            "format": "",
+            "description": "Required. The data sources linked in the schema.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Datasource",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "displayName": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Mutable human-readable name. 63 character limit.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "etag": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding. [AIP-154](https://google.aip.dev/154)",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "labels": {
+            "type": "object",
+            "format": "",
+            "description": "Optional. Labels as key value pairs.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "Identifier. The relative resource name of the schema, in the format: ``` projects/{project}/locations/{location}/services/{service}/schemas/{schema} ``` Right now, the only supported schema is \"main\".",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "reconciling": {
+            "type": "boolean",
+            "format": "",
+            "description": "Output only. A field that if true, indicates that the system is working to compile and deploy the schema.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "source": {
+            "type": "",
+            "format": "",
+            "description": "Required. The source files that comprise the application schema.",
+            "$ref": "Source",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "uid": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. System-assigned, unique identifier.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "updateTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. [Output only] Update time stamp.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Service": {
+        "type": "object",
+        "format": "",
+        "description": "A Firebase SQL Connect service.",
+        "$ref": "",
+        "properties": {
+          "annotations": {
+            "type": "object",
+            "format": "",
+            "description": "Optional. Stores small amounts of arbitrary data.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "connectors": {
+            "type": "array",
+            "format": "",
+            "description": "Output only. The list of connectors in this service.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Connector",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "createTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. [Output only] Create time stamp.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "displayName": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Mutable human-readable name. 63 character limit.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "etag": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding. [AIP-154](https://google.aip.dev/154)",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "labels": {
+            "type": "object",
+            "format": "",
+            "description": "Optional. Labels as key value pairs.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "Identifier. The relative resource name of the Firebase SQL Connect service, in the format: ``` projects/{project}/locations/{location}/services/{service} ``` Note that the service ID is specific to Firebase SQL Connect and does not correspond to any of the instance IDs of the underlying data source connections.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "reconciling": {
+            "type": "boolean",
+            "format": "",
+            "description": "Output only. A field that if true, indicates that the system is working update the service.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "schemas": {
+            "type": "array",
+            "format": "",
+            "description": "Output only. The list of schemas in this service.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Schema",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "source": {
+            "type": "",
+            "format": "",
+            "description": "Optional. Input only. The source files for service, schemas, and connectors.",
+            "$ref": "Source",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "uid": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. System-assigned, unique identifier.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "updateTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. [Output only] Update time stamp.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Source": {
+        "type": "object",
+        "format": "",
+        "description": "Used to represent a set of source files.",
+        "$ref": "",
+        "properties": {
+          "files": {
+            "type": "array",
+            "format": "",
+            "description": "Required. The files that comprise the source set.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "File",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "SourceLocation": {
+        "type": "object",
+        "format": "",
+        "description": "SourceLocation references a location in a GraphQL source.",
+        "$ref": "",
+        "properties": {
+          "column": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Column number starting at 1.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "line": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Line number starting at 1.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Status": {
+        "type": "object",
+        "format": "",
+        "description": "The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).",
+        "$ref": "",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32",
+            "description": "The status code, which should be an enum value of google.rpc.Code.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "details": {
+            "type": "array",
+            "format": "",
+            "description": "A list of messages that carry the error details. There is a common set of message types for APIs to use.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "object",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": {
+                "type": "any",
+                "format": "",
+                "description": "Properties of the object. Contains field @type with type URL.",
+                "$ref": "",
+                "properties": null,
+                "items": null,
+                "additionalProperties": null,
+                "enum": null,
+                "readOnly": false
+              },
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "message": {
+            "type": "string",
+            "format": "",
+            "description": "A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "TextChunk": {
+        "type": "object",
+        "format": "",
+        "description": "A chunk of conversational text.",
+        "$ref": "",
+        "properties": {
+          "text": {
+            "type": "string",
+            "format": "",
+            "description": "Required. The text content string.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Workaround": {
+        "type": "object",
+        "format": "",
+        "description": "Workaround provides suggestions to address errors and warnings.",
+        "$ref": "",
+        "properties": {
+          "description": {
+            "type": "string",
+            "format": "",
+            "description": "Description of this workaround.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "reason": {
+            "type": "string",
+            "format": "",
+            "description": "Why would this workaround address the error and warning.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "replace": {
+            "type": "string",
+            "format": "",
+            "description": "A suggested code snippet to fix the error and warning.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      }
+    },
+    "resources": {
+      "projects": {
+        "methods": null,
+        "resources": {
+          "locations": {
+            "methods": {
+              "get": {
+                "id": "firebasedataconnect.projects.locations.get",
+                "httpMethod": "GET",
+                "path": "v1beta/{+name}",
+                "flatPath": "v1beta/projects/{projectsId}/locations/{locationsId}",
+                "description": "Gets information about a location.",
+                "parameters": {
+                  "name": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  }
+                },
+                "parameterOrder": [
+                  "name"
+                ],
+                "request": null,
+                "response": {
+                  "$ref": "Location"
+                }
+              },
+              "list": {
+                "id": "firebasedataconnect.projects.locations.list",
+                "httpMethod": "GET",
+                "path": "v1beta/{+name}/locations",
+                "flatPath": "v1beta/projects/{projectsId}/locations",
+                "description": "Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the ListLocationsRequest.name field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version.",
+                "parameters": {
+                  "extraLocationTypes": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false
+                  },
+                  "filter": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false
+                  },
+                  "name": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  },
+                  "pageSize": {
+                    "type": "integer",
+                    "location": "query",
+                    "required": false
+                  },
+                  "pageToken": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false
+                  }
+                },
+                "parameterOrder": [
+                  "name"
+                ],
+                "request": null,
+                "response": {
+                  "$ref": "ListLocationsResponse"
+                }
+              }
+            },
+            "resources": {
+              "operations": {
+                "methods": {
+                  "cancel": {
+                    "id": "firebasedataconnect.projects.locations.operations.cancel",
+                    "httpMethod": "POST",
+                    "path": "v1beta/{+name}:cancel",
+                    "flatPath": "v1beta/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}:cancel",
+                    "description": "Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": {
+                      "$ref": "CancelOperationRequest"
+                    },
+                    "response": {
+                      "$ref": "Empty"
+                    }
+                  },
+                  "delete": {
+                    "id": "firebasedataconnect.projects.locations.operations.delete",
+                    "httpMethod": "DELETE",
+                    "path": "v1beta/{+name}",
+                    "flatPath": "v1beta/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
+                    "description": "Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "Empty"
+                    }
+                  },
+                  "get": {
+                    "id": "firebasedataconnect.projects.locations.operations.get",
+                    "httpMethod": "GET",
+                    "path": "v1beta/{+name}",
+                    "flatPath": "v1beta/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
+                    "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "Operation"
+                    }
+                  },
+                  "list": {
+                    "id": "firebasedataconnect.projects.locations.operations.list",
+                    "httpMethod": "GET",
+                    "path": "v1beta/{+name}/operations",
+                    "flatPath": "v1beta/projects/{projectsId}/locations/{locationsId}/operations",
+                    "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.",
+                    "parameters": {
+                      "filter": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      },
+                      "pageSize": {
+                        "type": "integer",
+                        "location": "query",
+                        "required": false
+                      },
+                      "pageToken": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "returnPartialSuccess": {
+                        "type": "boolean",
+                        "location": "query",
+                        "required": false
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "ListOperationsResponse"
+                    }
+                  }
+                },
+                "resources": null
+              },
+              "services": {
+                "methods": {
+                  "create": {
+                    "id": "firebasedataconnect.projects.locations.services.create",
+                    "httpMethod": "POST",
+                    "path": "v1beta/{+parent}/services",
+                    "flatPath": "v1beta/projects/{projectsId}/locations/{locationsId}/services",
+                    "description": "Creates a new Service in a given project and location.",
+                    "parameters": {
+                      "parent": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      },
+                      "requestId": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "serviceId": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "validateOnly": {
+                        "type": "boolean",
+                        "location": "query",
+                        "required": false
+                      }
+                    },
+                    "parameterOrder": [
+                      "parent"
+                    ],
+                    "request": {
+                      "$ref": "Service"
+                    },
+                    "response": {
+                      "$ref": "Operation"
+                    }
+                  },
+                  "delete": {
+                    "id": "firebasedataconnect.projects.locations.services.delete",
+                    "httpMethod": "DELETE",
+                    "path": "v1beta/{+name}",
+                    "flatPath": "v1beta/projects/{projectsId}/locations/{locationsId}/services/{servicesId}",
+                    "description": "Deletes a single Service.",
+                    "parameters": {
+                      "allowMissing": {
+                        "type": "boolean",
+                        "location": "query",
+                        "required": false
+                      },
+                      "etag": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "force": {
+                        "type": "boolean",
+                        "location": "query",
+                        "required": false
+                      },
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      },
+                      "requestId": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "validateOnly": {
+                        "type": "boolean",
+                        "location": "query",
+                        "required": false
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "Operation"
+                    }
+                  },
+                  "executeGraphql": {
+                    "id": "firebasedataconnect.projects.locations.services.executeGraphql",
+                    "httpMethod": "POST",
+                    "path": "v1beta/{+name}:executeGraphql",
+                    "flatPath": "v1beta/projects/{projectsId}/locations/{locationsId}/services/{servicesId}:executeGraphql",
+                    "description": "Execute any GraphQL query or mutation against the Firebase SQL Connect's generated GraphQL schema. Grants full read and write access to the connected data sources. Note: Use introspection query to explore the generated GraphQL schema.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": {
+                      "$ref": "GraphqlRequest"
+                    },
+                    "response": {
+                      "$ref": "GraphqlResponse"
+                    }
+                  },
+                  "executeGraphqlRead": {
+                    "id": "firebasedataconnect.projects.locations.services.executeGraphqlRead",
+                    "httpMethod": "POST",
+                    "path": "v1beta/{+name}:executeGraphqlRead",
+                    "flatPath": "v1beta/projects/{projectsId}/locations/{locationsId}/services/{servicesId}:executeGraphqlRead",
+                    "description": "Execute any GraphQL query against the Firebase SQL Connect's generated GraphQL schema. Grants full read to the connected data sources. `ExecuteGraphqlRead` is identical to `ExecuteGraphql` except it only accepts read-only query.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": {
+                      "$ref": "GraphqlRequest"
+                    },
+                    "response": {
+                      "$ref": "GraphqlResponse"
+                    }
+                  },
+                  "generateQuery": {
+                    "id": "firebasedataconnect.projects.locations.services.generateQuery",
+                    "httpMethod": "POST",
+                    "path": "v1beta/{+name}:generateQuery",
+                    "flatPath": "v1beta/projects/{projectsId}/locations/{locationsId}/services/{servicesId}:generateQuery",
+                    "description": "Generates a GraphQL query based on a natural language prompt and the provided schema context. This is a stateless method; the schema is provided per request to support local development states. Streams results with real-time status and output chunks.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": {
+                      "$ref": "GenerateQueryRequest"
+                    },
+                    "response": {
+                      "$ref": "GenerateQueryResponse"
+                    }
+                  },
+                  "generateSchema": {
+                    "id": "firebasedataconnect.projects.locations.services.generateSchema",
+                    "httpMethod": "POST",
+                    "path": "v1beta/{+name}:generateSchema",
+                    "flatPath": "v1beta/projects/{projectsId}/locations/{locationsId}/services/{servicesId}:generateSchema",
+                    "description": "Generates GraphQL schema based on a natural language prompt or data description. This allows users to scaffold new types and tables quickly. Streams results with real-time status and output chunks.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": {
+                      "$ref": "GenerateSchemaRequest"
+                    },
+                    "response": {
+                      "$ref": "GenerateSchemaResponse"
+                    }
+                  },
+                  "get": {
+                    "id": "firebasedataconnect.projects.locations.services.get",
+                    "httpMethod": "GET",
+                    "path": "v1beta/{+name}",
+                    "flatPath": "v1beta/projects/{projectsId}/locations/{locationsId}/services/{servicesId}",
+                    "description": "Gets details of a single Service.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "Service"
+                    }
+                  },
+                  "introspectGraphql": {
+                    "id": "firebasedataconnect.projects.locations.services.introspectGraphql",
+                    "httpMethod": "POST",
+                    "path": "v1beta/{+name}:introspectGraphql",
+                    "flatPath": "v1beta/projects/{projectsId}/locations/{locationsId}/services/{servicesId}:introspectGraphql",
+                    "description": "Execute introspection query against the Firebase SQL Connect's generated GraphQL schema. GraphQL introspection query provides metadata such as what tables the schema have, what queries and mutations can be performed on the schema, and so on. Read more at https://graphql.org/learn/introspection. IntrospectGraphql can read schema metadata but cannot read rows from Cloud SQL instance, which can be done via ExecuteGraphqlRead.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": {
+                      "$ref": "GraphqlRequest"
+                    },
+                    "response": {
+                      "$ref": "GraphqlResponse"
+                    }
+                  },
+                  "list": {
+                    "id": "firebasedataconnect.projects.locations.services.list",
+                    "httpMethod": "GET",
+                    "path": "v1beta/{+parent}/services",
+                    "flatPath": "v1beta/projects/{projectsId}/locations/{locationsId}/services",
+                    "description": "Lists Services in a given project and location.",
+                    "parameters": {
+                      "filter": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "orderBy": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "pageSize": {
+                        "type": "integer",
+                        "location": "query",
+                        "required": false
+                      },
+                      "pageToken": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "parent": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "parent"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "ListServicesResponse"
+                    }
+                  },
+                  "patch": {
+                    "id": "firebasedataconnect.projects.locations.services.patch",
+                    "httpMethod": "PATCH",
+                    "path": "v1beta/{+name}",
+                    "flatPath": "v1beta/projects/{projectsId}/locations/{locationsId}/services/{servicesId}",
+                    "description": "Updates the parameters of a single Service.",
+                    "parameters": {
+                      "allowMissing": {
+                        "type": "boolean",
+                        "location": "query",
+                        "required": false
+                      },
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      },
+                      "requestId": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "updateMask": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "validateOnly": {
+                        "type": "boolean",
+                        "location": "query",
+                        "required": false
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": {
+                      "$ref": "Service"
+                    },
+                    "response": {
+                      "$ref": "Operation"
+                    }
+                  }
+                },
+                "resources": {
+                  "connectors": {
+                    "methods": {
+                      "create": {
+                        "id": "firebasedataconnect.projects.locations.services.connectors.create",
+                        "httpMethod": "POST",
+                        "path": "v1beta/{+parent}/connectors",
+                        "flatPath": "v1beta/projects/{projectsId}/locations/{locationsId}/services/{servicesId}/connectors",
+                        "description": "Creates a new Connector in a given project and location. The operations are validated against and must be compatible with the active schema. If the operations and schema are not compatible or if the schema is not present, this will result in an error.",
+                        "parameters": {
+                          "connectorId": {
+                            "type": "string",
+                            "location": "query",
+                            "required": false
+                          },
+                          "parent": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          },
+                          "requestId": {
+                            "type": "string",
+                            "location": "query",
+                            "required": false
+                          },
+                          "validateOnly": {
+                            "type": "boolean",
+                            "location": "query",
+                            "required": false
+                          }
+                        },
+                        "parameterOrder": [
+                          "parent"
+                        ],
+                        "request": {
+                          "$ref": "Connector"
+                        },
+                        "response": {
+                          "$ref": "Operation"
+                        }
+                      },
+                      "delete": {
+                        "id": "firebasedataconnect.projects.locations.services.connectors.delete",
+                        "httpMethod": "DELETE",
+                        "path": "v1beta/{+name}",
+                        "flatPath": "v1beta/projects/{projectsId}/locations/{locationsId}/services/{servicesId}/connectors/{connectorsId}",
+                        "description": "Deletes a single Connector.",
+                        "parameters": {
+                          "allowMissing": {
+                            "type": "boolean",
+                            "location": "query",
+                            "required": false
+                          },
+                          "etag": {
+                            "type": "string",
+                            "location": "query",
+                            "required": false
+                          },
+                          "force": {
+                            "type": "boolean",
+                            "location": "query",
+                            "required": false
+                          },
+                          "name": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          },
+                          "requestId": {
+                            "type": "string",
+                            "location": "query",
+                            "required": false
+                          },
+                          "validateOnly": {
+                            "type": "boolean",
+                            "location": "query",
+                            "required": false
+                          }
+                        },
+                        "parameterOrder": [
+                          "name"
+                        ],
+                        "request": null,
+                        "response": {
+                          "$ref": "Operation"
+                        }
+                      },
+                      "executeMutation": {
+                        "id": "firebasedataconnect.projects.locations.services.connectors.executeMutation",
+                        "httpMethod": "POST",
+                        "path": "v1beta/{+name}:executeMutation",
+                        "flatPath": "v1beta/projects/{projectsId}/locations/{locationsId}/services/{servicesId}/connectors/{connectorsId}:executeMutation",
+                        "description": "Execute a predefined mutation in a Connector.",
+                        "parameters": {
+                          "name": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          }
+                        },
+                        "parameterOrder": [
+                          "name"
+                        ],
+                        "request": {
+                          "$ref": "ExecuteMutationRequest"
+                        },
+                        "response": {
+                          "$ref": "ExecuteMutationResponse"
+                        }
+                      },
+                      "executeQuery": {
+                        "id": "firebasedataconnect.projects.locations.services.connectors.executeQuery",
+                        "httpMethod": "POST",
+                        "path": "v1beta/{+name}:executeQuery",
+                        "flatPath": "v1beta/projects/{projectsId}/locations/{locationsId}/services/{servicesId}/connectors/{connectorsId}:executeQuery",
+                        "description": "Execute a predefined query in a Connector.",
+                        "parameters": {
+                          "name": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          }
+                        },
+                        "parameterOrder": [
+                          "name"
+                        ],
+                        "request": {
+                          "$ref": "ExecuteQueryRequest"
+                        },
+                        "response": {
+                          "$ref": "ExecuteQueryResponse"
+                        }
+                      },
+                      "get": {
+                        "id": "firebasedataconnect.projects.locations.services.connectors.get",
+                        "httpMethod": "GET",
+                        "path": "v1beta/{+name}",
+                        "flatPath": "v1beta/projects/{projectsId}/locations/{locationsId}/services/{servicesId}/connectors/{connectorsId}",
+                        "description": "Gets details of a single Connector.",
+                        "parameters": {
+                          "name": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          }
+                        },
+                        "parameterOrder": [
+                          "name"
+                        ],
+                        "request": null,
+                        "response": {
+                          "$ref": "Connector"
+                        }
+                      },
+                      "impersonateMutation": {
+                        "id": "firebasedataconnect.projects.locations.services.connectors.impersonateMutation",
+                        "httpMethod": "POST",
+                        "path": "v1beta/{+name}:impersonateMutation",
+                        "flatPath": "v1beta/projects/{projectsId}/locations/{locationsId}/services/{servicesId}/connectors/{connectorsId}:impersonateMutation",
+                        "description": "Impersonate a mutation defined on a Firebase SQL Connect connector. It grants the admin SDK access to mutations defined in the given connector. The caller can choose to impersonate a particular Firebase Auth user, or skip @auth completely.",
+                        "parameters": {
+                          "name": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          }
+                        },
+                        "parameterOrder": [
+                          "name"
+                        ],
+                        "request": {
+                          "$ref": "ImpersonateRequest"
+                        },
+                        "response": {
+                          "$ref": "GraphqlResponse"
+                        }
+                      },
+                      "impersonateQuery": {
+                        "id": "firebasedataconnect.projects.locations.services.connectors.impersonateQuery",
+                        "httpMethod": "POST",
+                        "path": "v1beta/{+name}:impersonateQuery",
+                        "flatPath": "v1beta/projects/{projectsId}/locations/{locationsId}/services/{servicesId}/connectors/{connectorsId}:impersonateQuery",
+                        "description": "Impersonate a query defined on a Firebase SQL Connect connector. It grants the admin SDK access to queries defined in the given connector. The caller can choose to impersonate a particular Firebase Auth user, or skip @auth completely.",
+                        "parameters": {
+                          "name": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          }
+                        },
+                        "parameterOrder": [
+                          "name"
+                        ],
+                        "request": {
+                          "$ref": "ImpersonateRequest"
+                        },
+                        "response": {
+                          "$ref": "GraphqlResponse"
+                        }
+                      },
+                      "list": {
+                        "id": "firebasedataconnect.projects.locations.services.connectors.list",
+                        "httpMethod": "GET",
+                        "path": "v1beta/{+parent}/connectors",
+                        "flatPath": "v1beta/projects/{projectsId}/locations/{locationsId}/services/{servicesId}/connectors",
+                        "description": "Lists Connectors in a given project and location.",
+                        "parameters": {
+                          "filter": {
+                            "type": "string",
+                            "location": "query",
+                            "required": false
+                          },
+                          "orderBy": {
+                            "type": "string",
+                            "location": "query",
+                            "required": false
+                          },
+                          "pageSize": {
+                            "type": "integer",
+                            "location": "query",
+                            "required": false
+                          },
+                          "pageToken": {
+                            "type": "string",
+                            "location": "query",
+                            "required": false
+                          },
+                          "parent": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          }
+                        },
+                        "parameterOrder": [
+                          "parent"
+                        ],
+                        "request": null,
+                        "response": {
+                          "$ref": "ListConnectorsResponse"
+                        }
+                      },
+                      "patch": {
+                        "id": "firebasedataconnect.projects.locations.services.connectors.patch",
+                        "httpMethod": "PATCH",
+                        "path": "v1beta/{+name}",
+                        "flatPath": "v1beta/projects/{projectsId}/locations/{locationsId}/services/{servicesId}/connectors/{connectorsId}",
+                        "description": "Updates the parameters of a single Connector, and creates a new ConnectorRevision with the updated Connector. The operations are validated against and must be compatible with the live schema. If the operations and schema are not compatible or if the schema is not present, this will result in an error.",
+                        "parameters": {
+                          "allowMissing": {
+                            "type": "boolean",
+                            "location": "query",
+                            "required": false
+                          },
+                          "name": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          },
+                          "requestId": {
+                            "type": "string",
+                            "location": "query",
+                            "required": false
+                          },
+                          "updateMask": {
+                            "type": "string",
+                            "location": "query",
+                            "required": false
+                          },
+                          "validateOnly": {
+                            "type": "boolean",
+                            "location": "query",
+                            "required": false
+                          }
+                        },
+                        "parameterOrder": [
+                          "name"
+                        ],
+                        "request": {
+                          "$ref": "Connector"
+                        },
+                        "response": {
+                          "$ref": "Operation"
+                        }
+                      }
+                    },
+                    "resources": null
+                  },
+                  "schemas": {
+                    "methods": {
+                      "create": {
+                        "id": "firebasedataconnect.projects.locations.services.schemas.create",
+                        "httpMethod": "POST",
+                        "path": "v1beta/{+parent}/schemas",
+                        "flatPath": "v1beta/projects/{projectsId}/locations/{locationsId}/services/{servicesId}/schemas",
+                        "description": "Creates a new Schema in a given project and location. Only creation of `schemas/main` is supported and calling create with any other schema ID will result in an error.",
+                        "parameters": {
+                          "parent": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          },
+                          "requestId": {
+                            "type": "string",
+                            "location": "query",
+                            "required": false
+                          },
+                          "schemaId": {
+                            "type": "string",
+                            "location": "query",
+                            "required": false
+                          },
+                          "validateOnly": {
+                            "type": "boolean",
+                            "location": "query",
+                            "required": false
+                          }
+                        },
+                        "parameterOrder": [
+                          "parent"
+                        ],
+                        "request": {
+                          "$ref": "Schema"
+                        },
+                        "response": {
+                          "$ref": "Operation"
+                        }
+                      },
+                      "delete": {
+                        "id": "firebasedataconnect.projects.locations.services.schemas.delete",
+                        "httpMethod": "DELETE",
+                        "path": "v1beta/{+name}",
+                        "flatPath": "v1beta/projects/{projectsId}/locations/{locationsId}/services/{servicesId}/schemas/{schemasId}",
+                        "description": "Deletes a single Schema. Because the schema and connectors must be compatible at all times, if this is called while any connectors are active, this will result in an error.",
+                        "parameters": {
+                          "allowMissing": {
+                            "type": "boolean",
+                            "location": "query",
+                            "required": false
+                          },
+                          "etag": {
+                            "type": "string",
+                            "location": "query",
+                            "required": false
+                          },
+                          "force": {
+                            "type": "boolean",
+                            "location": "query",
+                            "required": false
+                          },
+                          "name": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          },
+                          "requestId": {
+                            "type": "string",
+                            "location": "query",
+                            "required": false
+                          },
+                          "validateOnly": {
+                            "type": "boolean",
+                            "location": "query",
+                            "required": false
+                          }
+                        },
+                        "parameterOrder": [
+                          "name"
+                        ],
+                        "request": null,
+                        "response": {
+                          "$ref": "Operation"
+                        }
+                      },
+                      "get": {
+                        "id": "firebasedataconnect.projects.locations.services.schemas.get",
+                        "httpMethod": "GET",
+                        "path": "v1beta/{+name}",
+                        "flatPath": "v1beta/projects/{projectsId}/locations/{locationsId}/services/{servicesId}/schemas/{schemasId}",
+                        "description": "Gets details of a single Schema.",
+                        "parameters": {
+                          "name": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          }
+                        },
+                        "parameterOrder": [
+                          "name"
+                        ],
+                        "request": null,
+                        "response": {
+                          "$ref": "Schema"
+                        }
+                      },
+                      "list": {
+                        "id": "firebasedataconnect.projects.locations.services.schemas.list",
+                        "httpMethod": "GET",
+                        "path": "v1beta/{+parent}/schemas",
+                        "flatPath": "v1beta/projects/{projectsId}/locations/{locationsId}/services/{servicesId}/schemas",
+                        "description": "Lists Schemas in a given project and location.",
+                        "parameters": {
+                          "filter": {
+                            "type": "string",
+                            "location": "query",
+                            "required": false
+                          },
+                          "orderBy": {
+                            "type": "string",
+                            "location": "query",
+                            "required": false
+                          },
+                          "pageSize": {
+                            "type": "integer",
+                            "location": "query",
+                            "required": false
+                          },
+                          "pageToken": {
+                            "type": "string",
+                            "location": "query",
+                            "required": false
+                          },
+                          "parent": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          }
+                        },
+                        "parameterOrder": [
+                          "parent"
+                        ],
+                        "request": null,
+                        "response": {
+                          "$ref": "ListSchemasResponse"
+                        }
+                      },
+                      "patch": {
+                        "id": "firebasedataconnect.projects.locations.services.schemas.patch",
+                        "httpMethod": "PATCH",
+                        "path": "v1beta/{+name}",
+                        "flatPath": "v1beta/projects/{projectsId}/locations/{locationsId}/services/{servicesId}/schemas/{schemasId}",
+                        "description": "Updates the parameters of a single Schema, and creates a new SchemaRevision with the updated Schema.",
+                        "parameters": {
+                          "allowMissing": {
+                            "type": "boolean",
+                            "location": "query",
+                            "required": false
+                          },
+                          "name": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          },
+                          "requestId": {
+                            "type": "string",
+                            "location": "query",
+                            "required": false
+                          },
+                          "updateMask": {
+                            "type": "string",
+                            "location": "query",
+                            "required": false
+                          },
+                          "validateOnly": {
+                            "type": "boolean",
+                            "location": "query",
+                            "required": false
+                          }
+                        },
+                        "parameterOrder": [
+                          "name"
+                        ],
+                        "request": {
+                          "$ref": "Schema"
+                        },
+                        "response": {
+                          "$ref": "Operation"
+                        }
+                      }
+                    },
+                    "resources": null
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

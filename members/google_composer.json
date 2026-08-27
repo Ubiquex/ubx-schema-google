@@ -1,0 +1,4226 @@
+{
+  "schema_source": "discovery_docs",
+  "mode": "resource",
+  "auth": {
+    "Type": "",
+    "Params": null
+  },
+  "base_url": "https://composer.googleapis.com",
+  "retry": {
+    "MaxAttempts": 0,
+    "InitialBackoff": "",
+    "MaxBackoff": "",
+    "Jitter": null,
+    "RespectRetryAfter": null,
+    "RateLimitResetHeader": ""
+  },
+  "timeouts": {
+    "Create": "",
+    "Read": "",
+    "Update": "",
+    "Delete": "",
+    "Default": ""
+  },
+  "wire_name": "google_composer",
+  "raw_spec": {
+    "name": "composer",
+    "revision": "20260818",
+    "discoveryVersion": "v1",
+    "baseUrl": "https://composer.googleapis.com/",
+    "rootUrl": "https://composer.googleapis.com/",
+    "servicePath": "",
+    "schemas": {
+      "AirflowMetadataRetentionPolicyConfig": {
+        "type": "object",
+        "format": "",
+        "description": "The policy for airflow metadata database retention.",
+        "$ref": "",
+        "properties": {
+          "retentionDays": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Optional. How many days data should be retained for.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "retentionMode": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Retention can be either enabled or disabled.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "RETENTION_MODE_UNSPECIFIED",
+              "RETENTION_MODE_ENABLED",
+              "RETENTION_MODE_DISABLED"
+            ],
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "AllowedIpRange": {
+        "type": "object",
+        "format": "",
+        "description": "Allowed IP range with user-provided description.",
+        "$ref": "",
+        "properties": {
+          "description": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. User-provided description. It must contain at most 300 characters.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "value": {
+            "type": "string",
+            "format": "",
+            "description": "IP address or range, defined using CIDR notation, of requests that this rule applies to. Examples: `192.168.1.1` or `192.168.0.0/16` or `2001:db8::/32` or `2001:0db8:0000:0042:0000:8a2e:0370:7334`. IP range prefixes should be properly truncated. For example, `1.2.3.4/24` should be truncated to `1.2.3.0/24`. Similarly, for IPv6, `2001:db8::1/32` should be truncated to `2001:db8::/32`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "CheckUpgradeRequest": {
+        "type": "object",
+        "format": "",
+        "description": "Request to check whether image upgrade will succeed.",
+        "$ref": "",
+        "properties": {
+          "imageVersion": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The version of the software running in the environment. This encapsulates both the version of Cloud Composer functionality and the version of Apache Airflow. It must match the regular expression `composer-([0-9]+(\\.[0-9]+\\.[0-9]+(-preview\\.[0-9]+)?)?|latest)-airflow-([0-9]+(\\.[0-9]+(\\.[0-9]+)?)?)`. When used as input, the server also checks if the provided version is supported and denies the request for an unsupported version. The Cloud Composer portion of the image version is a full [semantic version](https://semver.org), or an alias in the form of major version number or `latest`. When an alias is provided, the server replaces it with the current Cloud Composer version that satisfies the alias. The Apache Airflow portion of the image version is a full semantic version that points to one of the supported Apache Airflow versions, or an alias in the form of only major or major.minor versions specified. When an alias is provided, the server replaces it with the latest Apache Airflow version that satisfies the alias and is supported in the given Cloud Composer version. In all cases, the resolved image version is stored in the same field. See also [version list](/composer/docs/concepts/versioning/composer-versions) and [versioning overview](/composer/docs/concepts/versioning/composer-versioning-overview).",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "CheckUpgradeResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Message containing information about the result of an upgrade check operation.",
+        "$ref": "",
+        "properties": {
+          "buildLogUri": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. Url for a docker build log of an upgraded image.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "configConflicts": {
+            "type": "array",
+            "format": "",
+            "description": "Output only. Contains information about environment configuration that is incompatible with the new image version, except for pypi modules conflicts.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "ConfigConflict",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "containsPypiModulesConflict": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. Whether build has succeeded or failed on modules conflicts.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "CONFLICT_RESULT_UNSPECIFIED",
+              "CONFLICT",
+              "NO_CONFLICT"
+            ],
+            "readOnly": true
+          },
+          "imageVersion": {
+            "type": "string",
+            "format": "",
+            "description": "Composer image for which the build was happening.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "pypiConflictBuildLogExtract": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. Extract from a docker image build log containing information about pypi modules conflicts.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "pypiDependencies": {
+            "type": "object",
+            "format": "",
+            "description": "Pypi dependencies specified in the environment configuration, at the time when the build was triggered.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "CidrBlock": {
+        "type": "object",
+        "format": "",
+        "description": "CIDR block with an optional name.",
+        "$ref": "",
+        "properties": {
+          "cidrBlock": {
+            "type": "string",
+            "format": "",
+            "description": "CIDR block that must be specified in CIDR notation.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "displayName": {
+            "type": "string",
+            "format": "",
+            "description": "User-defined name that identifies the CIDR block.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "CloudDataLineageIntegration": {
+        "type": "object",
+        "format": "",
+        "description": "Configuration for Cloud Data Lineage integration.",
+        "$ref": "",
+        "properties": {
+          "enabled": {
+            "type": "boolean",
+            "format": "",
+            "description": "Optional. Whether or not Cloud Data Lineage integration is enabled.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ComposerWorkload": {
+        "type": "object",
+        "format": "",
+        "description": "Information about a single workload.",
+        "$ref": "",
+        "properties": {
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "Name of a workload.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "status": {
+            "type": "",
+            "format": "",
+            "description": "Output only. Status of a workload.",
+            "$ref": "ComposerWorkloadStatus",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "type": {
+            "type": "string",
+            "format": "",
+            "description": "Type of a workload.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "COMPOSER_WORKLOAD_TYPE_UNSPECIFIED",
+              "CELERY_WORKER",
+              "KUBERNETES_WORKER",
+              "KUBERNETES_OPERATOR_POD",
+              "SCHEDULER",
+              "DAG_PROCESSOR",
+              "TRIGGERER",
+              "WEB_SERVER",
+              "REDIS"
+            ],
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ComposerWorkloadStatus": {
+        "type": "object",
+        "format": "",
+        "description": "Workload status.",
+        "$ref": "",
+        "properties": {
+          "detailedStatusMessage": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. Detailed message of the status.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "state": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. Workload state.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "COMPOSER_WORKLOAD_STATE_UNSPECIFIED",
+              "PENDING",
+              "OK",
+              "WARNING",
+              "ERROR",
+              "SUCCEEDED",
+              "FAILED"
+            ],
+            "readOnly": true
+          },
+          "statusMessage": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. Text to provide more descriptive status.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ConfigConflict": {
+        "type": "object",
+        "format": "",
+        "description": "Environment configuration conflict.",
+        "$ref": "",
+        "properties": {
+          "message": {
+            "type": "string",
+            "format": "",
+            "description": "Conflict message.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "type": {
+            "type": "string",
+            "format": "",
+            "description": "Conflict type. It can be blocking or non-blocking.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "CONFLICT_TYPE_UNSPECIFIED",
+              "BLOCKING",
+              "NON_BLOCKING"
+            ],
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "DagProcessorResource": {
+        "type": "object",
+        "format": "",
+        "description": "Configuration for resources used by Airflow DAG processors. This field is supported for Cloud Composer environments in versions composer-3-airflow-*.*.*-build.* and newer.",
+        "$ref": "",
+        "properties": {
+          "count": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Optional. The number of DAG processors. If not provided or set to 0, a single DAG processor instance will be created.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "cpu": {
+            "type": "number",
+            "format": "float",
+            "description": "Optional. CPU request and limit for a single Airflow DAG processor replica.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "memoryGb": {
+            "type": "number",
+            "format": "float",
+            "description": "Optional. Memory (GB) request and limit for a single Airflow DAG processor replica.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "storageGb": {
+            "type": "number",
+            "format": "float",
+            "description": "Optional. Storage (GB) request and limit for a single Airflow DAG processor replica.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "DataRetentionConfig": {
+        "type": "object",
+        "format": "",
+        "description": "The configuration setting for Airflow database data retention mechanism.",
+        "$ref": "",
+        "properties": {
+          "airflowMetadataRetentionConfig": {
+            "type": "",
+            "format": "",
+            "description": "Optional. The retention policy for airflow metadata database.",
+            "$ref": "AirflowMetadataRetentionPolicyConfig",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "taskLogsRetentionConfig": {
+            "type": "",
+            "format": "",
+            "description": "Optional. The configuration settings for task logs retention",
+            "$ref": "TaskLogsRetentionConfig",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "DatabaseConfig": {
+        "type": "object",
+        "format": "",
+        "description": "The configuration of Cloud SQL instance that is used by the Apache Airflow software.",
+        "$ref": "",
+        "properties": {
+          "machineType": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Cloud SQL machine type used by Airflow database. It has to be one of: db-n1-standard-2, db-n1-standard-4, db-n1-standard-8 or db-n1-standard-16. If not specified, db-n1-standard-2 will be used. Supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "zone": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The Compute Engine zone where the Airflow database is created. If zone is provided, it must be in the region selected for the environment. If zone is not provided, a zone is automatically selected. The zone can only be set during environment creation. Supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.*.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "DatabaseFailoverRequest": {
+        "type": "object",
+        "format": "",
+        "description": "Request to trigger database failover (only for highly resilient environments).",
+        "$ref": "",
+        "properties": {},
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "DatabaseFailoverResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Response for DatabaseFailoverRequest.",
+        "$ref": "",
+        "properties": {},
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Date": {
+        "type": "object",
+        "format": "",
+        "description": "Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp",
+        "$ref": "",
+        "properties": {
+          "day": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "month": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "year": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Empty": {
+        "type": "object",
+        "format": "",
+        "description": "A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }",
+        "$ref": "",
+        "properties": {},
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "EncryptionConfig": {
+        "type": "object",
+        "format": "",
+        "description": "The encryption options for the Cloud Composer environment and its dependencies.Supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.",
+        "$ref": "",
+        "properties": {
+          "kmsKeyName": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Customer-managed Encryption Key available through Google's Key Management Service. Cannot be updated. If not specified, Google-managed key will be used.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Environment": {
+        "type": "object",
+        "format": "",
+        "description": "An environment for running orchestration tasks.",
+        "$ref": "",
+        "properties": {
+          "config": {
+            "type": "",
+            "format": "",
+            "description": "Optional. Configuration parameters for this environment.",
+            "$ref": "EnvironmentConfig",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "createTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. The time at which this environment was created.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "labels": {
+            "type": "object",
+            "format": "",
+            "description": "Optional. User-defined labels for this environment. The labels map can contain no more than 64 entries. Entries of the labels map are UTF8 strings that comply with the following restrictions: * Keys must conform to regexp: \\p{Ll}\\p{Lo}{0,62} * Values must conform to regexp: [\\p{Ll}\\p{Lo}\\p{N}_-]{0,63} * Both keys and values are additionally constrained to be \u003c= 128 bytes in size.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "Identifier. The resource name of the environment, in the form: \"projects/{projectId}/locations/{locationId}/environments/{environmentId}\" EnvironmentId must start with a lowercase letter followed by up to 63 lowercase letters, numbers, or hyphens, and cannot end with a hyphen.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "satisfiesPzi": {
+            "type": "boolean",
+            "format": "",
+            "description": "Output only. Reserved for future use.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "satisfiesPzs": {
+            "type": "boolean",
+            "format": "",
+            "description": "Output only. Reserved for future use.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "state": {
+            "type": "string",
+            "format": "",
+            "description": "The current state of the environment.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "STATE_UNSPECIFIED",
+              "CREATING",
+              "RUNNING",
+              "UPDATING",
+              "DELETING",
+              "ERROR"
+            ],
+            "readOnly": false
+          },
+          "storageConfig": {
+            "type": "",
+            "format": "",
+            "description": "Optional. Storage configuration for this environment.",
+            "$ref": "StorageConfig",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "updateTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. The time at which this environment was last modified.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "uuid": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The UUID (Universally Unique IDentifier) associated with this environment. This value is generated when the environment is created.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "EnvironmentConfig": {
+        "type": "object",
+        "format": "",
+        "description": "Configuration information for an environment.",
+        "$ref": "",
+        "properties": {
+          "airflowByoidUri": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The 'bring your own identity' variant of the URI of the Apache Airflow Web UI hosted within this environment, to be accessed with external identities using workforce identity federation (see [Access environments with workforce identity federation](/composer/docs/composer-2/access-environments-with-workforce-identity-federation)).",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "airflowUri": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The URI of the Apache Airflow Web UI hosted within this environment (see [Airflow web interface](/composer/docs/how-to/accessing/airflow-web-interface)).",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "dagGcsPrefix": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The Cloud Storage prefix of the DAGs for this environment. Although Cloud Storage objects reside in a flat namespace, a hierarchical file tree can be simulated using \"/\"-delimited object name prefixes. DAG objects for this environment reside in a simulated directory with the given prefix.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "dataRetentionConfig": {
+            "type": "",
+            "format": "",
+            "description": "Optional. The configuration setting for Airflow database data retention mechanism.",
+            "$ref": "DataRetentionConfig",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "databaseConfig": {
+            "type": "",
+            "format": "",
+            "description": "Optional. The configuration settings for Cloud SQL instance used internally by Apache Airflow software.",
+            "$ref": "DatabaseConfig",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "encryptionConfig": {
+            "type": "",
+            "format": "",
+            "description": "Optional. The encryption options for the Cloud Composer environment and its dependencies. Cannot be updated.",
+            "$ref": "EncryptionConfig",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "environmentSize": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The size of the Cloud Composer environment. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "ENVIRONMENT_SIZE_UNSPECIFIED",
+              "ENVIRONMENT_SIZE_SMALL",
+              "ENVIRONMENT_SIZE_MEDIUM",
+              "ENVIRONMENT_SIZE_LARGE",
+              "ENVIRONMENT_SIZE_EXTRA_LARGE"
+            ],
+            "readOnly": false
+          },
+          "gkeCluster": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The Kubernetes Engine cluster used to run this environment.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "maintenanceWindow": {
+            "type": "",
+            "format": "",
+            "description": "Optional. The maintenance window is the period when Cloud Composer components may undergo maintenance. It is defined so that maintenance is not executed during peak hours or critical time periods. The system will not be under maintenance for every occurrence of this window, but when maintenance is planned, it will be scheduled during the window. The maintenance window period must encompass at least 12 hours per week. This may be split into multiple chunks, each with a size of at least 4 hours. If this value is omitted, the default value for maintenance window is applied. By default, maintenance windows are from 00:00:00 to 04:00:00 (GMT) on Friday, Saturday, and Sunday every week.",
+            "$ref": "MaintenanceWindow",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "masterAuthorizedNetworksConfig": {
+            "type": "",
+            "format": "",
+            "description": "Optional. The configuration options for GKE cluster master authorized networks. By default master authorized networks feature is: - in case of private environment: enabled with no external networks allowlisted. - in case of public environment: disabled.",
+            "$ref": "MasterAuthorizedNetworksConfig",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "nodeConfig": {
+            "type": "",
+            "format": "",
+            "description": "Optional. The configuration used for the Kubernetes Engine cluster.",
+            "$ref": "NodeConfig",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "nodeCount": {
+            "type": "integer",
+            "format": "int32",
+            "description": "The number of nodes in the Kubernetes Engine cluster that will be used to run this environment. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "privateEnvironmentConfig": {
+            "type": "",
+            "format": "",
+            "description": "Optional. The configuration used for the Private IP Cloud Composer environment.",
+            "$ref": "PrivateEnvironmentConfig",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "recoveryConfig": {
+            "type": "",
+            "format": "",
+            "description": "Optional. The Recovery settings configuration of an environment. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.",
+            "$ref": "RecoveryConfig",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "resilienceMode": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Resilience mode of the Cloud Composer Environment. This field is supported for Cloud Composer environments in versions composer-2.2.0-airflow-*.*.* and newer.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "RESILIENCE_MODE_UNSPECIFIED",
+              "HIGH_RESILIENCE"
+            ],
+            "readOnly": false
+          },
+          "softwareConfig": {
+            "type": "",
+            "format": "",
+            "description": "Optional. The configuration settings for software inside the environment.",
+            "$ref": "SoftwareConfig",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "webServerConfig": {
+            "type": "",
+            "format": "",
+            "description": "Optional. The configuration settings for the Airflow web server App Engine instance.",
+            "$ref": "WebServerConfig",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "webServerNetworkAccessControl": {
+            "type": "",
+            "format": "",
+            "description": "Optional. The network-level access control policy for the Airflow web server. If unspecified, no network-level access restrictions will be applied.",
+            "$ref": "WebServerNetworkAccessControl",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "workloadsConfig": {
+            "type": "",
+            "format": "",
+            "description": "Optional. The workloads configuration settings for the GKE cluster associated with the Cloud Composer environment. The GKE cluster runs Airflow scheduler, web server and workers workloads. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.",
+            "$ref": "WorkloadsConfig",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ExecuteAirflowCommandRequest": {
+        "type": "object",
+        "format": "",
+        "description": "Execute Airflow Command request.",
+        "$ref": "",
+        "properties": {
+          "command": {
+            "type": "string",
+            "format": "",
+            "description": "Airflow command.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "parameters": {
+            "type": "array",
+            "format": "",
+            "description": "Parameters for the Airflow command/subcommand as an array of arguments. It may contain positional arguments like `[\"my-dag-id\"]`, key-value parameters like `[\"--foo=bar\"]` or `[\"--foo\",\"bar\"]`, or other flags like `[\"-f\"]`.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "subcommand": {
+            "type": "string",
+            "format": "",
+            "description": "Airflow subcommand.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ExecuteAirflowCommandResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Response to ExecuteAirflowCommandRequest.",
+        "$ref": "",
+        "properties": {
+          "error": {
+            "type": "string",
+            "format": "",
+            "description": "Error message. Empty if there was no error.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "executionId": {
+            "type": "string",
+            "format": "",
+            "description": "The unique ID of the command execution for polling.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "pod": {
+            "type": "string",
+            "format": "",
+            "description": "The name of the pod where the command is executed.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "podNamespace": {
+            "type": "string",
+            "format": "",
+            "description": "The namespace of the pod where the command is executed.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ExitInfo": {
+        "type": "object",
+        "format": "",
+        "description": "Information about how a command ended.",
+        "$ref": "",
+        "properties": {
+          "error": {
+            "type": "string",
+            "format": "",
+            "description": "Error message. Empty if there was no error.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "exitCode": {
+            "type": "integer",
+            "format": "int32",
+            "description": "The exit code from the command execution.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "FetchDatabasePropertiesResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Response for FetchDatabasePropertiesRequest.",
+        "$ref": "",
+        "properties": {
+          "isFailoverReplicaAvailable": {
+            "type": "boolean",
+            "format": "",
+            "description": "The availability status of the failover replica. A false status indicates that the failover replica is out of sync. The primary instance can only fail over to the failover replica when the status is true.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "primaryGceZone": {
+            "type": "string",
+            "format": "",
+            "description": "The Compute Engine zone that the instance is currently serving from.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "secondaryGceZone": {
+            "type": "string",
+            "format": "",
+            "description": "The Compute Engine zone that the failover instance is currently serving from for a regional Cloud SQL instance.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "IPAllocationPolicy": {
+        "type": "object",
+        "format": "",
+        "description": "Configuration for controlling how IPs are allocated in the GKE cluster running the Apache Airflow software.",
+        "$ref": "",
+        "properties": {
+          "clusterIpv4CidrBlock": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The IP address range used to allocate IP addresses to pods in the GKE cluster. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. `/14`) to have GKE choose a range with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "clusterSecondaryRangeName": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The name of the GKE cluster's secondary range used to allocate IP addresses to pods. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "servicesIpv4CidrBlock": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The IP address range of the services IP addresses in this GKE cluster. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. `/14`) to have GKE choose a range with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "servicesSecondaryRangeName": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The name of the services' secondary range used to allocate IP addresses to the GKE cluster. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "useIpAliases": {
+            "type": "boolean",
+            "format": "",
+            "description": "Optional. Whether or not to enable Alias IPs in the GKE cluster. If `true`, a VPC-native cluster is created. This field is only supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. Environments in newer versions always use VPC-native GKE clusters.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ImageVersion": {
+        "type": "object",
+        "format": "",
+        "description": "ImageVersion information",
+        "$ref": "",
+        "properties": {
+          "creationDisabled": {
+            "type": "boolean",
+            "format": "",
+            "description": "Whether it is impossible to create an environment with the image version.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "imageVersionId": {
+            "type": "string",
+            "format": "",
+            "description": "The string identifier of the ImageVersion, in the form: \"composer-x.y.z-airflow-a.b.c\"",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "isDefault": {
+            "type": "boolean",
+            "format": "",
+            "description": "Whether this is the default ImageVersion used by Composer during environment creation if no input ImageVersion is specified.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "releaseDate": {
+            "type": "",
+            "format": "",
+            "description": "The date of the version release.",
+            "$ref": "Date",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "supportedPythonVersions": {
+            "type": "array",
+            "format": "",
+            "description": "supported python versions",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "upgradeDisabled": {
+            "type": "boolean",
+            "format": "",
+            "description": "Whether it is impossible to upgrade an environment running with the image version.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Line": {
+        "type": "object",
+        "format": "",
+        "description": "Contains information about a single line from logs.",
+        "$ref": "",
+        "properties": {
+          "content": {
+            "type": "string",
+            "format": "",
+            "description": "Text content of the log line.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "lineNumber": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Number of the line.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ListEnvironmentsResponse": {
+        "type": "object",
+        "format": "",
+        "description": "The environments in a project and location.",
+        "$ref": "",
+        "properties": {
+          "environments": {
+            "type": "array",
+            "format": "",
+            "description": "The list of environments returned by a ListEnvironmentsRequest.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Environment",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "The page token used to query for the next page if one exists.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ListImageVersionsResponse": {
+        "type": "object",
+        "format": "",
+        "description": "The ImageVersions in a project and location.",
+        "$ref": "",
+        "properties": {
+          "imageVersions": {
+            "type": "array",
+            "format": "",
+            "description": "The list of supported ImageVersions in a location.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "ImageVersion",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "The page token used to query for the next page if one exists.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ListOperationsResponse": {
+        "type": "object",
+        "format": "",
+        "description": "The response message for Operations.ListOperations.",
+        "$ref": "",
+        "properties": {
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "The standard List next-page token.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "operations": {
+            "type": "array",
+            "format": "",
+            "description": "A list of operations that matches the specified filter in the request.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Operation",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "unreachable": {
+            "type": "array",
+            "format": "",
+            "description": "Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ListUserWorkloadsConfigMapsResponse": {
+        "type": "object",
+        "format": "",
+        "description": "The user workloads ConfigMaps for a given environment.",
+        "$ref": "",
+        "properties": {
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "The page token used to query for the next page if one exists.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "userWorkloadsConfigMaps": {
+            "type": "array",
+            "format": "",
+            "description": "The list of ConfigMaps returned by a ListUserWorkloadsConfigMapsRequest.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "UserWorkloadsConfigMap",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ListUserWorkloadsSecretsResponse": {
+        "type": "object",
+        "format": "",
+        "description": "The user workloads Secrets for a given environment.",
+        "$ref": "",
+        "properties": {
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "The page token used to query for the next page if one exists.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "userWorkloadsSecrets": {
+            "type": "array",
+            "format": "",
+            "description": "The list of Secrets returned by a ListUserWorkloadsSecretsRequest.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "UserWorkloadsSecret",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ListWorkloadsResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Response to ListWorkloadsRequest.",
+        "$ref": "",
+        "properties": {
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "The page token used to query for the next page if one exists.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "workloads": {
+            "type": "array",
+            "format": "",
+            "description": "The list of environment workloads.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "ComposerWorkload",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "LoadSnapshotRequest": {
+        "type": "object",
+        "format": "",
+        "description": "Request to load a snapshot into a Cloud Composer environment.",
+        "$ref": "",
+        "properties": {
+          "skipAirflowOverridesSetting": {
+            "type": "boolean",
+            "format": "",
+            "description": "Whether or not to skip setting Airflow overrides when loading the environment's state.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "skipEnvironmentVariablesSetting": {
+            "type": "boolean",
+            "format": "",
+            "description": "Whether or not to skip setting environment variables when loading the environment's state.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "skipGcsDataCopying": {
+            "type": "boolean",
+            "format": "",
+            "description": "Whether or not to skip copying Cloud Storage data when loading the environment's state.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "skipPypiPackagesInstallation": {
+            "type": "boolean",
+            "format": "",
+            "description": "Whether or not to skip installing Pypi packages when loading the environment's state.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "snapshotPath": {
+            "type": "string",
+            "format": "",
+            "description": "A Cloud Storage path to a snapshot to load, e.g.: \"gs://my-bucket/snapshots/project_location_environment_timestamp\".",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "LoadSnapshotResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Response to LoadSnapshotRequest.",
+        "$ref": "",
+        "properties": {},
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "MaintenanceWindow": {
+        "type": "object",
+        "format": "",
+        "description": "The configuration settings for Cloud Composer maintenance window. The following example: ``` { \"startTime\":\"2019-08-01T01:00:00Z\" \"endTime\":\"2019-08-01T07:00:00Z\" \"recurrence\":\"FREQ=WEEKLY;BYDAY=TU,WE\" } ``` would define a maintenance window between 01 and 07 hours UTC during each Tuesday and Wednesday.",
+        "$ref": "",
+        "properties": {
+          "endTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Required. Maintenance window end time. It is used only to calculate the duration of the maintenance window. The value for end-time must be in the future, relative to `start_time`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "recurrence": {
+            "type": "string",
+            "format": "",
+            "description": "Required. Maintenance window recurrence. Format is a subset of [RFC-5545](https://tools.ietf.org/html/rfc5545) `RRULE`. The only allowed values for `FREQ` field are `FREQ=DAILY` and `FREQ=WEEKLY;BYDAY=...` Example values: `FREQ=WEEKLY;BYDAY=TU,WE`, `FREQ=DAILY`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "startTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Required. Start time of the first recurrence of the maintenance window.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "MasterAuthorizedNetworksConfig": {
+        "type": "object",
+        "format": "",
+        "description": "Configuration options for the master authorized networks feature. Enabled master authorized networks will disallow all external traffic to access Kubernetes master through HTTPS except traffic from the given CIDR blocks, Google Compute Engine Public IPs and Google Prod IPs.",
+        "$ref": "",
+        "properties": {
+          "cidrBlocks": {
+            "type": "array",
+            "format": "",
+            "description": "Up to 50 external networks that could access Kubernetes master through HTTPS.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "CidrBlock",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "enabled": {
+            "type": "boolean",
+            "format": "",
+            "description": "Optional. Whether or not master authorized networks feature is enabled.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "NetworkingConfig": {
+        "type": "object",
+        "format": "",
+        "description": "Configuration options for networking connections in the Composer 2 environment.",
+        "$ref": "",
+        "properties": {
+          "connectionType": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Indicates the user requested specific connection type between Tenant and Customer projects. You cannot set networking connection type in public IP environment.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "CONNECTION_TYPE_UNSPECIFIED",
+              "VPC_PEERING",
+              "PRIVATE_SERVICE_CONNECT"
+            ],
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "NodeConfig": {
+        "type": "object",
+        "format": "",
+        "description": "The configuration information for the Kubernetes Engine nodes running the Apache Airflow software.",
+        "$ref": "",
+        "properties": {
+          "composerInternalIpv4CidrBlock": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The IP range in CIDR notation to use internally by Cloud Composer. IP addresses are not reserved - and the same range can be used by multiple Cloud Composer environments. In case of overlap, IPs from this range will not be accessible in the user's VPC network. Cannot be updated. If not specified, the default value of '100.64.128.0/20' is used. This field is supported for Cloud Composer environments in versions composer-3-airflow-*.*.*-build.* and newer.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "composerNetworkAttachment": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Network Attachment that Cloud Composer environment is connected to, which provides connectivity with a user's VPC network. Takes precedence over network and subnetwork settings. If not provided, but network and subnetwork are defined during environment, it will be provisioned. If not provided and network and subnetwork are also empty, then connectivity to user's VPC network is disabled. Network attachment must be provided in format projects/{project}/regions/{region}/networkAttachments/{networkAttachment}. This field is supported for Cloud Composer environments in versions composer-3-airflow-*.*.*-build.* and newer.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "diskSizeGb": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Optional. The disk size in GB used for node VMs. Minimum size is 30GB. If unspecified, defaults to 100GB. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "enableIpMasqAgent": {
+            "type": "boolean",
+            "format": "",
+            "description": "Optional. Deploys 'ip-masq-agent' daemon set in the GKE cluster and defines nonMasqueradeCIDRs equals to pod IP range so IP masquerading is used for all destination addresses, except between pods traffic. See: https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "ipAllocationPolicy": {
+            "type": "",
+            "format": "",
+            "description": "Optional. The configuration for controlling how IPs are allocated in the GKE cluster.",
+            "$ref": "IPAllocationPolicy",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "location": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The Compute Engine [zone](/compute/docs/regions-zones) in which to deploy the VMs used to run the Apache Airflow software, specified as a [relative resource name](/apis/design/resource_names#relative_resource_name). For example: \"projects/{projectId}/zones/{zoneId}\". This `location` must belong to the enclosing environment's project and location. If both this field and `nodeConfig.machineType` are specified, `nodeConfig.machineType` must belong to this `location`; if both are unspecified, the service will pick a zone in the Compute Engine region corresponding to the Cloud Composer location, and propagate that choice to both fields. If only one field (`location` or `nodeConfig.machineType`) is specified, the location information from the specified field will be propagated to the unspecified field. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "machineType": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The Compute Engine [machine type](/compute/docs/machine-types) used for cluster instances, specified as a [relative resource name](/apis/design/resource_names#relative_resource_name). For example: \"projects/{projectId}/zones/{zoneId}/machineTypes/{machineTypeId}\". The `machineType` must belong to the enclosing environment's project and location. If both this field and `nodeConfig.location` are specified, this `machineType` must belong to the `nodeConfig.location`; if both are unspecified, the service will pick a zone in the Compute Engine region corresponding to the Cloud Composer location, and propagate that choice to both fields. If exactly one of this field and `nodeConfig.location` is specified, the location information from the specified field will be propagated to the unspecified field. The `machineTypeId` must not be a [shared-core machine type](/compute/docs/machine-types#sharedcore). If this field is unspecified, the `machineTypeId` defaults to \"n1-standard-1\". This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "network": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The Compute Engine network to be used for machine communications, specified as a [relative resource name](/apis/design/resource_names#relative_resource_name). For example: \"projects/{projectId}/global/networks/{networkId}\". If unspecified, the \"default\" network ID in the environment's project is used. If a [Custom Subnet Network](/vpc/docs/vpc#vpc_networks_and_subnets) is provided, `nodeConfig.subnetwork` must also be provided. For [Shared VPC](/vpc/docs/shared-vpc) subnetwork requirements, see `nodeConfig.subnetwork`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "oauthScopes": {
+            "type": "array",
+            "format": "",
+            "description": "Optional. The set of Google API scopes to be made available on all node VMs. If `oauth_scopes` is empty, defaults to [\"https://www.googleapis.com/auth/cloud-platform\"]. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "serviceAccount": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The Google Cloud Platform Service Account to be used by the node VMs. If a service account is not specified, the \"default\" Compute Engine service account is used. Cannot be updated.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "subnetwork": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The Compute Engine subnetwork to be used for machine communications, specified as a [relative resource name](/apis/design/resource_names#relative_resource_name). For example: \"projects/{projectId}/regions/{regionId}/subnetworks/{subnetworkId}\" If a subnetwork is provided, `nodeConfig.network` must also be provided, and the subnetwork must belong to the enclosing environment's project and location.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "tags": {
+            "type": "array",
+            "format": "",
+            "description": "Optional. The list of instance tags applied to all node VMs. Tags are used to identify valid sources or targets for network firewalls. Each tag within the list must comply with [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Cannot be updated.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Operation": {
+        "type": "object",
+        "format": "",
+        "description": "This resource represents a long-running operation that is the result of a network API call.",
+        "$ref": "",
+        "properties": {
+          "done": {
+            "type": "boolean",
+            "format": "",
+            "description": "If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "error": {
+            "type": "",
+            "format": "",
+            "description": "The error result of the operation in case of failure or cancellation.",
+            "$ref": "Status",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "metadata": {
+            "type": "object",
+            "format": "",
+            "description": "Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "any",
+              "format": "",
+              "description": "Properties of the object. Contains field @type with type URL.",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "response": {
+            "type": "object",
+            "format": "",
+            "description": "The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "any",
+              "format": "",
+              "description": "Properties of the object. Contains field @type with type URL.",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "OperationMetadata": {
+        "type": "object",
+        "format": "",
+        "description": "Metadata describing an operation.",
+        "$ref": "",
+        "properties": {
+          "createTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. The time the operation was submitted to the server.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "endTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. The time when the operation terminated, regardless of its success. This field is unset if the operation is still ongoing.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "operationType": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The type of operation being performed.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "TYPE_UNSPECIFIED",
+              "CREATE",
+              "DELETE",
+              "UPDATE",
+              "CHECK",
+              "SAVE_SNAPSHOT",
+              "LOAD_SNAPSHOT",
+              "DATABASE_FAILOVER",
+              "MIGRATE"
+            ],
+            "readOnly": false
+          },
+          "resource": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The resource being operated on, as a [relative resource name]( /apis/design/resource_names#relative_resource_name).",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "resourceUuid": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The UUID of the resource being operated on.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "state": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The current operation state.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "STATE_UNSPECIFIED",
+              "PENDING",
+              "RUNNING",
+              "SUCCEEDED",
+              "SUCCESSFUL",
+              "FAILED"
+            ],
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "PollAirflowCommandRequest": {
+        "type": "object",
+        "format": "",
+        "description": "Poll Airflow Command request.",
+        "$ref": "",
+        "properties": {
+          "executionId": {
+            "type": "string",
+            "format": "",
+            "description": "The unique ID of the command execution.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "nextLineNumber": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Line number from which new logs should be fetched.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "pod": {
+            "type": "string",
+            "format": "",
+            "description": "The name of the pod where the command is executed.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "podNamespace": {
+            "type": "string",
+            "format": "",
+            "description": "The namespace of the pod where the command is executed.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "PollAirflowCommandResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Response to PollAirflowCommandRequest.",
+        "$ref": "",
+        "properties": {
+          "exitInfo": {
+            "type": "",
+            "format": "",
+            "description": "The result exit status of the command.",
+            "$ref": "ExitInfo",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "output": {
+            "type": "array",
+            "format": "",
+            "description": "Output from the command execution. It may not contain the full output and the caller may need to poll for more lines.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Line",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "outputEnd": {
+            "type": "boolean",
+            "format": "",
+            "description": "Whether the command execution has finished and there is no more output.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "PrivateClusterConfig": {
+        "type": "object",
+        "format": "",
+        "description": "Configuration options for the private GKE cluster in a Cloud Composer environment.",
+        "$ref": "",
+        "properties": {
+          "enablePrivateEndpoint": {
+            "type": "boolean",
+            "format": "",
+            "description": "Optional. If `true`, access to the public endpoint of the GKE cluster is denied.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "masterIpv4CidrBlock": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The CIDR block from which IPv4 range for GKE master will be reserved. If left blank, the default value of '172.16.0.0/23' is used.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "masterIpv4ReservedRange": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The IP range in CIDR notation to use for the hosted master network. This range is used for assigning internal IP addresses to the GKE cluster master or set of masters and to the internal load balancer virtual IP. This range must not overlap with any other ranges in use within the cluster's network.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "PrivateEnvironmentConfig": {
+        "type": "object",
+        "format": "",
+        "description": "The configuration information for configuring a Private IP Cloud Composer environment.",
+        "$ref": "",
+        "properties": {
+          "cloudComposerConnectionSubnetwork": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. When specified, the environment will use Private Service Connect instead of VPC peerings to connect to Cloud SQL in the Tenant Project, and the PSC endpoint in the Customer Project will use an IP address from this subnetwork.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "cloudComposerNetworkIpv4CidrBlock": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The CIDR block from which IP range for Cloud Composer Network in tenant project will be reserved. Needs to be disjoint from private_cluster_config.master_ipv4_cidr_block and cloud_sql_ipv4_cidr_block. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "cloudComposerNetworkIpv4ReservedRange": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The IP range reserved for the tenant project's Cloud Composer network. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "cloudSqlIpv4CidrBlock": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The CIDR block from which IP range in tenant project will be reserved for Cloud SQL. Needs to be disjoint from `web_server_ipv4_cidr_block`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "enablePrivateBuildsOnly": {
+            "type": "boolean",
+            "format": "",
+            "description": "Optional. If `true`, builds performed during operations that install Python packages have only private connectivity to Google services (including Artifact Registry) and VPC network (if either `NodeConfig.network` and `NodeConfig.subnetwork` fields or `NodeConfig.composer_network_attachment` field are specified). If `false`, the builds also have access to the internet. This field is supported for Cloud Composer environments in versions composer-3-airflow-*.*.*-build.* and newer.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "enablePrivateEnvironment": {
+            "type": "boolean",
+            "format": "",
+            "description": "Optional. If `true`, a Private IP Cloud Composer environment is created. If this field is set to true, `IPAllocationPolicy.use_ip_aliases` must be set to true for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. This field is going to be deprecated. Use `networking_type` instead.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "enablePrivatelyUsedPublicIps": {
+            "type": "boolean",
+            "format": "",
+            "description": "Optional. When enabled, IPs from public (non-RFC1918) ranges can be used for `IPAllocationPolicy.cluster_ipv4_cidr_block` and `IPAllocationPolicy.service_ipv4_cidr_block`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "networkingConfig": {
+            "type": "",
+            "format": "",
+            "description": "Optional. Configuration for the network connections configuration in the environment.",
+            "$ref": "NetworkingConfig",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "networkingType": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Networking type for the environment, either private or public.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "NETWORKING_TYPE_UNSPECIFIED",
+              "PRIVATE",
+              "PUBLIC"
+            ],
+            "readOnly": false
+          },
+          "privateClusterConfig": {
+            "type": "",
+            "format": "",
+            "description": "Optional. Configuration for the private GKE cluster for a Private IP Cloud Composer environment.",
+            "$ref": "PrivateClusterConfig",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "webServerIpv4CidrBlock": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The CIDR block from which IP range for web server will be reserved. Needs to be disjoint from `private_cluster_config.master_ipv4_cidr_block` and `cloud_sql_ipv4_cidr_block`. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "webServerIpv4ReservedRange": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The IP range reserved for the tenant project's App Engine VMs. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "RecoveryConfig": {
+        "type": "object",
+        "format": "",
+        "description": "The Recovery settings of an environment.",
+        "$ref": "",
+        "properties": {
+          "scheduledSnapshotsConfig": {
+            "type": "",
+            "format": "",
+            "description": "Optional. The configuration for scheduled snapshot creation mechanism.",
+            "$ref": "ScheduledSnapshotsConfig",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "RestartWebServerRequest": {
+        "type": "object",
+        "format": "",
+        "description": "Restart Airflow web server.",
+        "$ref": "",
+        "properties": {},
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "SaveSnapshotRequest": {
+        "type": "object",
+        "format": "",
+        "description": "Request to create a snapshot of a Cloud Composer environment.",
+        "$ref": "",
+        "properties": {
+          "snapshotLocation": {
+            "type": "string",
+            "format": "",
+            "description": "Location in a Cloud Storage where the snapshot is going to be stored, e.g.: \"gs://my-bucket/snapshots\".",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "SaveSnapshotResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Response to SaveSnapshotRequest.",
+        "$ref": "",
+        "properties": {
+          "snapshotPath": {
+            "type": "string",
+            "format": "",
+            "description": "The fully-resolved Cloud Storage path of the created snapshot, e.g.: \"gs://my-bucket/snapshots/project_location_environment_timestamp\". This field is populated only if the snapshot creation was successful.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ScheduledSnapshotsConfig": {
+        "type": "object",
+        "format": "",
+        "description": "The configuration for scheduled snapshot creation mechanism.",
+        "$ref": "",
+        "properties": {
+          "enabled": {
+            "type": "boolean",
+            "format": "",
+            "description": "Optional. Whether scheduled snapshots creation is enabled.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "snapshotCreationSchedule": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The cron expression representing the time when snapshots creation mechanism runs. This field is subject to additional validation around frequency of execution.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "snapshotLocation": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The Cloud Storage location for storing automatically created snapshots.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "timeZone": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Time zone that sets the context to interpret snapshot_creation_schedule.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "SchedulerResource": {
+        "type": "object",
+        "format": "",
+        "description": "Configuration for resources used by Airflow schedulers.",
+        "$ref": "",
+        "properties": {
+          "count": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Optional. The number of schedulers.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "cpu": {
+            "type": "number",
+            "format": "float",
+            "description": "Optional. CPU request and limit for a single Airflow scheduler replica.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "memoryGb": {
+            "type": "number",
+            "format": "float",
+            "description": "Optional. Memory (GB) request and limit for a single Airflow scheduler replica.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "storageGb": {
+            "type": "number",
+            "format": "float",
+            "description": "Optional. Storage (GB) request and limit for a single Airflow scheduler replica.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "SoftwareConfig": {
+        "type": "object",
+        "format": "",
+        "description": "Specifies the selection and configuration of software inside the environment.",
+        "$ref": "",
+        "properties": {
+          "airflowConfigOverrides": {
+            "type": "object",
+            "format": "",
+            "description": "Optional. Apache Airflow configuration properties to override. Property keys contain the section and property names, separated by a hyphen, for example \"core-dags_are_paused_at_creation\". Section names must not contain hyphens (\"-\"), opening square brackets (\"[\"), or closing square brackets (\"]\"). The property name must not be empty and must not contain an equals sign (\"=\") or semicolon (\";\"). Section and property names must not contain a period (\".\"). Apache Airflow configuration property names must be written in [snake_case](https://en.wikipedia.org/wiki/Snake_case). Property values can contain any character, and can be written in any lower/upper case format. Certain Apache Airflow configuration property values are [blocked](/composer/docs/concepts/airflow-configurations), and cannot be overridden.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "auditLogsReplicationMode": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The selected mode of audit logs replication. This field is supported for Cloud Composer environments in versions composer-3-airflow-*.*.*-build.* and newer.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "AUDIT_LOGS_REPLICATION_MODE_UNSPECIFIED",
+              "AUDIT_LOGS_REPLICATION_DISABLED",
+              "AUDIT_LOGS_REPLICATION_ENABLED"
+            ],
+            "readOnly": false
+          },
+          "cloudDataLineageIntegration": {
+            "type": "",
+            "format": "",
+            "description": "Optional. The configuration for Cloud Data Lineage integration.",
+            "$ref": "CloudDataLineageIntegration",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "envVariables": {
+            "type": "object",
+            "format": "",
+            "description": "Optional. Additional environment variables to provide to the Apache Airflow scheduler, worker, and webserver processes. Environment variable names must match the regular expression `a-zA-Z_*`. They cannot specify Apache Airflow software configuration overrides (they cannot match the regular expression `AIRFLOW__[A-Z0-9_]+__[A-Z0-9_]+`), and they cannot match any of the following reserved names: * `AIRFLOW_HOME` * `C_FORCE_ROOT` * `CONTAINER_NAME` * `DAGS_FOLDER` * `GCP_PROJECT` * `GCS_BUCKET` * `GKE_CLUSTER_NAME` * `SQL_DATABASE` * `SQL_INSTANCE` * `SQL_PASSWORD` * `SQL_PROJECT` * `SQL_REGION` * `SQL_USER`",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "imageVersion": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The version of the software running in the environment. This encapsulates both the version of Cloud Composer functionality and the version of Apache Airflow. It must match the regular expression `composer-([0-9]+(\\.[0-9]+\\.[0-9]+(-preview\\.[0-9]+)?)?|latest)-airflow-([0-9]+(\\.[0-9]+(\\.[0-9]+)?)?)`. When used as input, the server also checks if the provided version is supported and denies the request for an unsupported version. The Cloud Composer portion of the image version is a full [semantic version](https://semver.org), or an alias in the form of major version number or `latest`. When an alias is provided, the server replaces it with the current Cloud Composer version that satisfies the alias. The Apache Airflow portion of the image version is a full semantic version that points to one of the supported Apache Airflow versions, or an alias in the form of only major or major.minor versions specified. When an alias is provided, the server replaces it with the latest Apache Airflow version that satisfies the alias and is supported in the given Cloud Composer version. In all cases, the resolved image version is stored in the same field. See also [version list](/composer/docs/concepts/versioning/composer-versions) and [versioning overview](/composer/docs/concepts/versioning/composer-versioning-overview).",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "pypiPackages": {
+            "type": "object",
+            "format": "",
+            "description": "Optional. Custom Python Package Index (PyPI) packages to be installed in the environment. Keys refer to the lowercase package name such as \"numpy\" and values are the lowercase extras and version specifier such as \"==1.12.0\", \"[devel,gcp_api]\", or \"[devel]\u003e=1.8.2, \u003c1.9.2\". To specify a package without pinning it to a version specifier, use the empty string as the value.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "pythonVersion": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The major version of Python used to run the Apache Airflow scheduler, worker, and webserver processes. Can be set to '2' or '3'. If not specified, the default is '3'. Cannot be updated. This field is only supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. Environments in newer versions always use Python major version 3.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "schedulerCount": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Optional. The number of schedulers for Airflow. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-2.*.*.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "webServerPluginsMode": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Whether or not the web server uses custom plugins. If unspecified, the field defaults to `PLUGINS_ENABLED`. This field is supported for Cloud Composer environments in versions composer-3-airflow-*.*.*-build.* and newer.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "WEB_SERVER_PLUGINS_MODE_UNSPECIFIED",
+              "PLUGINS_DISABLED",
+              "PLUGINS_ENABLED"
+            ],
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Status": {
+        "type": "object",
+        "format": "",
+        "description": "The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).",
+        "$ref": "",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32",
+            "description": "The status code, which should be an enum value of google.rpc.Code.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "details": {
+            "type": "array",
+            "format": "",
+            "description": "A list of messages that carry the error details. There is a common set of message types for APIs to use.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "object",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": {
+                "type": "any",
+                "format": "",
+                "description": "Properties of the object. Contains field @type with type URL.",
+                "$ref": "",
+                "properties": null,
+                "items": null,
+                "additionalProperties": null,
+                "enum": null,
+                "readOnly": false
+              },
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "message": {
+            "type": "string",
+            "format": "",
+            "description": "A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "StopAirflowCommandRequest": {
+        "type": "object",
+        "format": "",
+        "description": "Stop Airflow Command request.",
+        "$ref": "",
+        "properties": {
+          "executionId": {
+            "type": "string",
+            "format": "",
+            "description": "The unique ID of the command execution.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "force": {
+            "type": "boolean",
+            "format": "",
+            "description": "If true, the execution is terminated forcefully (SIGKILL). If false, the execution is stopped gracefully, giving it time for cleanup.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "pod": {
+            "type": "string",
+            "format": "",
+            "description": "The name of the pod where the command is executed.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "podNamespace": {
+            "type": "string",
+            "format": "",
+            "description": "The namespace of the pod where the command is executed.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "StopAirflowCommandResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Response to StopAirflowCommandRequest.",
+        "$ref": "",
+        "properties": {
+          "isDone": {
+            "type": "boolean",
+            "format": "",
+            "description": "Whether the execution is still running.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "output": {
+            "type": "array",
+            "format": "",
+            "description": "Output message from stopping execution request.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "StorageConfig": {
+        "type": "object",
+        "format": "",
+        "description": "The configuration for data storage in the environment.",
+        "$ref": "",
+        "properties": {
+          "bucket": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The name of the Cloud Storage bucket used by the environment. No `gs://` prefix.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "TaskLogsRetentionConfig": {
+        "type": "object",
+        "format": "",
+        "description": "The configuration setting for Task Logs.",
+        "$ref": "",
+        "properties": {
+          "storageMode": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The mode of storage for Airflow workers task logs.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "TASK_LOGS_STORAGE_MODE_UNSPECIFIED",
+              "CLOUD_LOGGING_AND_CLOUD_STORAGE",
+              "CLOUD_LOGGING_ONLY"
+            ],
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "TriggererResource": {
+        "type": "object",
+        "format": "",
+        "description": "Configuration for resources used by Airflow triggerers.",
+        "$ref": "",
+        "properties": {
+          "count": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Optional. The number of triggerers.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "cpu": {
+            "type": "number",
+            "format": "float",
+            "description": "Optional. CPU request and limit for a single Airflow triggerer replica.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "memoryGb": {
+            "type": "number",
+            "format": "float",
+            "description": "Optional. Memory (GB) request and limit for a single Airflow triggerer replica.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "UserWorkloadsConfigMap": {
+        "type": "object",
+        "format": "",
+        "description": "User workloads ConfigMap used by Airflow tasks that run with Kubernetes executor or KubernetesPodOperator.",
+        "$ref": "",
+        "properties": {
+          "data": {
+            "type": "object",
+            "format": "",
+            "description": "Optional. The \"data\" field of Kubernetes ConfigMap, organized in key-value pairs. For details see: https://kubernetes.io/docs/concepts/configuration/configmap/ Example: { \"example_key\": \"example_value\", \"another_key\": \"another_value\" }",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "Identifier. The resource name of the ConfigMap, in the form: \"projects/{projectId}/locations/{locationId}/environments/{environmentId}/userWorkloadsConfigMaps/{userWorkloadsConfigMapId}\"",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "UserWorkloadsSecret": {
+        "type": "object",
+        "format": "",
+        "description": "User workloads Secret used by Airflow tasks that run with Kubernetes executor or KubernetesPodOperator.",
+        "$ref": "",
+        "properties": {
+          "data": {
+            "type": "object",
+            "format": "",
+            "description": "Optional. The \"data\" field of Kubernetes Secret, organized in key-value pairs, which can contain sensitive values such as a password, a token, or a key. The values for all keys have to be base64-encoded strings. For details see: https://kubernetes.io/docs/concepts/configuration/secret/ Example: { \"example\": \"ZXhhbXBsZV92YWx1ZQ==\", \"another-example\": \"YW5vdGhlcl9leGFtcGxlX3ZhbHVl\" }",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "Identifier. The resource name of the Secret, in the form: \"projects/{projectId}/locations/{locationId}/environments/{environmentId}/userWorkloadsSecrets/{userWorkloadsSecretId}\"",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "WebServerConfig": {
+        "type": "object",
+        "format": "",
+        "description": "The configuration settings for the Airflow web server App Engine instance. Supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*",
+        "$ref": "",
+        "properties": {
+          "machineType": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Machine type on which Airflow web server is running. It has to be one of: composer-n1-webserver-2, composer-n1-webserver-4 or composer-n1-webserver-8. If not specified, composer-n1-webserver-2 will be used. Value custom is returned only in response, if Airflow web server parameters were manually changed to a non-standard values.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "WebServerNetworkAccessControl": {
+        "type": "object",
+        "format": "",
+        "description": "Network-level access control policy for the Airflow web server.",
+        "$ref": "",
+        "properties": {
+          "allowedIpRanges": {
+            "type": "array",
+            "format": "",
+            "description": "A collection of allowed IP ranges with descriptions.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "AllowedIpRange",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "WebServerResource": {
+        "type": "object",
+        "format": "",
+        "description": "Configuration for resources used by Airflow web server.",
+        "$ref": "",
+        "properties": {
+          "cpu": {
+            "type": "number",
+            "format": "float",
+            "description": "Optional. CPU request and limit for Airflow web server.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "memoryGb": {
+            "type": "number",
+            "format": "float",
+            "description": "Optional. Memory (GB) request and limit for Airflow web server.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "storageGb": {
+            "type": "number",
+            "format": "float",
+            "description": "Optional. Storage (GB) request and limit for Airflow web server.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "WorkerResource": {
+        "type": "object",
+        "format": "",
+        "description": "Configuration for resources used by Airflow workers.",
+        "$ref": "",
+        "properties": {
+          "cpu": {
+            "type": "number",
+            "format": "float",
+            "description": "Optional. CPU request and limit for a single Airflow worker replica.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "maxCount": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Optional. Maximum number of workers for autoscaling.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "memoryGb": {
+            "type": "number",
+            "format": "float",
+            "description": "Optional. Memory (GB) request and limit for a single Airflow worker replica.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "minCount": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Optional. Minimum number of workers for autoscaling.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "storageGb": {
+            "type": "number",
+            "format": "float",
+            "description": "Optional. Storage (GB) request and limit for a single Airflow worker replica.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "WorkloadsConfig": {
+        "type": "object",
+        "format": "",
+        "description": "The Kubernetes workloads configuration for GKE cluster associated with the Cloud Composer environment. Supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.",
+        "$ref": "",
+        "properties": {
+          "dagProcessor": {
+            "type": "",
+            "format": "",
+            "description": "Optional. Resources used by Airflow DAG processors. This field is supported for Cloud Composer environments in versions composer-3-airflow-*.*.*-build.* and newer.",
+            "$ref": "DagProcessorResource",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "scheduler": {
+            "type": "",
+            "format": "",
+            "description": "Optional. Resources used by Airflow schedulers.",
+            "$ref": "SchedulerResource",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "triggerer": {
+            "type": "",
+            "format": "",
+            "description": "Optional. Resources used by Airflow triggerers.",
+            "$ref": "TriggererResource",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "webServer": {
+            "type": "",
+            "format": "",
+            "description": "Optional. Resources used by Airflow web server.",
+            "$ref": "WebServerResource",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "worker": {
+            "type": "",
+            "format": "",
+            "description": "Optional. Resources used by Airflow workers.",
+            "$ref": "WorkerResource",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      }
+    },
+    "resources": {
+      "projects": {
+        "methods": null,
+        "resources": {
+          "locations": {
+            "methods": null,
+            "resources": {
+              "environments": {
+                "methods": {
+                  "checkUpgrade": {
+                    "id": "composer.projects.locations.environments.checkUpgrade",
+                    "httpMethod": "POST",
+                    "path": "v1/{+environment}:checkUpgrade",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/environments/{environmentsId}:checkUpgrade",
+                    "description": "Check if an upgrade operation on the environment will succeed. In case of problems detailed info can be found in the returned Operation.",
+                    "parameters": {
+                      "environment": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "environment"
+                    ],
+                    "request": {
+                      "$ref": "CheckUpgradeRequest"
+                    },
+                    "response": {
+                      "$ref": "Operation"
+                    }
+                  },
+                  "create": {
+                    "id": "composer.projects.locations.environments.create",
+                    "httpMethod": "POST",
+                    "path": "v1/{+parent}/environments",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/environments",
+                    "description": "Create a new environment.",
+                    "parameters": {
+                      "parent": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "parent"
+                    ],
+                    "request": {
+                      "$ref": "Environment"
+                    },
+                    "response": {
+                      "$ref": "Operation"
+                    }
+                  },
+                  "databaseFailover": {
+                    "id": "composer.projects.locations.environments.databaseFailover",
+                    "httpMethod": "POST",
+                    "path": "v1/{+environment}:databaseFailover",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/environments/{environmentsId}:databaseFailover",
+                    "description": "Triggers database failover (only for highly resilient environments).",
+                    "parameters": {
+                      "environment": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "environment"
+                    ],
+                    "request": {
+                      "$ref": "DatabaseFailoverRequest"
+                    },
+                    "response": {
+                      "$ref": "Operation"
+                    }
+                  },
+                  "delete": {
+                    "id": "composer.projects.locations.environments.delete",
+                    "httpMethod": "DELETE",
+                    "path": "v1/{+name}",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/environments/{environmentsId}",
+                    "description": "Delete an environment.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "Operation"
+                    }
+                  },
+                  "executeAirflowCommand": {
+                    "id": "composer.projects.locations.environments.executeAirflowCommand",
+                    "httpMethod": "POST",
+                    "path": "v1/{+environment}:executeAirflowCommand",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/environments/{environmentsId}:executeAirflowCommand",
+                    "description": "Executes Airflow CLI command.",
+                    "parameters": {
+                      "environment": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "environment"
+                    ],
+                    "request": {
+                      "$ref": "ExecuteAirflowCommandRequest"
+                    },
+                    "response": {
+                      "$ref": "ExecuteAirflowCommandResponse"
+                    }
+                  },
+                  "fetchDatabaseProperties": {
+                    "id": "composer.projects.locations.environments.fetchDatabaseProperties",
+                    "httpMethod": "GET",
+                    "path": "v1/{+environment}:fetchDatabaseProperties",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/environments/{environmentsId}:fetchDatabaseProperties",
+                    "description": "Fetches database properties.",
+                    "parameters": {
+                      "environment": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "environment"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "FetchDatabasePropertiesResponse"
+                    }
+                  },
+                  "get": {
+                    "id": "composer.projects.locations.environments.get",
+                    "httpMethod": "GET",
+                    "path": "v1/{+name}",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/environments/{environmentsId}",
+                    "description": "Get an existing environment.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "Environment"
+                    }
+                  },
+                  "list": {
+                    "id": "composer.projects.locations.environments.list",
+                    "httpMethod": "GET",
+                    "path": "v1/{+parent}/environments",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/environments",
+                    "description": "List environments.",
+                    "parameters": {
+                      "pageSize": {
+                        "type": "integer",
+                        "location": "query",
+                        "required": false
+                      },
+                      "pageToken": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "parent": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "parent"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "ListEnvironmentsResponse"
+                    }
+                  },
+                  "loadSnapshot": {
+                    "id": "composer.projects.locations.environments.loadSnapshot",
+                    "httpMethod": "POST",
+                    "path": "v1/{+environment}:loadSnapshot",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/environments/{environmentsId}:loadSnapshot",
+                    "description": "Loads a snapshot of a Cloud Composer environment. As a result of this operation, a snapshot of environment's specified in LoadSnapshotRequest is loaded into the environment.",
+                    "parameters": {
+                      "environment": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "environment"
+                    ],
+                    "request": {
+                      "$ref": "LoadSnapshotRequest"
+                    },
+                    "response": {
+                      "$ref": "Operation"
+                    }
+                  },
+                  "patch": {
+                    "id": "composer.projects.locations.environments.patch",
+                    "httpMethod": "PATCH",
+                    "path": "v1/{+name}",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/environments/{environmentsId}",
+                    "description": "Update an environment.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      },
+                      "updateMask": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": {
+                      "$ref": "Environment"
+                    },
+                    "response": {
+                      "$ref": "Operation"
+                    }
+                  },
+                  "pollAirflowCommand": {
+                    "id": "composer.projects.locations.environments.pollAirflowCommand",
+                    "httpMethod": "POST",
+                    "path": "v1/{+environment}:pollAirflowCommand",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/environments/{environmentsId}:pollAirflowCommand",
+                    "description": "Polls Airflow CLI command execution and fetches logs.",
+                    "parameters": {
+                      "environment": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "environment"
+                    ],
+                    "request": {
+                      "$ref": "PollAirflowCommandRequest"
+                    },
+                    "response": {
+                      "$ref": "PollAirflowCommandResponse"
+                    }
+                  },
+                  "restartWebServer": {
+                    "id": "composer.projects.locations.environments.restartWebServer",
+                    "httpMethod": "POST",
+                    "path": "v1/{+name}:restartWebServer",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/environments/{environmentsId}:restartWebServer",
+                    "description": "Restart Airflow web server.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": {
+                      "$ref": "RestartWebServerRequest"
+                    },
+                    "response": {
+                      "$ref": "Operation"
+                    }
+                  },
+                  "saveSnapshot": {
+                    "id": "composer.projects.locations.environments.saveSnapshot",
+                    "httpMethod": "POST",
+                    "path": "v1/{+environment}:saveSnapshot",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/environments/{environmentsId}:saveSnapshot",
+                    "description": "Creates a snapshots of a Cloud Composer environment. As a result of this operation, snapshot of environment's state is stored in a location specified in the SaveSnapshotRequest.",
+                    "parameters": {
+                      "environment": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "environment"
+                    ],
+                    "request": {
+                      "$ref": "SaveSnapshotRequest"
+                    },
+                    "response": {
+                      "$ref": "Operation"
+                    }
+                  },
+                  "stopAirflowCommand": {
+                    "id": "composer.projects.locations.environments.stopAirflowCommand",
+                    "httpMethod": "POST",
+                    "path": "v1/{+environment}:stopAirflowCommand",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/environments/{environmentsId}:stopAirflowCommand",
+                    "description": "Stops Airflow CLI command execution.",
+                    "parameters": {
+                      "environment": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "environment"
+                    ],
+                    "request": {
+                      "$ref": "StopAirflowCommandRequest"
+                    },
+                    "response": {
+                      "$ref": "StopAirflowCommandResponse"
+                    }
+                  }
+                },
+                "resources": {
+                  "userWorkloadsConfigMaps": {
+                    "methods": {
+                      "create": {
+                        "id": "composer.projects.locations.environments.userWorkloadsConfigMaps.create",
+                        "httpMethod": "POST",
+                        "path": "v1/{+parent}/userWorkloadsConfigMaps",
+                        "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/environments/{environmentsId}/userWorkloadsConfigMaps",
+                        "description": "Creates a user workloads ConfigMap. This method is supported for Cloud Composer environments in versions composer-3-airflow-*.*.*-build.* and newer.",
+                        "parameters": {
+                          "parent": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          }
+                        },
+                        "parameterOrder": [
+                          "parent"
+                        ],
+                        "request": {
+                          "$ref": "UserWorkloadsConfigMap"
+                        },
+                        "response": {
+                          "$ref": "UserWorkloadsConfigMap"
+                        }
+                      },
+                      "delete": {
+                        "id": "composer.projects.locations.environments.userWorkloadsConfigMaps.delete",
+                        "httpMethod": "DELETE",
+                        "path": "v1/{+name}",
+                        "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/environments/{environmentsId}/userWorkloadsConfigMaps/{userWorkloadsConfigMapsId}",
+                        "description": "Deletes a user workloads ConfigMap. This method is supported for Cloud Composer environments in versions composer-3-airflow-*.*.*-build.* and newer.",
+                        "parameters": {
+                          "name": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          }
+                        },
+                        "parameterOrder": [
+                          "name"
+                        ],
+                        "request": null,
+                        "response": {
+                          "$ref": "Empty"
+                        }
+                      },
+                      "get": {
+                        "id": "composer.projects.locations.environments.userWorkloadsConfigMaps.get",
+                        "httpMethod": "GET",
+                        "path": "v1/{+name}",
+                        "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/environments/{environmentsId}/userWorkloadsConfigMaps/{userWorkloadsConfigMapsId}",
+                        "description": "Gets an existing user workloads ConfigMap. This method is supported for Cloud Composer environments in versions composer-3-airflow-*.*.*-build.* and newer.",
+                        "parameters": {
+                          "name": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          }
+                        },
+                        "parameterOrder": [
+                          "name"
+                        ],
+                        "request": null,
+                        "response": {
+                          "$ref": "UserWorkloadsConfigMap"
+                        }
+                      },
+                      "list": {
+                        "id": "composer.projects.locations.environments.userWorkloadsConfigMaps.list",
+                        "httpMethod": "GET",
+                        "path": "v1/{+parent}/userWorkloadsConfigMaps",
+                        "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/environments/{environmentsId}/userWorkloadsConfigMaps",
+                        "description": "Lists user workloads ConfigMaps. This method is supported for Cloud Composer environments in versions composer-3-airflow-*.*.*-build.* and newer.",
+                        "parameters": {
+                          "pageSize": {
+                            "type": "integer",
+                            "location": "query",
+                            "required": false
+                          },
+                          "pageToken": {
+                            "type": "string",
+                            "location": "query",
+                            "required": false
+                          },
+                          "parent": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          }
+                        },
+                        "parameterOrder": [
+                          "parent"
+                        ],
+                        "request": null,
+                        "response": {
+                          "$ref": "ListUserWorkloadsConfigMapsResponse"
+                        }
+                      },
+                      "update": {
+                        "id": "composer.projects.locations.environments.userWorkloadsConfigMaps.update",
+                        "httpMethod": "PUT",
+                        "path": "v1/{+name}",
+                        "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/environments/{environmentsId}/userWorkloadsConfigMaps/{userWorkloadsConfigMapsId}",
+                        "description": "Updates a user workloads ConfigMap. This method is supported for Cloud Composer environments in versions composer-3-airflow-*.*.*-build.* and newer.",
+                        "parameters": {
+                          "name": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          }
+                        },
+                        "parameterOrder": [
+                          "name"
+                        ],
+                        "request": {
+                          "$ref": "UserWorkloadsConfigMap"
+                        },
+                        "response": {
+                          "$ref": "UserWorkloadsConfigMap"
+                        }
+                      }
+                    },
+                    "resources": null
+                  },
+                  "userWorkloadsSecrets": {
+                    "methods": {
+                      "create": {
+                        "id": "composer.projects.locations.environments.userWorkloadsSecrets.create",
+                        "httpMethod": "POST",
+                        "path": "v1/{+parent}/userWorkloadsSecrets",
+                        "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/environments/{environmentsId}/userWorkloadsSecrets",
+                        "description": "Creates a user workloads Secret. This method is supported for Cloud Composer environments in versions composer-3-airflow-*.*.*-build.* and newer.",
+                        "parameters": {
+                          "parent": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          }
+                        },
+                        "parameterOrder": [
+                          "parent"
+                        ],
+                        "request": {
+                          "$ref": "UserWorkloadsSecret"
+                        },
+                        "response": {
+                          "$ref": "UserWorkloadsSecret"
+                        }
+                      },
+                      "delete": {
+                        "id": "composer.projects.locations.environments.userWorkloadsSecrets.delete",
+                        "httpMethod": "DELETE",
+                        "path": "v1/{+name}",
+                        "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/environments/{environmentsId}/userWorkloadsSecrets/{userWorkloadsSecretsId}",
+                        "description": "Deletes a user workloads Secret. This method is supported for Cloud Composer environments in versions composer-3-airflow-*.*.*-build.* and newer.",
+                        "parameters": {
+                          "name": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          }
+                        },
+                        "parameterOrder": [
+                          "name"
+                        ],
+                        "request": null,
+                        "response": {
+                          "$ref": "Empty"
+                        }
+                      },
+                      "get": {
+                        "id": "composer.projects.locations.environments.userWorkloadsSecrets.get",
+                        "httpMethod": "GET",
+                        "path": "v1/{+name}",
+                        "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/environments/{environmentsId}/userWorkloadsSecrets/{userWorkloadsSecretsId}",
+                        "description": "Gets an existing user workloads Secret. Values of the \"data\" field in the response are cleared. This method is supported for Cloud Composer environments in versions composer-3-airflow-*.*.*-build.* and newer.",
+                        "parameters": {
+                          "name": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          }
+                        },
+                        "parameterOrder": [
+                          "name"
+                        ],
+                        "request": null,
+                        "response": {
+                          "$ref": "UserWorkloadsSecret"
+                        }
+                      },
+                      "list": {
+                        "id": "composer.projects.locations.environments.userWorkloadsSecrets.list",
+                        "httpMethod": "GET",
+                        "path": "v1/{+parent}/userWorkloadsSecrets",
+                        "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/environments/{environmentsId}/userWorkloadsSecrets",
+                        "description": "Lists user workloads Secrets. This method is supported for Cloud Composer environments in versions composer-3-airflow-*.*.*-build.* and newer.",
+                        "parameters": {
+                          "pageSize": {
+                            "type": "integer",
+                            "location": "query",
+                            "required": false
+                          },
+                          "pageToken": {
+                            "type": "string",
+                            "location": "query",
+                            "required": false
+                          },
+                          "parent": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          }
+                        },
+                        "parameterOrder": [
+                          "parent"
+                        ],
+                        "request": null,
+                        "response": {
+                          "$ref": "ListUserWorkloadsSecretsResponse"
+                        }
+                      },
+                      "update": {
+                        "id": "composer.projects.locations.environments.userWorkloadsSecrets.update",
+                        "httpMethod": "PUT",
+                        "path": "v1/{+name}",
+                        "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/environments/{environmentsId}/userWorkloadsSecrets/{userWorkloadsSecretsId}",
+                        "description": "Updates a user workloads Secret. This method is supported for Cloud Composer environments in versions composer-3-airflow-*.*.*-build.* and newer.",
+                        "parameters": {
+                          "name": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          }
+                        },
+                        "parameterOrder": [
+                          "name"
+                        ],
+                        "request": {
+                          "$ref": "UserWorkloadsSecret"
+                        },
+                        "response": {
+                          "$ref": "UserWorkloadsSecret"
+                        }
+                      }
+                    },
+                    "resources": null
+                  },
+                  "workloads": {
+                    "methods": {
+                      "list": {
+                        "id": "composer.projects.locations.environments.workloads.list",
+                        "httpMethod": "GET",
+                        "path": "v1/{+parent}/workloads",
+                        "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/environments/{environmentsId}/workloads",
+                        "description": "Lists workloads in a Cloud Composer environment. Workload is a unit that runs a single Composer component. This method is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.",
+                        "parameters": {
+                          "filter": {
+                            "type": "string",
+                            "location": "query",
+                            "required": false
+                          },
+                          "pageSize": {
+                            "type": "integer",
+                            "location": "query",
+                            "required": false
+                          },
+                          "pageToken": {
+                            "type": "string",
+                            "location": "query",
+                            "required": false
+                          },
+                          "parent": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          }
+                        },
+                        "parameterOrder": [
+                          "parent"
+                        ],
+                        "request": null,
+                        "response": {
+                          "$ref": "ListWorkloadsResponse"
+                        }
+                      }
+                    },
+                    "resources": null
+                  }
+                }
+              },
+              "imageVersions": {
+                "methods": {
+                  "list": {
+                    "id": "composer.projects.locations.imageVersions.list",
+                    "httpMethod": "GET",
+                    "path": "v1/{+parent}/imageVersions",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/imageVersions",
+                    "description": "List ImageVersions for provided location.",
+                    "parameters": {
+                      "includePastReleases": {
+                        "type": "boolean",
+                        "location": "query",
+                        "required": false
+                      },
+                      "pageSize": {
+                        "type": "integer",
+                        "location": "query",
+                        "required": false
+                      },
+                      "pageToken": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "parent": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "parent"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "ListImageVersionsResponse"
+                    }
+                  }
+                },
+                "resources": null
+              },
+              "operations": {
+                "methods": {
+                  "delete": {
+                    "id": "composer.projects.locations.operations.delete",
+                    "httpMethod": "DELETE",
+                    "path": "v1/{+name}",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
+                    "description": "Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "Empty"
+                    }
+                  },
+                  "get": {
+                    "id": "composer.projects.locations.operations.get",
+                    "httpMethod": "GET",
+                    "path": "v1/{+name}",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
+                    "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "Operation"
+                    }
+                  },
+                  "list": {
+                    "id": "composer.projects.locations.operations.list",
+                    "httpMethod": "GET",
+                    "path": "v1/{+name}/operations",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/operations",
+                    "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.",
+                    "parameters": {
+                      "filter": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      },
+                      "pageSize": {
+                        "type": "integer",
+                        "location": "query",
+                        "required": false
+                      },
+                      "pageToken": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "returnPartialSuccess": {
+                        "type": "boolean",
+                        "location": "query",
+                        "required": false
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "ListOperationsResponse"
+                    }
+                  }
+                },
+                "resources": null
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

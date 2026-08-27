@@ -1,0 +1,3659 @@
+{
+  "schema_source": "discovery_docs",
+  "mode": "resource",
+  "auth": {
+    "Type": "",
+    "Params": null
+  },
+  "base_url": "https://notebooks.googleapis.com",
+  "retry": {
+    "MaxAttempts": 0,
+    "InitialBackoff": "",
+    "MaxBackoff": "",
+    "Jitter": null,
+    "RespectRetryAfter": null,
+    "RateLimitResetHeader": ""
+  },
+  "timeouts": {
+    "Create": "",
+    "Read": "",
+    "Update": "",
+    "Delete": "",
+    "Default": ""
+  },
+  "wire_name": "google_notebooks",
+  "raw_spec": {
+    "name": "notebooks",
+    "revision": "20260812",
+    "discoveryVersion": "v1",
+    "baseUrl": "https://notebooks.googleapis.com/",
+    "rootUrl": "https://notebooks.googleapis.com/",
+    "servicePath": "",
+    "schemas": {
+      "AcceleratorConfig": {
+        "type": "object",
+        "format": "",
+        "description": "An accelerator configuration for a VM instance Definition of a hardware accelerator. Note that there is no check on `type` and `core_count` combinations. TPUs are not supported. See [GPUs on Compute Engine](https://cloud.google.com/compute/docs/gpus/#gpus-list) to find a valid combination.",
+        "$ref": "",
+        "properties": {
+          "coreCount": {
+            "type": "string",
+            "format": "int64",
+            "description": "Optional. Count of cores of this accelerator.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "type": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Type of this accelerator.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "ACCELERATOR_TYPE_UNSPECIFIED",
+              "NVIDIA_TESLA_P100",
+              "NVIDIA_TESLA_V100",
+              "NVIDIA_TESLA_P4",
+              "NVIDIA_TESLA_T4",
+              "NVIDIA_TESLA_A100",
+              "NVIDIA_A100_80GB",
+              "NVIDIA_L4",
+              "NVIDIA_H100_80GB",
+              "NVIDIA_H100_MEGA_80GB",
+              "NVIDIA_H200_141GB",
+              "NVIDIA_TESLA_T4_VWS",
+              "NVIDIA_TESLA_P100_VWS",
+              "NVIDIA_TESLA_P4_VWS",
+              "NVIDIA_B200",
+              "NVIDIA_RTX6000"
+            ],
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "AccessConfig": {
+        "type": "object",
+        "format": "",
+        "description": "An access configuration attached to an instance's network interface.",
+        "$ref": "",
+        "properties": {
+          "externalIp": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. An external IP address associated with this instance. Specify an unused static external IP address available to the project or leave this field undefined to use an IP from a shared ephemeral IP address pool. If you specify a static external IP address, it must live in the same region as the zone of the instance.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Binding": {
+        "type": "object",
+        "format": "",
+        "description": "Associates `members`, or principals, with a `role`.",
+        "$ref": "",
+        "properties": {
+          "condition": {
+            "type": "",
+            "format": "",
+            "description": "The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).",
+            "$ref": "Expr",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "members": {
+            "type": "array",
+            "format": "",
+            "description": "Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "role": {
+            "type": "string",
+            "format": "",
+            "description": "Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "BootDisk": {
+        "type": "object",
+        "format": "",
+        "description": "The definition of a boot disk.",
+        "$ref": "",
+        "properties": {
+          "diskEncryption": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Disk encryption method used on the boot and data disks, defaults to GMEK.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "DISK_ENCRYPTION_UNSPECIFIED",
+              "GMEK",
+              "CMEK"
+            ],
+            "readOnly": false
+          },
+          "diskSizeGb": {
+            "type": "string",
+            "format": "int64",
+            "description": "Optional. The size of the boot disk in GB attached to this instance, up to a maximum of 64000 GB (64 TB). If not specified, this defaults to the recommended value of 150GB.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "diskType": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Indicates the type of the disk.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "DISK_TYPE_UNSPECIFIED",
+              "PD_STANDARD",
+              "PD_SSD",
+              "PD_BALANCED",
+              "PD_EXTREME",
+              "HYPERDISK_BALANCED",
+              "HYPERDISK_EXTREME",
+              "HYPERDISK_THROUGHPUT",
+              "HYPERDISK_BALANCED_HIGH_AVAILABILITY",
+              "HYPERDISK_ML"
+            ],
+            "readOnly": false
+          },
+          "kmsKey": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The KMS key used to encrypt the disks, only applicable if disk_encryption is CMEK. Format: `projects/{project_id}/locations/{location}/keyRings/{key_ring_id}/cryptoKeys/{key_id}` Learn more about using your own encryption keys.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "CancelOperationRequest": {
+        "type": "object",
+        "format": "",
+        "description": "The request message for Operations.CancelOperation.",
+        "$ref": "",
+        "properties": {},
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "CheckAuthorizationRequest": {
+        "type": "object",
+        "format": "",
+        "description": "Request message for checking authorization for the instance owner.",
+        "$ref": "",
+        "properties": {
+          "authorizationDetails": {
+            "type": "object",
+            "format": "",
+            "description": "Optional. The details of the OAuth authorization response. This may include additional params such as dry_run, version_info, origin, propagate, etc.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "CheckAuthorizationResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Response message for checking authorization for the instance owner.",
+        "$ref": "",
+        "properties": {
+          "createTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. Timestamp when this Authorization request was created.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "oauth_uri": {
+            "type": "string",
+            "format": "",
+            "description": "If the user has not completed OAuth consent, then the oauth_url is returned. Otherwise, this field is not set.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "success": {
+            "type": "boolean",
+            "format": "",
+            "description": "Success indicates that the user completed OAuth consent and access tokens can be generated.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "CheckInstanceUpgradabilityResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Response for checking if a notebook instance is upgradeable.",
+        "$ref": "",
+        "properties": {
+          "upgradeImage": {
+            "type": "string",
+            "format": "",
+            "description": "The new image self link this instance will be upgraded to if calling the upgrade endpoint. This field will only be populated if field upgradeable is true.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "upgradeInfo": {
+            "type": "string",
+            "format": "",
+            "description": "Additional information about upgrade.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "upgradeVersion": {
+            "type": "string",
+            "format": "",
+            "description": "The version this instance will be upgraded to if calling the upgrade endpoint. This field will only be populated if field upgradeable is true.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "upgradeable": {
+            "type": "boolean",
+            "format": "",
+            "description": "If an instance is upgradeable.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ConfidentialInstanceConfig": {
+        "type": "object",
+        "format": "",
+        "description": "A set of Confidential Instance options.",
+        "$ref": "",
+        "properties": {
+          "confidentialInstanceType": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Defines the type of technology used by the confidential instance.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "CONFIDENTIAL_INSTANCE_TYPE_UNSPECIFIED",
+              "SEV"
+            ],
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Config": {
+        "type": "object",
+        "format": "",
+        "description": "Response for getting WbI configurations in a location",
+        "$ref": "",
+        "properties": {
+          "availableImages": {
+            "type": "array",
+            "format": "",
+            "description": "Output only. The list of available images to create a WbI.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "ImageRelease",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "defaultValues": {
+            "type": "",
+            "format": "",
+            "description": "Output only. The default values for configuration.",
+            "$ref": "DefaultValues",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "disableWorkbenchLegacyCreation": {
+            "type": "boolean",
+            "format": "",
+            "description": "Output only. Flag to disable the creation of legacy Workbench notebooks (User-managed notebooks and Google-managed notebooks).",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "supportedValues": {
+            "type": "",
+            "format": "",
+            "description": "Output only. The supported values for configuration.",
+            "$ref": "SupportedValues",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ContainerImage": {
+        "type": "object",
+        "format": "",
+        "description": "Definition of a container image for starting a notebook instance with the environment installed in a container.",
+        "$ref": "",
+        "properties": {
+          "repository": {
+            "type": "string",
+            "format": "",
+            "description": "Required. The path to the container image repository. For example: `gcr.io/{project_id}/{image_name}`",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "tag": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The tag of the container image. If not specified, this defaults to the latest tag.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "DataDisk": {
+        "type": "object",
+        "format": "",
+        "description": "An instance-attached disk resource.",
+        "$ref": "",
+        "properties": {
+          "diskEncryption": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Disk encryption method used on the boot and data disks, defaults to GMEK.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "DISK_ENCRYPTION_UNSPECIFIED",
+              "GMEK",
+              "CMEK"
+            ],
+            "readOnly": false
+          },
+          "diskSizeGb": {
+            "type": "string",
+            "format": "int64",
+            "description": "Optional. The size of the disk in GB attached to this VM instance, up to a maximum of 64000 GB (64 TB). If not specified, this defaults to 100.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "diskType": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Indicates the type of the disk.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "DISK_TYPE_UNSPECIFIED",
+              "PD_STANDARD",
+              "PD_SSD",
+              "PD_BALANCED",
+              "PD_EXTREME",
+              "HYPERDISK_BALANCED",
+              "HYPERDISK_EXTREME",
+              "HYPERDISK_THROUGHPUT",
+              "HYPERDISK_BALANCED_HIGH_AVAILABILITY",
+              "HYPERDISK_ML"
+            ],
+            "readOnly": false
+          },
+          "kmsKey": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The KMS key used to encrypt the disks, only applicable if disk_encryption is CMEK. Format: `projects/{project_id}/locations/{location}/keyRings/{key_ring_id}/cryptoKeys/{key_id}` Learn more about using your own encryption keys.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "resourcePolicies": {
+            "type": "array",
+            "format": "",
+            "description": "Optional. The resource policies to apply to the data disk.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "DefaultValues": {
+        "type": "object",
+        "format": "",
+        "description": "DefaultValues represents the default configuration values.",
+        "$ref": "",
+        "properties": {
+          "machineType": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The default machine type used by the backend if not provided by the user.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "DiagnoseInstanceRequest": {
+        "type": "object",
+        "format": "",
+        "description": "Request for creating a notebook instance diagnostic file.",
+        "$ref": "",
+        "properties": {
+          "diagnosticConfig": {
+            "type": "",
+            "format": "",
+            "description": "Required. Defines flags that are used to run the diagnostic tool",
+            "$ref": "DiagnosticConfig",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "timeoutMinutes": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Optional. Maximum amount of time in minutes before the operation times out.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "DiagnosticConfig": {
+        "type": "object",
+        "format": "",
+        "description": "Defines flags that are used to run the diagnostic tool",
+        "$ref": "",
+        "properties": {
+          "enableCopyHomeFilesFlag": {
+            "type": "boolean",
+            "format": "",
+            "description": "Optional. Enables flag to copy all `/home/jupyter` folder contents",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "enablePacketCaptureFlag": {
+            "type": "boolean",
+            "format": "",
+            "description": "Optional. Enables flag to capture packets from the instance for 30 seconds",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "enableRepairFlag": {
+            "type": "boolean",
+            "format": "",
+            "description": "Optional. Enables flag to repair service for instance",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "gcsBucket": {
+            "type": "string",
+            "format": "",
+            "description": "Required. User Cloud Storage bucket location (REQUIRED). Must be formatted with path prefix (`gs://$GCS_BUCKET`). Permissions: User Managed Notebooks: - storage.buckets.writer: Must be given to the project's service account attached to VM. Google Managed Notebooks: - storage.buckets.writer: Must be given to the project's service account or user credentials attached to VM depending on authentication mode. Cloud Storage bucket Log file will be written to `gs://$GCS_BUCKET/$RELATIVE_PATH/$VM_DATE_$TIME.tar.gz`",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "relativePath": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Defines the relative storage path in the Cloud Storage bucket where the diagnostic logs will be written: Default path will be the root directory of the Cloud Storage bucket (`gs://$GCS_BUCKET/$DATE_$TIME.tar.gz`) Example of full path where Log file will be written: `gs://$GCS_BUCKET/$RELATIVE_PATH/`",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Empty": {
+        "type": "object",
+        "format": "",
+        "description": "A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }",
+        "$ref": "",
+        "properties": {},
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Event": {
+        "type": "object",
+        "format": "",
+        "description": "The definition of an Event for a managed / semi-managed notebook instance.",
+        "$ref": "",
+        "properties": {
+          "details": {
+            "type": "object",
+            "format": "",
+            "description": "Optional. Event details. This field is used to pass event information.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "reportTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Optional. Event report time.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "type": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Event type.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "EVENT_TYPE_UNSPECIFIED",
+              "IDLE",
+              "HEARTBEAT",
+              "HEALTH",
+              "MAINTENANCE",
+              "METADATA_CHANGE"
+            ],
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Expr": {
+        "type": "object",
+        "format": "",
+        "description": "Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: \"Summary size limit\" description: \"Determines if a summary is less than 100 chars\" expression: \"document.summary.size() \u003c 100\" Example (Equality): title: \"Requestor is owner\" description: \"Determines if requestor is the document owner\" expression: \"document.owner == request.auth.claims.email\" Example (Logic): title: \"Public documents\" description: \"Determine whether the document should be publicly visible\" expression: \"document.type != 'private' \u0026\u0026 document.type != 'internal'\" Example (Data Manipulation): title: \"Notification string\" description: \"Create a notification string with a timestamp.\" expression: \"'New message received at ' + string(document.create_time)\" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.",
+        "$ref": "",
+        "properties": {
+          "description": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "expression": {
+            "type": "string",
+            "format": "",
+            "description": "Textual representation of an expression in Common Expression Language syntax.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "location": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "title": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GPUDriverConfig": {
+        "type": "object",
+        "format": "",
+        "description": "A GPU driver configuration",
+        "$ref": "",
+        "properties": {
+          "customGpuDriverPath": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Specify a custom Cloud Storage path where the GPU driver is stored. If not specified, we'll automatically choose from official GPU drivers.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "enableGpuDriver": {
+            "type": "boolean",
+            "format": "",
+            "description": "Optional. Whether the end user authorizes Google Cloud to install GPU driver on this VM instance. If this field is empty or set to false, the GPU driver won't be installed. Only applicable to instances with GPUs.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GceSetup": {
+        "type": "object",
+        "format": "",
+        "description": "The definition of how to configure a VM instance outside of Resources and Identity.",
+        "$ref": "",
+        "properties": {
+          "acceleratorConfigs": {
+            "type": "array",
+            "format": "",
+            "description": "Optional. The hardware accelerators used on this instance. If you use accelerators, make sure that your configuration has [enough vCPUs and memory to support the `machine_type` you have selected](https://cloud.google.com/compute/docs/gpus/#gpus-list). Currently supports only one accelerator configuration.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "AcceleratorConfig",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "bootDisk": {
+            "type": "",
+            "format": "",
+            "description": "Optional. The boot disk for the VM.",
+            "$ref": "BootDisk",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "confidentialInstanceConfig": {
+            "type": "",
+            "format": "",
+            "description": "Optional. Confidential instance configuration.",
+            "$ref": "ConfidentialInstanceConfig",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "containerImage": {
+            "type": "",
+            "format": "",
+            "description": "Optional. Use a container image to start the notebook instance.",
+            "$ref": "ContainerImage",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "dataDisks": {
+            "type": "array",
+            "format": "",
+            "description": "Optional. Data disks attached to the VM instance. Currently supports only one data disk.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "DataDisk",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "disablePublicIp": {
+            "type": "boolean",
+            "format": "",
+            "description": "Optional. If true, no external IP will be assigned to this VM instance.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "enableIpForwarding": {
+            "type": "boolean",
+            "format": "",
+            "description": "Optional. Flag to enable ip forwarding or not, default false/off. https://cloud.google.com/vpc/docs/using-routes#canipforward",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "gpuDriverConfig": {
+            "type": "",
+            "format": "",
+            "description": "Optional. Configuration for GPU drivers.",
+            "$ref": "GPUDriverConfig",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "instanceId": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The unique ID of the Compute Engine instance resource.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "machineType": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The machine type of the VM instance. https://cloud.google.com/compute/docs/machine-resource",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "metadata": {
+            "type": "object",
+            "format": "",
+            "description": "Optional. Custom metadata to apply to this instance.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "minCpuPlatform": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The minimum CPU platform to use for this instance. The list of valid values can be found in https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform#availablezones",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "networkInterfaces": {
+            "type": "array",
+            "format": "",
+            "description": "Optional. The network interfaces for the VM. Supports only one interface.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "NetworkInterface",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "reservationAffinity": {
+            "type": "",
+            "format": "",
+            "description": "Optional. Specifies the reservations that this instance can consume from.",
+            "$ref": "ReservationAffinity",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "serviceAccounts": {
+            "type": "array",
+            "format": "",
+            "description": "Optional. The service account that serves as an identity for the VM instance. Currently supports only one service account.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "ServiceAccount",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "shieldedInstanceConfig": {
+            "type": "",
+            "format": "",
+            "description": "Optional. Shielded VM configuration. [Images using supported Shielded VM features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm).",
+            "$ref": "ShieldedInstanceConfig",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "tags": {
+            "type": "array",
+            "format": "",
+            "description": "Optional. The Compute Engine network tags to add to runtime (see [Add network tags](https://cloud.google.com/vpc/docs/add-remove-network-tags)).",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "vmImage": {
+            "type": "",
+            "format": "",
+            "description": "Optional. Use a Compute Engine VM image to start the notebook instance.",
+            "$ref": "VmImage",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GenerateAccessTokenRequest": {
+        "type": "object",
+        "format": "",
+        "description": "Request message for generating an EUC for the instance owner.",
+        "$ref": "",
+        "properties": {
+          "vmToken": {
+            "type": "string",
+            "format": "",
+            "description": "Required. The VM identity token (a JWT) for authenticating the VM. https://cloud.google.com/compute/docs/instances/verifying-instance-identity",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GenerateAccessTokenResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Response message for generating an EUC for the instance owner.",
+        "$ref": "",
+        "properties": {
+          "access_token": {
+            "type": "string",
+            "format": "",
+            "description": "Short-lived access token string which may be used to access Google APIs.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "expires_in": {
+            "type": "integer",
+            "format": "int32",
+            "description": "The time in seconds when the access token expires. Typically that's 3600.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "scope": {
+            "type": "string",
+            "format": "",
+            "description": "Space-separated list of scopes contained in the returned token. https://cloud.google.com/docs/authentication/token-types#access-contents",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "token_type": {
+            "type": "string",
+            "format": "",
+            "description": "Type of the returned access token (e.g. \"Bearer\"). It specifies how the token must be used. Bearer tokens may be used by any entity without proof of identity.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ImageRelease": {
+        "type": "object",
+        "format": "",
+        "description": "ConfigImage represents an image release available to create a WbI",
+        "$ref": "",
+        "properties": {
+          "description": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The description of the image.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "imageFamily": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The image family of the image. (ex: workbench-instances or workbench-2603)",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "imageName": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The name of the image of the form workbench-instances-vYYYYmmdd--",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "releaseName": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The release of the image of the form m123",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Instance": {
+        "type": "object",
+        "format": "",
+        "description": "The definition of a notebook instance.",
+        "$ref": "",
+        "properties": {
+          "createTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. Instance creation time.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "creator": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. Email address of entity that sent original CreateInstance request.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "disableProxyAccess": {
+            "type": "boolean",
+            "format": "",
+            "description": "Optional. If true, the notebook instance will not register with the proxy.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "enableDeletionProtection": {
+            "type": "boolean",
+            "format": "",
+            "description": "Optional. If true, deletion protection will be enabled for this Workbench Instance. If false, deletion protection will be disabled for this Workbench Instance.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "enableManagedEuc": {
+            "type": "boolean",
+            "format": "",
+            "description": "Optional. Flag to enable managed end user credentials for the instance.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "enableThirdPartyIdentity": {
+            "type": "boolean",
+            "format": "",
+            "description": "Optional. Flag that specifies that a notebook can be accessed with third party identity provider.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "gceSetup": {
+            "type": "",
+            "format": "",
+            "description": "Optional. Compute Engine setup for the notebook. Uses notebook-defined fields.",
+            "$ref": "GceSetup",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "healthInfo": {
+            "type": "object",
+            "format": "",
+            "description": "Output only. Additional information about instance health. Example: healthInfo\": { \"docker_proxy_agent_status\": \"1\", \"docker_status\": \"1\", \"jupyterlab_api_status\": \"-1\", \"jupyterlab_status\": \"-1\", \"updated\": \"2020-10-18 09:40:03.573409\" }",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": true
+          },
+          "healthState": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. Instance health_state.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "HEALTH_STATE_UNSPECIFIED",
+              "HEALTHY",
+              "UNHEALTHY",
+              "AGENT_NOT_INSTALLED",
+              "AGENT_NOT_RUNNING"
+            ],
+            "readOnly": true
+          },
+          "id": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. Unique ID of the resource.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "instanceOwners": {
+            "type": "array",
+            "format": "",
+            "description": "Optional. The owner of this instance after creation. Format: `alias@example.com` Currently supports one owner only. If not specified, all of the service account users of your VM instance's service account can use the instance.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "labels": {
+            "type": "object",
+            "format": "",
+            "description": "Optional. Labels to apply to this instance. These can be later modified by the UpdateInstance method.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. Identifier. The name of this notebook instance. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}`",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "proxyUri": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The proxy endpoint that is used to access the Jupyter notebook.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "satisfiesPzi": {
+            "type": "boolean",
+            "format": "",
+            "description": "Output only. Reserved for future use for Zone Isolation.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "satisfiesPzs": {
+            "type": "boolean",
+            "format": "",
+            "description": "Output only. Reserved for future use for Zone Separation.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "state": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The state of this instance.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "STATE_UNSPECIFIED",
+              "STARTING",
+              "PROVISIONING",
+              "ACTIVE",
+              "STOPPING",
+              "STOPPED",
+              "DELETED",
+              "UPGRADING",
+              "INITIALIZING",
+              "SUSPENDING",
+              "SUSPENDED"
+            ],
+            "readOnly": true
+          },
+          "thirdPartyProxyUrl": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The workforce pools proxy endpoint that is used to access the Jupyter notebook.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "updateTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. Instance update time.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "upgradeHistory": {
+            "type": "array",
+            "format": "",
+            "description": "Output only. The upgrade history of this instance.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "UpgradeHistoryEntry",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ListInstancesResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Response for listing notebook instances.",
+        "$ref": "",
+        "properties": {
+          "instances": {
+            "type": "array",
+            "format": "",
+            "description": "A list of returned instances.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Instance",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "Page token that can be used to continue listing from the last result in the next list call.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "unreachable": {
+            "type": "array",
+            "format": "",
+            "description": "Unordered list. Locations that could not be reached. For example, ['projects/{project_id}/locations/us-west1-a', 'projects/{project_id}/locations/us-central1-b']. A ListInstancesResponse will only contain either instances or unreachables,",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ListLocationsResponse": {
+        "type": "object",
+        "format": "",
+        "description": "The response message for Locations.ListLocations.",
+        "$ref": "",
+        "properties": {
+          "locations": {
+            "type": "array",
+            "format": "",
+            "description": "A list of locations that matches the specified filter in the request.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Location",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "The standard List next-page token.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ListOperationsResponse": {
+        "type": "object",
+        "format": "",
+        "description": "The response message for Operations.ListOperations.",
+        "$ref": "",
+        "properties": {
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "The standard List next-page token.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "operations": {
+            "type": "array",
+            "format": "",
+            "description": "A list of operations that matches the specified filter in the request.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Operation",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "unreachable": {
+            "type": "array",
+            "format": "",
+            "description": "Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Location": {
+        "type": "object",
+        "format": "",
+        "description": "A resource that represents a Google Cloud location.",
+        "$ref": "",
+        "properties": {
+          "displayName": {
+            "type": "string",
+            "format": "",
+            "description": "The friendly name for this location, typically a nearby city name. For example, \"Tokyo\".",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "labels": {
+            "type": "object",
+            "format": "",
+            "description": "Cross-service attributes for the location. For example {\"cloud.googleapis.com/region\": \"us-east1\"}",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "locationId": {
+            "type": "string",
+            "format": "",
+            "description": "The canonical id for this location. For example: `\"us-east1\"`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "metadata": {
+            "type": "object",
+            "format": "",
+            "description": "Service-specific metadata. For example the available capacity at the given location.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "any",
+              "format": "",
+              "description": "Properties of the object. Contains field @type with type URL.",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "Resource name for the location, which may vary between implementations. For example: `\"projects/example-project/locations/us-east1\"`",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "NetworkInterface": {
+        "type": "object",
+        "format": "",
+        "description": "The definition of a network interface resource attached to a VM.",
+        "$ref": "",
+        "properties": {
+          "accessConfigs": {
+            "type": "array",
+            "format": "",
+            "description": "Optional. An array of configurations for this interface. Currently, only one access config, ONE_TO_ONE_NAT, is supported. If no accessConfigs specified, the instance will have an external internet access through an ephemeral external IP address.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "AccessConfig",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "network": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The name of the VPC that this VM instance is in. Format: `projects/{project_id}/global/networks/{network_id}`",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "nicType": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "NIC_TYPE_UNSPECIFIED",
+              "VIRTIO_NET",
+              "GVNIC"
+            ],
+            "readOnly": false
+          },
+          "subnet": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The name of the subnet that this VM instance is in. Format: `projects/{project_id}/regions/{region}/subnetworks/{subnetwork_id}`",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Operation": {
+        "type": "object",
+        "format": "",
+        "description": "This resource represents a long-running operation that is the result of a network API call.",
+        "$ref": "",
+        "properties": {
+          "done": {
+            "type": "boolean",
+            "format": "",
+            "description": "If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "error": {
+            "type": "",
+            "format": "",
+            "description": "The error result of the operation in case of failure or cancellation.",
+            "$ref": "Status",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "metadata": {
+            "type": "object",
+            "format": "",
+            "description": "Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "any",
+              "format": "",
+              "description": "Properties of the object. Contains field @type with type URL.",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "response": {
+            "type": "object",
+            "format": "",
+            "description": "The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "any",
+              "format": "",
+              "description": "Properties of the object. Contains field @type with type URL.",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "OperationMetadata": {
+        "type": "object",
+        "format": "",
+        "description": "Represents the metadata of the long-running operation.",
+        "$ref": "",
+        "properties": {
+          "apiVersion": {
+            "type": "string",
+            "format": "",
+            "description": "API version used to start the operation.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "createTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "The time the operation was created.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "endTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "The time the operation finished running.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "endpoint": {
+            "type": "string",
+            "format": "",
+            "description": "API endpoint name of this operation.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "requestedCancellation": {
+            "type": "boolean",
+            "format": "",
+            "description": "Identifies whether the user has requested cancellation of the operation. Operations that have successfully been cancelled have google.longrunning.Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "statusMessage": {
+            "type": "string",
+            "format": "",
+            "description": "Human-readable status of the operation, if any.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "target": {
+            "type": "string",
+            "format": "",
+            "description": "Server-defined resource path for the target of the operation.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "verb": {
+            "type": "string",
+            "format": "",
+            "description": "Name of the verb executed by the operation.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Policy": {
+        "type": "object",
+        "format": "",
+        "description": "An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { \"bindings\": [ { \"role\": \"roles/resourcemanager.organizationAdmin\", \"members\": [ \"user:mike@example.com\", \"group:admins@example.com\", \"domain:google.com\", \"serviceAccount:my-project-id@appspot.gserviceaccount.com\" ] }, { \"role\": \"roles/resourcemanager.organizationViewer\", \"members\": [ \"user:eve@example.com\" ], \"condition\": { \"title\": \"expirable access\", \"description\": \"Does not grant access after Sep 2020\", \"expression\": \"request.time \u003c timestamp('2020-10-01T00:00:00.000Z')\", } } ], \"etag\": \"BwWWja0YfJA=\", \"version\": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time \u003c timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/).",
+        "$ref": "",
+        "properties": {
+          "bindings": {
+            "type": "array",
+            "format": "",
+            "description": "Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Binding",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "etag": {
+            "type": "string",
+            "format": "byte",
+            "description": "`etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "version": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ReportInstanceInfoSystemRequest": {
+        "type": "object",
+        "format": "",
+        "description": "Request for notebook instances to report information to Notebooks API.",
+        "$ref": "",
+        "properties": {
+          "event": {
+            "type": "",
+            "format": "",
+            "description": "Required. The Event to be reported.",
+            "$ref": "Event",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "vmId": {
+            "type": "string",
+            "format": "",
+            "description": "Required. The VM hardware token for authenticating the VM. https://cloud.google.com/compute/docs/instances/verifying-instance-identity",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ReservationAffinity": {
+        "type": "object",
+        "format": "",
+        "description": "A reservation that an instance can consume from.",
+        "$ref": "",
+        "properties": {
+          "consumeReservationType": {
+            "type": "string",
+            "format": "",
+            "description": "Required. Specifies the type of reservation from which this instance can consume resources: RESERVATION_ANY (default), RESERVATION_SPECIFIC, or RESERVATION_NONE. See Consuming reserved instances for examples.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "RESERVATION_UNSPECIFIED",
+              "RESERVATION_NONE",
+              "RESERVATION_ANY",
+              "RESERVATION_SPECIFIC"
+            ],
+            "readOnly": false
+          },
+          "key": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Corresponds to the label key of a reservation resource. To target a RESERVATION_SPECIFIC by name, use compute.googleapis.com/reservation-name as the key and specify the name of your reservation as its value.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "values": {
+            "type": "array",
+            "format": "",
+            "description": "Optional. Corresponds to the label values of a reservation resource. This can be either a name to a reservation in the same project or \"projects/different-project/reservations/some-reservation-name\" to target a shared reservation in the same zone but in a different project.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ResetInstanceRequest": {
+        "type": "object",
+        "format": "",
+        "description": "Request for resetting a notebook instance",
+        "$ref": "",
+        "properties": {},
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ResizeDiskRequest": {
+        "type": "object",
+        "format": "",
+        "description": "Request for resizing the notebook instance disks",
+        "$ref": "",
+        "properties": {
+          "bootDisk": {
+            "type": "",
+            "format": "",
+            "description": "Required. The boot disk to be resized. Only disk_size_gb will be used.",
+            "$ref": "BootDisk",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "dataDisk": {
+            "type": "",
+            "format": "",
+            "description": "Required. The data disk to be resized. Only disk_size_gb will be used.",
+            "$ref": "DataDisk",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "RestoreInstanceRequest": {
+        "type": "object",
+        "format": "",
+        "description": "Request for restoring the notebook instance from a BackupSource.",
+        "$ref": "",
+        "properties": {
+          "snapshot": {
+            "type": "",
+            "format": "",
+            "description": "Snapshot to be used for restore.",
+            "$ref": "Snapshot",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "RollbackInstanceRequest": {
+        "type": "object",
+        "format": "",
+        "description": "Request for rollbacking a notebook instance",
+        "$ref": "",
+        "properties": {
+          "revisionId": {
+            "type": "string",
+            "format": "",
+            "description": "Required. Output only. Revision Id",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "targetSnapshot": {
+            "type": "string",
+            "format": "",
+            "description": "Required. The snapshot for rollback. Example: \"projects/test-project/global/snapshots/krwlzipynril\".",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ServiceAccount": {
+        "type": "object",
+        "format": "",
+        "description": "A service account that acts as an identity.",
+        "$ref": "",
+        "properties": {
+          "email": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Email address of the service account.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "scopes": {
+            "type": "array",
+            "format": "",
+            "description": "Output only. The list of scopes to be made available for this service account. Set by the CLH to https://www.googleapis.com/auth/cloud-platform",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "SetIamPolicyRequest": {
+        "type": "object",
+        "format": "",
+        "description": "Request message for `SetIamPolicy` method.",
+        "$ref": "",
+        "properties": {
+          "policy": {
+            "type": "",
+            "format": "",
+            "description": "REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them.",
+            "$ref": "Policy",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ShieldedInstanceConfig": {
+        "type": "object",
+        "format": "",
+        "description": "A set of Shielded Instance options. See [Images using supported Shielded VM features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm). Not all combinations are valid.",
+        "$ref": "",
+        "properties": {
+          "enableIntegrityMonitoring": {
+            "type": "boolean",
+            "format": "",
+            "description": "Optional. Defines whether the VM instance has integrity monitoring enabled. Enables monitoring and attestation of the boot integrity of the VM instance. The attestation is performed against the integrity policy baseline. This baseline is initially derived from the implicitly trusted boot image when the VM instance is created.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "enableSecureBoot": {
+            "type": "boolean",
+            "format": "",
+            "description": "Optional. Defines whether the VM instance has Secure Boot enabled. Secure Boot helps ensure that the system only runs authentic software by verifying the digital signature of all boot components, and halting the boot process if signature verification fails. Disabled by default.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "enableVtpm": {
+            "type": "boolean",
+            "format": "",
+            "description": "Optional. Defines whether the VM instance has the vTPM enabled.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Snapshot": {
+        "type": "object",
+        "format": "",
+        "description": "Snapshot represents the snapshot of the data disk used to restore the Workbench Instance from. Refers to: compute/v1/projects/{project_id}/global/snapshots/{snapshot_id}",
+        "$ref": "",
+        "properties": {
+          "projectId": {
+            "type": "string",
+            "format": "",
+            "description": "Required. The project ID of the snapshot.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "snapshotId": {
+            "type": "string",
+            "format": "",
+            "description": "Required. The ID of the snapshot.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "StartInstanceRequest": {
+        "type": "object",
+        "format": "",
+        "description": "Request for starting a notebook instance",
+        "$ref": "",
+        "properties": {},
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Status": {
+        "type": "object",
+        "format": "",
+        "description": "The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).",
+        "$ref": "",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32",
+            "description": "The status code, which should be an enum value of google.rpc.Code.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "details": {
+            "type": "array",
+            "format": "",
+            "description": "A list of messages that carry the error details. There is a common set of message types for APIs to use.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "object",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": {
+                "type": "any",
+                "format": "",
+                "description": "Properties of the object. Contains field @type with type URL.",
+                "$ref": "",
+                "properties": null,
+                "items": null,
+                "additionalProperties": null,
+                "enum": null,
+                "readOnly": false
+              },
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "message": {
+            "type": "string",
+            "format": "",
+            "description": "A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "StopInstanceRequest": {
+        "type": "object",
+        "format": "",
+        "description": "Request for stopping a notebook instance",
+        "$ref": "",
+        "properties": {},
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "SupportedValues": {
+        "type": "object",
+        "format": "",
+        "description": "SupportedValues represents the values supported by the configuration.",
+        "$ref": "",
+        "properties": {
+          "acceleratorTypes": {
+            "type": "array",
+            "format": "",
+            "description": "Output only. The accelerator types supported by WbI.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "machineTypes": {
+            "type": "array",
+            "format": "",
+            "description": "Output only. The machine types supported by WbI.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "TestIamPermissionsRequest": {
+        "type": "object",
+        "format": "",
+        "description": "Request message for `TestIamPermissions` method.",
+        "$ref": "",
+        "properties": {
+          "permissions": {
+            "type": "array",
+            "format": "",
+            "description": "The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "TestIamPermissionsResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Response message for `TestIamPermissions` method.",
+        "$ref": "",
+        "properties": {
+          "permissions": {
+            "type": "array",
+            "format": "",
+            "description": "A subset of `TestPermissionsRequest.permissions` that the caller is allowed.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "UpgradeHistoryEntry": {
+        "type": "object",
+        "format": "",
+        "description": "The entry of VM image upgrade history.",
+        "$ref": "",
+        "properties": {
+          "action": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Action. Rolloback or Upgrade.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "ACTION_UNSPECIFIED",
+              "UPGRADE",
+              "ROLLBACK"
+            ],
+            "readOnly": false
+          },
+          "containerImage": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The container image before this instance upgrade.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "createTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Immutable. The time that this instance upgrade history entry is created.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "framework": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The framework of this notebook instance.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "snapshot": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The snapshot of the boot disk of this notebook instance before upgrade.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "state": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The state of this instance upgrade history entry.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "STATE_UNSPECIFIED",
+              "STARTED",
+              "SUCCEEDED",
+              "FAILED"
+            ],
+            "readOnly": true
+          },
+          "targetVersion": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Target VM Version, like m63.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "version": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The version of the notebook instance before this upgrade.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "vmImage": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The VM image before this instance upgrade.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "UpgradeInstanceRequest": {
+        "type": "object",
+        "format": "",
+        "description": "Request for upgrading a notebook instance",
+        "$ref": "",
+        "properties": {
+          "imageFamily": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The Compute Engine image family resource name to upgrade to. Format: `projects/{project_id}/global/images/family/{image_family}` If specified, the instance will be upgraded to the latest image in the specified image family, allowing upgrades across image families. If not specified, the instance will be upgraded to the latest image in its current image family.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "UpgradeInstanceSystemRequest": {
+        "type": "object",
+        "format": "",
+        "description": "Request for upgrading a notebook instance from within the VM",
+        "$ref": "",
+        "properties": {
+          "vmId": {
+            "type": "string",
+            "format": "",
+            "description": "Required. The VM hardware token for authenticating the VM. https://cloud.google.com/compute/docs/instances/verifying-instance-identity",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "VmImage": {
+        "type": "object",
+        "format": "",
+        "description": "Definition of a custom Compute Engine virtual machine image for starting a notebook instance with the environment installed directly on the VM.",
+        "$ref": "",
+        "properties": {
+          "family": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Use this VM image family to find the image; the newest image in this family will be used.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "imageDescription": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. A human-readable description of the image running on the instance (for example, \"Debian 11, Python 3.10\"), derived at read time from the image release configuration (the source of truth). Set to \"Custom\" for unrecognized boot-disk images.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Use VM image name to find the image.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "project": {
+            "type": "string",
+            "format": "",
+            "description": "Required. The name of the Google Cloud project that this VM image belongs to. Format: `{project_id}`",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      }
+    },
+    "resources": {
+      "projects": {
+        "methods": null,
+        "resources": {
+          "locations": {
+            "methods": {
+              "get": {
+                "id": "notebooks.projects.locations.get",
+                "httpMethod": "GET",
+                "path": "v2/{+name}",
+                "flatPath": "v2/projects/{projectsId}/locations/{locationsId}",
+                "description": "Gets information about a location.",
+                "parameters": {
+                  "name": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  }
+                },
+                "parameterOrder": [
+                  "name"
+                ],
+                "request": null,
+                "response": {
+                  "$ref": "Location"
+                }
+              },
+              "list": {
+                "id": "notebooks.projects.locations.list",
+                "httpMethod": "GET",
+                "path": "v2/{+name}/locations",
+                "flatPath": "v2/projects/{projectsId}/locations",
+                "description": "Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the ListLocationsRequest.name field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version.",
+                "parameters": {
+                  "extraLocationTypes": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false
+                  },
+                  "filter": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false
+                  },
+                  "name": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  },
+                  "pageSize": {
+                    "type": "integer",
+                    "location": "query",
+                    "required": false
+                  },
+                  "pageToken": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false
+                  }
+                },
+                "parameterOrder": [
+                  "name"
+                ],
+                "request": null,
+                "response": {
+                  "$ref": "ListLocationsResponse"
+                }
+              }
+            },
+            "resources": {
+              "instances": {
+                "methods": {
+                  "checkAuthorization": {
+                    "id": "notebooks.projects.locations.instances.checkAuthorization",
+                    "httpMethod": "POST",
+                    "path": "v2/{+name}:checkAuthorization",
+                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}:checkAuthorization",
+                    "description": "Initiated by Cloud Console for Oauth consent flow for Workbench Instances. Do not use this method directly. Design doc: go/wbi-euc:auth-dd",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": {
+                      "$ref": "CheckAuthorizationRequest"
+                    },
+                    "response": {
+                      "$ref": "CheckAuthorizationResponse"
+                    }
+                  },
+                  "checkUpgradability": {
+                    "id": "notebooks.projects.locations.instances.checkUpgradability",
+                    "httpMethod": "GET",
+                    "path": "v2/{+notebookInstance}:checkUpgradability",
+                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}:checkUpgradability",
+                    "description": "Checks whether a notebook instance is upgradable.",
+                    "parameters": {
+                      "notebookInstance": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "notebookInstance"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "CheckInstanceUpgradabilityResponse"
+                    }
+                  },
+                  "create": {
+                    "id": "notebooks.projects.locations.instances.create",
+                    "httpMethod": "POST",
+                    "path": "v2/{+parent}/instances",
+                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/instances",
+                    "description": "Creates a new Instance in a given project and location.",
+                    "parameters": {
+                      "instanceId": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "parent": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      },
+                      "requestId": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      }
+                    },
+                    "parameterOrder": [
+                      "parent"
+                    ],
+                    "request": {
+                      "$ref": "Instance"
+                    },
+                    "response": {
+                      "$ref": "Operation"
+                    }
+                  },
+                  "delete": {
+                    "id": "notebooks.projects.locations.instances.delete",
+                    "httpMethod": "DELETE",
+                    "path": "v2/{+name}",
+                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}",
+                    "description": "Deletes a single Instance.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      },
+                      "requestId": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "Operation"
+                    }
+                  },
+                  "diagnose": {
+                    "id": "notebooks.projects.locations.instances.diagnose",
+                    "httpMethod": "POST",
+                    "path": "v2/{+name}:diagnose",
+                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}:diagnose",
+                    "description": "Creates a Diagnostic File and runs Diagnostic Tool given an Instance.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": {
+                      "$ref": "DiagnoseInstanceRequest"
+                    },
+                    "response": {
+                      "$ref": "Operation"
+                    }
+                  },
+                  "generateAccessToken": {
+                    "id": "notebooks.projects.locations.instances.generateAccessToken",
+                    "httpMethod": "POST",
+                    "path": "v2/{+name}:generateAccessToken",
+                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}:generateAccessToken",
+                    "description": "Called by VM to return an EUC for the instance owner. Do not use this method directly. Design doc: go/wbi-euc:dd",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": {
+                      "$ref": "GenerateAccessTokenRequest"
+                    },
+                    "response": {
+                      "$ref": "GenerateAccessTokenResponse"
+                    }
+                  },
+                  "get": {
+                    "id": "notebooks.projects.locations.instances.get",
+                    "httpMethod": "GET",
+                    "path": "v2/{+name}",
+                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}",
+                    "description": "Gets details of a single Instance.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "Instance"
+                    }
+                  },
+                  "getConfig": {
+                    "id": "notebooks.projects.locations.instances.getConfig",
+                    "httpMethod": "GET",
+                    "path": "v2/{+name}/instances:getConfig",
+                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/instances:getConfig",
+                    "description": "Returns various configuration parameters.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "Config"
+                    }
+                  },
+                  "getIamPolicy": {
+                    "id": "notebooks.projects.locations.instances.getIamPolicy",
+                    "httpMethod": "GET",
+                    "path": "v2/{+resource}:getIamPolicy",
+                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}:getIamPolicy",
+                    "description": "Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.",
+                    "parameters": {
+                      "options.requestedPolicyVersion": {
+                        "type": "integer",
+                        "location": "query",
+                        "required": false
+                      },
+                      "resource": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "resource"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "Policy"
+                    }
+                  },
+                  "list": {
+                    "id": "notebooks.projects.locations.instances.list",
+                    "httpMethod": "GET",
+                    "path": "v2/{+parent}/instances",
+                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/instances",
+                    "description": "Lists instances in a given project and location.",
+                    "parameters": {
+                      "filter": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "orderBy": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "pageSize": {
+                        "type": "integer",
+                        "location": "query",
+                        "required": false
+                      },
+                      "pageToken": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "parent": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "parent"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "ListInstancesResponse"
+                    }
+                  },
+                  "patch": {
+                    "id": "notebooks.projects.locations.instances.patch",
+                    "httpMethod": "PATCH",
+                    "path": "v2/{+name}",
+                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}",
+                    "description": "UpdateInstance updates an Instance.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      },
+                      "requestId": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "updateMask": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": {
+                      "$ref": "Instance"
+                    },
+                    "response": {
+                      "$ref": "Operation"
+                    }
+                  },
+                  "reportInfoSystem": {
+                    "id": "notebooks.projects.locations.instances.reportInfoSystem",
+                    "httpMethod": "POST",
+                    "path": "v2/{+name}:reportInfoSystem",
+                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}:reportInfoSystem",
+                    "description": "Allows notebook instances to report their latest instance information to the Notebooks API server. The server will merge the reported information to the instance metadata store. Do not use this method directly.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": {
+                      "$ref": "ReportInstanceInfoSystemRequest"
+                    },
+                    "response": {
+                      "$ref": "Operation"
+                    }
+                  },
+                  "reset": {
+                    "id": "notebooks.projects.locations.instances.reset",
+                    "httpMethod": "POST",
+                    "path": "v2/{+name}:reset",
+                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}:reset",
+                    "description": "Resets a notebook instance.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": {
+                      "$ref": "ResetInstanceRequest"
+                    },
+                    "response": {
+                      "$ref": "Operation"
+                    }
+                  },
+                  "resizeDisk": {
+                    "id": "notebooks.projects.locations.instances.resizeDisk",
+                    "httpMethod": "POST",
+                    "path": "v2/{+notebookInstance}:resizeDisk",
+                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}:resizeDisk",
+                    "description": "Resize a notebook instance disk to a higher capacity.",
+                    "parameters": {
+                      "notebookInstance": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "notebookInstance"
+                    ],
+                    "request": {
+                      "$ref": "ResizeDiskRequest"
+                    },
+                    "response": {
+                      "$ref": "Operation"
+                    }
+                  },
+                  "restore": {
+                    "id": "notebooks.projects.locations.instances.restore",
+                    "httpMethod": "POST",
+                    "path": "v2/{+name}:restore",
+                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}:restore",
+                    "description": "RestoreInstance restores an Instance from a BackupSource.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": {
+                      "$ref": "RestoreInstanceRequest"
+                    },
+                    "response": {
+                      "$ref": "Operation"
+                    }
+                  },
+                  "rollback": {
+                    "id": "notebooks.projects.locations.instances.rollback",
+                    "httpMethod": "POST",
+                    "path": "v2/{+name}:rollback",
+                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}:rollback",
+                    "description": "Rollbacks a notebook instance to the previous version.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": {
+                      "$ref": "RollbackInstanceRequest"
+                    },
+                    "response": {
+                      "$ref": "Operation"
+                    }
+                  },
+                  "setIamPolicy": {
+                    "id": "notebooks.projects.locations.instances.setIamPolicy",
+                    "httpMethod": "POST",
+                    "path": "v2/{+resource}:setIamPolicy",
+                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}:setIamPolicy",
+                    "description": "Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.",
+                    "parameters": {
+                      "resource": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "resource"
+                    ],
+                    "request": {
+                      "$ref": "SetIamPolicyRequest"
+                    },
+                    "response": {
+                      "$ref": "Policy"
+                    }
+                  },
+                  "start": {
+                    "id": "notebooks.projects.locations.instances.start",
+                    "httpMethod": "POST",
+                    "path": "v2/{+name}:start",
+                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}:start",
+                    "description": "Starts a notebook instance.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": {
+                      "$ref": "StartInstanceRequest"
+                    },
+                    "response": {
+                      "$ref": "Operation"
+                    }
+                  },
+                  "stop": {
+                    "id": "notebooks.projects.locations.instances.stop",
+                    "httpMethod": "POST",
+                    "path": "v2/{+name}:stop",
+                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}:stop",
+                    "description": "Stops a notebook instance.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": {
+                      "$ref": "StopInstanceRequest"
+                    },
+                    "response": {
+                      "$ref": "Operation"
+                    }
+                  },
+                  "testIamPermissions": {
+                    "id": "notebooks.projects.locations.instances.testIamPermissions",
+                    "httpMethod": "POST",
+                    "path": "v2/{+resource}:testIamPermissions",
+                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}:testIamPermissions",
+                    "description": "Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may \"fail open\" without warning.",
+                    "parameters": {
+                      "resource": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "resource"
+                    ],
+                    "request": {
+                      "$ref": "TestIamPermissionsRequest"
+                    },
+                    "response": {
+                      "$ref": "TestIamPermissionsResponse"
+                    }
+                  },
+                  "upgrade": {
+                    "id": "notebooks.projects.locations.instances.upgrade",
+                    "httpMethod": "POST",
+                    "path": "v2/{+name}:upgrade",
+                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}:upgrade",
+                    "description": "Upgrades a notebook instance to the latest version.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": {
+                      "$ref": "UpgradeInstanceRequest"
+                    },
+                    "response": {
+                      "$ref": "Operation"
+                    }
+                  },
+                  "upgradeSystem": {
+                    "id": "notebooks.projects.locations.instances.upgradeSystem",
+                    "httpMethod": "POST",
+                    "path": "v2/{+name}:upgradeSystem",
+                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}:upgradeSystem",
+                    "description": "Allows notebook instances to upgrade themselves. Do not use this method directly.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": {
+                      "$ref": "UpgradeInstanceSystemRequest"
+                    },
+                    "response": {
+                      "$ref": "Operation"
+                    }
+                  }
+                },
+                "resources": null
+              },
+              "operations": {
+                "methods": {
+                  "cancel": {
+                    "id": "notebooks.projects.locations.operations.cancel",
+                    "httpMethod": "POST",
+                    "path": "v2/{+name}:cancel",
+                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}:cancel",
+                    "description": "Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": {
+                      "$ref": "CancelOperationRequest"
+                    },
+                    "response": {
+                      "$ref": "Empty"
+                    }
+                  },
+                  "delete": {
+                    "id": "notebooks.projects.locations.operations.delete",
+                    "httpMethod": "DELETE",
+                    "path": "v2/{+name}",
+                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
+                    "description": "Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "Empty"
+                    }
+                  },
+                  "get": {
+                    "id": "notebooks.projects.locations.operations.get",
+                    "httpMethod": "GET",
+                    "path": "v2/{+name}",
+                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
+                    "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "Operation"
+                    }
+                  },
+                  "list": {
+                    "id": "notebooks.projects.locations.operations.list",
+                    "httpMethod": "GET",
+                    "path": "v2/{+name}/operations",
+                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/operations",
+                    "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.",
+                    "parameters": {
+                      "filter": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      },
+                      "pageSize": {
+                        "type": "integer",
+                        "location": "query",
+                        "required": false
+                      },
+                      "pageToken": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "returnPartialSuccess": {
+                        "type": "boolean",
+                        "location": "query",
+                        "required": false
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "ListOperationsResponse"
+                    }
+                  }
+                },
+                "resources": null
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,3115 @@
+{
+  "schema_source": "discovery_docs",
+  "mode": "data_source",
+  "auth": {
+    "Type": "",
+    "Params": null
+  },
+  "base_url": "https://androiddeviceprovisioning.googleapis.com",
+  "retry": {
+    "MaxAttempts": 0,
+    "InitialBackoff": "",
+    "MaxBackoff": "",
+    "Jitter": null,
+    "RespectRetryAfter": null,
+    "RateLimitResetHeader": ""
+  },
+  "timeouts": {
+    "Create": "",
+    "Read": "",
+    "Update": "",
+    "Delete": "",
+    "Default": ""
+  },
+  "wire_name": "google_androiddeviceprovisioning",
+  "raw_spec": {
+    "name": "androiddeviceprovisioning",
+    "revision": "20260826",
+    "discoveryVersion": "v1",
+    "baseUrl": "https://androiddeviceprovisioning.googleapis.com/",
+    "rootUrl": "https://androiddeviceprovisioning.googleapis.com/",
+    "servicePath": "",
+    "schemas": {
+      "ClaimDeviceRequest": {
+        "type": "object",
+        "format": "",
+        "description": "Request message to claim a device on behalf of a customer.",
+        "$ref": "",
+        "properties": {
+          "configurationId": {
+            "type": "string",
+            "format": "int64",
+            "description": "Optional. The ID of the configuration applied to the device section.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "customerId": {
+            "type": "string",
+            "format": "int64",
+            "description": "The ID of the customer for whom the device is being claimed.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "deviceIdentifier": {
+            "type": "",
+            "format": "",
+            "description": "Required. Required. The device identifier of the device to claim.",
+            "$ref": "DeviceIdentifier",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "deviceMetadata": {
+            "type": "",
+            "format": "",
+            "description": "Optional. The metadata to attach to the device.",
+            "$ref": "DeviceMetadata",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "googleWorkspaceCustomerId": {
+            "type": "string",
+            "format": "",
+            "description": "The Google Workspace customer ID.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "preProvisioningToken": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Must and can only be set for Chrome OS devices.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "sectionType": {
+            "type": "string",
+            "format": "",
+            "description": "Required. The section type of the device's provisioning record.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "SECTION_TYPE_UNSPECIFIED",
+              "SECTION_TYPE_SIM_LOCK",
+              "SECTION_TYPE_ZERO_TOUCH"
+            ],
+            "readOnly": false
+          },
+          "simlockProfileId": {
+            "type": "string",
+            "format": "int64",
+            "description": "Optional. Must and can only be set when DeviceProvisioningSectionType is SECTION_TYPE_SIM_LOCK. The unique identifier of the SimLock profile.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ClaimDeviceResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Response message containing device id of the claim.",
+        "$ref": "",
+        "properties": {
+          "deviceId": {
+            "type": "string",
+            "format": "int64",
+            "description": "The device ID of the claimed device.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "deviceName": {
+            "type": "string",
+            "format": "",
+            "description": "The resource name of the device in the format `partners/[PARTNER_ID]/devices/[DEVICE_ID]`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ClaimDevicesRequest": {
+        "type": "object",
+        "format": "",
+        "description": "Request to claim devices asynchronously in batch. Claiming a device adds the device to zero-touch enrollment and shows the device in the customer's view of the portal.",
+        "$ref": "",
+        "properties": {
+          "claims": {
+            "type": "array",
+            "format": "",
+            "description": "Required. A list of device claims.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "PartnerClaim",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Company": {
+        "type": "object",
+        "format": "",
+        "description": "A reseller, vendor, or customer in the zero-touch reseller and customer APIs.",
+        "$ref": "",
+        "properties": {
+          "adminEmails": {
+            "type": "array",
+            "format": "",
+            "description": "Optional. Email address of customer's users in the admin role. Each email address must be associated with a Google Account.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "companyId": {
+            "type": "string",
+            "format": "int64",
+            "description": "Output only. The ID of the company. Assigned by the server.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "companyName": {
+            "type": "string",
+            "format": "",
+            "description": "Required. The name of the company. For example _XYZ Corp_. Displayed to the company's employees in the zero-touch enrollment portal.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "googleWorkspaceAccount": {
+            "type": "",
+            "format": "",
+            "description": "Output only. The Google Workspace account associated with this customer. Only used for customer Companies.",
+            "$ref": "GoogleWorkspaceAccount",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "languageCode": {
+            "type": "string",
+            "format": "",
+            "description": "Input only. The preferred locale of the customer represented as a BCP47 language code. This field is validated on input and requests containing unsupported language codes will be rejected. Supported language codes: Arabic (ar) Chinese (Hong Kong) (zh-HK) Chinese (Simplified) (zh-CN) Chinese (Traditional) (zh-TW) Czech (cs) Danish (da) Dutch (nl) English (UK) (en-GB) English (US) (en-US) Filipino (fil) Finnish (fi) French (fr) German (de) Hebrew (iw) Hindi (hi) Hungarian (hu) Indonesian (id) Italian (it) Japanese (ja) Korean (ko) Norwegian (Bokmal) (no) Polish (pl) Portuguese (Brazil) (pt-BR) Portuguese (Portugal) (pt-PT) Russian (ru) Spanish (es) Spanish (Latin America) (es-419) Swedish (sv) Thai (th) Turkish (tr) Ukrainian (uk) Vietnamese (vi)",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The API resource name of the company. The resource name is one of the following formats: * `partners/[PARTNER_ID]/customers/[CUSTOMER_ID]` * `partners/[PARTNER_ID]/vendors/[VENDOR_ID]` * `partners/[PARTNER_ID]/vendors/[VENDOR_ID]/customers/[CUSTOMER_ID]` Assigned by the server.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "ownerEmails": {
+            "type": "array",
+            "format": "",
+            "description": "Required. Input only. Email address of customer's users in the owner role. At least one `owner_email` is required. Owners share the same access as admins but can also add, delete, and edit your organization's portal users.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "skipWelcomeEmail": {
+            "type": "boolean",
+            "format": "",
+            "description": "Input only. Deprecated: This field is no longer supported and is ignored by the server.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "termsStatus": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. Whether any user from the company has accepted the latest Terms of Service (ToS). See TermsStatus.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "TERMS_STATUS_UNSPECIFIED",
+              "TERMS_STATUS_NOT_ACCEPTED",
+              "TERMS_STATUS_ACCEPTED",
+              "TERMS_STATUS_STALE"
+            ],
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Configuration": {
+        "type": "object",
+        "format": "",
+        "description": "A configuration collects the provisioning options for Android devices. Each configuration combines the following: * The EMM device policy controller (DPC) installed on the devices. * EMM policies enforced on the devices. * Metadata displayed on the device to help users during setup. Customers can add as many configurations as they need. However, zero-touch enrollment works best when a customer sets a default configuration that's applied to any new devices the organization purchases.",
+        "$ref": "",
+        "properties": {
+          "companyName": {
+            "type": "string",
+            "format": "",
+            "description": "Required. The name of the organization. Zero-touch enrollment shows this organization name to device users during device provisioning.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "configurationId": {
+            "type": "string",
+            "format": "int64",
+            "description": "Output only. The ID of the configuration. Assigned by the server.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "configurationName": {
+            "type": "string",
+            "format": "",
+            "description": "Required. A short name that describes the configuration's purpose. For example, _Sales team_ or _Temporary employees_. The zero-touch enrollment portal displays this name to IT admins.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "contactEmail": {
+            "type": "string",
+            "format": "",
+            "description": "Required. The email address that device users can contact to get help. Zero-touch enrollment shows this email address to device users before device provisioning. The value is validated on input.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "contactPhone": {
+            "type": "string",
+            "format": "",
+            "description": "Required. The telephone number that device users can call, using another device, to get help. Zero-touch enrollment shows this number to device users before device provisioning. Accepts numerals, spaces, the plus sign, hyphens, and parentheses.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "customMessage": {
+            "type": "string",
+            "format": "",
+            "description": "A message, containing one or two sentences, to help device users get help or give them more details about what’s happening to their device. Zero-touch enrollment shows this message before the device is provisioned.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "dpcExtras": {
+            "type": "string",
+            "format": "",
+            "description": "The JSON-formatted EMM provisioning extras that are passed to the DPC.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "dpcResourcePath": {
+            "type": "string",
+            "format": "",
+            "description": "Required. The resource name of the selected DPC (device policy controller) in the format `customers/[CUSTOMER_ID]/dpcs/*`. To list the supported DPCs, call `customers.dpcs.list`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "forcedResetTime": {
+            "type": "string",
+            "format": "google-duration",
+            "description": "Optional. The timeout before forcing factory reset the device if the device doesn't go through provisioning in the setup wizard, usually due to lack of network connectivity during setup wizard. Ranges from 0-6 hours, with 2 hours being the default if unset.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "isDefault": {
+            "type": "boolean",
+            "format": "",
+            "description": "Required. Whether this is the default configuration that zero-touch enrollment applies to any new devices the organization purchases in the future. Only one customer configuration can be the default. Setting this value to `true`, changes the previous default configuration's `isDefault` value to `false`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The API resource name in the format `customers/[CUSTOMER_ID]/configurations/[CONFIGURATION_ID]`. Assigned by the server.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "CreateCustomerRequest": {
+        "type": "object",
+        "format": "",
+        "description": "Request message to create a customer.",
+        "$ref": "",
+        "properties": {
+          "customer": {
+            "type": "",
+            "format": "",
+            "description": "Required. The company data to populate the new customer. Must contain a value for `companyName` and at least one `owner_email` that's associated with a Google Account. The values for `companyId` and `name` must be empty.",
+            "$ref": "Company",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "CustomerApplyConfigurationRequest": {
+        "type": "object",
+        "format": "",
+        "description": "Request message for customer to assign a configuration to device.",
+        "$ref": "",
+        "properties": {
+          "configuration": {
+            "type": "string",
+            "format": "",
+            "description": "Required. The configuration applied to the device in the format `customers/[CUSTOMER_ID]/configurations/[CONFIGURATION_ID]`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "device": {
+            "type": "",
+            "format": "",
+            "description": "Required. The device the configuration is applied to. There are custom validations in ApplyConfigurationRequestValidator",
+            "$ref": "DeviceReference",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "CustomerListConfigurationsResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Response message of customer's listing configuration.",
+        "$ref": "",
+        "properties": {
+          "configurations": {
+            "type": "array",
+            "format": "",
+            "description": "The configurations.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Configuration",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "CustomerListCustomersResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Response message for listing my customers.",
+        "$ref": "",
+        "properties": {
+          "customers": {
+            "type": "array",
+            "format": "",
+            "description": "The customer accounts the calling user is a member of.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Company",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "A token used to access the next page of results. Omitted if no further results are available.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "CustomerListDevicesResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Response message of customer's liting devices.",
+        "$ref": "",
+        "properties": {
+          "devices": {
+            "type": "array",
+            "format": "",
+            "description": "The customer's devices.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Device",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "A token used to access the next page of results. Omitted if no further results are available.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "CustomerListDpcsResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Response message of customer's listing DPCs.",
+        "$ref": "",
+        "properties": {
+          "dpcs": {
+            "type": "array",
+            "format": "",
+            "description": "The list of DPCs available to the customer that support zero-touch enrollment.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Dpc",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "CustomerRemoveConfigurationRequest": {
+        "type": "object",
+        "format": "",
+        "description": "Request message for customer to remove the configuration from device.",
+        "$ref": "",
+        "properties": {
+          "device": {
+            "type": "",
+            "format": "",
+            "description": "Required. The device to remove the configuration from. There are custom validations in RemoveConfigurationRequestValidator",
+            "$ref": "DeviceReference",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "CustomerUnclaimDeviceRequest": {
+        "type": "object",
+        "format": "",
+        "description": "Request message for customer to unclaim a device.",
+        "$ref": "",
+        "properties": {
+          "device": {
+            "type": "",
+            "format": "",
+            "description": "Required. The device to unclaim. There are custom validations in UnclaimDeviceRequestValidator.",
+            "$ref": "DeviceReference",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Device": {
+        "type": "object",
+        "format": "",
+        "description": "An Android or Chrome OS device registered for zero-touch enrollment.",
+        "$ref": "",
+        "properties": {
+          "claims": {
+            "type": "array",
+            "format": "",
+            "description": "Output only. The provisioning claims for a device. Devices claimed for zero-touch enrollment have a claim with the type `SECTION_TYPE_ZERO_TOUCH`. Call `partners.devices.unclaim` or `partners.devices.unclaimAsync` to remove the device from zero-touch enrollment.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "DeviceClaim",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "configuration": {
+            "type": "string",
+            "format": "",
+            "description": "Not available to resellers.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "deviceId": {
+            "type": "string",
+            "format": "int64",
+            "description": "Output only. The ID of the device. Assigned by the server.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "deviceIdentifier": {
+            "type": "",
+            "format": "",
+            "description": "The hardware IDs that identify a manufactured device. To learn more, read [Identifiers](https://developers.google.com/zero-touch/guides/identifiers).",
+            "$ref": "DeviceIdentifier",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "deviceMetadata": {
+            "type": "",
+            "format": "",
+            "description": "The metadata attached to the device. Structured as key-value pairs. To learn more, read [Device metadata](https://developers.google.com/zero-touch/guides/metadata).",
+            "$ref": "DeviceMetadata",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The API resource name in the format `partners/[PARTNER_ID]/devices/[DEVICE_ID]`. Assigned by the server.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "DeviceClaim": {
+        "type": "object",
+        "format": "",
+        "description": "A record of a device claimed by a reseller for a customer. Devices claimed for zero-touch enrollment have a claim with the type `SECTION_TYPE_ZERO_TOUCH`. To learn more, read [Claim devices for customers](/zero-touch/guides/how-it-works#claim).",
+        "$ref": "",
+        "properties": {
+          "additionalService": {
+            "type": "string",
+            "format": "",
+            "description": "The Additional service registered for the device.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "ADDITIONAL_SERVICE_UNSPECIFIED",
+              "DEVICE_PROTECTION"
+            ],
+            "readOnly": false
+          },
+          "googleWorkspaceCustomerId": {
+            "type": "string",
+            "format": "",
+            "description": "The ID of the Google Workspace account that owns the Chrome OS device.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "ownerCompanyId": {
+            "type": "string",
+            "format": "int64",
+            "description": "The ID of the Customer that purchased the device.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "resellerId": {
+            "type": "string",
+            "format": "int64",
+            "description": "The ID of the reseller that claimed the device.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "sectionType": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The type of claim made on the device.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "SECTION_TYPE_UNSPECIFIED",
+              "SECTION_TYPE_SIM_LOCK",
+              "SECTION_TYPE_ZERO_TOUCH"
+            ],
+            "readOnly": true
+          },
+          "vacationModeExpireTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "The timestamp when the device will exit ‘vacation mode’. This value is present iff the device is in 'vacation mode'.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "vacationModeStartTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "The timestamp when the device was put into ‘vacation mode’. This value is present iff the device is in 'vacation mode'.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "DeviceIdentifier": {
+        "type": "object",
+        "format": "",
+        "description": "Encapsulates hardware and product IDs to identify a manufactured device. To understand requirements on identifier sets, read [Identifiers](https://developers.google.com/zero-touch/guides/identifiers).",
+        "$ref": "",
+        "properties": {
+          "chromeOsAttestedDeviceId": {
+            "type": "string",
+            "format": "",
+            "description": "An identifier provided by OEMs, carried through the production and sales process. Only applicable to Chrome OS devices.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "deviceType": {
+            "type": "string",
+            "format": "",
+            "description": "The type of the device",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "DEVICE_TYPE_UNSPECIFIED",
+              "DEVICE_TYPE_ANDROID",
+              "DEVICE_TYPE_CHROME_OS"
+            ],
+            "readOnly": false
+          },
+          "imei": {
+            "type": "string",
+            "format": "",
+            "description": "The device’s IMEI number. Validated on input.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "imei2": {
+            "type": "string",
+            "format": "",
+            "description": "The device’s second IMEI number.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "manufacturer": {
+            "type": "string",
+            "format": "",
+            "description": "The device manufacturer’s name. Matches the device's built-in value returned from `android.os.Build.MANUFACTURER`. Allowed values are listed in [Android manufacturers](/zero-touch/resources/manufacturer-names#manufacturers-names).",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "meid": {
+            "type": "string",
+            "format": "",
+            "description": "The device’s MEID number.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "meid2": {
+            "type": "string",
+            "format": "",
+            "description": "The device’s second MEID number.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "model": {
+            "type": "string",
+            "format": "",
+            "description": "The device model's name. Allowed values are listed in [Android models](/zero-touch/resources/manufacturer-names#model-names) and [Chrome OS models](https://support.google.com/chrome/a/answer/10130175#identify_compatible).",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "serialNumber": {
+            "type": "string",
+            "format": "",
+            "description": "The manufacturer's serial number for the device. This value might not be unique across different device models.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "DeviceMetadata": {
+        "type": "object",
+        "format": "",
+        "description": "Metadata entries that can be attached to a `Device`. To learn more, read [Device metadata](https://developers.google.com/zero-touch/guides/metadata).",
+        "$ref": "",
+        "properties": {
+          "entries": {
+            "type": "object",
+            "format": "",
+            "description": "Metadata entries recorded as key-value pairs.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "DeviceReference": {
+        "type": "object",
+        "format": "",
+        "description": "A `DeviceReference` is an API abstraction that lets you supply a _device_ argument to a method using one of the following identifier types: * A numeric API resource ID. * Real-world hardware IDs, such as IMEI number, belonging to the manufactured device. Methods that operate on devices take a `DeviceReference` as a parameter type because it's more flexible for the caller. To learn more about device identifiers, read [Identifiers](https://developers.google.com/zero-touch/guides/identifiers).",
+        "$ref": "",
+        "properties": {
+          "deviceId": {
+            "type": "string",
+            "format": "int64",
+            "description": "The ID of the device.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "deviceIdentifier": {
+            "type": "",
+            "format": "",
+            "description": "The hardware IDs of the device.",
+            "$ref": "DeviceIdentifier",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "DevicesLongRunningOperationMetadata": {
+        "type": "object",
+        "format": "",
+        "description": "Tracks the status of a long-running operation to asynchronously update a batch of reseller metadata attached to devices. To learn more, read [Long‑running batch operations](/zero-touch/guides/how-it-works#operations).",
+        "$ref": "",
+        "properties": {
+          "devicesCount": {
+            "type": "integer",
+            "format": "int32",
+            "description": "The number of metadata updates in the operation. This might be different from the number of updates in the request if the API can't parse some of the updates.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "processingStatus": {
+            "type": "string",
+            "format": "",
+            "description": "The processing status of the operation.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "BATCH_PROCESS_STATUS_UNSPECIFIED",
+              "BATCH_PROCESS_PENDING",
+              "BATCH_PROCESS_IN_PROGRESS",
+              "BATCH_PROCESS_PROCESSED"
+            ],
+            "readOnly": false
+          },
+          "progress": {
+            "type": "integer",
+            "format": "int32",
+            "description": "The processing progress of the operation. Measured as a number from 0 to 100. A value of 10O doesn't always mean the operation completed—check for the inclusion of a `done` field.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "DevicesLongRunningOperationResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Tracks the status of a long-running operation to claim, unclaim, or attach metadata to devices. To learn more, read [Long‑running batch operations](/zero-touch/guides/how-it-works#operations).",
+        "$ref": "",
+        "properties": {
+          "perDeviceStatus": {
+            "type": "array",
+            "format": "",
+            "description": "The processing status for each device in the operation. One `PerDeviceStatus` per device. The list order matches the items in the original request.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "OperationPerDevice",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "successCount": {
+            "type": "integer",
+            "format": "int32",
+            "description": "A summary of how many items in the operation the server processed successfully. Updated as the operation progresses.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Dpc": {
+        "type": "object",
+        "format": "",
+        "description": "An EMM's DPC ([device policy controller](http://developer.android.com/work/dpc/build-dpc.html)). Zero-touch enrollment installs a DPC (listed in the `Configuration`) on a device to maintain the customer's mobile policies. All the DPCs listed by the API support zero-touch enrollment and are available in Google Play.",
+        "$ref": "",
+        "properties": {
+          "dpcName": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The title of the DPC app in Google Play. For example, _Google Apps Device Policy_. Useful in an application's user interface.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The API resource name in the format `customers/[CUSTOMER_ID]/dpcs/[DPC_ID]`. Assigned by the server. To maintain a reference to a DPC across customer accounts, persist and match the last path component (`DPC_ID`).",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "packageName": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The DPC's Android application ID that looks like a Java package name. Zero-touch enrollment installs the DPC app onto a device using this identifier.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Empty": {
+        "type": "object",
+        "format": "",
+        "description": "A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }",
+        "$ref": "",
+        "properties": {},
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "FindDevicesByDeviceIdentifierRequest": {
+        "type": "object",
+        "format": "",
+        "description": "Request to find devices.",
+        "$ref": "",
+        "properties": {
+          "deviceIdentifier": {
+            "type": "",
+            "format": "",
+            "description": "Required. Required. The device identifier to search for. If serial number is provided then case insensitive serial number matches are allowed.",
+            "$ref": "DeviceIdentifier",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "limit": {
+            "type": "string",
+            "format": "int64",
+            "description": "Required. The maximum number of devices to show in a page of results. Must be between 1 and 100 inclusive.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "pageToken": {
+            "type": "string",
+            "format": "",
+            "description": "A token specifying which result page to return.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "FindDevicesByDeviceIdentifierResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Response containing found devices.",
+        "$ref": "",
+        "properties": {
+          "devices": {
+            "type": "array",
+            "format": "",
+            "description": "Found devices.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Device",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "A token used to access the next page of results. Omitted if no further results are available.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "totalSize": {
+            "type": "integer",
+            "format": "int32",
+            "description": "The total count of items in the list irrespective of pagination.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "FindDevicesByOwnerRequest": {
+        "type": "object",
+        "format": "",
+        "description": "Request to find devices by customers.",
+        "$ref": "",
+        "properties": {
+          "customerId": {
+            "type": "array",
+            "format": "",
+            "description": "The list of customer IDs to search for.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "int64",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "googleWorkspaceCustomerId": {
+            "type": "array",
+            "format": "",
+            "description": "The list of IDs of Google Workspace accounts to search for.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "limit": {
+            "type": "string",
+            "format": "int64",
+            "description": "Required. The maximum number of devices to show in a page of results. Must be between 1 and 100 inclusive.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "pageToken": {
+            "type": "string",
+            "format": "",
+            "description": "A token specifying which result page to return.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "sectionType": {
+            "type": "string",
+            "format": "",
+            "description": "Required. The section type of the device's provisioning record.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "SECTION_TYPE_UNSPECIFIED",
+              "SECTION_TYPE_SIM_LOCK",
+              "SECTION_TYPE_ZERO_TOUCH"
+            ],
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "FindDevicesByOwnerResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Response containing found devices.",
+        "$ref": "",
+        "properties": {
+          "devices": {
+            "type": "array",
+            "format": "",
+            "description": "The customer's devices.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Device",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "A token used to access the next page of results. Omitted if no further results are available.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "totalSize": {
+            "type": "integer",
+            "format": "int32",
+            "description": "The total count of items in the list irrespective of pagination.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GetDeviceSimLockStateRequest": {
+        "type": "object",
+        "format": "",
+        "description": "Request to get a device's SIM lock status.",
+        "$ref": "",
+        "properties": {
+          "deviceIdentifier": {
+            "type": "",
+            "format": "",
+            "description": "Required. Required. The device identifier to search for.",
+            "$ref": "DeviceIdentifier",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GetDeviceSimLockStateResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Response containing a device's SimLock state.",
+        "$ref": "",
+        "properties": {
+          "simLockState": {
+            "type": "string",
+            "format": "",
+            "description": "",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "SIM_LOCK_STATE_UNSPECIFIED",
+              "UNLOCKED",
+              "LOCKED_TO_PARTNER",
+              "LOCKED_TO_OTHER_PARTNER"
+            ],
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleWorkspaceAccount": {
+        "type": "object",
+        "format": "",
+        "description": "A Google Workspace customer.",
+        "$ref": "",
+        "properties": {
+          "customerId": {
+            "type": "string",
+            "format": "",
+            "description": "Required. The customer ID.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "preProvisioningTokens": {
+            "type": "array",
+            "format": "",
+            "description": "Output only. The pre-provisioning tokens previously used to claim devices.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ListCustomersResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Response message of all customers related to this partner.",
+        "$ref": "",
+        "properties": {
+          "customers": {
+            "type": "array",
+            "format": "",
+            "description": "List of customers related to this reseller partner.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Company",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "A token to retrieve the next page of results. Omitted if no further results are available.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "totalSize": {
+            "type": "integer",
+            "format": "int32",
+            "description": "The total count of items in the list irrespective of pagination.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ListVendorCustomersResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Response message to list customers of the vendor.",
+        "$ref": "",
+        "properties": {
+          "customers": {
+            "type": "array",
+            "format": "",
+            "description": "List of customers of the vendor.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Company",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "A token to retrieve the next page of results. Omitted if no further results are available.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "totalSize": {
+            "type": "integer",
+            "format": "int32",
+            "description": "The total count of items in the list irrespective of pagination.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ListVendorsResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Response message to list vendors of the partner.",
+        "$ref": "",
+        "properties": {
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "A token to retrieve the next page of results. Omitted if no further results are available.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "totalSize": {
+            "type": "integer",
+            "format": "int32",
+            "description": "The total count of items in the list irrespective of pagination.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "vendors": {
+            "type": "array",
+            "format": "",
+            "description": "List of vendors of the reseller partner. Fields `name`, `companyId` and `companyName` are populated to the Company object.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Company",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Operation": {
+        "type": "object",
+        "format": "",
+        "description": "This resource represents a long-running operation that is the result of a network API call.",
+        "$ref": "",
+        "properties": {
+          "done": {
+            "type": "boolean",
+            "format": "",
+            "description": "If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "error": {
+            "type": "",
+            "format": "",
+            "description": "This field will always be not set if the operation is created by `claimAsync`, `unclaimAsync`, or `updateMetadataAsync`. In this case, error information for each device is set in `response.perDeviceStatus.result.status`.",
+            "$ref": "Status",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "metadata": {
+            "type": "object",
+            "format": "",
+            "description": "This field will contain a `DevicesLongRunningOperationMetadata` object if the operation is created by `claimAsync`, `unclaimAsync`, or `updateMetadataAsync`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "any",
+              "format": "",
+              "description": "Properties of the object. Contains field @type with type URL.",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "response": {
+            "type": "object",
+            "format": "",
+            "description": "This field will contain a `DevicesLongRunningOperationResponse` object if the operation is created by `claimAsync`, `unclaimAsync`, or `updateMetadataAsync`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "any",
+              "format": "",
+              "description": "Properties of the object. Contains field @type with type URL.",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "OperationPerDevice": {
+        "type": "object",
+        "format": "",
+        "description": "A task for each device in the operation. Corresponds to each device change in the request.",
+        "$ref": "",
+        "properties": {
+          "claim": {
+            "type": "",
+            "format": "",
+            "description": "A copy of the original device-claim request received by the server.",
+            "$ref": "PartnerClaim",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "result": {
+            "type": "",
+            "format": "",
+            "description": "The processing result for each device.",
+            "$ref": "PerDeviceStatusInBatch",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "unclaim": {
+            "type": "",
+            "format": "",
+            "description": "A copy of the original device-unclaim request received by the server.",
+            "$ref": "PartnerUnclaim",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "updateMetadata": {
+            "type": "",
+            "format": "",
+            "description": "A copy of the original metadata-update request received by the server.",
+            "$ref": "UpdateMetadataArguments",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "PartnerClaim": {
+        "type": "object",
+        "format": "",
+        "description": "Identifies one claim request.",
+        "$ref": "",
+        "properties": {
+          "configurationId": {
+            "type": "string",
+            "format": "int64",
+            "description": "Optional. The ID of the configuration applied to the device section.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "customerId": {
+            "type": "string",
+            "format": "int64",
+            "description": "The ID of the customer for whom the device is being claimed.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "deviceIdentifier": {
+            "type": "",
+            "format": "",
+            "description": "Required. Required. Device identifier of the device.",
+            "$ref": "DeviceIdentifier",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "deviceMetadata": {
+            "type": "",
+            "format": "",
+            "description": "Required. The metadata to attach to the device at claim.",
+            "$ref": "DeviceMetadata",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "googleWorkspaceCustomerId": {
+            "type": "string",
+            "format": "",
+            "description": "The Google Workspace customer ID.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "preProvisioningToken": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Must and can only be set for Chrome OS devices.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "sectionType": {
+            "type": "string",
+            "format": "",
+            "description": "Required. The section type of the device's provisioning record.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "SECTION_TYPE_UNSPECIFIED",
+              "SECTION_TYPE_SIM_LOCK",
+              "SECTION_TYPE_ZERO_TOUCH"
+            ],
+            "readOnly": false
+          },
+          "simlockProfileId": {
+            "type": "string",
+            "format": "int64",
+            "description": "Optional. Must and can only be set when DeviceProvisioningSectionType is SECTION_TYPE_SIM_LOCK. The unique identifier of the SimLock profile.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "PartnerUnclaim": {
+        "type": "object",
+        "format": "",
+        "description": "Identifies one unclaim request.",
+        "$ref": "",
+        "properties": {
+          "deviceId": {
+            "type": "string",
+            "format": "int64",
+            "description": "Required. Device ID of the device.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "deviceIdentifier": {
+            "type": "",
+            "format": "",
+            "description": "Required. Device identifier of the device.",
+            "$ref": "DeviceIdentifier",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "sectionType": {
+            "type": "string",
+            "format": "",
+            "description": "Required. The section type of the device's provisioning record.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "SECTION_TYPE_UNSPECIFIED",
+              "SECTION_TYPE_SIM_LOCK",
+              "SECTION_TYPE_ZERO_TOUCH"
+            ],
+            "readOnly": false
+          },
+          "vacationModeDays": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Optional. The duration of the vacation unlock starting from when the request is processed. (1 day is treated as 24 hours)",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "vacationModeExpireTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Optional. The expiration time of the vacation unlock.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "PerDeviceStatusInBatch": {
+        "type": "object",
+        "format": "",
+        "description": "Captures the processing status for each device in the operation.",
+        "$ref": "",
+        "properties": {
+          "deviceId": {
+            "type": "string",
+            "format": "int64",
+            "description": "If processing succeeds, the device ID of the device.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "errorIdentifier": {
+            "type": "string",
+            "format": "",
+            "description": "If processing fails, the error type.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "errorMessage": {
+            "type": "string",
+            "format": "",
+            "description": "If processing fails, a developer message explaining what went wrong.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "status": {
+            "type": "string",
+            "format": "",
+            "description": "The result status of the device after processing.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "SINGLE_DEVICE_STATUS_UNSPECIFIED",
+              "SINGLE_DEVICE_STATUS_UNKNOWN_ERROR",
+              "SINGLE_DEVICE_STATUS_OTHER_ERROR",
+              "SINGLE_DEVICE_STATUS_SUCCESS",
+              "SINGLE_DEVICE_STATUS_PERMISSION_DENIED",
+              "SINGLE_DEVICE_STATUS_INVALID_DEVICE_IDENTIFIER",
+              "SINGLE_DEVICE_STATUS_INVALID_SECTION_TYPE",
+              "SINGLE_DEVICE_STATUS_SECTION_NOT_YOURS",
+              "SINGLE_DEVICE_STATUS_INVALID_TOKEN",
+              "SINGLE_DEVICE_STATUS_REVOKED_TOKEN",
+              "SINGLE_DEVICE_STATUS_DEVICE_LIMIT_EXCEEDED"
+            ],
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Status": {
+        "type": "object",
+        "format": "",
+        "description": "The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).",
+        "$ref": "",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32",
+            "description": "The status code, which should be an enum value of google.rpc.Code.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "details": {
+            "type": "array",
+            "format": "",
+            "description": "A list of messages that carry the error details. There is a common set of message types for APIs to use.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "object",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": {
+                "type": "any",
+                "format": "",
+                "description": "Properties of the object. Contains field @type with type URL.",
+                "$ref": "",
+                "properties": null,
+                "items": null,
+                "additionalProperties": null,
+                "enum": null,
+                "readOnly": false
+              },
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "message": {
+            "type": "string",
+            "format": "",
+            "description": "A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "UnclaimDeviceRequest": {
+        "type": "object",
+        "format": "",
+        "description": "Request message to unclaim a device.",
+        "$ref": "",
+        "properties": {
+          "deviceId": {
+            "type": "string",
+            "format": "int64",
+            "description": "Required. The device ID returned by `ClaimDevice`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "deviceIdentifier": {
+            "type": "",
+            "format": "",
+            "description": "Required. The device identifier you used when you claimed this device.",
+            "$ref": "DeviceIdentifier",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "sectionType": {
+            "type": "string",
+            "format": "",
+            "description": "Required. The section type of the device's provisioning record.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "SECTION_TYPE_UNSPECIFIED",
+              "SECTION_TYPE_SIM_LOCK",
+              "SECTION_TYPE_ZERO_TOUCH"
+            ],
+            "readOnly": false
+          },
+          "vacationModeDays": {
+            "type": "integer",
+            "format": "int32",
+            "description": "The duration of the vacation unlock starting from when the request is processed. (1 day is treated as 24 hours)",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "vacationModeExpireTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "The expiration time of the vacation unlock.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "UnclaimDevicesRequest": {
+        "type": "object",
+        "format": "",
+        "description": "Request to unclaim devices asynchronously in batch.",
+        "$ref": "",
+        "properties": {
+          "unclaims": {
+            "type": "array",
+            "format": "",
+            "description": "Required. The list of devices to unclaim.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "PartnerUnclaim",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "UpdateDeviceMetadataInBatchRequest": {
+        "type": "object",
+        "format": "",
+        "description": "Request to update device metadata in batch.",
+        "$ref": "",
+        "properties": {
+          "updates": {
+            "type": "array",
+            "format": "",
+            "description": "Required. The list of metadata updates.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "UpdateMetadataArguments",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "UpdateDeviceMetadataRequest": {
+        "type": "object",
+        "format": "",
+        "description": "Request to set metadata for a device.",
+        "$ref": "",
+        "properties": {
+          "deviceMetadata": {
+            "type": "",
+            "format": "",
+            "description": "Required. The metadata to attach to the device.",
+            "$ref": "DeviceMetadata",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "UpdateMetadataArguments": {
+        "type": "object",
+        "format": "",
+        "description": "Identifies metadata updates to one device.",
+        "$ref": "",
+        "properties": {
+          "deviceId": {
+            "type": "string",
+            "format": "int64",
+            "description": "Required. Device ID of the device.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "deviceIdentifier": {
+            "type": "",
+            "format": "",
+            "description": "Required. Device identifier.",
+            "$ref": "DeviceIdentifier",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "deviceMetadata": {
+            "type": "",
+            "format": "",
+            "description": "Required. The metadata to update.",
+            "$ref": "DeviceMetadata",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      }
+    },
+    "resources": {
+      "customers": {
+        "methods": {
+          "list": {
+            "id": "androiddeviceprovisioning.customers.list",
+            "httpMethod": "GET",
+            "path": "v1/customers",
+            "flatPath": "v1/customers",
+            "description": "Lists the user's customer accounts.",
+            "parameters": {
+              "pageSize": {
+                "type": "integer",
+                "location": "query",
+                "required": false
+              },
+              "pageToken": {
+                "type": "string",
+                "location": "query",
+                "required": false
+              }
+            },
+            "parameterOrder": [],
+            "request": null,
+            "response": {
+              "$ref": "CustomerListCustomersResponse"
+            }
+          }
+        },
+        "resources": {
+          "configurations": {
+            "methods": {
+              "create": {
+                "id": "androiddeviceprovisioning.customers.configurations.create",
+                "httpMethod": "POST",
+                "path": "v1/{+parent}/configurations",
+                "flatPath": "v1/customers/{customersId}/configurations",
+                "description": "Creates a new configuration. Once created, a customer can apply the configuration to devices.",
+                "parameters": {
+                  "parent": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  }
+                },
+                "parameterOrder": [
+                  "parent"
+                ],
+                "request": {
+                  "$ref": "Configuration"
+                },
+                "response": {
+                  "$ref": "Configuration"
+                }
+              },
+              "delete": {
+                "id": "androiddeviceprovisioning.customers.configurations.delete",
+                "httpMethod": "DELETE",
+                "path": "v1/{+name}",
+                "flatPath": "v1/customers/{customersId}/configurations/{configurationsId}",
+                "description": "Deletes an unused configuration. The API call fails if the customer has devices with the configuration applied.",
+                "parameters": {
+                  "name": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  }
+                },
+                "parameterOrder": [
+                  "name"
+                ],
+                "request": null,
+                "response": {
+                  "$ref": "Empty"
+                }
+              },
+              "get": {
+                "id": "androiddeviceprovisioning.customers.configurations.get",
+                "httpMethod": "GET",
+                "path": "v1/{+name}",
+                "flatPath": "v1/customers/{customersId}/configurations/{configurationsId}",
+                "description": "Gets the details of a configuration.",
+                "parameters": {
+                  "name": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  }
+                },
+                "parameterOrder": [
+                  "name"
+                ],
+                "request": null,
+                "response": {
+                  "$ref": "Configuration"
+                }
+              },
+              "list": {
+                "id": "androiddeviceprovisioning.customers.configurations.list",
+                "httpMethod": "GET",
+                "path": "v1/{+parent}/configurations",
+                "flatPath": "v1/customers/{customersId}/configurations",
+                "description": "Lists a customer's configurations.",
+                "parameters": {
+                  "parent": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  }
+                },
+                "parameterOrder": [
+                  "parent"
+                ],
+                "request": null,
+                "response": {
+                  "$ref": "CustomerListConfigurationsResponse"
+                }
+              },
+              "patch": {
+                "id": "androiddeviceprovisioning.customers.configurations.patch",
+                "httpMethod": "PATCH",
+                "path": "v1/{+name}",
+                "flatPath": "v1/customers/{customersId}/configurations/{configurationsId}",
+                "description": "Updates a configuration's field values.",
+                "parameters": {
+                  "name": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  },
+                  "updateMask": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false
+                  }
+                },
+                "parameterOrder": [
+                  "name"
+                ],
+                "request": {
+                  "$ref": "Configuration"
+                },
+                "response": {
+                  "$ref": "Configuration"
+                }
+              }
+            },
+            "resources": null
+          },
+          "devices": {
+            "methods": {
+              "applyConfiguration": {
+                "id": "androiddeviceprovisioning.customers.devices.applyConfiguration",
+                "httpMethod": "POST",
+                "path": "v1/{+parent}/devices:applyConfiguration",
+                "flatPath": "v1/customers/{customersId}/devices:applyConfiguration",
+                "description": "Applies a Configuration to the device to register the device for zero-touch enrollment. After applying a configuration to a device, the device automatically provisions itself on first boot, or next factory reset.",
+                "parameters": {
+                  "parent": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  }
+                },
+                "parameterOrder": [
+                  "parent"
+                ],
+                "request": {
+                  "$ref": "CustomerApplyConfigurationRequest"
+                },
+                "response": {
+                  "$ref": "Empty"
+                }
+              },
+              "get": {
+                "id": "androiddeviceprovisioning.customers.devices.get",
+                "httpMethod": "GET",
+                "path": "v1/{+name}",
+                "flatPath": "v1/customers/{customersId}/devices/{devicesId}",
+                "description": "Gets the details of a device.",
+                "parameters": {
+                  "name": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  }
+                },
+                "parameterOrder": [
+                  "name"
+                ],
+                "request": null,
+                "response": {
+                  "$ref": "Device"
+                }
+              },
+              "list": {
+                "id": "androiddeviceprovisioning.customers.devices.list",
+                "httpMethod": "GET",
+                "path": "v1/{+parent}/devices",
+                "flatPath": "v1/customers/{customersId}/devices",
+                "description": "Lists a customer's devices.",
+                "parameters": {
+                  "pageSize": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false
+                  },
+                  "pageToken": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false
+                  },
+                  "parent": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  }
+                },
+                "parameterOrder": [
+                  "parent"
+                ],
+                "request": null,
+                "response": {
+                  "$ref": "CustomerListDevicesResponse"
+                }
+              },
+              "removeConfiguration": {
+                "id": "androiddeviceprovisioning.customers.devices.removeConfiguration",
+                "httpMethod": "POST",
+                "path": "v1/{+parent}/devices:removeConfiguration",
+                "flatPath": "v1/customers/{customersId}/devices:removeConfiguration",
+                "description": "Removes a configuration from device.",
+                "parameters": {
+                  "parent": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  }
+                },
+                "parameterOrder": [
+                  "parent"
+                ],
+                "request": {
+                  "$ref": "CustomerRemoveConfigurationRequest"
+                },
+                "response": {
+                  "$ref": "Empty"
+                }
+              },
+              "unclaim": {
+                "id": "androiddeviceprovisioning.customers.devices.unclaim",
+                "httpMethod": "POST",
+                "path": "v1/{+parent}/devices:unclaim",
+                "flatPath": "v1/customers/{customersId}/devices:unclaim",
+                "description": "Unclaims a device from a customer and removes it from zero-touch enrollment. After removing a device, a customer must contact their reseller to register the device into zero-touch enrollment again.",
+                "parameters": {
+                  "parent": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  }
+                },
+                "parameterOrder": [
+                  "parent"
+                ],
+                "request": {
+                  "$ref": "CustomerUnclaimDeviceRequest"
+                },
+                "response": {
+                  "$ref": "Empty"
+                }
+              }
+            },
+            "resources": null
+          },
+          "dpcs": {
+            "methods": {
+              "list": {
+                "id": "androiddeviceprovisioning.customers.dpcs.list",
+                "httpMethod": "GET",
+                "path": "v1/{+parent}/dpcs",
+                "flatPath": "v1/customers/{customersId}/dpcs",
+                "description": "Lists the DPCs (device policy controllers) that support zero-touch enrollment.",
+                "parameters": {
+                  "parent": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  }
+                },
+                "parameterOrder": [
+                  "parent"
+                ],
+                "request": null,
+                "response": {
+                  "$ref": "CustomerListDpcsResponse"
+                }
+              }
+            },
+            "resources": null
+          }
+        }
+      },
+      "operations": {
+        "methods": {
+          "get": {
+            "id": "androiddeviceprovisioning.operations.get",
+            "httpMethod": "GET",
+            "path": "v1/{+name}",
+            "flatPath": "v1/operations/{operationsId}",
+            "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
+            "parameters": {
+              "name": {
+                "type": "string",
+                "location": "path",
+                "required": true
+              }
+            },
+            "parameterOrder": [
+              "name"
+            ],
+            "request": null,
+            "response": {
+              "$ref": "Operation"
+            }
+          }
+        },
+        "resources": null
+      },
+      "partners": {
+        "methods": null,
+        "resources": {
+          "customers": {
+            "methods": {
+              "create": {
+                "id": "androiddeviceprovisioning.partners.customers.create",
+                "httpMethod": "POST",
+                "path": "v1/{+parent}/customers",
+                "flatPath": "v1/partners/{partnersId}/customers",
+                "description": "Creates a customer for zero-touch enrollment. After the method returns successfully, admin and owner roles can manage devices and EMM configs by calling API methods or using their zero-touch enrollment portal. The customer receives an email that welcomes them to zero-touch enrollment and explains how to sign into the portal.",
+                "parameters": {
+                  "parent": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  }
+                },
+                "parameterOrder": [
+                  "parent"
+                ],
+                "request": {
+                  "$ref": "CreateCustomerRequest"
+                },
+                "response": {
+                  "$ref": "Company"
+                }
+              },
+              "list": {
+                "id": "androiddeviceprovisioning.partners.customers.list",
+                "httpMethod": "GET",
+                "path": "v1/partners/{+partnerId}/customers",
+                "flatPath": "v1/partners/{partnersId}/customers",
+                "description": "Lists the customers that are enrolled to the reseller identified by the `partnerId` argument. This list includes customers that the reseller created and customers that enrolled themselves using the portal.",
+                "parameters": {
+                  "pageSize": {
+                    "type": "integer",
+                    "location": "query",
+                    "required": false
+                  },
+                  "pageToken": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false
+                  },
+                  "partnerId": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  }
+                },
+                "parameterOrder": [
+                  "partnerId"
+                ],
+                "request": null,
+                "response": {
+                  "$ref": "ListCustomersResponse"
+                }
+              }
+            },
+            "resources": null
+          },
+          "devices": {
+            "methods": {
+              "claim": {
+                "id": "androiddeviceprovisioning.partners.devices.claim",
+                "httpMethod": "POST",
+                "path": "v1/partners/{+partnerId}/devices:claim",
+                "flatPath": "v1/partners/{partnersId}/devices:claim",
+                "description": "Claims a device for a customer and adds it to zero-touch enrollment. If the device is already claimed by another customer, the call returns an error.",
+                "parameters": {
+                  "partnerId": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  }
+                },
+                "parameterOrder": [
+                  "partnerId"
+                ],
+                "request": {
+                  "$ref": "ClaimDeviceRequest"
+                },
+                "response": {
+                  "$ref": "ClaimDeviceResponse"
+                }
+              },
+              "claimAsync": {
+                "id": "androiddeviceprovisioning.partners.devices.claimAsync",
+                "httpMethod": "POST",
+                "path": "v1/partners/{+partnerId}/devices:claimAsync",
+                "flatPath": "v1/partners/{partnersId}/devices:claimAsync",
+                "description": "Claims a batch of devices for a customer asynchronously. Adds the devices to zero-touch enrollment. To learn more, read [Long‑running batch operations](/zero-touch/guides/how-it-works#operations).",
+                "parameters": {
+                  "partnerId": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  }
+                },
+                "parameterOrder": [
+                  "partnerId"
+                ],
+                "request": {
+                  "$ref": "ClaimDevicesRequest"
+                },
+                "response": {
+                  "$ref": "Operation"
+                }
+              },
+              "findByIdentifier": {
+                "id": "androiddeviceprovisioning.partners.devices.findByIdentifier",
+                "httpMethod": "POST",
+                "path": "v1/partners/{+partnerId}/devices:findByIdentifier",
+                "flatPath": "v1/partners/{partnersId}/devices:findByIdentifier",
+                "description": "Finds devices by hardware identifiers, such as IMEI.",
+                "parameters": {
+                  "partnerId": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  }
+                },
+                "parameterOrder": [
+                  "partnerId"
+                ],
+                "request": {
+                  "$ref": "FindDevicesByDeviceIdentifierRequest"
+                },
+                "response": {
+                  "$ref": "FindDevicesByDeviceIdentifierResponse"
+                }
+              },
+              "findByOwner": {
+                "id": "androiddeviceprovisioning.partners.devices.findByOwner",
+                "httpMethod": "POST",
+                "path": "v1/partners/{+partnerId}/devices:findByOwner",
+                "flatPath": "v1/partners/{partnersId}/devices:findByOwner",
+                "description": "Finds devices claimed for customers. The results only contain devices registered to the reseller that's identified by the `partnerId` argument. The customer's devices purchased from other resellers don't appear in the results.",
+                "parameters": {
+                  "partnerId": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  }
+                },
+                "parameterOrder": [
+                  "partnerId"
+                ],
+                "request": {
+                  "$ref": "FindDevicesByOwnerRequest"
+                },
+                "response": {
+                  "$ref": "FindDevicesByOwnerResponse"
+                }
+              },
+              "get": {
+                "id": "androiddeviceprovisioning.partners.devices.get",
+                "httpMethod": "GET",
+                "path": "v1/{+name}",
+                "flatPath": "v1/partners/{partnersId}/devices/{devicesId}",
+                "description": "Gets a device.",
+                "parameters": {
+                  "name": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  }
+                },
+                "parameterOrder": [
+                  "name"
+                ],
+                "request": null,
+                "response": {
+                  "$ref": "Device"
+                }
+              },
+              "getSimLockState": {
+                "id": "androiddeviceprovisioning.partners.devices.getSimLockState",
+                "httpMethod": "POST",
+                "path": "v1/partners/{+partnerId}/devices:getSimLockState",
+                "flatPath": "v1/partners/{partnersId}/devices:getSimLockState",
+                "description": "Gets a device's SIM lock state.",
+                "parameters": {
+                  "partnerId": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  }
+                },
+                "parameterOrder": [
+                  "partnerId"
+                ],
+                "request": {
+                  "$ref": "GetDeviceSimLockStateRequest"
+                },
+                "response": {
+                  "$ref": "GetDeviceSimLockStateResponse"
+                }
+              },
+              "metadata": {
+                "id": "androiddeviceprovisioning.partners.devices.metadata",
+                "httpMethod": "POST",
+                "path": "v1/partners/{+metadataOwnerId}/devices/{+deviceId}/metadata",
+                "flatPath": "v1/partners/{partnersId}/devices/{devicesId}/metadata",
+                "description": "Updates reseller metadata associated with the device. Android devices only.",
+                "parameters": {
+                  "deviceId": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  },
+                  "metadataOwnerId": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  }
+                },
+                "parameterOrder": [
+                  "metadataOwnerId",
+                  "deviceId"
+                ],
+                "request": {
+                  "$ref": "UpdateDeviceMetadataRequest"
+                },
+                "response": {
+                  "$ref": "DeviceMetadata"
+                }
+              },
+              "unclaim": {
+                "id": "androiddeviceprovisioning.partners.devices.unclaim",
+                "httpMethod": "POST",
+                "path": "v1/partners/{+partnerId}/devices:unclaim",
+                "flatPath": "v1/partners/{partnersId}/devices:unclaim",
+                "description": "Unclaims a device from a customer and removes it from zero-touch enrollment.",
+                "parameters": {
+                  "partnerId": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  }
+                },
+                "parameterOrder": [
+                  "partnerId"
+                ],
+                "request": {
+                  "$ref": "UnclaimDeviceRequest"
+                },
+                "response": {
+                  "$ref": "Empty"
+                }
+              },
+              "unclaimAsync": {
+                "id": "androiddeviceprovisioning.partners.devices.unclaimAsync",
+                "httpMethod": "POST",
+                "path": "v1/partners/{+partnerId}/devices:unclaimAsync",
+                "flatPath": "v1/partners/{partnersId}/devices:unclaimAsync",
+                "description": "Unclaims a batch of devices for a customer asynchronously. Removes the devices from zero-touch enrollment. To learn more, read [Long‑running batch operations](/zero-touch/guides/how-it-works#operations).",
+                "parameters": {
+                  "partnerId": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  }
+                },
+                "parameterOrder": [
+                  "partnerId"
+                ],
+                "request": {
+                  "$ref": "UnclaimDevicesRequest"
+                },
+                "response": {
+                  "$ref": "Operation"
+                }
+              },
+              "updateMetadataAsync": {
+                "id": "androiddeviceprovisioning.partners.devices.updateMetadataAsync",
+                "httpMethod": "POST",
+                "path": "v1/partners/{+partnerId}/devices:updateMetadataAsync",
+                "flatPath": "v1/partners/{partnersId}/devices:updateMetadataAsync",
+                "description": "Updates the reseller metadata attached to a batch of devices. This method updates devices asynchronously and returns an `Operation` that can be used to track progress. Read [Long‑running batch operations](/zero-touch/guides/how-it-works#operations). Android Devices only.",
+                "parameters": {
+                  "partnerId": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  }
+                },
+                "parameterOrder": [
+                  "partnerId"
+                ],
+                "request": {
+                  "$ref": "UpdateDeviceMetadataInBatchRequest"
+                },
+                "response": {
+                  "$ref": "Operation"
+                }
+              }
+            },
+            "resources": null
+          },
+          "vendors": {
+            "methods": {
+              "list": {
+                "id": "androiddeviceprovisioning.partners.vendors.list",
+                "httpMethod": "GET",
+                "path": "v1/{+parent}/vendors",
+                "flatPath": "v1/partners/{partnersId}/vendors",
+                "description": "Lists the vendors of the partner.",
+                "parameters": {
+                  "pageSize": {
+                    "type": "integer",
+                    "location": "query",
+                    "required": false
+                  },
+                  "pageToken": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false
+                  },
+                  "parent": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  }
+                },
+                "parameterOrder": [
+                  "parent"
+                ],
+                "request": null,
+                "response": {
+                  "$ref": "ListVendorsResponse"
+                }
+              }
+            },
+            "resources": {
+              "customers": {
+                "methods": {
+                  "list": {
+                    "id": "androiddeviceprovisioning.partners.vendors.customers.list",
+                    "httpMethod": "GET",
+                    "path": "v1/{+parent}/customers",
+                    "flatPath": "v1/partners/{partnersId}/vendors/{vendorsId}/customers",
+                    "description": "Lists the customers of the vendor.",
+                    "parameters": {
+                      "pageSize": {
+                        "type": "integer",
+                        "location": "query",
+                        "required": false
+                      },
+                      "pageToken": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "parent": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "parent"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "ListVendorCustomersResponse"
+                    }
+                  }
+                },
+                "resources": null
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

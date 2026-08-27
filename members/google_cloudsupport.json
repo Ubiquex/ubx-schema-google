@@ -1,0 +1,2558 @@
+{
+  "schema_source": "discovery_docs",
+  "mode": "resource",
+  "auth": {
+    "Type": "",
+    "Params": null
+  },
+  "base_url": "https://cloudsupport.googleapis.com",
+  "retry": {
+    "MaxAttempts": 0,
+    "InitialBackoff": "",
+    "MaxBackoff": "",
+    "Jitter": null,
+    "RespectRetryAfter": null,
+    "RateLimitResetHeader": ""
+  },
+  "timeouts": {
+    "Create": "",
+    "Read": "",
+    "Update": "",
+    "Delete": "",
+    "Default": ""
+  },
+  "wire_name": "google_cloudsupport",
+  "raw_spec": {
+    "name": "cloudsupport",
+    "revision": "20260826",
+    "discoveryVersion": "v1",
+    "baseUrl": "https://cloudsupport.googleapis.com/",
+    "rootUrl": "https://cloudsupport.googleapis.com/",
+    "servicePath": "",
+    "schemas": {
+      "Actor": {
+        "type": "object",
+        "format": "",
+        "description": "An Actor represents an entity that performed an action. For example, an actor could be a user who posted a comment on a support case, a user who uploaded an attachment, or a service account that created a support case.",
+        "$ref": "",
+        "properties": {
+          "displayName": {
+            "type": "string",
+            "format": "",
+            "description": "The name to display for the actor. If not provided, it is inferred from credentials supplied during case creation. When an email is provided, a display name must also be provided. This will be obfuscated if the user is a Google Support agent.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "email": {
+            "type": "string",
+            "format": "",
+            "description": "The email address of the actor. If not provided, it is inferred from the credentials supplied during case creation. When a name is provided, an email must also be provided. If the user is a Google Support agent, this is obfuscated. This field is deprecated. Use `username` instead.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "googleSupport": {
+            "type": "boolean",
+            "format": "",
+            "description": "Output only. Whether the actor is a Google support actor.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "username": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The username of the actor. It may look like an email or other format provided by the identity provider. If not provided, it is inferred from the credentials supplied. When a name is provided, a username must also be provided. If the user is a Google Support agent, this will not be set.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Attachment": {
+        "type": "object",
+        "format": "",
+        "description": "An Attachment contains metadata about a file that was uploaded to a case - it is NOT a file itself. That being said, the name of an Attachment object can be used to download its accompanying file through the `media.download` endpoint. While attachments can be uploaded in the console at the same time as a comment, they're associated on a \"case\" level, not a \"comment\" level.",
+        "$ref": "",
+        "properties": {
+          "createTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. The time at which the attachment was created.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "creator": {
+            "type": "",
+            "format": "",
+            "description": "Output only. The user who uploaded the attachment. Note, the name and email will be obfuscated if the attachment was uploaded by Google support.",
+            "$ref": "Actor",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "filename": {
+            "type": "string",
+            "format": "",
+            "description": "The filename of the attachment (e.g. `\"graph.jpg\"`).",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "mimeType": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The MIME type of the attachment (e.g. text/plain).",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. Identifier. The resource name of the attachment.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "sizeBytes": {
+            "type": "string",
+            "format": "int64",
+            "description": "Output only. The size of the attachment in bytes.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Blobstore2Info": {
+        "type": "object",
+        "format": "",
+        "description": "# gdata.* are outside protos with mising documentation",
+        "$ref": "",
+        "properties": {
+          "blobGeneration": {
+            "type": "string",
+            "format": "int64",
+            "description": "# gdata.* are outside protos with mising documentation",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "blobId": {
+            "type": "string",
+            "format": "",
+            "description": "# gdata.* are outside protos with mising documentation",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "downloadExternalReadToken": {
+            "type": "string",
+            "format": "byte",
+            "description": "# gdata.* are outside protos with mising documentation",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "downloadReadHandle": {
+            "type": "string",
+            "format": "byte",
+            "description": "# gdata.* are outside protos with mising documentation",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "readToken": {
+            "type": "string",
+            "format": "",
+            "description": "# gdata.* are outside protos with mising documentation",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "uploadFragmentListCreationInfo": {
+            "type": "string",
+            "format": "byte",
+            "description": "# gdata.* are outside protos with mising documentation",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "uploadMetadataContainer": {
+            "type": "string",
+            "format": "byte",
+            "description": "# gdata.* are outside protos with mising documentation",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Case": {
+        "type": "object",
+        "format": "",
+        "description": "A Case is an object that contains the details of a support case. It contains fields for the time it was created, its priority, its classification, and more. Cases can also have comments and attachments that get added over time. A case is parented by a Google Cloud organization or project. Organizations are identified by a number, so the name of a case parented by an organization would look like this: ``` organizations/123/cases/456 ``` Projects have two unique identifiers, an ID and a number, and they look like this: ``` projects/abc/cases/456 ``` ``` projects/123/cases/456 ``` You can use either of them when calling the API. To learn more about project identifiers, see [AIP-2510](https://google.aip.dev/cloud/2510).",
+        "$ref": "",
+        "properties": {
+          "classification": {
+            "type": "",
+            "format": "",
+            "description": "The issue classification applicable to this case.",
+            "$ref": "CaseClassification",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "contactEmail": {
+            "type": "string",
+            "format": "",
+            "description": "A user-supplied email address to send case update notifications for. This should only be used in BYOID flows, where we cannot infer the user's email address directly from their EUCs.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "createTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. The time this case was created.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "creator": {
+            "type": "",
+            "format": "",
+            "description": "The user who created the case. Note: The name and email will be obfuscated if the case was created by Google Support.",
+            "$ref": "Actor",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "description": {
+            "type": "string",
+            "format": "",
+            "description": "A broad description of the issue.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "displayName": {
+            "type": "string",
+            "format": "",
+            "description": "The short summary of the issue reported in this case.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "escalated": {
+            "type": "boolean",
+            "format": "",
+            "description": "Whether the case is currently escalated.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "languageCode": {
+            "type": "string",
+            "format": "",
+            "description": "The language the user has requested to receive support in. This should be a BCP 47 language code (e.g., `\"en\"`, `\"zh-CN\"`, `\"zh-TW\"`, `\"ja\"`, `\"ko\"`). If no language or an unsupported language is specified, this field defaults to English (en). Language selection during case creation may affect your available support options. For a list of supported languages and their support working hours, see: https://cloud.google.com/support/docs/language-working-hours",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "Identifier. The resource name for the case.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "priority": {
+            "type": "string",
+            "format": "",
+            "description": "The priority of this case.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "PRIORITY_UNSPECIFIED",
+              "P0",
+              "P1",
+              "P2",
+              "P3",
+              "P4"
+            ],
+            "readOnly": false
+          },
+          "state": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The current status of the support case.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "STATE_UNSPECIFIED",
+              "NEW",
+              "IN_PROGRESS_GOOGLE_SUPPORT",
+              "ACTION_REQUIRED",
+              "SOLUTION_PROVIDED",
+              "CLOSED"
+            ],
+            "readOnly": true
+          },
+          "subscriberEmailAddresses": {
+            "type": "array",
+            "format": "",
+            "description": "The email addresses to receive updates on this case.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "testCase": {
+            "type": "boolean",
+            "format": "",
+            "description": "Whether this case was created for internal API testing and should not be acted on by the support team.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "timeZone": {
+            "type": "string",
+            "format": "",
+            "description": "The timezone of the user who created the support case. It should be in a format IANA recognizes: https://www.iana.org/time-zones. There is no additional validation done by the API.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "updateTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. The time this case was last updated.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "CaseClassification": {
+        "type": "object",
+        "format": "",
+        "description": "A Case Classification represents the topic that a case is about. It's very important to use accurate classifications, because they're used to route your cases to specialists who can help you. A classification always has an ID that is its unique identifier. A valid ID is required when creating a case.",
+        "$ref": "",
+        "properties": {
+          "displayName": {
+            "type": "string",
+            "format": "",
+            "description": "A display name for the classification. The display name is not static and can change. To uniquely and consistently identify classifications, use the `CaseClassification.id` field.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "id": {
+            "type": "string",
+            "format": "",
+            "description": "The unique ID for a classification. Must be specified for case creation. To retrieve valid classification IDs for case creation, use `caseClassifications.search`. Classification IDs returned by `caseClassifications.search` are guaranteed to be valid for at least 6 months. If a given classification is deactiveated, it will immediately stop being returned. After 6 months, `case.create` requests using the classification ID will fail.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "CloseCaseRequest": {
+        "type": "object",
+        "format": "",
+        "description": "The request message for the CloseCase endpoint.",
+        "$ref": "",
+        "properties": {},
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Comment": {
+        "type": "object",
+        "format": "",
+        "description": "A comment associated with a support case. Case comments are the primary way for Google Support to communicate with a user who has opened a case. When a user responds to Google Support, the user's responses also appear as comments.",
+        "$ref": "",
+        "properties": {
+          "body": {
+            "type": "string",
+            "format": "",
+            "description": "The full comment body. Maximum of 12800 characters.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "createTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. The time when the comment was created.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "creator": {
+            "type": "",
+            "format": "",
+            "description": "Output only. The user or Google Support agent who created the comment.",
+            "$ref": "Actor",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. Identifier. The resource name of the comment.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "plainTextBody": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. DEPRECATED. DO NOT USE. A duplicate of the `body` field. This field is only present for legacy reasons.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "CompositeMedia": {
+        "type": "object",
+        "format": "",
+        "description": "# gdata.* are outside protos with mising documentation",
+        "$ref": "",
+        "properties": {
+          "blobRef": {
+            "type": "string",
+            "format": "byte",
+            "description": "# gdata.* are outside protos with mising documentation",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "blobstore2Info": {
+            "type": "",
+            "format": "",
+            "description": "# gdata.* are outside protos with mising documentation",
+            "$ref": "Blobstore2Info",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "cosmoBinaryReference": {
+            "type": "string",
+            "format": "byte",
+            "description": "# gdata.* are outside protos with mising documentation",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "crc32cHash": {
+            "type": "integer",
+            "format": "uint32",
+            "description": "# gdata.* are outside protos with mising documentation",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "inline": {
+            "type": "string",
+            "format": "byte",
+            "description": "# gdata.* are outside protos with mising documentation",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "length": {
+            "type": "string",
+            "format": "int64",
+            "description": "# gdata.* are outside protos with mising documentation",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "md5Hash": {
+            "type": "string",
+            "format": "byte",
+            "description": "# gdata.* are outside protos with mising documentation",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "objectId": {
+            "type": "",
+            "format": "",
+            "description": "# gdata.* are outside protos with mising documentation",
+            "$ref": "ObjectId",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "path": {
+            "type": "string",
+            "format": "",
+            "description": "# gdata.* are outside protos with mising documentation",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "referenceType": {
+            "type": "string",
+            "format": "",
+            "description": "# gdata.* are outside protos with mising documentation",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "PATH",
+              "BLOB_REF",
+              "INLINE",
+              "BIGSTORE_REF",
+              "COSMO_BINARY_REFERENCE"
+            ],
+            "readOnly": false
+          },
+          "sha1Hash": {
+            "type": "string",
+            "format": "byte",
+            "description": "# gdata.* are outside protos with mising documentation",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ContentTypeInfo": {
+        "type": "object",
+        "format": "",
+        "description": "# gdata.* are outside protos with mising documentation",
+        "$ref": "",
+        "properties": {
+          "bestGuess": {
+            "type": "string",
+            "format": "",
+            "description": "# gdata.* are outside protos with mising documentation",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "fromBytes": {
+            "type": "string",
+            "format": "",
+            "description": "# gdata.* are outside protos with mising documentation",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "fromFileName": {
+            "type": "string",
+            "format": "",
+            "description": "# gdata.* are outside protos with mising documentation",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "fromFusionId": {
+            "type": "string",
+            "format": "",
+            "description": "# gdata.* are outside protos with mising documentation",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "fromHeader": {
+            "type": "string",
+            "format": "",
+            "description": "# gdata.* are outside protos with mising documentation",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "fromUrlPath": {
+            "type": "string",
+            "format": "",
+            "description": "# gdata.* are outside protos with mising documentation",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "fusionIdDetectionMetadata": {
+            "type": "string",
+            "format": "byte",
+            "description": "# gdata.* are outside protos with mising documentation",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "CreateAttachmentRequest": {
+        "type": "object",
+        "format": "",
+        "description": "The request message for the CreateAttachment endpoint.",
+        "$ref": "",
+        "properties": {
+          "attachment": {
+            "type": "",
+            "format": "",
+            "description": "Required. The attachment to be created.",
+            "$ref": "Attachment",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "DiffChecksumsResponse": {
+        "type": "object",
+        "format": "",
+        "description": "# gdata.* are outside protos with mising documentation",
+        "$ref": "",
+        "properties": {
+          "checksumsLocation": {
+            "type": "",
+            "format": "",
+            "description": "# gdata.* are outside protos with mising documentation",
+            "$ref": "CompositeMedia",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "chunkSizeBytes": {
+            "type": "string",
+            "format": "int64",
+            "description": "# gdata.* are outside protos with mising documentation",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "objectLocation": {
+            "type": "",
+            "format": "",
+            "description": "# gdata.* are outside protos with mising documentation",
+            "$ref": "CompositeMedia",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "objectSizeBytes": {
+            "type": "string",
+            "format": "int64",
+            "description": "# gdata.* are outside protos with mising documentation",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "objectVersion": {
+            "type": "string",
+            "format": "",
+            "description": "# gdata.* are outside protos with mising documentation",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "DiffDownloadResponse": {
+        "type": "object",
+        "format": "",
+        "description": "# gdata.* are outside protos with mising documentation",
+        "$ref": "",
+        "properties": {
+          "objectLocation": {
+            "type": "",
+            "format": "",
+            "description": "# gdata.* are outside protos with mising documentation",
+            "$ref": "CompositeMedia",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "DiffUploadRequest": {
+        "type": "object",
+        "format": "",
+        "description": "# gdata.* are outside protos with mising documentation",
+        "$ref": "",
+        "properties": {
+          "checksumsInfo": {
+            "type": "",
+            "format": "",
+            "description": "# gdata.* are outside protos with mising documentation",
+            "$ref": "CompositeMedia",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "objectInfo": {
+            "type": "",
+            "format": "",
+            "description": "# gdata.* are outside protos with mising documentation",
+            "$ref": "CompositeMedia",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "objectVersion": {
+            "type": "string",
+            "format": "",
+            "description": "# gdata.* are outside protos with mising documentation",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "DiffUploadResponse": {
+        "type": "object",
+        "format": "",
+        "description": "# gdata.* are outside protos with mising documentation",
+        "$ref": "",
+        "properties": {
+          "objectVersion": {
+            "type": "string",
+            "format": "",
+            "description": "# gdata.* are outside protos with mising documentation",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "originalObject": {
+            "type": "",
+            "format": "",
+            "description": "# gdata.* are outside protos with mising documentation",
+            "$ref": "CompositeMedia",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "DiffVersionResponse": {
+        "type": "object",
+        "format": "",
+        "description": "# gdata.* are outside protos with mising documentation",
+        "$ref": "",
+        "properties": {
+          "objectSizeBytes": {
+            "type": "string",
+            "format": "int64",
+            "description": "# gdata.* are outside protos with mising documentation",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "objectVersion": {
+            "type": "string",
+            "format": "",
+            "description": "# gdata.* are outside protos with mising documentation",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "DownloadParameters": {
+        "type": "object",
+        "format": "",
+        "description": "# gdata.* are outside protos with mising documentation",
+        "$ref": "",
+        "properties": {
+          "allowGzipCompression": {
+            "type": "boolean",
+            "format": "",
+            "description": "# gdata.* are outside protos with mising documentation",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "ignoreRange": {
+            "type": "boolean",
+            "format": "",
+            "description": "# gdata.* are outside protos with mising documentation",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Empty": {
+        "type": "object",
+        "format": "",
+        "description": "A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }",
+        "$ref": "",
+        "properties": {},
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "EscalateCaseRequest": {
+        "type": "object",
+        "format": "",
+        "description": "The request message for the EscalateCase endpoint.",
+        "$ref": "",
+        "properties": {
+          "escalation": {
+            "type": "",
+            "format": "",
+            "description": "The escalation information to be sent with the escalation request.",
+            "$ref": "Escalation",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Escalation": {
+        "type": "object",
+        "format": "",
+        "description": "An escalation of a support case.",
+        "$ref": "",
+        "properties": {
+          "justification": {
+            "type": "string",
+            "format": "",
+            "description": "Required. A free text description to accompany the `reason` field above. Provides additional context on why the case is being escalated.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "reason": {
+            "type": "string",
+            "format": "",
+            "description": "Required. The reason why the Case is being escalated.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "REASON_UNSPECIFIED",
+              "RESOLUTION_TIME",
+              "TECHNICAL_EXPERTISE",
+              "BUSINESS_IMPACT"
+            ],
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ExpungeSupportEventSubscriptionRequest": {
+        "type": "object",
+        "format": "",
+        "description": "Request message for ExpungeSupportEventSubscription.",
+        "$ref": "",
+        "properties": {},
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ListAttachmentsResponse": {
+        "type": "object",
+        "format": "",
+        "description": "The response message for the ListAttachments endpoint.",
+        "$ref": "",
+        "properties": {
+          "attachments": {
+            "type": "array",
+            "format": "",
+            "description": "The list of attachments associated with a case.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Attachment",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "A token to retrieve the next page of results. Set this in the `page_token` field of subsequent `cases.attachments.list` requests. If unspecified, there are no more results to retrieve.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ListCasesResponse": {
+        "type": "object",
+        "format": "",
+        "description": "The response message for the ListCases endpoint.",
+        "$ref": "",
+        "properties": {
+          "cases": {
+            "type": "array",
+            "format": "",
+            "description": "The list of cases associated with the parent after any filters have been applied.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Case",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "A token to retrieve the next page of results. Set this in the `page_token` field of subsequent `cases.list` requests. If unspecified, there are no more results to retrieve.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ListCommentsResponse": {
+        "type": "object",
+        "format": "",
+        "description": "The response message for the ListComments endpoint.",
+        "$ref": "",
+        "properties": {
+          "comments": {
+            "type": "array",
+            "format": "",
+            "description": "List of the comments associated with the case.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Comment",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "A token to retrieve the next page of results. Set this in the `page_token` field of subsequent `cases.comments.list` requests. If unspecified, there are no more results to retrieve.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ListSupportEventSubscriptionsResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Response message for ListSupportEventSubscriptions.",
+        "$ref": "",
+        "properties": {
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "supportEventSubscriptions": {
+            "type": "array",
+            "format": "",
+            "description": "The support event subscriptions.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "SupportEventSubscription",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Media": {
+        "type": "object",
+        "format": "",
+        "description": "# gdata.* are outside protos with mising documentation",
+        "$ref": "",
+        "properties": {
+          "algorithm": {
+            "type": "string",
+            "format": "",
+            "description": "# gdata.* are outside protos with mising documentation",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "bigstoreObjectRef": {
+            "type": "string",
+            "format": "byte",
+            "description": "# gdata.* are outside protos with mising documentation",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "blobRef": {
+            "type": "string",
+            "format": "byte",
+            "description": "# gdata.* are outside protos with mising documentation",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "blobstore2Info": {
+            "type": "",
+            "format": "",
+            "description": "# gdata.* are outside protos with mising documentation",
+            "$ref": "Blobstore2Info",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "compositeMedia": {
+            "type": "array",
+            "format": "",
+            "description": "# gdata.* are outside protos with mising documentation",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "CompositeMedia",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "contentType": {
+            "type": "string",
+            "format": "",
+            "description": "# gdata.* are outside protos with mising documentation",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "contentTypeInfo": {
+            "type": "",
+            "format": "",
+            "description": "# gdata.* are outside protos with mising documentation",
+            "$ref": "ContentTypeInfo",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "cosmoBinaryReference": {
+            "type": "string",
+            "format": "byte",
+            "description": "# gdata.* are outside protos with mising documentation",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "crc32cHash": {
+            "type": "integer",
+            "format": "uint32",
+            "description": "# gdata.* are outside protos with mising documentation",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "diffChecksumsResponse": {
+            "type": "",
+            "format": "",
+            "description": "# gdata.* are outside protos with mising documentation",
+            "$ref": "DiffChecksumsResponse",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "diffDownloadResponse": {
+            "type": "",
+            "format": "",
+            "description": "# gdata.* are outside protos with mising documentation",
+            "$ref": "DiffDownloadResponse",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "diffUploadRequest": {
+            "type": "",
+            "format": "",
+            "description": "# gdata.* are outside protos with mising documentation",
+            "$ref": "DiffUploadRequest",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "diffUploadResponse": {
+            "type": "",
+            "format": "",
+            "description": "# gdata.* are outside protos with mising documentation",
+            "$ref": "DiffUploadResponse",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "diffVersionResponse": {
+            "type": "",
+            "format": "",
+            "description": "# gdata.* are outside protos with mising documentation",
+            "$ref": "DiffVersionResponse",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "downloadParameters": {
+            "type": "",
+            "format": "",
+            "description": "# gdata.* are outside protos with mising documentation",
+            "$ref": "DownloadParameters",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "filename": {
+            "type": "string",
+            "format": "",
+            "description": "# gdata.* are outside protos with mising documentation",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "hash": {
+            "type": "string",
+            "format": "",
+            "description": "# gdata.* are outside protos with mising documentation",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "hashVerified": {
+            "type": "boolean",
+            "format": "",
+            "description": "# gdata.* are outside protos with mising documentation",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "inline": {
+            "type": "string",
+            "format": "byte",
+            "description": "# gdata.* are outside protos with mising documentation",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "isPotentialRetry": {
+            "type": "boolean",
+            "format": "",
+            "description": "# gdata.* are outside protos with mising documentation",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "length": {
+            "type": "string",
+            "format": "int64",
+            "description": "# gdata.* are outside protos with mising documentation",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "md5Hash": {
+            "type": "string",
+            "format": "byte",
+            "description": "# gdata.* are outside protos with mising documentation",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "mediaId": {
+            "type": "string",
+            "format": "byte",
+            "description": "# gdata.* are outside protos with mising documentation",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "objectId": {
+            "type": "",
+            "format": "",
+            "description": "# gdata.* are outside protos with mising documentation",
+            "$ref": "ObjectId",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "path": {
+            "type": "string",
+            "format": "",
+            "description": "# gdata.* are outside protos with mising documentation",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "referenceType": {
+            "type": "string",
+            "format": "",
+            "description": "# gdata.* are outside protos with mising documentation",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "PATH",
+              "BLOB_REF",
+              "INLINE",
+              "GET_MEDIA",
+              "COMPOSITE_MEDIA",
+              "BIGSTORE_REF",
+              "DIFF_VERSION_RESPONSE",
+              "DIFF_CHECKSUMS_RESPONSE",
+              "DIFF_DOWNLOAD_RESPONSE",
+              "DIFF_UPLOAD_REQUEST",
+              "DIFF_UPLOAD_RESPONSE",
+              "COSMO_BINARY_REFERENCE",
+              "ARBITRARY_BYTES"
+            ],
+            "readOnly": false
+          },
+          "sha1Hash": {
+            "type": "string",
+            "format": "byte",
+            "description": "# gdata.* are outside protos with mising documentation",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "sha256Hash": {
+            "type": "string",
+            "format": "byte",
+            "description": "# gdata.* are outside protos with mising documentation",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "sha512Hash": {
+            "type": "string",
+            "format": "byte",
+            "description": "# gdata.* are outside protos with mising documentation",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "uint64",
+            "description": "# gdata.* are outside protos with mising documentation",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "token": {
+            "type": "string",
+            "format": "",
+            "description": "# gdata.* are outside protos with mising documentation",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ObjectId": {
+        "type": "object",
+        "format": "",
+        "description": "# gdata.* are outside protos with mising documentation",
+        "$ref": "",
+        "properties": {
+          "bucketName": {
+            "type": "string",
+            "format": "",
+            "description": "# gdata.* are outside protos with mising documentation",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "generation": {
+            "type": "string",
+            "format": "int64",
+            "description": "# gdata.* are outside protos with mising documentation",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "objectName": {
+            "type": "string",
+            "format": "",
+            "description": "# gdata.* are outside protos with mising documentation",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "SearchCaseClassificationsResponse": {
+        "type": "object",
+        "format": "",
+        "description": "The response message for SearchCaseClassifications endpoint.",
+        "$ref": "",
+        "properties": {
+          "caseClassifications": {
+            "type": "array",
+            "format": "",
+            "description": "The classifications retrieved.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "CaseClassification",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "A token to retrieve the next page of results. Set this in the `page_token` field of subsequent `caseClassifications.list` requests. If unspecified, there are no more results to retrieve.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "SearchCasesResponse": {
+        "type": "object",
+        "format": "",
+        "description": "The response message for the SearchCases endpoint.",
+        "$ref": "",
+        "properties": {
+          "cases": {
+            "type": "array",
+            "format": "",
+            "description": "The list of cases associated with the parent after any filters have been applied.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Case",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "A token to retrieve the next page of results. Set this in the `page_token` field of subsequent `cases.search` requests. If unspecified, there are no more results to retrieve.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "SupportEventSubscription": {
+        "type": "object",
+        "format": "",
+        "description": "A support event subscription. You can also manage support event subscriptions using other tools: * [`gcloud support support-event-subscriptions`](/sdk/gcloud/reference/support/support-event-subscriptions) (or [`gcloud beta`](/sdk/gcloud/reference/beta/support/support-event-subscriptions) for beta) * [Terraform `google_cloud_support_support_event_subscription`](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/cloud_support_support_event_subscription) (or [google-beta provider](https://registry.terraform.io/providers/hashicorp/google-beta/latest/docs/resources/cloud_support_support_event_subscription) for beta)",
+        "$ref": "",
+        "properties": {
+          "createTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. The time at which the subscription was created.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "deleteTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. The time at which the subscription was deleted.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "failureReason": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. Reason why subscription is failing. State of subscription must be FAILING in order for this to have a value.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "FAILURE_REASON_UNSPECIFIED",
+              "PERMISSION_DENIED",
+              "TOPIC_NOT_FOUND",
+              "OTHER"
+            ],
+            "readOnly": true
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "Identifier. The resource name of the support event subscription.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "pubSubTopic": {
+            "type": "string",
+            "format": "",
+            "description": "Required. The name of the Pub/Sub topic to publish notifications to. Format: projects/{project}/topics/{topic}",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "purgeTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. The time at which the subscription will be purged.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "state": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The state of the subscription.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "STATE_UNSPECIFIED",
+              "WORKING",
+              "FAILING",
+              "DELETED"
+            ],
+            "readOnly": true
+          },
+          "updateTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. The time at which the subscription was last updated.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "UndeleteSupportEventSubscriptionRequest": {
+        "type": "object",
+        "format": "",
+        "description": "Request message for UndeleteSupportEventSubscription.",
+        "$ref": "",
+        "properties": {},
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      }
+    },
+    "resources": {
+      "caseClassifications": {
+        "methods": {
+          "search": {
+            "id": "cloudsupport.caseClassifications.search",
+            "httpMethod": "GET",
+            "path": "v2/caseClassifications:search",
+            "flatPath": "v2/caseClassifications:search",
+            "description": "Retrieve valid classifications to use when creating a support case. Classifications are hierarchical. Each classification is a string containing all levels of the hierarchy separated by `\" \u003e \"`. For example, `\"Technical Issue \u003e Compute \u003e Compute Engine\"`. Classification IDs returned by this endpoint are valid for at least six months. When a classification is deactivated, this endpoint immediately stops returning it. After six months, `case.create` requests using the classification will fail. EXAMPLES: cURL: ```shell curl \\ --header \"Authorization: Bearer $(gcloud auth print-access-token)\" \\ 'https://cloudsupport.googleapis.com/v2/caseClassifications:search?query=display_name:\"*Compute%20Engine*\"' ``` Python: ```python import googleapiclient.discovery supportApiService = googleapiclient.discovery.build( serviceName=\"cloudsupport\", version=\"v2\", discoveryServiceUrl=f\"https://cloudsupport.googleapis.com/$discovery/rest?version=v2\", ) request = supportApiService.caseClassifications().search( query='display_name:\"*Compute Engine*\"' ) print(request.execute()) ```",
+            "parameters": {
+              "pageSize": {
+                "type": "integer",
+                "location": "query",
+                "required": false
+              },
+              "pageToken": {
+                "type": "string",
+                "location": "query",
+                "required": false
+              },
+              "query": {
+                "type": "string",
+                "location": "query",
+                "required": false
+              }
+            },
+            "parameterOrder": [],
+            "request": null,
+            "response": {
+              "$ref": "SearchCaseClassificationsResponse"
+            }
+          }
+        },
+        "resources": null
+      },
+      "cases": {
+        "methods": {
+          "close": {
+            "id": "cloudsupport.cases.close",
+            "httpMethod": "POST",
+            "path": "v2/{+name}:close",
+            "flatPath": "v2/{v2Id}/{v2Id1}/cases/{casesId}:close",
+            "description": "Close a case. EXAMPLES: cURL: ```shell case=\"projects/some-project/cases/43595344\" curl \\ --request POST \\ --header \"Authorization: Bearer $(gcloud auth print-access-token)\" \\ \"https://cloudsupport.googleapis.com/v2/$case:close\" ``` Python: ```python import googleapiclient.discovery api_version = \"v2\" supportApiService = googleapiclient.discovery.build( serviceName=\"cloudsupport\", version=api_version, discoveryServiceUrl=f\"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}\", ) request = supportApiService.cases().close( name=\"projects/some-project/cases/43595344\" ) print(request.execute()) ```",
+            "parameters": {
+              "name": {
+                "type": "string",
+                "location": "path",
+                "required": true
+              }
+            },
+            "parameterOrder": [
+              "name"
+            ],
+            "request": {
+              "$ref": "CloseCaseRequest"
+            },
+            "response": {
+              "$ref": "Case"
+            }
+          },
+          "create": {
+            "id": "cloudsupport.cases.create",
+            "httpMethod": "POST",
+            "path": "v2/{+parent}/cases",
+            "flatPath": "v2/{v2Id}/{v2Id1}/cases",
+            "description": "Create a new case and associate it with a parent. It must have the following fields set: `display_name`, `description`, `classification`, and `priority`. If you're just testing the API and don't want to route your case to an agent, set `testCase=true`. EXAMPLES: cURL: ```shell parent=\"projects/some-project\" curl \\ --request POST \\ --header \"Authorization: Bearer $(gcloud auth print-access-token)\" \\ --header 'Content-Type: application/json' \\ --data '{ \"display_name\": \"Test case created by me.\", \"description\": \"a random test case, feel free to close\", \"classification\": { \"id\": \"100IK2AKCLHMGRJ9CDGMOCGP8DM6UTB4BT262T31BT1M2T31DHNMENPO6KS36CPJ786L2TBFEHGN6NPI64R3CDHN8880G08I1H3MURR7DHII0GRCDTQM8\" }, \"time_zone\": \"-07:00\", \"subscriber_email_addresses\": [ \"foo@domain.com\", \"bar@domain.com\" ], \"testCase\": true, \"priority\": \"P3\" }' \\ \"https://cloudsupport.googleapis.com/v2/$parent/cases\" ``` Python: ```python import googleapiclient.discovery api_version = \"v2\" supportApiService = googleapiclient.discovery.build( serviceName=\"cloudsupport\", version=api_version, discoveryServiceUrl=f\"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}\", ) request = supportApiService.cases().create( parent=\"projects/some-project\", body={ \"displayName\": \"A Test Case\", \"description\": \"This is a test case.\", \"testCase\": True, \"priority\": \"P2\", \"classification\": { \"id\": \"100IK2AKCLHMGRJ9CDGMOCGP8DM6UTB4BT262T31BT1M2T31DHNMENPO6KS36CPJ786L2TBFEHGN6NPI64R3CDHN8880G08I1H3MURR7DHII0GRCDTQM8\" }, }, ) print(request.execute()) ```",
+            "parameters": {
+              "parent": {
+                "type": "string",
+                "location": "path",
+                "required": true
+              }
+            },
+            "parameterOrder": [
+              "parent"
+            ],
+            "request": {
+              "$ref": "Case"
+            },
+            "response": {
+              "$ref": "Case"
+            }
+          },
+          "escalate": {
+            "id": "cloudsupport.cases.escalate",
+            "httpMethod": "POST",
+            "path": "v2/{+name}:escalate",
+            "flatPath": "v2/{v2Id}/{v2Id1}/cases/{casesId}:escalate",
+            "description": "Escalate a case, starting the Google Cloud Support escalation management process. This operation is only available for some support services. Go to https://cloud.google.com/support and look for 'Technical support escalations' in the feature list to find out which ones let you do that. EXAMPLES: cURL: ```shell case=\"projects/some-project/cases/43595344\" curl \\ --request POST \\ --header \"Authorization: Bearer $(gcloud auth print-access-token)\" \\ --header \"Content-Type: application/json\" \\ --data '{ \"escalation\": { \"reason\": \"BUSINESS_IMPACT\", \"justification\": \"This is a test escalation.\" } }' \\ \"https://cloudsupport.googleapis.com/v2/$case:escalate\" ``` Python: ```python import googleapiclient.discovery api_version = \"v2\" supportApiService = googleapiclient.discovery.build( serviceName=\"cloudsupport\", version=api_version, discoveryServiceUrl=f\"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}\", ) request = supportApiService.cases().escalate( name=\"projects/some-project/cases/43595344\", body={ \"escalation\": { \"reason\": \"BUSINESS_IMPACT\", \"justification\": \"This is a test escalation.\", }, }, ) print(request.execute()) ```",
+            "parameters": {
+              "name": {
+                "type": "string",
+                "location": "path",
+                "required": true
+              }
+            },
+            "parameterOrder": [
+              "name"
+            ],
+            "request": {
+              "$ref": "EscalateCaseRequest"
+            },
+            "response": {
+              "$ref": "Case"
+            }
+          },
+          "get": {
+            "id": "cloudsupport.cases.get",
+            "httpMethod": "GET",
+            "path": "v2/{+name}",
+            "flatPath": "v2/{v2Id}/{v2Id1}/cases/{casesId}",
+            "description": "Retrieve a case. EXAMPLES: cURL: ```shell case=\"projects/some-project/cases/16033687\" curl \\ --header \"Authorization: Bearer $(gcloud auth print-access-token)\" \\ \"https://cloudsupport.googleapis.com/v2/$case\" ``` Python: ```python import googleapiclient.discovery api_version = \"v2\" supportApiService = googleapiclient.discovery.build( serviceName=\"cloudsupport\", version=api_version, discoveryServiceUrl=f\"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}\", ) request = supportApiService.cases().get( name=\"projects/some-project/cases/43595344\", ) print(request.execute()) ```",
+            "parameters": {
+              "name": {
+                "type": "string",
+                "location": "path",
+                "required": true
+              }
+            },
+            "parameterOrder": [
+              "name"
+            ],
+            "request": null,
+            "response": {
+              "$ref": "Case"
+            }
+          },
+          "list": {
+            "id": "cloudsupport.cases.list",
+            "httpMethod": "GET",
+            "path": "v2/{+parent}/cases",
+            "flatPath": "v2/{v2Id}/{v2Id1}/cases",
+            "description": "Retrieve all cases under a parent, but not its children. For example, listing cases under an organization only returns the cases that are directly parented by that organization. To retrieve cases under an organization and its projects, use `cases.search`. EXAMPLES: cURL: ```shell parent=\"projects/some-project\" curl \\ --header \"Authorization: Bearer $(gcloud auth print-access-token)\" \\ \"https://cloudsupport.googleapis.com/v2/$parent/cases\" ``` Python: ```python import googleapiclient.discovery api_version = \"v2\" supportApiService = googleapiclient.discovery.build( serviceName=\"cloudsupport\", version=api_version, discoveryServiceUrl=f\"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}\", ) request = supportApiService.cases().list(parent=\"projects/some-project\") print(request.execute()) ```",
+            "parameters": {
+              "filter": {
+                "type": "string",
+                "location": "query",
+                "required": false
+              },
+              "pageSize": {
+                "type": "integer",
+                "location": "query",
+                "required": false
+              },
+              "pageToken": {
+                "type": "string",
+                "location": "query",
+                "required": false
+              },
+              "parent": {
+                "type": "string",
+                "location": "path",
+                "required": true
+              }
+            },
+            "parameterOrder": [
+              "parent"
+            ],
+            "request": null,
+            "response": {
+              "$ref": "ListCasesResponse"
+            }
+          },
+          "patch": {
+            "id": "cloudsupport.cases.patch",
+            "httpMethod": "PATCH",
+            "path": "v2/{+name}",
+            "flatPath": "v2/{v2Id}/{v2Id1}/cases/{casesId}",
+            "description": "Update a case. Only some fields can be updated. EXAMPLES: cURL: ```shell case=\"projects/some-project/cases/43595344\" curl \\ --request PATCH \\ --header \"Authorization: Bearer $(gcloud auth print-access-token)\" \\ --header \"Content-Type: application/json\" \\ --data '{ \"priority\": \"P1\" }' \\ \"https://cloudsupport.googleapis.com/v2/$case?updateMask=priority\" ``` Python: ```python import googleapiclient.discovery api_version = \"v2\" supportApiService = googleapiclient.discovery.build( serviceName=\"cloudsupport\", version=api_version, discoveryServiceUrl=f\"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}\", ) request = supportApiService.cases().patch( name=\"projects/some-project/cases/43112854\", body={ \"displayName\": \"This is Now a New Title\", \"priority\": \"P2\", }, ) print(request.execute()) ```",
+            "parameters": {
+              "name": {
+                "type": "string",
+                "location": "path",
+                "required": true
+              },
+              "updateMask": {
+                "type": "string",
+                "location": "query",
+                "required": false
+              }
+            },
+            "parameterOrder": [
+              "name"
+            ],
+            "request": {
+              "$ref": "Case"
+            },
+            "response": {
+              "$ref": "Case"
+            }
+          },
+          "search": {
+            "id": "cloudsupport.cases.search",
+            "httpMethod": "GET",
+            "path": "v2/{+parent}/cases:search",
+            "flatPath": "v2/{v2Id}/{v2Id1}/cases:search",
+            "description": "Search for cases using a query. EXAMPLES: cURL: ```shell parent=\"projects/some-project\" curl \\ --header \"Authorization: Bearer $(gcloud auth print-access-token)\" \\ \"https://cloudsupport.googleapis.com/v2/$parent/cases:search\" ``` Python: ```python import googleapiclient.discovery api_version = \"v2\" supportApiService = googleapiclient.discovery.build( serviceName=\"cloudsupport\", version=api_version, discoveryServiceUrl=f\"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}\", ) request = supportApiService.cases().search( parent=\"projects/some-project\", query=\"state=OPEN\" ) print(request.execute()) ```",
+            "parameters": {
+              "pageSize": {
+                "type": "integer",
+                "location": "query",
+                "required": false
+              },
+              "pageToken": {
+                "type": "string",
+                "location": "query",
+                "required": false
+              },
+              "parent": {
+                "type": "string",
+                "location": "path",
+                "required": true
+              },
+              "query": {
+                "type": "string",
+                "location": "query",
+                "required": false
+              }
+            },
+            "parameterOrder": [
+              "parent"
+            ],
+            "request": null,
+            "response": {
+              "$ref": "SearchCasesResponse"
+            }
+          }
+        },
+        "resources": {
+          "attachments": {
+            "methods": {
+              "get": {
+                "id": "cloudsupport.cases.attachments.get",
+                "httpMethod": "GET",
+                "path": "v2/{+name}",
+                "flatPath": "v2/{v2Id}/{v2Id1}/cases/{casesId}/attachments/{attachmentsId}",
+                "description": "Retrieve an attachment associated with a support case. EXAMPLES: cURL: ```shell attachment=\"projects/some-project/cases/23598314/attachments/0684M00000P3h1fQAB\" curl \\ --header \"Authorization: Bearer $(gcloud auth print-access-token)\" \\ \"https://cloudsupport.googleapis.com/v2/$attachment\" ``` Python: ```python import googleapiclient.discovery api_version = \"v2\" supportApiService = googleapiclient.discovery.build( serviceName=\"cloudsupport\", version=api_version, discoveryServiceUrl=f\"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}\", ) request = ( supportApiService.cases() .attachments() .get(name=\"projects/some-project/cases/43595344/attachments/0684M00000P3h1fQAB\") ) print(request.execute()) ```",
+                "parameters": {
+                  "name": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  }
+                },
+                "parameterOrder": [
+                  "name"
+                ],
+                "request": null,
+                "response": {
+                  "$ref": "Attachment"
+                }
+              },
+              "list": {
+                "id": "cloudsupport.cases.attachments.list",
+                "httpMethod": "GET",
+                "path": "v2/{+parent}/attachments",
+                "flatPath": "v2/{v2Id}/{v2Id1}/cases/{casesId}/attachments",
+                "description": "List all the attachments associated with a support case. EXAMPLES: cURL: ```shell case=\"projects/some-project/cases/23598314\" curl \\ --header \"Authorization: Bearer $(gcloud auth print-access-token)\" \\ \"https://cloudsupport.googleapis.com/v2/$case/attachments\" ``` Python: ```python import googleapiclient.discovery api_version = \"v2\" supportApiService = googleapiclient.discovery.build( serviceName=\"cloudsupport\", version=api_version, discoveryServiceUrl=f\"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}\", ) request = ( supportApiService.cases() .attachments() .list(parent=\"projects/some-project/cases/43595344\") ) print(request.execute()) ```",
+                "parameters": {
+                  "pageSize": {
+                    "type": "integer",
+                    "location": "query",
+                    "required": false
+                  },
+                  "pageToken": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false
+                  },
+                  "parent": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  }
+                },
+                "parameterOrder": [
+                  "parent"
+                ],
+                "request": null,
+                "response": {
+                  "$ref": "ListAttachmentsResponse"
+                }
+              }
+            },
+            "resources": null
+          },
+          "comments": {
+            "methods": {
+              "create": {
+                "id": "cloudsupport.cases.comments.create",
+                "httpMethod": "POST",
+                "path": "v2/{+parent}/comments",
+                "flatPath": "v2/{v2Id}/{v2Id1}/cases/{casesId}/comments",
+                "description": "Add a new comment to a case. The comment must have the following fields set: `body`. EXAMPLES: cURL: ```shell case=\"projects/some-project/cases/43591344\" curl \\ --request POST \\ --header \"Authorization: Bearer $(gcloud auth print-access-token)\" \\ --header 'Content-Type: application/json' \\ --data '{ \"body\": \"This is a test comment.\" }' \\ \"https://cloudsupport.googleapis.com/v2/$case/comments\" ``` Python: ```python import googleapiclient.discovery api_version = \"v2\" supportApiService = googleapiclient.discovery.build( serviceName=\"cloudsupport\", version=api_version, discoveryServiceUrl=f\"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}\", ) request = ( supportApiService.cases() .comments() .create( parent=\"projects/some-project/cases/43595344\", body={\"body\": \"This is a test comment.\"}, ) ) print(request.execute()) ```",
+                "parameters": {
+                  "parent": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  }
+                },
+                "parameterOrder": [
+                  "parent"
+                ],
+                "request": {
+                  "$ref": "Comment"
+                },
+                "response": {
+                  "$ref": "Comment"
+                }
+              },
+              "get": {
+                "id": "cloudsupport.cases.comments.get",
+                "httpMethod": "GET",
+                "path": "v2/{+name}",
+                "flatPath": "v2/{v2Id}/{v2Id1}/cases/{casesId}/comments/{commentsId}",
+                "description": "Retrieve a comment. EXAMPLES: cURL: ```shell comment=\"projects/some-project/cases/43595344/comments/234567890\" curl \\ --header \"Authorization: Bearer $(gcloud auth print-access-token)\" \\ \"https://cloudsupport.googleapis.com/v2/$comment\" ``` Python: ```python import googleapiclient.discovery api_version = \"v2\" supportApiService = googleapiclient.discovery.build( serviceName=\"cloudsupport\", version=api_version, discoveryServiceUrl=f\"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}\", ) request = supportApiService.cases().comments().get( name=\"projects/some-project/cases/43595344/comments/234567890\", ) print(request.execute()) ```",
+                "parameters": {
+                  "name": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  }
+                },
+                "parameterOrder": [
+                  "name"
+                ],
+                "request": null,
+                "response": {
+                  "$ref": "Comment"
+                }
+              },
+              "list": {
+                "id": "cloudsupport.cases.comments.list",
+                "httpMethod": "GET",
+                "path": "v2/{+parent}/comments",
+                "flatPath": "v2/{v2Id}/{v2Id1}/cases/{casesId}/comments",
+                "description": "List all the comments associated with a case. EXAMPLES: cURL: ```shell case=\"projects/some-project/cases/43595344\" curl \\ --header \"Authorization: Bearer $(gcloud auth print-access-token)\" \\ \"https://cloudsupport.googleapis.com/v2/$case/comments\" ``` Python: ```python import googleapiclient.discovery api_version = \"v2\" supportApiService = googleapiclient.discovery.build( serviceName=\"cloudsupport\", version=api_version, discoveryServiceUrl=f\"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}\", ) request = ( supportApiService.cases() .comments() .list(parent=\"projects/some-project/cases/43595344\") ) print(request.execute()) ```",
+                "parameters": {
+                  "pageSize": {
+                    "type": "integer",
+                    "location": "query",
+                    "required": false
+                  },
+                  "pageToken": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false
+                  },
+                  "parent": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  }
+                },
+                "parameterOrder": [
+                  "parent"
+                ],
+                "request": null,
+                "response": {
+                  "$ref": "ListCommentsResponse"
+                }
+              }
+            },
+            "resources": null
+          }
+        }
+      },
+      "media": {
+        "methods": {
+          "download": {
+            "id": "cloudsupport.media.download",
+            "httpMethod": "GET",
+            "path": "v2/{+name}:download",
+            "flatPath": "v2/{v2Id}/{v2Id1}/cases/{casesId}/attachments/{attachmentsId}:download",
+            "description": "Download a file attached to a case. When this endpoint is called, no \"response body\" will be returned. Instead, the attachment's blob will be returned. Note: HTTP requests must append \"?alt=media\" to the URL. EXAMPLES: cURL: ```shell name=\"projects/some-project/cases/43594844/attachments/0674M00000WijAnZAJ\" curl \\ --header \"Authorization: Bearer $(gcloud auth print-access-token)\" \\ \"https://cloudsupport.googleapis.com/v2/$name:download?alt=media\" ``` Python: ```python import googleapiclient.discovery api_version = \"v2\" supportApiService = googleapiclient.discovery.build( serviceName=\"cloudsupport\", version=api_version, discoveryServiceUrl=f\"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}\", ) request = supportApiService.media().download( name=\"projects/some-project/cases/43595344/attachments/0684M00000Pw6pHQAR\" ) request.uri = request.uri.split(\"?\")[0] + \"?alt=media\" print(request.execute()) ```",
+            "parameters": {
+              "name": {
+                "type": "string",
+                "location": "path",
+                "required": true
+              }
+            },
+            "parameterOrder": [
+              "name"
+            ],
+            "request": null,
+            "response": {
+              "$ref": "Media"
+            }
+          },
+          "upload": {
+            "id": "cloudsupport.media.upload",
+            "httpMethod": "POST",
+            "path": "v2/{+parent}/attachments",
+            "flatPath": "v2/{v2Id}/{v2Id1}/cases/{casesId}/attachments",
+            "description": "Create a file attachment on a case or Cloud resource. The attachment must have the following fields set: `filename`. EXAMPLES: cURL: ```shell echo \"This text is in a file I'm uploading using CSAPI.\" \\ \u003e \"./example_file.txt\" case=\"projects/some-project/cases/43594844\" curl \\ --header \"Authorization: Bearer $(gcloud auth print-access-token)\" \\ --data-binary @\"./example_file.txt\" \\ \"https://cloudsupport.googleapis.com/upload/v2/$case/attachments?attachment.filename=uploaded_via_curl.txt\" ``` Python: ```python import googleapiclient.discovery api_version = \"v2\" supportApiService = googleapiclient.discovery.build( serviceName=\"cloudsupport\", version=api_version, discoveryServiceUrl=f\"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}\", ) file_path = \"./example_file.txt\" with open(file_path, \"w\") as file: file.write( \"This text is inside a file I'm going to upload using the Cloud Support API.\", ) request = supportApiService.media().upload( parent=\"projects/some-project/cases/43595344\", media_body=file_path ) request.uri = request.uri.split(\"?\")[0] + \"?attachment.filename=uploaded_via_python.txt\" print(request.execute()) ```",
+            "parameters": {
+              "parent": {
+                "type": "string",
+                "location": "path",
+                "required": true
+              }
+            },
+            "parameterOrder": [
+              "parent"
+            ],
+            "request": {
+              "$ref": "CreateAttachmentRequest"
+            },
+            "response": {
+              "$ref": "Attachment"
+            }
+          }
+        },
+        "resources": null
+      },
+      "organizations": {
+        "methods": null,
+        "resources": {
+          "supportEventSubscriptions": {
+            "methods": {
+              "create": {
+                "id": "cloudsupport.organizations.supportEventSubscriptions.create",
+                "httpMethod": "POST",
+                "path": "v2/{+parent}/supportEventSubscriptions",
+                "flatPath": "v2/organizations/{organizationsId}/supportEventSubscriptions",
+                "description": "Creates a support event subscription for an organization. EXAMPLES: cURL: ```shell parent=\"organizations/123456789\" curl \\ --request POST \\ --header \"Authorization: Bearer $(gcloud auth print-access-token)\" \\ --header 'Content-Type: application/json' \\ --data '{ \"pub_sub_topic\": \"projects/my-project/topics/my-topic\" }' \\ \"https://cloudsupport.googleapis.com/v2/$parent/supportEventSubscriptions\" ``` Python: ```python import googleapiclient.discovery api_version = \"v2\" supportApiService = googleapiclient.discovery.build( serviceName=\"cloudsupport\", version=api_version, discoveryServiceUrl=f\"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}\", ) request = supportApiService.supportEventSubscriptions().create( parent=\"organizations/123456789\", body={ \"pub_sub_topic\": \"projects/my-project/topics/my-topic\" }, ) print(request.execute()) ```",
+                "parameters": {
+                  "parent": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  }
+                },
+                "parameterOrder": [
+                  "parent"
+                ],
+                "request": {
+                  "$ref": "SupportEventSubscription"
+                },
+                "response": {
+                  "$ref": "SupportEventSubscription"
+                }
+              },
+              "delete": {
+                "id": "cloudsupport.organizations.supportEventSubscriptions.delete",
+                "httpMethod": "DELETE",
+                "path": "v2/{+name}",
+                "flatPath": "v2/organizations/{organizationsId}/supportEventSubscriptions/{supportEventSubscriptionsId}",
+                "description": "Soft deletes a support event subscription. EXAMPLES: cURL: ```shell support_event_subscription=\"organizations/123456789/supportEventSubscriptions/abcdef123456\" curl \\ --request DELETE \\ --header \"Authorization: Bearer $(gcloud auth print-access-token)\" \\ \"https://cloudsupport.googleapis.com/v2/$support_event_subscription\" ``` Python: ```python import googleapiclient.discovery api_version = \"v2\" supportApiService = googleapiclient.discovery.build( serviceName=\"cloudsupport\", version=api_version, discoveryServiceUrl=f\"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}\", ) request = supportApiService).supportEventSubscriptions().delete( name=\"organizations/123456789/supportEventSubscriptions/abcdef123456\" ) print(request.execute()) ```",
+                "parameters": {
+                  "name": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  }
+                },
+                "parameterOrder": [
+                  "name"
+                ],
+                "request": null,
+                "response": {
+                  "$ref": "SupportEventSubscription"
+                }
+              },
+              "expunge": {
+                "id": "cloudsupport.organizations.supportEventSubscriptions.expunge",
+                "httpMethod": "POST",
+                "path": "v2/{+name}:expunge",
+                "flatPath": "v2/organizations/{organizationsId}/supportEventSubscriptions/{supportEventSubscriptionsId}:expunge",
+                "description": "Expunges a support event subscription. EXAMPLES: cURL: ```shell support_event_subscription=\"organizations/123456789/supportEventSubscriptions/abcdef123456\" curl \\ --request POST \\ --header \"Authorization: Bearer $(gcloud auth print-access-token)\" \\ \"https://cloudsupport.googleapis.com/v2/$support_event_subscription:expunge\" ``` Python: ```python import googleapiclient.discovery api_version = \"v2\" supportApiService = googleapiclient.discovery.build( serviceName=\"cloudsupport\", version=api_version, discoveryServiceUrl=f\"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}\", ) request = supportApiService.supportEventSubscriptions().expunge( name=\"organizations/123456789/supportEventSubscriptions/abcdef123456\" ) print(request.execute()) ```",
+                "parameters": {
+                  "name": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  }
+                },
+                "parameterOrder": [
+                  "name"
+                ],
+                "request": {
+                  "$ref": "ExpungeSupportEventSubscriptionRequest"
+                },
+                "response": {
+                  "$ref": "Empty"
+                }
+              },
+              "get": {
+                "id": "cloudsupport.organizations.supportEventSubscriptions.get",
+                "httpMethod": "GET",
+                "path": "v2/{+name}",
+                "flatPath": "v2/organizations/{organizationsId}/supportEventSubscriptions/{supportEventSubscriptionsId}",
+                "description": "Gets a support event subscription. EXAMPLES: cURL: ```shell support_event_subscription=\"organizations/123456789/supportEventSubscriptions/abcdef123456\" curl \\ --header \"Authorization: Bearer $(gcloud auth print-access-token)\" \\ \"https://cloudsupport.googleapis.com/v2/$support_event_subscription\" ``` Python: ```python import googleapiclient.discovery api_version = \"v2\" supportApiService = googleapiclient.discovery.build( serviceName=\"cloudsupport\", version=api_version, discoveryServiceUrl=f\"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}\", ) request = supportApiService.supportEventSubscriptions().get( name=\"organizations/123456789/supportEventSubscriptions/abcdef123456\" ) print(request.execute()) ```",
+                "parameters": {
+                  "name": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  }
+                },
+                "parameterOrder": [
+                  "name"
+                ],
+                "request": null,
+                "response": {
+                  "$ref": "SupportEventSubscription"
+                }
+              },
+              "list": {
+                "id": "cloudsupport.organizations.supportEventSubscriptions.list",
+                "httpMethod": "GET",
+                "path": "v2/{+parent}/supportEventSubscriptions",
+                "flatPath": "v2/organizations/{organizationsId}/supportEventSubscriptions",
+                "description": "Lists support event subscriptions. EXAMPLES: cURL: ```shell parent=\"organizations/123456789\" curl \\ --header \"Authorization: Bearer $(gcloud auth print-access-token)\" \\ \"https://cloudsupport.googleapis.com/v2/$parent/supportEventSubscriptions\" ``` Python: ```python import googleapiclient.discovery api_version = \"v2\" supportApiService = googleapiclient.discovery.build( serviceName=\"cloudsupport\", version=api_version, discoveryServiceUrl=f\"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}\", ) request = supportApiService.supportEventSubscriptions().list( parent=\"organizations/123456789\" ) print(request.execute()) ```",
+                "parameters": {
+                  "filter": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false
+                  },
+                  "pageSize": {
+                    "type": "integer",
+                    "location": "query",
+                    "required": false
+                  },
+                  "pageToken": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false
+                  },
+                  "parent": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  },
+                  "showDeleted": {
+                    "type": "boolean",
+                    "location": "query",
+                    "required": false
+                  }
+                },
+                "parameterOrder": [
+                  "parent"
+                ],
+                "request": null,
+                "response": {
+                  "$ref": "ListSupportEventSubscriptionsResponse"
+                }
+              },
+              "patch": {
+                "id": "cloudsupport.organizations.supportEventSubscriptions.patch",
+                "httpMethod": "PATCH",
+                "path": "v2/{+name}",
+                "flatPath": "v2/organizations/{organizationsId}/supportEventSubscriptions/{supportEventSubscriptionsId}",
+                "description": "Updates a support event subscription. EXAMPLES: cURL: ```shell support_event_subscription=\"organizations/123456789/supportEventSubscriptions/abcdef123456\" curl \\ --request PATCH \\ --header \"Authorization: Bearer $(gcloud auth print-access-token)\" \\ --header \"Content-Type: application/json\" \\ --data '{ \"pub_sub_topic\": \"projects/my-project/topics/new-topic\" }' \\ \"https://cloudsupport.googleapis.com/v2/$support_event_subscription?updateMask=pub_sub_topic\" ``` Python: ```python import googleapiclient.discovery api_version = \"v2\" supportApiService = googleapiclient.discovery.build( serviceName=\"cloudsupport\", version=api_version, discoveryServiceUrl=f\"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}\", ) request = supportApiService.supportEventSubscriptions().patch( name=\"organizations/123456789/supportEventSubscriptions/abcdef123456\", body={ \"pub_sub_topic\": \"projects/my-project/topics/new-topic\" }, ) print(request.execute()) ```",
+                "parameters": {
+                  "name": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  },
+                  "updateMask": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false
+                  }
+                },
+                "parameterOrder": [
+                  "name"
+                ],
+                "request": {
+                  "$ref": "SupportEventSubscription"
+                },
+                "response": {
+                  "$ref": "SupportEventSubscription"
+                }
+              },
+              "undelete": {
+                "id": "cloudsupport.organizations.supportEventSubscriptions.undelete",
+                "httpMethod": "POST",
+                "path": "v2/{+name}:undelete",
+                "flatPath": "v2/organizations/{organizationsId}/supportEventSubscriptions/{supportEventSubscriptionsId}:undelete",
+                "description": "Undeletes a support event subscription. EXAMPLES: cURL: ```shell support_event_subscription=\"organizations/123456789/supportEventSubscriptions/abcdef123456\" curl \\ --request POST \\ --header \"Authorization: Bearer $(gcloud auth print-access-token)\" \\ \"https://cloudsupport.googleapis.com/v2/$support_event_subscription:undelete\" ``` Python: ```python import googleapiclient.discovery api_version = \"v2\" supportApiService = googleapiclient.discovery.build( serviceName=\"cloudsupport\", version=api_version, discoveryServiceUrl=f\"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}\", ) request = supportApiService.supportEventSubscriptions().undelete( name=\"organizations/123456789/supportEventSubscriptions/abcdef123456\" ) print(request.execute()) ```",
+                "parameters": {
+                  "name": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  }
+                },
+                "parameterOrder": [
+                  "name"
+                ],
+                "request": {
+                  "$ref": "UndeleteSupportEventSubscriptionRequest"
+                },
+                "response": {
+                  "$ref": "SupportEventSubscription"
+                }
+              }
+            },
+            "resources": null
+          }
+        }
+      }
+    }
+  }
+}

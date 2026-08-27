@@ -1,0 +1,3840 @@
+{
+  "schema_source": "discovery_docs",
+  "mode": "resource",
+  "auth": {
+    "Type": "",
+    "Params": null
+  },
+  "base_url": "https://privilegedaccessmanager.googleapis.com",
+  "retry": {
+    "MaxAttempts": 0,
+    "InitialBackoff": "",
+    "MaxBackoff": "",
+    "Jitter": null,
+    "RespectRetryAfter": null,
+    "RateLimitResetHeader": ""
+  },
+  "timeouts": {
+    "Create": "",
+    "Read": "",
+    "Update": "",
+    "Delete": "",
+    "Default": ""
+  },
+  "wire_name": "google_privilegedaccessmanager",
+  "raw_spec": {
+    "name": "privilegedaccessmanager",
+    "revision": "20260810",
+    "discoveryVersion": "v1",
+    "baseUrl": "https://privilegedaccessmanager.googleapis.com/",
+    "rootUrl": "https://privilegedaccessmanager.googleapis.com/",
+    "servicePath": "",
+    "schemas": {
+      "AccessControlEntry": {
+        "type": "object",
+        "format": "",
+        "description": "`AccessControlEntry` is used to control who can do some operation.",
+        "$ref": "",
+        "properties": {
+          "principals": {
+            "type": "array",
+            "format": "",
+            "description": "Optional. Users who are allowed for the operation. Each entry should be a valid v1 IAM principal identifier. The format for these is documented at: https://cloud.google.com/iam/docs/principal-identifiers#v1",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Activated": {
+        "type": "object",
+        "format": "",
+        "description": "An event representing that the grant was successfully activated.",
+        "$ref": "",
+        "properties": {},
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ActivationFailed": {
+        "type": "object",
+        "format": "",
+        "description": "An event representing that the grant activation failed.",
+        "$ref": "",
+        "properties": {
+          "error": {
+            "type": "",
+            "format": "",
+            "description": "Output only. The error that occurred while activating the grant.",
+            "$ref": "Status",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "AdditionalNotificationTargets": {
+        "type": "object",
+        "format": "",
+        "description": "`AdditionalNotificationTargets` includes email addresses to be notified.",
+        "$ref": "",
+        "properties": {
+          "adminEmailRecipients": {
+            "type": "array",
+            "format": "",
+            "description": "Optional. Additional email addresses to be notified when a principal (requester) is granted access.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "requesterEmailRecipients": {
+            "type": "array",
+            "format": "",
+            "description": "Optional. Additional email address to be notified about an eligible entitlement.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ApprovalWorkflow": {
+        "type": "object",
+        "format": "",
+        "description": "Different types of approval workflows that can be used to gate privileged access granting.",
+        "$ref": "",
+        "properties": {
+          "manualApprovals": {
+            "type": "",
+            "format": "",
+            "description": "An approval workflow where users designated as approvers review and act on the grants.",
+            "$ref": "ManualApprovals",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ApproveGrantRequest": {
+        "type": "object",
+        "format": "",
+        "description": "Request message for `ApproveGrant` method.",
+        "$ref": "",
+        "properties": {
+          "reason": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The reason for approving this grant. This is required if the `require_approver_justification` field of the `ManualApprovals` workflow used in this grant is true.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Approved": {
+        "type": "object",
+        "format": "",
+        "description": "An event representing that the grant was approved.",
+        "$ref": "",
+        "properties": {
+          "actor": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. Username of the user who approved the grant.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "reason": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The reason provided by the approver for approving the grant.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "AuditTrail": {
+        "type": "object",
+        "format": "",
+        "description": "Audit trail for the access provided by this grant.",
+        "$ref": "",
+        "properties": {
+          "accessGrantTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. The time at which access was given.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "accessRemoveTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. The time at which the system removed access. This could be because of an automatic expiry or because of a revocation. If unspecified, then access hasn't been removed yet.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "CancelOperationRequest": {
+        "type": "object",
+        "format": "",
+        "description": "The request message for Operations.CancelOperation.",
+        "$ref": "",
+        "properties": {},
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "CheckOnboardingStatusResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Response message for `CheckOnboardingStatus` method.",
+        "$ref": "",
+        "properties": {
+          "findings": {
+            "type": "array",
+            "format": "",
+            "description": "List of issues that are preventing PAM from functioning for this resource and need to be fixed to complete onboarding. Some issues might not be detected or reported.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Finding",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "serviceAccount": {
+            "type": "string",
+            "format": "",
+            "description": "The service account that PAM uses to act on this resource.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Denied": {
+        "type": "object",
+        "format": "",
+        "description": "An event representing that the grant was denied.",
+        "$ref": "",
+        "properties": {
+          "actor": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. Username of the user who denied the grant.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "reason": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The reason provided by the approver for denying the grant.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "DenyGrantRequest": {
+        "type": "object",
+        "format": "",
+        "description": "Request message for `DenyGrant` method.",
+        "$ref": "",
+        "properties": {
+          "reason": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The reason for denying this grant. This is required if `require_approver_justification` field of the `ManualApprovals` workflow used in this grant is true.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Ended": {
+        "type": "object",
+        "format": "",
+        "description": "An event representing that the grant has ended.",
+        "$ref": "",
+        "properties": {},
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Entitlement": {
+        "type": "object",
+        "format": "",
+        "description": "An entitlement defines the eligibility of a set of users to obtain predefined access for some time possibly after going through an approval workflow.",
+        "$ref": "",
+        "properties": {
+          "additionalNotificationTargets": {
+            "type": "",
+            "format": "",
+            "description": "Optional. Additional email addresses to be notified based on actions taken.",
+            "$ref": "AdditionalNotificationTargets",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "approvalWorkflow": {
+            "type": "",
+            "format": "",
+            "description": "Optional. The approvals needed before access are granted to a requester. No approvals are needed if this field is null.",
+            "$ref": "ApprovalWorkflow",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "createTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. Create time stamp.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "eligibleUsers": {
+            "type": "array",
+            "format": "",
+            "description": "Optional. Who can create grants using this entitlement. This list should contain at most one entry.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "AccessControlEntry",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "etag": {
+            "type": "string",
+            "format": "",
+            "description": "An `etag` is used for optimistic concurrency control as a way to prevent simultaneous updates to the same entitlement. An `etag` is returned in the response to `GetEntitlement` and the caller should put the `etag` in the request to `UpdateEntitlement` so that their change is applied on the same version. If this field is omitted or if there is a mismatch while updating an entitlement, then the server rejects the request.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "maxRequestDuration": {
+            "type": "string",
+            "format": "google-duration",
+            "description": "Required. The maximum amount of time that access is granted for a request. A requester can ask for a shorter duration but never a longer one. The supported range is between 30 minutes and 168 hours (7 days).",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "Identifier. Name of the entitlement. Possible formats: * `organizations/{organization-number}/locations/{region}/entitlements/{entitlement-id}` * `folders/{folder-number}/locations/{region}/entitlements/{entitlement-id}` * `projects/{project-id|project-number}/locations/{region}/entitlements/{entitlement-id}`",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "privilegedAccess": {
+            "type": "",
+            "format": "",
+            "description": "Optional. The access granted to a requester on successful approval.",
+            "$ref": "PrivilegedAccess",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "requesterJustificationConfig": {
+            "type": "",
+            "format": "",
+            "description": "Required. The manner in which the requester should provide a justification for requesting access.",
+            "$ref": "RequesterJustificationConfig",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "state": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. Current state of this entitlement.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "STATE_UNSPECIFIED",
+              "CREATING",
+              "AVAILABLE",
+              "DELETING",
+              "DELETED",
+              "UPDATING"
+            ],
+            "readOnly": true
+          },
+          "updateTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. Update time stamp.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Event": {
+        "type": "object",
+        "format": "",
+        "description": "A single operation on the grant.",
+        "$ref": "",
+        "properties": {
+          "activated": {
+            "type": "",
+            "format": "",
+            "description": "The grant was successfully activated to give access.",
+            "$ref": "Activated",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "activationFailed": {
+            "type": "",
+            "format": "",
+            "description": "There was a non-retriable error while trying to give access.",
+            "$ref": "ActivationFailed",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "approved": {
+            "type": "",
+            "format": "",
+            "description": "The grant was approved.",
+            "$ref": "Approved",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "denied": {
+            "type": "",
+            "format": "",
+            "description": "The grant was denied.",
+            "$ref": "Denied",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "ended": {
+            "type": "",
+            "format": "",
+            "description": "Access given by the grant ended automatically as the approved duration was over.",
+            "$ref": "Ended",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "eventTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. The time (as recorded at server) when this event occurred.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "expired": {
+            "type": "",
+            "format": "",
+            "description": "The approval workflow did not complete in the necessary duration, and so the grant is expired.",
+            "$ref": "Expired",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "externallyModified": {
+            "type": "",
+            "format": "",
+            "description": "The policy bindings made by grant have been modified outside of PAM.",
+            "$ref": "ExternallyModified",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "requested": {
+            "type": "",
+            "format": "",
+            "description": "The grant was requested.",
+            "$ref": "Requested",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "revoked": {
+            "type": "",
+            "format": "",
+            "description": "The grant was revoked.",
+            "$ref": "Revoked",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "scheduled": {
+            "type": "",
+            "format": "",
+            "description": "The grant has been scheduled to give access.",
+            "$ref": "Scheduled",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "withdrawn": {
+            "type": "",
+            "format": "",
+            "description": "The grant was withdrawn.",
+            "$ref": "Withdrawn",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Expired": {
+        "type": "object",
+        "format": "",
+        "description": "An event representing that the grant was expired.",
+        "$ref": "",
+        "properties": {},
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ExternallyModified": {
+        "type": "object",
+        "format": "",
+        "description": "An event representing that the policy bindings made by this grant were modified externally.",
+        "$ref": "",
+        "properties": {},
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Finding": {
+        "type": "object",
+        "format": "",
+        "description": "Finding represents an issue which prevents PAM from functioning properly for this resource.",
+        "$ref": "",
+        "properties": {
+          "iamAccessDenied": {
+            "type": "",
+            "format": "",
+            "description": "PAM's service account is being denied access by Cloud IAM.",
+            "$ref": "IAMAccessDenied",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GcpIamAccess": {
+        "type": "object",
+        "format": "",
+        "description": "`GcpIamAccess` represents IAM based access control on a Google Cloud resource. Refer to https://cloud.google.com/iam/docs to understand more about IAM.",
+        "$ref": "",
+        "properties": {
+          "resource": {
+            "type": "string",
+            "format": "",
+            "description": "Required. Name of the resource.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "resourceType": {
+            "type": "string",
+            "format": "",
+            "description": "Required. The type of this resource.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "roleBindings": {
+            "type": "array",
+            "format": "",
+            "description": "Required. Role bindings that are created on successful grant.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "RoleBinding",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleProtobufEmpty": {
+        "type": "object",
+        "format": "",
+        "description": "A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }",
+        "$ref": "",
+        "properties": {},
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Grant": {
+        "type": "object",
+        "format": "",
+        "description": "A grant represents a request from a user for obtaining the access specified in an entitlement they are eligible for.",
+        "$ref": "",
+        "properties": {
+          "additionalEmailRecipients": {
+            "type": "array",
+            "format": "",
+            "description": "Optional. Additional email addresses to notify for all the actions performed on the grant.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "auditTrail": {
+            "type": "",
+            "format": "",
+            "description": "Output only. Audit trail of access provided by this grant. If unspecified then access was never granted.",
+            "$ref": "AuditTrail",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "createTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. Create time stamp.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "externallyModified": {
+            "type": "boolean",
+            "format": "",
+            "description": "Output only. Flag set by the PAM system to indicate that policy bindings made by this grant have been modified from outside PAM. After it is set, this flag remains set forever irrespective of the grant state. A `true` value here indicates that PAM no longer has any certainty on the access a user has because of this grant.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "justification": {
+            "type": "",
+            "format": "",
+            "description": "Optional. Justification of why this access is needed.",
+            "$ref": "Justification",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "Identifier. Name of this grant. Possible formats: * `organizations/{organization-number}/locations/{region}/entitlements/{entitlement-id}/grants/{grant-id}` * `folders/{folder-number}/locations/{region}/entitlements/{entitlement-id}/grants/{grant-id}` * `projects/{project-id|project-number}/locations/{region}/entitlements/{entitlement-id}/grants/{grant-id}` The last segment of this name (`{grant-id}`) is autogenerated.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "privilegedAccess": {
+            "type": "",
+            "format": "",
+            "description": "Output only. The access that would be granted by this grant.",
+            "$ref": "PrivilegedAccess",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "requestedDuration": {
+            "type": "string",
+            "format": "google-duration",
+            "description": "Required. The amount of time access is needed for. This value should be shorter than the `max_request_duration` value of the entitlement.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "requester": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. Username of the user who created this grant.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "state": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. Current state of this grant.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "STATE_UNSPECIFIED",
+              "APPROVAL_AWAITED",
+              "DENIED",
+              "SCHEDULED",
+              "ACTIVATING",
+              "ACTIVE",
+              "ACTIVATION_FAILED",
+              "EXPIRED",
+              "REVOKING",
+              "REVOKED",
+              "ENDED",
+              "WITHDRAWING",
+              "WITHDRAWN"
+            ],
+            "readOnly": true
+          },
+          "timeline": {
+            "type": "",
+            "format": "",
+            "description": "Output only. Timeline of this grant.",
+            "$ref": "Timeline",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "updateTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. Update time stamp.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "IAMAccessDenied": {
+        "type": "object",
+        "format": "",
+        "description": "PAM's service account is being denied access by Cloud IAM. This can be fixed by granting a role that contains the missing permissions to the service account or exempting it from deny policies if they are blocking the access.",
+        "$ref": "",
+        "properties": {
+          "missingPermissions": {
+            "type": "array",
+            "format": "",
+            "description": "List of permissions that are being denied.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Justification": {
+        "type": "object",
+        "format": "",
+        "description": "Justification represents a justification for requesting access.",
+        "$ref": "",
+        "properties": {
+          "unstructuredJustification": {
+            "type": "string",
+            "format": "",
+            "description": "A free form textual justification. The system only ensures that this is not empty. No other kind of validation is performed on the string.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ListEntitlementsResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Message for response to listing entitlements.",
+        "$ref": "",
+        "properties": {
+          "entitlements": {
+            "type": "array",
+            "format": "",
+            "description": "The list of entitlements.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Entitlement",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "A token identifying a page of results the server should return.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "unreachable": {
+            "type": "array",
+            "format": "",
+            "description": "Locations that could not be reached.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ListGrantsResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Message for response to listing grants.",
+        "$ref": "",
+        "properties": {
+          "grants": {
+            "type": "array",
+            "format": "",
+            "description": "The list of grants.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Grant",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "A token identifying a page of results the server should return.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "unreachable": {
+            "type": "array",
+            "format": "",
+            "description": "Locations that could not be reached.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ListLocationsResponse": {
+        "type": "object",
+        "format": "",
+        "description": "The response message for Locations.ListLocations.",
+        "$ref": "",
+        "properties": {
+          "locations": {
+            "type": "array",
+            "format": "",
+            "description": "A list of locations that matches the specified filter in the request.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Location",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "The standard List next-page token.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ListOperationsResponse": {
+        "type": "object",
+        "format": "",
+        "description": "The response message for Operations.ListOperations.",
+        "$ref": "",
+        "properties": {
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "The standard List next-page token.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "operations": {
+            "type": "array",
+            "format": "",
+            "description": "A list of operations that matches the specified filter in the request.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Operation",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "unreachable": {
+            "type": "array",
+            "format": "",
+            "description": "Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Location": {
+        "type": "object",
+        "format": "",
+        "description": "A resource that represents a Google Cloud location.",
+        "$ref": "",
+        "properties": {
+          "displayName": {
+            "type": "string",
+            "format": "",
+            "description": "The friendly name for this location, typically a nearby city name. For example, \"Tokyo\".",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "labels": {
+            "type": "object",
+            "format": "",
+            "description": "Cross-service attributes for the location. For example {\"cloud.googleapis.com/region\": \"us-east1\"}",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "locationId": {
+            "type": "string",
+            "format": "",
+            "description": "The canonical id for this location. For example: `\"us-east1\"`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "metadata": {
+            "type": "object",
+            "format": "",
+            "description": "Service-specific metadata. For example the available capacity at the given location.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "any",
+              "format": "",
+              "description": "Properties of the object. Contains field @type with type URL.",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "Resource name for the location, which may vary between implementations. For example: `\"projects/example-project/locations/us-east1\"`",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ManualApprovals": {
+        "type": "object",
+        "format": "",
+        "description": "A manual approval workflow where users who are designated as approvers need to call the `ApproveGrant`/`DenyGrant` APIs for a grant. The workflow can consist of multiple serial steps where each step defines who can act as approver in that step and how many of those users should approve before the workflow moves to the next step. This can be used to create approval workflows such as: * Require an approval from any user in a group G. * Require an approval from any k number of users from a Group G. * Require an approval from any user in a group G and then from a user U. A single user might be part of the `approvers` ACL for multiple steps in this workflow, but they can only approve once and that approval is only considered to satisfy the approval step at which it was granted.",
+        "$ref": "",
+        "properties": {
+          "requireApproverJustification": {
+            "type": "boolean",
+            "format": "",
+            "description": "Optional. Do the approvers need to provide a justification for their actions?",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "steps": {
+            "type": "array",
+            "format": "",
+            "description": "Optional. List of approval steps in this workflow. These steps are followed in the specified order sequentially. Only 1 step is supported.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Step",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "NotMandatory": {
+        "type": "object",
+        "format": "",
+        "description": "The justification is not mandatory but can be provided in any of the supported formats.",
+        "$ref": "",
+        "properties": {},
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Operation": {
+        "type": "object",
+        "format": "",
+        "description": "This resource represents a long-running operation that is the result of a network API call.",
+        "$ref": "",
+        "properties": {
+          "done": {
+            "type": "boolean",
+            "format": "",
+            "description": "If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "error": {
+            "type": "",
+            "format": "",
+            "description": "The error result of the operation in case of failure or cancellation.",
+            "$ref": "Status",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "metadata": {
+            "type": "object",
+            "format": "",
+            "description": "Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "any",
+              "format": "",
+              "description": "Properties of the object. Contains field @type with type URL.",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "response": {
+            "type": "object",
+            "format": "",
+            "description": "The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "any",
+              "format": "",
+              "description": "Properties of the object. Contains field @type with type URL.",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "OperationMetadata": {
+        "type": "object",
+        "format": "",
+        "description": "Represents the metadata of the long-running operation.",
+        "$ref": "",
+        "properties": {
+          "apiVersion": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. API version used to start the operation.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "createTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. The time the operation was created.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "endTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. The time the operation finished running.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "requestedCancellation": {
+            "type": "boolean",
+            "format": "",
+            "description": "Output only. Identifies whether the user has requested cancellation of the operation. Operations that have been cancelled successfully have Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "statusMessage": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. Human-readable status of the operation, if any.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "target": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. Server-defined resource path for the target of the operation.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "verb": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. Name of the verb executed by the operation.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "PrivilegedAccess": {
+        "type": "object",
+        "format": "",
+        "description": "Privileged access that this service can be used to gate.",
+        "$ref": "",
+        "properties": {
+          "gcpIamAccess": {
+            "type": "",
+            "format": "",
+            "description": "Access to a Google Cloud resource through IAM.",
+            "$ref": "GcpIamAccess",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Requested": {
+        "type": "object",
+        "format": "",
+        "description": "An event representing that a grant was requested.",
+        "$ref": "",
+        "properties": {
+          "expireTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. The time at which this grant expires unless the approval workflow completes. If omitted, then the request never expires.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "RequesterJustificationConfig": {
+        "type": "object",
+        "format": "",
+        "description": "Defines how a requester must provide a justification when requesting access.",
+        "$ref": "",
+        "properties": {
+          "notMandatory": {
+            "type": "",
+            "format": "",
+            "description": "This option means the requester isn't required to provide a justification.",
+            "$ref": "NotMandatory",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "unstructured": {
+            "type": "",
+            "format": "",
+            "description": "This option means the requester must provide a string as justification. If this is selected, the server allows the requester to provide a justification but doesn't validate it.",
+            "$ref": "Unstructured",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "RevokeGrantRequest": {
+        "type": "object",
+        "format": "",
+        "description": "Request message for `RevokeGrant` method.",
+        "$ref": "",
+        "properties": {
+          "reason": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The reason for revoking this grant.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Revoked": {
+        "type": "object",
+        "format": "",
+        "description": "An event representing that the grant was revoked.",
+        "$ref": "",
+        "properties": {
+          "actor": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. Username of the user who revoked the grant.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "reason": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The reason provided by the user for revoking the grant.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "RoleBinding": {
+        "type": "object",
+        "format": "",
+        "description": "IAM role bindings that are created after a successful grant.",
+        "$ref": "",
+        "properties": {
+          "conditionExpression": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The expression field of the IAM condition to be associated with the role. If specified, a user with an active grant for this entitlement is able to access the resource only if this condition evaluates to true for their request. This field uses the same CEL format as IAM and supports all attributes that IAM supports, except tags. https://cloud.google.com/iam/docs/conditions-overview#attributes.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "role": {
+            "type": "string",
+            "format": "",
+            "description": "Required. IAM role to be granted. https://cloud.google.com/iam/docs/roles-overview.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Scheduled": {
+        "type": "object",
+        "format": "",
+        "description": "An event representing that the grant has been scheduled to be activated later.",
+        "$ref": "",
+        "properties": {
+          "scheduledActivationTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. The time at which the access is granted.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "SearchEntitlementsResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Response message for `SearchEntitlements` method.",
+        "$ref": "",
+        "properties": {
+          "entitlements": {
+            "type": "array",
+            "format": "",
+            "description": "The list of entitlements.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Entitlement",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "A token identifying a page of results the server should return.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "SearchGrantsResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Response message for `SearchGrants` method.",
+        "$ref": "",
+        "properties": {
+          "grants": {
+            "type": "array",
+            "format": "",
+            "description": "The list of grants.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Grant",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "A token identifying a page of results the server should return.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Status": {
+        "type": "object",
+        "format": "",
+        "description": "The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).",
+        "$ref": "",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32",
+            "description": "The status code, which should be an enum value of google.rpc.Code.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "details": {
+            "type": "array",
+            "format": "",
+            "description": "A list of messages that carry the error details. There is a common set of message types for APIs to use.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "object",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": {
+                "type": "any",
+                "format": "",
+                "description": "Properties of the object. Contains field @type with type URL.",
+                "$ref": "",
+                "properties": null,
+                "items": null,
+                "additionalProperties": null,
+                "enum": null,
+                "readOnly": false
+              },
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "message": {
+            "type": "string",
+            "format": "",
+            "description": "A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Step": {
+        "type": "object",
+        "format": "",
+        "description": "Step represents a logical step in a manual approval workflow.",
+        "$ref": "",
+        "properties": {
+          "approvalsNeeded": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Required. How many users from the above list need to approve. If there aren't enough distinct users in the list, then the workflow indefinitely blocks. Should always be greater than 0. 1 is the only supported value.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "approverEmailRecipients": {
+            "type": "array",
+            "format": "",
+            "description": "Optional. Additional email addresses to be notified when a grant is pending approval.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "approvers": {
+            "type": "array",
+            "format": "",
+            "description": "Optional. The potential set of approvers in this step. This list must contain at most one entry.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "AccessControlEntry",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Timeline": {
+        "type": "object",
+        "format": "",
+        "description": "Timeline of a grant describing what happened to it and when.",
+        "$ref": "",
+        "properties": {
+          "events": {
+            "type": "array",
+            "format": "",
+            "description": "Output only. The events that have occurred on this grant. This list contains entries in the same order as they occurred. The first entry is always be of type `Requested` and there is always at least one entry in this array.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Event",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Unstructured": {
+        "type": "object",
+        "format": "",
+        "description": "The requester has to provide a justification in the form of a string.",
+        "$ref": "",
+        "properties": {},
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Withdrawn": {
+        "type": "object",
+        "format": "",
+        "description": "An event representing that the grant was withdrawn.",
+        "$ref": "",
+        "properties": {},
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      }
+    },
+    "resources": {
+      "folders": {
+        "methods": null,
+        "resources": {
+          "locations": {
+            "methods": {
+              "checkOnboardingStatus": {
+                "id": "privilegedaccessmanager.folders.locations.checkOnboardingStatus",
+                "httpMethod": "GET",
+                "path": "v1/{+parent}:checkOnboardingStatus",
+                "flatPath": "v1/folders/{foldersId}/locations/{locationsId}:checkOnboardingStatus",
+                "description": "`CheckOnboardingStatus` reports the onboarding status for a project, folder, or organization. Any findings reported by this API need to be fixed before PAM can be used on the resource.",
+                "parameters": {
+                  "parent": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  }
+                },
+                "parameterOrder": [
+                  "parent"
+                ],
+                "request": null,
+                "response": {
+                  "$ref": "CheckOnboardingStatusResponse"
+                }
+              },
+              "get": {
+                "id": "privilegedaccessmanager.folders.locations.get",
+                "httpMethod": "GET",
+                "path": "v1/{+name}",
+                "flatPath": "v1/folders/{foldersId}/locations/{locationsId}",
+                "description": "Gets information about a location.",
+                "parameters": {
+                  "name": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  }
+                },
+                "parameterOrder": [
+                  "name"
+                ],
+                "request": null,
+                "response": {
+                  "$ref": "Location"
+                }
+              },
+              "list": {
+                "id": "privilegedaccessmanager.folders.locations.list",
+                "httpMethod": "GET",
+                "path": "v1/{+name}/locations",
+                "flatPath": "v1/folders/{foldersId}/locations",
+                "description": "Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the ListLocationsRequest.name field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version.",
+                "parameters": {
+                  "extraLocationTypes": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false
+                  },
+                  "filter": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false
+                  },
+                  "name": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  },
+                  "pageSize": {
+                    "type": "integer",
+                    "location": "query",
+                    "required": false
+                  },
+                  "pageToken": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false
+                  }
+                },
+                "parameterOrder": [
+                  "name"
+                ],
+                "request": null,
+                "response": {
+                  "$ref": "ListLocationsResponse"
+                }
+              }
+            },
+            "resources": {
+              "entitlements": {
+                "methods": {
+                  "create": {
+                    "id": "privilegedaccessmanager.folders.locations.entitlements.create",
+                    "httpMethod": "POST",
+                    "path": "v1/{+parent}/entitlements",
+                    "flatPath": "v1/folders/{foldersId}/locations/{locationsId}/entitlements",
+                    "description": "Creates a new entitlement in a given project, folder, organization, and in a given location.",
+                    "parameters": {
+                      "entitlementId": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "parent": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      },
+                      "requestId": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      }
+                    },
+                    "parameterOrder": [
+                      "parent"
+                    ],
+                    "request": {
+                      "$ref": "Entitlement"
+                    },
+                    "response": {
+                      "$ref": "Operation"
+                    }
+                  },
+                  "delete": {
+                    "id": "privilegedaccessmanager.folders.locations.entitlements.delete",
+                    "httpMethod": "DELETE",
+                    "path": "v1/{+name}",
+                    "flatPath": "v1/folders/{foldersId}/locations/{locationsId}/entitlements/{entitlementsId}",
+                    "description": "Deletes a single entitlement. This method can only be called when there are no in-progress (`ACTIVE`/`ACTIVATING`/`REVOKING`) grants under the entitlement.",
+                    "parameters": {
+                      "force": {
+                        "type": "boolean",
+                        "location": "query",
+                        "required": false
+                      },
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      },
+                      "requestId": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "Operation"
+                    }
+                  },
+                  "get": {
+                    "id": "privilegedaccessmanager.folders.locations.entitlements.get",
+                    "httpMethod": "GET",
+                    "path": "v1/{+name}",
+                    "flatPath": "v1/folders/{foldersId}/locations/{locationsId}/entitlements/{entitlementsId}",
+                    "description": "Gets details of a single entitlement.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "Entitlement"
+                    }
+                  },
+                  "list": {
+                    "id": "privilegedaccessmanager.folders.locations.entitlements.list",
+                    "httpMethod": "GET",
+                    "path": "v1/{+parent}/entitlements",
+                    "flatPath": "v1/folders/{foldersId}/locations/{locationsId}/entitlements",
+                    "description": "Lists the entitlements in a given project, folder, organization, and in a given location.",
+                    "parameters": {
+                      "filter": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "orderBy": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "pageSize": {
+                        "type": "integer",
+                        "location": "query",
+                        "required": false
+                      },
+                      "pageToken": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "parent": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "parent"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "ListEntitlementsResponse"
+                    }
+                  },
+                  "patch": {
+                    "id": "privilegedaccessmanager.folders.locations.entitlements.patch",
+                    "httpMethod": "PATCH",
+                    "path": "v1/{+name}",
+                    "flatPath": "v1/folders/{foldersId}/locations/{locationsId}/entitlements/{entitlementsId}",
+                    "description": "Updates the entitlement specified in the request. Updated fields in the entitlement need to be specified in an update mask. The changes made to an entitlement are applicable only on future grants of the entitlement. However, if new approvers are added or existing approvers are removed from the approval workflow, the changes are effective on existing grants. The following fields are not supported for updates: * All immutable fields * Entitlement name * Resource name * Resource type * Adding an approval workflow in an entitlement which previously had no approval workflow. * Deleting the approval workflow from an entitlement. * Adding or deleting a step in the approval workflow (only one step is supported) Note that updates are allowed on the list of approvers in an approval workflow step.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      },
+                      "updateMask": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": {
+                      "$ref": "Entitlement"
+                    },
+                    "response": {
+                      "$ref": "Operation"
+                    }
+                  },
+                  "search": {
+                    "id": "privilegedaccessmanager.folders.locations.entitlements.search",
+                    "httpMethod": "GET",
+                    "path": "v1/{+parent}/entitlements:search",
+                    "flatPath": "v1/folders/{foldersId}/locations/{locationsId}/entitlements:search",
+                    "description": "`SearchEntitlements` returns entitlements on which the caller has the specified access.",
+                    "parameters": {
+                      "callerAccessType": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "filter": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "pageSize": {
+                        "type": "integer",
+                        "location": "query",
+                        "required": false
+                      },
+                      "pageToken": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "parent": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "parent"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "SearchEntitlementsResponse"
+                    }
+                  }
+                },
+                "resources": {
+                  "grants": {
+                    "methods": {
+                      "approve": {
+                        "id": "privilegedaccessmanager.folders.locations.entitlements.grants.approve",
+                        "httpMethod": "POST",
+                        "path": "v1/{+name}:approve",
+                        "flatPath": "v1/folders/{foldersId}/locations/{locationsId}/entitlements/{entitlementsId}/grants/{grantsId}:approve",
+                        "description": "`ApproveGrant` is used to approve a grant. This method can only be called on a grant when it's in the `APPROVAL_AWAITED` state. This operation can't be undone.",
+                        "parameters": {
+                          "name": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          }
+                        },
+                        "parameterOrder": [
+                          "name"
+                        ],
+                        "request": {
+                          "$ref": "ApproveGrantRequest"
+                        },
+                        "response": {
+                          "$ref": "Grant"
+                        }
+                      },
+                      "create": {
+                        "id": "privilegedaccessmanager.folders.locations.entitlements.grants.create",
+                        "httpMethod": "POST",
+                        "path": "v1/{+parent}/grants",
+                        "flatPath": "v1/folders/{foldersId}/locations/{locationsId}/entitlements/{entitlementsId}/grants",
+                        "description": "Creates a grant in a given project, folder, or organization and location.",
+                        "parameters": {
+                          "parent": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          },
+                          "requestId": {
+                            "type": "string",
+                            "location": "query",
+                            "required": false
+                          }
+                        },
+                        "parameterOrder": [
+                          "parent"
+                        ],
+                        "request": {
+                          "$ref": "Grant"
+                        },
+                        "response": {
+                          "$ref": "Grant"
+                        }
+                      },
+                      "deny": {
+                        "id": "privilegedaccessmanager.folders.locations.entitlements.grants.deny",
+                        "httpMethod": "POST",
+                        "path": "v1/{+name}:deny",
+                        "flatPath": "v1/folders/{foldersId}/locations/{locationsId}/entitlements/{entitlementsId}/grants/{grantsId}:deny",
+                        "description": "`DenyGrant` is used to deny a grant. This method can only be called on a grant when it's in the `APPROVAL_AWAITED` state. This operation can't be undone.",
+                        "parameters": {
+                          "name": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          }
+                        },
+                        "parameterOrder": [
+                          "name"
+                        ],
+                        "request": {
+                          "$ref": "DenyGrantRequest"
+                        },
+                        "response": {
+                          "$ref": "Grant"
+                        }
+                      },
+                      "get": {
+                        "id": "privilegedaccessmanager.folders.locations.entitlements.grants.get",
+                        "httpMethod": "GET",
+                        "path": "v1/{+name}",
+                        "flatPath": "v1/folders/{foldersId}/locations/{locationsId}/entitlements/{entitlementsId}/grants/{grantsId}",
+                        "description": "Get details of a single grant.",
+                        "parameters": {
+                          "name": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          }
+                        },
+                        "parameterOrder": [
+                          "name"
+                        ],
+                        "request": null,
+                        "response": {
+                          "$ref": "Grant"
+                        }
+                      },
+                      "list": {
+                        "id": "privilegedaccessmanager.folders.locations.entitlements.grants.list",
+                        "httpMethod": "GET",
+                        "path": "v1/{+parent}/grants",
+                        "flatPath": "v1/folders/{foldersId}/locations/{locationsId}/entitlements/{entitlementsId}/grants",
+                        "description": "Lists grants for a given entitlement.",
+                        "parameters": {
+                          "filter": {
+                            "type": "string",
+                            "location": "query",
+                            "required": false
+                          },
+                          "orderBy": {
+                            "type": "string",
+                            "location": "query",
+                            "required": false
+                          },
+                          "pageSize": {
+                            "type": "integer",
+                            "location": "query",
+                            "required": false
+                          },
+                          "pageToken": {
+                            "type": "string",
+                            "location": "query",
+                            "required": false
+                          },
+                          "parent": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          }
+                        },
+                        "parameterOrder": [
+                          "parent"
+                        ],
+                        "request": null,
+                        "response": {
+                          "$ref": "ListGrantsResponse"
+                        }
+                      },
+                      "revoke": {
+                        "id": "privilegedaccessmanager.folders.locations.entitlements.grants.revoke",
+                        "httpMethod": "POST",
+                        "path": "v1/{+name}:revoke",
+                        "flatPath": "v1/folders/{foldersId}/locations/{locationsId}/entitlements/{entitlementsId}/grants/{grantsId}:revoke",
+                        "description": "`RevokeGrant` is used to immediately revoke access for a grant. This method can be called when the grant is in a non-terminal state.",
+                        "parameters": {
+                          "name": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          }
+                        },
+                        "parameterOrder": [
+                          "name"
+                        ],
+                        "request": {
+                          "$ref": "RevokeGrantRequest"
+                        },
+                        "response": {
+                          "$ref": "Operation"
+                        }
+                      },
+                      "search": {
+                        "id": "privilegedaccessmanager.folders.locations.entitlements.grants.search",
+                        "httpMethod": "GET",
+                        "path": "v1/{+parent}/grants:search",
+                        "flatPath": "v1/folders/{foldersId}/locations/{locationsId}/entitlements/{entitlementsId}/grants:search",
+                        "description": "`SearchGrants` returns grants that are related to the calling user in the specified way.",
+                        "parameters": {
+                          "callerRelationship": {
+                            "type": "string",
+                            "location": "query",
+                            "required": false
+                          },
+                          "filter": {
+                            "type": "string",
+                            "location": "query",
+                            "required": false
+                          },
+                          "pageSize": {
+                            "type": "integer",
+                            "location": "query",
+                            "required": false
+                          },
+                          "pageToken": {
+                            "type": "string",
+                            "location": "query",
+                            "required": false
+                          },
+                          "parent": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          }
+                        },
+                        "parameterOrder": [
+                          "parent"
+                        ],
+                        "request": null,
+                        "response": {
+                          "$ref": "SearchGrantsResponse"
+                        }
+                      }
+                    },
+                    "resources": null
+                  }
+                }
+              },
+              "operations": {
+                "methods": {
+                  "delete": {
+                    "id": "privilegedaccessmanager.folders.locations.operations.delete",
+                    "httpMethod": "DELETE",
+                    "path": "v1/{+name}",
+                    "flatPath": "v1/folders/{foldersId}/locations/{locationsId}/operations/{operationsId}",
+                    "description": "Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "GoogleProtobufEmpty"
+                    }
+                  },
+                  "get": {
+                    "id": "privilegedaccessmanager.folders.locations.operations.get",
+                    "httpMethod": "GET",
+                    "path": "v1/{+name}",
+                    "flatPath": "v1/folders/{foldersId}/locations/{locationsId}/operations/{operationsId}",
+                    "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "Operation"
+                    }
+                  },
+                  "list": {
+                    "id": "privilegedaccessmanager.folders.locations.operations.list",
+                    "httpMethod": "GET",
+                    "path": "v1/{+name}/operations",
+                    "flatPath": "v1/folders/{foldersId}/locations/{locationsId}/operations",
+                    "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.",
+                    "parameters": {
+                      "filter": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      },
+                      "pageSize": {
+                        "type": "integer",
+                        "location": "query",
+                        "required": false
+                      },
+                      "pageToken": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "returnPartialSuccess": {
+                        "type": "boolean",
+                        "location": "query",
+                        "required": false
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "ListOperationsResponse"
+                    }
+                  }
+                },
+                "resources": null
+              }
+            }
+          }
+        }
+      },
+      "operations": {
+        "methods": {
+          "cancel": {
+            "id": "privilegedaccessmanager.operations.cancel",
+            "httpMethod": "POST",
+            "path": "v1/{+name}:cancel",
+            "flatPath": "v1/operations/{operationsId}:cancel",
+            "description": "Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.",
+            "parameters": {
+              "name": {
+                "type": "string",
+                "location": "path",
+                "required": true
+              }
+            },
+            "parameterOrder": [
+              "name"
+            ],
+            "request": {
+              "$ref": "CancelOperationRequest"
+            },
+            "response": {
+              "$ref": "GoogleProtobufEmpty"
+            }
+          }
+        },
+        "resources": null
+      },
+      "organizations": {
+        "methods": null,
+        "resources": {
+          "locations": {
+            "methods": {
+              "checkOnboardingStatus": {
+                "id": "privilegedaccessmanager.organizations.locations.checkOnboardingStatus",
+                "httpMethod": "GET",
+                "path": "v1/{+parent}:checkOnboardingStatus",
+                "flatPath": "v1/organizations/{organizationsId}/locations/{locationsId}:checkOnboardingStatus",
+                "description": "`CheckOnboardingStatus` reports the onboarding status for a project, folder, or organization. Any findings reported by this API need to be fixed before PAM can be used on the resource.",
+                "parameters": {
+                  "parent": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  }
+                },
+                "parameterOrder": [
+                  "parent"
+                ],
+                "request": null,
+                "response": {
+                  "$ref": "CheckOnboardingStatusResponse"
+                }
+              },
+              "get": {
+                "id": "privilegedaccessmanager.organizations.locations.get",
+                "httpMethod": "GET",
+                "path": "v1/{+name}",
+                "flatPath": "v1/organizations/{organizationsId}/locations/{locationsId}",
+                "description": "Gets information about a location.",
+                "parameters": {
+                  "name": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  }
+                },
+                "parameterOrder": [
+                  "name"
+                ],
+                "request": null,
+                "response": {
+                  "$ref": "Location"
+                }
+              },
+              "list": {
+                "id": "privilegedaccessmanager.organizations.locations.list",
+                "httpMethod": "GET",
+                "path": "v1/{+name}/locations",
+                "flatPath": "v1/organizations/{organizationsId}/locations",
+                "description": "Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the ListLocationsRequest.name field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version.",
+                "parameters": {
+                  "extraLocationTypes": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false
+                  },
+                  "filter": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false
+                  },
+                  "name": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  },
+                  "pageSize": {
+                    "type": "integer",
+                    "location": "query",
+                    "required": false
+                  },
+                  "pageToken": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false
+                  }
+                },
+                "parameterOrder": [
+                  "name"
+                ],
+                "request": null,
+                "response": {
+                  "$ref": "ListLocationsResponse"
+                }
+              }
+            },
+            "resources": {
+              "entitlements": {
+                "methods": {
+                  "create": {
+                    "id": "privilegedaccessmanager.organizations.locations.entitlements.create",
+                    "httpMethod": "POST",
+                    "path": "v1/{+parent}/entitlements",
+                    "flatPath": "v1/organizations/{organizationsId}/locations/{locationsId}/entitlements",
+                    "description": "Creates a new entitlement in a given project, folder, organization, and in a given location.",
+                    "parameters": {
+                      "entitlementId": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "parent": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      },
+                      "requestId": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      }
+                    },
+                    "parameterOrder": [
+                      "parent"
+                    ],
+                    "request": {
+                      "$ref": "Entitlement"
+                    },
+                    "response": {
+                      "$ref": "Operation"
+                    }
+                  },
+                  "delete": {
+                    "id": "privilegedaccessmanager.organizations.locations.entitlements.delete",
+                    "httpMethod": "DELETE",
+                    "path": "v1/{+name}",
+                    "flatPath": "v1/organizations/{organizationsId}/locations/{locationsId}/entitlements/{entitlementsId}",
+                    "description": "Deletes a single entitlement. This method can only be called when there are no in-progress (`ACTIVE`/`ACTIVATING`/`REVOKING`) grants under the entitlement.",
+                    "parameters": {
+                      "force": {
+                        "type": "boolean",
+                        "location": "query",
+                        "required": false
+                      },
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      },
+                      "requestId": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "Operation"
+                    }
+                  },
+                  "get": {
+                    "id": "privilegedaccessmanager.organizations.locations.entitlements.get",
+                    "httpMethod": "GET",
+                    "path": "v1/{+name}",
+                    "flatPath": "v1/organizations/{organizationsId}/locations/{locationsId}/entitlements/{entitlementsId}",
+                    "description": "Gets details of a single entitlement.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "Entitlement"
+                    }
+                  },
+                  "list": {
+                    "id": "privilegedaccessmanager.organizations.locations.entitlements.list",
+                    "httpMethod": "GET",
+                    "path": "v1/{+parent}/entitlements",
+                    "flatPath": "v1/organizations/{organizationsId}/locations/{locationsId}/entitlements",
+                    "description": "Lists the entitlements in a given project, folder, organization, and in a given location.",
+                    "parameters": {
+                      "filter": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "orderBy": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "pageSize": {
+                        "type": "integer",
+                        "location": "query",
+                        "required": false
+                      },
+                      "pageToken": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "parent": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "parent"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "ListEntitlementsResponse"
+                    }
+                  },
+                  "patch": {
+                    "id": "privilegedaccessmanager.organizations.locations.entitlements.patch",
+                    "httpMethod": "PATCH",
+                    "path": "v1/{+name}",
+                    "flatPath": "v1/organizations/{organizationsId}/locations/{locationsId}/entitlements/{entitlementsId}",
+                    "description": "Updates the entitlement specified in the request. Updated fields in the entitlement need to be specified in an update mask. The changes made to an entitlement are applicable only on future grants of the entitlement. However, if new approvers are added or existing approvers are removed from the approval workflow, the changes are effective on existing grants. The following fields are not supported for updates: * All immutable fields * Entitlement name * Resource name * Resource type * Adding an approval workflow in an entitlement which previously had no approval workflow. * Deleting the approval workflow from an entitlement. * Adding or deleting a step in the approval workflow (only one step is supported) Note that updates are allowed on the list of approvers in an approval workflow step.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      },
+                      "updateMask": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": {
+                      "$ref": "Entitlement"
+                    },
+                    "response": {
+                      "$ref": "Operation"
+                    }
+                  },
+                  "search": {
+                    "id": "privilegedaccessmanager.organizations.locations.entitlements.search",
+                    "httpMethod": "GET",
+                    "path": "v1/{+parent}/entitlements:search",
+                    "flatPath": "v1/organizations/{organizationsId}/locations/{locationsId}/entitlements:search",
+                    "description": "`SearchEntitlements` returns entitlements on which the caller has the specified access.",
+                    "parameters": {
+                      "callerAccessType": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "filter": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "pageSize": {
+                        "type": "integer",
+                        "location": "query",
+                        "required": false
+                      },
+                      "pageToken": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "parent": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "parent"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "SearchEntitlementsResponse"
+                    }
+                  }
+                },
+                "resources": {
+                  "grants": {
+                    "methods": {
+                      "approve": {
+                        "id": "privilegedaccessmanager.organizations.locations.entitlements.grants.approve",
+                        "httpMethod": "POST",
+                        "path": "v1/{+name}:approve",
+                        "flatPath": "v1/organizations/{organizationsId}/locations/{locationsId}/entitlements/{entitlementsId}/grants/{grantsId}:approve",
+                        "description": "`ApproveGrant` is used to approve a grant. This method can only be called on a grant when it's in the `APPROVAL_AWAITED` state. This operation can't be undone.",
+                        "parameters": {
+                          "name": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          }
+                        },
+                        "parameterOrder": [
+                          "name"
+                        ],
+                        "request": {
+                          "$ref": "ApproveGrantRequest"
+                        },
+                        "response": {
+                          "$ref": "Grant"
+                        }
+                      },
+                      "create": {
+                        "id": "privilegedaccessmanager.organizations.locations.entitlements.grants.create",
+                        "httpMethod": "POST",
+                        "path": "v1/{+parent}/grants",
+                        "flatPath": "v1/organizations/{organizationsId}/locations/{locationsId}/entitlements/{entitlementsId}/grants",
+                        "description": "Creates a grant in a given project, folder, or organization and location.",
+                        "parameters": {
+                          "parent": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          },
+                          "requestId": {
+                            "type": "string",
+                            "location": "query",
+                            "required": false
+                          }
+                        },
+                        "parameterOrder": [
+                          "parent"
+                        ],
+                        "request": {
+                          "$ref": "Grant"
+                        },
+                        "response": {
+                          "$ref": "Grant"
+                        }
+                      },
+                      "deny": {
+                        "id": "privilegedaccessmanager.organizations.locations.entitlements.grants.deny",
+                        "httpMethod": "POST",
+                        "path": "v1/{+name}:deny",
+                        "flatPath": "v1/organizations/{organizationsId}/locations/{locationsId}/entitlements/{entitlementsId}/grants/{grantsId}:deny",
+                        "description": "`DenyGrant` is used to deny a grant. This method can only be called on a grant when it's in the `APPROVAL_AWAITED` state. This operation can't be undone.",
+                        "parameters": {
+                          "name": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          }
+                        },
+                        "parameterOrder": [
+                          "name"
+                        ],
+                        "request": {
+                          "$ref": "DenyGrantRequest"
+                        },
+                        "response": {
+                          "$ref": "Grant"
+                        }
+                      },
+                      "get": {
+                        "id": "privilegedaccessmanager.organizations.locations.entitlements.grants.get",
+                        "httpMethod": "GET",
+                        "path": "v1/{+name}",
+                        "flatPath": "v1/organizations/{organizationsId}/locations/{locationsId}/entitlements/{entitlementsId}/grants/{grantsId}",
+                        "description": "Get details of a single grant.",
+                        "parameters": {
+                          "name": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          }
+                        },
+                        "parameterOrder": [
+                          "name"
+                        ],
+                        "request": null,
+                        "response": {
+                          "$ref": "Grant"
+                        }
+                      },
+                      "list": {
+                        "id": "privilegedaccessmanager.organizations.locations.entitlements.grants.list",
+                        "httpMethod": "GET",
+                        "path": "v1/{+parent}/grants",
+                        "flatPath": "v1/organizations/{organizationsId}/locations/{locationsId}/entitlements/{entitlementsId}/grants",
+                        "description": "Lists grants for a given entitlement.",
+                        "parameters": {
+                          "filter": {
+                            "type": "string",
+                            "location": "query",
+                            "required": false
+                          },
+                          "orderBy": {
+                            "type": "string",
+                            "location": "query",
+                            "required": false
+                          },
+                          "pageSize": {
+                            "type": "integer",
+                            "location": "query",
+                            "required": false
+                          },
+                          "pageToken": {
+                            "type": "string",
+                            "location": "query",
+                            "required": false
+                          },
+                          "parent": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          }
+                        },
+                        "parameterOrder": [
+                          "parent"
+                        ],
+                        "request": null,
+                        "response": {
+                          "$ref": "ListGrantsResponse"
+                        }
+                      },
+                      "revoke": {
+                        "id": "privilegedaccessmanager.organizations.locations.entitlements.grants.revoke",
+                        "httpMethod": "POST",
+                        "path": "v1/{+name}:revoke",
+                        "flatPath": "v1/organizations/{organizationsId}/locations/{locationsId}/entitlements/{entitlementsId}/grants/{grantsId}:revoke",
+                        "description": "`RevokeGrant` is used to immediately revoke access for a grant. This method can be called when the grant is in a non-terminal state.",
+                        "parameters": {
+                          "name": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          }
+                        },
+                        "parameterOrder": [
+                          "name"
+                        ],
+                        "request": {
+                          "$ref": "RevokeGrantRequest"
+                        },
+                        "response": {
+                          "$ref": "Operation"
+                        }
+                      },
+                      "search": {
+                        "id": "privilegedaccessmanager.organizations.locations.entitlements.grants.search",
+                        "httpMethod": "GET",
+                        "path": "v1/{+parent}/grants:search",
+                        "flatPath": "v1/organizations/{organizationsId}/locations/{locationsId}/entitlements/{entitlementsId}/grants:search",
+                        "description": "`SearchGrants` returns grants that are related to the calling user in the specified way.",
+                        "parameters": {
+                          "callerRelationship": {
+                            "type": "string",
+                            "location": "query",
+                            "required": false
+                          },
+                          "filter": {
+                            "type": "string",
+                            "location": "query",
+                            "required": false
+                          },
+                          "pageSize": {
+                            "type": "integer",
+                            "location": "query",
+                            "required": false
+                          },
+                          "pageToken": {
+                            "type": "string",
+                            "location": "query",
+                            "required": false
+                          },
+                          "parent": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          }
+                        },
+                        "parameterOrder": [
+                          "parent"
+                        ],
+                        "request": null,
+                        "response": {
+                          "$ref": "SearchGrantsResponse"
+                        }
+                      }
+                    },
+                    "resources": null
+                  }
+                }
+              },
+              "operations": {
+                "methods": {
+                  "delete": {
+                    "id": "privilegedaccessmanager.organizations.locations.operations.delete",
+                    "httpMethod": "DELETE",
+                    "path": "v1/{+name}",
+                    "flatPath": "v1/organizations/{organizationsId}/locations/{locationsId}/operations/{operationsId}",
+                    "description": "Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "GoogleProtobufEmpty"
+                    }
+                  },
+                  "get": {
+                    "id": "privilegedaccessmanager.organizations.locations.operations.get",
+                    "httpMethod": "GET",
+                    "path": "v1/{+name}",
+                    "flatPath": "v1/organizations/{organizationsId}/locations/{locationsId}/operations/{operationsId}",
+                    "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "Operation"
+                    }
+                  },
+                  "list": {
+                    "id": "privilegedaccessmanager.organizations.locations.operations.list",
+                    "httpMethod": "GET",
+                    "path": "v1/{+name}/operations",
+                    "flatPath": "v1/organizations/{organizationsId}/locations/{locationsId}/operations",
+                    "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.",
+                    "parameters": {
+                      "filter": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      },
+                      "pageSize": {
+                        "type": "integer",
+                        "location": "query",
+                        "required": false
+                      },
+                      "pageToken": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "returnPartialSuccess": {
+                        "type": "boolean",
+                        "location": "query",
+                        "required": false
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "ListOperationsResponse"
+                    }
+                  }
+                },
+                "resources": null
+              }
+            }
+          }
+        }
+      },
+      "projects": {
+        "methods": null,
+        "resources": {
+          "locations": {
+            "methods": {
+              "checkOnboardingStatus": {
+                "id": "privilegedaccessmanager.projects.locations.checkOnboardingStatus",
+                "httpMethod": "GET",
+                "path": "v1/{+parent}:checkOnboardingStatus",
+                "flatPath": "v1/projects/{projectsId}/locations/{locationsId}:checkOnboardingStatus",
+                "description": "`CheckOnboardingStatus` reports the onboarding status for a project, folder, or organization. Any findings reported by this API need to be fixed before PAM can be used on the resource.",
+                "parameters": {
+                  "parent": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  }
+                },
+                "parameterOrder": [
+                  "parent"
+                ],
+                "request": null,
+                "response": {
+                  "$ref": "CheckOnboardingStatusResponse"
+                }
+              },
+              "get": {
+                "id": "privilegedaccessmanager.projects.locations.get",
+                "httpMethod": "GET",
+                "path": "v1/{+name}",
+                "flatPath": "v1/projects/{projectsId}/locations/{locationsId}",
+                "description": "Gets information about a location.",
+                "parameters": {
+                  "name": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  }
+                },
+                "parameterOrder": [
+                  "name"
+                ],
+                "request": null,
+                "response": {
+                  "$ref": "Location"
+                }
+              },
+              "list": {
+                "id": "privilegedaccessmanager.projects.locations.list",
+                "httpMethod": "GET",
+                "path": "v1/{+name}/locations",
+                "flatPath": "v1/projects/{projectsId}/locations",
+                "description": "Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the ListLocationsRequest.name field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version.",
+                "parameters": {
+                  "extraLocationTypes": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false
+                  },
+                  "filter": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false
+                  },
+                  "name": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  },
+                  "pageSize": {
+                    "type": "integer",
+                    "location": "query",
+                    "required": false
+                  },
+                  "pageToken": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false
+                  }
+                },
+                "parameterOrder": [
+                  "name"
+                ],
+                "request": null,
+                "response": {
+                  "$ref": "ListLocationsResponse"
+                }
+              }
+            },
+            "resources": {
+              "entitlements": {
+                "methods": {
+                  "create": {
+                    "id": "privilegedaccessmanager.projects.locations.entitlements.create",
+                    "httpMethod": "POST",
+                    "path": "v1/{+parent}/entitlements",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/entitlements",
+                    "description": "Creates a new entitlement in a given project, folder, organization, and in a given location.",
+                    "parameters": {
+                      "entitlementId": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "parent": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      },
+                      "requestId": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      }
+                    },
+                    "parameterOrder": [
+                      "parent"
+                    ],
+                    "request": {
+                      "$ref": "Entitlement"
+                    },
+                    "response": {
+                      "$ref": "Operation"
+                    }
+                  },
+                  "delete": {
+                    "id": "privilegedaccessmanager.projects.locations.entitlements.delete",
+                    "httpMethod": "DELETE",
+                    "path": "v1/{+name}",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/entitlements/{entitlementsId}",
+                    "description": "Deletes a single entitlement. This method can only be called when there are no in-progress (`ACTIVE`/`ACTIVATING`/`REVOKING`) grants under the entitlement.",
+                    "parameters": {
+                      "force": {
+                        "type": "boolean",
+                        "location": "query",
+                        "required": false
+                      },
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      },
+                      "requestId": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "Operation"
+                    }
+                  },
+                  "get": {
+                    "id": "privilegedaccessmanager.projects.locations.entitlements.get",
+                    "httpMethod": "GET",
+                    "path": "v1/{+name}",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/entitlements/{entitlementsId}",
+                    "description": "Gets details of a single entitlement.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "Entitlement"
+                    }
+                  },
+                  "list": {
+                    "id": "privilegedaccessmanager.projects.locations.entitlements.list",
+                    "httpMethod": "GET",
+                    "path": "v1/{+parent}/entitlements",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/entitlements",
+                    "description": "Lists the entitlements in a given project, folder, organization, and in a given location.",
+                    "parameters": {
+                      "filter": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "orderBy": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "pageSize": {
+                        "type": "integer",
+                        "location": "query",
+                        "required": false
+                      },
+                      "pageToken": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "parent": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "parent"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "ListEntitlementsResponse"
+                    }
+                  },
+                  "patch": {
+                    "id": "privilegedaccessmanager.projects.locations.entitlements.patch",
+                    "httpMethod": "PATCH",
+                    "path": "v1/{+name}",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/entitlements/{entitlementsId}",
+                    "description": "Updates the entitlement specified in the request. Updated fields in the entitlement need to be specified in an update mask. The changes made to an entitlement are applicable only on future grants of the entitlement. However, if new approvers are added or existing approvers are removed from the approval workflow, the changes are effective on existing grants. The following fields are not supported for updates: * All immutable fields * Entitlement name * Resource name * Resource type * Adding an approval workflow in an entitlement which previously had no approval workflow. * Deleting the approval workflow from an entitlement. * Adding or deleting a step in the approval workflow (only one step is supported) Note that updates are allowed on the list of approvers in an approval workflow step.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      },
+                      "updateMask": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": {
+                      "$ref": "Entitlement"
+                    },
+                    "response": {
+                      "$ref": "Operation"
+                    }
+                  },
+                  "search": {
+                    "id": "privilegedaccessmanager.projects.locations.entitlements.search",
+                    "httpMethod": "GET",
+                    "path": "v1/{+parent}/entitlements:search",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/entitlements:search",
+                    "description": "`SearchEntitlements` returns entitlements on which the caller has the specified access.",
+                    "parameters": {
+                      "callerAccessType": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "filter": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "pageSize": {
+                        "type": "integer",
+                        "location": "query",
+                        "required": false
+                      },
+                      "pageToken": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "parent": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "parent"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "SearchEntitlementsResponse"
+                    }
+                  }
+                },
+                "resources": {
+                  "grants": {
+                    "methods": {
+                      "approve": {
+                        "id": "privilegedaccessmanager.projects.locations.entitlements.grants.approve",
+                        "httpMethod": "POST",
+                        "path": "v1/{+name}:approve",
+                        "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/entitlements/{entitlementsId}/grants/{grantsId}:approve",
+                        "description": "`ApproveGrant` is used to approve a grant. This method can only be called on a grant when it's in the `APPROVAL_AWAITED` state. This operation can't be undone.",
+                        "parameters": {
+                          "name": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          }
+                        },
+                        "parameterOrder": [
+                          "name"
+                        ],
+                        "request": {
+                          "$ref": "ApproveGrantRequest"
+                        },
+                        "response": {
+                          "$ref": "Grant"
+                        }
+                      },
+                      "create": {
+                        "id": "privilegedaccessmanager.projects.locations.entitlements.grants.create",
+                        "httpMethod": "POST",
+                        "path": "v1/{+parent}/grants",
+                        "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/entitlements/{entitlementsId}/grants",
+                        "description": "Creates a grant in a given project, folder, or organization and location.",
+                        "parameters": {
+                          "parent": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          },
+                          "requestId": {
+                            "type": "string",
+                            "location": "query",
+                            "required": false
+                          }
+                        },
+                        "parameterOrder": [
+                          "parent"
+                        ],
+                        "request": {
+                          "$ref": "Grant"
+                        },
+                        "response": {
+                          "$ref": "Grant"
+                        }
+                      },
+                      "deny": {
+                        "id": "privilegedaccessmanager.projects.locations.entitlements.grants.deny",
+                        "httpMethod": "POST",
+                        "path": "v1/{+name}:deny",
+                        "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/entitlements/{entitlementsId}/grants/{grantsId}:deny",
+                        "description": "`DenyGrant` is used to deny a grant. This method can only be called on a grant when it's in the `APPROVAL_AWAITED` state. This operation can't be undone.",
+                        "parameters": {
+                          "name": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          }
+                        },
+                        "parameterOrder": [
+                          "name"
+                        ],
+                        "request": {
+                          "$ref": "DenyGrantRequest"
+                        },
+                        "response": {
+                          "$ref": "Grant"
+                        }
+                      },
+                      "get": {
+                        "id": "privilegedaccessmanager.projects.locations.entitlements.grants.get",
+                        "httpMethod": "GET",
+                        "path": "v1/{+name}",
+                        "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/entitlements/{entitlementsId}/grants/{grantsId}",
+                        "description": "Get details of a single grant.",
+                        "parameters": {
+                          "name": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          }
+                        },
+                        "parameterOrder": [
+                          "name"
+                        ],
+                        "request": null,
+                        "response": {
+                          "$ref": "Grant"
+                        }
+                      },
+                      "list": {
+                        "id": "privilegedaccessmanager.projects.locations.entitlements.grants.list",
+                        "httpMethod": "GET",
+                        "path": "v1/{+parent}/grants",
+                        "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/entitlements/{entitlementsId}/grants",
+                        "description": "Lists grants for a given entitlement.",
+                        "parameters": {
+                          "filter": {
+                            "type": "string",
+                            "location": "query",
+                            "required": false
+                          },
+                          "orderBy": {
+                            "type": "string",
+                            "location": "query",
+                            "required": false
+                          },
+                          "pageSize": {
+                            "type": "integer",
+                            "location": "query",
+                            "required": false
+                          },
+                          "pageToken": {
+                            "type": "string",
+                            "location": "query",
+                            "required": false
+                          },
+                          "parent": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          }
+                        },
+                        "parameterOrder": [
+                          "parent"
+                        ],
+                        "request": null,
+                        "response": {
+                          "$ref": "ListGrantsResponse"
+                        }
+                      },
+                      "revoke": {
+                        "id": "privilegedaccessmanager.projects.locations.entitlements.grants.revoke",
+                        "httpMethod": "POST",
+                        "path": "v1/{+name}:revoke",
+                        "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/entitlements/{entitlementsId}/grants/{grantsId}:revoke",
+                        "description": "`RevokeGrant` is used to immediately revoke access for a grant. This method can be called when the grant is in a non-terminal state.",
+                        "parameters": {
+                          "name": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          }
+                        },
+                        "parameterOrder": [
+                          "name"
+                        ],
+                        "request": {
+                          "$ref": "RevokeGrantRequest"
+                        },
+                        "response": {
+                          "$ref": "Operation"
+                        }
+                      },
+                      "search": {
+                        "id": "privilegedaccessmanager.projects.locations.entitlements.grants.search",
+                        "httpMethod": "GET",
+                        "path": "v1/{+parent}/grants:search",
+                        "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/entitlements/{entitlementsId}/grants:search",
+                        "description": "`SearchGrants` returns grants that are related to the calling user in the specified way.",
+                        "parameters": {
+                          "callerRelationship": {
+                            "type": "string",
+                            "location": "query",
+                            "required": false
+                          },
+                          "filter": {
+                            "type": "string",
+                            "location": "query",
+                            "required": false
+                          },
+                          "pageSize": {
+                            "type": "integer",
+                            "location": "query",
+                            "required": false
+                          },
+                          "pageToken": {
+                            "type": "string",
+                            "location": "query",
+                            "required": false
+                          },
+                          "parent": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          }
+                        },
+                        "parameterOrder": [
+                          "parent"
+                        ],
+                        "request": null,
+                        "response": {
+                          "$ref": "SearchGrantsResponse"
+                        }
+                      }
+                    },
+                    "resources": null
+                  }
+                }
+              },
+              "operations": {
+                "methods": {
+                  "delete": {
+                    "id": "privilegedaccessmanager.projects.locations.operations.delete",
+                    "httpMethod": "DELETE",
+                    "path": "v1/{+name}",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
+                    "description": "Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "GoogleProtobufEmpty"
+                    }
+                  },
+                  "get": {
+                    "id": "privilegedaccessmanager.projects.locations.operations.get",
+                    "httpMethod": "GET",
+                    "path": "v1/{+name}",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
+                    "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "Operation"
+                    }
+                  },
+                  "list": {
+                    "id": "privilegedaccessmanager.projects.locations.operations.list",
+                    "httpMethod": "GET",
+                    "path": "v1/{+name}/operations",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/operations",
+                    "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.",
+                    "parameters": {
+                      "filter": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      },
+                      "pageSize": {
+                        "type": "integer",
+                        "location": "query",
+                        "required": false
+                      },
+                      "pageToken": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "returnPartialSuccess": {
+                        "type": "boolean",
+                        "location": "query",
+                        "required": false
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "ListOperationsResponse"
+                    }
+                  }
+                },
+                "resources": null
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
