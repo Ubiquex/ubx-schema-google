@@ -46,3 +46,13 @@ unlike Azure's own per-domain-file split).
 - Source format is `discovery_docs`, distinct from OpenAPI — a real,
   translated-form convergence still applies (same `internal/schema.Translator`
   as every other source), but the fetch/parse layer is Google's own.
+
+## Architecture documentation
+
+This repo's own snapshot content is generated, never architectural on
+its own. A change to HOW it's generated — the pinning/versioning
+mechanism, `hash-watch.yml`/`publish.yml`'s own real logic, anything
+about `min_binary_version` or the diff/version-derivation rules — is
+architectural, and gets `ubiquex-internals`' own Provider System page
+(the developer documentation site) updated in the same body of work,
+never a follow-up. Matches `ubiquex` CLAUDE.md rule 10.
