@@ -84,3 +84,13 @@ product to collapse away later, matching `ubx-schema-github`'s own
 real, first-ever shape rather than `ubx-schema-kubernetes`'s/
 `ubx-schema-datadog`'s, which were regenerated and republished onto
 this shape after starting on the older, two-table one.
+
+<!-- README-GEN:BEGIN -->
+**Real, current published version:** `v1.0.0`
+
+## Links
+
+- Docs: https://docs.ubiquex.io
+- Internals (architecture and design): https://github.com/Ubiquex/ubiquex-internals
+- Linear board: https://linear.app/ubiquex
+<!-- README-GEN:END -->
