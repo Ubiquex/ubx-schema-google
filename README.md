@@ -17,9 +17,16 @@ channel, e.g. `google_compute`, `google_compute_beta`,
 once and built into BOTH a resource-mode member and a data-source-mode
 member from that one fetch:
 
-- 262 resource-mode members (1,546 real resource types total).
-- 262 data-source-mode members (792 real, unclaimed read-only
-  operations total).
+- 262 resource-mode members (1,560 real resource types total -- UBI-181's
+  own narrow create-verb allowlist admits 14 more than a literal
+  "create"/"insert" method-key check found, real, published Discovery
+  Document methods like `restore`/`initiateBackup`/`import` -- including
+  the ticket's own named example, Google Backup and DR's own `backups`
+  resource, admitted via `restore`).
+- 262 data-source-mode members (415 real, unclaimed read-only
+  operations total -- down from the pre-UBI-181 count: the same PR's own
+  five-rule filter now excludes watch/operation-status/execution/
+  computed/reference-duplication candidates).
 
 - `manifest.json` -- the group's own real identity: `schema_format`,
   `provider`, one `version` for the WHOLE group, and which member names
