@@ -1,7 +1,7 @@
 {
   "schema_format": 3,
   "provider": "google",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "members": [
     "google",
     "google_accesscontextmanager",
@@ -527,5 +527,6 @@
     "google_workstations_ds",
     "google_workstations_v1beta",
     "google_workstations_v1beta_ds"
-  ]
+  ],
+  "min_binary_version": "1.0.2"
 }
