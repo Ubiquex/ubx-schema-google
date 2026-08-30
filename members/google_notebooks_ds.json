@@ -3655,5 +3655,6 @@
         }
       }
     }
-  }
+  },
+  "schema_url": "https://notebooks.googleapis.com/$discovery/rest?version=v2"
 }

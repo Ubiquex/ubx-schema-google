@@ -29688,5 +29688,6 @@
         }
       }
     }
-  }
+  },
+  "schema_url": "https://securitycenter.googleapis.com/$discovery/rest?version=v1"
 }

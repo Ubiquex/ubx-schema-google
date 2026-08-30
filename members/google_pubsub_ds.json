@@ -4645,5 +4645,6 @@
         }
       }
     }
-  }
+  },
+  "schema_url": "https://pubsub.googleapis.com/$discovery/rest?version=v1"
 }

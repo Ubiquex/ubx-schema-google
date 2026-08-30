@@ -4053,5 +4053,6 @@
         }
       }
     }
-  }
+  },
+  "schema_url": "https://file.googleapis.com/$discovery/rest?version=v1"
 }

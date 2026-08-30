@@ -968,5 +968,6 @@
         }
       }
     }
-  }
+  },
+  "schema_url": "https://bigqueryconnection.googleapis.com/$discovery/rest?version=v1beta1"
 }

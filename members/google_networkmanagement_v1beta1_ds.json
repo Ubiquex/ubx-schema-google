@@ -7582,5 +7582,6 @@
         }
       }
     }
-  }
+  },
+  "schema_url": "https://networkmanagement.googleapis.com/$discovery/rest?version=v1beta1"
 }

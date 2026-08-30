@@ -1486,5 +1486,6 @@
         }
       }
     }
-  }
+  },
+  "schema_url": "https://parallelstore.googleapis.com/$discovery/rest?version=v1"
 }

@@ -8246,5 +8246,6 @@
         }
       }
     }
-  }
+  },
+  "schema_url": "https://workloadmanager.googleapis.com/$discovery/rest?version=v1"
 }

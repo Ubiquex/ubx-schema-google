@@ -1099,5 +1099,6 @@
         }
       }
     }
-  }
+  },
+  "schema_url": "https://ids.googleapis.com/$discovery/rest?version=v1"
 }

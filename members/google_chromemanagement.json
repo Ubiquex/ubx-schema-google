@@ -24,7 +24,7 @@
   "wire_name": "google_chromemanagement",
   "raw_spec": {
     "name": "chromemanagement",
-    "revision": "20260825",
+    "revision": "20260827",
     "discoveryVersion": "v1",
     "baseUrl": "https://chromemanagement.googleapis.com/",
     "rootUrl": "https://chromemanagement.googleapis.com/",
@@ -12825,5 +12825,6 @@
         "resources": null
       }
     }
-  }
+  },
+  "schema_url": "https://chromemanagement.googleapis.com/$discovery/rest?version=v1"
 }

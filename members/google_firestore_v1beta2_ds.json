@@ -1822,5 +1822,6 @@
         }
       }
     }
-  }
+  },
+  "schema_url": "https://firestore.googleapis.com/$discovery/rest?version=v1beta2"
 }

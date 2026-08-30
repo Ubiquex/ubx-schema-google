@@ -5850,5 +5850,6 @@
         }
       }
     }
-  }
+  },
+  "schema_url": "https://cloudbuild.googleapis.com/$discovery/rest?version=v2"
 }

@@ -4049,5 +4049,6 @@
         }
       }
     }
-  }
+  },
+  "schema_url": "https://tpu.googleapis.com/$discovery/rest?version=v2alpha1"
 }

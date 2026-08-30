@@ -24,7 +24,7 @@
   "wire_name": "google_storage",
   "raw_spec": {
     "name": "storage",
-    "revision": "20260821",
+    "revision": "20260825",
     "discoveryVersion": "v1",
     "baseUrl": "https://storage.googleapis.com/storage/v1/",
     "rootUrl": "https://storage.googleapis.com/",
@@ -8444,5 +8444,6 @@
         "resources": null
       }
     }
-  }
+  },
+  "schema_url": "https://storage.googleapis.com/$discovery/rest?version=v1"
 }

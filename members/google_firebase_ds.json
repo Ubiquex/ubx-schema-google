@@ -24,7 +24,7 @@
   "wire_name": "google_firebase",
   "raw_spec": {
     "name": "firebase",
-    "revision": "20260809",
+    "revision": "20260821",
     "discoveryVersion": "v1",
     "baseUrl": "https://firebase.googleapis.com/",
     "rootUrl": "https://firebase.googleapis.com/",
@@ -3278,5 +3278,6 @@
         }
       }
     }
-  }
+  },
+  "schema_url": "https://firebase.googleapis.com/$discovery/rest?version=v1beta1"
 }

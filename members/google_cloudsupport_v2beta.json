@@ -2898,5 +2898,6 @@
         }
       }
     }
-  }
+  },
+  "schema_url": "https://cloudsupport.googleapis.com/$discovery/rest?version=v2beta"
 }

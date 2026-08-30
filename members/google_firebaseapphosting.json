@@ -4271,5 +4271,6 @@
         }
       }
     }
-  }
+  },
+  "schema_url": "https://firebaseapphosting.googleapis.com/$discovery/rest?version=v1"
 }

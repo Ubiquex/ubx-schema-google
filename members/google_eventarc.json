@@ -24,7 +24,7 @@
   "wire_name": "google_eventarc",
   "raw_spec": {
     "name": "eventarc",
-    "revision": "20260814",
+    "revision": "20260820",
     "discoveryVersion": "v1",
     "baseUrl": "https://eventarc.googleapis.com/",
     "rootUrl": "https://eventarc.googleapis.com/",
@@ -5750,5 +5750,6 @@
         }
       }
     }
-  }
+  },
+  "schema_url": "https://eventarc.googleapis.com/$discovery/rest?version=v1"
 }

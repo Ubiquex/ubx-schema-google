@@ -3667,5 +3667,6 @@
         }
       }
     }
-  }
+  },
+  "schema_url": "https://policysimulator.googleapis.com/$discovery/rest?version=v1beta"
 }

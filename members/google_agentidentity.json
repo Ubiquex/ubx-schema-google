@@ -2233,5 +2233,6 @@
         }
       }
     }
-  }
+  },
+  "schema_url": "https://agentidentity.googleapis.com/$discovery/rest?version=v1"
 }

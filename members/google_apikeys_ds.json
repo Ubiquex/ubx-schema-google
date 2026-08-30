@@ -24,7 +24,7 @@
   "wire_name": "google_apikeys",
   "raw_spec": {
     "name": "apikeys",
-    "revision": "20260818",
+    "revision": "20260819",
     "discoveryVersion": "v1",
     "baseUrl": "https://apikeys.googleapis.com/",
     "rootUrl": "https://apikeys.googleapis.com/",
@@ -985,5 +985,6 @@
         }
       }
     }
-  }
+  },
+  "schema_url": "https://apikeys.googleapis.com/$discovery/rest?version=v2"
 }

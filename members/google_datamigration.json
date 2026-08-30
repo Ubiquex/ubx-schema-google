@@ -12617,5 +12617,6 @@
         }
       }
     }
-  }
+  },
+  "schema_url": "https://datamigration.googleapis.com/$discovery/rest?version=v1"
 }

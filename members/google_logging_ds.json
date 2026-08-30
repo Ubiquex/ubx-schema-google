@@ -24,7 +24,7 @@
   "wire_name": "google_logging",
   "raw_spec": {
     "name": "logging",
-    "revision": "20260814",
+    "revision": "20260818",
     "discoveryVersion": "v1",
     "baseUrl": "https://logging.googleapis.com/",
     "rootUrl": "https://logging.googleapis.com/",
@@ -13307,5 +13307,6 @@
         "resources": null
       }
     }
-  }
+  },
+  "schema_url": "https://logging.googleapis.com/$discovery/rest?version=v2"
 }

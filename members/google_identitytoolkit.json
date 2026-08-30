@@ -6143,5 +6143,6 @@
         "resources": null
       }
     }
-  }
+  },
+  "schema_url": "https://identitytoolkit.googleapis.com/$discovery/rest?version=v2"
 }

@@ -24,7 +24,7 @@
   "wire_name": "google_dataform",
   "raw_spec": {
     "name": "dataform",
-    "revision": "20260819",
+    "revision": "20260826",
     "discoveryVersion": "v1",
     "baseUrl": "https://dataform.googleapis.com/",
     "rootUrl": "https://dataform.googleapis.com/",
@@ -8946,5 +8946,6 @@
         }
       }
     }
-  }
+  },
+  "schema_url": "https://dataform.googleapis.com/$discovery/rest?version=v1"
 }

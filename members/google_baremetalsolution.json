@@ -6073,5 +6073,6 @@
         }
       }
     }
-  }
+  },
+  "schema_url": "https://baremetalsolution.googleapis.com/$discovery/rest?version=v2"
 }

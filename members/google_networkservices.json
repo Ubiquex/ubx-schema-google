@@ -24,7 +24,7 @@
   "wire_name": "google_networkservices",
   "raw_spec": {
     "name": "networkservices",
-    "revision": "20260816",
+    "revision": "20260821",
     "discoveryVersion": "v1",
     "baseUrl": "https://networkservices.googleapis.com/",
     "rootUrl": "https://networkservices.googleapis.com/",
@@ -12925,5 +12925,6 @@
         }
       }
     }
-  }
+  },
+  "schema_url": "https://networkservices.googleapis.com/$discovery/rest?version=v1"
 }

@@ -25,7 +25,7 @@
   "version_qualifier": "v2beta1",
   "raw_spec": {
     "name": "dialogflow",
-    "revision": "20260815",
+    "revision": "20260825",
     "discoveryVersion": "v1",
     "baseUrl": "https://dialogflow.googleapis.com/",
     "rootUrl": "https://dialogflow.googleapis.com/",
@@ -25945,6 +25945,17 @@
             "enum": null,
             "readOnly": false
           },
+          "geminiAsrConfig": {
+            "type": "",
+            "format": "",
+            "description": "",
+            "$ref": "GoogleCloudDialogflowV2beta1SpeechToTextConfigGeminiAsrConfig",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
           "languageCode": {
             "type": "string",
             "format": "",
@@ -26075,6 +26086,17 @@
               "enum": null,
               "readOnly": false
             },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "useGeminiAsr": {
+            "type": "boolean",
+            "format": "",
+            "description": "",
+            "$ref": "",
+            "properties": null,
+            "items": null,
             "additionalProperties": null,
             "enum": null,
             "readOnly": false
@@ -34006,6 +34028,17 @@
             "enum": null,
             "readOnly": false
           },
+          "geminiAsrConfig": {
+            "type": "",
+            "format": "",
+            "description": "",
+            "$ref": "GoogleCloudDialogflowV2beta1SpeechToTextConfigGeminiAsrConfig",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
           "languageCode": {
             "type": "string",
             "format": "",
@@ -34076,6 +34109,17 @@
             ],
             "readOnly": false
           },
+          "useGeminiAsr": {
+            "type": "boolean",
+            "format": "",
+            "description": "",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
           "useTimeoutBasedEndpointing": {
             "type": "boolean",
             "format": "",
@@ -34085,6 +34129,81 @@
             "items": null,
             "additionalProperties": null,
             "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudDialogflowV2beta1SpeechToTextConfigGeminiAsrConfig": {
+        "type": "object",
+        "format": "",
+        "description": "",
+        "$ref": "",
+        "properties": {
+          "endOfSpeechSensitivity": {
+            "type": "string",
+            "format": "",
+            "description": "",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "END_SENSITIVITY_UNSPECIFIED",
+              "END_SENSITIVITY_HIGH",
+              "END_SENSITIVITY_LOW"
+            ],
+            "readOnly": false
+          },
+          "modelId": {
+            "type": "string",
+            "format": "",
+            "description": "",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "prefixPaddingMs": {
+            "type": "integer",
+            "format": "int32",
+            "description": "",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "silenceDurationMs": {
+            "type": "integer",
+            "format": "int32",
+            "description": "",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "startOfSpeechSensitivity": {
+            "type": "string",
+            "format": "",
+            "description": "",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "START_SENSITIVITY_UNSPECIFIED",
+              "START_SENSITIVITY_HIGH",
+              "START_SENSITIVITY_LOW"
+            ],
             "readOnly": false
           }
         },
@@ -46155,5 +46274,6 @@
         }
       }
     }
-  }
+  },
+  "schema_url": "https://dialogflow.googleapis.com/$discovery/rest?version=v2beta1"
 }

@@ -4729,5 +4729,6 @@
         }
       }
     }
-  }
+  },
+  "schema_url": "https://analyticshub.googleapis.com/$discovery/rest?version=v1"
 }

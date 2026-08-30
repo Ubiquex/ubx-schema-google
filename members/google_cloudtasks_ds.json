@@ -24,7 +24,7 @@
   "wire_name": "google_cloudtasks",
   "raw_spec": {
     "name": "cloudtasks",
-    "revision": "20260722",
+    "revision": "20260828",
     "discoveryVersion": "v1",
     "baseUrl": "https://cloudtasks.googleapis.com/",
     "rootUrl": "https://cloudtasks.googleapis.com/",
@@ -2445,5 +2445,6 @@
         }
       }
     }
-  }
+  },
+  "schema_url": "https://cloudtasks.googleapis.com/$discovery/rest?version=v2"
 }

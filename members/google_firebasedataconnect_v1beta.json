@@ -3579,5 +3579,6 @@
         }
       }
     }
-  }
+  },
+  "schema_url": "https://firebasedataconnect.googleapis.com/$discovery/rest?version=v1beta"
 }

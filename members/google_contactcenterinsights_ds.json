@@ -43428,5 +43428,6 @@
         }
       }
     }
-  }
+  },
+  "schema_url": "https://contactcenterinsights.googleapis.com/$discovery/rest?version=v1"
 }

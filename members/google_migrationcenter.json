@@ -13045,5 +13045,6 @@
         }
       }
     }
-  }
+  },
+  "schema_url": "https://migrationcenter.googleapis.com/$discovery/rest?version=v1"
 }

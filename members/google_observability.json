@@ -2507,5 +2507,6 @@
         }
       }
     }
-  }
+  },
+  "schema_url": "https://observability.googleapis.com/$discovery/rest?version=v1"
 }

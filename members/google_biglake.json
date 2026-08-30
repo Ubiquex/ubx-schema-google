@@ -1655,5 +1655,6 @@
         }
       }
     }
-  }
+  },
+  "schema_url": "https://biglake.googleapis.com/$discovery/rest?version=v1"
 }

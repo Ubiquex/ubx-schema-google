@@ -4947,5 +4947,6 @@
         }
       }
     }
-  }
+  },
+  "schema_url": "https://datastore.googleapis.com/$discovery/rest?version=v1"
 }

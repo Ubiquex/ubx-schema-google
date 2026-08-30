@@ -2478,5 +2478,6 @@
         "resources": null
       }
     }
-  }
+  },
+  "schema_url": "https://speech.googleapis.com/$discovery/rest?version=v1"
 }

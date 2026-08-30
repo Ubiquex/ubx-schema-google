@@ -1390,5 +1390,6 @@
         }
       }
     }
-  }
+  },
+  "schema_url": "https://rapidmigrationassessment.googleapis.com/$discovery/rest?version=v1"
 }

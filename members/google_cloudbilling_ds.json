@@ -1856,5 +1856,6 @@
         }
       }
     }
-  }
+  },
+  "schema_url": "https://cloudbilling.googleapis.com/$discovery/rest?version=v1"
 }

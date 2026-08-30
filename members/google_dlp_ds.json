@@ -24,7 +24,7 @@
   "wire_name": "google_dlp",
   "raw_spec": {
     "name": "dlp",
-    "revision": "20260815",
+    "revision": "20260825",
     "discoveryVersion": "v1",
     "baseUrl": "https://dlp.googleapis.com/",
     "rootUrl": "https://dlp.googleapis.com/",
@@ -22468,5 +22468,6 @@
         }
       }
     }
-  }
+  },
+  "schema_url": "https://dlp.googleapis.com/$discovery/rest?version=v2"
 }

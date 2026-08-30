@@ -24,7 +24,7 @@
   "wire_name": "google_bigqueryreservation",
   "raw_spec": {
     "name": "bigqueryreservation",
-    "revision": "20260819",
+    "revision": "20260825",
     "discoveryVersion": "v1",
     "baseUrl": "https://bigqueryreservation.googleapis.com/",
     "rootUrl": "https://bigqueryreservation.googleapis.com/",
@@ -2642,5 +2642,6 @@
         }
       }
     }
-  }
+  },
+  "schema_url": "https://bigqueryreservation.googleapis.com/$discovery/rest?version=v1"
 }

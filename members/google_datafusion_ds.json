@@ -2754,5 +2754,6 @@
         }
       }
     }
-  }
+  },
+  "schema_url": "https://datafusion.googleapis.com/$discovery/rest?version=v1"
 }

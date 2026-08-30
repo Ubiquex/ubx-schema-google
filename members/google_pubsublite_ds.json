@@ -2224,5 +2224,6 @@
         }
       }
     }
-  }
+  },
+  "schema_url": "https://pubsublite.googleapis.com/$discovery/rest?version=v1"
 }

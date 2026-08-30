@@ -377,5 +377,6 @@
         "resources": null
       }
     }
-  }
+  },
+  "schema_url": "https://siteverification.googleapis.com/$discovery/rest?version=v1"
 }

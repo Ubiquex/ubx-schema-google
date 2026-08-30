@@ -8876,5 +8876,6 @@
         }
       }
     }
-  }
+  },
+  "schema_url": "https://bigtableadmin.googleapis.com/$discovery/rest?version=v2"
 }

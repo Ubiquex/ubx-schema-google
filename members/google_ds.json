@@ -24,7 +24,7 @@
   "wire_name": "google",
   "raw_spec": {
     "name": "compute",
-    "revision": "20260807",
+    "revision": "20260821",
     "discoveryVersion": "v1",
     "baseUrl": "https://compute.googleapis.com/compute/v1/",
     "rootUrl": "https://compute.googleapis.com/",
@@ -11853,6 +11853,7 @@
             "items": null,
             "additionalProperties": null,
             "enum": [
+              "BMSAI",
               "CCA",
               "CONFIDENTIAL_INSTANCE_TYPE_UNSPECIFIED",
               "SEV",
@@ -19429,6 +19430,7 @@
             "items": null,
             "additionalProperties": null,
             "enum": [
+              "CONFIDENTIAL_COMPUTE_TYPE_BMSAI",
               "CONFIDENTIAL_COMPUTE_TYPE_TDX",
               "CONFIDENTIAL_COMPUTE_TYPE_UNSPECIFIED"
             ],
@@ -21447,6 +21449,116 @@
         "enum": null,
         "readOnly": false
       },
+      "GetHealthOperationMetadata": {
+        "type": "object",
+        "format": "",
+        "description": "Metadata for GetHealth operations.",
+        "$ref": "",
+        "properties": {
+          "healthInfo": {
+            "type": "",
+            "format": "",
+            "description": "Output only. The health information.",
+            "$ref": "GetHealthOperationMetadataHealthInfo",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GetHealthOperationMetadataHealthInfo": {
+        "type": "object",
+        "format": "",
+        "description": "Health information.",
+        "$ref": "",
+        "properties": {
+          "availabilitySloStatus": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The availability SLO status.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "AVAILABILITY_SLO_STATUS_IN_SLO",
+              "AVAILABILITY_SLO_STATUS_OUT_OF_SLO",
+              "AVAILABILITY_SLO_STATUS_SLO_UNKNOWN",
+              "AVAILABILITY_SLO_STATUS_UNSPECIFIED"
+            ],
+            "readOnly": true
+          },
+          "healthStatus": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The health status.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "HEALTH_STATUS_HEALTHY",
+              "HEALTH_STATUS_UNHEALTHY",
+              "HEALTH_STATUS_UNSPECIFIED"
+            ],
+            "readOnly": true
+          },
+          "repairCategory": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The repair category.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "REPAIR_CATEGORY_CRITICAL_FAILURE",
+              "REPAIR_CATEGORY_EMERGENT_MAINTENANCE",
+              "REPAIR_CATEGORY_PLANNED_MAINTENANCE",
+              "REPAIR_CATEGORY_UNSPECIFIED",
+              "REPAIR_CATEGORY_USER_REPORTED_FAULT"
+            ],
+            "readOnly": true
+          },
+          "unhealthyReason": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The reason for unhealthy status.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "UNHEALTHY_REASON_PENDING_USER_APPROVAL",
+              "UNHEALTHY_REASON_REPAIRING",
+              "UNHEALTHY_REASON_UNSCHEDULABLE",
+              "UNHEALTHY_REASON_UNSPECIFIED"
+            ],
+            "readOnly": true
+          },
+          "updateTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. The time when health info was updated.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
       "GetVersionOperationMetadata": {
         "type": "object",
         "format": "",
@@ -22773,7 +22885,7 @@
           "type": {
             "type": "string",
             "format": "",
-            "description": "The ID of a supported feature. To add multiple values, use commas to\nseparate values. Set to one or more of the following values:\n   \n   - VIRTIO_SCSI_MULTIQUEUE\n   - WINDOWS\n   - MULTI_IP_SUBNET\n   - UEFI_COMPATIBLE\n   - GVNIC\n   - SEV_CAPABLE\n   - SUSPEND_RESUME_COMPATIBLE\n   - SEV_LIVE_MIGRATABLE_V2\n   - SEV_SNP_CAPABLE\n   - TDX_CAPABLE\n   - IDPF\n   - SNP_SVSM_CAPABLE\n   - CCA_CAPABLE\n\n\nFor more information, see\nEnabling guest operating system features.",
+            "description": "The ID of a supported feature. To add multiple values, use commas to\nseparate values. Set to one or more of the following values:\n   \n   - VIRTIO_SCSI_MULTIQUEUE\n   - WINDOWS\n   - MULTI_IP_SUBNET\n   - UEFI_COMPATIBLE\n   - GVNIC\n   - SEV_CAPABLE\n   - SUSPEND_RESUME_COMPATIBLE\n   - SEV_LIVE_MIGRATABLE_V2\n   - SEV_SNP_CAPABLE\n   - TDX_CAPABLE\n   - IDPF\n   - SNP_SVSM_CAPABLE\n   - CCA_CAPABLE\n   - SUSPEND_SAFE_FPR\n\n\nFor more information, see\nEnabling guest operating system features.",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -22791,6 +22903,7 @@
               "SEV_LIVE_MIGRATABLE_V2",
               "SEV_SNP_CAPABLE",
               "SNP_SVSM_CAPABLE",
+              "SUSPEND_SAFE_FPR",
               "TDX_CAPABLE",
               "UEFI_COMPATIBLE",
               "VIRTIO_SCSI_MULTIQUEUE",
@@ -39495,6 +39608,17 @@
             "enum": null,
             "readOnly": true
           },
+          "selfLinkWithId": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. Server-defined URL for this resource with the resource id.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
           "state": {
             "type": "string",
             "format": "",
@@ -44366,6 +44490,28 @@
             "additionalProperties": null,
             "enum": null,
             "readOnly": true
+          },
+          "maxDynamicPathBandwidthGbps": {
+            "type": "string",
+            "format": "int64",
+            "description": "Output only. The maximum unmetered bandwidth for dynamic paths allowable per\nWireGroup for this metro.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "maxFixedPathBandwidthGbps": {
+            "type": "string",
+            "format": "int64",
+            "description": "Output only. The maximum unmetered bandwidth for fixed paths allowable per WireGroup\nfor this metro.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
           }
         },
         "items": null,
@@ -48328,6 +48474,24 @@
             "enum": null,
             "readOnly": true
           },
+          "targetStatus": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The eventual status of the instance. The instance group\nmanager will not be identified as stable till each managed instance reaches\nits targetStatus.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "ABANDONED",
+              "DELETED",
+              "INVALID",
+              "RUNNING",
+              "STOPPED",
+              "SUSPENDED"
+            ],
+            "readOnly": true
+          },
           "version": {
             "type": "",
             "format": "",
@@ -50887,6 +51051,7 @@
             "additionalProperties": null,
             "enum": [
               "GCE_VM_IP",
+              "GCE_VM_IP_DEDICATED_BACKEND",
               "GCE_VM_IP_PORT",
               "GCE_VM_IP_PORTMAP",
               "INTERNET_FQDN_PORT",
@@ -58390,6 +58555,17 @@
             "additionalProperties": null,
             "enum": null,
             "readOnly": false
+          },
+          "getHealthOperationMetadata": {
+            "type": "",
+            "format": "",
+            "description": "Output only. Metadata for GetHealth operations.",
+            "$ref": "GetHealthOperationMetadata",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
           },
           "getVersionOperationMetadata": {
             "type": "",
@@ -67248,6 +67424,7 @@
             "items": null,
             "additionalProperties": null,
             "enum": [
+              "CONFIDENTIAL_COMPUTE_TYPE_BMSAI",
               "CONFIDENTIAL_COMPUTE_TYPE_TDX",
               "CONFIDENTIAL_COMPUTE_TYPE_UNSPECIFIED"
             ],
@@ -88648,6 +88825,8 @@
             "additionalProperties": null,
             "enum": [
               "ARP_ALL_RANGES",
+              "ARP_BROADCAST_PRIMARY_RANGE",
+              "ARP_BROADCAST_PRIMARY_RANGE_WITH_LEARNING",
               "ARP_PRIMARY_RANGE"
             ],
             "readOnly": false
@@ -131813,6 +131992,50 @@
               "$ref": "ReservationSlotsGetResponse"
             }
           },
+          "getHealth": {
+            "id": "compute.reservationSlots.getHealth",
+            "httpMethod": "POST",
+            "path": "projects/{project}/zones/{zone}/{+parentName}/reservationSlots/{reservationSlot}/getHealth",
+            "flatPath": "projects/{project}/zones/{zone}/reservations/{reservationsId}/reservationBlocks/{reservationBlocksId}/reservationSubBlocks/{reservationSubBlocksId}/reservationSlots/{reservationSlot}/getHealth",
+            "description": "Get health info on a reservation slot.",
+            "parameters": {
+              "parentName": {
+                "type": "string",
+                "location": "path",
+                "required": true
+              },
+              "project": {
+                "type": "string",
+                "location": "path",
+                "required": true
+              },
+              "requestId": {
+                "type": "string",
+                "location": "query",
+                "required": false
+              },
+              "reservationSlot": {
+                "type": "string",
+                "location": "path",
+                "required": true
+              },
+              "zone": {
+                "type": "string",
+                "location": "path",
+                "required": true
+              }
+            },
+            "parameterOrder": [
+              "project",
+              "zone",
+              "parentName",
+              "reservationSlot"
+            ],
+            "request": null,
+            "response": {
+              "$ref": "Operation"
+            }
+          },
           "getVersion": {
             "id": "compute.reservationSlots.getVersion",
             "httpMethod": "POST",
@@ -141583,5 +141806,6 @@
         "resources": null
       }
     }
-  }
+  },
+  "schema_url": "https://www.googleapis.com/discovery/v1/apis/compute/v1/rest"
 }

@@ -1905,5 +1905,6 @@
         }
       }
     }
-  }
+  },
+  "schema_url": "https://ftp.googleapis.com/$discovery/rest?version=v1alpha"
 }

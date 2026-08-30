@@ -25,35 +25,12 @@
   "version_qualifier": "v1beta",
   "raw_spec": {
     "name": "alloydb",
-    "revision": "20260813",
+    "revision": "20260818",
     "discoveryVersion": "v1",
     "baseUrl": "https://alloydb.googleapis.com/",
     "rootUrl": "https://alloydb.googleapis.com/",
     "servicePath": "",
     "schemas": {
-      "AlloydbClhErrorsAlloyDbInternalDebugInfo": {
-        "type": "object",
-        "format": "",
-        "description": "AlloyDbInternalDebugInfo contains internal debugging information for AlloyDB errors. It is explicitly kept out of the allowlist (errors.yaml) to ensure it is sanitized (stripped) by OnePlatform for all external requests. Used only to carry internal error details to across UPC/FlowLib boundary for ObservabilityInfo.",
-        "$ref": "",
-        "properties": {
-          "originalError": {
-            "type": "string",
-            "format": "",
-            "description": "The original error message or details before sanitization, used internally for debugging and logging.",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          }
-        },
-        "items": null,
-        "additionalProperties": null,
-        "enum": null,
-        "readOnly": false
-      },
       "AuthorizedNetwork": {
         "type": "object",
         "format": "",
@@ -11086,5 +11063,6 @@
         }
       }
     }
-  }
+  },
+  "schema_url": "https://alloydb.googleapis.com/$discovery/rest?version=v1beta"
 }

@@ -24,7 +24,7 @@
   "wire_name": "google_sqladmin",
   "raw_spec": {
     "name": "sqladmin",
-    "revision": "20260803",
+    "revision": "20260819",
     "discoveryVersion": "v1",
     "baseUrl": "https://sqladmin.googleapis.com/",
     "rootUrl": "https://sqladmin.googleapis.com/",
@@ -1261,6 +1261,206 @@
         "enum": null,
         "readOnly": false
       },
+      "BlueGreenDeployment": {
+        "type": "object",
+        "format": "",
+        "description": "A `BlueGreenDeployment` resource represents a Cloud SQL blue-green deployment setup.",
+        "$ref": "",
+        "properties": {
+          "createTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. The time when the deployment was created. Example: `2024-01-01T00:00:00Z`",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "deploymentMappings": {
+            "type": "array",
+            "format": "",
+            "description": "Output only. A list representing the pairs of source and target instances in the deployment.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "SourceTargetPairedNode",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "deploymentTasks": {
+            "type": "",
+            "format": "",
+            "description": "Output only. Combined list of tasks for all paired nodes.",
+            "$ref": "DeploymentTasks",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "description": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. User-provided description for the deployment. The description can be up to 255 characters long.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "errorDetail": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. Provides details on why switchover is not possible. This field is empty unless a switchover attempt failed or the state is `SWITCHOVER_NOT_READY`. Example: \"The target database version does not match the source instance database version.\"",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. Identifier. The full resource name of the deployment. Format: projects/{project}/locations/{location}/blueGreenDeployments/{deployment_id}",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "requestedConfig": {
+            "type": "",
+            "format": "",
+            "description": "Optional. Immutable. Optional on create, and immutable. The configuration intended for the target instance(s) when the deployment was created.",
+            "$ref": "RequestedConfig",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "sourceInstance": {
+            "type": "string",
+            "format": "",
+            "description": "Required. Immutable. Required on create, and immutable. The full resource name of the source instance (the \"blue\" instance). Format: projects/{project}/instances/{instance}",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "state": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The current state of the blue-green deployment.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "STATE_UNSPECIFIED",
+              "PROVISIONING",
+              "SWITCHOVER_READY",
+              "SWITCHOVER_NOT_READY",
+              "SWITCHOVER_IN_PROGRESS",
+              "SWITCHOVER_COMPLETED",
+              "DELETING"
+            ],
+            "readOnly": true
+          },
+          "switchoverTargetInstance": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The full resource name of the primary target instance (the \"green\" instance) that will be promoted during switchover. This field is always populated once the deployment is created. Format: projects/{project}/instances/{instance}",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "BlueGreenDeploymentInfo": {
+        "type": "object",
+        "format": "",
+        "description": "Blue-green deployment metadata for a database instance. In a blue-green deployment, we maintain two environments, one of which is live. This message contains details about the blue-green deployment.",
+        "$ref": "",
+        "properties": {
+          "deploymentId": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The resource ID of the blue-green deployment.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "source": {
+            "type": "",
+            "format": "",
+            "description": "Output only. The source instance for the Blue-Green deployment.",
+            "$ref": "SourceRole",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "state": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The current state of blue-green-deployment for UI tags",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "STATE_UNSPECIFIED",
+              "PRE_SWITCHOVER",
+              "POST_SWITCHOVER"
+            ],
+            "readOnly": true
+          },
+          "target": {
+            "type": "",
+            "format": "",
+            "description": "Output only. The target instance for the Blue-Green deployment.",
+            "$ref": "TargetRole",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
       "CloneContext": {
         "type": "object",
         "format": "",
@@ -1442,6 +1642,51 @@
             "additionalProperties": null,
             "enum": null,
             "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ConfigDiff": {
+        "type": "object",
+        "format": "",
+        "description": "Represents a specific configuration difference between blue and green instances.",
+        "$ref": "",
+        "properties": {
+          "field": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The name of the field that differs in the blue and green instances, fully-qualified. Example: `settings.tier`",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "sourceValue": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The value on the source instance.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "targetValue": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The value on the target instance.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
           }
         },
         "items": null,
@@ -2245,6 +2490,17 @@
             ],
             "readOnly": false
           },
+          "deploymentInfo": {
+            "type": "",
+            "format": "",
+            "description": "Output only. Deployment info for the instance. This is set if the instance is currently part of any blue-green setup.",
+            "$ref": "BlueGreenDeploymentInfo",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
           "diskEncryptionConfiguration": {
             "type": "",
             "format": "",
@@ -2390,7 +2646,8 @@
               "CLOUD_SQL_INSTANCE",
               "ON_PREMISES_INSTANCE",
               "READ_REPLICA_INSTANCE",
-              "READ_POOL_INSTANCE"
+              "READ_POOL_INSTANCE",
+              "GREEN_INSTANCE"
             ],
             "readOnly": false
           },
@@ -3157,12 +3414,136 @@
         "enum": null,
         "readOnly": false
       },
+      "DeploymentTask": {
+        "type": "object",
+        "format": "",
+        "description": "Represents a task executed as part of the deployment on a target instance.",
+        "$ref": "",
+        "properties": {
+          "endTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. Task end time (if completed).",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "errorMessage": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. Optional error details if the task state is `FAILED`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "startTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. Task start time.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "state": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The current state of the task.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "STATE_UNSPECIFIED",
+              "PENDING",
+              "RUNNING",
+              "SUCCEEDED",
+              "FAILED"
+            ],
+            "readOnly": true
+          },
+          "type": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The type of the task.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "TYPE_UNSPECIFIED",
+              "PROVISION",
+              "UPGRADE",
+              "SWITCHOVER",
+              "DELETE",
+              "POST_SWITCHOVER_OPERATIONS"
+            ],
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "DeploymentTasks": {
+        "type": "object",
+        "format": "",
+        "description": "Combined list of tasks for all paired nodes in the deployment.",
+        "$ref": "",
+        "properties": {
+          "task": {
+            "type": "array",
+            "format": "",
+            "description": "Output only. Tasks performed or being performed on the paired nodes of the deployment at a consolidated level.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "DeploymentTask",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
       "DiskEncryptionConfiguration": {
         "type": "object",
         "format": "",
         "description": "Disk encryption configuration for an instance.",
         "$ref": "",
         "properties": {
+          "confidentialMode": {
+            "type": "boolean",
+            "format": "",
+            "description": "Optional. If true, enables Confidential Mode for the instance's Hyperdisk Balanced volumes. Only supported for zonal C4A instances currently.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
           "kind": {
             "type": "string",
             "format": "",
@@ -5423,6 +5804,17 @@
             "enum": null,
             "readOnly": false
           },
+          "ignoreMaintenanceVersion": {
+            "type": "boolean",
+            "format": "",
+            "description": "Optional. If true, the restore operation proceeds even if the target instance's maintenance version is older than the source instance's maintenance version.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
           "restoreBackupContext": {
             "type": "",
             "format": "",
@@ -5892,6 +6284,50 @@
         "enum": null,
         "readOnly": false
       },
+      "ListBlueGreenDeploymentsResponse": {
+        "type": "object",
+        "format": "",
+        "description": "The response message for listing blue-green deployment resources.",
+        "$ref": "",
+        "properties": {
+          "blueGreenDeployments": {
+            "type": "array",
+            "format": "",
+            "description": "The list of blue-green deployment resources.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "BlueGreenDeployment",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "A token to retrieve the next page of results, or empty if there are no more results.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
       "LocationPreference": {
         "type": "object",
         "format": "",
@@ -6225,6 +6661,72 @@
             "additionalProperties": null,
             "enum": null,
             "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "NodeInfo": {
+        "type": "object",
+        "format": "",
+        "description": "Details about an instance within the deployment.",
+        "$ref": "",
+        "properties": {
+          "connection": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The instance connection name.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "dns": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The unique DNS name for this instance.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "instance": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The full resource name of the instance. Format: projects/{project}/instances/{instance}",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "ipMappings": {
+            "type": "array",
+            "format": "",
+            "description": "Output only. The list of IP addresses for this instance.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "IpMapping",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
           }
         },
         "items": null,
@@ -6569,7 +7071,10 @@
               "REPAIR_READ_POOL",
               "CREATE_READ_POOL",
               "PRE_CHECK_MAJOR_VERSION_UPGRADE",
-              "SETUP_MIGRATION"
+              "SETUP_MIGRATION",
+              "CREATE_BLUE_GREEN_DEPLOYMENT",
+              "SWITCHOVER_BLUE_GREEN_DEPLOYMENT",
+              "DELETE_BLUE_GREEN_DEPLOYMENT"
             ],
             "readOnly": false
           },
@@ -7840,7 +8345,7 @@
           "networkAttachmentUri": {
             "type": "string",
             "format": "",
-            "description": "Optional. The network attachment of the consumer network that the Private Service Connect enabled Cloud SQL instance is authorized to connect via PSC interface. format: projects/PROJECT/regions/REGION/networkAttachments/ID",
+            "description": "Optional. The network attachment of the consumer network that the Private Service Connect enabled Cloud SQL instance is authorized to connect using the PSC interface. format: projects/PROJECT/regions/REGION/networkAttachments/ID",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -8199,6 +8704,29 @@
             "additionalProperties": null,
             "enum": null,
             "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "RequestedConfig": {
+        "type": "object",
+        "format": "",
+        "description": "Configuration specified by the user at creation time for the target (green) instance.",
+        "$ref": "",
+        "properties": {
+          "databaseVersion": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The target database major version for the upgrade. For example, `MYSQL_8_0` or `POSTGRES_15`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
           }
         },
         "items": null,
@@ -8878,7 +9406,7 @@
           "passwordValidationPolicy": {
             "type": "",
             "format": "",
-            "description": "The local user password validation policy of the instance.",
+            "description": "The local user password validation policy of the instance for PostgreSQL and MySQL.",
             "$ref": "PasswordValidationPolicy",
             "properties": null,
             "items": null,
@@ -9046,6 +9574,106 @@
             },
             "enum": null,
             "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "SourceRole": {
+        "type": "object",
+        "format": "",
+        "description": "The source instance for the Blue-Green deployment.",
+        "$ref": "",
+        "properties": {
+          "targetId": {
+            "type": "",
+            "format": "",
+            "description": "Output only. The target instance paired with this source instance in a blue-green deployment.",
+            "$ref": "InstanceReference",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "SourceTargetPairedNode": {
+        "type": "object",
+        "format": "",
+        "description": "Represents a pairing of a source instance node and a target instance node.",
+        "$ref": "",
+        "properties": {
+          "diffs": {
+            "type": "array",
+            "format": "",
+            "description": "Output only. Describes the list of differences for the `SourceTargetPairedNode`.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "ConfigDiff",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "source": {
+            "type": "",
+            "format": "",
+            "description": "Output only. Specifies the resource name of the source instance in this pair.",
+            "$ref": "NodeInfo",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "state": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. Specifies the current state of this specific source-target pair.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "STATE_UNSPECIFIED",
+              "PROVISIONING",
+              "PROVISIONED",
+              "UPGRADING",
+              "UPGRADED",
+              "UPGRADE_FAILED",
+              "SWITCHOVER_IN_PROGRESS",
+              "SWITCHOVER_FAILED",
+              "SWITCHOVER_SUCCEEDED",
+              "DELETING"
+            ],
+            "readOnly": true
+          },
+          "target": {
+            "type": "",
+            "format": "",
+            "description": "Output only. Specifies details of the corresponding target instance in this pair.",
+            "$ref": "NodeInfo",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
           }
         },
         "items": null,
@@ -9241,7 +9869,9 @@
               "SELECTED_OBJECTS_REFERENCE_UNSELECTED_OBJECTS",
               "PROMPT_DELETE_EXISTING",
               "WILL_DELETE_EXISTING",
-              "PG_DDL_REPLICATION_INSUFFICIENT_PRIVILEGE"
+              "PG_DDL_REPLICATION_INSUFFICIENT_PRIVILEGE",
+              "WRITABLE_DESTINATION_REPLICA_RECREATION_DOWNTIME",
+              "WRITABLE_DESTINATION_STORAGE_AUTO_INCREASE_DISABLED"
             ],
             "readOnly": false
           }
@@ -9491,7 +10121,19 @@
         "format": "",
         "description": "Instance reset replica size request.",
         "$ref": "",
-        "properties": {},
+        "properties": {
+          "location": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Region of the Cloud SQL instance.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
         "items": null,
         "additionalProperties": null,
         "enum": null,
@@ -9503,6 +10145,17 @@
         "description": "Instance start external sync request.",
         "$ref": "",
         "properties": {
+          "location": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Region of the Cloud SQL instance.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
           "migrationType": {
             "type": "string",
             "format": "",
@@ -9594,6 +10247,17 @@
         "description": "Instance verify external sync settings request.",
         "$ref": "",
         "properties": {
+          "location": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Region of the Cloud SQL instance.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
           "migrationType": {
             "type": "string",
             "format": "",
@@ -10003,7 +10667,7 @@
           "disabled": {
             "type": "boolean",
             "format": "",
-            "description": "If the user has been disabled",
+            "description": "Indicates if the user has been disabled.",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -10014,7 +10678,7 @@
           "serverRoles": {
             "type": "array",
             "format": "",
-            "description": "The server roles for this user",
+            "description": "Indicates the server roles for this user.",
             "$ref": "",
             "properties": null,
             "items": {
@@ -10434,6 +11098,17 @@
         "enum": null,
         "readOnly": false
       },
+      "SwitchoverBlueGreenDeploymentRequest": {
+        "type": "object",
+        "format": "",
+        "description": "Request message for switching over a `BlueGreenDeployment` resource.",
+        "$ref": "",
+        "properties": {},
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
       "SyncFlags": {
         "type": "object",
         "format": "",
@@ -10495,6 +11170,29 @@
             "additionalProperties": null,
             "enum": null,
             "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "TargetRole": {
+        "type": "object",
+        "format": "",
+        "description": "The target instance for the Blue-Green deployment.",
+        "$ref": "",
+        "properties": {
+          "sourceId": {
+            "type": "",
+            "format": "",
+            "description": "Output only. The source instance paired with this target instance in a blue-green deployment.",
+            "$ref": "InstanceReference",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
           }
         },
         "items": null,
@@ -11301,6 +11999,155 @@
         },
         "resources": null
       },
+      "blueGreenDeployments": {
+        "methods": {
+          "create": {
+            "id": "sql.blueGreenDeployments.create",
+            "httpMethod": "POST",
+            "path": "v1/{+parent}/blueGreenDeployments",
+            "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/blueGreenDeployments",
+            "description": "Creates a blue-green deployment under a given project and location.",
+            "parameters": {
+              "blueGreenDeploymentId": {
+                "type": "string",
+                "location": "query",
+                "required": false
+              },
+              "parent": {
+                "type": "string",
+                "location": "path",
+                "required": true
+              }
+            },
+            "parameterOrder": [
+              "parent"
+            ],
+            "request": {
+              "$ref": "BlueGreenDeployment"
+            },
+            "response": {
+              "$ref": "Operation"
+            }
+          },
+          "delete": {
+            "id": "sql.blueGreenDeployments.delete",
+            "httpMethod": "DELETE",
+            "path": "v1/{+name}",
+            "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/blueGreenDeployments/{blueGreenDeploymentsId}",
+            "description": "Deletes a blue-green deployment.",
+            "parameters": {
+              "deleteOldSource": {
+                "type": "boolean",
+                "location": "query",
+                "required": false
+              },
+              "name": {
+                "type": "string",
+                "location": "path",
+                "required": true
+              }
+            },
+            "parameterOrder": [
+              "name"
+            ],
+            "request": null,
+            "response": {
+              "$ref": "Operation"
+            }
+          },
+          "get": {
+            "id": "sql.blueGreenDeployments.get",
+            "httpMethod": "GET",
+            "path": "v1/{+name}",
+            "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/blueGreenDeployments/{blueGreenDeploymentsId}",
+            "description": "Retrieves a blue-green deployment resource under a given project and location.",
+            "parameters": {
+              "name": {
+                "type": "string",
+                "location": "path",
+                "required": true
+              },
+              "view": {
+                "type": "string",
+                "location": "query",
+                "required": false
+              }
+            },
+            "parameterOrder": [
+              "name"
+            ],
+            "request": null,
+            "response": {
+              "$ref": "BlueGreenDeployment"
+            }
+          },
+          "list": {
+            "id": "sql.blueGreenDeployments.list",
+            "httpMethod": "GET",
+            "path": "v1/{+parent}/blueGreenDeployments",
+            "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/blueGreenDeployments",
+            "description": "Lists blue-green deployments under a given project.",
+            "parameters": {
+              "filter": {
+                "type": "string",
+                "location": "query",
+                "required": false
+              },
+              "orderBy": {
+                "type": "string",
+                "location": "query",
+                "required": false
+              },
+              "pageSize": {
+                "type": "integer",
+                "location": "query",
+                "required": false
+              },
+              "pageToken": {
+                "type": "string",
+                "location": "query",
+                "required": false
+              },
+              "parent": {
+                "type": "string",
+                "location": "path",
+                "required": true
+              }
+            },
+            "parameterOrder": [
+              "parent"
+            ],
+            "request": null,
+            "response": {
+              "$ref": "ListBlueGreenDeploymentsResponse"
+            }
+          },
+          "switchover": {
+            "id": "sql.blueGreenDeployments.switchover",
+            "httpMethod": "POST",
+            "path": "v1/{+name}:switchover",
+            "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/blueGreenDeployments/{blueGreenDeploymentsId}:switchover",
+            "description": "Switches over to green instance for a blue-green deployment.",
+            "parameters": {
+              "name": {
+                "type": "string",
+                "location": "path",
+                "required": true
+              }
+            },
+            "parameterOrder": [
+              "name"
+            ],
+            "request": {
+              "$ref": "SwitchoverBlueGreenDeploymentRequest"
+            },
+            "response": {
+              "$ref": "Operation"
+            }
+          }
+        },
+        "resources": null
+      },
       "connect": {
         "methods": {
           "generateEphemeralCert": {
@@ -11413,6 +12260,11 @@
                 "location": "path",
                 "required": true
               },
+              "location": {
+                "type": "string",
+                "location": "query",
+                "required": false
+              },
               "project": {
                 "type": "string",
                 "location": "path",
@@ -11446,6 +12298,11 @@
                 "location": "path",
                 "required": true
               },
+              "location": {
+                "type": "string",
+                "location": "query",
+                "required": false
+              },
               "project": {
                 "type": "string",
                 "location": "path",
@@ -11473,6 +12330,11 @@
                 "type": "string",
                 "location": "path",
                 "required": true
+              },
+              "location": {
+                "type": "string",
+                "location": "query",
+                "required": false
               },
               "project": {
                 "type": "string",
@@ -11502,6 +12364,11 @@
                 "type": "string",
                 "location": "path",
                 "required": true
+              },
+              "location": {
+                "type": "string",
+                "location": "query",
+                "required": false
               },
               "project": {
                 "type": "string",
@@ -11534,6 +12401,11 @@
                 "type": "string",
                 "location": "path",
                 "required": true
+              },
+              "location": {
+                "type": "string",
+                "location": "query",
+                "required": false
               },
               "project": {
                 "type": "string",
@@ -11569,6 +12441,11 @@
                 "type": "string",
                 "location": "path",
                 "required": true
+              },
+              "location": {
+                "type": "string",
+                "location": "query",
+                "required": false
               },
               "project": {
                 "type": "string",
@@ -11634,6 +12511,11 @@
                 "location": "path",
                 "required": true
               },
+              "location": {
+                "type": "string",
+                "location": "query",
+                "required": false
+              },
               "project": {
                 "type": "string",
                 "location": "path",
@@ -11661,6 +12543,11 @@
                 "location": "path",
                 "required": true
               },
+              "location": {
+                "type": "string",
+                "location": "query",
+                "required": false
+              },
               "project": {
                 "type": "string",
                 "location": "path",
@@ -11687,6 +12574,11 @@
                 "type": "string",
                 "location": "path",
                 "required": true
+              },
+              "location": {
+                "type": "string",
+                "location": "query",
+                "required": false
               },
               "project": {
                 "type": "string",
@@ -11717,6 +12609,11 @@
                 "location": "path",
                 "required": true
               },
+              "location": {
+                "type": "string",
+                "location": "query",
+                "required": false
+              },
               "project": {
                 "type": "string",
                 "location": "path",
@@ -11745,6 +12642,11 @@
                 "type": "string",
                 "location": "path",
                 "required": true
+              },
+              "location": {
+                "type": "string",
+                "location": "query",
+                "required": false
               },
               "project": {
                 "type": "string",
@@ -11775,6 +12677,11 @@
                 "location": "path",
                 "required": true
               },
+              "location": {
+                "type": "string",
+                "location": "query",
+                "required": false
+              },
               "project": {
                 "type": "string",
                 "location": "path",
@@ -11801,6 +12708,11 @@
                 "type": "string",
                 "location": "path",
                 "required": true
+              },
+              "location": {
+                "type": "string",
+                "location": "query",
+                "required": false
               },
               "project": {
                 "type": "string",
@@ -11829,6 +12741,11 @@
                 "location": "path",
                 "required": true
               },
+              "location": {
+                "type": "string",
+                "location": "query",
+                "required": false
+              },
               "project": {
                 "type": "string",
                 "location": "path",
@@ -11855,6 +12772,11 @@
                 "type": "string",
                 "location": "path",
                 "required": true
+              },
+              "location": {
+                "type": "string",
+                "location": "query",
+                "required": false
               },
               "project": {
                 "type": "string",
@@ -11905,6 +12827,11 @@
                 "location": "path",
                 "required": true
               },
+              "location": {
+                "type": "string",
+                "location": "query",
+                "required": false
+              },
               "project": {
                 "type": "string",
                 "location": "path",
@@ -11931,6 +12858,11 @@
                 "type": "string",
                 "location": "path",
                 "required": true
+              },
+              "location": {
+                "type": "string",
+                "location": "query",
+                "required": false
               },
               "project": {
                 "type": "string",
@@ -11961,6 +12893,11 @@
                 "location": "path",
                 "required": true
               },
+              "location": {
+                "type": "string",
+                "location": "query",
+                "required": false
+              },
               "project": {
                 "type": "string",
                 "location": "path",
@@ -11989,6 +12926,11 @@
                 "type": "string",
                 "location": "path",
                 "required": true
+              },
+              "location": {
+                "type": "string",
+                "location": "query",
+                "required": false
               },
               "project": {
                 "type": "string",
@@ -12019,6 +12961,11 @@
                 "location": "path",
                 "required": true
               },
+              "location": {
+                "type": "string",
+                "location": "query",
+                "required": false
+              },
               "project": {
                 "type": "string",
                 "location": "path",
@@ -12047,6 +12994,11 @@
                 "type": "string",
                 "location": "path",
                 "required": true
+              },
+              "location": {
+                "type": "string",
+                "location": "query",
+                "required": false
               },
               "project": {
                 "type": "string",
@@ -12077,6 +13029,11 @@
                 "location": "path",
                 "required": true
               },
+              "location": {
+                "type": "string",
+                "location": "query",
+                "required": false
+              },
               "project": {
                 "type": "string",
                 "location": "path",
@@ -12104,6 +13061,11 @@
                 "location": "path",
                 "required": true
               },
+              "location": {
+                "type": "string",
+                "location": "query",
+                "required": false
+              },
               "project": {
                 "type": "string",
                 "location": "path",
@@ -12128,6 +13090,11 @@
             "flatPath": "v1/projects/{project}/instances",
             "description": "Creates a new Cloud SQL instance.",
             "parameters": {
+              "location": {
+                "type": "string",
+                "location": "query",
+                "required": false
+              },
               "project": {
                 "type": "string",
                 "location": "path",
@@ -12152,6 +13119,11 @@
             "description": "Lists instances under a given project.",
             "parameters": {
               "filter": {
+                "type": "string",
+                "location": "query",
+                "required": false
+              },
+              "location": {
                 "type": "string",
                 "location": "query",
                 "required": false
@@ -12192,6 +13164,11 @@
                 "location": "path",
                 "required": true
               },
+              "location": {
+                "type": "string",
+                "location": "query",
+                "required": false
+              },
               "project": {
                 "type": "string",
                 "location": "path",
@@ -12218,6 +13195,11 @@
                 "type": "string",
                 "location": "path",
                 "required": true
+              },
+              "location": {
+                "type": "string",
+                "location": "query",
+                "required": false
               },
               "project": {
                 "type": "string",
@@ -12281,6 +13263,11 @@
                 "location": "path",
                 "required": true
               },
+              "location": {
+                "type": "string",
+                "location": "query",
+                "required": false
+              },
               "project": {
                 "type": "string",
                 "location": "path",
@@ -12315,6 +13302,11 @@
                 "location": "path",
                 "required": true
               },
+              "location": {
+                "type": "string",
+                "location": "query",
+                "required": false
+              },
               "project": {
                 "type": "string",
                 "location": "path",
@@ -12341,6 +13333,11 @@
                 "type": "string",
                 "location": "path",
                 "required": true
+              },
+              "location": {
+                "type": "string",
+                "location": "query",
+                "required": false
               },
               "project": {
                 "type": "string",
@@ -12371,6 +13368,11 @@
                 "location": "path",
                 "required": true
               },
+              "location": {
+                "type": "string",
+                "location": "query",
+                "required": false
+              },
               "project": {
                 "type": "string",
                 "location": "path",
@@ -12397,6 +13399,11 @@
                 "type": "string",
                 "location": "path",
                 "required": true
+              },
+              "location": {
+                "type": "string",
+                "location": "query",
+                "required": false
               },
               "mode": {
                 "type": "string",
@@ -12430,6 +13437,11 @@
                 "location": "path",
                 "required": true
               },
+              "location": {
+                "type": "string",
+                "location": "query",
+                "required": false
+              },
               "project": {
                 "type": "string",
                 "location": "path",
@@ -12456,6 +13468,11 @@
                 "type": "string",
                 "location": "path",
                 "required": true
+              },
+              "location": {
+                "type": "string",
+                "location": "query",
+                "required": false
               },
               "project": {
                 "type": "string",
@@ -12486,6 +13503,11 @@
                 "location": "path",
                 "required": true
               },
+              "location": {
+                "type": "string",
+                "location": "query",
+                "required": false
+              },
               "project": {
                 "type": "string",
                 "location": "path",
@@ -12515,6 +13537,11 @@
                 "location": "path",
                 "required": true
               },
+              "location": {
+                "type": "string",
+                "location": "query",
+                "required": false
+              },
               "project": {
                 "type": "string",
                 "location": "path",
@@ -12541,6 +13568,11 @@
                 "type": "string",
                 "location": "path",
                 "required": true
+              },
+              "location": {
+                "type": "string",
+                "location": "query",
+                "required": false
               },
               "project": {
                 "type": "string",
@@ -12574,6 +13606,11 @@
                 "location": "path",
                 "required": true
               },
+              "location": {
+                "type": "string",
+                "location": "query",
+                "required": false
+              },
               "project": {
                 "type": "string",
                 "location": "path",
@@ -12600,6 +13637,11 @@
                 "type": "string",
                 "location": "path",
                 "required": true
+              },
+              "location": {
+                "type": "string",
+                "location": "query",
+                "required": false
               },
               "project": {
                 "type": "string",
@@ -12629,6 +13671,11 @@
                 "type": "string",
                 "location": "path",
                 "required": true
+              },
+              "location": {
+                "type": "string",
+                "location": "query",
+                "required": false
               },
               "project": {
                 "type": "string",
@@ -12777,6 +13824,11 @@
                     "location": "path",
                     "required": true
                   },
+                  "location": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false
+                  },
                   "project": {
                     "type": "string",
                     "location": "path",
@@ -12803,6 +13855,11 @@
                     "type": "string",
                     "location": "path",
                     "required": true
+                  },
+                  "location": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false
                   },
                   "project": {
                     "type": "string",
@@ -12836,6 +13893,11 @@
                     "location": "path",
                     "required": true
                   },
+                  "location": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false
+                  },
                   "project": {
                     "type": "string",
                     "location": "path",
@@ -12864,6 +13926,11 @@
                     "type": "string",
                     "location": "path",
                     "required": true
+                  },
+                  "location": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false
                   },
                   "project": {
                     "type": "string",
@@ -12987,6 +14054,11 @@
                 "type": "string",
                 "location": "path",
                 "required": true
+              },
+              "location": {
+                "type": "string",
+                "location": "query",
+                "required": false
               },
               "project": {
                 "type": "string",
@@ -13175,6 +14247,11 @@
                 "location": "path",
                 "required": true
               },
+              "location": {
+                "type": "string",
+                "location": "query",
+                "required": false
+              },
               "name": {
                 "type": "string",
                 "location": "query",
@@ -13212,6 +14289,11 @@
                 "location": "path",
                 "required": true
               },
+              "location": {
+                "type": "string",
+                "location": "query",
+                "required": false
+              },
               "name": {
                 "type": "string",
                 "location": "path",
@@ -13245,6 +14327,11 @@
                 "location": "path",
                 "required": true
               },
+              "location": {
+                "type": "string",
+                "location": "query",
+                "required": false
+              },
               "project": {
                 "type": "string",
                 "location": "path",
@@ -13273,6 +14360,11 @@
                 "type": "string",
                 "location": "path",
                 "required": true
+              },
+              "location": {
+                "type": "string",
+                "location": "query",
+                "required": false
               },
               "project": {
                 "type": "string",
@@ -13310,6 +14402,11 @@
                 "type": "string",
                 "location": "path",
                 "required": true
+              },
+              "location": {
+                "type": "string",
+                "location": "query",
+                "required": false
               },
               "name": {
                 "type": "string",
@@ -13352,5 +14449,6 @@
         "resources": null
       }
     }
-  }
+  },
+  "schema_url": "https://sqladmin.googleapis.com/$discovery/rest?version=v1"
 }

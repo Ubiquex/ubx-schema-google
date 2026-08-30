@@ -9771,5 +9771,6 @@
         }
       }
     }
-  }
+  },
+  "schema_url": "https://vmwareengine.googleapis.com/$discovery/rest?version=v1"
 }

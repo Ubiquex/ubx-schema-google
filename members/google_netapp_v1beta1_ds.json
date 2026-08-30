@@ -25,7 +25,7 @@
   "version_qualifier": "v1beta1",
   "raw_spec": {
     "name": "netapp",
-    "revision": "20260816",
+    "revision": "20260823",
     "discoveryVersion": "v1",
     "baseUrl": "https://netapp.googleapis.com/",
     "rootUrl": "https://netapp.googleapis.com/",
@@ -8830,5 +8830,6 @@
         }
       }
     }
-  }
+  },
+  "schema_url": "https://netapp.googleapis.com/$discovery/rest?version=v1beta1"
 }

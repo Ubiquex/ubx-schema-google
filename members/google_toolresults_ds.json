@@ -24,7 +24,7 @@
   "wire_name": "google_toolresults",
   "raw_spec": {
     "name": "toolresults",
-    "revision": "20260826",
+    "revision": "20260827",
     "discoveryVersion": "v1",
     "baseUrl": "https://toolresults.googleapis.com/",
     "rootUrl": "https://toolresults.googleapis.com/",
@@ -6486,5 +6486,6 @@
         }
       }
     }
-  }
+  },
+  "schema_url": "https://toolresults.googleapis.com/$discovery/rest?version=v1beta3"
 }

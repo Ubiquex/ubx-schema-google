@@ -24,7 +24,7 @@
   "wire_name": "google_developerconnect",
   "raw_spec": {
     "name": "developerconnect",
-    "revision": "20260821",
+    "revision": "20260824",
     "discoveryVersion": "v1",
     "baseUrl": "https://developerconnect.googleapis.com/",
     "rootUrl": "https://developerconnect.googleapis.com/",
@@ -1599,6 +1599,40 @@
               "enum": null,
               "readOnly": false
             },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "FieldVisibility": {
+        "type": "object",
+        "format": "",
+        "description": "Visibility rules for individual tool parameters (fields). This allows producers to hide specific fields in tools/list and tools/call.",
+        "$ref": "",
+        "properties": {
+          "restriction": {
+            "type": "string",
+            "format": "",
+            "description": "The visibility restriction labels for this field (comma-separated).",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "selector": {
+            "type": "string",
+            "format": "",
+            "description": "The name of the parameter in the input_schema or output_schema.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
             "additionalProperties": null,
             "enum": null,
             "readOnly": false
@@ -3275,6 +3309,65 @@
             "type": "string",
             "format": "",
             "description": "Resource name for the location, which may vary between implementations. For example: `\"projects/example-project/locations/us-east1\"`",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "McpToolVisibility": {
+        "type": "object",
+        "format": "",
+        "description": "Profile describing the visibility restriction of an MCP tool. Key: \"google.com/tool.profiles/visibility.restriction\"",
+        "$ref": "",
+        "properties": {
+          "fieldVisibility": {
+            "type": "array",
+            "format": "",
+            "description": "A list of field-level visibility restrictions.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "FieldVisibility",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "visibilityEnforcementStrategy": {
+            "type": "string",
+            "format": "",
+            "description": "The strategy used to enforce visibility restrictions. DO NOT USE. This field is not yet implemented.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "VISIBILITY_ENFORCEMENT_STRATEGY_UNSPECIFIED",
+              "COMBINE",
+              "OVERRIDE"
+            ],
+            "readOnly": false
+          },
+          "visibilityRestriction": {
+            "type": "string",
+            "format": "",
+            "description": "The visibility restriction labels for the tool itself (e.g., \"PRODUCER_DEFINED_PREVIEW\"). Multiple labels can be provided as a comma-separated string.",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -5617,5 +5710,6 @@
         }
       }
     }
-  }
+  },
+  "schema_url": "https://developerconnect.googleapis.com/$discovery/rest?version=v1"
 }

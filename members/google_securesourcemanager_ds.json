@@ -5285,5 +5285,6 @@
         }
       }
     }
-  }
+  },
+  "schema_url": "https://securesourcemanager.googleapis.com/$discovery/rest?version=v1"
 }

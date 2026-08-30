@@ -2523,5 +2523,6 @@
         }
       }
     }
-  }
+  },
+  "schema_url": "https://apigateway.googleapis.com/$discovery/rest?version=v1beta"
 }

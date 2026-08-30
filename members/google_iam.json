@@ -8813,5 +8813,6 @@
         "resources": null
       }
     }
-  }
+  },
+  "schema_url": "https://iam.googleapis.com/$discovery/rest?version=v1"
 }

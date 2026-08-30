@@ -3871,5 +3871,6 @@
         }
       }
     }
-  }
+  },
+  "schema_url": "https://transcoder.googleapis.com/$discovery/rest?version=v1"
 }

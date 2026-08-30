@@ -24,7 +24,7 @@
   "wire_name": "google_datapipelines",
   "raw_spec": {
     "name": "datapipelines",
-    "revision": "20260816",
+    "revision": "20260823",
     "discoveryVersion": "v1",
     "baseUrl": "https://datapipelines.googleapis.com/",
     "rootUrl": "https://datapipelines.googleapis.com/",
@@ -1661,5 +1661,6 @@
         }
       }
     }
-  }
+  },
+  "schema_url": "https://datapipelines.googleapis.com/$discovery/rest?version=v1"
 }

@@ -3111,5 +3111,6 @@
         }
       }
     }
-  }
+  },
+  "schema_url": "https://androiddeviceprovisioning.googleapis.com/$discovery/rest?version=v1"
 }

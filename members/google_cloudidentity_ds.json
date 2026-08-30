@@ -24,7 +24,7 @@
   "wire_name": "google_cloudidentity",
   "raw_spec": {
     "name": "cloudidentity",
-    "revision": "20260821",
+    "revision": "20260826",
     "discoveryVersion": "v1",
     "baseUrl": "https://cloudidentity.googleapis.com/",
     "rootUrl": "https://cloudidentity.googleapis.com/",
@@ -7053,5 +7053,6 @@
         "resources": null
       }
     }
-  }
+  },
+  "schema_url": "https://cloudidentity.googleapis.com/$discovery/rest?version=v1"
 }

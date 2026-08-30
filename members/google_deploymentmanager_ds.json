@@ -4003,5 +4003,6 @@
         "resources": null
       }
     }
-  }
+  },
+  "schema_url": "https://deploymentmanager.googleapis.com/$discovery/rest?version=v2"
 }

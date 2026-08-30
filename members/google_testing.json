@@ -24,7 +24,7 @@
   "wire_name": "google_testing",
   "raw_spec": {
     "name": "testing",
-    "revision": "20260821",
+    "revision": "20260825",
     "discoveryVersion": "v1",
     "baseUrl": "https://testing.googleapis.com/",
     "rootUrl": "https://testing.googleapis.com/",
@@ -5491,5 +5491,6 @@
         "resources": null
       }
     }
-  }
+  },
+  "schema_url": "https://testing.googleapis.com/$discovery/rest?version=v1"
 }

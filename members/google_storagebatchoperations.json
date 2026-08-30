@@ -2581,5 +2581,6 @@
         }
       }
     }
-  }
+  },
+  "schema_url": "https://storagebatchoperations.googleapis.com/$discovery/rest?version=v1"
 }

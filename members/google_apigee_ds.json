@@ -32432,5 +32432,6 @@
         "resources": null
       }
     }
-  }
+  },
+  "schema_url": "https://apigee.googleapis.com/$discovery/rest?version=v1"
 }

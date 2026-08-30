@@ -24,7 +24,7 @@
   "wire_name": "google_parametermanager",
   "raw_spec": {
     "name": "parametermanager",
-    "revision": "20260812",
+    "revision": "20260819",
     "discoveryVersion": "v1",
     "baseUrl": "https://parametermanager.googleapis.com/",
     "rootUrl": "https://parametermanager.googleapis.com/",
@@ -1729,5 +1729,6 @@
         }
       }
     }
-  }
+  },
+  "schema_url": "https://parametermanager.googleapis.com/$discovery/rest?version=v1"
 }
