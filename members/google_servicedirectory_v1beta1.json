@@ -1693,5 +1693,6 @@
         }
       }
     }
-  }
+  },
+  "schema_url": "https://servicedirectory.googleapis.com/$discovery/rest?version=v1beta1"
 }

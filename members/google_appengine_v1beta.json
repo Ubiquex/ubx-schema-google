@@ -8134,5 +8134,6 @@
         }
       }
     }
-  }
+  },
+  "schema_url": "https://appengine.googleapis.com/$discovery/rest?version=v1beta"
 }

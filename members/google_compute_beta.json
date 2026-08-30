@@ -155769,5 +155769,6 @@
         "resources": null
       }
     }
-  }
+  },
+  "schema_url": "https://www.googleapis.com/discovery/v1/apis/compute/beta/rest"
 }

@@ -1433,5 +1433,6 @@
         "resources": null
       }
     }
-  }
+  },
+  "schema_url": "https://binaryauthorization.googleapis.com/$discovery/rest?version=v1beta1"
 }

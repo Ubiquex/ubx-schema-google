@@ -1333,5 +1333,6 @@
         }
       }
     }
-  }
+  },
+  "schema_url": "https://blockchainnodeengine.googleapis.com/$discovery/rest?version=v1"
 }

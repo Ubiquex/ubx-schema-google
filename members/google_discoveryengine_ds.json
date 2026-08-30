@@ -63689,5 +63689,6 @@
         }
       }
     }
-  }
+  },
+  "schema_url": "https://discoveryengine.googleapis.com/$discovery/rest?version=v1"
 }

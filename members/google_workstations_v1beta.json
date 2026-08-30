@@ -4737,5 +4737,6 @@
         }
       }
     }
-  }
+  },
+  "schema_url": "https://workstations.googleapis.com/$discovery/rest?version=v1beta"
 }

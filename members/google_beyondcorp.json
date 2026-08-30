@@ -6278,5 +6278,6 @@
         }
       }
     }
-  }
+  },
+  "schema_url": "https://beyondcorp.googleapis.com/$discovery/rest?version=v1"
 }

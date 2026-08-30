@@ -24,7 +24,7 @@
   "wire_name": "google_metastore",
   "raw_spec": {
     "name": "metastore",
-    "revision": "20260813",
+    "revision": "20260825",
     "discoveryVersion": "v1",
     "baseUrl": "https://metastore.googleapis.com/",
     "rootUrl": "https://metastore.googleapis.com/",
@@ -361,6 +361,57 @@
         "enum": null,
         "readOnly": false
       },
+      "BackfillStatus": {
+        "type": "object",
+        "format": "",
+        "description": "Backfill status for the migration execution.",
+        "$ref": "",
+        "properties": {
+          "migrationSummary": {
+            "type": "",
+            "format": "",
+            "description": "Output only. Summary of the migration results. This is populated after the backfill or dry run is finished.",
+            "$ref": "MigrationSummary",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "reportPath": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The Cloud Storage path where the backfill or dry run report is written. Format: \"gs://path-to-report\".",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "state": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The current state of the backfill (or dry run).",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "STATE_UNSPECIFIED",
+              "PENDING",
+              "RUNNING",
+              "SUCCEEDED",
+              "FAILED"
+            ],
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
       "Backup": {
         "type": "object",
         "format": "",
@@ -467,6 +518,102 @@
         "enum": null,
         "readOnly": false
       },
+      "BigLakeMetastoreMigrationConfig": {
+        "type": "object",
+        "format": "",
+        "description": "Defines the configuration required to migrate metadata from a Dataproc Metastore service to BigLake Metastore.",
+        "$ref": "",
+        "properties": {
+          "backfillStatus": {
+            "type": "",
+            "format": "",
+            "description": "Output only. ",
+            "$ref": "BackfillStatus",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "conflictPolicy": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The policy to handle conflicts when migrating resources, defaults to SKIP if not specified.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "CONFLICT_POLICY_UNSPECIFIED",
+              "SKIP",
+              "OVERWRITE"
+            ],
+            "readOnly": false
+          },
+          "dryRun": {
+            "type": "boolean",
+            "format": "",
+            "description": "Optional. If true, performs discovery of requested resources and analysis against the target catalog to come up with a plan for each resource (e.g. Create, Update, Skip, etc.). No metadata is actually migrated.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "hiveConfig": {
+            "type": "",
+            "format": "",
+            "description": "Optional. At least one of hive_config or iceberg_config must be provided, otherwise, a validation error will be thrown. If only one is provided, the service only migrates tables of that specific type. If both are provided, both Hive and Iceberg tables will be migrated.Configuration for migrating Hive tables to a BigLake Hive catalog.",
+            "$ref": "HiveConfig",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "icebergConfig": {
+            "type": "",
+            "format": "",
+            "description": "Optional. Configuration for migrating Iceberg tables to a BigLake Iceberg REST catalog.",
+            "$ref": "IcebergConfig",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "mode": {
+            "type": "string",
+            "format": "",
+            "description": "Required. Defines the behavior of the migration execution.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "MIGRATION_MODE_UNSPECIFIED",
+              "BACKFILL"
+            ],
+            "readOnly": false
+          },
+          "reportPath": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The Cloud Storage path where the backfill / dry run report should be written. If not provided, the report will be generated in the service's artifacts bucket. Format: \"gs://path/to/folder\"",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
       "Binding": {
         "type": "object",
         "format": "",
@@ -544,16 +691,16 @@
         "enum": null,
         "readOnly": false
       },
-      "CdcConfig": {
+      "CatalogReport": {
         "type": "object",
         "format": "",
-        "description": "Configuration information to start the Change Data Capture (CDC) streams from customer database to backend database of Dataproc Metastore.",
+        "description": "Aggregated report at the catalog level.",
         "$ref": "",
         "properties": {
-          "bucket": {
+          "catalog": {
             "type": "string",
             "format": "",
-            "description": "Optional. The bucket to write the intermediate stream event data in. The bucket name must be without any prefix like \"gs://\". See the bucket naming requirements (https://cloud.google.com/storage/docs/buckets#naming). This field is optional. If not set, the Artifacts Cloud Storage bucket will be used.",
+            "description": "The name of the catalog (format: projects/*/catalogs/*).",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -561,69 +708,39 @@
             "enum": null,
             "readOnly": false
           },
-          "password": {
+          "catalogType": {
             "type": "string",
             "format": "",
-            "description": "Required. Input only. The password for the user that Datastream service should use for the MySQL connection. This field is not returned on request.",
+            "description": "The type of catalog.",
             "$ref": "",
             "properties": null,
             "items": null,
             "additionalProperties": null,
-            "enum": null,
+            "enum": [
+              "CATALOG_TYPE_UNSPECIFIED",
+              "HIVE",
+              "ICEBERG"
+            ],
             "readOnly": false
           },
-          "reverseProxySubnet": {
-            "type": "string",
+          "databaseReports": {
+            "type": "object",
             "format": "",
-            "description": "Required. The URL of the subnetwork resource to create the VM instance hosting the reverse proxy in. More context in https://cloud.google.com/datastream/docs/private-connectivity#reverse-csql-proxy The subnetwork should reside in the network provided in the request that Datastream will peer to and should be in the same region as Datastream, in the following format. projects/{project_id}/regions/{region_id}/subnetworks/{subnetwork_id}",
+            "description": "A map of database names to their respective reports.",
             "$ref": "",
             "properties": null,
             "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "rootPath": {
-            "type": "string",
-            "format": "",
-            "description": "Optional. The root path inside the Cloud Storage bucket. The stream event data will be written to this path. The default value is /migration.",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "subnetIpRange": {
-            "type": "string",
-            "format": "",
-            "description": "Required. A /29 CIDR IP range for peering with datastream.",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "username": {
-            "type": "string",
-            "format": "",
-            "description": "Required. The username that the Datastream service should use for the MySQL connection.",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "vpcNetwork": {
-            "type": "string",
-            "format": "",
-            "description": "Required. Fully qualified name of the Cloud SQL instance's VPC network or the shared VPC network that Datastream will peer to, in the following format: projects/{project_id}/locations/global/networks/{network_id}. More context in https://cloud.google.com/datastream/docs/network-connectivity-options#privateconnectivity",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
+            "additionalProperties": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "DatabaseReport",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
             "enum": null,
             "readOnly": false
           }
@@ -633,133 +750,58 @@
         "enum": null,
         "readOnly": false
       },
-      "CloudSQLConnectionConfig": {
+      "CatalogSummary": {
         "type": "object",
         "format": "",
-        "description": "Configuration information to establish customer database connection before the cutover phase of migration",
+        "description": "Summary of results for a specific destination catalog.",
         "$ref": "",
         "properties": {
-          "hiveDatabaseName": {
+          "catalog": {
             "type": "string",
             "format": "",
-            "description": "Required. The hive database name.",
+            "description": "Output only. The catalog resource name (format: projects/*/catalogs/*).",
             "$ref": "",
             "properties": null,
             "items": null,
             "additionalProperties": null,
             "enum": null,
-            "readOnly": false
+            "readOnly": true
           },
-          "instanceConnectionName": {
+          "catalogType": {
             "type": "string",
             "format": "",
-            "description": "Required. Cloud SQL database connection name (project_id:region:instance_name)",
+            "description": "Output only. The type of the catalog.",
             "$ref": "",
             "properties": null,
             "items": null,
             "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
+            "enum": [
+              "CATALOG_TYPE_UNSPECIFIED",
+              "HIVE",
+              "ICEBERG"
+            ],
+            "readOnly": true
           },
-          "ipAddress": {
-            "type": "string",
+          "databaseSummaries": {
+            "type": "array",
             "format": "",
-            "description": "Required. The private IP address of the Cloud SQL instance.",
+            "description": "Output only. Summary of results for each database in the catalog.",
             "$ref": "",
             "properties": null,
-            "items": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "DatabaseSummary",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
             "additionalProperties": null,
             "enum": null,
-            "readOnly": false
-          },
-          "natSubnet": {
-            "type": "string",
-            "format": "",
-            "description": "Required. The relative resource name of the subnetwork to be used for Private Service Connect. Note that this cannot be a regular subnet and is used only for NAT. (https://cloud.google.com/vpc/docs/about-vpc-hosted-services#psc-subnets) This subnet is used to publish the SOCKS5 proxy service. The subnet size must be at least /29 and it should reside in a network through which the Cloud SQL instance is accessible. The resource name should be in the format, projects/{project_id}/regions/{region_id}/subnetworks/{subnetwork_id}",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "password": {
-            "type": "string",
-            "format": "",
-            "description": "Required. Input only. The password for the user that Dataproc Metastore service will be using to connect to the database. This field is not returned on request.",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "port": {
-            "type": "integer",
-            "format": "int32",
-            "description": "Required. The network port of the database.",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "proxySubnet": {
-            "type": "string",
-            "format": "",
-            "description": "Required. The relative resource name of the subnetwork to deploy the SOCKS5 proxy service in. The subnetwork should reside in a network through which the Cloud SQL instance is accessible. The resource name should be in the format, projects/{project_id}/regions/{region_id}/subnetworks/{subnetwork_id}",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "username": {
-            "type": "string",
-            "format": "",
-            "description": "Required. The username that Dataproc Metastore service will use to connect to the database.",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          }
-        },
-        "items": null,
-        "additionalProperties": null,
-        "enum": null,
-        "readOnly": false
-      },
-      "CloudSQLMigrationConfig": {
-        "type": "object",
-        "format": "",
-        "description": "Deprecated: Migrations to Dataproc Metastore are no longer supported. Use BigLake Metastore migration instead. Configuration information for migrating from self-managed hive metastore on Google Cloud using Cloud SQL as the backend database to Dataproc Metastore.",
-        "$ref": "",
-        "properties": {
-          "cdcConfig": {
-            "type": "",
-            "format": "",
-            "description": "Required. Configuration information to start the Change Data Capture (CDC) streams from customer database to backend database of Dataproc Metastore. Dataproc Metastore switches to using its backend database after the cutover phase of migration.",
-            "$ref": "CdcConfig",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "cloudSqlConnectionConfig": {
-            "type": "",
-            "format": "",
-            "description": "Required. Configuration information to establish customer database connection before the cutover phase of migration",
-            "$ref": "CloudSQLConnectionConfig",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
+            "readOnly": true
           }
         },
         "items": null,
@@ -974,6 +1016,140 @@
         "enum": null,
         "readOnly": false
       },
+      "DatabaseReport": {
+        "type": "object",
+        "format": "",
+        "description": "Aggregated report at the database level.",
+        "$ref": "",
+        "properties": {
+          "database": {
+            "type": "string",
+            "format": "",
+            "description": "The name of the database.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "executionPlan": {
+            "type": "",
+            "format": "",
+            "description": "The discovered intent for the database (what we found and what we planned).",
+            "$ref": "ExecutionPlan",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "executionResult": {
+            "type": "",
+            "format": "",
+            "description": "The actual outcome of the database migration.",
+            "$ref": "ExecutionResult",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "tableReports": {
+            "type": "object",
+            "format": "",
+            "description": "A map of table names to their respective reports.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "TableReport",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "DatabaseSummary": {
+        "type": "object",
+        "format": "",
+        "description": "Summary of results for a specific database in a catalog.",
+        "$ref": "",
+        "properties": {
+          "database": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The name of the database.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "planAction": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The migration plan action for the database.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "ACTION_UNSPECIFIED",
+              "CREATE",
+              "UPDATE",
+              "SKIP",
+              "DEPENDENCY_FAILURE",
+              "ERROR"
+            ],
+            "readOnly": true
+          },
+          "resultStatus": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The migration result status for the database. This is only set if the migration is not a dry run.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "STATE_UNSPECIFIED",
+              "SUCCEEDED",
+              "FAILED",
+              "SKIPPED"
+            ],
+            "readOnly": true
+          },
+          "tableSummary": {
+            "type": "",
+            "format": "",
+            "description": "Output only. Aggregated summary of results for all tables in the database.",
+            "$ref": "TableSummary",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
       "Empty": {
         "type": "object",
         "format": "",
@@ -1034,6 +1210,118 @@
             },
             "enum": null,
             "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ExecutionPlan": {
+        "type": "object",
+        "format": "",
+        "description": "Represents the migration plan for a specific resource (e.g. Database, Table).",
+        "$ref": "",
+        "properties": {
+          "action": {
+            "type": "string",
+            "format": "",
+            "description": "The action that will be taken for a resource during migration.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "ACTION_UNSPECIFIED",
+              "CREATE",
+              "UPDATE",
+              "SKIP",
+              "DEPENDENCY_FAILURE",
+              "ERROR"
+            ],
+            "readOnly": false
+          },
+          "diffs": {
+            "type": "object",
+            "format": "",
+            "description": "A map of field names to their respective value diff.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "ValueDiff",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "reason": {
+            "type": "string",
+            "format": "",
+            "description": "A human-readable string explaining why the action was chosen.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ExecutionResult": {
+        "type": "object",
+        "format": "",
+        "description": "Represents the actual migration result for a specific resource (e.g. Database, Table).",
+        "$ref": "",
+        "properties": {
+          "errorMessage": {
+            "type": "string",
+            "format": "",
+            "description": "Description of the error if the state is FAILED.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "remediation": {
+            "type": "string",
+            "format": "",
+            "description": "Remediation steps for the error if the state is FAILED.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "state": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The state of the migration for a resource.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "STATE_UNSPECIFIED",
+              "SUCCEEDED",
+              "FAILED",
+              "SKIPPED"
+            ],
+            "readOnly": true
           }
         },
         "items": null,
@@ -1316,6 +1604,50 @@
         "enum": null,
         "readOnly": false
       },
+      "HiveConfig": {
+        "type": "object",
+        "format": "",
+        "description": "Configuration for migrating Hive metadata.",
+        "$ref": "",
+        "properties": {
+          "catalog": {
+            "type": "string",
+            "format": "",
+            "description": "Required. The target catalog for migrated databases and tables. Format: \"projects/{project_id_or_number}/catalogs/{catalog_id}\"",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "databases": {
+            "type": "array",
+            "format": "",
+            "description": "Required. The list of databases to migrate to the Hive catalog. Use \"*\" to migrate all databases. Note: If Iceberg tables exist in these databases, they will only be migrated if iceberg_config is also specified.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
       "HiveMetastoreConfig": {
         "type": "object",
         "format": "",
@@ -1431,6 +1763,50 @@
             "$ref": "",
             "properties": null,
             "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "IcebergConfig": {
+        "type": "object",
+        "format": "",
+        "description": "Configuration for migrating Iceberg metadata.",
+        "$ref": "",
+        "properties": {
+          "catalog": {
+            "type": "string",
+            "format": "",
+            "description": "Required. The target catalog for migrated Iceberg metadata. Format: \"projects/{project_id_or_number}/catalogs/{catalog_id}\"",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "namespaces": {
+            "type": "array",
+            "format": "",
+            "description": "Required. The list of namespaces to migrate to the Iceberg REST catalog. Use \"*\" to migrate all namespaces. Note: If Hive tables exist in these namespaces, they will only be migrated if hive_config is also specified.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
             "additionalProperties": null,
             "enum": null,
             "readOnly": false
@@ -2476,11 +2852,11 @@
         "description": "The details of a migration execution resource.",
         "$ref": "",
         "properties": {
-          "cloudSqlMigrationConfig": {
+          "biglakeMetastoreMigrationConfig": {
             "type": "",
             "format": "",
-            "description": "Deprecated: Migrations to Dataproc Metastore are no longer supported. Use BigLake Metastore migration instead. Configuration information specific to migrating from self-managed hive metastore on Google Cloud using Cloud SQL as the backend database to Dataproc Metastore.",
-            "$ref": "CloudSQLMigrationConfig",
+            "description": "Configuration information specific to migrating from Dataproc Metastore to BigLake Metastore.",
+            "$ref": "BigLakeMetastoreMigrationConfig",
             "properties": null,
             "items": null,
             "additionalProperties": null,
@@ -2561,6 +2937,116 @@
             "type": "string",
             "format": "",
             "description": "Output only. Additional information about the current state of the migration execution.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "MigrationReport": {
+        "type": "object",
+        "format": "",
+        "description": "Report containing the results of a migration run. This report is generated at the specified path in the BigLakeMetastoreMigrationConfig after the backfill is complete, or when a dry run is executed.",
+        "$ref": "",
+        "properties": {
+          "catalogReports": {
+            "type": "array",
+            "format": "",
+            "description": "Output only. Detailed results for each catalog involved in the migration.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "CatalogReport",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "summary": {
+            "type": "",
+            "format": "",
+            "description": "Output only. High-level summary of the migration results.",
+            "$ref": "MigrationSummary",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "MigrationSummary": {
+        "type": "object",
+        "format": "",
+        "description": "Summary of the migration results.",
+        "$ref": "",
+        "properties": {
+          "catalogSummaries": {
+            "type": "array",
+            "format": "",
+            "description": "Output only. Summary of results for each catalog involved in the migration.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "CatalogSummary",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "createTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. The UTC time when this report was finalized.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "dryRun": {
+            "type": "boolean",
+            "format": "",
+            "description": "Output only. Whether the migration was a dry run.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "service": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The Dataproc Metastore service name (format: projects/*/locations/*/services/*) on which the migration was executed.",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -2886,6 +3372,56 @@
             "items": null,
             "additionalProperties": null,
             "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "PartitionReport": {
+        "type": "object",
+        "format": "",
+        "description": "Partition migration report for a Hive table.",
+        "$ref": "",
+        "properties": {
+          "partitionFailedCount": {
+            "type": "string",
+            "format": "int64",
+            "description": "The number of partitions that failed to migrate at the target.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "partitionSuccessCount": {
+            "type": "string",
+            "format": "int64",
+            "description": "The number of partitions successfully migrated at the target.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "state": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The state of the partition migration.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "STATE_UNSPECIFIED",
+              "SUCCEEDED",
+              "PARTIALLY_SUCCEEDED",
+              "FAILED"
+            ],
             "readOnly": true
           }
         },
@@ -3710,6 +4246,17 @@
             "enum": null,
             "readOnly": false
           },
+          "migrationExecutionId": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The ID to use for the migration execution, which will become the final component of the migration execution's resource name. If not specified, a UUID will be generated.This value must be between 2 and 63 characters long inclusive, begin with a letter, end with a letter or number, and valid characters are a-z0-9-.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
           "requestId": {
             "type": "string",
             "format": "",
@@ -3859,6 +4406,160 @@
         "enum": null,
         "readOnly": false
       },
+      "TableReport": {
+        "type": "object",
+        "format": "",
+        "description": "Aggregated report at the table level.",
+        "$ref": "",
+        "properties": {
+          "executionPlan": {
+            "type": "",
+            "format": "",
+            "description": "The discovered intent for the table (what we found and what we planned).",
+            "$ref": "ExecutionPlan",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "executionResult": {
+            "type": "",
+            "format": "",
+            "description": "The actual outcome of the table migration.",
+            "$ref": "ExecutionResult",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "partitionDiscoveredCount": {
+            "type": "string",
+            "format": "int64",
+            "description": "The total number of partitions identified at the source during discovery. This is only relevant for Hive Partitioned tables.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "partitionReport": {
+            "type": "",
+            "format": "",
+            "description": "Report containing the results of partition migration for this table. This is only relevant for Hive Partitioned tables.",
+            "$ref": "PartitionReport",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "table": {
+            "type": "string",
+            "format": "",
+            "description": "The name of the table.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "TableSummary": {
+        "type": "object",
+        "format": "",
+        "description": "Aggregated summary of results for all tables in a database.",
+        "$ref": "",
+        "properties": {
+          "partitionDiscoveredCount": {
+            "type": "string",
+            "format": "int64",
+            "description": "Output only. Partition migration summary across all Hive tables in the database.The total number of partitions discovered at the source.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "partitionFailedCount": {
+            "type": "string",
+            "format": "int64",
+            "description": "Output only. The total number of partitions that failed to migrate at the target.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "partitionSuccessCount": {
+            "type": "string",
+            "format": "int64",
+            "description": "Output only. The total number of partitions successfully migrated at the target.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "planCounts": {
+            "type": "object",
+            "format": "",
+            "description": "Output only. Number of tables with a specific migration plan action. The key is the action name (e.g. CREATE, UPDATE, SKIP, etc.).",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "string",
+              "format": "int64",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": true
+          },
+          "resultCounts": {
+            "type": "object",
+            "format": "",
+            "description": "Output only. Number of tables with a specific migration result status. The key is the status name (e.g. SUCCEEDED, FAILED, SKIPPED, etc.). This is only set if the migration is not a dry run.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "string",
+              "format": "int64",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
       "TelemetryConfig": {
         "type": "object",
         "format": "",
@@ -3942,6 +4643,40 @@
               "enum": null,
               "readOnly": false
             },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ValueDiff": {
+        "type": "object",
+        "format": "",
+        "description": "A field-level metadata mismatch for a resource between the source and target.",
+        "$ref": "",
+        "properties": {
+          "sourceValue": {
+            "type": "string",
+            "format": "",
+            "description": "The value of the field at the source.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "targetValue": {
+            "type": "string",
+            "format": "",
+            "description": "The value of the field at the target.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
             "additionalProperties": null,
             "enum": null,
             "readOnly": false
@@ -5319,5 +6054,6 @@
         }
       }
     }
-  }
+  },
+  "schema_url": "https://metastore.googleapis.com/$discovery/rest?version=v1"
 }

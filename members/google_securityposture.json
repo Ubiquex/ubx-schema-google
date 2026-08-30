@@ -3369,5 +3369,6 @@
         }
       }
     }
-  }
+  },
+  "schema_url": "https://securityposture.googleapis.com/$discovery/rest?version=v1"
 }

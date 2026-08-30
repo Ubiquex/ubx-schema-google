@@ -24,7 +24,7 @@
   "wire_name": "google_artifactregistry",
   "raw_spec": {
     "name": "artifactregistry",
-    "revision": "20260727",
+    "revision": "20260822",
     "discoveryVersion": "v1",
     "baseUrl": "https://artifactregistry.googleapis.com/",
     "rootUrl": "https://artifactregistry.googleapis.com/",
@@ -4325,7 +4325,8 @@
               "KFP",
               "GO",
               "GENERIC",
-              "RUBY"
+              "RUBY",
+              "CONDA"
             ],
             "readOnly": false
           },
@@ -4811,6 +4812,20 @@
             "additionalProperties": null,
             "enum": null,
             "readOnly": false
+          },
+          "fileType": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The type of the file to upload. Defaulting to ATTACHMENT if not specified.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "ATTACHMENT",
+              "ARTIFACT"
+            ],
+            "readOnly": false
           }
         },
         "items": null,
@@ -4877,6 +4892,27 @@
             "properties": null,
             "items": null,
             "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "versionAnnotations": {
+            "type": "object",
+            "format": "",
+            "description": "Optional. Client specified annotations to attach to the version upon creation. This field is only applied if the Version is created during this upload. If the Version already exists and this field is set, the request will fail.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
             "enum": null,
             "readOnly": false
           },
@@ -5498,7 +5534,7 @@
           "enablementConfig": {
             "type": "string",
             "format": "",
-            "description": "Optional. Config for whether this repository has vulnerability scanning disabled.",
+            "description": "Optional. Config for whether this repository has vulnerability scanning disabled. When unset (ENABLEMENT_CONFIG_UNSPECIFIED), this is treated as INHERITED for Docker repositories and DISABLED for non-Docker repositories.",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -7556,5 +7592,6 @@
         }
       }
     }
-  }
+  },
+  "schema_url": "https://artifactregistry.googleapis.com/$discovery/rest?version=v1"
 }

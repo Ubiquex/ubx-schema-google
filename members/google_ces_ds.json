@@ -24,7 +24,7 @@
   "wire_name": "google_ces",
   "raw_spec": {
     "name": "ces",
-    "revision": "20260806",
+    "revision": "20260824",
     "discoveryVersion": "v1",
     "baseUrl": "https://ces.googleapis.com/",
     "rootUrl": "https://ces.googleapis.com/",
@@ -1262,6 +1262,17 @@
             "additionalProperties": null,
             "enum": null,
             "readOnly": true
+          },
+          "dashboardSettings": {
+            "type": "",
+            "format": "",
+            "description": "Optional. App-specific dashboard settings for linking and configuring Contact Center Insights dashboards.",
+            "$ref": "DashboardSettings",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
           },
           "dataStoreSettings": {
             "type": "",
@@ -3572,17 +3583,6 @@
             "enum": null,
             "readOnly": false
           },
-          "resolvedDeveloperInstruction": {
-            "type": "string",
-            "format": "",
-            "description": "Output only. The full dynamically resolved developer instruction generated from templates. This field is only populated on-demand when requested during history retrieval. It is not persisted.",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": true
-          },
           "rootSpan": {
             "type": "",
             "format": "",
@@ -3594,31 +3594,33 @@
             "enum": null,
             "readOnly": false
           },
-          "templateAttributes": {
-            "type": "object",
-            "format": "",
-            "description": "Optional. Variables or configurations referenced by the template engine during dynamic prompt generation. This allows reconstructing the exact prompt sent to the model for this turn.",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": {
-              "type": "any",
-              "format": "",
-              "description": "Properties of the object.",
-              "$ref": "",
-              "properties": null,
-              "items": null,
-              "additionalProperties": null,
-              "enum": null,
-              "readOnly": false
-            },
-            "enum": null,
-            "readOnly": false
-          },
           "userIntendedText": {
             "type": "string",
             "format": "",
             "description": "Optional. The intended ground-truth text from the Simulated Caller (Polysynth). Only populated when word error rate metrics are enabled.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "DashboardSettings": {
+        "type": "object",
+        "format": "",
+        "description": "Settings for dashboards associated with the app, that show up in the Monitoring view.",
+        "$ref": "",
+        "properties": {
+          "defaultDashboard": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The resource name of the default Contact Center Insights dashboard associated with the app. This is the dashboard that will be displayed when users navigate to the Monitoring view for the app. Format: `projects/{project}/locations/{location}/dashboards/{dashboard}`",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -4443,6 +4445,17 @@
             "additionalProperties": null,
             "enum": null,
             "readOnly": false
+          },
+          "maxSnippets": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Optional. Number of snippets to return per query. If unset, returns all snippets from the service by default.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
           }
         },
         "items": null,
@@ -4483,6 +4496,29 @@
             "format": "",
             "description": "Optional. The prompt definition. If not set, default prompt will be used.",
             "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "DeployChannelResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Response message for AgentService.DeployChannel.",
+        "$ref": "",
+        "properties": {
+          "deployment": {
+            "type": "",
+            "format": "",
+            "description": "The created deployment.",
+            "$ref": "Deployment",
             "properties": null,
             "items": null,
             "additionalProperties": null,
@@ -6592,7 +6628,9 @@
               "HARM_CATEGORY_HATE_SPEECH",
               "HARM_CATEGORY_DANGEROUS_CONTENT",
               "HARM_CATEGORY_HARASSMENT",
-              "HARM_CATEGORY_SEXUALLY_EXPLICIT"
+              "HARM_CATEGORY_SEXUALLY_EXPLICIT",
+              "HARM_CATEGORY_PROFANITY",
+              "HARM_CATEGORY_TOXIC"
             ],
             "readOnly": false
           },
@@ -6720,6 +6758,28 @@
             "format": "",
             "description": "Optional. Options governing the import process for the app.",
             "$ref": "ImportAppRequestImportOptions",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "jsonPatchContent": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Patch content as a JSON string.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "jsonPatchGcsUri": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. A Cloud Storage URI pointing to a JSON file containing the patches.",
+            "$ref": "",
             "properties": null,
             "items": null,
             "additionalProperties": null,
@@ -8834,6 +8894,62 @@
         "enum": null,
         "readOnly": false
       },
+      "LfA2aV1StreamResponse": {
+        "type": "object",
+        "format": "",
+        "description": "A wrapper object used in streaming operations to encapsulate different types of response data.",
+        "$ref": "",
+        "properties": {
+          "artifactUpdate": {
+            "type": "",
+            "format": "",
+            "description": "An event indicating a task artifact update.",
+            "$ref": "LfA2aV1TaskArtifactUpdateEvent",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "message": {
+            "type": "",
+            "format": "",
+            "description": "A Message object containing a message from the agent.",
+            "$ref": "LfA2aV1Message",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "statusUpdate": {
+            "type": "",
+            "format": "",
+            "description": "An event indicating a task status update.",
+            "$ref": "LfA2aV1TaskStatusUpdateEvent",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "task": {
+            "type": "",
+            "format": "",
+            "description": "A Task object containing the current state of the task.",
+            "$ref": "LfA2aV1Task",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
       "LfA2aV1StringList": {
         "type": "object",
         "format": "",
@@ -8975,6 +9091,94 @@
         "enum": null,
         "readOnly": false
       },
+      "LfA2aV1TaskArtifactUpdateEvent": {
+        "type": "object",
+        "format": "",
+        "description": "A task delta where an artifact has been generated.",
+        "$ref": "",
+        "properties": {
+          "append": {
+            "type": "boolean",
+            "format": "",
+            "description": "If true, the content of this artifact should be appended to a previously sent artifact with the same ID.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "artifact": {
+            "type": "",
+            "format": "",
+            "description": "Required. The artifact that was generated or updated.",
+            "$ref": "LfA2aV1Artifact",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "contextId": {
+            "type": "string",
+            "format": "",
+            "description": "Required. The ID of the context that this task belongs to.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "lastChunk": {
+            "type": "boolean",
+            "format": "",
+            "description": "If true, this is the final chunk of the artifact.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "metadata": {
+            "type": "object",
+            "format": "",
+            "description": "Optional. Metadata associated with the artifact update.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "any",
+              "format": "",
+              "description": "Properties of the object.",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "taskId": {
+            "type": "string",
+            "format": "",
+            "description": "Required. The ID of the task for this artifact.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
       "LfA2aV1TaskPushNotificationConfig": {
         "type": "object",
         "format": "",
@@ -9095,6 +9299,72 @@
             "type": "string",
             "format": "google-datetime",
             "description": "ISO 8601 Timestamp when the status was recorded. Example: \"2023-10-27T10:00:00Z\"",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "LfA2aV1TaskStatusUpdateEvent": {
+        "type": "object",
+        "format": "",
+        "description": "An event sent by the agent to notify the client of a change in a task's status.",
+        "$ref": "",
+        "properties": {
+          "contextId": {
+            "type": "string",
+            "format": "",
+            "description": "Required. The ID of the context that the task belongs to.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "metadata": {
+            "type": "object",
+            "format": "",
+            "description": "Optional. Metadata associated with the task update.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "any",
+              "format": "",
+              "description": "Properties of the object.",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "status": {
+            "type": "",
+            "format": "",
+            "description": "Required. The new status of the task.",
+            "$ref": "LfA2aV1TaskStatus",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "taskId": {
+            "type": "string",
+            "format": "",
+            "description": "Required. The ID of the task that has changed.",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -11051,6 +11321,17 @@
             "enum": null,
             "readOnly": false
           },
+          "apiAuthentication": {
+            "type": "",
+            "format": "",
+            "description": "Optional. Authentication configuration for calling the remote agent.",
+            "$ref": "ApiAuthentication",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
           "description": {
             "type": "string",
             "format": "",
@@ -12188,6 +12469,17 @@
             "enum": null,
             "readOnly": false
           },
+          "image": {
+            "type": "",
+            "format": "",
+            "description": "Output image from the CES agent.",
+            "$ref": "Image",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
           "payload": {
             "type": "object",
             "format": "",
@@ -12921,6 +13213,17 @@
         "description": "Request for the client or the agent to execute the specified tool.",
         "$ref": "",
         "properties": {
+          "agentName": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. Human-readable name of the agent that issued this call, e.g. \"Contract Architect\". Empty when the root agent issued it.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
           "args": {
             "type": "object",
             "format": "",
@@ -12963,6 +13266,17 @@
             "additionalProperties": null,
             "enum": null,
             "readOnly": false
+          },
+          "parentToolCallId": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The id of the tool call that caused this one, when it was issued by a sub-agent working on behalf of a parent call. Empty for top-level calls. Lets a client group a sub-agent's work under the call that started it instead of rendering every step as a sibling.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
           },
           "tool": {
             "type": "string",
@@ -13065,6 +13379,17 @@
         "description": "The execution result of a specific tool from the client or the agent.",
         "$ref": "",
         "properties": {
+          "agentName": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. Human-readable name of the agent that issued this call, e.g. \"Contract Architect\". Empty when the root agent issued it.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
           "displayName": {
             "type": "string",
             "format": "",
@@ -13086,6 +13411,17 @@
             "additionalProperties": null,
             "enum": null,
             "readOnly": false
+          },
+          "parentToolCallId": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The id of the tool call that caused this one, when it was issued by a sub-agent working on behalf of a parent call. Empty for top-level calls. Lets a client group a sub-agent's work under the call that started it instead of rendering every step as a sibling.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
           },
           "response": {
             "type": "object",
@@ -14635,11 +14971,6 @@
                             "type": "string",
                             "location": "query",
                             "required": false
-                          },
-                          "view": {
-                            "type": "string",
-                            "location": "query",
-                            "required": false
                           }
                         },
                         "parameterOrder": [
@@ -14886,6 +15217,29 @@
                             },
                             "response": {
                               "$ref": "LfA2aV1SendMessageResponse"
+                            }
+                          },
+                          "stream": {
+                            "id": "ces.projects.locations.apps.deployments.message.stream",
+                            "httpMethod": "POST",
+                            "path": "v1/{+tenant}/message:stream",
+                            "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/apps/{appsId}/deployments/{deploymentsId}/message:stream",
+                            "description": "Sends a streaming message to an agent, allowing for real-time interaction and status updates. Streaming version of `SendMessage`",
+                            "parameters": {
+                              "tenant": {
+                                "type": "string",
+                                "location": "path",
+                                "required": true
+                              }
+                            },
+                            "parameterOrder": [
+                              "tenant"
+                            ],
+                            "request": {
+                              "$ref": "LfA2aV1SendMessageRequest"
+                            },
+                            "response": {
+                              "$ref": "LfA2aV1StreamResponse"
                             }
                           }
                         },
@@ -15219,6 +15573,29 @@
                         },
                         "response": {
                           "$ref": "LfA2aV1SendMessageResponse"
+                        }
+                      },
+                      "stream": {
+                        "id": "ces.projects.locations.apps.message.stream",
+                        "httpMethod": "POST",
+                        "path": "v1/{+tenant}/message:stream",
+                        "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/apps/{appsId}/message:stream",
+                        "description": "Sends a streaming message to an agent, allowing for real-time interaction and status updates. Streaming version of `SendMessage`",
+                        "parameters": {
+                          "tenant": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          }
+                        },
+                        "parameterOrder": [
+                          "tenant"
+                        ],
+                        "request": {
+                          "$ref": "LfA2aV1SendMessageRequest"
+                        },
+                        "response": {
+                          "$ref": "LfA2aV1StreamResponse"
                         }
                       }
                     },
@@ -15817,6 +16194,29 @@
                             "response": {
                               "$ref": "LfA2aV1SendMessageResponse"
                             }
+                          },
+                          "stream": {
+                            "id": "ces.projects.locations.apps.versions.message.stream",
+                            "httpMethod": "POST",
+                            "path": "v1/{+tenant}/message:stream",
+                            "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/apps/{appsId}/versions/{versionsId}/message:stream",
+                            "description": "Sends a streaming message to an agent, allowing for real-time interaction and status updates. Streaming version of `SendMessage`",
+                            "parameters": {
+                              "tenant": {
+                                "type": "string",
+                                "location": "path",
+                                "required": true
+                              }
+                            },
+                            "parameterOrder": [
+                              "tenant"
+                            ],
+                            "request": {
+                              "$ref": "LfA2aV1SendMessageRequest"
+                            },
+                            "response": {
+                              "$ref": "LfA2aV1StreamResponse"
+                            }
                           }
                         },
                         "resources": null
@@ -15941,5 +16341,6 @@
         }
       }
     }
-  }
+  },
+  "schema_url": "https://ces.googleapis.com/$discovery/rest?version=v1"
 }

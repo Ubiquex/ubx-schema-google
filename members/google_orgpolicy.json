@@ -1775,5 +1775,6 @@
         }
       }
     }
-  }
+  },
+  "schema_url": "https://orgpolicy.googleapis.com/$discovery/rest?version=v2"
 }

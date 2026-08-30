@@ -24,7 +24,7 @@
   "wire_name": "google_networkconnectivity",
   "raw_spec": {
     "name": "networkconnectivity",
-    "revision": "20260817",
+    "revision": "20260819",
     "discoveryVersion": "v1",
     "baseUrl": "https://networkconnectivity.googleapis.com/",
     "rootUrl": "https://networkconnectivity.googleapis.com/",
@@ -12255,5 +12255,6 @@
         }
       }
     }
-  }
+  },
+  "schema_url": "https://networkconnectivity.googleapis.com/$discovery/rest?version=v1"
 }

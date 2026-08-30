@@ -965,5 +965,6 @@
         }
       }
     }
-  }
+  },
+  "schema_url": "https://workflows.googleapis.com/$discovery/rest?version=v1beta"
 }

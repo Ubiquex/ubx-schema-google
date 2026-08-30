@@ -5983,5 +5983,6 @@
         }
       }
     }
-  }
+  },
+  "schema_url": "https://config.googleapis.com/$discovery/rest?version=v1"
 }

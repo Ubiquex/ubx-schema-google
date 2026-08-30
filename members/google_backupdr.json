@@ -11614,5 +11614,6 @@
         }
       }
     }
-  }
+  },
+  "schema_url": "https://backupdr.googleapis.com/$discovery/rest?version=v1"
 }

@@ -11461,5 +11461,6 @@
         }
       }
     }
-  }
+  },
+  "schema_url": "https://apihub.googleapis.com/$discovery/rest?version=v1"
 }

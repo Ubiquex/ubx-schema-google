@@ -3746,5 +3746,6 @@
         }
       }
     }
-  }
+  },
+  "schema_url": "https://cloudfunctions.googleapis.com/$discovery/rest?version=v2"
 }

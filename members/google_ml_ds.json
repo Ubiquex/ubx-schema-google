@@ -6321,5 +6321,6 @@
         }
       }
     }
-  }
+  },
+  "schema_url": "https://ml.googleapis.com/$discovery/rest?version=v1"
 }

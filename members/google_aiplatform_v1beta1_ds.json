@@ -25,7 +25,7 @@
   "version_qualifier": "v1beta1",
   "raw_spec": {
     "name": "aiplatform",
-    "revision": "20260815",
+    "revision": "20260828",
     "discoveryVersion": "v1",
     "baseUrl": "https://aiplatform.googleapis.com/",
     "rootUrl": "https://aiplatform.googleapis.com/",
@@ -155,6 +155,17 @@
             "format": "",
             "description": "Human pose parameters for Pose Control",
             "$ref": "CloudAiLargeModelsVisionHumanPose",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "modelEndpointOverride": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. BNS override for model backend. Enabled only for local and autopush environments by the flag `lvm_allow_model_zoo_bns_override`.",
+            "$ref": "",
             "properties": null,
             "items": null,
             "additionalProperties": null,
@@ -10048,21 +10059,6 @@
             "enum": null,
             "readOnly": false
           },
-          "mode": {
-            "type": "string",
-            "format": "",
-            "description": "Configures transcription mode. Supported values: `VERBATIM`, `SMART`. If unspecified, defaults to `VERBATIM` transcription. In `SMART` mode, the model performs disfluency removal (eliminating filler words, repetitions, and false starts), light grammatical cleanup, automatic formatting (paragraphs, bullet points, numbered lists), and minor user edits (inline self-corrections). Timestamps (`timestamp_granularities`) and diarization (`diarization_mode`) are incompatible with mode `SMART`.",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": [
-              "MODE_UNSPECIFIED",
-              "VERBATIM",
-              "SMART"
-            ],
-            "readOnly": false
-          },
           "timestampGranularities": {
             "type": "array",
             "format": "",
@@ -10872,7 +10868,8 @@
               "TYPE_X_FLV",
               "TYPE_WEBM",
               "TYPE_WMV",
-              "TYPE_3GPP"
+              "TYPE_3GPP",
+              "TYPE_JPEG2000"
             ],
             "readOnly": false
           },
@@ -15030,21 +15027,6 @@
             "enum": null,
             "readOnly": false
           },
-          "mode": {
-            "type": "string",
-            "format": "",
-            "description": "Optional. Configures transcription mode. Supported values: `VERBATIM`, `SMART`. If unspecified, defaults to `VERBATIM` transcription. In `SMART` mode, the model performs disfluency removal (eliminating filler words, repetitions, and false starts), light grammatical cleanup, automatic formatting (paragraphs, bullet points, numbered lists), and minor user edits (inline self-corrections). Timestamps and diarization are incompatible with mode `SMART`.",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": [
-              "MODE_UNSPECIFIED",
-              "VERBATIM",
-              "SMART"
-            ],
-            "readOnly": false
-          },
           "wordTimestamp": {
             "type": "boolean",
             "format": "",
@@ -15552,6 +15534,28 @@
             "readOnly": false
           }
         },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudAiplatformV1beta1AuthorizeSandboxEnvironmentAccessRequest": {
+        "type": "object",
+        "format": "",
+        "description": "Request message for SandboxEnvironmentExecutionService.AuthorizeSandboxEnvironmentAccess.",
+        "$ref": "",
+        "properties": {},
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudAiplatformV1beta1AuthorizeSandboxEnvironmentAccessResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Response message for SandboxEnvironmentExecutionService.AuthorizeSandboxEnvironmentAccess. Intentionally empty: a successful response is the authorization result.",
+        "$ref": "",
+        "properties": {},
         "items": null,
         "additionalProperties": null,
         "enum": null,
@@ -52240,6 +52244,17 @@
         "description": "A memory.",
         "$ref": "",
         "properties": {
+          "context": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Represents the context of the memory.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
           "createTime": {
             "type": "string",
             "format": "google-datetime",
@@ -53128,6 +53143,17 @@
         "description": "A revision of a Memory.",
         "$ref": "",
         "properties": {
+          "context": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. Represents the context of the Memory Revision. The context may include context from both the historical revisions and the extracted content.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
           "createTime": {
             "type": "string",
             "format": "google-datetime",
@@ -62404,7 +62430,7 @@
           "logView": {
             "type": "string",
             "format": "",
-            "description": "Optional. Optional log view that will be used to query logs. If empty, the `_Default` view will be used.",
+            "description": "Optional. Optional log view that will be used to query logs. If empty, the project's default view (`projects/{project_id}`) will be used.",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -62448,7 +62474,7 @@
           "traceView": {
             "type": "string",
             "format": "",
-            "description": "Optional. Optional trace view that will be used to query traces. If empty, the `_Default` view will be used. NOTE: This field is not supported yet and will be ignored if set.",
+            "description": "Optional. Optional trace view that will be used to query traces. If empty, the `_AllSpans` view from `_Trace` US bucket will be used, i.e. `projects/{project_id}/locations/us/buckets/_Trace/datasets/Spans/views/_AllSpans`.",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -78471,17 +78497,6 @@
         "description": "Configuration for egress control of sandbox instances.",
         "$ref": "",
         "properties": {
-          "customerVpcNetwork": {
-            "type": "string",
-            "format": "",
-            "description": "Optional. The customer VPC network that sandbox egress is routed into.",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
           "dnsPeeringConfigs": {
             "type": "array",
             "format": "",
@@ -112536,6 +112551,11 @@
                     "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/agents/{agentsId}",
                     "description": "Deletes an agent.",
                     "parameters": {
+                      "force": {
+                        "type": "boolean",
+                        "location": "query",
+                        "required": false
+                      },
                       "name": {
                         "type": "string",
                         "location": "path",
@@ -112571,6 +112591,32 @@
                       "$ref": "GoogleCloudAiplatformV1beta1Agent"
                     }
                   },
+                  "getIamPolicy": {
+                    "id": "aiplatform.projects.locations.agents.getIamPolicy",
+                    "httpMethod": "POST",
+                    "path": "v1beta1/{+resource}:getIamPolicy",
+                    "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/agents/{agentsId}:getIamPolicy",
+                    "description": "Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.",
+                    "parameters": {
+                      "options.requestedPolicyVersion": {
+                        "type": "integer",
+                        "location": "query",
+                        "required": false
+                      },
+                      "resource": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "resource"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "GoogleIamV1Policy"
+                    }
+                  },
                   "list": {
                     "id": "aiplatform.projects.locations.agents.list",
                     "httpMethod": "GET",
@@ -112578,6 +112624,11 @@
                     "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/agents",
                     "description": "Lists the agents in a location that belong to the caller. An agent belongs to the end user recorded as its owner when it was created, so the response holds that caller's agents and no others. It is empty for a caller that is not an end user, and an agent with no recorded owner is listed for nobody.",
                     "parameters": {
+                      "filter": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
                       "orderBy": {
                         "type": "string",
                         "location": "query",
@@ -112633,6 +112684,55 @@
                     },
                     "response": {
                       "$ref": "GoogleCloudAiplatformV1beta1Agent"
+                    }
+                  },
+                  "setIamPolicy": {
+                    "id": "aiplatform.projects.locations.agents.setIamPolicy",
+                    "httpMethod": "POST",
+                    "path": "v1beta1/{+resource}:setIamPolicy",
+                    "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/agents/{agentsId}:setIamPolicy",
+                    "description": "Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.",
+                    "parameters": {
+                      "resource": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "resource"
+                    ],
+                    "request": {
+                      "$ref": "GoogleIamV1SetIamPolicyRequest"
+                    },
+                    "response": {
+                      "$ref": "GoogleIamV1Policy"
+                    }
+                  },
+                  "testIamPermissions": {
+                    "id": "aiplatform.projects.locations.agents.testIamPermissions",
+                    "httpMethod": "POST",
+                    "path": "v1beta1/{+resource}:testIamPermissions",
+                    "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/agents/{agentsId}:testIamPermissions",
+                    "description": "Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may \"fail open\" without warning.",
+                    "parameters": {
+                      "permissions": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "resource": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "resource"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "GoogleIamV1TestIamPermissionsResponse"
                     }
                   }
                 },
@@ -134364,6 +134464,29 @@
                   },
                   "sandboxEnvironments": {
                     "methods": {
+                      "authorizeAccess": {
+                        "id": "aiplatform.projects.locations.reasoningEngines.sandboxEnvironments.authorizeAccess",
+                        "httpMethod": "POST",
+                        "path": "v1beta1/{+name}:authorizeAccess",
+                        "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/reasoningEngines/{reasoningEnginesId}/sandboxEnvironments/{sandboxEnvironmentsId}:authorizeAccess",
+                        "description": "Checks whether the caller is authorized to access the sandbox environment. Authorization is performed entirely by the API infrastructure from the `method_policy` below; the handler is a no-op. A successful response means the caller holds `sandboxEnvironments.execute` on the named sandbox. Used by the sandbox data-plane proxy, which forwards the caller's credential and proxies traffic only on success.",
+                        "parameters": {
+                          "name": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          }
+                        },
+                        "parameterOrder": [
+                          "name"
+                        ],
+                        "request": {
+                          "$ref": "GoogleCloudAiplatformV1beta1AuthorizeSandboxEnvironmentAccessRequest"
+                        },
+                        "response": {
+                          "$ref": "GoogleCloudAiplatformV1beta1AuthorizeSandboxEnvironmentAccessResponse"
+                        }
+                      },
                       "create": {
                         "id": "aiplatform.projects.locations.reasoningEngines.sandboxEnvironments.create",
                         "httpMethod": "POST",
@@ -143122,6 +143245,29 @@
           },
           "sandboxEnvironments": {
             "methods": {
+              "authorizeAccess": {
+                "id": "aiplatform.reasoningEngines.sandboxEnvironments.authorizeAccess",
+                "httpMethod": "POST",
+                "path": "v1beta1/{+name}:authorizeAccess",
+                "flatPath": "v1beta1/reasoningEngines/{reasoningEnginesId}/sandboxEnvironments/{sandboxEnvironmentsId}:authorizeAccess",
+                "description": "Checks whether the caller is authorized to access the sandbox environment. Authorization is performed entirely by the API infrastructure from the `method_policy` below; the handler is a no-op. A successful response means the caller holds `sandboxEnvironments.execute` on the named sandbox. Used by the sandbox data-plane proxy, which forwards the caller's credential and proxies traffic only on success.",
+                "parameters": {
+                  "name": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  }
+                },
+                "parameterOrder": [
+                  "name"
+                ],
+                "request": {
+                  "$ref": "GoogleCloudAiplatformV1beta1AuthorizeSandboxEnvironmentAccessRequest"
+                },
+                "response": {
+                  "$ref": "GoogleCloudAiplatformV1beta1AuthorizeSandboxEnvironmentAccessResponse"
+                }
+              },
               "create": {
                 "id": "aiplatform.reasoningEngines.sandboxEnvironments.create",
                 "httpMethod": "POST",
@@ -145786,5 +145932,6 @@
         }
       }
     }
-  }
+  },
+  "schema_url": "https://aiplatform.googleapis.com/$discovery/rest?version=v1beta1"
 }

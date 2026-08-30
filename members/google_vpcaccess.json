@@ -24,7 +24,7 @@
   "wire_name": "google_vpcaccess",
   "raw_spec": {
     "name": "vpcaccess",
-    "revision": "20260817",
+    "revision": "20260823",
     "discoveryVersion": "v1",
     "baseUrl": "https://vpcaccess.googleapis.com/",
     "rootUrl": "https://vpcaccess.googleapis.com/",
@@ -1030,5 +1030,6 @@
         }
       }
     }
-  }
+  },
+  "schema_url": "https://vpcaccess.googleapis.com/$discovery/rest?version=v1"
 }

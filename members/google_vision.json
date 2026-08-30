@@ -17238,5 +17238,6 @@
         }
       }
     }
-  }
+  },
+  "schema_url": "https://vision.googleapis.com/$discovery/rest?version=v1"
 }

@@ -2425,5 +2425,6 @@
         }
       }
     }
-  }
+  },
+  "schema_url": "https://apim.googleapis.com/$discovery/rest?version=v1alpha"
 }

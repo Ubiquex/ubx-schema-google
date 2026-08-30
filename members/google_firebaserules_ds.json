@@ -1537,5 +1537,6 @@
         }
       }
     }
-  }
+  },
+  "schema_url": "https://firebaserules.googleapis.com/$discovery/rest?version=v1"
 }

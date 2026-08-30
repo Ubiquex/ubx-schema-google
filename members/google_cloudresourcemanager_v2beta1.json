@@ -1760,5 +1760,6 @@
         "resources": null
       }
     }
-  }
+  },
+  "schema_url": "https://cloudresourcemanager.googleapis.com/$discovery/rest?version=v2beta1"
 }

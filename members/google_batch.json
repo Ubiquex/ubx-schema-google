@@ -4388,5 +4388,6 @@
         }
       }
     }
-  }
+  },
+  "schema_url": "https://batch.googleapis.com/$discovery/rest?version=v1"
 }

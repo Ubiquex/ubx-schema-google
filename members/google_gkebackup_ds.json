@@ -7888,5 +7888,6 @@
         }
       }
     }
-  }
+  },
+  "schema_url": "https://gkebackup.googleapis.com/$discovery/rest?version=v1"
 }

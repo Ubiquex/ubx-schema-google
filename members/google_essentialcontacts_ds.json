@@ -867,5 +867,6 @@
         }
       }
     }
-  }
+  },
+  "schema_url": "https://essentialcontacts.googleapis.com/$discovery/rest?version=v1"
 }

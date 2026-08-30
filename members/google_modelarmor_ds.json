@@ -3437,5 +3437,6 @@
         }
       }
     }
-  }
+  },
+  "schema_url": "https://modelarmor.googleapis.com/$discovery/rest?version=v1"
 }

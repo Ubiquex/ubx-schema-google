@@ -24,7 +24,7 @@
   "wire_name": "google_gkehub",
   "raw_spec": {
     "name": "gkehub",
-    "revision": "20260817",
+    "revision": "20260826",
     "discoveryVersion": "v1",
     "baseUrl": "https://gkehub.googleapis.com/",
     "rootUrl": "https://gkehub.googleapis.com/",
@@ -6048,5 +6048,6 @@
         }
       }
     }
-  }
+  },
+  "schema_url": "https://gkehub.googleapis.com/$discovery/rest?version=v2"
 }

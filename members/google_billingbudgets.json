@@ -24,7 +24,7 @@
   "wire_name": "google_billingbudgets",
   "raw_spec": {
     "name": "billingbudgets",
-    "revision": "20260816",
+    "revision": "20260823",
     "discoveryVersion": "v1",
     "baseUrl": "https://billingbudgets.googleapis.com/",
     "rootUrl": "https://billingbudgets.googleapis.com/",
@@ -816,5 +816,6 @@
         }
       }
     }
-  }
+  },
+  "schema_url": "https://billingbudgets.googleapis.com/$discovery/rest?version=v1"
 }

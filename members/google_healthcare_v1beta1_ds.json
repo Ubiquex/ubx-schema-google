@@ -14298,5 +14298,6 @@
         }
       }
     }
-  }
+  },
+  "schema_url": "https://healthcare.googleapis.com/$discovery/rest?version=v1beta1"
 }

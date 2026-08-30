@@ -4903,5 +4903,6 @@
         }
       }
     }
-  }
+  },
+  "schema_url": "https://recaptchaenterprise.googleapis.com/$discovery/rest?version=v1"
 }

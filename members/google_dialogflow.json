@@ -24,7 +24,7 @@
   "wire_name": "google_dialogflow",
   "raw_spec": {
     "name": "dialogflow",
-    "revision": "20260815",
+    "revision": "20260825",
     "discoveryVersion": "v1",
     "baseUrl": "https://dialogflow.googleapis.com/",
     "rootUrl": "https://dialogflow.googleapis.com/",
@@ -41417,5 +41417,6 @@
         }
       }
     }
-  }
+  },
+  "schema_url": "https://dialogflow.googleapis.com/$discovery/rest?version=v3"
 }

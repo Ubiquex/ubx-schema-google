@@ -9567,5 +9567,6 @@
         "resources": null
       }
     }
-  }
+  },
+  "schema_url": "https://monitoring.googleapis.com/$discovery/rest?version=v3"
 }

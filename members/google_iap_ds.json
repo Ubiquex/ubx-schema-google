@@ -24,7 +24,7 @@
   "wire_name": "google_iap",
   "raw_spec": {
     "name": "iap",
-    "revision": "20260810",
+    "revision": "20260824",
     "discoveryVersion": "v1",
     "baseUrl": "https://iap.googleapis.com/",
     "rootUrl": "https://iap.googleapis.com/",
@@ -2206,5 +2206,6 @@
         "resources": null
       }
     }
-  }
+  },
+  "schema_url": "https://iap.googleapis.com/$discovery/rest?version=v1"
 }

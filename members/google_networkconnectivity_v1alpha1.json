@@ -2656,5 +2656,6 @@
         }
       }
     }
-  }
+  },
+  "schema_url": "https://networkconnectivity.googleapis.com/$discovery/rest?version=v1alpha1"
 }

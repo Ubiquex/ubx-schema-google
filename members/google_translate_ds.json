@@ -5190,5 +5190,6 @@
         }
       }
     }
-  }
+  },
+  "schema_url": "https://translation.googleapis.com/$discovery/rest?version=v3"
 }

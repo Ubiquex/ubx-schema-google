@@ -24,7 +24,7 @@
   "wire_name": "google_cloudkms",
   "raw_spec": {
     "name": "cloudkms",
-    "revision": "20260814",
+    "revision": "20260821",
     "discoveryVersion": "v1",
     "baseUrl": "https://cloudkms.googleapis.com/",
     "rootUrl": "https://cloudkms.googleapis.com/",
@@ -1289,7 +1289,7 @@
           "trustedWrappingEnabled": {
             "type": "boolean",
             "format": "",
-            "description": "Immutable. Field indicating that the key may be wrapped by a trusted key. This field can be set for all key purposes except ENCRYPT_DECRYPT, and is only valid for keys with protection level HSM_SINGLE_TENANT. This field can only be set at creation or import time via CreateCryptoKeyVersion, or ImportCryptoKeyVersion.",
+            "description": "Optional. Immutable. Field indicating that the key may be wrapped by a trusted key. This field can be set for all key purposes except ENCRYPT_DECRYPT, and is only valid for keys with protection level HSM_SINGLE_TENANT. This field can only be set at creation or import time via CreateCryptoKeyVersion, or ImportCryptoKeyVersion.",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -6627,6 +6627,27 @@
                       "$ref": "KeyRing"
                     }
                   },
+                  "delete": {
+                    "id": "cloudkms.projects.locations.keyRings.delete",
+                    "httpMethod": "DELETE",
+                    "path": "v1/{+name}",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/keyRings/{keyRingsId}",
+                    "description": "Permanently deletes the given KeyRing. All child resources of the KeyRing must have been previously deleted using their corresponding Delete operations. The specified key ring will be immediately and permanently deleted upon calling this method. This action cannot be undone. Note: the key ring and its metadata will be remembered by KeyManagementService to prevent re-use of the key ring's resource name.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "Operation"
+                    }
+                  },
                   "get": {
                     "id": "cloudkms.projects.locations.keyRings.get",
                     "httpMethod": "GET",
@@ -8043,5 +8064,6 @@
         }
       }
     }
-  }
+  },
+  "schema_url": "https://cloudkms.googleapis.com/$discovery/rest?version=v1"
 }

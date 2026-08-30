@@ -2033,5 +2033,6 @@
         }
       }
     }
-  }
+  },
+  "schema_url": "https://cloudcontrolspartner.googleapis.com/$discovery/rest?version=v1beta"
 }

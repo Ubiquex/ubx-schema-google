@@ -3099,5 +3099,6 @@
         }
       }
     }
-  }
+  },
+  "schema_url": "https://firebaseappdistribution.googleapis.com/$discovery/rest?version=v1"
 }

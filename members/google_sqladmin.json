@@ -13352,5 +13352,6 @@
         "resources": null
       }
     }
-  }
+  },
+  "schema_url": "https://sqladmin.googleapis.com/$discovery/rest?version=v1"
 }

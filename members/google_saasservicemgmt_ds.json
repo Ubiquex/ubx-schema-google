@@ -5180,5 +5180,6 @@
         }
       }
     }
-  }
+  },
+  "schema_url": "https://saasservicemgmt.googleapis.com/$discovery/rest?version=v1"
 }

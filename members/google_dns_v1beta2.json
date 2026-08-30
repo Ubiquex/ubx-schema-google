@@ -5572,5 +5572,6 @@
         "resources": null
       }
     }
-  }
+  },
+  "schema_url": "https://dns.googleapis.com/$discovery/rest?version=v1beta2"
 }

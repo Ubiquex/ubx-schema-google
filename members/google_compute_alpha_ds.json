@@ -25,7 +25,7 @@
   "version_qualifier": "alpha",
   "raw_spec": {
     "name": "compute",
-    "revision": "20260807",
+    "revision": "20260821",
     "discoveryVersion": "v1",
     "baseUrl": "https://compute.googleapis.com/compute/alpha/",
     "rootUrl": "https://compute.googleapis.com/",
@@ -4874,6 +4874,39 @@
             ],
             "readOnly": false
           },
+          "signalAggregation": {
+            "type": "",
+            "format": "",
+            "description": "Defines how CPU utilization is aggregated in a group.\n\nOperates on the results from the `time_aggregation`, reducing the\nper-instance values down to a single aggregate value across the entire\ninstance group if samples are available.",
+            "$ref": "AutoscalingPolicySignalAggregation",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "timeAggregation": {
+            "type": "",
+            "format": "",
+            "description": "Defines how CPU utilization is aggregated over time.\n\nOperates on all CPU utilization samples produced by each instance over\nthe `time_aggregation.time_window_sec`, reducing them to exactly one\nvalue per instance if samples are available.",
+            "$ref": "AutoscalingPolicyTimeAggregation",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "utilizationRange": {
+            "type": "",
+            "format": "",
+            "description": "Defines a target range for CPU utilization. The values of\n`min_utilization` and `max_utilization` must be in\nthe range (0.0, 1.0].\n\nIf the average CPU is between `min_utilization` and\n`max_utilization`, the autoscaler maintains the current size\nunless another configured metric requires scaling out.\n\nIf the average CPU is above `max_utilization`, the autoscaler\nscales out until the average utilization reaches the\n`utilization_range.utilization_target`.\n\nIf the average CPU is below `min_utilization`, the autoscaler\nconsiders scaling in until the average utilization reaches the\n`utilization_range.utilization_target`. Scaling in can occur only if all\nother configured scaling metrics also suggest scaling in.\n\nAt most one of CpuUtilization.utilization_target or\nCpuUtilization.utilization_range can be set.",
+            "$ref": "UtilizationRange",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
           "utilizationTarget": {
             "type": "number",
             "format": "double",
@@ -5118,6 +5151,98 @@
             "type": "string",
             "format": "",
             "description": "The time zone to use when interpreting the schedule.\nThe value of this field must be a time zone name from the tz database:\nhttps://en.wikipedia.org/wiki/Tz_database. This field is assigned a\ndefault value of \"UTC\" if left empty.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "AutoscalingPolicySignalAggregation": {
+        "type": "object",
+        "format": "",
+        "description": "Defines how scaling signal is aggregated in a group. Operates on the\nresults of the `TimeAggregation`, reducing the per-instance\nvalues down to a single aggregate value across the entire instance group.",
+        "$ref": "",
+        "properties": {
+          "percentile": {
+            "type": "integer",
+            "format": "int32",
+            "description": "If statistic is PERCENTILE, percentile must be defined. This value is\nused only when statistic is PERCENTILE.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "statistic": {
+            "type": "string",
+            "format": "",
+            "description": "Required. The aggregator used to aggregate signal samples across the entire\ninstance group. This field is required.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "AGGREGATOR_UNSPECIFIED",
+              "AVERAGE",
+              "MAX",
+              "MIN",
+              "PERCENTILE"
+            ],
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "AutoscalingPolicyTimeAggregation": {
+        "type": "object",
+        "format": "",
+        "description": "Defines how scaling signal is aggregated over a time window. Operates on\nall signal samples produced over the `time_window_sec`, reducing them to\nexactly one value.",
+        "$ref": "",
+        "properties": {
+          "percentile": {
+            "type": "integer",
+            "format": "int32",
+            "description": "If statistic is PERCENTILE, percentile must be defined. This value is\nused only when statistic is PERCENTILE.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "statistic": {
+            "type": "string",
+            "format": "",
+            "description": "Required. The aggregator used to aggregate signal samples over the\n`time_window_sec`. This field is required.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "AGGREGATOR_UNSPECIFIED",
+              "AVERAGE",
+              "LAST_VALUE",
+              "MAX",
+              "MIN",
+              "PERCENTILE"
+            ],
+            "readOnly": false
+          },
+          "timeWindowSec": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Required. The duration of the time window over which the signal samples are\naggregated. This field is required.",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -14282,6 +14407,7 @@
             "items": null,
             "additionalProperties": null,
             "enum": [
+              "BMSAI",
               "CCA",
               "CONFIDENTIAL_INSTANCE_TYPE_UNSPECIFIED",
               "SEV",
@@ -20499,6 +20625,17 @@
         "description": "Represents a Firewall Policy resource.",
         "$ref": "",
         "properties": {
+          "applySecurityProfileFallbackAction": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. If specified, it defines what should happen in case of backend issues for\nrules with apply_security_profile_group action.\nAllowed values: ALLOW, DENY. If not specified, the default behavior is\nALLOW.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
           "associations": {
             "type": "array",
             "format": "",
@@ -23639,6 +23776,7 @@
             "items": null,
             "additionalProperties": null,
             "enum": [
+              "CONFIDENTIAL_COMPUTE_TYPE_BMSAI",
               "CONFIDENTIAL_COMPUTE_TYPE_TDX",
               "CONFIDENTIAL_COMPUTE_TYPE_UNSPECIFIED"
             ],
@@ -25946,6 +26084,122 @@
         "enum": null,
         "readOnly": false
       },
+      "GlobalFrontendSettings": {
+        "type": "object",
+        "format": "",
+        "description": "Represents the Global Frontend Bundle settings for a single project.",
+        "$ref": "",
+        "properties": {
+          "bundleType": {
+            "type": "string",
+            "format": "",
+            "description": "Customer-settable bundle type.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "BUNDLE_TYPE_UNSPECIFIED",
+              "GLOBAL_FRONT_END",
+              "INDIVIDUAL"
+            ],
+            "readOnly": false
+          },
+          "creationTimestamp": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. [Output Only] Creation timestamp in RFC3339 text format.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "description": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. [Output Only] An optional description of this resource.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "etag": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. For optimistic locking",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "id": {
+            "type": "string",
+            "format": "uint64",
+            "description": "Output only. [Output Only] The unique identifier for the resource. This identifier is\ndefined by the server.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. OUTPUT_ONLY fields\n[Output Only] Name of the resource. Must be 1-63 characters long and match\nthe regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first\ncharacter must be a lowercase letter, and all following characters must\nbe a dash, lowercase letter, or digit, except the last character, which\ncannot be a dash.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "selfLink": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. [Output Only] Server-defined URL for the resource.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GlobalFrontendSettingsPatchResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Response to an UpdateGlobalFrontendSettingsRequest.",
+        "$ref": "",
+        "properties": {
+          "operation": {
+            "type": "",
+            "format": "",
+            "description": "",
+            "$ref": "Operation",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
       "GlobalListVmExtensionsResponse": {
         "type": "object",
         "format": "",
@@ -27599,7 +27853,7 @@
           "type": {
             "type": "string",
             "format": "",
-            "description": "The ID of a supported feature. To add multiple values, use commas to\nseparate values. Set to one or more of the following values:\n   \n   - VIRTIO_SCSI_MULTIQUEUE\n   - WINDOWS\n   - MULTI_IP_SUBNET\n   - UEFI_COMPATIBLE\n   - GVNIC\n   - SEV_CAPABLE\n   - SUSPEND_RESUME_COMPATIBLE\n   - SEV_LIVE_MIGRATABLE_V2\n   - SEV_SNP_CAPABLE\n   - TDX_CAPABLE\n   - IDPF\n   - SNP_SVSM_CAPABLE\n   - CCA_CAPABLE\n\n\nFor more information, see\nEnabling guest operating system features.",
+            "description": "The ID of a supported feature. To add multiple values, use commas to\nseparate values. Set to one or more of the following values:\n   \n   - VIRTIO_SCSI_MULTIQUEUE\n   - WINDOWS\n   - MULTI_IP_SUBNET\n   - UEFI_COMPATIBLE\n   - GVNIC\n   - SEV_CAPABLE\n   - SUSPEND_RESUME_COMPATIBLE\n   - SEV_LIVE_MIGRATABLE_V2\n   - SEV_SNP_CAPABLE\n   - TDX_CAPABLE\n   - IDPF\n   - SNP_SVSM_CAPABLE\n   - CCA_CAPABLE\n   - SUSPEND_SAFE_FPR\n\n\nFor more information, see\nEnabling guest operating system features.",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -27617,6 +27871,7 @@
               "SEV_LIVE_MIGRATABLE_V2",
               "SEV_SNP_CAPABLE",
               "SNP_SVSM_CAPABLE",
+              "SUSPEND_SAFE_FPR",
               "TDX_CAPABLE",
               "UEFI_COMPATIBLE",
               "VIRTIO_SCSI_MULTIQUEUE",
@@ -41279,20 +41534,6 @@
             "enum": null,
             "readOnly": false
           },
-          "disruptionMode": {
-            "type": "string",
-            "format": "",
-            "description": "Whether the boot disk is allowed to be updated with restart.",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": [
-              "LEGACY",
-              "OPTIMIZED"
-            ],
-            "readOnly": false
-          },
           "instanceRedistributionType": {
             "type": "string",
             "format": "",
@@ -41539,20 +41780,6 @@
             },
             "additionalProperties": null,
             "enum": null,
-            "readOnly": false
-          },
-          "disruptionMode": {
-            "type": "string",
-            "format": "",
-            "description": "Whether the boot disk is allowed to be updated with restart.",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": [
-              "LEGACY",
-              "OPTIMIZED"
-            ],
             "readOnly": false
           },
           "instances": {
@@ -48027,7 +48254,7 @@
           "selfLinkWithId": {
             "type": "string",
             "format": "",
-            "description": "Output only. [Output Only] Server-defined URL for this resource with the resource id.",
+            "description": "Output only. Server-defined URL for this resource with the resource id.",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -53395,6 +53622,28 @@
             "type": "string",
             "format": "",
             "description": "Output only. The remote location for Cross-Site Interconnect wires. This specifies an\nInterconnectLocation city (metropolitan area designator), which itself\nmay match multiple InterconnectLocations.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "maxDynamicPathBandwidthGbps": {
+            "type": "string",
+            "format": "int64",
+            "description": "Output only. The maximum unmetered bandwidth for dynamic paths allowable per\nWireGroup for this metro.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "maxFixedPathBandwidthGbps": {
+            "type": "string",
+            "format": "int64",
+            "description": "Output only. The maximum unmetered bandwidth for fixed paths allowable per WireGroup\nfor this metro.",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -58914,7 +59163,7 @@
           "targetStatus": {
             "type": "string",
             "format": "",
-            "description": "Output only. [Output Only] The eventual status of the instance. The instance group\nmanager will not be identified as stable till each managed instance reaches\nits targetStatus.",
+            "description": "Output only. The eventual status of the instance. The instance group\nmanager will not be identified as stable till each managed instance reaches\nits targetStatus.",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -58922,6 +59171,7 @@
             "enum": [
               "ABANDONED",
               "DELETED",
+              "INVALID",
               "RUNNING",
               "STOPPED",
               "SUSPENDED"
@@ -59810,7 +60060,7 @@
           "type": {
             "type": "string",
             "format": "",
-            "description": "Required. The type of management service this interface provides.\nSupported types include NMX-C for partition management, gNMI for switch\nmonitoring, and TPU slice management.",
+            "description": "Required. The type of management service this interface provides.\nSupported types include NMX-C for partition management and gNMI for switch\nmonitoring.",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -59818,7 +60068,6 @@
             "enum": [
               "TYPE_NVLINK_PARTITION_MANAGEMENT",
               "TYPE_NVLINK_SWITCH_MONITORING",
-              "TYPE_TPU_SLICE_MANAGEMENT",
               "TYPE_UNSPECIFIED"
             ],
             "readOnly": false
@@ -72187,7 +72436,7 @@
           "getHealthOperationMetadata": {
             "type": "",
             "format": "",
-            "description": "Output only. [Output Only] Metadata for GetHealth operations.",
+            "description": "Output only. Metadata for GetHealth operations.",
             "$ref": "GetHealthOperationMetadata",
             "properties": null,
             "items": null,
@@ -80439,7 +80688,7 @@
           "deletionTimestamp": {
             "type": "string",
             "format": "",
-            "description": "Output only. [Output Only] Purge timestamp of recoverable snapshot inRFC3339 text format.",
+            "description": "Output only. [Output Only] Deletion timestamp of snapshot inRFC3339 text format.",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -82780,20 +83029,6 @@
             "enum": null,
             "readOnly": false
           },
-          "disruptionMode": {
-            "type": "string",
-            "format": "",
-            "description": "Whether the boot disk is allowed to be updated with restart.",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": [
-              "LEGACY",
-              "OPTIMIZED"
-            ],
-            "readOnly": false
-          },
           "instances": {
             "type": "array",
             "format": "",
@@ -84865,6 +85100,7 @@
             "items": null,
             "additionalProperties": null,
             "enum": [
+              "CONFIDENTIAL_COMPUTE_TYPE_BMSAI",
               "CONFIDENTIAL_COMPUTE_TYPE_TDX",
               "CONFIDENTIAL_COMPUTE_TYPE_UNSPECIFIED"
             ],
@@ -118685,6 +118921,51 @@
         "enum": null,
         "readOnly": false
       },
+      "UtilizationRange": {
+        "type": "object",
+        "format": "",
+        "description": "Represents a range of acceptable utilization values.\nThis message is used to configure range-based scaling policies,\nallowing Autoscaler to maintain utilization within a specified range\ninstead of aiming for a single target point.",
+        "$ref": "",
+        "properties": {
+          "maxUtilization": {
+            "type": "number",
+            "format": "double",
+            "description": "Required. The upper bound of the utilization range. Must be greater or equal to\nmin_utilization. This value is required when using range-based scaling.\n\nScaling out is triggered if the utilization exceeds this value.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "minUtilization": {
+            "type": "number",
+            "format": "double",
+            "description": "Required. The lower bound of the utilization range. Must be smaller or equal to\nmax_utilization. This value is required when using range-based scaling.\n\nScaling in is considered only if the utilization drops below this value.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "utilizationTarget": {
+            "type": "number",
+            "format": "double",
+            "description": "The target utilization that the autoscaler aims to achieve when scaling\nis triggered. This value must be within the range [min_utilization,\nmax_utilization].\n\nIf not specified, this will default to the average of max_utilization and\nmin_utilization.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
       "VmEndpointNatMappings": {
         "type": "object",
         "format": "",
@@ -131180,6 +131461,65 @@
             },
             "response": {
               "$ref": "TestPermissionsResponse"
+            }
+          }
+        },
+        "resources": null
+      },
+      "globalFrontendSettings": {
+        "methods": {
+          "get": {
+            "id": "compute.globalFrontendSettings.get",
+            "httpMethod": "GET",
+            "path": "projects/{project}/global/globalFrontendSettings",
+            "flatPath": "projects/{project}/global/globalFrontendSettings",
+            "description": "Gets the Global Frontend Billing Bundle Settings for a project.",
+            "parameters": {
+              "project": {
+                "type": "string",
+                "location": "path",
+                "required": true
+              }
+            },
+            "parameterOrder": [
+              "project"
+            ],
+            "request": null,
+            "response": {
+              "$ref": "GlobalFrontendSettings"
+            }
+          },
+          "patch": {
+            "id": "compute.globalFrontendSettings.patch",
+            "httpMethod": "PATCH",
+            "path": "projects/{project}/global/globalFrontendSettings",
+            "flatPath": "projects/{project}/global/globalFrontendSettings",
+            "description": "Updates the Global Frontend Billing Bundle Settings for a project.",
+            "parameters": {
+              "project": {
+                "type": "string",
+                "location": "path",
+                "required": true
+              },
+              "requestId": {
+                "type": "string",
+                "location": "query",
+                "required": false
+              },
+              "updateMask": {
+                "type": "string",
+                "location": "query",
+                "required": false
+              }
+            },
+            "parameterOrder": [
+              "project"
+            ],
+            "request": {
+              "$ref": "GlobalFrontendSettings"
+            },
+            "response": {
+              "$ref": "GlobalFrontendSettingsPatchResponse"
             }
           }
         },
@@ -171588,5 +171928,6 @@
         "resources": null
       }
     }
-  }
+  },
+  "schema_url": "https://www.googleapis.com/discovery/v1/apis/compute/alpha/rest"
 }
