@@ -24,7 +24,7 @@
   "wire_name": "google_analyticshub",
   "raw_spec": {
     "name": "analyticshub",
-    "revision": "20260819",
+    "revision": "20260824",
     "discoveryVersion": "v1",
     "baseUrl": "https://analyticshub.googleapis.com/",
     "rootUrl": "https://analyticshub.googleapis.com/",

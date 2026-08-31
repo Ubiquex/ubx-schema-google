@@ -24,7 +24,7 @@
   "wire_name": "google_redis",
   "raw_spec": {
     "name": "redis",
-    "revision": "20260828",
+    "revision": "20260812",
     "discoveryVersion": "v1",
     "baseUrl": "https://redis.googleapis.com/",
     "rootUrl": "https://redis.googleapis.com/",

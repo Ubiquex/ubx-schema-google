@@ -25,7 +25,7 @@
   "version_qualifier": "v1p1beta1",
   "raw_spec": {
     "name": "speech",
-    "revision": "20260708",
+    "revision": "20260830",
     "discoveryVersion": "v1",
     "baseUrl": "https://speech.googleapis.com/",
     "rootUrl": "https://speech.googleapis.com/",

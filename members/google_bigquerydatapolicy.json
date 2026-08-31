@@ -24,7 +24,7 @@
   "wire_name": "google_bigquerydatapolicy",
   "raw_spec": {
     "name": "bigquerydatapolicy",
-    "revision": "20260818",
+    "revision": "20260812",
     "discoveryVersion": "v1",
     "baseUrl": "https://bigquerydatapolicy.googleapis.com/",
     "rootUrl": "https://bigquerydatapolicy.googleapis.com/",
