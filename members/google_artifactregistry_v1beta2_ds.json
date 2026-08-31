@@ -25,7 +25,7 @@
   "version_qualifier": "v1beta2",
   "raw_spec": {
     "name": "artifactregistry",
-    "revision": "20260727",
+    "revision": "20260822",
     "discoveryVersion": "v1",
     "baseUrl": "https://artifactregistry.googleapis.com/",
     "rootUrl": "https://artifactregistry.googleapis.com/",

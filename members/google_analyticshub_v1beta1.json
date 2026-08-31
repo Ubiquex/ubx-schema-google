@@ -25,7 +25,7 @@
   "version_qualifier": "v1beta1",
   "raw_spec": {
     "name": "analyticshub",
-    "revision": "20260819",
+    "revision": "20260824",
     "discoveryVersion": "v1",
     "baseUrl": "https://analyticshub.googleapis.com/",
     "rootUrl": "https://analyticshub.googleapis.com/",

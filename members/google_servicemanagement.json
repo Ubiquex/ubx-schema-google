@@ -24,7 +24,7 @@
   "wire_name": "google_servicemanagement",
   "raw_spec": {
     "name": "servicemanagement",
-    "revision": "20260820",
+    "revision": "20260821",
     "discoveryVersion": "v1",
     "baseUrl": "https://servicemanagement.googleapis.com/",
     "rootUrl": "https://servicemanagement.googleapis.com/",
