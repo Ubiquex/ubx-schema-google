@@ -24,7 +24,7 @@
   "wire_name": "google_ftp",
   "raw_spec": {
     "name": "ftp",
-    "revision": "20260822",
+    "revision": "20260904",
     "discoveryVersion": "v1",
     "baseUrl": "https://ftp.googleapis.com/",
     "rootUrl": "https://ftp.googleapis.com/",

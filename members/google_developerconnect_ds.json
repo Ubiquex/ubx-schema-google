@@ -24,7 +24,7 @@
   "wire_name": "google_developerconnect",
   "raw_spec": {
     "name": "developerconnect",
-    "revision": "20260824",
+    "revision": "20260827",
     "discoveryVersion": "v1",
     "baseUrl": "https://developerconnect.googleapis.com/",
     "rootUrl": "https://developerconnect.googleapis.com/",

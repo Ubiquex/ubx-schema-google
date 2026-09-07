@@ -24,7 +24,7 @@
   "wire_name": "google_privilegedaccessmanager",
   "raw_spec": {
     "name": "privilegedaccessmanager",
-    "revision": "20260810",
+    "revision": "20260826",
     "discoveryVersion": "v1",
     "baseUrl": "https://privilegedaccessmanager.googleapis.com/",
     "rootUrl": "https://privilegedaccessmanager.googleapis.com/",

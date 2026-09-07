@@ -24,7 +24,7 @@
   "wire_name": "google_cloudkms",
   "raw_spec": {
     "name": "cloudkms",
-    "revision": "20260821",
+    "revision": "20260827",
     "discoveryVersion": "v1",
     "baseUrl": "https://cloudkms.googleapis.com/",
     "rootUrl": "https://cloudkms.googleapis.com/",
@@ -6632,7 +6632,7 @@
                     "httpMethod": "DELETE",
                     "path": "v1/{+name}",
                     "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/keyRings/{keyRingsId}",
-                    "description": "Permanently deletes the given KeyRing. All child resources of the KeyRing must have been previously deleted using their corresponding Delete operations. The specified key ring will be immediately and permanently deleted upon calling this method. This action cannot be undone. Note: the key ring and its metadata will be remembered by KeyManagementService to prevent re-use of the key ring's resource name.",
+                    "description": "Permanently deletes the given KeyRing. All child resources of the KeyRing must have been previously deleted using their corresponding Delete operations. The specified key ring will be immediately and permanently deleted upon calling this method. This action cannot be undone.",
                     "parameters": {
                       "name": {
                         "type": "string",

@@ -25,7 +25,7 @@
   "version_qualifier": "v1beta",
   "raw_spec": {
     "name": "ces",
-    "revision": "20260824",
+    "revision": "20260903",
     "discoveryVersion": "v1",
     "baseUrl": "https://ces.googleapis.com/",
     "rootUrl": "https://ces.googleapis.com/",
@@ -421,6 +421,17 @@
             "enum": null,
             "readOnly": false
           },
+          "remoteA2aAgent": {
+            "type": "",
+            "format": "",
+            "description": "Optional. The remote [A2A](https://github.com/a2aproject/A2A) agent to be used for the agent execution.",
+            "$ref": "AgentRemoteA2aAgent",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
           "remoteDialogflowAgent": {
             "type": "",
             "format": "",
@@ -726,6 +737,52 @@
         "description": "Default agent type. The agent uses instructions and callbacks specified in the agent to perform the task using a large language model.",
         "$ref": "",
         "properties": {},
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "AgentRegistryDeployment": {
+        "type": "object",
+        "format": "",
+        "description": "Configuration and status for Agent Registry deployment.",
+        "$ref": "",
+        "properties": {
+          "agentRegistryServiceName": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Output only. The resource name of the deployed Agent Registry service. Format: `projects/{project}/locations/{location}/services/{service}`",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "AgentRemoteA2aAgent": {
+        "type": "object",
+        "format": "",
+        "description": "The agent which will transfer execution to a remote [A2A](https://github.com/a2aproject/A2A) agent.",
+        "$ref": "",
+        "properties": {
+          "a2aConfig": {
+            "type": "",
+            "format": "",
+            "description": "Required. The A2A connection configuration.",
+            "$ref": "RemoteA2aConfig",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
         "items": null,
         "additionalProperties": null,
         "enum": null,
@@ -2377,6 +2434,17 @@
             "additionalProperties": null,
             "enum": null,
             "readOnly": true
+          },
+          "updateTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. Timestamp when the app version was last updated.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
           }
         },
         "items": null,
@@ -2408,6 +2476,27 @@
             "$ref": "BargeInConfig",
             "properties": null,
             "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "customVoiceSamples": {
+            "type": "array",
+            "format": "",
+            "description": "Optional. Configures custom voice samples for voice cloning.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "CustomVoiceSample",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
             "additionalProperties": null,
             "enum": null,
             "readOnly": false
@@ -3573,6 +3662,27 @@
             "additionalProperties": null,
             "enum": null,
             "readOnly": false
+          },
+          "inlineCitations": {
+            "type": "array",
+            "format": "",
+            "description": "Optional. List of inline citations in the agent response.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "CitationsInlineCitation",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
           }
         },
         "items": null,
@@ -3623,6 +3733,61 @@
             "type": "string",
             "format": "",
             "description": "URI used for citation.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "CitationsInlineCitation": {
+        "type": "object",
+        "format": "",
+        "description": "An inline citation in the response text.",
+        "$ref": "",
+        "properties": {
+          "citedChunkIndices": {
+            "type": "array",
+            "format": "",
+            "description": "The indices of the cited chunks that back this text segment. Indices refer to the elements in `cited_chunks`.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "integer",
+              "format": "int32",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "endIndex": {
+            "type": "integer",
+            "format": "int32",
+            "description": "The ending index (in bytes) of the text segment in the agent response.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "startIndex": {
+            "type": "integer",
+            "format": "int32",
+            "description": "The starting index (in bytes) of the text segment in the agent response.",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -4186,6 +4351,84 @@
             "type": "string",
             "format": "",
             "description": "Optional. The intended ground-truth text from the Simulated Caller (Polysynth). Only populated when word error rate metrics are enabled.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "CustomVoiceSample": {
+        "type": "object",
+        "format": "",
+        "description": "Configuration for a custom voice sample used for voice cloning.",
+        "$ref": "",
+        "properties": {
+          "consentAudioGcsUri": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Consent audio for voice cloning.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The user-defined name for the custom voice sample.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "previewAudioContent": {
+            "type": "string",
+            "format": "byte",
+            "description": "Output only. Synthesized preview audio for custom voice, formatted as canonical WAV (LINEAR16, 24kHz, 16-bit, mono).",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "previewText": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Text for synthesizing preview audio for custom voice.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "voiceInstruction": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Natural language instructions for voice style, tone, pacing, or pronunciation.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "voiceSampleGcsUri": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The Cloud Storage URI to the audio sample for voice cloning. The audio sample should be a mono-channel, 24kHz WAV file.",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -5136,6 +5379,17 @@
         "description": "A deployment represents an immutable, queryable version of the app. It is used to deploy an app version with a specific channel profile.",
         "$ref": "",
         "properties": {
+          "agentRegistryDeployment": {
+            "type": "",
+            "format": "",
+            "description": "Optional. Configuration for deploying this deployment to Agent Registry. If present, this deployment will be published to Agent Registry.",
+            "$ref": "AgentRegistryDeployment",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
           "appVersion": {
             "type": "string",
             "format": "",
@@ -12200,6 +12454,17 @@
         "description": "Represents an image input or output in the conversation.",
         "$ref": "",
         "properties": {
+          "altText": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The alternative text for the image.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
           "data": {
             "type": "string",
             "format": "byte",
@@ -18029,6 +18294,115 @@
         "enum": null,
         "readOnly": false
       },
+      "RemoteA2aConfig": {
+        "type": "object",
+        "format": "",
+        "description": "Shared configuration for connecting to a remote [A2A](https://github.com/a2aproject/A2A) agent.",
+        "$ref": "",
+        "properties": {
+          "agentCard": {
+            "type": "",
+            "format": "",
+            "description": "Optional. The full agent card defined inline.",
+            "$ref": "AgentCard",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "agentRegistry": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Reference to the agent in the Agent Registry. Format: `projects/{project}/locations/{location}/agents/{agent}`",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "apiAuthentication": {
+            "type": "",
+            "format": "",
+            "description": "Optional. Authentication configuration for calling the remote agent. Optional if the registry reference already handles authentication.",
+            "$ref": "ApiAuthentication",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "contextId": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. If not empty, interactions with the remote A2A agent will use this context ID. This context_id field can refer to a session variable like `$context.variables.order_agent_session_id`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "inputVariableMapping": {
+            "type": "object",
+            "format": "",
+            "description": "Optional. Mapping of input variable names of remote agent to GECX variable names.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "outputVariableMapping": {
+            "type": "object",
+            "format": "",
+            "description": "Optional. Mapping of output variable names of remote agent to GECX variable names.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "streamingEnabled": {
+            "type": "boolean",
+            "format": "",
+            "description": "Optional. Whether streaming is enabled for the remote agent.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
       "RemoteAgentTool": {
         "type": "object",
         "format": "",
@@ -19668,6 +20042,17 @@
               "enum": null,
               "readOnly": false
             },
+            "enum": null,
+            "readOnly": false
+          },
+          "progress": {
+            "type": "string",
+            "format": "",
+            "description": "Intermediate progress update from the CES agent.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
             "enum": null,
             "readOnly": false
           },
@@ -24521,6 +24906,34 @@
                         "request": null,
                         "response": {
                           "$ref": "ListAppVersionsResponse"
+                        }
+                      },
+                      "patch": {
+                        "id": "ces.projects.locations.apps.versions.patch",
+                        "httpMethod": "PATCH",
+                        "path": "v1beta/{+name}",
+                        "flatPath": "v1beta/projects/{projectsId}/locations/{locationsId}/apps/{appsId}/versions/{versionsId}",
+                        "description": "Updates the specified app version.",
+                        "parameters": {
+                          "name": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          },
+                          "updateMask": {
+                            "type": "string",
+                            "location": "query",
+                            "required": false
+                          }
+                        },
+                        "parameterOrder": [
+                          "name"
+                        ],
+                        "request": {
+                          "$ref": "AppVersion"
+                        },
+                        "response": {
+                          "$ref": "AppVersion"
                         }
                       },
                       "restore": {

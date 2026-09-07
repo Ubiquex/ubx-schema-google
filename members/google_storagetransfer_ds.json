@@ -24,7 +24,7 @@
   "wire_name": "google_storagetransfer",
   "raw_spec": {
     "name": "storagetransfer",
-    "revision": "20260814",
+    "revision": "20260821",
     "discoveryVersion": "v1",
     "baseUrl": "https://storagetransfer.googleapis.com/",
     "rootUrl": "https://storagetransfer.googleapis.com/",

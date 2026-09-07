@@ -24,7 +24,7 @@
   "wire_name": "google_spanner",
   "raw_spec": {
     "name": "spanner",
-    "revision": "20260828",
+    "revision": "20260827",
     "discoveryVersion": "v1",
     "baseUrl": "https://spanner.googleapis.com/",
     "rootUrl": "https://spanner.googleapis.com/",

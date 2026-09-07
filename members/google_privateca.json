@@ -24,7 +24,7 @@
   "wire_name": "google_privateca",
   "raw_spec": {
     "name": "privateca",
-    "revision": "20260819",
+    "revision": "20260826",
     "discoveryVersion": "v1",
     "baseUrl": "https://privateca.googleapis.com/",
     "rootUrl": "https://privateca.googleapis.com/",

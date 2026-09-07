@@ -1,7 +1,7 @@
 {
   "schema_format": 3,
   "provider": "google",
-  "version": "2.1.0",
+  "version": "3.0.0",
   "members": [
     "google",
     "google_accesscontextmanager",
@@ -528,7 +528,8 @@
     "google_workstations_v1beta",
     "google_workstations_v1beta_ds"
   ],
-  "min_binary_version": "1.0.6",
+  "generated_by_binary_version": "1.2.0",
+  "min_binary_version": "1.2.0",
   "schema_urls": {
     "google": "https://www.googleapis.com/discovery/v1/apis/compute/v1/rest",
     "google_accesscontextmanager": "https://accesscontextmanager.googleapis.com/$discovery/rest?version=v1",

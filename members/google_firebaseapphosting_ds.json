@@ -24,7 +24,7 @@
   "wire_name": "google_firebaseapphosting",
   "raw_spec": {
     "name": "firebaseapphosting",
-    "revision": "20260820",
+    "revision": "20260827",
     "discoveryVersion": "v1",
     "baseUrl": "https://firebaseapphosting.googleapis.com/",
     "rootUrl": "https://firebaseapphosting.googleapis.com/",

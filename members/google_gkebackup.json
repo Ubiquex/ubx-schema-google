@@ -24,7 +24,7 @@
   "wire_name": "google_gkebackup",
   "raw_spec": {
     "name": "gkebackup",
-    "revision": "20260817",
+    "revision": "20260826",
     "discoveryVersion": "v1",
     "baseUrl": "https://gkebackup.googleapis.com/",
     "rootUrl": "https://gkebackup.googleapis.com/",
@@ -345,9 +345,20 @@
       "BDRBackupRestoreJobLog": {
         "type": "object",
         "format": "",
-        "description": "Log entry for Backup and Restore Job for resources using BackupPlan based protection. Next Id: 26",
+        "description": "Log entry for Backup and Restore Job for resources using BackupPlan based protection. Next Id: 27",
         "$ref": "",
         "properties": {
+          "autoProtectionPolicy": {
+            "type": "string",
+            "format": "",
+            "description": "The auto-protection policy that created the backup.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
           "backupConsistencyTime": {
             "type": "string",
             "format": "google-datetime",

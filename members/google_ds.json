@@ -24,7 +24,7 @@
   "wire_name": "google",
   "raw_spec": {
     "name": "compute",
-    "revision": "20260821",
+    "revision": "20260828",
     "discoveryVersion": "v1",
     "baseUrl": "https://compute.googleapis.com/compute/v1/",
     "rootUrl": "https://compute.googleapis.com/",
@@ -7284,7 +7284,7 @@
           "instance": {
             "type": "string",
             "format": "",
-            "description": "The name of the VM instance of the leader network endpoint. The\ninstance must already be attached to the NEG specified in the\nhaPolicy.leader.backendGroup.\n\nThe name must be 1-63 characters long, and comply with RFC1035.\nAuthorization requires the following IAM permission on the\nspecified resource instance: compute.instances.use",
+            "description": "The name of the VM instance of the leader network endpoint. The\ninstance must already be attached to the NEG specified in the\nhaPolicy.leader.backendGroup.\n\nThe value must be a valid RFC1035 name (1-63 characters) or a valid\ninstance URL.\nAuthorization requires the following IAM permission on the\nspecified resource instance: compute.instances.use",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -10027,6 +10027,779 @@
               "enum": null,
               "readOnly": false
             },
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "CapacityAdviceRequest": {
+        "type": "object",
+        "format": "",
+        "description": "A request to provide Assistant Scores. These scores determine VM\nobtainability and preemption likelihood.",
+        "$ref": "",
+        "properties": {
+          "distributionPolicy": {
+            "type": "",
+            "format": "",
+            "description": "Policy specifying the distribution of instances across\nzones within the requested region.",
+            "$ref": "CapacityAdviceRequestDistributionPolicy",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "instanceFlexibilityPolicy": {
+            "type": "",
+            "format": "",
+            "description": "Policy for instance selectors.",
+            "$ref": "CapacityAdviceRequestInstanceFlexibilityPolicy",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "instanceProperties": {
+            "type": "",
+            "format": "",
+            "description": "Instance properties for this request.",
+            "$ref": "CapacityAdviceRequestInstanceProperties",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "size": {
+            "type": "integer",
+            "format": "int32",
+            "description": "The number of VM instances to request.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "CapacityAdviceRequestDistributionPolicy": {
+        "type": "object",
+        "format": "",
+        "description": "Distribution policy.",
+        "$ref": "",
+        "properties": {
+          "targetShape": {
+            "type": "string",
+            "format": "",
+            "description": "Target distribution shape. You can specify the following values:ANY, ANY_SINGLE_ZONE, or BALANCED.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "ANY",
+              "ANY_SINGLE_ZONE",
+              "BALANCED",
+              "TARGET_SHAPE_UNSPECIFIED"
+            ],
+            "readOnly": false
+          },
+          "zones": {
+            "type": "array",
+            "format": "",
+            "description": "Zones where Capacity Advisor looks for capacity.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "CapacityAdviceRequestDistributionPolicyZoneConfiguration",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "CapacityAdviceRequestDistributionPolicyZoneConfiguration": {
+        "type": "object",
+        "format": "",
+        "description": "Zone configuration for the distribution policy.",
+        "$ref": "",
+        "properties": {
+          "zone": {
+            "type": "string",
+            "format": "",
+            "description": "The URL of the zone. It can be a\npartial or full URL. For example, the following are valid values: \n   \n   \n     - https://www.googleapis.com/compute/v1/projects/project/zones/zone \n   - projects/project/zones/zone \n   - zones/zone",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "CapacityAdviceRequestInstanceFlexibilityPolicy": {
+        "type": "object",
+        "format": "",
+        "description": "Specification of alternative, flexible instance configurations.",
+        "$ref": "",
+        "properties": {
+          "instanceSelections": {
+            "type": "object",
+            "format": "",
+            "description": "Named instance selections to configure properties.\nThe key is an arbitrary, unique RFC1035 string that identifies the\ninstance selection.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "CapacityAdviceRequestInstanceFlexibilityPolicyInstanceSelection",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "CapacityAdviceRequestInstanceFlexibilityPolicyInstanceSelection": {
+        "type": "object",
+        "format": "",
+        "description": "Machine specification.",
+        "$ref": "",
+        "properties": {
+          "disks": {
+            "type": "array",
+            "format": "",
+            "description": "Local SSDs.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "CapacityAdviceRequestInstanceFlexibilityPolicyInstanceSelectionAttachedDisk",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "guestAccelerators": {
+            "type": "array",
+            "format": "",
+            "description": "Accelerators configuration.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "AcceleratorConfig",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "machineTypes": {
+            "type": "array",
+            "format": "",
+            "description": "Full machine-type names, e.g. \"n1-standard-16\".",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "CapacityAdviceRequestInstanceFlexibilityPolicyInstanceSelectionAttachedDisk": {
+        "type": "object",
+        "format": "",
+        "description": "Attached disk configuration.",
+        "$ref": "",
+        "properties": {
+          "type": {
+            "type": "string",
+            "format": "",
+            "description": "Specifies the type of the disk.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "DISK_TYPE_UNSPECIFIED",
+              "SCRATCH"
+            ],
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "CapacityAdviceRequestInstanceProperties": {
+        "type": "object",
+        "format": "",
+        "description": "Instance provisioning properties.",
+        "$ref": "",
+        "properties": {
+          "scheduling": {
+            "type": "",
+            "format": "",
+            "description": "Specifies the scheduling options.",
+            "$ref": "CapacityAdviceRequestInstancePropertiesScheduling",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "CapacityAdviceRequestInstancePropertiesScheduling": {
+        "type": "object",
+        "format": "",
+        "description": "Defines the instance scheduling options.",
+        "$ref": "",
+        "properties": {
+          "provisioningModel": {
+            "type": "string",
+            "format": "",
+            "description": "Specifies the provisioning model.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "FLEX_START",
+              "RESERVATION_BOUND",
+              "SPOT",
+              "STANDARD"
+            ],
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "CapacityAdviceResponse": {
+        "type": "object",
+        "format": "",
+        "description": "A response contains scoring recommendations.",
+        "$ref": "",
+        "properties": {
+          "recommendations": {
+            "type": "array",
+            "format": "",
+            "description": "Initially the API will provide one recommendation which balances the\nindividual scores according to the service provider's preference.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "CapacityAdviceResponseRecommendation",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "CapacityAdviceResponseRecommendation": {
+        "type": "object",
+        "format": "",
+        "description": "Recommendation.",
+        "$ref": "",
+        "properties": {
+          "scores": {
+            "type": "",
+            "format": "",
+            "description": "Scores for the recommendation.",
+            "$ref": "CapacityAdviceResponseRecommendationScores",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "shards": {
+            "type": "array",
+            "format": "",
+            "description": "Shards represent blocks of uniform capacity in recommendations.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "CapacityAdviceResponseRecommendationShard",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "CapacityAdviceResponseRecommendationScores": {
+        "type": "object",
+        "format": "",
+        "description": "Groups information about a shard of capacity.",
+        "$ref": "",
+        "properties": {
+          "estimatedUptime": {
+            "type": "string",
+            "format": "google-duration",
+            "description": "The estimated run time of the majority of Spot VMs in the request\nbefore preemption. The estimate is best-effort only. It is based on\nhistorical data and current conditions.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "obtainability": {
+            "type": "number",
+            "format": "double",
+            "description": "The obtainability score indicates the likelihood of successfully\nobtaining (provisioning) the requested number of VMs.\nThe score range is 0.0 through 1.0. Higher is better.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "CapacityAdviceResponseRecommendationShard": {
+        "type": "object",
+        "format": "",
+        "description": "Shards represent blocks of uniform capacity in recommendations.\nEach shard is for a single zone and a single machine shape. Each shard\ndefines a size expressed as the number of VMs.",
+        "$ref": "",
+        "properties": {
+          "instanceCount": {
+            "type": "integer",
+            "format": "int32",
+            "description": "The number of instances.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "machineType": {
+            "type": "string",
+            "format": "",
+            "description": "The machine type corresponds to the instance selection in the request.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "provisioningModel": {
+            "type": "string",
+            "format": "",
+            "description": "The provisioning model that you want to view recommendations for.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "FLEX_START",
+              "RESERVATION_BOUND",
+              "SPOT",
+              "STANDARD"
+            ],
+            "readOnly": false
+          },
+          "zone": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The zone name for this shard.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "CapacityHistoryRequest": {
+        "type": "object",
+        "format": "",
+        "description": "A request to get the capacity history.",
+        "$ref": "",
+        "properties": {
+          "instanceProperties": {
+            "type": "",
+            "format": "",
+            "description": "Instance properties for this request.",
+            "$ref": "CapacityHistoryRequestInstanceProperties",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "locationPolicy": {
+            "type": "",
+            "format": "",
+            "description": "Location policy for this request.",
+            "$ref": "CapacityHistoryRequestLocationPolicy",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "types": {
+            "type": "array",
+            "format": "",
+            "description": "List of history types to get capacity history for.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": [
+                "HISTORY_TYPE_UNSPECIFIED",
+                "PREEMPTION",
+                "PRICE"
+              ],
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "CapacityHistoryRequestInstanceProperties": {
+        "type": "object",
+        "format": "",
+        "description": "Instance properties for this request.",
+        "$ref": "",
+        "properties": {
+          "machineType": {
+            "type": "string",
+            "format": "",
+            "description": "The machine type for the VM, such as `n2-standard-4`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "scheduling": {
+            "type": "",
+            "format": "",
+            "description": "Specifies the scheduling options.",
+            "$ref": "CapacityHistoryRequestInstancePropertiesScheduling",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "CapacityHistoryRequestInstancePropertiesScheduling": {
+        "type": "object",
+        "format": "",
+        "description": "Scheduling options.",
+        "$ref": "",
+        "properties": {
+          "provisioningModel": {
+            "type": "string",
+            "format": "",
+            "description": "The provisioning model to get capacity history for.\nThis field must be set to SPOT.\n\nFor more information, see\nCompute Engine instances provisioning models.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "FLEX_START",
+              "RESERVATION_BOUND",
+              "SPOT",
+              "STANDARD"
+            ],
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "CapacityHistoryRequestLocationPolicy": {
+        "type": "object",
+        "format": "",
+        "description": "Location policy for this request.",
+        "$ref": "",
+        "properties": {
+          "location": {
+            "type": "string",
+            "format": "",
+            "description": "The region or zone to get capacity history for.\n\nIt can be a partial or full URL. For example, the following are valid\nvalues: \n   \n   \n     - https://www.googleapis.com/compute/v1/projects/project/zones/zone \n   - projects/project/zones/zone \n   - zones/zone\n\n\n\nThis field is optional.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "CapacityHistoryResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Contains the capacity history.",
+        "$ref": "",
+        "properties": {
+          "location": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The location (region or zone) for which the capacity history is returned.\nIt is returned as a URL - For example,https://www.googleapis.com/compute/v1/projects/project/zones/zone.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "machineType": {
+            "type": "string",
+            "format": "",
+            "description": "The machine type for which the capacity history is returned.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "preemptionHistory": {
+            "type": "array",
+            "format": "",
+            "description": "The preemption history for the requested machine type and location.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "CapacityHistoryResponsePreemptionRecord",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "priceHistory": {
+            "type": "array",
+            "format": "",
+            "description": "The price history for the requested machine type and location.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "CapacityHistoryResponsePriceRecord",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "CapacityHistoryResponsePreemptionRecord": {
+        "type": "object",
+        "format": "",
+        "description": "A record of Spot VM preemption history.",
+        "$ref": "",
+        "properties": {
+          "interval": {
+            "type": "",
+            "format": "",
+            "description": "The time interval for this preemption record.",
+            "$ref": "Interval",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "preemptionRate": {
+            "type": "number",
+            "format": "double",
+            "description": "The preemption rate during the interval, representing the fraction of\nSpot VMs that were preempted. Range: 0.0 to 1.0. Preemption rate is\ncalculated as (total preempted Spots) / (total Spots that stopped\nrunning).",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "CapacityHistoryResponsePriceRecord": {
+        "type": "object",
+        "format": "",
+        "description": "A record of price history.",
+        "$ref": "",
+        "properties": {
+          "interval": {
+            "type": "",
+            "format": "",
+            "description": "The time interval for this price record.",
+            "$ref": "Interval",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "listPrice": {
+            "type": "",
+            "format": "",
+            "description": "The Spot VM list price during the interval.",
+            "$ref": "Money",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
             "enum": null,
             "readOnly": false
           }
@@ -22892,6 +23665,7 @@
             "additionalProperties": null,
             "enum": [
               "BARE_METAL_LINUX_COMPATIBLE",
+              "BMSAI_CAPABLE",
               "CCA_CAPABLE",
               "FEATURE_TYPE_UNSPECIFIED",
               "GVNIC",
@@ -36353,6 +37127,17 @@
         "description": "Represents the change that you want to make to the instance properties.",
         "$ref": "",
         "properties": {
+          "exposeHostTopology": {
+            "type": "boolean",
+            "format": "",
+            "description": "This optional flag exposes the hashed physical host ID.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
           "labels": {
             "type": "object",
             "format": "",
@@ -45704,6 +46489,40 @@
         "enum": null,
         "readOnly": false
       },
+      "Interval": {
+        "type": "object",
+        "format": "",
+        "description": "Represents a time interval, encoded as a Timestamp start (inclusive) and a\nTimestamp end (exclusive).\n\nThe start must be less than or equal to the end.\nWhen the start equals the end, the interval is empty (matches no time).\nWhen both start and end are unspecified, the interval matches any time.",
+        "$ref": "",
+        "properties": {
+          "endTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Optional. Exclusive end of the interval.\n\nIf specified, a Timestamp matching this interval will have to be before the\nend.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "startTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Optional. Inclusive start of the interval.\n\nIf specified, a Timestamp matching this interval will have to be the same\nor after the start.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
       "License": {
         "type": "object",
         "format": "",
@@ -48966,6 +49785,51 @@
             "type": "string",
             "format": "",
             "description": "The value of the label must match the specified value.\n\nvalue can have a maximum length of 1024 characters.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Money": {
+        "type": "object",
+        "format": "",
+        "description": "Represents an amount of money with its currency type.",
+        "$ref": "",
+        "properties": {
+          "currencyCode": {
+            "type": "string",
+            "format": "",
+            "description": "The three-letter currency code defined in ISO 4217.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "nanos": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Number of nano (10^-9) units of the amount.\nThe value must be between -999,999,999 and +999,999,999 inclusive.\nIf `units` is positive, `nanos` must be positive or zero.\nIf `units` is zero, `nanos` can be positive, zero, or negative.\nIf `units` is negative, `nanos` must be negative or zero.\nFor example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "units": {
+            "type": "string",
+            "format": "int64",
+            "description": "The whole units of the amount.\nFor example if `currencyCode` is `\"USD\"`, then 1 unit is one US dollar.",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -62039,6 +62903,29 @@
               "HOST",
               "UNSPECIFIED_XPN_PROJECT_STATUS"
             ],
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ProjectView": {
+        "type": "object",
+        "format": "",
+        "description": "Represents a ProjectView resource.\n\nA ProjectView resource contains read-only project data which is available\nglobally.",
+        "$ref": "",
+        "properties": {
+          "project": {
+            "type": "",
+            "format": "",
+            "description": "The project data.\nThe returned Project data does not contain regional or zonal quota\nusage data. Global quota limits are present. For accurate, real-time quota\nusage numbers, query the global\n[projects.get](https://cloud.google.com/compute/docs/reference/rest/v1/projects/get)\nendpoint.",
+            "$ref": "Project",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
             "readOnly": false
           }
         },
@@ -78561,6 +79448,17 @@
             "type": "integer",
             "format": "int32",
             "description": "Specifies the availability domain to place the instance in. The value\nmust be a number between 1 and the number of availability domains\nspecified in the spread placement policy attached to the instance.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "exposeHostTopology": {
+            "type": "boolean",
+            "format": "",
+            "description": "This optional flag exposes the hashed physical host ID in the\nResourceStatus resource of the VM.",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -102877,6 +103775,64 @@
             "response": {
               "$ref": "CalendarModeAdviceResponse"
             }
+          },
+          "capacity": {
+            "id": "compute.advice.capacity",
+            "httpMethod": "POST",
+            "path": "projects/{project}/regions/{region}/advice/capacity",
+            "flatPath": "projects/{project}/regions/{region}/advice/capacity",
+            "description": "Advice on making real-time decisions (such as choosing zone or\nmachine types) during deployment to maximize your chances of obtaining\ncapacity.",
+            "parameters": {
+              "project": {
+                "type": "string",
+                "location": "path",
+                "required": true
+              },
+              "region": {
+                "type": "string",
+                "location": "path",
+                "required": true
+              }
+            },
+            "parameterOrder": [
+              "project",
+              "region"
+            ],
+            "request": {
+              "$ref": "CapacityAdviceRequest"
+            },
+            "response": {
+              "$ref": "CapacityAdviceResponse"
+            }
+          },
+          "capacityHistory": {
+            "id": "compute.advice.capacityHistory",
+            "httpMethod": "POST",
+            "path": "projects/{project}/regions/{region}/advice/capacityHistory",
+            "flatPath": "projects/{project}/regions/{region}/advice/capacityHistory",
+            "description": "Gets the capacity history.",
+            "parameters": {
+              "project": {
+                "type": "string",
+                "location": "path",
+                "required": true
+              },
+              "region": {
+                "type": "string",
+                "location": "path",
+                "required": true
+              }
+            },
+            "parameterOrder": [
+              "project",
+              "region"
+            ],
+            "request": {
+              "$ref": "CapacityHistoryRequest"
+            },
+            "response": {
+              "$ref": "CapacityHistoryResponse"
+            }
           }
         },
         "resources": null
@@ -121003,6 +121959,38 @@
             },
             "response": {
               "$ref": "Operation"
+            }
+          }
+        },
+        "resources": null
+      },
+      "projectViews": {
+        "methods": {
+          "get": {
+            "id": "compute.projectViews.get",
+            "httpMethod": "GET",
+            "path": "projects/{project}/regions/{region}/projectViews",
+            "flatPath": "projects/{project}/regions/{region}/projectViews",
+            "description": "Returns the specified global ProjectViews resource, with a regional\ncontext.\nThis regional API endpoint reads resource metadata from regional\nread-only replicas. Because changes are copied to these regional replicas\nasynchronously, for real-time resource reads or any write operations\n(creating, updating, or deleting resources), use the global\n[projects.get](https://cloud.google.com/compute/docs/reference/rest/v1/projects/get)\nendpoint.",
+            "parameters": {
+              "project": {
+                "type": "string",
+                "location": "path",
+                "required": true
+              },
+              "region": {
+                "type": "string",
+                "location": "path",
+                "required": true
+              }
+            },
+            "parameterOrder": [
+              "project",
+              "region"
+            ],
+            "request": null,
+            "response": {
+              "$ref": "ProjectView"
             }
           }
         },

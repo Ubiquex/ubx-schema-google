@@ -25,7 +25,7 @@
   "version_qualifier": "v1beta1",
   "raw_spec": {
     "name": "firestore",
-    "revision": "20260818",
+    "revision": "20260826",
     "discoveryVersion": "v1",
     "baseUrl": "https://firestore.googleapis.com/",
     "rootUrl": "https://firestore.googleapis.com/",

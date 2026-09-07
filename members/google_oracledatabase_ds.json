@@ -24,7 +24,7 @@
   "wire_name": "google_oracledatabase",
   "raw_spec": {
     "name": "oracledatabase",
-    "revision": "20260821",
+    "revision": "20260826",
     "discoveryVersion": "v1",
     "baseUrl": "https://oracledatabase.googleapis.com/",
     "rootUrl": "https://oracledatabase.googleapis.com/",

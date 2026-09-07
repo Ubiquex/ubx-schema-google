@@ -24,7 +24,7 @@
   "wire_name": "google_vision",
   "raw_spec": {
     "name": "vision",
-    "revision": "20260814",
+    "revision": "20260821",
     "discoveryVersion": "v1",
     "baseUrl": "https://vision.googleapis.com/",
     "rootUrl": "https://vision.googleapis.com/",

@@ -24,7 +24,7 @@
   "wire_name": "google_vmmigration",
   "raw_spec": {
     "name": "vmmigration",
-    "revision": "20260820",
+    "revision": "20260830",
     "discoveryVersion": "v1",
     "baseUrl": "https://vmmigration.googleapis.com/",
     "rootUrl": "https://vmmigration.googleapis.com/",

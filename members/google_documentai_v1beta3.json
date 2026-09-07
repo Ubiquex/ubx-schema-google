@@ -25,7 +25,7 @@
   "version_qualifier": "v1beta3",
   "raw_spec": {
     "name": "documentai",
-    "revision": "20260823",
+    "revision": "20260901",
     "discoveryVersion": "v1",
     "baseUrl": "https://documentai.googleapis.com/",
     "rootUrl": "https://documentai.googleapis.com/",

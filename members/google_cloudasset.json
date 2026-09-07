@@ -24,7 +24,7 @@
   "wire_name": "google_cloudasset",
   "raw_spec": {
     "name": "cloudasset",
-    "revision": "20260816",
+    "revision": "20260801",
     "discoveryVersion": "v1",
     "baseUrl": "https://cloudasset.googleapis.com/",
     "rootUrl": "https://cloudasset.googleapis.com/",

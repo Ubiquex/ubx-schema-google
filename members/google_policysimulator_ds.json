@@ -24,7 +24,7 @@
   "wire_name": "google_policysimulator",
   "raw_spec": {
     "name": "policysimulator",
-    "revision": "20260821",
+    "revision": "20260827",
     "discoveryVersion": "v1",
     "baseUrl": "https://policysimulator.googleapis.com/",
     "rootUrl": "https://policysimulator.googleapis.com/",

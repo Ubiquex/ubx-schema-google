@@ -24,7 +24,7 @@
   "wire_name": "google_assuredworkloads",
   "raw_spec": {
     "name": "assuredworkloads",
-    "revision": "20260825",
+    "revision": "20260904",
     "discoveryVersion": "v1",
     "baseUrl": "https://assuredworkloads.googleapis.com/",
     "rootUrl": "https://assuredworkloads.googleapis.com/",

@@ -25,7 +25,7 @@
   "version_qualifier": "v1beta1",
   "raw_spec": {
     "name": "file",
-    "revision": "20260819",
+    "revision": "20260827",
     "discoveryVersion": "v1",
     "baseUrl": "https://file.googleapis.com/",
     "rootUrl": "https://file.googleapis.com/",
@@ -271,6 +271,17 @@
               "REGIONAL"
             ],
             "readOnly": true
+          },
+          "sourceVolume": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The resource name of the Filestore volume that the backup is created from. Should be in the format: projects/{project_id}/locations/{location_id}/volumePools/{volume_pool_id}/volumes/{volume_id}",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
           },
           "state": {
             "type": "string",
@@ -1689,144 +1700,6 @@
             "type": "string",
             "format": "",
             "description": "The service tier of the instance.",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": [
-              "TIER_UNSPECIFIED",
-              "STANDARD",
-              "PREMIUM",
-              "BASIC_HDD",
-              "BASIC_SSD",
-              "HIGH_SCALE_SSD",
-              "ENTERPRISE",
-              "ZONAL",
-              "REGIONAL"
-            ],
-            "readOnly": false
-          }
-        },
-        "items": null,
-        "additionalProperties": null,
-        "enum": null,
-        "readOnly": false
-      },
-      "InstanceTemplate": {
-        "type": "object",
-        "format": "",
-        "description": "InstanceTemplate representation of a Cloud Filestore volume pool instance template.",
-        "$ref": "",
-        "properties": {
-          "backendType": {
-            "type": "string",
-            "format": "",
-            "description": "Optional. Backend type.",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": [
-              "BACKEND_TYPE_UNSPECIFIED",
-              "COMPUTE_BASED_BACKEND",
-              "FILESTORE_BACKEND"
-            ],
-            "readOnly": false
-          },
-          "capacityGb": {
-            "type": "integer",
-            "format": "int32",
-            "description": "Optional. Capacity in GB.",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "labels": {
-            "type": "object",
-            "format": "",
-            "description": "Optional. Instance labels.",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": {
-              "type": "string",
-              "format": "",
-              "description": "",
-              "$ref": "",
-              "properties": null,
-              "items": null,
-              "additionalProperties": null,
-              "enum": null,
-              "readOnly": false
-            },
-            "enum": null,
-            "readOnly": false
-          },
-          "networks": {
-            "type": "array",
-            "format": "",
-            "description": "Optional. Network configurations.",
-            "$ref": "",
-            "properties": null,
-            "items": {
-              "type": "",
-              "format": "",
-              "description": "",
-              "$ref": "NetworkConfig",
-              "properties": null,
-              "items": null,
-              "additionalProperties": null,
-              "enum": null,
-              "readOnly": false
-            },
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "performanceConfig": {
-            "type": "",
-            "format": "",
-            "description": "Optional. Performance configuration.",
-            "$ref": "PerformanceConfig",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "protocol": {
-            "type": "string",
-            "format": "",
-            "description": "Optional. File protocol.",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": [
-              "FILE_PROTOCOL_UNSPECIFIED",
-              "NFS_V3",
-              "NFS_V4_1"
-            ],
-            "readOnly": false
-          },
-          "requestOverrides": {
-            "type": "string",
-            "format": "",
-            "description": "Optional. Request overrides in JSON format.",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "tier": {
-            "type": "string",
-            "format": "",
-            "description": "Optional. Tier of the instance.",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -3654,7 +3527,18 @@
           "capacityGb": {
             "type": "string",
             "format": "int64",
-            "description": "File share capacity in gigabytes (GB). Filestore defines 1 GB as 1024^3 bytes. Must be greater than 0.",
+            "description": "Optional. File share capacity in gigabytes (GB). Filestore defines 1 GB as 1024^3 bytes. Must be greater than 0. Exactly one of capacity_gb or capacity_mb must be specified.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "capacityMb": {
+            "type": "string",
+            "format": "int64",
+            "description": "Optional. File share capacity in Megabytes (MB). Must be greater than 0. Exactly one of capacity_gb or capacity_mb must be specified.",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -4150,6 +4034,17 @@
         "description": "VolumePool representation of a Cloud Filestore volume pool.",
         "$ref": "",
         "properties": {
+          "activeVolumeIops": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Optional. The number of IOPs provisioned per active volume.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
           "createTime": {
             "type": "string",
             "format": "google-datetime",
@@ -4161,44 +4056,22 @@
             "enum": null,
             "readOnly": true
           },
+          "defaultVolumeQuotaMib": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Optional. The default quota per volume in MiB. Default: 1024 MiB.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
           "description": {
             "type": "string",
             "format": "",
             "description": "Optional. A description of the volume pool with 2048 characters or less.",
             "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "instanceListPageSize": {
-            "type": "integer",
-            "format": "int32",
-            "description": "Optional. The page size to use when listing instances.",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "instanceNamePrefix": {
-            "type": "string",
-            "format": "",
-            "description": "Optional. Instance name prefix.",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "instanceTemplate": {
-            "type": "",
-            "format": "",
-            "description": "Optional. Instance template details.",
-            "$ref": "InstanceTemplate",
             "properties": null,
             "items": null,
             "additionalProperties": null,
@@ -4226,94 +4099,6 @@
             "enum": null,
             "readOnly": false
           },
-          "maxAcquireCandidates": {
-            "type": "integer",
-            "format": "int32",
-            "description": "Optional. The maximum number of candidates to fetch when acquiring a volume.",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "maxInstances": {
-            "type": "integer",
-            "format": "int32",
-            "description": "Optional. Maximum number of instances to create.",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "maxPendingInstanceCreations": {
-            "type": "integer",
-            "format": "int32",
-            "description": "Optional. The maximum number of pending instance creation requests.",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "maxPendingVolumeCreationsPerInstance": {
-            "type": "integer",
-            "format": "int32",
-            "description": "Optional. The maximum number of pending volume creation requests per instance.",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "maxPendingVolumeDeletionsPerInstance": {
-            "type": "integer",
-            "format": "int32",
-            "description": "Optional. The maximum number of pending volume deletion requests per instance.",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "maxVolumesPerInstance": {
-            "type": "integer",
-            "format": "int32",
-            "description": "Optional. Maximum number of volumes per instance.",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "minAvailableVolumes": {
-            "type": "integer",
-            "format": "int32",
-            "description": "Optional. Minimum number of available volumes to maintain.",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "minInstances": {
-            "type": "integer",
-            "format": "int32",
-            "description": "Optional. Minimum number of instances to create.",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
           "name": {
             "type": "string",
             "format": "",
@@ -4325,10 +4110,10 @@
             "enum": null,
             "readOnly": false
           },
-          "negbaInstanceRatio": {
-            "type": "number",
-            "format": "float",
-            "description": "Optional. The ratio of Negba instances to maintain in the volume pool, between 0 and 1.",
+          "network": {
+            "type": "string",
+            "format": "",
+            "description": "Required. The VPC network to which the VolumePool should be attached. Only Private Service Connect (PSC) is supported.",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -4336,65 +4121,16 @@
             "enum": null,
             "readOnly": false
           },
-          "operationPollLimit": {
-            "type": "integer",
-            "format": "int32",
-            "description": "Optional. The maximum number of operations to poll in a single reconciliation run.",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "state": {
+          "uid": {
             "type": "string",
             "format": "",
-            "description": "Output only. The volume pool state.",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": [
-              "STATE_UNSPECIFIED",
-              "READY",
-              "DELETING",
-              "INVALID"
-            ],
-            "readOnly": true
-          },
-          "uniqueId": {
-            "type": "string",
-            "format": "",
-            "description": "Output only. Unique ID of the resource, as defined by CCFE.",
+            "description": "Output only. System-assigned unique identifier for the volume pool.",
             "$ref": "",
             "properties": null,
             "items": null,
             "additionalProperties": null,
             "enum": null,
             "readOnly": true
-          },
-          "volumeBatchSize": {
-            "type": "integer",
-            "format": "int32",
-            "description": "Optional. The number of volumes to create in a single batch.",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "volumeSizeMb": {
-            "type": "integer",
-            "format": "int32",
-            "description": "Optional. Volume size in MiB.",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
           }
         },
         "items": null,

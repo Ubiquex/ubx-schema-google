@@ -25,7 +25,7 @@
   "version_qualifier": "alpha",
   "raw_spec": {
     "name": "compute",
-    "revision": "20260821",
+    "revision": "20260828",
     "discoveryVersion": "v1",
     "baseUrl": "https://compute.googleapis.com/compute/alpha/",
     "rootUrl": "https://compute.googleapis.com/",
@@ -7339,6 +7339,17 @@
             "enum": null,
             "readOnly": false
           },
+          "networkAttachment": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The URL of the network attachment that this resource\nbelongs to.projects/{project}/regions/{region_name}/networkAttachments/{network_attachment_name}.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
           "networkPassThroughLbTrafficPolicy": {
             "type": "",
             "format": "",
@@ -7499,6 +7510,17 @@
               "enum": null,
               "readOnly": false
             },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "serviceClassId": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The service class ID associated with this resource.\nProducer Service's Service class ID for the region of this backend\nservice. Can only be used with network_attachment. It is not possible to\nuse on its own; however, network_attachment can be used without\nservice_class_id.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
             "additionalProperties": null,
             "enum": null,
             "readOnly": false
@@ -8430,7 +8452,7 @@
           "instance": {
             "type": "string",
             "format": "",
-            "description": "The name of the VM instance of the leader network endpoint. The\ninstance must already be attached to the NEG specified in the\nhaPolicy.leader.backendGroup.\n\nThe name must be 1-63 characters long, and comply with RFC1035.\nAuthorization requires the following IAM permission on the\nspecified resource instance: compute.instances.use",
+            "description": "The name of the VM instance of the leader network endpoint. The\ninstance must already be attached to the NEG specified in the\nhaPolicy.leader.backendGroup.\n\nThe value must be a valid RFC1035 name (1-63 characters) or a valid\ninstance URL.\nAuthorization requires the following IAM permission on the\nspecified resource instance: compute.instances.use",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -11345,13 +11367,13 @@
       "CalendarModeExtensionAdviceRequest": {
         "type": "object",
         "format": "",
-        "description": "A request to recommend the best duration for extending an existing\nFuture Reservation in CALENDAR mode, that is equal or less than the specified\nextension duration.",
+        "description": "A request to recommend the maximum duration for extending an existing future\nreservation in calendar mode. The recommended duration is shorter than or\nequal to the specified extension duration.",
         "$ref": "",
         "properties": {
           "endTimeNotLaterThan": {
             "type": "string",
             "format": "google-datetime",
-            "description": "Required. The desired end time after the Future Reservation is extended.",
+            "description": "Required. The desired end time for the extension.",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -11362,7 +11384,7 @@
           "futureReservation": {
             "type": "string",
             "format": "",
-            "description": "Required. Reference to the Future Reservation, in the format:\nprojects/{project}/zones/{zone}/futureReservations/{name}\nFull URIs that include hostnames (like compute.googleapis.com or\nwww.googleapis.com) are also supported.",
+            "description": "Required. Reference to the future reservation, in the format:\nprojects/{project}/zones/{zone}/futureReservations/{name}\nFull URIs that include hostnames (like compute.googleapis.com or\nwww.googleapis.com) are also supported.",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -11379,13 +11401,13 @@
       "CalendarModeExtensionAdviceResponse": {
         "type": "object",
         "format": "",
-        "description": "A response containing the recommended duration to extend a\nFuture Reservation in CALENDAR mode based on the available capacity during\nthe extension period.",
+        "description": "A response that contains the recommended duration for extending\na future reservation in calendar mode based on available capacity\nduring the extension period.",
         "$ref": "",
         "properties": {
           "endTime": {
             "type": "string",
             "format": "google-datetime",
-            "description": "The recommended end time for the extension, which will either be\nthe end time requested by the caller or the longest alternative for\nwhich there is sufficient capacity. If extension is not possible, this\nfield will be empty, and not_recommended_reason will be populated instead.",
+            "description": "The recommended end time for the extension, which is either the end time\nrequested by the caller or the longest alternative with sufficient\ncapacity. If the extension is not possible, this field is empty, and\nnotRecommendedReason is populated instead.",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -11396,7 +11418,7 @@
           "notRecommendedReason": {
             "type": "",
             "format": "",
-            "description": "Information regarding the reason why the Future Reservation\ncannot be extended at all. If a recommendation is provided, whether that is\nthe requested end time or an alternative, this field will be empty.",
+            "description": "The reason why the future reservation can't be extended. If a\nrecommendation is provided, whether for the requested end time or an\nalternative, this field is empty.",
             "$ref": "CalendarModeExtensionAdviceResponseNotRecommendedReason",
             "properties": null,
             "items": null,
@@ -11407,7 +11429,7 @@
           "recommendationId": {
             "type": "string",
             "format": "",
-            "description": "Unique id of the recommendation, a UUID string generated by the API.",
+            "description": "The unique ID of the recommendation, which is a UUID string generated by\nthe API.",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -11430,7 +11452,7 @@
           "details": {
             "type": "string",
             "format": "",
-            "description": "Details (human readable) describing why the recommendation\nwas not provided. For example, if the status is CONDITION_NOT_MET,\nthen this field will contain information about why the requested\nextension duration is not eligible.",
+            "description": "Human-readable details describing why the recommendation wasn't provided.\nFor example, if the status is CONDITIONS_NOT_MET, this field explains why\nthe requested extension duration isn't possible.",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -18940,6 +18962,32 @@
         "enum": null,
         "readOnly": false
       },
+      "DynamicCompressionPolicy": {
+        "type": "object",
+        "format": "",
+        "description": "Dynamic compression policy for this URL Map's route.",
+        "$ref": "",
+        "properties": {
+          "compressionMode": {
+            "type": "string",
+            "format": "",
+            "description": "Compress text responses using Brotli or gzip compression, based on\nthe client's Accept-Encoding header.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "AUTOMATIC",
+              "DISABLED"
+            ],
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
       "ErrorInfo": {
         "type": "object",
         "format": "",
@@ -22835,6 +22883,17 @@
             "enum": null,
             "readOnly": false
           },
+          "networkAttachment": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The URL of the network attachment that this resource\nbelongs to.projects/{project}/regions/{region_name}/networkAttachments/{network_attachment_name}.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
           "networkTier": {
             "type": "string",
             "format": "",
@@ -22968,6 +23027,17 @@
             "additionalProperties": null,
             "enum": null,
             "readOnly": true
+          },
+          "serviceClassId": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Producer Service's Service class ID for the region of this forwarding rule.\nCan only be used with network_attachment. It is not possible to use on its\nown; however, network_attachment can be used without service_class_id.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
           },
           "serviceDirectoryRegistrations": {
             "type": "array",
@@ -27860,6 +27930,7 @@
             "additionalProperties": null,
             "enum": [
               "BARE_METAL_LINUX_COMPATIBLE",
+              "BMSAI_CAPABLE",
               "CCA_CAPABLE",
               "FEATURE_TYPE_UNSPECIFIED",
               "GVNIC",
@@ -34753,6 +34824,17 @@
             "format": "",
             "description": "The specification for allowing client-side cross-origin requests. For more\ninformation about the W3C recommendation for cross-origin resource sharing\n(CORS), see Fetch API Living\nStandard.\n\nNot supported when the URL map is bound to a target gRPC proxy.",
             "$ref": "CorsPolicy",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "dynamicCompressionPolicy": {
+            "type": "",
+            "format": "",
+            "description": "Dynamic compression policy for this URL Map's route. Available only for\nGlobal EXTERNAL_MANAGED load balancer schemes.",
+            "$ref": "DynamicCompressionPolicy",
             "properties": null,
             "items": null,
             "additionalProperties": null,
@@ -61491,6 +61573,27 @@
             "additionalProperties": null,
             "enum": null,
             "readOnly": false
+          },
+          "additionalTags": {
+            "type": "array",
+            "format": "",
+            "description": "Output only. [Output Only] Additional tags for this resource.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
           },
           "autoCreateSubnetworks": {
             "type": "boolean",
@@ -90508,6 +90611,17 @@
             "additionalProperties": null,
             "enum": null,
             "readOnly": false
+          },
+          "machine": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. [Output Only] The ID of the machine on which the running instance is\nlocated. It is only populated for machines which have multiple hosts.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
           },
           "subblock": {
             "type": "string",
@@ -125419,7 +125533,7 @@
             "httpMethod": "POST",
             "path": "projects/{project}/regions/{region}/advice/calendarModeExtension",
             "flatPath": "projects/{project}/regions/{region}/advice/calendarModeExtension",
-            "description": "Advise on whether extending an existing Future Reservation is possible\nbased on the desired extension end time. If capacity is not available for\nthe entire requested duration, the method will recommend the longest\npossible extension.",
+            "description": "Advises on whether extending an existing future reservation is possible\nbased on the desired extension end time. If capacity isn't available for\nthe entire requested duration, the method recommends the longest possible\nextension.",
             "parameters": {
               "project": {
                 "type": "string",

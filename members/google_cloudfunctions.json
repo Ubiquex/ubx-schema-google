@@ -24,7 +24,7 @@
   "wire_name": "google_cloudfunctions",
   "raw_spec": {
     "name": "cloudfunctions",
-    "revision": "20260820",
+    "revision": "20260827",
     "discoveryVersion": "v1",
     "baseUrl": "https://cloudfunctions.googleapis.com/",
     "rootUrl": "https://cloudfunctions.googleapis.com/",

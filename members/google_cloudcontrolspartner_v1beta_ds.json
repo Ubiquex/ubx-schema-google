@@ -25,7 +25,7 @@
   "version_qualifier": "v1beta",
   "raw_spec": {
     "name": "cloudcontrolspartner",
-    "revision": "20260819",
+    "revision": "20260826",
     "discoveryVersion": "v1",
     "baseUrl": "https://cloudcontrolspartner.googleapis.com/",
     "rootUrl": "https://cloudcontrolspartner.googleapis.com/",

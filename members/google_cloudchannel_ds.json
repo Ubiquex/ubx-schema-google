@@ -24,7 +24,7 @@
   "wire_name": "google_cloudchannel",
   "raw_spec": {
     "name": "cloudchannel",
-    "revision": "20260825",
+    "revision": "20260901",
     "discoveryVersion": "v1",
     "baseUrl": "https://cloudchannel.googleapis.com/",
     "rootUrl": "https://cloudchannel.googleapis.com/",

@@ -25,7 +25,7 @@
   "version_qualifier": "v1beta1",
   "raw_spec": {
     "name": "networkservices",
-    "revision": "20260821",
+    "revision": "20260827",
     "discoveryVersion": "v1",
     "baseUrl": "https://networkservices.googleapis.com/",
     "rootUrl": "https://networkservices.googleapis.com/",

@@ -24,7 +24,7 @@
   "wire_name": "google_metastore",
   "raw_spec": {
     "name": "metastore",
-    "revision": "20260825",
+    "revision": "20260901",
     "discoveryVersion": "v1",
     "baseUrl": "https://metastore.googleapis.com/",
     "rootUrl": "https://metastore.googleapis.com/",

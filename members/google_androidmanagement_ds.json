@@ -24,7 +24,7 @@
   "wire_name": "google_androidmanagement",
   "raw_spec": {
     "name": "androidmanagement",
-    "revision": "20260827",
+    "revision": "20260907",
     "discoveryVersion": "v1",
     "baseUrl": "https://androidmanagement.googleapis.com/",
     "rootUrl": "https://androidmanagement.googleapis.com/",
