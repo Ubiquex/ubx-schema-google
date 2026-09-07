@@ -24,12 +24,742 @@
   "wire_name": "google_cloudbilling",
   "raw_spec": {
     "name": "cloudbilling",
-    "revision": "20260821",
+    "revision": "20260901",
     "discoveryVersion": "v1",
     "baseUrl": "https://cloudbilling.googleapis.com/",
     "rootUrl": "https://cloudbilling.googleapis.com/",
     "servicePath": "",
     "schemas": {
+      "APIKeySecurityScheme": {
+        "type": "object",
+        "format": "",
+        "description": "",
+        "$ref": "",
+        "properties": {
+          "description": {
+            "type": "string",
+            "format": "",
+            "description": "Description of this security scheme.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "location": {
+            "type": "string",
+            "format": "",
+            "description": "Location of the API key, valid values are \"query\", \"header\", or \"cookie\"",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "Name of the header, query or cookie parameter to be used.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "AgentCapabilities": {
+        "type": "object",
+        "format": "",
+        "description": "Defines the A2A feature set supported by the agent",
+        "$ref": "",
+        "properties": {
+          "extensions": {
+            "type": "array",
+            "format": "",
+            "description": "Extensions supported by this agent.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "AgentExtension",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "pushNotifications": {
+            "type": "boolean",
+            "format": "",
+            "description": "If the agent can send push notifications to the clients webhook",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "streaming": {
+            "type": "boolean",
+            "format": "",
+            "description": "If the agent will support streaming responses",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "AgentCard": {
+        "type": "object",
+        "format": "",
+        "description": "AgentCard conveys key information: - Overall details (version, name, description, uses) - Skills; a set of actions/solutions the agent can perform - Default modalities/content types supported by the agent. - Authentication requirements Next ID: 19",
+        "$ref": "",
+        "properties": {
+          "additionalInterfaces": {
+            "type": "array",
+            "format": "",
+            "description": "Announcement of additional supported transports. Client can use any of the supported transports.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "AgentInterface",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "capabilities": {
+            "type": "",
+            "format": "",
+            "description": "A2A Capability set supported by the agent.",
+            "$ref": "AgentCapabilities",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "defaultInputModes": {
+            "type": "array",
+            "format": "",
+            "description": "protolint:enable REPEATED_FIELD_NAMES_PLURALIZED The set of interaction modes that the agent supports across all skills. This can be overridden per skill. Defined as mime types.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "defaultOutputModes": {
+            "type": "array",
+            "format": "",
+            "description": "The mime types supported as outputs from this agent.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "description": {
+            "type": "string",
+            "format": "",
+            "description": "A description of the agent's domain of action/solution space. Example: \"Agent that helps users with recipes and cooking.\"",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "documentationUrl": {
+            "type": "string",
+            "format": "",
+            "description": "A url to provide additional documentation about the agent.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "iconUrl": {
+            "type": "string",
+            "format": "",
+            "description": "An optional URL to an icon for the agent.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "A human readable name for the agent. Example: \"Recipe Agent\"",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "preferredTransport": {
+            "type": "string",
+            "format": "",
+            "description": "The transport of the preferred endpoint. If empty, defaults to JSONRPC.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "protocolVersion": {
+            "type": "string",
+            "format": "",
+            "description": "The version of the A2A protocol this agent supports.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "provider": {
+            "type": "",
+            "format": "",
+            "description": "The service provider of the agent.",
+            "$ref": "AgentProvider",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "security": {
+            "type": "array",
+            "format": "",
+            "description": "protolint:disable REPEATED_FIELD_NAMES_PLURALIZED Security requirements for contacting the agent. This list can be seen as an OR of ANDs. Each object in the list describes one possible set of security requirements that must be present on a request. This allows specifying, for example, \"callers must either use OAuth OR an API Key AND mTLS.\" Example: security { schemes { key: \"oauth\" value { list: [\"read\"] } } } security { schemes { key: \"api-key\" } schemes { key: \"mtls\" } }",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Security",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "securitySchemes": {
+            "type": "object",
+            "format": "",
+            "description": "The security scheme details used for authenticating with this agent.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "SecurityScheme",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "signatures": {
+            "type": "array",
+            "format": "",
+            "description": "JSON Web Signatures computed for this AgentCard.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "AgentCardSignature",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "skills": {
+            "type": "array",
+            "format": "",
+            "description": "Skills represent a unit of ability an agent can perform. This may somewhat abstract but represents a more focused set of actions that the agent is highly likely to succeed at.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "AgentSkill",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "supportsAuthenticatedExtendedCard": {
+            "type": "boolean",
+            "format": "",
+            "description": "Whether the agent supports providing an extended agent card when the user is authenticated, i.e. is the card from .well-known different than the card from GetAgentCard.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "url": {
+            "type": "string",
+            "format": "",
+            "description": "A URL to the address the agent is hosted at. This represents the preferred endpoint as declared by the agent.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "version": {
+            "type": "string",
+            "format": "",
+            "description": "The version of the agent. Example: \"1.0.0\"",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "AgentCardSignature": {
+        "type": "object",
+        "format": "",
+        "description": "AgentCardSignature represents a JWS signature of an AgentCard. This follows the JSON format of an RFC 7515 JSON Web Signature (JWS).",
+        "$ref": "",
+        "properties": {
+          "header": {
+            "type": "object",
+            "format": "",
+            "description": "The unprotected JWS header values.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "any",
+              "format": "",
+              "description": "Properties of the object.",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "protected": {
+            "type": "string",
+            "format": "",
+            "description": "Required. The protected JWS header for the signature. This is always a base64url-encoded JSON object. Required.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "signature": {
+            "type": "string",
+            "format": "",
+            "description": "Required. The computed signature, base64url-encoded. Required.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "AgentExtension": {
+        "type": "object",
+        "format": "",
+        "description": "A declaration of an extension supported by an Agent.",
+        "$ref": "",
+        "properties": {
+          "description": {
+            "type": "string",
+            "format": "",
+            "description": "A description of how this agent uses this extension. Example: \"Google OAuth 2.0 authentication\"",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "params": {
+            "type": "object",
+            "format": "",
+            "description": "Optional configuration for the extension.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "any",
+              "format": "",
+              "description": "Properties of the object.",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "required": {
+            "type": "boolean",
+            "format": "",
+            "description": "Whether the client must follow specific requirements of the extension. Example: false",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "uri": {
+            "type": "string",
+            "format": "",
+            "description": "The URI of the extension. Example: \"https://developers.google.com/identity/protocols/oauth2\"",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "AgentInterface": {
+        "type": "object",
+        "format": "",
+        "description": "Defines additional transport information for the agent.",
+        "$ref": "",
+        "properties": {
+          "tenant": {
+            "type": "string",
+            "format": "",
+            "description": "Tenant to be set in the request when calling the agent. Experimental, might still change for 1.0 release.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "transport": {
+            "type": "string",
+            "format": "",
+            "description": "The transport supported this url. This is an open form string, to be easily extended for many transport protocols. The core ones officially supported are JSONRPC, GRPC and HTTP+JSON.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "url": {
+            "type": "string",
+            "format": "",
+            "description": "The url this interface is found at.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "AgentProvider": {
+        "type": "object",
+        "format": "",
+        "description": "Represents information about the service provider of an agent.",
+        "$ref": "",
+        "properties": {
+          "organization": {
+            "type": "string",
+            "format": "",
+            "description": "The providers organization name Example: \"Google\"",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "url": {
+            "type": "string",
+            "format": "",
+            "description": "The providers reference url Example: \"https://ai.google.dev\"",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "AgentSkill": {
+        "type": "object",
+        "format": "",
+        "description": "AgentSkill represents a unit of action/solution that the agent can perform. One can think of this as a type of highly reliable solution that an agent can be tasked to provide. Agents have the autonomy to choose how and when to use specific skills, but clients should have confidence that if the skill is defined that unit of action can be reliably performed.",
+        "$ref": "",
+        "properties": {
+          "description": {
+            "type": "string",
+            "format": "",
+            "description": "A human (or llm) readable description of the skill details and behaviors.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "examples": {
+            "type": "array",
+            "format": "",
+            "description": "A set of example queries that this skill is designed to address. These examples should help the caller to understand how to craft requests to the agent to achieve specific goals. Example: [\"I need a recipe for bread\"]",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "id": {
+            "type": "string",
+            "format": "",
+            "description": "Unique identifier of the skill within this agent.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "inputModes": {
+            "type": "array",
+            "format": "",
+            "description": "Possible input modalities supported.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "A human readable name for the skill.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "outputModes": {
+            "type": "array",
+            "format": "",
+            "description": "Possible output modalities produced",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "security": {
+            "type": "array",
+            "format": "",
+            "description": "protolint:disable REPEATED_FIELD_NAMES_PLURALIZED Security schemes necessary for the agent to leverage this skill. As in the overall AgentCard.security, this list represents a logical OR of security requirement objects. Each object is a set of security schemes that must be used together (a logical AND). protolint:enable REPEATED_FIELD_NAMES_PLURALIZED",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Security",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "tags": {
+            "type": "array",
+            "format": "",
+            "description": "A set of tags for the skill to enhance categorization/utilization. Example: [\"cooking\", \"customer support\", \"billing\"]",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
       "AggregationInfo": {
         "type": "object",
         "format": "",
@@ -75,6 +805,114 @@
               "ACCOUNT",
               "PROJECT"
             ],
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Artifact": {
+        "type": "object",
+        "format": "",
+        "description": "Artifacts are the container for task completed results. These are similar to Messages but are intended to be the product of a task, as opposed to point-to-point communication.",
+        "$ref": "",
+        "properties": {
+          "artifactId": {
+            "type": "string",
+            "format": "",
+            "description": "Unique identifier (e.g. UUID) for the artifact. It must be at least unique within a task.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "description": {
+            "type": "string",
+            "format": "",
+            "description": "A human readable description of the artifact, optional.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "extensions": {
+            "type": "array",
+            "format": "",
+            "description": "The URIs of extensions that are present or contributed to this Artifact.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "metadata": {
+            "type": "object",
+            "format": "",
+            "description": "Optional metadata included with the artifact.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "any",
+              "format": "",
+              "description": "Properties of the object.",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "A human readable name for the artifact.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "parts": {
+            "type": "array",
+            "format": "",
+            "description": "The content of the artifact.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Part",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
             "readOnly": false
           }
         },
@@ -168,6 +1006,116 @@
               "DATA_WRITE",
               "DATA_READ"
             ],
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "AuthenticationInfo": {
+        "type": "object",
+        "format": "",
+        "description": "Defines authentication details, used for push notifications.",
+        "$ref": "",
+        "properties": {
+          "credentials": {
+            "type": "string",
+            "format": "",
+            "description": "Optional credentials",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "schemes": {
+            "type": "array",
+            "format": "",
+            "description": "Supported authentication schemes - e.g. Basic, Bearer, etc",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "AuthorizationCodeOAuthFlow": {
+        "type": "object",
+        "format": "",
+        "description": "",
+        "$ref": "",
+        "properties": {
+          "authorizationUrl": {
+            "type": "string",
+            "format": "",
+            "description": "The authorization URL to be used for this flow. This MUST be in the form of a URL. The OAuth2 standard requires the use of TLS",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "refreshUrl": {
+            "type": "string",
+            "format": "",
+            "description": "The URL to be used for obtaining refresh tokens. This MUST be in the form of a URL. The OAuth2 standard requires the use of TLS.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "scopes": {
+            "type": "object",
+            "format": "",
+            "description": "The available scopes for the OAuth2 security scheme. A map between the scope name and a short description for it. The map MAY be empty.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "tokenUrl": {
+            "type": "string",
+            "format": "",
+            "description": "The token URL to be used for this flow. This MUST be in the form of a URL. The OAuth2 standard requires the use of TLS.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
             "readOnly": false
           }
         },
@@ -309,6 +1257,29 @@
         "enum": null,
         "readOnly": false
       },
+      "CancelTaskRequest": {
+        "type": "object",
+        "format": "",
+        "description": "",
+        "$ref": "",
+        "properties": {
+          "tenant": {
+            "type": "string",
+            "format": "",
+            "description": "Optional tenant, provided as a path parameter. Experimental, might still change for 1.0 release.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
       "Category": {
         "type": "object",
         "format": "",
@@ -360,6 +1331,105 @@
             "readOnly": false
           }
         },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ClientCredentialsOAuthFlow": {
+        "type": "object",
+        "format": "",
+        "description": "",
+        "$ref": "",
+        "properties": {
+          "refreshUrl": {
+            "type": "string",
+            "format": "",
+            "description": "The URL to be used for obtaining refresh tokens. This MUST be in the form of a URL. The OAuth2 standard requires the use of TLS.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "scopes": {
+            "type": "object",
+            "format": "",
+            "description": "The available scopes for the OAuth2 security scheme. A map between the scope name and a short description for it. The map MAY be empty.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "tokenUrl": {
+            "type": "string",
+            "format": "",
+            "description": "The token URL to be used for this flow. This MUST be in the form of a URL. The OAuth2 standard requires the use of TLS.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "DataPart": {
+        "type": "object",
+        "format": "",
+        "description": "DataPart represents a structured blob. This is most commonly a JSON payload.",
+        "$ref": "",
+        "properties": {
+          "data": {
+            "type": "object",
+            "format": "",
+            "description": "",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "any",
+              "format": "",
+              "description": "Properties of the object.",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Empty": {
+        "type": "object",
+        "format": "",
+        "description": "A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }",
+        "$ref": "",
+        "properties": {},
         "items": null,
         "additionalProperties": null,
         "enum": null,
@@ -421,6 +1491,62 @@
         "enum": null,
         "readOnly": false
       },
+      "FilePart": {
+        "type": "object",
+        "format": "",
+        "description": "FilePart represents the different ways files can be provided. If files are small, directly feeding the bytes is supported via file_with_bytes. If the file is large, the agent should read the content as appropriate directly from the file_with_uri source.",
+        "$ref": "",
+        "properties": {
+          "fileWithBytes": {
+            "type": "string",
+            "format": "byte",
+            "description": "",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "fileWithUri": {
+            "type": "string",
+            "format": "",
+            "description": "",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "mimeType": {
+            "type": "string",
+            "format": "",
+            "description": "",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
       "GeoTaxonomy": {
         "type": "object",
         "format": "",
@@ -462,6 +1588,106 @@
               "REGIONAL",
               "MULTI_REGIONAL"
             ],
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "HTTPAuthSecurityScheme": {
+        "type": "object",
+        "format": "",
+        "description": "",
+        "$ref": "",
+        "properties": {
+          "bearerFormat": {
+            "type": "string",
+            "format": "",
+            "description": "A hint to the client to identify how the bearer token is formatted. Bearer tokens are usually generated by an authorization server, so this information is primarily for documentation purposes.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "description": {
+            "type": "string",
+            "format": "",
+            "description": "Description of this security scheme.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "scheme": {
+            "type": "string",
+            "format": "",
+            "description": "The name of the HTTP Authentication scheme to be used in the Authorization header as defined in RFC7235. The values used SHOULD be registered in the IANA Authentication Scheme registry. The value is case-insensitive, as defined in RFC7235.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ImplicitOAuthFlow": {
+        "type": "object",
+        "format": "",
+        "description": "",
+        "$ref": "",
+        "properties": {
+          "authorizationUrl": {
+            "type": "string",
+            "format": "",
+            "description": "The authorization URL to be used for this flow. This MUST be in the form of a URL. The OAuth2 standard requires the use of TLS",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "refreshUrl": {
+            "type": "string",
+            "format": "",
+            "description": "The URL to be used for obtaining refresh tokens. This MUST be in the form of a URL. The OAuth2 standard requires the use of TLS.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "scopes": {
+            "type": "object",
+            "format": "",
+            "description": "The available scopes for the OAuth2 security scheme. A map between the scope name and a short description for it. The map MAY be empty.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
             "readOnly": false
           }
         },
@@ -646,6 +1872,173 @@
         "enum": null,
         "readOnly": false
       },
+      "ListTaskPushNotificationConfigResponse": {
+        "type": "object",
+        "format": "",
+        "description": "",
+        "$ref": "",
+        "properties": {
+          "configs": {
+            "type": "array",
+            "format": "",
+            "description": "The list of push notification configurations.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "TaskPushNotificationConfig",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Message": {
+        "type": "object",
+        "format": "",
+        "description": "Message is one unit of communication between client and server. It is associated with a context and optionally a task. Since the server is responsible for the context definition, it must always provide a context_id in its messages. The client can optionally provide the context_id if it knows the context to associate the message to. Similarly for task_id, except the server decides if a task is created and whether to include the task_id.",
+        "$ref": "",
+        "properties": {
+          "content": {
+            "type": "array",
+            "format": "",
+            "description": "protolint:disable REPEATED_FIELD_NAMES_PLURALIZED Content is the container of the message content.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Part",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "contextId": {
+            "type": "string",
+            "format": "",
+            "description": "The context id of the message. This is optional and if set, the message will be associated with the given context.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "extensions": {
+            "type": "array",
+            "format": "",
+            "description": "The URIs of extensions that are present or contributed to this Message.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "messageId": {
+            "type": "string",
+            "format": "",
+            "description": "The unique identifier (e.g. UUID)of the message. This is required and created by the message creator.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "metadata": {
+            "type": "object",
+            "format": "",
+            "description": "protolint:enable REPEATED_FIELD_NAMES_PLURALIZED Any optional metadata to provide along with the message.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "any",
+              "format": "",
+              "description": "Properties of the object.",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "role": {
+            "type": "string",
+            "format": "",
+            "description": "A role for the message.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "ROLE_UNSPECIFIED",
+              "ROLE_USER",
+              "ROLE_AGENT"
+            ],
+            "readOnly": false
+          },
+          "taskId": {
+            "type": "string",
+            "format": "",
+            "description": "The task id of the message. This is optional and if set, the message will be associated with the given task.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
       "Money": {
         "type": "object",
         "format": "",
@@ -701,6 +2094,285 @@
             "type": "string",
             "format": "",
             "description": "Required. The resource name of the Organization to move the billing account under. Must be of the form `organizations/{organization_id}`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "MutualTlsSecurityScheme": {
+        "type": "object",
+        "format": "",
+        "description": "",
+        "$ref": "",
+        "properties": {
+          "description": {
+            "type": "string",
+            "format": "",
+            "description": "Description of this security scheme.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "OAuth2SecurityScheme": {
+        "type": "object",
+        "format": "",
+        "description": "",
+        "$ref": "",
+        "properties": {
+          "description": {
+            "type": "string",
+            "format": "",
+            "description": "Description of this security scheme.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "flows": {
+            "type": "",
+            "format": "",
+            "description": "An object containing configuration information for the flow types supported",
+            "$ref": "OAuthFlows",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "oauth2MetadataUrl": {
+            "type": "string",
+            "format": "",
+            "description": "URL to the oauth2 authorization server metadata [RFC8414](https://datatracker.ietf.org/doc/html/rfc8414). TLS is required.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "OAuthFlows": {
+        "type": "object",
+        "format": "",
+        "description": "",
+        "$ref": "",
+        "properties": {
+          "authorizationCode": {
+            "type": "",
+            "format": "",
+            "description": "",
+            "$ref": "AuthorizationCodeOAuthFlow",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "clientCredentials": {
+            "type": "",
+            "format": "",
+            "description": "",
+            "$ref": "ClientCredentialsOAuthFlow",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "implicit": {
+            "type": "",
+            "format": "",
+            "description": "",
+            "$ref": "ImplicitOAuthFlow",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "password": {
+            "type": "",
+            "format": "",
+            "description": "",
+            "$ref": "PasswordOAuthFlow",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "OpenIdConnectSecurityScheme": {
+        "type": "object",
+        "format": "",
+        "description": "",
+        "$ref": "",
+        "properties": {
+          "description": {
+            "type": "string",
+            "format": "",
+            "description": "Description of this security scheme.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "openIdConnectUrl": {
+            "type": "string",
+            "format": "",
+            "description": "Well-known URL to discover the [[OpenID-Connect-Discovery]] provider metadata.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Part": {
+        "type": "object",
+        "format": "",
+        "description": "Part represents a container for a section of communication content. Parts can be purely textual, some sort of file (image, video, etc) or a structured data blob (i.e. JSON).",
+        "$ref": "",
+        "properties": {
+          "data": {
+            "type": "",
+            "format": "",
+            "description": "",
+            "$ref": "DataPart",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "file": {
+            "type": "",
+            "format": "",
+            "description": "",
+            "$ref": "FilePart",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "metadata": {
+            "type": "object",
+            "format": "",
+            "description": "Optional metadata associated with this part.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "any",
+              "format": "",
+              "description": "Properties of the object.",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "text": {
+            "type": "string",
+            "format": "",
+            "description": "",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "PasswordOAuthFlow": {
+        "type": "object",
+        "format": "",
+        "description": "",
+        "$ref": "",
+        "properties": {
+          "refreshUrl": {
+            "type": "string",
+            "format": "",
+            "description": "The URL to be used for obtaining refresh tokens. This MUST be in the form of a URL. The OAuth2 standard requires the use of TLS.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "scopes": {
+            "type": "object",
+            "format": "",
+            "description": "The available scopes for the OAuth2 security scheme. A map between the scope name and a short description for it. The map MAY be empty.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "tokenUrl": {
+            "type": "string",
+            "format": "",
+            "description": "The token URL to be used for this flow. This MUST be in the form of a URL. The OAuth2 standard requires the use of TLS.",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -1012,6 +2684,328 @@
         "enum": null,
         "readOnly": false
       },
+      "PushNotificationConfig": {
+        "type": "object",
+        "format": "",
+        "description": "Configuration for setting up push notifications for task updates.",
+        "$ref": "",
+        "properties": {
+          "authentication": {
+            "type": "",
+            "format": "",
+            "description": "Information about the authentication to sent with the notification",
+            "$ref": "AuthenticationInfo",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "id": {
+            "type": "string",
+            "format": "",
+            "description": "A unique identifier (e.g. UUID) for this push notification.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "token": {
+            "type": "string",
+            "format": "",
+            "description": "Token unique for this task/session",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "url": {
+            "type": "string",
+            "format": "",
+            "description": "Url to send the notification too",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Security": {
+        "type": "object",
+        "format": "",
+        "description": "",
+        "$ref": "",
+        "properties": {
+          "schemes": {
+            "type": "object",
+            "format": "",
+            "description": "",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "StringList",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "SecurityScheme": {
+        "type": "object",
+        "format": "",
+        "description": "",
+        "$ref": "",
+        "properties": {
+          "apiKeySecurityScheme": {
+            "type": "",
+            "format": "",
+            "description": "",
+            "$ref": "APIKeySecurityScheme",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "httpAuthSecurityScheme": {
+            "type": "",
+            "format": "",
+            "description": "",
+            "$ref": "HTTPAuthSecurityScheme",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "mtlsSecurityScheme": {
+            "type": "",
+            "format": "",
+            "description": "",
+            "$ref": "MutualTlsSecurityScheme",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "oauth2SecurityScheme": {
+            "type": "",
+            "format": "",
+            "description": "",
+            "$ref": "OAuth2SecurityScheme",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "openIdConnectSecurityScheme": {
+            "type": "",
+            "format": "",
+            "description": "",
+            "$ref": "OpenIdConnectSecurityScheme",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "SendMessageConfiguration": {
+        "type": "object",
+        "format": "",
+        "description": "Configuration of a send message request.",
+        "$ref": "",
+        "properties": {
+          "acceptedOutputModes": {
+            "type": "array",
+            "format": "",
+            "description": "The output modes that the agent is expected to respond with.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "blocking": {
+            "type": "boolean",
+            "format": "",
+            "description": "If true, the message will be blocking until the task is completed. If false, the message will be non-blocking and the task will be returned immediately. It is the caller's responsibility to check for any task updates.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "historyLength": {
+            "type": "integer",
+            "format": "int32",
+            "description": "The maximum number of messages to include in the history. if 0, the history will be unlimited.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "pushNotification": {
+            "type": "",
+            "format": "",
+            "description": "A configuration of a webhook that can be used to receive updates",
+            "$ref": "PushNotificationConfig",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "SendMessageRequest": {
+        "type": "object",
+        "format": "",
+        "description": "/////////// Request Messages ///////////",
+        "$ref": "",
+        "properties": {
+          "configuration": {
+            "type": "",
+            "format": "",
+            "description": "Configuration for the send request.",
+            "$ref": "SendMessageConfiguration",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "message": {
+            "type": "",
+            "format": "",
+            "description": "Required. The message to send to the agent.",
+            "$ref": "Message",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "metadata": {
+            "type": "object",
+            "format": "",
+            "description": "Optional metadata for the request.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "any",
+              "format": "",
+              "description": "Properties of the object.",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "tenant": {
+            "type": "string",
+            "format": "",
+            "description": "Optional tenant, provided as a path parameter. Experimental, might still change for 1.0 release.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "SendMessageResponse": {
+        "type": "object",
+        "format": "",
+        "description": "////// Response Messages ///////////",
+        "$ref": "",
+        "properties": {
+          "message": {
+            "type": "",
+            "format": "",
+            "description": "",
+            "$ref": "Message",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "task": {
+            "type": "",
+            "format": "",
+            "description": "",
+            "$ref": "Task",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
       "Service": {
         "type": "object",
         "format": "",
@@ -1209,6 +3203,457 @@
             "type": "string",
             "format": "",
             "description": "The identifier for the SKU. Example: \"D041-B8A1-6E0B\"",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "StreamResponse": {
+        "type": "object",
+        "format": "",
+        "description": "The stream response for a message. The stream should be one of the following sequences: If the response is a message, the stream should contain one, and only one, message and then close If the response is a task lifecycle, the first response should be a Task object followed by zero or more TaskStatusUpdateEvents and TaskArtifactUpdateEvents. The stream should complete when the Task if in an interrupted or terminal state. A stream that ends before these conditions are met are",
+        "$ref": "",
+        "properties": {
+          "artifactUpdate": {
+            "type": "",
+            "format": "",
+            "description": "",
+            "$ref": "TaskArtifactUpdateEvent",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "message": {
+            "type": "",
+            "format": "",
+            "description": "",
+            "$ref": "Message",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "statusUpdate": {
+            "type": "",
+            "format": "",
+            "description": "",
+            "$ref": "TaskStatusUpdateEvent",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "task": {
+            "type": "",
+            "format": "",
+            "description": "",
+            "$ref": "Task",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "StringList": {
+        "type": "object",
+        "format": "",
+        "description": "protolint:disable REPEATED_FIELD_NAMES_PLURALIZED",
+        "$ref": "",
+        "properties": {
+          "list": {
+            "type": "array",
+            "format": "",
+            "description": "",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Task": {
+        "type": "object",
+        "format": "",
+        "description": "Task is the core unit of action for A2A. It has a current status and when results are created for the task they are stored in the artifact. If there are multiple turns for a task, these are stored in history.",
+        "$ref": "",
+        "properties": {
+          "artifacts": {
+            "type": "array",
+            "format": "",
+            "description": "A set of output artifacts for a Task.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Artifact",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "contextId": {
+            "type": "string",
+            "format": "",
+            "description": "Unique identifier (e.g. UUID) for the contextual collection of interactions (tasks and messages). Created by the A2A server.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "history": {
+            "type": "array",
+            "format": "",
+            "description": "protolint:disable REPEATED_FIELD_NAMES_PLURALIZED The history of interactions from a task.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Message",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "id": {
+            "type": "string",
+            "format": "",
+            "description": "Unique identifier (e.g. UUID) for the task, generated by the server for a new task.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "metadata": {
+            "type": "object",
+            "format": "",
+            "description": "protolint:enable REPEATED_FIELD_NAMES_PLURALIZED A key/value object to store custom metadata about a task.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "any",
+              "format": "",
+              "description": "Properties of the object.",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "status": {
+            "type": "",
+            "format": "",
+            "description": "The current status of a Task, including state and a message.",
+            "$ref": "TaskStatus",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "TaskArtifactUpdateEvent": {
+        "type": "object",
+        "format": "",
+        "description": "TaskArtifactUpdateEvent represents a task delta where an artifact has been generated.",
+        "$ref": "",
+        "properties": {
+          "append": {
+            "type": "boolean",
+            "format": "",
+            "description": "Whether this should be appended to a prior one produced",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "artifact": {
+            "type": "",
+            "format": "",
+            "description": "The artifact itself",
+            "$ref": "Artifact",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "contextId": {
+            "type": "string",
+            "format": "",
+            "description": "The id of the context that this task belongs too",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "lastChunk": {
+            "type": "boolean",
+            "format": "",
+            "description": "Whether this represents the last part of an artifact",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "metadata": {
+            "type": "object",
+            "format": "",
+            "description": "Optional metadata associated with the artifact update.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "any",
+              "format": "",
+              "description": "Properties of the object.",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "taskId": {
+            "type": "string",
+            "format": "",
+            "description": "The id of the task for this artifact",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "TaskPushNotificationConfig": {
+        "type": "object",
+        "format": "",
+        "description": "",
+        "$ref": "",
+        "properties": {
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "The resource name of the config. Format: tasks/{task_id}/pushNotificationConfigs/{config_id}",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "pushNotificationConfig": {
+            "type": "",
+            "format": "",
+            "description": "The push notification configuration details.",
+            "$ref": "PushNotificationConfig",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "TaskStatus": {
+        "type": "object",
+        "format": "",
+        "description": "A container for the status of a task",
+        "$ref": "",
+        "properties": {
+          "message": {
+            "type": "",
+            "format": "",
+            "description": "A message associated with the status.",
+            "$ref": "Message",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "state": {
+            "type": "string",
+            "format": "",
+            "description": "The current state of this task",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "TASK_STATE_UNSPECIFIED",
+              "TASK_STATE_SUBMITTED",
+              "TASK_STATE_WORKING",
+              "TASK_STATE_COMPLETED",
+              "TASK_STATE_FAILED",
+              "TASK_STATE_CANCELLED",
+              "TASK_STATE_INPUT_REQUIRED",
+              "TASK_STATE_REJECTED",
+              "TASK_STATE_AUTH_REQUIRED"
+            ],
+            "readOnly": false
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Timestamp when the status was recorded. Example: \"2023-10-27T10:00:00Z\"",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "TaskStatusUpdateEvent": {
+        "type": "object",
+        "format": "",
+        "description": "TaskStatusUpdateEvent is a delta even on a task indicating that a task has changed.",
+        "$ref": "",
+        "properties": {
+          "contextId": {
+            "type": "string",
+            "format": "",
+            "description": "The id of the context that the task belongs to",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "final": {
+            "type": "boolean",
+            "format": "",
+            "description": "Whether this is the last status update expected for this task.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "metadata": {
+            "type": "object",
+            "format": "",
+            "description": "Optional metadata to associate with the task update.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "any",
+              "format": "",
+              "description": "Properties of the object.",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "status": {
+            "type": "",
+            "format": "",
+            "description": "The new status of the task.",
+            "$ref": "TaskStatus",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "taskId": {
+            "type": "string",
+            "format": "",
+            "description": "The id of the task that is changed",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -1629,6 +4074,41 @@
           }
         }
       },
+      "message": {
+        "methods": {
+          "send": {
+            "id": "cloudbilling.message.send",
+            "httpMethod": "POST",
+            "path": "v1/message:send",
+            "flatPath": "v1/message:send",
+            "description": "Send a message to the agent. This is a blocking call that will return the task once it is completed, or a LRO if requested.",
+            "parameters": {},
+            "parameterOrder": [],
+            "request": {
+              "$ref": "SendMessageRequest"
+            },
+            "response": {
+              "$ref": "SendMessageResponse"
+            }
+          },
+          "stream": {
+            "id": "cloudbilling.message.stream",
+            "httpMethod": "POST",
+            "path": "v1/message:stream",
+            "flatPath": "v1/message:stream",
+            "description": "SendStreamingMessage is a streaming call that will return a stream of task update events until the Task is in an interrupted or terminal state.",
+            "parameters": {},
+            "parameterOrder": [],
+            "request": {
+              "$ref": "SendMessageRequest"
+            },
+            "response": {
+              "$ref": "StreamResponse"
+            }
+          }
+        },
+        "resources": null
+      },
       "organizations": {
         "methods": null,
         "resources": {
@@ -1854,6 +4334,242 @@
             "resources": null
           }
         }
+      },
+      "tasks": {
+        "methods": {
+          "cancel": {
+            "id": "cloudbilling.tasks.cancel",
+            "httpMethod": "POST",
+            "path": "v1/{+name}:cancel",
+            "flatPath": "v1/tasks/{tasksId}:cancel",
+            "description": "Cancel a task from the agent. If supported one should expect no more task updates for the task.",
+            "parameters": {
+              "name": {
+                "type": "string",
+                "location": "path",
+                "required": true
+              }
+            },
+            "parameterOrder": [
+              "name"
+            ],
+            "request": {
+              "$ref": "CancelTaskRequest"
+            },
+            "response": {
+              "$ref": "Task"
+            }
+          },
+          "get": {
+            "id": "cloudbilling.tasks.get",
+            "httpMethod": "GET",
+            "path": "v1/{+name}",
+            "flatPath": "v1/tasks/{tasksId}",
+            "description": "Get the current state of a task from the agent.",
+            "parameters": {
+              "historyLength": {
+                "type": "integer",
+                "location": "query",
+                "required": false
+              },
+              "name": {
+                "type": "string",
+                "location": "path",
+                "required": true
+              },
+              "tenant": {
+                "type": "string",
+                "location": "query",
+                "required": false
+              }
+            },
+            "parameterOrder": [
+              "name"
+            ],
+            "request": null,
+            "response": {
+              "$ref": "Task"
+            }
+          },
+          "subscribe": {
+            "id": "cloudbilling.tasks.subscribe",
+            "httpMethod": "GET",
+            "path": "v1/{+name}:subscribe",
+            "flatPath": "v1/tasks/{tasksId}:subscribe",
+            "description": "TaskSubscription is a streaming call that will return a stream of task update events. This attaches the stream to an existing in process task. If the task is complete the stream will return the completed task (like GetTask) and close the stream.",
+            "parameters": {
+              "name": {
+                "type": "string",
+                "location": "path",
+                "required": true
+              },
+              "tenant": {
+                "type": "string",
+                "location": "query",
+                "required": false
+              }
+            },
+            "parameterOrder": [
+              "name"
+            ],
+            "request": null,
+            "response": {
+              "$ref": "StreamResponse"
+            }
+          }
+        },
+        "resources": {
+          "pushNotificationConfigs": {
+            "methods": {
+              "create": {
+                "id": "cloudbilling.tasks.pushNotificationConfigs.create",
+                "httpMethod": "POST",
+                "path": "v1/{+parent}",
+                "flatPath": "v1/tasks/{tasksId}/pushNotificationConfigs",
+                "description": "Set a push notification config for a task.",
+                "parameters": {
+                  "configId": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false
+                  },
+                  "parent": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  },
+                  "tenant": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false
+                  }
+                },
+                "parameterOrder": [
+                  "parent"
+                ],
+                "request": {
+                  "$ref": "TaskPushNotificationConfig"
+                },
+                "response": {
+                  "$ref": "TaskPushNotificationConfig"
+                }
+              },
+              "delete": {
+                "id": "cloudbilling.tasks.pushNotificationConfigs.delete",
+                "httpMethod": "DELETE",
+                "path": "v1/{+name}",
+                "flatPath": "v1/tasks/{tasksId}/pushNotificationConfigs/{pushNotificationConfigsId}",
+                "description": "Delete a push notification config for a task.",
+                "parameters": {
+                  "name": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  },
+                  "tenant": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false
+                  }
+                },
+                "parameterOrder": [
+                  "name"
+                ],
+                "request": null,
+                "response": {
+                  "$ref": "Empty"
+                }
+              },
+              "get": {
+                "id": "cloudbilling.tasks.pushNotificationConfigs.get",
+                "httpMethod": "GET",
+                "path": "v1/{+name}",
+                "flatPath": "v1/tasks/{tasksId}/pushNotificationConfigs/{pushNotificationConfigsId}",
+                "description": "Get a push notification config for a task.",
+                "parameters": {
+                  "name": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  },
+                  "tenant": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false
+                  }
+                },
+                "parameterOrder": [
+                  "name"
+                ],
+                "request": null,
+                "response": {
+                  "$ref": "TaskPushNotificationConfig"
+                }
+              },
+              "list": {
+                "id": "cloudbilling.tasks.pushNotificationConfigs.list",
+                "httpMethod": "GET",
+                "path": "v1/{+parent}/pushNotificationConfigs",
+                "flatPath": "v1/tasks/{tasksId}/pushNotificationConfigs",
+                "description": "Get a list of push notifications configured for a task.",
+                "parameters": {
+                  "pageSize": {
+                    "type": "integer",
+                    "location": "query",
+                    "required": false
+                  },
+                  "pageToken": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false
+                  },
+                  "parent": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  },
+                  "tenant": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false
+                  }
+                },
+                "parameterOrder": [
+                  "parent"
+                ],
+                "request": null,
+                "response": {
+                  "$ref": "ListTaskPushNotificationConfigResponse"
+                }
+              }
+            },
+            "resources": null
+          }
+        }
+      },
+      "v1": {
+        "methods": {
+          "getCard": {
+            "id": "cloudbilling.getCard",
+            "httpMethod": "GET",
+            "path": "v1/card",
+            "flatPath": "v1/card",
+            "description": "GetAgentCard returns the agent card for the agent.",
+            "parameters": {
+              "tenant": {
+                "type": "string",
+                "location": "query",
+                "required": false
+              }
+            },
+            "parameterOrder": [],
+            "request": null,
+            "response": {
+              "$ref": "AgentCard"
+            }
+          }
+        },
+        "resources": null
       }
     }
   },

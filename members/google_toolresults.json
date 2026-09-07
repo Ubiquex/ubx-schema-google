@@ -24,7 +24,7 @@
   "wire_name": "google_toolresults",
   "raw_spec": {
     "name": "toolresults",
-    "revision": "20260827",
+    "revision": "20260907",
     "discoveryVersion": "v1",
     "baseUrl": "https://toolresults.googleapis.com/",
     "rootUrl": "https://toolresults.googleapis.com/",

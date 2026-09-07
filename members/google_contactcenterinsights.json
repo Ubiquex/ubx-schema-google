@@ -24,7 +24,7 @@
   "wire_name": "google_contactcenterinsights",
   "raw_spec": {
     "name": "contactcenterinsights",
-    "revision": "20260825",
+    "revision": "20260905",
     "discoveryVersion": "v1",
     "baseUrl": "https://contactcenterinsights.googleapis.com/",
     "rootUrl": "https://contactcenterinsights.googleapis.com/",
@@ -289,6 +289,17 @@
         "description": "Represents an image input or output in the conversation.",
         "$ref": "",
         "properties": {
+          "altText": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The alternative text for the image.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
           "data": {
             "type": "string",
             "format": "byte",
@@ -12741,7 +12752,8 @@
             "enum": [
               "PREDEFINED_QUESTION_TYPE_UNSPECIFIED",
               "CONVERSATION_OUTCOME",
-              "CONVERSATION_OUTCOME_ESCALATION_INITIATOR_ROLE"
+              "CONVERSATION_OUTCOME_ESCALATION_INITIATOR_ROLE",
+              "CONVERSATION_OUTCOME_AI_AVERSION"
             ],
             "readOnly": false
           }

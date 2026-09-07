@@ -24,7 +24,7 @@
   "wire_name": "google_lustre",
   "raw_spec": {
     "name": "lustre",
-    "revision": "20260819",
+    "revision": "20260826",
     "discoveryVersion": "v1",
     "baseUrl": "https://lustre.googleapis.com/",
     "rootUrl": "https://lustre.googleapis.com/",

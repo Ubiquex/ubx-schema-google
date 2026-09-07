@@ -25,7 +25,7 @@
   "version_qualifier": "beta",
   "raw_spec": {
     "name": "compute",
-    "revision": "20260821",
+    "revision": "20260828",
     "discoveryVersion": "v1",
     "baseUrl": "https://compute.googleapis.com/compute/beta/",
     "rootUrl": "https://compute.googleapis.com/",
@@ -1927,6 +1927,38 @@
         "description": "An alias IP range attached to an instance's network interface.",
         "$ref": "",
         "properties": {
+          "candidateSubnetworkRangeNames": {
+            "type": "array",
+            "format": "",
+            "description": "Identifies the candidate subnetwork range names for the alias\nIPs to be allocated from. When it is set, the IP would be allocated from\nany subnetwork range defined here if the IPs are available.\nOnly one of subnetwork_range_name or candidate_subnetwork_range_names\nshould be set.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "effectiveSubnetworkRangeName": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. [Output Only] The subnetwork range name where the IP is allocated.\nIt will be set to the subnetwork range where the IP is allocated only.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
           "ipCidrRange": {
             "type": "string",
             "format": "",
@@ -7553,7 +7585,7 @@
           "instance": {
             "type": "string",
             "format": "",
-            "description": "The name of the VM instance of the leader network endpoint. The\ninstance must already be attached to the NEG specified in the\nhaPolicy.leader.backendGroup.\n\nThe name must be 1-63 characters long, and comply with RFC1035.\nAuthorization requires the following IAM permission on the\nspecified resource instance: compute.instances.use",
+            "description": "The name of the VM instance of the leader network endpoint. The\ninstance must already be attached to the NEG specified in the\nhaPolicy.leader.backendGroup.\n\nThe value must be a valid RFC1035 name (1-63 characters) or a valid\ninstance URL.\nAuthorization requires the following IAM permission on the\nspecified resource instance: compute.instances.use",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -10297,6 +10329,123 @@
             },
             "additionalProperties": null,
             "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "CalendarModeExtensionAdviceRequest": {
+        "type": "object",
+        "format": "",
+        "description": "A request to recommend the maximum duration for extending an existing future\nreservation in calendar mode. The recommended duration is shorter than or\nequal to the specified extension duration.",
+        "$ref": "",
+        "properties": {
+          "endTimeNotLaterThan": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Required. The desired end time for the extension.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "futureReservation": {
+            "type": "string",
+            "format": "",
+            "description": "Required. Reference to the future reservation, in the format:\nprojects/{project}/zones/{zone}/futureReservations/{name}\nFull URIs that include hostnames (like compute.googleapis.com or\nwww.googleapis.com) are also supported.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "CalendarModeExtensionAdviceResponse": {
+        "type": "object",
+        "format": "",
+        "description": "A response that contains the recommended duration for extending\na future reservation in calendar mode based on available capacity\nduring the extension period.",
+        "$ref": "",
+        "properties": {
+          "endTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "The recommended end time for the extension, which is either the end time\nrequested by the caller or the longest alternative with sufficient\ncapacity. If the extension is not possible, this field is empty, and\nnotRecommendedReason is populated instead.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "notRecommendedReason": {
+            "type": "",
+            "format": "",
+            "description": "The reason why the future reservation can't be extended. If a\nrecommendation is provided, whether for the requested end time or an\nalternative, this field is empty.",
+            "$ref": "CalendarModeExtensionAdviceResponseNotRecommendedReason",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "recommendationId": {
+            "type": "string",
+            "format": "",
+            "description": "The unique ID of the recommendation, which is a UUID string generated by\nthe API.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "CalendarModeExtensionAdviceResponseNotRecommendedReason": {
+        "type": "object",
+        "format": "",
+        "description": "Information about why no recommendation was provided.",
+        "$ref": "",
+        "properties": {
+          "details": {
+            "type": "string",
+            "format": "",
+            "description": "Human-readable details describing why the recommendation wasn't provided.\nFor example, if the status is CONDITIONS_NOT_MET, this field explains why\nthe requested extension duration isn't possible.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "status": {
+            "type": "string",
+            "format": "",
+            "description": "Status of recommendation.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "CONDITIONS_NOT_MET",
+              "NOT_RECOMMENDED_REASON_STATUS_UNSPECIFIED",
+              "NO_CAPACITY"
+            ],
             "readOnly": false
           }
         },
@@ -17137,6 +17286,32 @@
             "items": null,
             "additionalProperties": null,
             "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "DynamicCompressionPolicy": {
+        "type": "object",
+        "format": "",
+        "description": "Dynamic compression policy for this URL Map's route.",
+        "$ref": "",
+        "properties": {
+          "compressionMode": {
+            "type": "string",
+            "format": "",
+            "description": "Compress text responses using Brotli or gzip compression, based on\nthe client's Accept-Encoding header.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "AUTOMATIC",
+              "DISABLED"
+            ],
             "readOnly": false
           }
         },
@@ -25042,6 +25217,7 @@
             "additionalProperties": null,
             "enum": [
               "BARE_METAL_LINUX_COMPATIBLE",
+              "BMSAI_CAPABLE",
               "CCA_CAPABLE",
               "FEATURE_TYPE_UNSPECIFIED",
               "GVNIC",
@@ -30279,6 +30455,17 @@
             "format": "",
             "description": "The specification for allowing client-side cross-origin requests. For more\ninformation about the W3C recommendation for cross-origin resource sharing\n(CORS), see Fetch API Living\nStandard.\n\nNot supported when the URL map is bound to a target gRPC proxy.",
             "$ref": "CorsPolicy",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "dynamicCompressionPolicy": {
+            "type": "",
+            "format": "",
+            "description": "Dynamic compression policy for this URL Map's route. Available only for\nGlobal EXTERNAL_MANAGED load balancer schemes.",
+            "$ref": "DynamicCompressionPolicy",
             "properties": null,
             "items": null,
             "additionalProperties": null,
@@ -39555,6 +39742,17 @@
         "description": "Represents the change that you want to make to the instance properties.",
         "$ref": "",
         "properties": {
+          "exposeHostTopology": {
+            "type": "boolean",
+            "format": "",
+            "description": "This optional flag exposes the hashed physical host ID.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
           "labels": {
             "type": "object",
             "format": "",
@@ -48086,6 +48284,17 @@
             "type": "boolean",
             "format": "",
             "description": "If set to true, the Interconnect connection is configured with ashould-secure MACsec security policy, that allows the Google\nrouter to fallback to cleartext traffic if the MKA session cannot be\nestablished. By default, the Interconnect connection is configured with amust-secure security policy that drops all traffic if the\nMKA session cannot be established with your router.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "interconnectKeyGroup": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. URL of the InterconnectKeyGroup resource to use for MACsec, in the\nformat:\nprojects/{project}/locations/{region}/interconnectKeyGroups/{interconnectKeyGroup}.",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -79873,6 +80082,17 @@
             "enum": null,
             "readOnly": false
           },
+          "machine": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. [Output Only] The ID of the machine on which the running instance is\nlocated. It is only populated for machines which have multiple hosts.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
           "subblock": {
             "type": "string",
             "format": "",
@@ -86531,6 +86751,17 @@
             "type": "integer",
             "format": "int32",
             "description": "Specifies the availability domain to place the instance in. The value\nmust be a number between 1 and the number of availability domains\nspecified in the spread placement policy attached to the instance.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "exposeHostTopology": {
+            "type": "boolean",
+            "format": "",
+            "description": "This optional flag exposes the hashed physical host ID in the\nResourceStatus resource of the VM.",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -112612,6 +112843,35 @@
             },
             "response": {
               "$ref": "CalendarModeAdviceResponse"
+            }
+          },
+          "calendarModeExtension": {
+            "id": "compute.advice.calendarModeExtension",
+            "httpMethod": "POST",
+            "path": "projects/{project}/regions/{region}/advice/calendarModeExtension",
+            "flatPath": "projects/{project}/regions/{region}/advice/calendarModeExtension",
+            "description": "Advises on whether extending an existing future reservation is possible\nbased on the desired extension end time. If capacity isn't available for\nthe entire requested duration, the method recommends the longest possible\nextension.",
+            "parameters": {
+              "project": {
+                "type": "string",
+                "location": "path",
+                "required": true
+              },
+              "region": {
+                "type": "string",
+                "location": "path",
+                "required": true
+              }
+            },
+            "parameterOrder": [
+              "project",
+              "region"
+            ],
+            "request": {
+              "$ref": "CalendarModeExtensionAdviceRequest"
+            },
+            "response": {
+              "$ref": "CalendarModeExtensionAdviceResponse"
             }
           },
           "capacity": {
@@ -143459,6 +143719,44 @@
               "$ref": "SslPolicy"
             }
           },
+          "getIamPolicy": {
+            "id": "compute.regionSslPolicies.getIamPolicy",
+            "httpMethod": "GET",
+            "path": "projects/{project}/regions/{region}/sslPolicies/{resource}/getIamPolicy",
+            "flatPath": "projects/{project}/regions/{region}/sslPolicies/{resource}/getIamPolicy",
+            "description": "Gets the access control policy for a resource. May be empty if no such\npolicy or resource exists.",
+            "parameters": {
+              "optionsRequestedPolicyVersion": {
+                "type": "integer",
+                "location": "query",
+                "required": false
+              },
+              "project": {
+                "type": "string",
+                "location": "path",
+                "required": true
+              },
+              "region": {
+                "type": "string",
+                "location": "path",
+                "required": true
+              },
+              "resource": {
+                "type": "string",
+                "location": "path",
+                "required": true
+              }
+            },
+            "parameterOrder": [
+              "project",
+              "region",
+              "resource"
+            ],
+            "request": null,
+            "response": {
+              "$ref": "Policy"
+            }
+          },
           "insert": {
             "id": "compute.regionSslPolicies.insert",
             "httpMethod": "POST",
@@ -143635,6 +143933,41 @@
             },
             "response": {
               "$ref": "Operation"
+            }
+          },
+          "setIamPolicy": {
+            "id": "compute.regionSslPolicies.setIamPolicy",
+            "httpMethod": "POST",
+            "path": "projects/{project}/regions/{region}/sslPolicies/{resource}/setIamPolicy",
+            "flatPath": "projects/{project}/regions/{region}/sslPolicies/{resource}/setIamPolicy",
+            "description": "Sets the access control policy on the specified resource.\nReplaces any existing policy.",
+            "parameters": {
+              "project": {
+                "type": "string",
+                "location": "path",
+                "required": true
+              },
+              "region": {
+                "type": "string",
+                "location": "path",
+                "required": true
+              },
+              "resource": {
+                "type": "string",
+                "location": "path",
+                "required": true
+              }
+            },
+            "parameterOrder": [
+              "project",
+              "region",
+              "resource"
+            ],
+            "request": {
+              "$ref": "RegionSetPolicyRequest"
+            },
+            "response": {
+              "$ref": "Policy"
             }
           },
           "testIamPermissions": {
@@ -150200,6 +150533,38 @@
               "$ref": "SslPolicy"
             }
           },
+          "getIamPolicy": {
+            "id": "compute.sslPolicies.getIamPolicy",
+            "httpMethod": "GET",
+            "path": "projects/{project}/global/sslPolicies/{resource}/getIamPolicy",
+            "flatPath": "projects/{project}/global/sslPolicies/{resource}/getIamPolicy",
+            "description": "Gets the access control policy for a resource. May be empty if no such\npolicy or resource exists.",
+            "parameters": {
+              "optionsRequestedPolicyVersion": {
+                "type": "integer",
+                "location": "query",
+                "required": false
+              },
+              "project": {
+                "type": "string",
+                "location": "path",
+                "required": true
+              },
+              "resource": {
+                "type": "string",
+                "location": "path",
+                "required": true
+              }
+            },
+            "parameterOrder": [
+              "project",
+              "resource"
+            ],
+            "request": null,
+            "response": {
+              "$ref": "Policy"
+            }
+          },
           "insert": {
             "id": "compute.sslPolicies.insert",
             "httpMethod": "POST",
@@ -150352,6 +150717,35 @@
             },
             "response": {
               "$ref": "Operation"
+            }
+          },
+          "setIamPolicy": {
+            "id": "compute.sslPolicies.setIamPolicy",
+            "httpMethod": "POST",
+            "path": "projects/{project}/global/sslPolicies/{resource}/setIamPolicy",
+            "flatPath": "projects/{project}/global/sslPolicies/{resource}/setIamPolicy",
+            "description": "Sets the access control policy on the specified resource.\nReplaces any existing policy.",
+            "parameters": {
+              "project": {
+                "type": "string",
+                "location": "path",
+                "required": true
+              },
+              "resource": {
+                "type": "string",
+                "location": "path",
+                "required": true
+              }
+            },
+            "parameterOrder": [
+              "project",
+              "resource"
+            ],
+            "request": {
+              "$ref": "GlobalSetPolicyRequest"
+            },
+            "response": {
+              "$ref": "Policy"
             }
           },
           "testIamPermissions": {

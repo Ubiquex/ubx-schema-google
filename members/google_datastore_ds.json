@@ -24,7 +24,7 @@
   "wire_name": "google_datastore",
   "raw_spec": {
     "name": "datastore",
-    "revision": "20260818",
+    "revision": "20260826",
     "discoveryVersion": "v1",
     "baseUrl": "https://datastore.googleapis.com/",
     "rootUrl": "https://datastore.googleapis.com/",

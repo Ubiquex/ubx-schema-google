@@ -24,7 +24,7 @@
   "wire_name": "google_workstations",
   "raw_spec": {
     "name": "workstations",
-    "revision": "20260819",
+    "revision": "20260901",
     "discoveryVersion": "v1",
     "baseUrl": "https://workstations.googleapis.com/",
     "rootUrl": "https://workstations.googleapis.com/",
@@ -2447,6 +2447,40 @@
         "enum": null,
         "readOnly": false
       },
+      "SuspendWorkstationRequest": {
+        "type": "object",
+        "format": "",
+        "description": "Request message for SuspendWorkstation.",
+        "$ref": "",
+        "properties": {
+          "etag": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. If set, the request will be rejected if the latest version of the workstation on the server does not have this ETag.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "validateOnly": {
+            "type": "boolean",
+            "format": "",
+            "description": "Optional. If set, validate the request and preview the result, but do not actually apply it.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
       "TestIamPermissionsRequest": {
         "type": "object",
         "format": "",
@@ -2737,7 +2771,9 @@
               "STATE_STARTING",
               "STATE_RUNNING",
               "STATE_STOPPING",
-              "STATE_STOPPED"
+              "STATE_STOPPED",
+              "STATE_SUSPENDING",
+              "STATE_SUSPENDED"
             ],
             "readOnly": true
           },
@@ -3263,10 +3299,25 @@
             "enum": null,
             "readOnly": false
           },
+          "idleAction": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The action to take when the workstation has been idle for the duration specified in idle_timeout. Defaults to STOP.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "IDLE_ACTION_UNSPECIFIED",
+              "STOP",
+              "SUSPEND"
+            ],
+            "readOnly": false
+          },
           "idleTimeout": {
             "type": "string",
             "format": "google-duration",
-            "description": "Optional. Number of seconds to wait before automatically stopping a workstation after it last received user traffic. A value of `\"0s\"` indicates that Cloud Workstations VMs created with this configuration should never time out due to idleness. Provide [duration](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#duration) terminated by `s` for seconds—for example, `\"7200s\"` (2 hours). The default is `\"1200s\"` (20 minutes).",
+            "description": "Optional. Number of seconds to wait before automatically stopping or suspending a workstation after it last received user traffic. See idle_action to configure whether to stop or suspend idle workstations. A value of `\"0s\"` indicates that Cloud Workstations VMs created with this configuration should never time out due to idleness. Provide [duration](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#duration) terminated by `s` for seconds—for example, `\"7200s\"` (2 hours). The default is `\"1200s\"` (20 minutes).",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -3394,7 +3445,7 @@
           "runningTimeout": {
             "type": "string",
             "format": "google-duration",
-            "description": "Optional. Number of seconds to wait before automatically stopping a workstation. We recommend that workstations be stopped daily so that security updates can be applied upon restart. The idle_timeout and running_timeout fields are independent of each other. Note that the running_timeout field stops workstations after the specified time, regardless of whether or not the workstations are idle. Provide duration terminated by `s` for seconds—for example, `\"54000s\"` (15 hours). Defaults to `\"43200s\"` (12 hours). A value of `\"0s\"` indicates that workstations using this configuration should never time out. If encryption_key is set, it must be greater than `\"0s\"` and less than `\"86400s\"` (24 hours). Warning: A value of `\"0s\"` indicates that Cloud Workstations VMs created with this configuration have no maximum running time. This is strongly discouraged because you incur costs and will not pick up security updates.",
+            "description": "Optional. Number of seconds to wait before automatically stopping a workstation. We recommend that workstations be stopped daily so that security updates can be applied upon restart. The idle_timeout and running_timeout fields are independent of each other. Note that the running_timeout field stops workstations after the specified time, regardless of whether or not the workstations are idle. Note: This timeout applies to workstations in the following states: * STATE_RUNNING * STATE_SUSPENDED Suspending a workstation does not reset this timeout. Provide duration terminated by `s` for seconds—for example, `\"54000s\"` (15 hours). Defaults to `\"43200s\"` (12 hours). A value of `\"0s\"` indicates that workstations using this configuration should never time out. If encryption_key is set, it must be greater than `\"0s\"` and less than `\"86400s\"` (24 hours). Warning: A value of `\"0s\"` indicates that Cloud Workstations VMs created with this configuration have no maximum running time. This is strongly discouraged because you incur costs and will not pick up security updates.",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -4390,6 +4441,29 @@
                             ],
                             "request": {
                               "$ref": "StopWorkstationRequest"
+                            },
+                            "response": {
+                              "$ref": "Operation"
+                            }
+                          },
+                          "suspend": {
+                            "id": "workstations.projects.locations.workstationClusters.workstationConfigs.workstations.suspend",
+                            "httpMethod": "POST",
+                            "path": "v1/{+name}:suspend",
+                            "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/workstationClusters/{workstationClustersId}/workstationConfigs/{workstationConfigsId}/workstations/{workstationsId}:suspend",
+                            "description": "Suspends a workstation to reduce costs.",
+                            "parameters": {
+                              "name": {
+                                "type": "string",
+                                "location": "path",
+                                "required": true
+                              }
+                            },
+                            "parameterOrder": [
+                              "name"
+                            ],
+                            "request": {
+                              "$ref": "SuspendWorkstationRequest"
                             },
                             "response": {
                               "$ref": "Operation"

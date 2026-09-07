@@ -24,7 +24,7 @@
   "wire_name": "google_managedidentities",
   "raw_spec": {
     "name": "managedidentities",
-    "revision": "20260818",
+    "revision": "20260825",
     "discoveryVersion": "v1",
     "baseUrl": "https://managedidentities.googleapis.com/",
     "rootUrl": "https://managedidentities.googleapis.com/",

@@ -24,7 +24,7 @@
   "wire_name": "google_file",
   "raw_spec": {
     "name": "file",
-    "revision": "20260819",
+    "revision": "20260827",
     "discoveryVersion": "v1",
     "baseUrl": "https://file.googleapis.com/",
     "rootUrl": "https://file.googleapis.com/",

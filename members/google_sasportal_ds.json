@@ -24,7 +24,7 @@
   "wire_name": "google_sasportal",
   "raw_spec": {
     "name": "sasportal",
-    "revision": "20260825",
+    "revision": "20260901",
     "discoveryVersion": "v1",
     "baseUrl": "https://sasportal.googleapis.com/",
     "rootUrl": "https://sasportal.googleapis.com/",

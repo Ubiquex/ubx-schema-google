@@ -24,7 +24,7 @@
   "wire_name": "google_appengine",
   "raw_spec": {
     "name": "appengine",
-    "revision": "20260801",
+    "revision": "20260902",
     "discoveryVersion": "v1",
     "baseUrl": "https://appengine.googleapis.com/",
     "rootUrl": "https://appengine.googleapis.com/",

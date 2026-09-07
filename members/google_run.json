@@ -24,7 +24,7 @@
   "wire_name": "google_run",
   "raw_spec": {
     "name": "run",
-    "revision": "20260822",
+    "revision": "20260828",
     "discoveryVersion": "v1",
     "baseUrl": "https://run.googleapis.com/",
     "rootUrl": "https://run.googleapis.com/",
@@ -811,7 +811,7 @@
           "sourceCode": {
             "type": "",
             "format": "",
-            "description": "Optional. Location of the source.",
+            "description": "Optional. Location of the source. This field is only supported in Cloud Run Service.",
             "$ref": "GoogleCloudRunV2SourceCode",
             "properties": null,
             "items": null,
@@ -4926,17 +4926,6 @@
             "enum": null,
             "readOnly": false
           },
-          "durableExecution": {
-            "type": "boolean",
-            "format": "",
-            "description": "Optional. Immutable. Indicates whether the Service has durable execution enabled. This field is immutable once the Service is created.",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
           "etag": {
             "type": "string",
             "format": "",
@@ -5398,7 +5387,7 @@
           "inlinedSource": {
             "type": "",
             "format": "",
-            "description": "Optional. Input only. Source code inlined in the request. Cloud Run will store the inlined_source to Cloud Storage and replace the field with cloud_storage_source.",
+            "description": "Optional. Input only. Source code inlined in the request. Cloud Run will store the inlined_source to Cloud Storage and replace the field with cloud_storage_source. This field is only supported in Cloud Run Service.",
             "$ref": "GoogleCloudRunV2InlinedSource",
             "properties": null,
             "items": null,

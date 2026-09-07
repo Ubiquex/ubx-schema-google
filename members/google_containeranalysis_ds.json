@@ -24,7 +24,7 @@
   "wire_name": "google_containeranalysis",
   "raw_spec": {
     "name": "containeranalysis",
-    "revision": "20260819",
+    "revision": "20260826",
     "discoveryVersion": "v1",
     "baseUrl": "https://containeranalysis.googleapis.com/",
     "rootUrl": "https://containeranalysis.googleapis.com/",
@@ -8734,6 +8734,17 @@
               "NOT_PERFORMED"
             ],
             "readOnly": false
+          },
+          "tokenUsage": {
+            "type": "",
+            "format": "",
+            "description": "Telemetry metrics tracking token usage for the AI scan.",
+            "$ref": "TokenUsage",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
           }
         },
         "items": null,
@@ -11968,6 +11979,73 @@
             "type": "string",
             "format": "google-datetime",
             "description": "Start of time span.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "TokenUsage": {
+        "type": "object",
+        "format": "",
+        "description": "Token usage associated with an AI scan.",
+        "$ref": "",
+        "properties": {
+          "cacheCount": {
+            "type": "string",
+            "format": "int64",
+            "description": "Cache matched tokens for implicit cache.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "candidateCount": {
+            "type": "string",
+            "format": "int64",
+            "description": "Tokens in the model response.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "promptCount": {
+            "type": "string",
+            "format": "int64",
+            "description": "Tokens in the user request.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "thinkingCount": {
+            "type": "string",
+            "format": "int64",
+            "description": "Tokens in the thinking output.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "toolUsePromptCount": {
+            "type": "string",
+            "format": "int64",
+            "description": "Prompt tokens for using tools.",
             "$ref": "",
             "properties": null,
             "items": null,

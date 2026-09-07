@@ -24,7 +24,7 @@
   "wire_name": "google_iam",
   "raw_spec": {
     "name": "iam",
-    "revision": "20260821",
+    "revision": "20260828",
     "discoveryVersion": "v1",
     "baseUrl": "https://iam.googleapis.com/",
     "rootUrl": "https://iam.googleapis.com/",
@@ -6032,6 +6032,29 @@
                           "$ref": "WorkforcePoolProviderScimTenant"
                         }
                       },
+                      "getIamPolicy": {
+                        "id": "iam.locations.workforcePools.providers.scimTenants.getIamPolicy",
+                        "httpMethod": "POST",
+                        "path": "v1/{+resource}:getIamPolicy",
+                        "flatPath": "v1/locations/{locationsId}/workforcePools/{workforcePoolsId}/providers/{providersId}/scimTenants/{scimTenantsId}:getIamPolicy",
+                        "description": "Gets IAM policies on a WorkforcePool.",
+                        "parameters": {
+                          "resource": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          }
+                        },
+                        "parameterOrder": [
+                          "resource"
+                        ],
+                        "request": {
+                          "$ref": "GetIamPolicyRequest"
+                        },
+                        "response": {
+                          "$ref": "Policy"
+                        }
+                      },
                       "list": {
                         "id": "iam.locations.workforcePools.providers.scimTenants.list",
                         "httpMethod": "GET",
@@ -6094,6 +6117,52 @@
                         },
                         "response": {
                           "$ref": "WorkforcePoolProviderScimTenant"
+                        }
+                      },
+                      "setIamPolicy": {
+                        "id": "iam.locations.workforcePools.providers.scimTenants.setIamPolicy",
+                        "httpMethod": "POST",
+                        "path": "v1/{+resource}:setIamPolicy",
+                        "flatPath": "v1/locations/{locationsId}/workforcePools/{workforcePoolsId}/providers/{providersId}/scimTenants/{scimTenantsId}:setIamPolicy",
+                        "description": "Sets IAM policies on a WorkforcePool.",
+                        "parameters": {
+                          "resource": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          }
+                        },
+                        "parameterOrder": [
+                          "resource"
+                        ],
+                        "request": {
+                          "$ref": "SetIamPolicyRequest"
+                        },
+                        "response": {
+                          "$ref": "Policy"
+                        }
+                      },
+                      "testIamPermissions": {
+                        "id": "iam.locations.workforcePools.providers.scimTenants.testIamPermissions",
+                        "httpMethod": "POST",
+                        "path": "v1/{+resource}:testIamPermissions",
+                        "flatPath": "v1/locations/{locationsId}/workforcePools/{workforcePoolsId}/providers/{providersId}/scimTenants/{scimTenantsId}:testIamPermissions",
+                        "description": "Returns the caller's permissions on the WorkforcePool. If the pool doesn't exist, this call returns an empty set of permissions. It doesn't return a `NOT_FOUND` error.",
+                        "parameters": {
+                          "resource": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          }
+                        },
+                        "parameterOrder": [
+                          "resource"
+                        ],
+                        "request": {
+                          "$ref": "TestIamPermissionsRequest"
+                        },
+                        "response": {
+                          "$ref": "TestIamPermissionsResponse"
                         }
                       },
                       "undelete": {

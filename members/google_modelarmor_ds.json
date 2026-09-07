@@ -24,7 +24,7 @@
   "wire_name": "google_modelarmor",
   "raw_spec": {
     "name": "modelarmor",
-    "revision": "20260819",
+    "revision": "20260826",
     "discoveryVersion": "v1",
     "baseUrl": "https://modelarmor.us-central1.rep.googleapis.com/",
     "rootUrl": "https://modelarmor.us-central1.rep.googleapis.com/",

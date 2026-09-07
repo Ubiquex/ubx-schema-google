@@ -24,7 +24,7 @@
   "wire_name": "google_aiplatform",
   "raw_spec": {
     "name": "aiplatform",
-    "revision": "20260828",
+    "revision": "20260831",
     "discoveryVersion": "v1",
     "baseUrl": "https://aiplatform.googleapis.com/",
     "rootUrl": "https://aiplatform.googleapis.com/",
@@ -2618,6 +2618,29 @@
         "enum": null,
         "readOnly": false
       },
+      "GoogleCloudAiplatformV1AgentResponseCustomization": {
+        "type": "object",
+        "format": "",
+        "description": "Customizes the agent's response to the end user when a `SemanticGovernancePolicy` is evaluated (for example, with a custom message shown on denial).",
+        "$ref": "",
+        "properties": {
+          "denialMessage": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Custom message shown to the end user when the policy check results in a denial. Use this to explain the rationale to the user. Max 1000 characters.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
       "GoogleCloudAiplatformV1AgentTool": {
         "type": "object",
         "format": "",
@@ -2648,7 +2671,7 @@
           "name": {
             "type": "string",
             "format": "",
-            "description": "Optional. The name of the MCP server. Only applicable when `type` is `mcp_server`.",
+            "description": "Optional. The tool's GCP resource name, used to resolve the tool. Applicable when `type` is `mcp_server` or `endpoint` (a tool registered in Agent Registry), for example `projects/{project}/locations/{location}/.../mcpServers/{id}` or `projects/{project}/locations/{location}/.../endpoints/{id}`.",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -2659,7 +2682,7 @@
           "type": {
             "type": "string",
             "format": "",
-            "description": "Required. The type of the tool. Supported types: * `code_execution` * `filesystem` * `google_search` * `mcp_server` * `url_context`",
+            "description": "Required. The type of the tool. Supported types: * `code_execution` * `endpoint` * `filesystem` * `google_search` * `mcp_server` * `url_context`",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -2670,7 +2693,7 @@
           "url": {
             "type": "string",
             "format": "",
-            "description": "Optional. The URL for the MCP server endpoint. Only applicable when `type` is `mcp_server`.",
+            "description": "Optional. Temporary: the tool's runtime reference, consumed by CreateAgent to create the downstream AI App. Applicable when `type` is `mcp_server` or `endpoint`. It is duplicated here (the resource name is already in `name`) only because the Agent service is not yet connected to Agent Registry to derive it from `name`; the Task Service instead resolves it from Agent Registry (GetMcpServer / GetEndpoint) at task creation.",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -27389,6 +27412,17 @@
             "format": "float",
             "description": "Optional. Specifies the nucleus sampling threshold. The model considers only the smallest set of tokens whose cumulative probability is at least `top_p`. This helps generate more diverse and less repetitive responses. For example, a `top_p` of 0.9 means the model considers tokens until the cumulative probability of the tokens to select from reaches 0.9. It's recommended to adjust either temperature or `top_p`, but not both.",
             "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "translationConfig": {
+            "type": "",
+            "format": "",
+            "description": "Optional. Config for translation.",
+            "$ref": "GoogleCloudAiplatformV1TranslationConfig",
             "properties": null,
             "items": null,
             "additionalProperties": null,
@@ -55351,6 +55385,9 @@
               "STATE_DEPROVISIONING",
               "STATE_TERMINATED",
               "STATE_DELETED",
+              "STATE_PAUSED",
+              "STATE_PAUSING",
+              "STATE_RESUMING",
               "STATE_STOPPING"
             ],
             "readOnly": true
@@ -67099,6 +67136,17 @@
             "enum": null,
             "readOnly": true
           },
+          "agentResponseCustomization": {
+            "type": "",
+            "format": "",
+            "description": "Optional. Settings for customizing the agent's response to end users when this policy is evaluated, such as messages displayed when the policy denies a request.",
+            "$ref": "GoogleCloudAiplatformV1AgentResponseCustomization",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
           "createTime": {
             "type": "string",
             "format": "google-datetime",
@@ -74577,6 +74625,40 @@
             "type": "string",
             "format": "",
             "description": "Optional. Transcription text.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudAiplatformV1TranslationConfig": {
+        "type": "object",
+        "format": "",
+        "description": "Config for translation features.",
+        "$ref": "",
+        "properties": {
+          "echoTargetLanguage": {
+            "type": "boolean",
+            "format": "",
+            "description": "Optional. If `true`, the model will generate audio when the target language is spoken, essentially it will parrot the input. If `false`, we will not produce audio for the target language.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "targetLanguageCode": {
+            "type": "string",
+            "format": "",
+            "description": "Required. The target language for translation. Supported values are BCP-47 language codes (e.g. \"en\", \"es\", \"fr\").",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -102760,6 +102842,146 @@
                   }
                 }
               },
+              "taskStores": {
+                "methods": null,
+                "resources": {
+                  "operations": {
+                    "methods": {
+                      "cancel": {
+                        "id": "aiplatform.projects.locations.taskStores.operations.cancel",
+                        "httpMethod": "POST",
+                        "path": "v1/{+name}:cancel",
+                        "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/taskStores/{taskStoresId}/operations/{operationsId}:cancel",
+                        "description": "Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.",
+                        "parameters": {
+                          "name": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          }
+                        },
+                        "parameterOrder": [
+                          "name"
+                        ],
+                        "request": null,
+                        "response": {
+                          "$ref": "GoogleProtobufEmpty"
+                        }
+                      },
+                      "delete": {
+                        "id": "aiplatform.projects.locations.taskStores.operations.delete",
+                        "httpMethod": "DELETE",
+                        "path": "v1/{+name}",
+                        "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/taskStores/{taskStoresId}/operations/{operationsId}",
+                        "description": "Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.",
+                        "parameters": {
+                          "name": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          }
+                        },
+                        "parameterOrder": [
+                          "name"
+                        ],
+                        "request": null,
+                        "response": {
+                          "$ref": "GoogleProtobufEmpty"
+                        }
+                      },
+                      "get": {
+                        "id": "aiplatform.projects.locations.taskStores.operations.get",
+                        "httpMethod": "GET",
+                        "path": "v1/{+name}",
+                        "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/taskStores/{taskStoresId}/operations/{operationsId}",
+                        "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
+                        "parameters": {
+                          "name": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          }
+                        },
+                        "parameterOrder": [
+                          "name"
+                        ],
+                        "request": null,
+                        "response": {
+                          "$ref": "GoogleLongrunningOperation"
+                        }
+                      },
+                      "list": {
+                        "id": "aiplatform.projects.locations.taskStores.operations.list",
+                        "httpMethod": "GET",
+                        "path": "v1/{+name}/operations",
+                        "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/taskStores/{taskStoresId}/operations",
+                        "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.",
+                        "parameters": {
+                          "filter": {
+                            "type": "string",
+                            "location": "query",
+                            "required": false
+                          },
+                          "name": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          },
+                          "pageSize": {
+                            "type": "integer",
+                            "location": "query",
+                            "required": false
+                          },
+                          "pageToken": {
+                            "type": "string",
+                            "location": "query",
+                            "required": false
+                          },
+                          "returnPartialSuccess": {
+                            "type": "boolean",
+                            "location": "query",
+                            "required": false
+                          }
+                        },
+                        "parameterOrder": [
+                          "name"
+                        ],
+                        "request": null,
+                        "response": {
+                          "$ref": "GoogleLongrunningListOperationsResponse"
+                        }
+                      },
+                      "wait": {
+                        "id": "aiplatform.projects.locations.taskStores.operations.wait",
+                        "httpMethod": "POST",
+                        "path": "v1/{+name}:wait",
+                        "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/taskStores/{taskStoresId}/operations/{operationsId}:wait",
+                        "description": "Waits until the specified long-running operation is done or reaches at most a specified timeout, returning the latest state. If the operation is already done, the latest state is immediately returned. If the timeout specified is greater than the default HTTP/RPC timeout, the HTTP/RPC timeout is used. If the server does not support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Note that this method is on a best-effort basis. It may return the latest state before the specified timeout (including immediately), meaning even an immediate response is no guarantee that the operation is done.",
+                        "parameters": {
+                          "name": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          },
+                          "timeout": {
+                            "type": "string",
+                            "location": "query",
+                            "required": false
+                          }
+                        },
+                        "parameterOrder": [
+                          "name"
+                        ],
+                        "request": null,
+                        "response": {
+                          "$ref": "GoogleLongrunningOperation"
+                        }
+                      }
+                    },
+                    "resources": null
+                  }
+                }
+              },
               "tensorboards": {
                 "methods": {
                   "batchRead": {
@@ -107697,6 +107919,146 @@
                 "resources": null
               }
             }
+          }
+        }
+      },
+      "taskStores": {
+        "methods": null,
+        "resources": {
+          "operations": {
+            "methods": {
+              "cancel": {
+                "id": "aiplatform.taskStores.operations.cancel",
+                "httpMethod": "POST",
+                "path": "v1/{+name}:cancel",
+                "flatPath": "v1/taskStores/{taskStoresId}/operations/{operationsId}:cancel",
+                "description": "Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.",
+                "parameters": {
+                  "name": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  }
+                },
+                "parameterOrder": [
+                  "name"
+                ],
+                "request": null,
+                "response": {
+                  "$ref": "GoogleProtobufEmpty"
+                }
+              },
+              "delete": {
+                "id": "aiplatform.taskStores.operations.delete",
+                "httpMethod": "DELETE",
+                "path": "v1/{+name}",
+                "flatPath": "v1/taskStores/{taskStoresId}/operations/{operationsId}",
+                "description": "Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.",
+                "parameters": {
+                  "name": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  }
+                },
+                "parameterOrder": [
+                  "name"
+                ],
+                "request": null,
+                "response": {
+                  "$ref": "GoogleProtobufEmpty"
+                }
+              },
+              "get": {
+                "id": "aiplatform.taskStores.operations.get",
+                "httpMethod": "GET",
+                "path": "v1/{+name}",
+                "flatPath": "v1/taskStores/{taskStoresId}/operations/{operationsId}",
+                "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
+                "parameters": {
+                  "name": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  }
+                },
+                "parameterOrder": [
+                  "name"
+                ],
+                "request": null,
+                "response": {
+                  "$ref": "GoogleLongrunningOperation"
+                }
+              },
+              "list": {
+                "id": "aiplatform.taskStores.operations.list",
+                "httpMethod": "GET",
+                "path": "v1/{+name}/operations",
+                "flatPath": "v1/taskStores/{taskStoresId}/operations",
+                "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.",
+                "parameters": {
+                  "filter": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false
+                  },
+                  "name": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  },
+                  "pageSize": {
+                    "type": "integer",
+                    "location": "query",
+                    "required": false
+                  },
+                  "pageToken": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false
+                  },
+                  "returnPartialSuccess": {
+                    "type": "boolean",
+                    "location": "query",
+                    "required": false
+                  }
+                },
+                "parameterOrder": [
+                  "name"
+                ],
+                "request": null,
+                "response": {
+                  "$ref": "GoogleLongrunningListOperationsResponse"
+                }
+              },
+              "wait": {
+                "id": "aiplatform.taskStores.operations.wait",
+                "httpMethod": "POST",
+                "path": "v1/{+name}:wait",
+                "flatPath": "v1/taskStores/{taskStoresId}/operations/{operationsId}:wait",
+                "description": "Waits until the specified long-running operation is done or reaches at most a specified timeout, returning the latest state. If the operation is already done, the latest state is immediately returned. If the timeout specified is greater than the default HTTP/RPC timeout, the HTTP/RPC timeout is used. If the server does not support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Note that this method is on a best-effort basis. It may return the latest state before the specified timeout (including immediately), meaning even an immediate response is no guarantee that the operation is done.",
+                "parameters": {
+                  "name": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  },
+                  "timeout": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false
+                  }
+                },
+                "parameterOrder": [
+                  "name"
+                ],
+                "request": null,
+                "response": {
+                  "$ref": "GoogleLongrunningOperation"
+                }
+              }
+            },
+            "resources": null
           }
         }
       },

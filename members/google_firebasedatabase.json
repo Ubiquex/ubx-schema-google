@@ -24,7 +24,7 @@
   "wire_name": "google_firebasedatabase",
   "raw_spec": {
     "name": "firebasedatabase",
-    "revision": "20260824",
+    "revision": "20260830",
     "discoveryVersion": "v1",
     "baseUrl": "https://firebasedatabase.googleapis.com/",
     "rootUrl": "https://firebasedatabase.googleapis.com/",

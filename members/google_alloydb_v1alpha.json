@@ -25,7 +25,7 @@
   "version_qualifier": "v1alpha",
   "raw_spec": {
     "name": "alloydb",
-    "revision": "20260818",
+    "revision": "20260826",
     "discoveryVersion": "v1",
     "baseUrl": "https://alloydb.googleapis.com/",
     "rootUrl": "https://alloydb.googleapis.com/",
@@ -2176,6 +2176,47 @@
             "additionalProperties": null,
             "enum": null,
             "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "DnsAutomationInfo": {
+        "type": "object",
+        "format": "",
+        "description": "DnsAutomationInfo contains information about the DNS automation for the instance.",
+        "$ref": "",
+        "properties": {
+          "fullyQualifiedDomainName": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The fully qualified domain name of the instance for DNS automation. Example: \"...alloydb.goog.\". Note: The AUDIT directive is intentionally omitted because this field contains sensitive network topology information.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "state": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The state of the DNS automation.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "STATE_UNSPECIFIED",
+              "PENDING_CREATE",
+              "ACTIVE",
+              "PENDING_DELETE",
+              "CREATE_FAILED",
+              "DELETE_FAILED"
+            ],
+            "readOnly": true
           }
         },
         "items": null,
@@ -4913,10 +4954,53 @@
             "enum": null,
             "readOnly": false
           },
+          "dnsAutomationInfos": {
+            "type": "array",
+            "format": "",
+            "description": "Output only. List of DNS automation info for the PSC auto connection.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "DnsAutomationInfo",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
           "ipAddress": {
             "type": "string",
             "format": "",
             "description": "Output only. The IP address of the PSC service automation endpoint.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "serviceConnectionPolicy": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The PSC service connection policy name. The format is \"projects//regions//serviceConnectionPolicies/\"",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "serviceConnectionPolicyCreationState": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The creation state or result of the connection policy. Possible values include: - `ACTIVE`: The policy was created successfully. - `PERMISSION_DENIED`: Sufficient permissions were not provided. Note that this field is an unstructured output and customers should not rely on the specific string value or error message directly.",
             "$ref": "",
             "properties": null,
             "items": null,

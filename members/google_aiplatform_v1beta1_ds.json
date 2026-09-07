@@ -25,7 +25,7 @@
   "version_qualifier": "v1beta1",
   "raw_spec": {
     "name": "aiplatform",
-    "revision": "20260828",
+    "revision": "20260831",
     "discoveryVersion": "v1",
     "baseUrl": "https://aiplatform.googleapis.com/",
     "rootUrl": "https://aiplatform.googleapis.com/",
@@ -3226,6 +3226,29 @@
             "format": "int32",
             "description": "",
             "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GenaiVertexV1beta1CreateInteractionHttpRequest": {
+        "type": "object",
+        "format": "",
+        "description": "Request message for [InteractionsService.CreateInteractionHttp].",
+        "$ref": "",
+        "properties": {
+          "httpBody": {
+            "type": "",
+            "format": "",
+            "description": "Required. The interaction to create.",
+            "$ref": "GoogleApiHttpBody",
             "properties": null,
             "items": null,
             "additionalProperties": null,
@@ -7370,6 +7393,50 @@
         "enum": null,
         "readOnly": false
       },
+      "GenaiVertexV1beta1ProcessingCallDelta": {
+        "type": "object",
+        "format": "",
+        "description": "Streaming delta for a server-initiated media processing step.",
+        "$ref": "",
+        "properties": {},
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GenaiVertexV1beta1ProcessingCallStep": {
+        "type": "object",
+        "format": "",
+        "description": "A server-initiated processing step for media analysis (e.g. video understanding).",
+        "$ref": "",
+        "properties": {},
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GenaiVertexV1beta1ProcessingResultDelta": {
+        "type": "object",
+        "format": "",
+        "description": "Streaming delta for the result of a server-initiated media processing step.",
+        "$ref": "",
+        "properties": {},
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GenaiVertexV1beta1ProcessingResultStep": {
+        "type": "object",
+        "format": "",
+        "description": "The result of a server-initiated media processing step.",
+        "$ref": "",
+        "properties": {},
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
       "GenaiVertexV1beta1RagStoreConfig": {
         "type": "object",
         "format": "",
@@ -8166,6 +8233,17 @@
             "enum": null,
             "readOnly": false
           },
+          "processingCall": {
+            "type": "",
+            "format": "",
+            "description": "",
+            "$ref": "GenaiVertexV1beta1ProcessingCallDelta",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
           "retrievalCall": {
             "type": "",
             "format": "",
@@ -8260,6 +8338,17 @@
             "format": "",
             "description": "",
             "$ref": "GenaiVertexV1beta1McpServerToolResultDelta",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "processingResult": {
+            "type": "",
+            "format": "",
+            "description": "",
+            "$ref": "GenaiVertexV1beta1ProcessingResultDelta",
             "properties": null,
             "items": null,
             "additionalProperties": null,
@@ -9573,6 +9662,17 @@
             "enum": null,
             "readOnly": false
           },
+          "processingCall": {
+            "type": "",
+            "format": "",
+            "description": "",
+            "$ref": "GenaiVertexV1beta1ProcessingCallStep",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
           "retrievalCall": {
             "type": "",
             "format": "",
@@ -9934,6 +10034,17 @@
             "format": "",
             "description": "",
             "$ref": "GenaiVertexV1beta1McpServerToolResultStep",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "processingResult": {
+            "type": "",
+            "format": "",
+            "description": "",
+            "$ref": "GenaiVertexV1beta1ProcessingResultStep",
             "properties": null,
             "items": null,
             "additionalProperties": null,
@@ -10705,6 +10816,17 @@
             "enum": null,
             "readOnly": false
           },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "A user-defined name for this content block. Can be referenced by the model in the final response.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
           "processingConfig": {
             "type": "",
             "format": "",
@@ -11099,6 +11221,907 @@
               "enum": null,
               "readOnly": false
             },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudAiplatformV1beta1A2APart": {
+        "type": "object",
+        "format": "",
+        "description": "A single part of a message or artifact. A part carries exactly one kind of content.",
+        "$ref": "",
+        "properties": {
+          "data": {
+            "type": "any",
+            "format": "",
+            "description": "Optional. Arbitrary data content.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "filename": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The name of the file, when the part represents a file.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "mediaType": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The IANA media type of the content, e.g. \"text/plain\" or \"image/png\".",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "metadata": {
+            "type": "object",
+            "format": "",
+            "description": "Optional. Additional context or parameters related to the part. Extensions can be used to strongly type metadata values for specific use cases.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "any",
+              "format": "",
+              "description": "Properties of the object.",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "raw": {
+            "type": "string",
+            "format": "byte",
+            "description": "Optional. Raw binary content.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "text": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Textual content.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "url": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. A URL pointing to the content.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudAiplatformV1beta1A2ATaskRecord": {
+        "type": "object",
+        "format": "",
+        "description": "An A2ATaskRecord represents an A2ATask (unit of work) persisted in storage.",
+        "$ref": "",
+        "properties": {
+          "appId": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Agent application which created the task.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "artifacts": {
+            "type": "array",
+            "format": "",
+            "description": "Output only. The artifacts produced by the task.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "GoogleCloudAiplatformV1beta1A2ATaskRecordArtifact",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "contextId": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. A generic identifier for grouping related tasks (e.g., session_id, workflow_id).",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "createTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. The creation timestamp of the task.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "deleteTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. The deletion timestamp of the task.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "expireTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. Timestamp of when this task is considered expired. This is *always* provided on output, and is calculated based on the `update_time` and the `ttl`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "generation": {
+            "type": "string",
+            "format": "int64",
+            "description": "Output only. The task generation number.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "history": {
+            "type": "array",
+            "format": "",
+            "description": "Output only. The history of the task messages.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "GoogleCloudAiplatformV1beta1A2ATaskRecordMessage",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "metadata": {
+            "type": "object",
+            "format": "",
+            "description": "Optional. A flexible key-value map for protocol extensions to attach custom attributes to core data structures.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "any",
+              "format": "",
+              "description": "Properties of the object.",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "Identifier. The resource name of the task. Format: `projects/{project}/locations/{location}/taskStores/{task_store}/a2aTaskRecords/{a2a_task_record}`",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "purgeTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. The purge timestamp of the task.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "serviceMetadata": {
+            "type": "object",
+            "format": "",
+            "description": "Optional. Metadata relevant to the A2ATaskRecordService, not the agent to agent communication.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "any",
+              "format": "",
+              "description": "Properties of the object.",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "status": {
+            "type": "",
+            "format": "",
+            "description": "Output only. The status of the task, including the state, status message, and timestamp.",
+            "$ref": "GoogleCloudAiplatformV1beta1A2ATaskRecordStatus",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "ttl": {
+            "type": "string",
+            "format": "google-duration",
+            "description": "Optional. Input only. The TTL (Time To Live) for the task. If not set, the task will expire in 24 hours by default. Valid range: (0 seconds, 1000 days]",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "updateTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. The last update timestamp of the task.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "userId": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Task owner user ID.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudAiplatformV1beta1A2ATaskRecordArtifact": {
+        "type": "object",
+        "format": "",
+        "description": "Represents a single artifact produced by a task.",
+        "$ref": "",
+        "properties": {
+          "artifactId": {
+            "type": "string",
+            "format": "",
+            "description": "Required. The unique identifier of the artifact within the task.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "description": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. A human-readable description of the artifact.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "displayName": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The human-readable name of the artifact.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "extensions": {
+            "type": "array",
+            "format": "",
+            "description": "Optional. A2A protocol extensions associated with the artifact.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "metadata": {
+            "type": "object",
+            "format": "",
+            "description": "Optional. Additional context or parameters related to the artifact. Extensions can be used to strongly type metadata values for specific use cases.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "any",
+              "format": "",
+              "description": "Properties of the object.",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "parts": {
+            "type": "array",
+            "format": "",
+            "description": "Required. The content parts that make up the artifact.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "GoogleCloudAiplatformV1beta1A2APart",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudAiplatformV1beta1A2ATaskRecordArtifactChange": {
+        "type": "object",
+        "format": "",
+        "description": "An event payload describing a change to one of the task's artifacts.",
+        "$ref": "",
+        "properties": {
+          "append": {
+            "type": "boolean",
+            "format": "",
+            "description": "Optional. Whether the artifact parts should be appended to an existing artifact rather than replacing it.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "artifact": {
+            "type": "",
+            "format": "",
+            "description": "Required. The artifact that was added or updated.",
+            "$ref": "GoogleCloudAiplatformV1beta1A2ATaskRecordArtifact",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "lastChunk": {
+            "type": "boolean",
+            "format": "",
+            "description": "Optional. Whether this is the last chunk of a streamed artifact.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudAiplatformV1beta1A2ATaskRecordEvent": {
+        "type": "object",
+        "format": "",
+        "description": "An event that records a single change applied to a task's state.",
+        "$ref": "",
+        "properties": {
+          "createTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. The time at which the event was created.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "eventData": {
+            "type": "",
+            "format": "",
+            "description": "Required. The data describing the change carried by this event.",
+            "$ref": "GoogleCloudAiplatformV1beta1A2ATaskRecordEventData",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "generation": {
+            "type": "string",
+            "format": "int64",
+            "description": "Output only. The generation number of the task after this event is applied.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "metadata": {
+            "type": "object",
+            "format": "",
+            "description": "Optional. Additional context or parameters related to the event. Extensions can be used to strongly type metadata values for specific use cases.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "any",
+              "format": "",
+              "description": "Properties of the object.",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudAiplatformV1beta1A2ATaskRecordEventData": {
+        "type": "object",
+        "format": "",
+        "description": "The data describing the change carried by an A2ATaskRecordEvent. Multiple changes can be set in a single event.",
+        "$ref": "",
+        "properties": {
+          "artifactChange": {
+            "type": "",
+            "format": "",
+            "description": "Optional. A change to one of the task's artifacts.",
+            "$ref": "GoogleCloudAiplatformV1beta1A2ATaskRecordArtifactChange",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "historyAppend": {
+            "type": "",
+            "format": "",
+            "description": "Optional. A new message appended to the task history.",
+            "$ref": "GoogleCloudAiplatformV1beta1A2ATaskRecordHistoryAppend",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "metadataChange": {
+            "type": "",
+            "format": "",
+            "description": "Optional. A change to the task-level metadata.",
+            "$ref": "GoogleCloudAiplatformV1beta1A2ATaskRecordMetadataChange",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "statusUpdate": {
+            "type": "",
+            "format": "",
+            "description": "Optional. An update to the task's state and status message.",
+            "$ref": "GoogleCloudAiplatformV1beta1A2ATaskRecordStatusUpdate",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudAiplatformV1beta1A2ATaskRecordHistoryAppend": {
+        "type": "object",
+        "format": "",
+        "description": "An event payload that appends a new message to the task history.",
+        "$ref": "",
+        "properties": {
+          "message": {
+            "type": "",
+            "format": "",
+            "description": "Required. The message to append to the task history.",
+            "$ref": "GoogleCloudAiplatformV1beta1A2ATaskRecordMessage",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudAiplatformV1beta1A2ATaskRecordMessage": {
+        "type": "object",
+        "format": "",
+        "description": "Represents a single message in a conversation, compliant with the A2A specification.",
+        "$ref": "",
+        "properties": {
+          "extensions": {
+            "type": "array",
+            "format": "",
+            "description": "Optional. A2A protocol extensions associated with the message.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "messageId": {
+            "type": "string",
+            "format": "",
+            "description": "Required. The unique identifier of the message.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "metadata": {
+            "type": "object",
+            "format": "",
+            "description": "Optional. Additional context or parameters related to the message. Extensions can be used to strongly type metadata values for specific use cases.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "any",
+              "format": "",
+              "description": "Properties of the object.",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "parts": {
+            "type": "array",
+            "format": "",
+            "description": "Required. The content parts that make up the message.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "GoogleCloudAiplatformV1beta1A2APart",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "referenceTaskIds": {
+            "type": "array",
+            "format": "",
+            "description": "Optional. The IDs of other tasks referenced by this message.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "role": {
+            "type": "string",
+            "format": "",
+            "description": "Required. The role of the sender of the message.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "ROLE_UNSPECIFIED",
+              "USER",
+              "AGENT"
+            ],
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudAiplatformV1beta1A2ATaskRecordMetadataChange": {
+        "type": "object",
+        "format": "",
+        "description": "An event payload describing a change to the task-level metadata.",
+        "$ref": "",
+        "properties": {
+          "metadata": {
+            "type": "object",
+            "format": "",
+            "description": "Required. The updated task metadata after the change. This is a partial update that will be merged with the existing metadata.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "any",
+              "format": "",
+              "description": "Properties of the object.",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "updateMask": {
+            "type": "string",
+            "format": "google-fieldmask",
+            "description": "Optional. A field mask indicating which metadata paths changed. If unset, all fields are updated.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudAiplatformV1beta1A2ATaskRecordStatus": {
+        "type": "object",
+        "format": "",
+        "description": "Represents the status of an A2ATaskRecord.",
+        "$ref": "",
+        "properties": {
+          "message": {
+            "type": "",
+            "format": "",
+            "description": "Output only. The status message associated with the state.",
+            "$ref": "GoogleCloudAiplatformV1beta1A2ATaskRecordMessage",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "state": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The current state of the task.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "STATE_UNSPECIFIED",
+              "TASK_STATE_SUBMITTED",
+              "TASK_STATE_WORKING",
+              "TASK_STATE_COMPLETED",
+              "TASK_STATE_FAILED",
+              "TASK_STATE_CANCELED",
+              "TASK_STATE_INPUT_REQUIRED",
+              "TASK_STATE_REJECTED",
+              "TASK_STATE_AUTH_REQUIRED"
+            ],
+            "readOnly": true
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. The time at which the state was set.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudAiplatformV1beta1A2ATaskRecordStatusUpdate": {
+        "type": "object",
+        "format": "",
+        "description": "An event payload that updates the task's state and optional status message.",
+        "$ref": "",
+        "properties": {
+          "message": {
+            "type": "",
+            "format": "",
+            "description": "Optional. The status message associated with the state change.",
+            "$ref": "GoogleCloudAiplatformV1beta1A2ATaskRecordMessage",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "state": {
+            "type": "string",
+            "format": "",
+            "description": "Required. The new state of the task.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "STATE_UNSPECIFIED",
+              "TASK_STATE_SUBMITTED",
+              "TASK_STATE_WORKING",
+              "TASK_STATE_COMPLETED",
+              "TASK_STATE_FAILED",
+              "TASK_STATE_CANCELED",
+              "TASK_STATE_INPUT_REQUIRED",
+              "TASK_STATE_REJECTED",
+              "TASK_STATE_AUTH_REQUIRED"
+            ],
+            "readOnly": false
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Optional. The time at which the status change occurred.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
             "additionalProperties": null,
             "enum": null,
             "readOnly": false
@@ -12873,6 +13896,29 @@
         "enum": null,
         "readOnly": false
       },
+      "GoogleCloudAiplatformV1beta1AgentResponseCustomization": {
+        "type": "object",
+        "format": "",
+        "description": "Customizes the agent's response to the end user when a `SemanticGovernancePolicy` is evaluated (for example, with a custom message shown on denial).",
+        "$ref": "",
+        "properties": {
+          "denialMessage": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Custom message shown to the end user when the policy check results in a denial. Use this to explain the rationale to the user. Max 1000 characters.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
       "GoogleCloudAiplatformV1beta1AgentTool": {
         "type": "object",
         "format": "",
@@ -12903,7 +13949,7 @@
           "name": {
             "type": "string",
             "format": "",
-            "description": "Optional. The name of the MCP server. Only applicable when `type` is `mcp_server`.",
+            "description": "Optional. The tool's GCP resource name, used to resolve the tool. Applicable when `type` is `mcp_server` or `endpoint` (a tool registered in Agent Registry), for example `projects/{project}/locations/{location}/.../mcpServers/{id}` or `projects/{project}/locations/{location}/.../endpoints/{id}`.",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -12914,7 +13960,7 @@
           "type": {
             "type": "string",
             "format": "",
-            "description": "Required. The type of the tool. Supported types: * `code_execution` * `filesystem` * `google_search` * `mcp_server` * `url_context`",
+            "description": "Required. The type of the tool. Supported types: * `code_execution` * `endpoint` * `filesystem` * `google_search` * `mcp_server` * `url_context`",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -12925,7 +13971,7 @@
           "url": {
             "type": "string",
             "format": "",
-            "description": "Optional. The URL for the MCP server endpoint. Only applicable when `type` is `mcp_server`.",
+            "description": "Optional. Temporary: the tool's runtime reference, consumed by CreateAgent to create the downstream AI App. Applicable when `type` is `mcp_server` or `endpoint`. It is duplicated here (the resource name is already in `name`) only because the Agent service is not yet connected to Agent Registry to derive it from `name`; the Task Service instead resolves it from Agent Registry (GetMcpServer / GetEndpoint) at task creation.",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -13808,6 +14854,73 @@
             "type": "string",
             "format": "",
             "description": "The API key string. Either this or `api_key_secret_version` must be set.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudAiplatformV1beta1AppendA2ATaskRecordEventsRequest": {
+        "type": "object",
+        "format": "",
+        "description": "Request message for A2ATaskRecordService.AppendA2ATaskRecordEvents.",
+        "$ref": "",
+        "properties": {
+          "events": {
+            "type": "array",
+            "format": "",
+            "description": "Required. The events to append to the task.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "GoogleCloudAiplatformV1beta1A2ATaskRecordEvent",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "generation": {
+            "type": "string",
+            "format": "int64",
+            "description": "Required. The current task generation.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudAiplatformV1beta1AppendA2ATaskRecordEventsResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Response message for A2ATaskRecordService.AppendA2ATaskRecordEvents.",
+        "$ref": "",
+        "properties": {
+          "generation": {
+            "type": "string",
+            "format": "int64",
+            "description": "Task generation matching the last event",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -17458,6 +18571,72 @@
               "format": "",
               "description": "",
               "$ref": "GoogleCloudAiplatformV1beta1TimeSeriesData",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudAiplatformV1beta1BidiExecuteSandboxEnvironmentRequest": {
+        "type": "object",
+        "format": "",
+        "description": "Request message for SandboxEnvironmentExecutionService.BidiExecuteSandboxEnvironment.",
+        "$ref": "",
+        "properties": {
+          "inputs": {
+            "type": "array",
+            "format": "",
+            "description": "Required. The inputs to the sandbox environment.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "GoogleCloudAiplatformV1beta1Chunk",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudAiplatformV1beta1BidiExecuteSandboxEnvironmentResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Response message for SandboxEnvironmentExecutionService.BidiExecuteSandboxEnvironment.",
+        "$ref": "",
+        "properties": {
+          "outputs": {
+            "type": "array",
+            "format": "",
+            "description": "The outputs from the sandbox environment.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "GoogleCloudAiplatformV1beta1Chunk",
               "properties": null,
               "items": null,
               "additionalProperties": null,
@@ -22005,7 +23184,7 @@
           "codeExecutionRegion": {
             "type": "string",
             "format": "",
-            "description": "Optional. The region to use for code execution. If set, the Code Execution Sandbox will be invoked in the specified region regardless of the request's originating region. Must be a region where the Code Execution Sandbox is available. Supported regions: us-central1, us-east1, us-east4, us-west1, us-west4, southamerica-east1, europe-west2, europe-west3, asia-east1, asia-south1, asia-southeast1. If unset, the request's originating region is used; requests from regions where the sandbox is unavailable will fail with UNIMPLEMENTED.",
+            "description": "Optional. The region to use for code execution. If set, the Code Execution Sandbox will be invoked in the specified region regardless of the request's originating region. Must be a region where the Code Execution Sandbox is available. Supported regions: northamerica-northeast1, southamerica-east1, us-central1, us-east1, us-east4, us-west1, us-west4, europe-central2, europe-north1, europe-southwest1, europe-west1, europe-west2, europe-west3, europe-west4, europe-west6, europe-west8, europe-west9, me-west1, asia-east1, asia-east2, asia-northeast1, asia-northeast3, asia-south1, asia-south2, asia-southeast1, australia-southeast2. If unset, the request's originating region is used; requests from regions where the sandbox is unavailable will fail with UNIMPLEMENTED.",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -29441,7 +30620,7 @@
           "codeExecutionRegion": {
             "type": "string",
             "format": "",
-            "description": "Optional. The region to use for code execution. If set, the Code Execution Sandbox will be invoked in the specified region regardless of the request's originating region. Must be a region where the Code Execution Sandbox is available. Supported regions: us-central1, us-east1, us-east4, us-west1, us-west4, southamerica-east1, europe-west2, europe-west3, asia-east1, asia-south1, asia-southeast1. If unset, the request's originating region is used.",
+            "description": "Optional. The region to use for code execution. If set, the Code Execution Sandbox will be invoked in the specified region regardless of the request's originating region. Must be a region where the Code Execution Sandbox is available. Supported regions: northamerica-northeast1, southamerica-east1, us-central1, us-east1, us-east4, us-west1, us-west4, europe-central2, europe-north1, europe-southwest1, europe-west1, europe-west2, europe-west3, europe-west4, europe-west6, europe-west8, europe-west9, me-west1, asia-east1, asia-east2, asia-northeast1, asia-northeast3, asia-south1, asia-south2, asia-southeast1, australia-southeast2. If unset, the request's originating region is used.",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -42534,6 +43713,17 @@
             "additionalProperties": null,
             "enum": null,
             "readOnly": false
+          },
+          "translationConfig": {
+            "type": "",
+            "format": "",
+            "description": "Optional. Config for translation.",
+            "$ref": "GoogleCloudAiplatformV1beta1TranslationConfig",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
           }
         },
         "items": null,
@@ -47582,6 +48772,94 @@
               "enum": null,
               "readOnly": false
             },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudAiplatformV1beta1ListA2ATaskRecordEventsResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Response message for A2ATaskRecordService.ListA2ATaskRecordEvents.",
+        "$ref": "",
+        "properties": {
+          "events": {
+            "type": "array",
+            "format": "",
+            "description": "List of A2ATaskRecordEvents in the requested page.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "GoogleCloudAiplatformV1beta1A2ATaskRecordEvent",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "A token to retrieve the next page of results.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudAiplatformV1beta1ListA2ATaskRecordsResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Response message for A2ATaskRecordService.ListA2ATaskRecords.",
+        "$ref": "",
+        "properties": {
+          "a2aTaskRecords": {
+            "type": "array",
+            "format": "",
+            "description": "List of A2ATaskRecords in the requested page.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "GoogleCloudAiplatformV1beta1A2ATaskRecord",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "A token, which can be sent as A2ATaskRecordService.ListA2ATaskRecordsRequest.page_token to retrieve the next page. Absence of this field indicates there are no subsequent pages.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
             "additionalProperties": null,
             "enum": null,
             "readOnly": false
@@ -77913,6 +79191,9 @@
               "STATE_DEPROVISIONING",
               "STATE_TERMINATED",
               "STATE_DELETED",
+              "STATE_PAUSED",
+              "STATE_PAUSING",
+              "STATE_RESUMING",
               "STATE_STOPPING"
             ],
             "readOnly": true
@@ -78142,6 +79423,17 @@
             "additionalProperties": null,
             "enum": null,
             "readOnly": true
+          },
+          "useGkeTd": {
+            "type": "boolean",
+            "format": "",
+            "description": "Output only. Whether the source SandboxEnvironment uses the GKE TD pool.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
           }
         },
         "items": null,
@@ -78182,6 +79474,17 @@
             "format": "",
             "description": "Optional. The shell environment for executing shell commands and scripts.",
             "$ref": "GoogleCloudAiplatformV1beta1SandboxEnvironmentSpecShellEnvironment",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "useGkeTd": {
+            "type": "boolean",
+            "format": "",
+            "description": "Optional. Immutable. Whether to provision the SandboxEnvironment via the GKE TD pool. Immutable.",
+            "$ref": "",
             "properties": null,
             "items": null,
             "additionalProperties": null,
@@ -78368,6 +79671,17 @@
             "additionalProperties": null,
             "enum": null,
             "readOnly": true
+          },
+          "useGkeTd": {
+            "type": "boolean",
+            "format": "",
+            "description": "Optional. Immutable. Whether to provision the SandboxEnvironmentTemplate via the GKE TD pool.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
           }
         },
         "items": null,
@@ -90232,6 +91546,17 @@
             "enum": null,
             "readOnly": true
           },
+          "agentResponseCustomization": {
+            "type": "",
+            "format": "",
+            "description": "Optional. Settings for customizing the agent's response to end users when this policy is evaluated, such as messages displayed when the policy denies a request.",
+            "$ref": "GoogleCloudAiplatformV1beta1AgentResponseCustomization",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
           "createTime": {
             "type": "string",
             "format": "google-datetime",
@@ -99481,6 +100806,40 @@
             "type": "string",
             "format": "",
             "description": "Optional. Transcription text.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudAiplatformV1beta1TranslationConfig": {
+        "type": "object",
+        "format": "",
+        "description": "Config for translation features.",
+        "$ref": "",
+        "properties": {
+          "echoTargetLanguage": {
+            "type": "boolean",
+            "format": "",
+            "description": "Optional. If `true`, the model will generate audio when the target language is spoken, essentially it will parrot the input. If `false`, we will not produce audio for the target language.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "targetLanguageCode": {
+            "type": "string",
+            "format": "",
+            "description": "Required. The target language for translation. Supported values are BCP-47 language codes (e.g. \"en\", \"es\", \"fr\").",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -122899,6 +124258,91 @@
                 },
                 "resources": null
               },
+              "interactionsHttp": {
+                "methods": {
+                  "cancel": {
+                    "id": "aiplatform.projects.locations.interactionsHttp.cancel",
+                    "httpMethod": "POST",
+                    "path": "v1beta1/{+name}/cancel",
+                    "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/interactionsHttp/{interactionsHttpId}/cancel",
+                    "description": "Cancels an interaction.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "GoogleApiHttpBody"
+                    }
+                  },
+                  "create": {
+                    "id": "aiplatform.projects.locations.interactionsHttp.create",
+                    "httpMethod": "POST",
+                    "path": "v1beta1/{+parent}/interactionsHttp",
+                    "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/interactionsHttp",
+                    "description": "Generates a set of responses from the model.",
+                    "parameters": {
+                      "parent": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "parent"
+                    ],
+                    "request": {
+                      "$ref": "GenaiVertexV1beta1CreateInteractionHttpRequest"
+                    },
+                    "response": {
+                      "$ref": "GoogleApiHttpBody"
+                    }
+                  },
+                  "get": {
+                    "id": "aiplatform.projects.locations.interactionsHttp.get",
+                    "httpMethod": "GET",
+                    "path": "v1beta1/{+name}",
+                    "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/interactionsHttp/{interactionsHttpId}",
+                    "description": "Gets an interaction.",
+                    "parameters": {
+                      "includeInput": {
+                        "type": "boolean",
+                        "location": "query",
+                        "required": false
+                      },
+                      "lastEventId": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      },
+                      "stream": {
+                        "type": "boolean",
+                        "location": "query",
+                        "required": false
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "GoogleApiHttpBody"
+                    }
+                  }
+                },
+                "resources": null
+              },
               "memoryBanks": {
                 "methods": {
                   "ingestEvents": {
@@ -134487,6 +135931,29 @@
                           "$ref": "GoogleCloudAiplatformV1beta1AuthorizeSandboxEnvironmentAccessResponse"
                         }
                       },
+                      "bidiExecute": {
+                        "id": "aiplatform.projects.locations.reasoningEngines.sandboxEnvironments.bidiExecute",
+                        "httpMethod": "POST",
+                        "path": "v1beta1/{+name}:bidiExecute",
+                        "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/reasoningEngines/{reasoningEnginesId}/sandboxEnvironments/{sandboxEnvironmentsId}:bidiExecute",
+                        "description": "Executes using a sandbox environment with bidirectional streaming.",
+                        "parameters": {
+                          "name": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          }
+                        },
+                        "parameterOrder": [
+                          "name"
+                        ],
+                        "request": {
+                          "$ref": "GoogleCloudAiplatformV1beta1BidiExecuteSandboxEnvironmentRequest"
+                        },
+                        "response": {
+                          "$ref": "GoogleCloudAiplatformV1beta1BidiExecuteSandboxEnvironmentResponse"
+                        }
+                      },
                       "create": {
                         "id": "aiplatform.projects.locations.reasoningEngines.sandboxEnvironments.create",
                         "httpMethod": "POST",
@@ -137450,6 +138917,337 @@
                         "resources": null
                       }
                     }
+                  }
+                }
+              },
+              "taskStores": {
+                "methods": null,
+                "resources": {
+                  "a2aTaskRecords": {
+                    "methods": {
+                      "appendEvents": {
+                        "id": "aiplatform.projects.locations.taskStores.a2aTaskRecords.appendEvents",
+                        "httpMethod": "POST",
+                        "path": "v1beta1/{+name}:appendEvents",
+                        "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/taskStores/{taskStoresId}/a2aTaskRecords/{a2aTaskRecordsId}:appendEvents",
+                        "description": "Appends A2ATaskRecordEvents to an A2ATaskRecord.",
+                        "parameters": {
+                          "name": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          }
+                        },
+                        "parameterOrder": [
+                          "name"
+                        ],
+                        "request": {
+                          "$ref": "GoogleCloudAiplatformV1beta1AppendA2ATaskRecordEventsRequest"
+                        },
+                        "response": {
+                          "$ref": "GoogleCloudAiplatformV1beta1AppendA2ATaskRecordEventsResponse"
+                        }
+                      },
+                      "create": {
+                        "id": "aiplatform.projects.locations.taskStores.a2aTaskRecords.create",
+                        "httpMethod": "POST",
+                        "path": "v1beta1/{+parent}/a2aTaskRecords",
+                        "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/taskStores/{taskStoresId}/a2aTaskRecords",
+                        "description": "Creates an A2ATaskRecord.",
+                        "parameters": {
+                          "a2aTaskRecordId": {
+                            "type": "string",
+                            "location": "query",
+                            "required": false
+                          },
+                          "parent": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          }
+                        },
+                        "parameterOrder": [
+                          "parent"
+                        ],
+                        "request": {
+                          "$ref": "GoogleCloudAiplatformV1beta1A2ATaskRecord"
+                        },
+                        "response": {
+                          "$ref": "GoogleCloudAiplatformV1beta1A2ATaskRecord"
+                        }
+                      },
+                      "delete": {
+                        "id": "aiplatform.projects.locations.taskStores.a2aTaskRecords.delete",
+                        "httpMethod": "DELETE",
+                        "path": "v1beta1/{+name}",
+                        "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/taskStores/{taskStoresId}/a2aTaskRecords/{a2aTaskRecordsId}",
+                        "description": "Deletes an A2ATaskRecord.",
+                        "parameters": {
+                          "name": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          }
+                        },
+                        "parameterOrder": [
+                          "name"
+                        ],
+                        "request": null,
+                        "response": {
+                          "$ref": "GoogleCloudAiplatformV1beta1A2ATaskRecord"
+                        }
+                      },
+                      "get": {
+                        "id": "aiplatform.projects.locations.taskStores.a2aTaskRecords.get",
+                        "httpMethod": "GET",
+                        "path": "v1beta1/{+name}",
+                        "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/taskStores/{taskStoresId}/a2aTaskRecords/{a2aTaskRecordsId}",
+                        "description": "Gets an A2ATaskRecord.",
+                        "parameters": {
+                          "name": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          },
+                          "view": {
+                            "type": "string",
+                            "location": "query",
+                            "required": false
+                          }
+                        },
+                        "parameterOrder": [
+                          "name"
+                        ],
+                        "request": null,
+                        "response": {
+                          "$ref": "GoogleCloudAiplatformV1beta1A2ATaskRecord"
+                        }
+                      },
+                      "list": {
+                        "id": "aiplatform.projects.locations.taskStores.a2aTaskRecords.list",
+                        "httpMethod": "GET",
+                        "path": "v1beta1/{+parent}/a2aTaskRecords",
+                        "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/taskStores/{taskStoresId}/a2aTaskRecords",
+                        "description": "Lists A2ATaskRecords in a TaskStore.",
+                        "parameters": {
+                          "filter": {
+                            "type": "string",
+                            "location": "query",
+                            "required": false
+                          },
+                          "orderBy": {
+                            "type": "string",
+                            "location": "query",
+                            "required": false
+                          },
+                          "pageSize": {
+                            "type": "integer",
+                            "location": "query",
+                            "required": false
+                          },
+                          "pageToken": {
+                            "type": "string",
+                            "location": "query",
+                            "required": false
+                          },
+                          "parent": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          }
+                        },
+                        "parameterOrder": [
+                          "parent"
+                        ],
+                        "request": null,
+                        "response": {
+                          "$ref": "GoogleCloudAiplatformV1beta1ListA2ATaskRecordsResponse"
+                        }
+                      }
+                    },
+                    "resources": {
+                      "events": {
+                        "methods": {
+                          "list": {
+                            "id": "aiplatform.projects.locations.taskStores.a2aTaskRecords.events.list",
+                            "httpMethod": "GET",
+                            "path": "v1beta1/{+parent}/events",
+                            "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/taskStores/{taskStoresId}/a2aTaskRecords/{a2aTaskRecordsId}/events",
+                            "description": "Lists TaskEvents for an A2ATaskRecord.",
+                            "parameters": {
+                              "filter": {
+                                "type": "string",
+                                "location": "query",
+                                "required": false
+                              },
+                              "orderBy": {
+                                "type": "string",
+                                "location": "query",
+                                "required": false
+                              },
+                              "pageSize": {
+                                "type": "integer",
+                                "location": "query",
+                                "required": false
+                              },
+                              "pageToken": {
+                                "type": "string",
+                                "location": "query",
+                                "required": false
+                              },
+                              "parent": {
+                                "type": "string",
+                                "location": "path",
+                                "required": true
+                              }
+                            },
+                            "parameterOrder": [
+                              "parent"
+                            ],
+                            "request": null,
+                            "response": {
+                              "$ref": "GoogleCloudAiplatformV1beta1ListA2ATaskRecordEventsResponse"
+                            }
+                          }
+                        },
+                        "resources": null
+                      }
+                    }
+                  },
+                  "operations": {
+                    "methods": {
+                      "cancel": {
+                        "id": "aiplatform.projects.locations.taskStores.operations.cancel",
+                        "httpMethod": "POST",
+                        "path": "v1beta1/{+name}:cancel",
+                        "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/taskStores/{taskStoresId}/operations/{operationsId}:cancel",
+                        "description": "Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.",
+                        "parameters": {
+                          "name": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          }
+                        },
+                        "parameterOrder": [
+                          "name"
+                        ],
+                        "request": null,
+                        "response": {
+                          "$ref": "GoogleProtobufEmpty"
+                        }
+                      },
+                      "delete": {
+                        "id": "aiplatform.projects.locations.taskStores.operations.delete",
+                        "httpMethod": "DELETE",
+                        "path": "v1beta1/{+name}",
+                        "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/taskStores/{taskStoresId}/operations/{operationsId}",
+                        "description": "Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.",
+                        "parameters": {
+                          "name": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          }
+                        },
+                        "parameterOrder": [
+                          "name"
+                        ],
+                        "request": null,
+                        "response": {
+                          "$ref": "GoogleProtobufEmpty"
+                        }
+                      },
+                      "get": {
+                        "id": "aiplatform.projects.locations.taskStores.operations.get",
+                        "httpMethod": "GET",
+                        "path": "v1beta1/{+name}",
+                        "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/taskStores/{taskStoresId}/operations/{operationsId}",
+                        "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
+                        "parameters": {
+                          "name": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          }
+                        },
+                        "parameterOrder": [
+                          "name"
+                        ],
+                        "request": null,
+                        "response": {
+                          "$ref": "GoogleLongrunningOperation"
+                        }
+                      },
+                      "list": {
+                        "id": "aiplatform.projects.locations.taskStores.operations.list",
+                        "httpMethod": "GET",
+                        "path": "v1beta1/{+name}/operations",
+                        "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/taskStores/{taskStoresId}/operations",
+                        "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.",
+                        "parameters": {
+                          "filter": {
+                            "type": "string",
+                            "location": "query",
+                            "required": false
+                          },
+                          "name": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          },
+                          "pageSize": {
+                            "type": "integer",
+                            "location": "query",
+                            "required": false
+                          },
+                          "pageToken": {
+                            "type": "string",
+                            "location": "query",
+                            "required": false
+                          },
+                          "returnPartialSuccess": {
+                            "type": "boolean",
+                            "location": "query",
+                            "required": false
+                          }
+                        },
+                        "parameterOrder": [
+                          "name"
+                        ],
+                        "request": null,
+                        "response": {
+                          "$ref": "GoogleLongrunningListOperationsResponse"
+                        }
+                      },
+                      "wait": {
+                        "id": "aiplatform.projects.locations.taskStores.operations.wait",
+                        "httpMethod": "POST",
+                        "path": "v1beta1/{+name}:wait",
+                        "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/taskStores/{taskStoresId}/operations/{operationsId}:wait",
+                        "description": "Waits until the specified long-running operation is done or reaches at most a specified timeout, returning the latest state. If the operation is already done, the latest state is immediately returned. If the timeout specified is greater than the default HTTP/RPC timeout, the HTTP/RPC timeout is used. If the server does not support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Note that this method is on a best-effort basis. It may return the latest state before the specified timeout (including immediately), meaning even an immediate response is no guarantee that the operation is done.",
+                        "parameters": {
+                          "name": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          },
+                          "timeout": {
+                            "type": "string",
+                            "location": "query",
+                            "required": false
+                          }
+                        },
+                        "parameterOrder": [
+                          "name"
+                        ],
+                        "request": null,
+                        "response": {
+                          "$ref": "GoogleLongrunningOperation"
+                        }
+                      }
+                    },
+                    "resources": null
                   }
                 }
               },
@@ -143268,6 +145066,29 @@
                   "$ref": "GoogleCloudAiplatformV1beta1AuthorizeSandboxEnvironmentAccessResponse"
                 }
               },
+              "bidiExecute": {
+                "id": "aiplatform.reasoningEngines.sandboxEnvironments.bidiExecute",
+                "httpMethod": "POST",
+                "path": "v1beta1/{+name}:bidiExecute",
+                "flatPath": "v1beta1/reasoningEngines/{reasoningEnginesId}/sandboxEnvironments/{sandboxEnvironmentsId}:bidiExecute",
+                "description": "Executes using a sandbox environment with bidirectional streaming.",
+                "parameters": {
+                  "name": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  }
+                },
+                "parameterOrder": [
+                  "name"
+                ],
+                "request": {
+                  "$ref": "GoogleCloudAiplatformV1beta1BidiExecuteSandboxEnvironmentRequest"
+                },
+                "response": {
+                  "$ref": "GoogleCloudAiplatformV1beta1BidiExecuteSandboxEnvironmentResponse"
+                }
+              },
               "create": {
                 "id": "aiplatform.reasoningEngines.sandboxEnvironments.create",
                 "httpMethod": "POST",
@@ -145021,6 +146842,146 @@
                 "resources": null
               }
             }
+          }
+        }
+      },
+      "taskStores": {
+        "methods": null,
+        "resources": {
+          "operations": {
+            "methods": {
+              "cancel": {
+                "id": "aiplatform.taskStores.operations.cancel",
+                "httpMethod": "POST",
+                "path": "v1beta1/{+name}:cancel",
+                "flatPath": "v1beta1/taskStores/{taskStoresId}/operations/{operationsId}:cancel",
+                "description": "Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.",
+                "parameters": {
+                  "name": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  }
+                },
+                "parameterOrder": [
+                  "name"
+                ],
+                "request": null,
+                "response": {
+                  "$ref": "GoogleProtobufEmpty"
+                }
+              },
+              "delete": {
+                "id": "aiplatform.taskStores.operations.delete",
+                "httpMethod": "DELETE",
+                "path": "v1beta1/{+name}",
+                "flatPath": "v1beta1/taskStores/{taskStoresId}/operations/{operationsId}",
+                "description": "Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.",
+                "parameters": {
+                  "name": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  }
+                },
+                "parameterOrder": [
+                  "name"
+                ],
+                "request": null,
+                "response": {
+                  "$ref": "GoogleProtobufEmpty"
+                }
+              },
+              "get": {
+                "id": "aiplatform.taskStores.operations.get",
+                "httpMethod": "GET",
+                "path": "v1beta1/{+name}",
+                "flatPath": "v1beta1/taskStores/{taskStoresId}/operations/{operationsId}",
+                "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
+                "parameters": {
+                  "name": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  }
+                },
+                "parameterOrder": [
+                  "name"
+                ],
+                "request": null,
+                "response": {
+                  "$ref": "GoogleLongrunningOperation"
+                }
+              },
+              "list": {
+                "id": "aiplatform.taskStores.operations.list",
+                "httpMethod": "GET",
+                "path": "v1beta1/{+name}/operations",
+                "flatPath": "v1beta1/taskStores/{taskStoresId}/operations",
+                "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.",
+                "parameters": {
+                  "filter": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false
+                  },
+                  "name": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  },
+                  "pageSize": {
+                    "type": "integer",
+                    "location": "query",
+                    "required": false
+                  },
+                  "pageToken": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false
+                  },
+                  "returnPartialSuccess": {
+                    "type": "boolean",
+                    "location": "query",
+                    "required": false
+                  }
+                },
+                "parameterOrder": [
+                  "name"
+                ],
+                "request": null,
+                "response": {
+                  "$ref": "GoogleLongrunningListOperationsResponse"
+                }
+              },
+              "wait": {
+                "id": "aiplatform.taskStores.operations.wait",
+                "httpMethod": "POST",
+                "path": "v1beta1/{+name}:wait",
+                "flatPath": "v1beta1/taskStores/{taskStoresId}/operations/{operationsId}:wait",
+                "description": "Waits until the specified long-running operation is done or reaches at most a specified timeout, returning the latest state. If the operation is already done, the latest state is immediately returned. If the timeout specified is greater than the default HTTP/RPC timeout, the HTTP/RPC timeout is used. If the server does not support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Note that this method is on a best-effort basis. It may return the latest state before the specified timeout (including immediately), meaning even an immediate response is no guarantee that the operation is done.",
+                "parameters": {
+                  "name": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  },
+                  "timeout": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false
+                  }
+                },
+                "parameterOrder": [
+                  "name"
+                ],
+                "request": null,
+                "response": {
+                  "$ref": "GoogleLongrunningOperation"
+                }
+              }
+            },
+            "resources": null
           }
         }
       },

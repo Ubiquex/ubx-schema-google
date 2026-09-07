@@ -24,7 +24,7 @@
   "wire_name": "google_dlp",
   "raw_spec": {
     "name": "dlp",
-    "revision": "20260825",
+    "revision": "20260829",
     "discoveryVersion": "v1",
     "baseUrl": "https://dlp.googleapis.com/",
     "rootUrl": "https://dlp.googleapis.com/",
@@ -3084,17 +3084,6 @@
             "enum": null,
             "readOnly": false
           },
-          "inspectTemplate": {
-            "type": "",
-            "format": "",
-            "description": "Optional. InspectTemplate to use to produce findings. Deprecated: use inspect_config instead.",
-            "$ref": "GooglePrivacyDlpV2InspectTemplate",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
           "loggingConfigs": {
             "type": "array",
             "format": "",
@@ -3252,10 +3241,31 @@
           "content": {
             "type": "string",
             "format": "",
-            "description": "The contents of this message.",
+            "description": "Deprecated: Use `message_parts` instead. The contents of this message. Only one of `content` and `message_parts` can be set.",
             "$ref": "",
             "properties": null,
             "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "messageParts": {
+            "type": "array",
+            "format": "",
+            "description": "Optional. The parts of the message. Restricted to being at most a single text item. Only one of `content` and `message_parts` can be set.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "GooglePrivacyDlpV2MessagePart",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
             "additionalProperties": null,
             "enum": null,
             "readOnly": false
@@ -12477,6 +12487,29 @@
         "enum": null,
         "readOnly": false
       },
+      "GooglePrivacyDlpV2MessagePart": {
+        "type": "object",
+        "format": "",
+        "description": "A part of a conversation message.",
+        "$ref": "",
+        "properties": {
+          "text": {
+            "type": "string",
+            "format": "",
+            "description": "String content for text-based messages.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
       "GooglePrivacyDlpV2MetadataKeyValueExpression": {
         "type": "object",
         "format": "",
@@ -13183,21 +13216,6 @@
             },
             "additionalProperties": null,
             "enum": null,
-            "readOnly": false
-          },
-          "returnVerdict": {
-            "type": "string",
-            "format": "",
-            "description": "If set, the verdict will be returned to the user. Deprecated: Use `action` instead.",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": [
-              "CONTENT_POLICY_VERDICT_UNSPECIFIED",
-              "ALLOW",
-              "BLOCK"
-            ],
             "readOnly": false
           }
         },

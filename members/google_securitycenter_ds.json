@@ -24,7 +24,7 @@
   "wire_name": "google_securitycenter",
   "raw_spec": {
     "name": "securitycenter",
-    "revision": "20260821",
+    "revision": "20260828",
     "discoveryVersion": "v1",
     "baseUrl": "https://securitycenter.googleapis.com/",
     "rootUrl": "https://securitycenter.googleapis.com/",

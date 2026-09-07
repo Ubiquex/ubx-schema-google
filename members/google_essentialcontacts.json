@@ -24,7 +24,7 @@
   "wire_name": "google_essentialcontacts",
   "raw_spec": {
     "name": "essentialcontacts",
-    "revision": "20260820",
+    "revision": "20260827",
     "discoveryVersion": "v1",
     "baseUrl": "https://essentialcontacts.googleapis.com/",
     "rootUrl": "https://essentialcontacts.googleapis.com/",

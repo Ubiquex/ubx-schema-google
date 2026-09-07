@@ -25,7 +25,7 @@
   "version_qualifier": "v1alpha",
   "raw_spec": {
     "name": "agentregistry",
-    "revision": "20260821",
+    "revision": "20260827",
     "discoveryVersion": "v1",
     "baseUrl": "https://agentregistry.googleapis.com/",
     "rootUrl": "https://agentregistry.googleapis.com/",

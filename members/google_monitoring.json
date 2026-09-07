@@ -24,7 +24,7 @@
   "wire_name": "google_monitoring",
   "raw_spec": {
     "name": "monitoring",
-    "revision": "20260806",
+    "revision": "20260827",
     "discoveryVersion": "v1",
     "baseUrl": "https://monitoring.googleapis.com/",
     "rootUrl": "https://monitoring.googleapis.com/",

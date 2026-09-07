@@ -24,7 +24,7 @@
   "wire_name": "google_orgpolicy",
   "raw_spec": {
     "name": "orgpolicy",
-    "revision": "20260821",
+    "revision": "20260827",
     "discoveryVersion": "v1",
     "baseUrl": "https://orgpolicy.googleapis.com/",
     "rootUrl": "https://orgpolicy.googleapis.com/",

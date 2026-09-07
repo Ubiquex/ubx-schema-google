@@ -24,7 +24,7 @@
   "wire_name": "google_accesscontextmanager",
   "raw_spec": {
     "name": "accesscontextmanager",
-    "revision": "20260819",
+    "revision": "20260827",
     "discoveryVersion": "v1",
     "baseUrl": "https://accesscontextmanager.googleapis.com/",
     "rootUrl": "https://accesscontextmanager.googleapis.com/",
@@ -1447,31 +1447,10 @@
             "enum": null,
             "readOnly": false
           },
-          "restrictedClientApplications": {
-            "type": "array",
-            "format": "",
-            "description": "Optional. Deprecated: Use `scoped_access_settings` instead. A list of applications that are subject to this binding's restrictions. If the list is empty, the binding restrictions will universally apply to all applications.",
-            "$ref": "",
-            "properties": null,
-            "items": {
-              "type": "",
-              "format": "",
-              "description": "",
-              "$ref": "Application",
-              "properties": null,
-              "items": null,
-              "additionalProperties": null,
-              "enum": null,
-              "readOnly": false
-            },
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
           "scopedAccessSettings": {
             "type": "array",
             "format": "",
-            "description": "Optional. A list of scoped access settings that set this binding's restrictions on a subset of applications. This field cannot be set if restricted_client_applications is set.",
+            "description": "Optional. A list of scoped access settings that set this binding's restrictions on a subset of applications.",
             "$ref": "",
             "properties": null,
             "items": {
@@ -2161,6 +2140,62 @@
               "enum": null,
               "readOnly": false
             },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "LookupConfiguredServicePerimeterResponse": {
+        "type": "object",
+        "format": "",
+        "description": "A configured service perimeter returned by Access Context Manager.",
+        "$ref": "",
+        "properties": {
+          "restrictedResource": {
+            "type": "string",
+            "format": "",
+            "description": "The resource (e.g. \"projects/123\", \"folders/456\") that directly owns/is restricted by the enforced perimeter.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "restrictedResourceDryRun": {
+            "type": "string",
+            "format": "",
+            "description": "The resource (e.g. \"projects/123\", \"folders/456\") that directly owns/is restricted by the dry-run perimeter.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "servicePerimeter": {
+            "type": "string",
+            "format": "",
+            "description": "Fully qualified name of the configured enforced perimeter. Format: `accessPolicies/{policy_id}/servicePerimeters/{perimeter_name}` This field is empty if no enforced perimeter applies.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "servicePerimeterDryRun": {
+            "type": "string",
+            "format": "",
+            "description": "Fully qualified name of the configured dry-run perimeter. Format: `accessPolicies/{policy_id}/servicePerimeters/{perimeter_name}` This field is empty if no dry-run perimeter configuration applies.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
             "additionalProperties": null,
             "enum": null,
             "readOnly": false
@@ -4244,6 +4279,32 @@
           }
         }
       },
+      "folders": {
+        "methods": {
+          "lookupConfiguredServicePerimeter": {
+            "id": "accesscontextmanager.folders.lookupConfiguredServicePerimeter",
+            "httpMethod": "GET",
+            "path": "v1/{+resource}:lookupConfiguredServicePerimeter",
+            "flatPath": "v1/folders/{foldersId}:lookupConfiguredServicePerimeter",
+            "description": "Looks up the configured service perimeter for a given resource Format: ['projects/{projectNumber}', 'folders/{folderNumber}'].",
+            "parameters": {
+              "resource": {
+                "type": "string",
+                "location": "path",
+                "required": true
+              }
+            },
+            "parameterOrder": [
+              "resource"
+            ],
+            "request": null,
+            "response": {
+              "$ref": "LookupConfiguredServicePerimeterResponse"
+            }
+          }
+        },
+        "resources": null
+      },
       "operations": {
         "methods": {
           "cancel": {
@@ -4523,6 +4584,32 @@
             "request": null,
             "response": {
               "$ref": "ListSupportedPermissionsResponse"
+            }
+          }
+        },
+        "resources": null
+      },
+      "projects": {
+        "methods": {
+          "lookupConfiguredServicePerimeter": {
+            "id": "accesscontextmanager.projects.lookupConfiguredServicePerimeter",
+            "httpMethod": "GET",
+            "path": "v1/{+resource}:lookupConfiguredServicePerimeter",
+            "flatPath": "v1/projects/{projectsId}:lookupConfiguredServicePerimeter",
+            "description": "Looks up the configured service perimeter for a given resource Format: ['projects/{projectNumber}', 'folders/{folderNumber}'].",
+            "parameters": {
+              "resource": {
+                "type": "string",
+                "location": "path",
+                "required": true
+              }
+            },
+            "parameterOrder": [
+              "resource"
+            ],
+            "request": null,
+            "response": {
+              "$ref": "LookupConfiguredServicePerimeterResponse"
             }
           }
         },

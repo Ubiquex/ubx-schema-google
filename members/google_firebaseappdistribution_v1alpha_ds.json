@@ -25,7 +25,7 @@
   "version_qualifier": "v1alpha",
   "raw_spec": {
     "name": "firebaseappdistribution",
-    "revision": "20260824",
+    "revision": "20260831",
     "discoveryVersion": "v1",
     "baseUrl": "https://firebaseappdistribution.googleapis.com/",
     "rootUrl": "https://firebaseappdistribution.googleapis.com/",

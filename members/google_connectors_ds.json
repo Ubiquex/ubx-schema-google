@@ -24,7 +24,7 @@
   "wire_name": "google_connectors",
   "raw_spec": {
     "name": "connectors",
-    "revision": "20260823",
+    "revision": "20260828",
     "discoveryVersion": "v1",
     "baseUrl": "https://connectors.googleapis.com/",
     "rootUrl": "https://connectors.googleapis.com/",
