@@ -24,7 +24,7 @@
   "wire_name": "google_datastream",
   "raw_spec": {
     "name": "datastream",
-    "revision": "20260818",
+    "revision": "20260826",
     "discoveryVersion": "v1",
     "baseUrl": "https://datastream.googleapis.com/",
     "rootUrl": "https://datastream.googleapis.com/",

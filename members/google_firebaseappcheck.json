@@ -24,7 +24,7 @@
   "wire_name": "google_firebaseappcheck",
   "raw_spec": {
     "name": "firebaseappcheck",
-    "revision": "20260822",
+    "revision": "20260829",
     "discoveryVersion": "v1",
     "baseUrl": "https://firebaseappcheck.googleapis.com/",
     "rootUrl": "https://firebaseappcheck.googleapis.com/",

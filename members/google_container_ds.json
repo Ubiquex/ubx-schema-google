@@ -24,7 +24,7 @@
   "wire_name": "google_container",
   "raw_spec": {
     "name": "container",
-    "revision": "20260818",
+    "revision": "20260825",
     "discoveryVersion": "v1",
     "baseUrl": "https://container.googleapis.com/",
     "rootUrl": "https://container.googleapis.com/",

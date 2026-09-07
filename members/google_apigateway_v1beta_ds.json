@@ -25,7 +25,7 @@
   "version_qualifier": "v1beta",
   "raw_spec": {
     "name": "apigateway",
-    "revision": "20260810",
+    "revision": "20260902",
     "discoveryVersion": "v1",
     "baseUrl": "https://apigateway.googleapis.com/",
     "rootUrl": "https://apigateway.googleapis.com/",
@@ -718,6 +718,21 @@
             "enum": null,
             "readOnly": false
           },
+          "effectiveStreamingMode": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The streaming mode this gateway is actually served with, which the service resolves at creation from `streaming_mode`, the referenced API Config, and the platform default at the time. Read this rather than `streaming_mode` to determine whether a gateway supports response streaming.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "EFFECTIVE_STREAMING_MODE_UNSPECIFIED",
+              "EFFECTIVE_STREAMING_MODE_DISABLED",
+              "EFFECTIVE_STREAMING_MODE_ENABLED"
+            ],
+            "readOnly": true
+          },
           "labels": {
             "type": "object",
             "format": "",
@@ -767,6 +782,20 @@
               "UPDATING"
             ],
             "readOnly": true
+          },
+          "streamingMode": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Immutable. Requests response streaming for a new gateway. An attempt to change it on update is rejected. If unset, the service selects the mode. This field records only what was requested and is never modified by the service; read `effective_streaming_mode` for the mode the gateway is served with.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "STREAMING_MODE_UNSPECIFIED",
+              "STREAMING_MODE_ENABLED"
+            ],
+            "readOnly": false
           },
           "updateTime": {
             "type": "string",

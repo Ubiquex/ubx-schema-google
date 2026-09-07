@@ -24,7 +24,7 @@
   "wire_name": "google_looker",
   "raw_spec": {
     "name": "looker",
-    "revision": "20260819",
+    "revision": "20260903",
     "discoveryVersion": "v1",
     "baseUrl": "https://looker.googleapis.com/",
     "rootUrl": "https://looker.googleapis.com/",

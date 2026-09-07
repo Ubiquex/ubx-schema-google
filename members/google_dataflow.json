@@ -24,7 +24,7 @@
   "wire_name": "google_dataflow",
   "raw_spec": {
     "name": "dataflow",
-    "revision": "20260818",
+    "revision": "20260825",
     "discoveryVersion": "v1",
     "baseUrl": "https://dataflow.googleapis.com/",
     "rootUrl": "https://dataflow.googleapis.com/",
@@ -13983,6 +13983,11 @@
                     "location": "path",
                     "required": true
                   },
+                  "regionalFanoutRequested": {
+                    "type": "boolean",
+                    "location": "query",
+                    "required": false
+                  },
                   "view": {
                     "type": "string",
                     "location": "query",
@@ -14145,6 +14150,11 @@
                     "type": "string",
                     "location": "path",
                     "required": true
+                  },
+                  "regionalFanoutRequested": {
+                    "type": "boolean",
+                    "location": "query",
+                    "required": false
                   },
                   "view": {
                     "type": "string",
@@ -14812,6 +14822,11 @@
                         "type": "string",
                         "location": "path",
                         "required": true
+                      },
+                      "regionalFanoutRequested": {
+                        "type": "boolean",
+                        "location": "query",
+                        "required": false
                       },
                       "view": {
                         "type": "string",

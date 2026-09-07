@@ -24,7 +24,7 @@
   "wire_name": "google_hypercomputecluster",
   "raw_spec": {
     "name": "hypercomputecluster",
-    "revision": "20260820",
+    "revision": "20260826",
     "discoveryVersion": "v1",
     "baseUrl": "https://hypercomputecluster.googleapis.com/",
     "rootUrl": "https://hypercomputecluster.googleapis.com/",

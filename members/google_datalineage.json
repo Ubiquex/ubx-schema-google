@@ -24,7 +24,7 @@
   "wire_name": "google_datalineage",
   "raw_spec": {
     "name": "datalineage",
-    "revision": "20260808",
+    "revision": "20260822",
     "discoveryVersion": "v1",
     "baseUrl": "https://datalineage.googleapis.com/",
     "rootUrl": "https://datalineage.googleapis.com/",

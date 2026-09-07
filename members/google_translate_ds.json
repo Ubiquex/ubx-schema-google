@@ -24,7 +24,7 @@
   "wire_name": "google_translate",
   "raw_spec": {
     "name": "translate",
-    "revision": "20260814",
+    "revision": "20260821",
     "discoveryVersion": "v1",
     "baseUrl": "https://translation.googleapis.com/",
     "rootUrl": "https://translation.googleapis.com/",

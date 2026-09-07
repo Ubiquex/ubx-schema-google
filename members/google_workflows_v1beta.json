@@ -25,7 +25,7 @@
   "version_qualifier": "v1beta",
   "raw_spec": {
     "name": "workflows",
-    "revision": "20260819",
+    "revision": "20260826",
     "discoveryVersion": "v1",
     "baseUrl": "https://workflows.googleapis.com/",
     "rootUrl": "https://workflows.googleapis.com/",

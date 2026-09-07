@@ -25,7 +25,7 @@
   "version_qualifier": "v1beta1",
   "raw_spec": {
     "name": "dataform",
-    "revision": "20260826",
+    "revision": "20260829",
     "discoveryVersion": "v1",
     "baseUrl": "https://dataform.googleapis.com/",
     "rootUrl": "https://dataform.googleapis.com/",

@@ -24,7 +24,7 @@
   "wire_name": "google_transcoder",
   "raw_spec": {
     "name": "transcoder",
-    "revision": "20260819",
+    "revision": "20260825",
     "discoveryVersion": "v1",
     "baseUrl": "https://transcoder.googleapis.com/",
     "rootUrl": "https://transcoder.googleapis.com/",

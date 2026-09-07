@@ -24,7 +24,7 @@
   "wire_name": "google_binaryauthorization",
   "raw_spec": {
     "name": "binaryauthorization",
-    "revision": "20260820",
+    "revision": "20260828",
     "discoveryVersion": "v1",
     "baseUrl": "https://binaryauthorization.googleapis.com/",
     "rootUrl": "https://binaryauthorization.googleapis.com/",

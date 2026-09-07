@@ -24,7 +24,7 @@
   "wire_name": "google_pubsub",
   "raw_spec": {
     "name": "pubsub",
-    "revision": "20260818",
+    "revision": "20260825",
     "discoveryVersion": "v1",
     "baseUrl": "https://pubsub.googleapis.com/",
     "rootUrl": "https://pubsub.googleapis.com/",
@@ -924,6 +924,40 @@
             "format": "",
             "description": "Required. The schema revision to commit.",
             "$ref": "Schema",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "CompiledProtoSchema": {
+        "type": "object",
+        "format": "",
+        "description": "Configuration specific to compiled Protocol Buffer schemas.",
+        "$ref": "",
+        "properties": {
+          "compiledBytes": {
+            "type": "string",
+            "format": "byte",
+            "description": "Required. The compiled FileDescriptorSet binary.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "rootMessage": {
+            "type": "string",
+            "format": "",
+            "description": "Required. The name of the root message type in the schema.",
+            "$ref": "",
             "properties": null,
             "items": null,
             "additionalProperties": null,
@@ -2421,6 +2455,17 @@
         "description": "A schema resource.",
         "$ref": "",
         "properties": {
+          "compiledProtoSchema": {
+            "type": "",
+            "format": "",
+            "description": "Optional. Configuration for a schema provided as a pre-compiled Protocol Buffer FileDescriptorSet. The `type` field above must be set to PROTOCOL_BUFFER.",
+            "$ref": "CompiledProtoSchema",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
           "definition": {
             "type": "string",
             "format": "",

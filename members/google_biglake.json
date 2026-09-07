@@ -24,7 +24,7 @@
   "wire_name": "google_biglake",
   "raw_spec": {
     "name": "biglake",
-    "revision": "20260820",
+    "revision": "20260828",
     "discoveryVersion": "v1",
     "baseUrl": "https://biglake.googleapis.com/",
     "rootUrl": "https://biglake.googleapis.com/",

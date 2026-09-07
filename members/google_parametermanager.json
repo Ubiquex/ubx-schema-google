@@ -24,7 +24,7 @@
   "wire_name": "google_parametermanager",
   "raw_spec": {
     "name": "parametermanager",
-    "revision": "20260819",
+    "revision": "20260831",
     "discoveryVersion": "v1",
     "baseUrl": "https://parametermanager.googleapis.com/",
     "rootUrl": "https://parametermanager.googleapis.com/",
@@ -519,6 +519,27 @@
             "enum": null,
             "readOnly": true
           },
+          "tags": {
+            "type": "object",
+            "format": "",
+            "description": "Optional. Input only. Immutable. Tag keys and tag values that are bound to this Parameter. You must represent each item in the map as: `\"\" : \"\"`. For example, a single resource can have the following tags: ``` \"123/environment\": \"production\", \"123/costCenter\": \"marketing\", ``` Tags are used to organize and group resources. Tags can be used to control policy evaluation for the resource.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
           "updateTime": {
             "type": "string",
             "format": "google-datetime",
@@ -542,6 +563,21 @@
         "description": "Message describing ParameterVersion resource",
         "$ref": "",
         "properties": {
+          "checksumSource": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Output only. [Output only] The source of the checksum.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "CHECKSUM_SOURCE_UNSPECIFIED",
+              "SERVER_GENERATED",
+              "USER_SPECIFIED"
+            ],
+            "readOnly": true
+          },
           "createTime": {
             "type": "string",
             "format": "google-datetime",
@@ -624,6 +660,17 @@
             "type": "string",
             "format": "byte",
             "description": "Required. bytes data for storing payload.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "dataCrc32c": {
+            "type": "string",
+            "format": "int64",
+            "description": "Optional. [Optional] The integrity checksum of the payload. If provided, the server will verify that the checksum matches the payload. If not provided, the server will generate the checksum.",
             "$ref": "",
             "properties": null,
             "items": null,

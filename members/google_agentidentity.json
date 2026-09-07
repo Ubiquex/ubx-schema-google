@@ -24,7 +24,7 @@
   "wire_name": "google_agentidentity",
   "raw_spec": {
     "name": "agentidentity",
-    "revision": "20260823",
+    "revision": "20260827",
     "discoveryVersion": "v1",
     "baseUrl": "https://agentidentity.googleapis.com/",
     "rootUrl": "https://agentidentity.googleapis.com/",

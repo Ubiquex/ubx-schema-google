@@ -24,7 +24,7 @@
   "wire_name": "google_dns",
   "raw_spec": {
     "name": "dns",
-    "revision": "20260804",
+    "revision": "20260819",
     "discoveryVersion": "v1",
     "baseUrl": "https://dns.googleapis.com/",
     "rootUrl": "https://dns.googleapis.com/",

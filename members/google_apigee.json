@@ -24,7 +24,7 @@
   "wire_name": "google_apigee",
   "raw_spec": {
     "name": "apigee",
-    "revision": "20260820",
+    "revision": "20260827",
     "discoveryVersion": "v1",
     "baseUrl": "https://apigee.googleapis.com/",
     "rootUrl": "https://apigee.googleapis.com/",
@@ -12525,6 +12525,73 @@
         "enum": null,
         "readOnly": false
       },
+      "GoogleCloudApigeeV1McpServerConfig": {
+        "type": "object",
+        "format": "",
+        "description": "Deployed MCP server configuration for an organization. Response for GetMcpServerConfig. Org-scoped singleton: each organization has exactly one McpServerConfig. Multiple logical MCP servers within the same org are expressed inside the Cloud Storage blob (McpServerConfigData.hosts map), not as multiple McpServerConfig resources.",
+        "$ref": "",
+        "properties": {
+          "mcpServerConfigDataLocation": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. Cloud Storage URI to the McpServerConfigData blob in the Apigee tenant project bucket. The sidecar fetches this URI using Cloud Storage, and deserializes the. protojson blob to McpServerConfigData. Treat this as an opaque URI — its format may change. Example: gs://{apigee-tp-bucket}/apigee-mcp-config-{org}-{revision_id}.json",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "Identifier. Resource name in the singleton form: organizations/{org}/mcpServerConfig",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "revisionCreateTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. Time at which this McpServerConfig revision was created. Mirrors IngressConfig.revision_create_time.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "revisionId": {
+            "type": "string",
+            "format": "int64",
+            "description": "Output only. Revision ID that defines the ordering on McpServerConfig revisions. Higher values indicate more recently deployed configurations. Monotonically non-decreasing per organization. Mirrors IngressConfig.revision_id.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "uid": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. Unique ID for the McpServerConfig that will only change if the organization is deleted and recreated.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
       "GoogleCloudApigeeV1Metadata": {
         "type": "object",
         "format": "",
@@ -22468,6 +22535,27 @@
             "request": null,
             "response": {
               "$ref": "GoogleCloudApigeeV1IngressConfig"
+            }
+          },
+          "getMcpServerConfig": {
+            "id": "apigee.organizations.getMcpServerConfig",
+            "httpMethod": "GET",
+            "path": "v1/{+name}",
+            "flatPath": "v1/organizations/{organizationsId}/mcpServerConfig",
+            "description": "Gets the deployed MCP server configuration for an organization. McpServerConfig is an org-scoped singleton (one per organization). The returned configuration may be up to 30 seconds out of date by default.",
+            "parameters": {
+              "name": {
+                "type": "string",
+                "location": "path",
+                "required": true
+              }
+            },
+            "parameterOrder": [
+              "name"
+            ],
+            "request": null,
+            "response": {
+              "$ref": "GoogleCloudApigeeV1McpServerConfig"
             }
           },
           "getProjectMapping": {

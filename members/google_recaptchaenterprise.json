@@ -24,7 +24,7 @@
   "wire_name": "google_recaptchaenterprise",
   "raw_spec": {
     "name": "recaptchaenterprise",
-    "revision": "20260816",
+    "revision": "20260825",
     "discoveryVersion": "v1",
     "baseUrl": "https://recaptchaenterprise.googleapis.com/",
     "rootUrl": "https://recaptchaenterprise.googleapis.com/",
@@ -3271,6 +3271,17 @@
             "enum": null,
             "readOnly": true
           },
+          "clientSignalsFailed": {
+            "type": "boolean",
+            "format": "",
+            "description": "Output only. Indicates a failure collecting reCAPTCHA signals at token generation. This might be a transient condition, or persistent for a user’s environment.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
           "createTime": {
             "type": "string",
             "format": "google-datetime",
@@ -4081,7 +4092,7 @@
           "challengeSecurityPreference": {
             "type": "string",
             "format": "",
-            "description": "Optional. Settings for the frequency and difficulty at which this key triggers captcha challenges. This should only be specified for `IntegrationType` CHECKBOX, INVISIBLE or POLICY_BASED_CHALLENGE.",
+            "description": "Optional. Settings for the frequency and difficulty at which this key triggers captcha challenges. This should only be specified for `IntegrationType` CHECKBOX (defaults to BALANCE), INVISIBLE (defaults to USABILITY), or POLICY_BASED_CHALLENGE (defaults to USABILITY).",
             "$ref": "",
             "properties": null,
             "items": null,

@@ -25,7 +25,7 @@
   "version_qualifier": "v1alpha",
   "raw_spec": {
     "name": "oslogin",
-    "revision": "20260826",
+    "revision": "20260903",
     "discoveryVersion": "v1",
     "baseUrl": "https://oslogin.googleapis.com/",
     "rootUrl": "https://oslogin.googleapis.com/",

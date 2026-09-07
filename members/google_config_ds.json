@@ -24,7 +24,7 @@
   "wire_name": "google_config",
   "raw_spec": {
     "name": "config",
-    "revision": "20260824",
+    "revision": "20260831",
     "discoveryVersion": "v1",
     "baseUrl": "https://config.googleapis.com/",
     "rootUrl": "https://config.googleapis.com/",

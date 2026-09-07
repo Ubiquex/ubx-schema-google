@@ -24,7 +24,7 @@
   "wire_name": "google_iampolicies",
   "raw_spec": {
     "name": "iam",
-    "revision": "20260821",
+    "revision": "20260828",
     "discoveryVersion": "v1",
     "baseUrl": "https://iam.googleapis.com/",
     "rootUrl": "https://iam.googleapis.com/",

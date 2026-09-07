@@ -24,7 +24,7 @@
   "wire_name": "google_pubsublite",
   "raw_spec": {
     "name": "pubsublite",
-    "revision": "20260731",
+    "revision": "20260828",
     "discoveryVersion": "v1",
     "baseUrl": "https://pubsublite.googleapis.com/",
     "rootUrl": "https://pubsublite.googleapis.com/",

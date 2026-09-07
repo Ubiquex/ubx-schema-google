@@ -24,7 +24,7 @@
   "wire_name": "google_cloudquotas",
   "raw_spec": {
     "name": "cloudquotas",
-    "revision": "20260820",
+    "revision": "20260827",
     "discoveryVersion": "v1",
     "baseUrl": "https://cloudquotas.googleapis.com/",
     "rootUrl": "https://cloudquotas.googleapis.com/",
@@ -915,21 +915,6 @@
             "additionalProperties": null,
             "enum": null,
             "readOnly": false
-          },
-          "trafficSource": {
-            "type": "string",
-            "format": "",
-            "description": "Output only. Indicates the traffic type attribution for this quota limit (e.g. agentic). This is an informational field used to categorize and filter the quota limits.",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": [
-              "TRAFFIC_SOURCE_UNSPECIFIED",
-              "TRAFFIC_SOURCE_NONAGENTIC",
-              "TRAFFIC_SOURCE_AGENTIC"
-            ],
-            "readOnly": true
           }
         },
         "items": null,

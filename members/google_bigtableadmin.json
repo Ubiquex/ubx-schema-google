@@ -24,7 +24,7 @@
   "wire_name": "google_bigtableadmin",
   "raw_spec": {
     "name": "bigtableadmin",
-    "revision": "20260817",
+    "revision": "20260829",
     "discoveryVersion": "v1",
     "baseUrl": "https://bigtableadmin.googleapis.com/",
     "rootUrl": "https://bigtableadmin.googleapis.com/",

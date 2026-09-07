@@ -24,7 +24,7 @@
   "wire_name": "google_observability",
   "raw_spec": {
     "name": "observability",
-    "revision": "20260820",
+    "revision": "20260827",
     "discoveryVersion": "v1",
     "baseUrl": "https://observability.googleapis.com/",
     "rootUrl": "https://observability.googleapis.com/",

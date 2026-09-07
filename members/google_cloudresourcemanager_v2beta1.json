@@ -25,7 +25,7 @@
   "version_qualifier": "v2beta1",
   "raw_spec": {
     "name": "cloudresourcemanager",
-    "revision": "20260811",
+    "revision": "20260820",
     "discoveryVersion": "v1",
     "baseUrl": "https://cloudresourcemanager.googleapis.com/",
     "rootUrl": "https://cloudresourcemanager.googleapis.com/",
@@ -299,6 +299,28 @@
         "enum": null,
         "readOnly": false
       },
+      "CreateBoundaryMetadata": {
+        "type": "object",
+        "format": "",
+        "description": "A status object which is used as the `metadata` field for the Operation returned by CreateBoundary. Currently empty.",
+        "$ref": "",
+        "properties": {},
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "CreateCapabilityConfigMetadata": {
+        "type": "object",
+        "format": "",
+        "description": "A status object which is used as the `metadata` field for the Operation returned by CreateCapabilityConfig. Currently empty.",
+        "$ref": "",
+        "properties": {},
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
       "CreateFolderMetadata": {
         "type": "object",
         "format": "",
@@ -404,6 +426,28 @@
         "type": "object",
         "format": "",
         "description": "Runtime operation information for creating a TagValue.",
+        "$ref": "",
+        "properties": {},
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "DeleteBoundaryMetadata": {
+        "type": "object",
+        "format": "",
+        "description": "A status object which is used as the `metadata` field for the Operation returned by DeleteBoundary. Currently empty.",
+        "$ref": "",
+        "properties": {},
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "DeleteCapabilityConfigMetadata": {
+        "type": "object",
+        "format": "",
+        "description": "A status object which is used as the `metadata` field for the Operation returned by DeleteCapabilityConfig. Currently empty.",
         "$ref": "",
         "properties": {},
         "items": null,
@@ -1420,6 +1464,39 @@
         "type": "object",
         "format": "",
         "description": "A status object which is used as the `metadata` field for the Operation returned by `UndeleteProject`.",
+        "$ref": "",
+        "properties": {},
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "UpdateBoundaryConfigMetadata": {
+        "type": "object",
+        "format": "",
+        "description": "A status object which is used as the `metadata` field for the Operation returned by UpdateBoundaryConfig. Currently empty.",
+        "$ref": "",
+        "properties": {},
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "UpdateBoundaryMetadata": {
+        "type": "object",
+        "format": "",
+        "description": "A status object which is used as the `metadata` field for the Operation returned by UpdateBoundary. Currently empty.",
+        "$ref": "",
+        "properties": {},
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "UpdateCapabilityConfigMetadata": {
+        "type": "object",
+        "format": "",
+        "description": "A status object which is used as the `metadata` field for the Operation returned by UpdateCapabilityConfig. Currently empty.",
         "$ref": "",
         "properties": {},
         "items": null,

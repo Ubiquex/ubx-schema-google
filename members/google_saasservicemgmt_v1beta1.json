@@ -25,7 +25,7 @@
   "version_qualifier": "v1beta1",
   "raw_spec": {
     "name": "saasservicemgmt",
-    "revision": "20260819",
+    "revision": "20260824",
     "discoveryVersion": "v1",
     "baseUrl": "https://saasservicemgmt.googleapis.com/",
     "rootUrl": "https://saasservicemgmt.googleapis.com/",

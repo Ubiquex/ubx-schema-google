@@ -25,7 +25,7 @@
   "version_qualifier": "v2beta2",
   "raw_spec": {
     "name": "cloudtasks",
-    "revision": "20260828",
+    "revision": "20260831",
     "discoveryVersion": "v1",
     "baseUrl": "https://cloudtasks.googleapis.com/",
     "rootUrl": "https://cloudtasks.googleapis.com/",
@@ -920,7 +920,7 @@
       "HttpTarget": {
         "type": "object",
         "format": "",
-        "description": "HTTP target. When specified as a Queue, all the tasks with [HttpRequest] will be overridden according to the target.",
+        "description": "HTTP target. When specified at the Queue level, all tasks with HttpRequest are overridden according to the target.",
         "$ref": "",
         "properties": {
           "headerOverrides": {
