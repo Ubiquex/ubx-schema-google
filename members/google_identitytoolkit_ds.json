@@ -24,7 +24,7 @@
   "wire_name": "google_identitytoolkit",
   "raw_spec": {
     "name": "identitytoolkit",
-    "revision": "20260813",
+    "revision": "20260911",
     "discoveryVersion": "v1",
     "baseUrl": "https://identitytoolkit.googleapis.com/",
     "rootUrl": "https://identitytoolkit.googleapis.com/",

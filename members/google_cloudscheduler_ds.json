@@ -24,7 +24,7 @@
   "wire_name": "google_cloudscheduler",
   "raw_spec": {
     "name": "cloudscheduler",
-    "revision": "20260804",
+    "revision": "20260903",
     "discoveryVersion": "v1",
     "baseUrl": "https://cloudscheduler.googleapis.com/",
     "rootUrl": "https://cloudscheduler.googleapis.com/",

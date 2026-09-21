@@ -25,7 +25,7 @@
   "version_qualifier": "v1alpha1",
   "raw_spec": {
     "name": "networkconnectivity",
-    "revision": "20260819",
+    "revision": "20260908",
     "discoveryVersion": "v1",
     "baseUrl": "https://networkconnectivity.googleapis.com/",
     "rootUrl": "https://networkconnectivity.googleapis.com/",

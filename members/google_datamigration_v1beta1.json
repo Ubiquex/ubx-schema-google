@@ -25,7 +25,7 @@
   "version_qualifier": "v1beta1",
   "raw_spec": {
     "name": "datamigration",
-    "revision": "20260820",
+    "revision": "20260908",
     "discoveryVersion": "v1",
     "baseUrl": "https://datamigration.googleapis.com/",
     "rootUrl": "https://datamigration.googleapis.com/",

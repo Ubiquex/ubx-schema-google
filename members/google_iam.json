@@ -24,7 +24,7 @@
   "wire_name": "google_iam",
   "raw_spec": {
     "name": "iam",
-    "revision": "20260828",
+    "revision": "20260911",
     "discoveryVersion": "v1",
     "baseUrl": "https://iam.googleapis.com/",
     "rootUrl": "https://iam.googleapis.com/",
@@ -2091,7 +2091,7 @@
           "allowedGrantTypes": {
             "type": "array",
             "format": "",
-            "description": "Required. The list of OAuth grant types is allowed for the OauthClient.",
+            "description": "Optional. The list of OAuth grant types is allowed for the OauthClient.",
             "$ref": "",
             "properties": null,
             "items": {
@@ -4494,7 +4494,8 @@
             "additionalProperties": null,
             "enum": [
               "SCIM_USAGE_UNSPECIFIED",
-              "ENABLED_FOR_GROUPS"
+              "ENABLED_FOR_GROUPS",
+              "ENABLED_FOR_USERS_GROUPS"
             ],
             "readOnly": false
           },

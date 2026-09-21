@@ -25,7 +25,7 @@
   "version_qualifier": "v1beta1",
   "raw_spec": {
     "name": "dataform",
-    "revision": "20260829",
+    "revision": "20260906",
     "discoveryVersion": "v1",
     "baseUrl": "https://dataform.googleapis.com/",
     "rootUrl": "https://dataform.googleapis.com/",
@@ -319,6 +319,182 @@
             "type": "string",
             "format": "",
             "description": "Output only. The generated BigQuery SQL script that will be executed.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "BigQueryUnitTest": {
+        "type": "object",
+        "format": "",
+        "description": "Represents a BigQuery unit test.",
+        "$ref": "",
+        "properties": {
+          "dependencyTargets": {
+            "type": "array",
+            "format": "",
+            "description": "A list of actions that this action depends on.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Target",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "disabled": {
+            "type": "boolean",
+            "format": "",
+            "description": "Whether this action is disabled (i.e. should not be run).",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "displayName": {
+            "type": "string",
+            "format": "",
+            "description": "The name of the unit test.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "expectedOutputQuery": {
+            "type": "string",
+            "format": "",
+            "description": "Expected output query to compare against the test query.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "tags": {
+            "type": "array",
+            "format": "",
+            "description": "Arbitrary, user-defined tags on this action.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "testQuery": {
+            "type": "string",
+            "format": "",
+            "description": "Test query to execute.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "BigQueryUnitTestAction": {
+        "type": "object",
+        "format": "",
+        "description": "Represents a workflow action that will run a BigQuery unit test.",
+        "$ref": "",
+        "properties": {
+          "actualResultsJobId": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. Job ID for the actual results.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "actualResultsSqlScript": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. SQL script for the actual results.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "expectedResultsJobId": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. Job ID for the expected results.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "expectedResultsSqlScript": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. SQL script for the expected results.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "totalBilledBytes": {
+            "type": "string",
+            "format": "int64",
+            "description": "Output only. Total bytes billed for this action. Combined total for actual and expected jobs.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "totalProcessedBytes": {
+            "type": "string",
+            "format": "int64",
+            "description": "Output only. Total bytes processed for this action. Combined total for actual and expected jobs.",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -1213,6 +1389,17 @@
             "enum": null,
             "readOnly": false
           },
+          "bigqueryUnitTest": {
+            "type": "",
+            "format": "",
+            "description": "The unit test executed by this action.",
+            "$ref": "BigQueryUnitTest",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
           "canonicalTarget": {
             "type": "",
             "format": "",
@@ -1780,6 +1967,63 @@
         "description": "A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }",
         "$ref": "",
         "properties": {},
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "EndUserAuthConfig": {
+        "type": "object",
+        "format": "",
+        "description": "Includes configuration options for repository end user authentication.",
+        "$ref": "",
+        "properties": {
+          "oauthConfig": {
+            "type": "",
+            "format": "",
+            "description": "Optional. OAuth configuration for repository end user authentication.",
+            "$ref": "OAuthConfig",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "EndUserAuthenticationConfig": {
+        "type": "object",
+        "format": "",
+        "description": "Includes configuration options for end user authentication.",
+        "$ref": "",
+        "properties": {
+          "oauthConfig": {
+            "type": "",
+            "format": "",
+            "description": "Optional. OAuth configuration for end user authentication.",
+            "$ref": "OAuthConfig",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "userEmail": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. Email address of the user to run workflow invocations under.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
         "items": null,
         "additionalProperties": null,
         "enum": null,
@@ -2735,6 +2979,33 @@
         "description": "Includes various configuration options for a workflow invocation. If both `included_targets` and `included_tags` are unset, all actions will be included.",
         "$ref": "",
         "properties": {
+          "endUserAuthConfig": {
+            "type": "",
+            "format": "",
+            "description": "Optional. Configuration for end user authentication. Note that this should not be set when `service_account` is used.",
+            "$ref": "EndUserAuthenticationConfig",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "executionMode": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Specifies the execution mode for the workflow invocation.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "EXECUTION_MODE_UNSPECIFIED",
+              "DEFAULT",
+              "ALL_EXCEPT_UNIT_TESTS",
+              "UNIT_TESTS_ONLY"
+            ],
+            "readOnly": false
+          },
           "fullyRefreshIncrementalTablesEnabled": {
             "type": "boolean",
             "format": "",
@@ -3810,6 +4081,39 @@
             "$ref": "GcsRepositorySnapshotDestination",
             "properties": null,
             "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "OAuthConfig": {
+        "type": "object",
+        "format": "",
+        "description": "OAuth configuration for end user authentication.",
+        "$ref": "",
+        "properties": {
+          "additionalOauthScopes": {
+            "type": "array",
+            "format": "",
+            "description": "Optional. Additional OAuth scopes to use for BigQuery executions. Scopes always in use: `https://www.googleapis.com/auth/bigquery`",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
             "additionalProperties": null,
             "enum": null,
             "readOnly": false
@@ -5285,6 +5589,17 @@
             "enum": null,
             "readOnly": false
           },
+          "endUserAuthConfig": {
+            "type": "",
+            "format": "",
+            "description": "Optional. Includes configuration options for end user authentication.",
+            "$ref": "EndUserAuthConfig",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
           "gitRemoteSettings": {
             "type": "",
             "format": "",
@@ -6583,6 +6898,17 @@
             "format": "",
             "description": "Output only. The workflow action's bigquery action details.",
             "$ref": "BigQueryAction",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "bigqueryUnitTestAction": {
+            "type": "",
+            "format": "",
+            "description": "Output only. The workflow action's unit test details.",
+            "$ref": "BigQueryUnitTestAction",
             "properties": null,
             "items": null,
             "additionalProperties": null,

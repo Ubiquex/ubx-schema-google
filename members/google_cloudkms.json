@@ -24,7 +24,7 @@
   "wire_name": "google_cloudkms",
   "raw_spec": {
     "name": "cloudkms",
-    "revision": "20260827",
+    "revision": "20260903",
     "discoveryVersion": "v1",
     "baseUrl": "https://cloudkms.googleapis.com/",
     "rootUrl": "https://cloudkms.googleapis.com/",

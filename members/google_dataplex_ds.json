@@ -24,7 +24,7 @@
   "wire_name": "google_dataplex",
   "raw_spec": {
     "name": "dataplex",
-    "revision": "20260823",
+    "revision": "20260917",
     "discoveryVersion": "v1",
     "baseUrl": "https://dataplex.googleapis.com/",
     "rootUrl": "https://dataplex.googleapis.com/",
@@ -7783,6 +7783,17 @@
             "enum": null,
             "readOnly": false
           },
+          "dataDocumentation": {
+            "type": "",
+            "format": "",
+            "description": "Data documentation result for data documentation (insights) scan.",
+            "$ref": "GoogleCloudDataplexV1DataScanEventDataDocumentationResult",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
           "dataProfile": {
             "type": "",
             "format": "",
@@ -7975,6 +7986,129 @@
         "enum": null,
         "readOnly": false
       },
+      "GoogleCloudDataplexV1DataScanEventDataDocumentationResult": {
+        "type": "object",
+        "format": "",
+        "description": "Data documentation result for data scan job.",
+        "$ref": "",
+        "properties": {
+          "billableTokenUsage": {
+            "type": "",
+            "format": "",
+            "description": "Breakdown of token consumption for the data documentation scan.",
+            "$ref": "GoogleCloudDataplexV1DataScanEventDataDocumentationResultTokenUsage",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudDataplexV1DataScanEventDataDocumentationResultTokenUsage": {
+        "type": "object",
+        "format": "",
+        "description": "Captures structured token usage breakdown for LLM-powered scans.",
+        "$ref": "",
+        "properties": {
+          "cachedContentTokenCount": {
+            "type": "string",
+            "format": "int64",
+            "description": "Billable cached content tokens (billed at discounted prompt caching SKU).",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "candidatesTokenCount": {
+            "type": "string",
+            "format": "int64",
+            "description": "Generated candidate response tokens.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "inputTokenCount": {
+            "type": "string",
+            "format": "int64",
+            "description": "Billable non-cached input tokens.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "outputTokenCount": {
+            "type": "string",
+            "format": "int64",
+            "description": "Billable output tokens (candidates + thoughts).",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "promptTokenCount": {
+            "type": "string",
+            "format": "int64",
+            "description": "Base prompt and system instructions tokens.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "thoughtsTokenCount": {
+            "type": "string",
+            "format": "int64",
+            "description": "Reasoning / Chain-of-Thought tokens.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "toolUsePromptTokenCount": {
+            "type": "string",
+            "format": "int64",
+            "description": "Tool use context tokens (schema, profile, query history).",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "totalTokenCount": {
+            "type": "string",
+            "format": "int64",
+            "description": "Total billable tokens (billable_input + billable_cached + billable_output). Evaluates to 0 for failed or cancelled jobs.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
       "GoogleCloudDataplexV1DataScanEventDataProfileAppliedConfigs": {
         "type": "object",
         "format": "",
@@ -8026,6 +8160,17 @@
         "description": "Data profile result for data scan job.",
         "$ref": "",
         "properties": {
+          "dcuConsumed": {
+            "type": "number",
+            "format": "double",
+            "description": "Dataplex Compute Units (DCUs) used in the data scan job.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
           "rowCount": {
             "type": "string",
             "format": "int64",

@@ -24,7 +24,7 @@
   "wire_name": "google_workstations",
   "raw_spec": {
     "name": "workstations",
-    "revision": "20260901",
+    "revision": "20260909",
     "discoveryVersion": "v1",
     "baseUrl": "https://workstations.googleapis.com/",
     "rootUrl": "https://workstations.googleapis.com/",

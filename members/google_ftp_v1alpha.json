@@ -25,7 +25,7 @@
   "version_qualifier": "v1alpha",
   "raw_spec": {
     "name": "ftp",
-    "revision": "20260904",
+    "revision": "20260909",
     "discoveryVersion": "v1",
     "baseUrl": "https://ftp.googleapis.com/",
     "rootUrl": "https://ftp.googleapis.com/",
@@ -898,7 +898,7 @@
           "satisfiesPzi": {
             "type": "boolean",
             "format": "",
-            "description": "Output only. Whether the Server satisfies Physical Zone Isolation (PZI) requirements.",
+            "description": "Output only. Reserved for future use.",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -909,7 +909,7 @@
           "satisfiesPzs": {
             "type": "boolean",
             "format": "",
-            "description": "Output only. Whether the Server satisfies Physical Zone Separation (PZS) requirements.",
+            "description": "Output only. Reserved for future use.",
             "$ref": "",
             "properties": null,
             "items": null,

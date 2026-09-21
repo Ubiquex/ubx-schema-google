@@ -25,7 +25,7 @@
   "version_qualifier": "v1beta1",
   "raw_spec": {
     "name": "networkmanagement",
-    "revision": "20260826",
+    "revision": "20260909",
     "discoveryVersion": "v1",
     "baseUrl": "https://networkmanagement.googleapis.com/",
     "rootUrl": "https://networkmanagement.googleapis.com/",
@@ -90,7 +90,10 @@
               "NO_SERVERLESS_IP_RANGES",
               "IP_VERSION_PROTOCOL_MISMATCH",
               "GKE_POD_UNKNOWN_ENDPOINT_LOCATION",
-              "RESPONSE_TOO_LARGE"
+              "RESPONSE_TOO_LARGE",
+              "DESTINATION_CLOUD_RUN_SERVICE_REVISION_UNSUPPORTED",
+              "DESTINATION_CLOUD_RUN_VPC_CONNECTOR_UNSUPPORTED",
+              "CLOUD_RUN_RESOURCE_NOT_CONNECTED_TO_VPC"
             ],
             "readOnly": false
           },
@@ -1054,6 +1057,73 @@
             "type": "string",
             "format": "",
             "description": "URI of the subnetwork for direct egress. Format: `projects/{project_id}/regions/{region}/subnetworks/{subnetwork_id}`",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "DirectVpcIngressConnectionInfo": {
+        "type": "object",
+        "format": "",
+        "description": "For display only. Metadata associated with a serverless direct VPC ingress connection.",
+        "$ref": "",
+        "properties": {
+          "networkUri": {
+            "type": "string",
+            "format": "",
+            "description": "URI of the VPC network for direct ingress. Format: `projects/{project_id}/global/networks/{network_id}`",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "region": {
+            "type": "string",
+            "format": "",
+            "description": "Region in which the Direct VPC ingress is deployed.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "selectedIpAddress": {
+            "type": "string",
+            "format": "",
+            "description": "Selected destination IP address, from the selected IP range.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "selectedIpRange": {
+            "type": "string",
+            "format": "",
+            "description": "Selected IP range.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "subnetworkUri": {
+            "type": "string",
+            "format": "",
+            "description": "URI of the subnetwork for direct ingress. Format: `projects/{project_id}/regions/{region}/subnetworks/{subnetwork_id}`",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -5513,6 +5583,17 @@
             "enum": null,
             "readOnly": false
           },
+          "directVpcIngressConnection": {
+            "type": "",
+            "format": "",
+            "description": "Display information of a serverless direct VPC ingress connection.",
+            "$ref": "DirectVpcIngressConnectionInfo",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
           "dmsPrivateConnection": {
             "type": "",
             "format": "",
@@ -5853,6 +5934,7 @@
               "ARRIVE_AT_INTERCONNECT_ATTACHMENT",
               "ARRIVE_AT_VPC_CONNECTOR",
               "ARRIVE_AT_GKE_POD",
+              "ARRIVE_AT_DIRECT_VPC_INGRESS_CONNECTION",
               "DIRECT_VPC_EGRESS_CONNECTION",
               "SERVERLESS_EXTERNAL_CONNECTION",
               "NGFW_PACKET_INSPECTION",

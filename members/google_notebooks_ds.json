@@ -24,7 +24,7 @@
   "wire_name": "google_notebooks",
   "raw_spec": {
     "name": "notebooks",
-    "revision": "20260826",
+    "revision": "20260909",
     "discoveryVersion": "v1",
     "baseUrl": "https://notebooks.googleapis.com/",
     "rootUrl": "https://notebooks.googleapis.com/",
@@ -1111,6 +1111,27 @@
             "additionalProperties": null,
             "enum": null,
             "readOnly": false
+          },
+          "systemMetadata": {
+            "type": "object",
+            "format": "",
+            "description": "Output only. Represents system-managed metadata for this instance: the subset of `metadata` whose keys are recognized Workbench system keys.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": true
           },
           "tags": {
             "type": "array",

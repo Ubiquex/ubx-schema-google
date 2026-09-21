@@ -24,7 +24,7 @@
   "wire_name": "google_androidenterprise",
   "raw_spec": {
     "name": "androidenterprise",
-    "revision": "20260903",
+    "revision": "20260917",
     "discoveryVersion": "v1",
     "baseUrl": "https://androidenterprise.googleapis.com/",
     "rootUrl": "https://androidenterprise.googleapis.com/",

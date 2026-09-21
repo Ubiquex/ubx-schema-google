@@ -24,7 +24,7 @@
   "wire_name": "google_contactcenterinsights",
   "raw_spec": {
     "name": "contactcenterinsights",
-    "revision": "20260905",
+    "revision": "20260910",
     "discoveryVersion": "v1",
     "baseUrl": "https://contactcenterinsights.googleapis.com/",
     "rootUrl": "https://contactcenterinsights.googleapis.com/",

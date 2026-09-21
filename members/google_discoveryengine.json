@@ -24,7 +24,7 @@
   "wire_name": "google_discoveryengine",
   "raw_spec": {
     "name": "discoveryengine",
-    "revision": "20260831",
+    "revision": "20260914",
     "discoveryVersion": "v1",
     "baseUrl": "https://discoveryengine.googleapis.com/",
     "rootUrl": "https://discoveryengine.googleapis.com/",
@@ -7785,6 +7785,17 @@
             "enum": null,
             "readOnly": false
           },
+          "dataProtectionPolicy": {
+            "type": "",
+            "format": "",
+            "description": "Optional. Data protection policy to be used for sanitizing file uploads.",
+            "$ref": "GoogleCloudDiscoveryengineV1DataProtectionPolicy",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
           "modelArmorConfig": {
             "type": "",
             "format": "",
@@ -12199,6 +12210,17 @@
             "enum": null,
             "readOnly": true
           },
+          "dataProtectionPolicy": {
+            "type": "",
+            "format": "",
+            "description": "Optional. Specifies the data protection policy for the connector.",
+            "$ref": "GoogleCloudDiscoveryengineV1DataProtectionPolicy",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
           "dataSource": {
             "type": "string",
             "format": "",
@@ -13092,6 +13114,52 @@
         "enum": null,
         "readOnly": false
       },
+      "GoogleCloudDiscoveryengineV1DataProtectionPolicy": {
+        "type": "object",
+        "format": "",
+        "description": "Contains the data protection policy config for a DataStore or a connector.",
+        "$ref": "",
+        "properties": {
+          "sensitiveDataProtectionPolicy": {
+            "type": "",
+            "format": "",
+            "description": "Optional. Specifies the sensitive data protection policy for the connector source.",
+            "$ref": "GoogleCloudDiscoveryengineV1DataProtectionPolicySensitiveDataProtectionPolicy",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudDiscoveryengineV1DataProtectionPolicySensitiveDataProtectionPolicy": {
+        "type": "object",
+        "format": "",
+        "description": "Specifies a Sensitive Data Protection (https://cloud.google.com/sensitive-data-protection/docs/sensitive-data-protection-overview) policy.",
+        "$ref": "",
+        "properties": {
+          "policy": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Specifies the resource name of the Sensitive Data Protection content policy.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
       "GoogleCloudDiscoveryengineV1DataStore": {
         "type": "object",
         "format": "",
@@ -13195,6 +13263,17 @@
             "additionalProperties": null,
             "enum": null,
             "readOnly": true
+          },
+          "dataProtectionPolicy": {
+            "type": "",
+            "format": "",
+            "description": "Optional. Specifies the data protection policy for the data store.",
+            "$ref": "GoogleCloudDiscoveryengineV1DataProtectionPolicy",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
           },
           "defaultSchemaId": {
             "type": "string",
@@ -15534,6 +15613,17 @@
             "format": "",
             "description": "Configurations for the Search Engine. Only applicable if solution_type is SOLUTION_TYPE_SEARCH.",
             "$ref": "GoogleCloudDiscoveryengineV1EngineSearchEngineConfig",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "sessionConfig": {
+            "type": "",
+            "format": "",
+            "description": "Optional. Non-empty default. Session config for the engine.",
+            "$ref": "GoogleCloudDiscoveryengineV1SessionConfig",
             "properties": null,
             "items": null,
             "additionalProperties": null,
@@ -25181,6 +25271,67 @@
         "enum": null,
         "readOnly": false
       },
+      "GoogleCloudDiscoveryengineV1SessionConfig": {
+        "type": "object",
+        "format": "",
+        "description": "Configuration for the session.",
+        "$ref": "",
+        "properties": {
+          "sessionManagementPolicy": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Session management policy that defines who will manage the session.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "SESSION_MANAGEMENT_POLICY_UNSPECIFIED",
+              "NOT_MANAGED",
+              "VERTEX_AI_MANAGED"
+            ],
+            "readOnly": false
+          },
+          "sessionTtl": {
+            "type": "",
+            "format": "",
+            "description": "Optional. The TTL for the session. If unset, the default value is 60 days.",
+            "$ref": "GoogleCloudDiscoveryengineV1SessionConfigSessionTtl",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudDiscoveryengineV1SessionConfigSessionTtl": {
+        "type": "object",
+        "format": "",
+        "description": "Defines the TTL for sessions.",
+        "$ref": "",
+        "properties": {
+          "days": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Defines the number of days for session TTL.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
       "GoogleCloudDiscoveryengineV1SessionTurn": {
         "type": "object",
         "format": "",
@@ -29220,6 +29371,17 @@
             "enum": null,
             "readOnly": true
           },
+          "iconUrl": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. Absolute URL of a brand mark to render instead of `icon`, for models whose vendor logo is not a GM3 glyph. `icon` stays populated as the fallback, so a client that does not render images, or that fails to fetch this one, shows the glyph instead of nothing.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
           "isPreview": {
             "type": "boolean",
             "format": "",
@@ -30401,6 +30563,23 @@
             "items": null,
             "additionalProperties": null,
             "enum": null,
+            "readOnly": false
+          },
+          "thinkingLevel": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Sent as Vertex `ThinkingConfig.thinking_level`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "THINKING_LEVEL_UNSPECIFIED",
+              "MINIMAL",
+              "LOW",
+              "MEDIUM",
+              "HIGH"
+            ],
             "readOnly": false
           },
           "weight": {
@@ -38173,6 +38352,17 @@
             "enum": null,
             "readOnly": false
           },
+          "sessionConfig": {
+            "type": "",
+            "format": "",
+            "description": "Optional. Non-empty default. Session config for the engine.",
+            "$ref": "GoogleCloudDiscoveryengineV1alphaSessionConfig",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
           "similarDocumentsConfig": {
             "type": "",
             "format": "",
@@ -45163,6 +45353,67 @@
         "enum": null,
         "readOnly": false
       },
+      "GoogleCloudDiscoveryengineV1alphaSessionConfig": {
+        "type": "object",
+        "format": "",
+        "description": "Configuration for the session.",
+        "$ref": "",
+        "properties": {
+          "sessionManagementPolicy": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Session management policy that defines who will manage the session.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "SESSION_MANAGEMENT_POLICY_UNSPECIFIED",
+              "NOT_MANAGED",
+              "VERTEX_AI_MANAGED"
+            ],
+            "readOnly": false
+          },
+          "sessionTtl": {
+            "type": "",
+            "format": "",
+            "description": "Optional. The TTL for the session. If unset, the default value is 60 days.",
+            "$ref": "GoogleCloudDiscoveryengineV1alphaSessionConfigSessionTtl",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudDiscoveryengineV1alphaSessionConfigSessionTtl": {
+        "type": "object",
+        "format": "",
+        "description": "Defines the TTL for sessions.",
+        "$ref": "",
+        "properties": {
+          "days": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Defines the number of days for session TTL.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
       "GoogleCloudDiscoveryengineV1alphaSessionTurn": {
         "type": "object",
         "format": "",
@@ -47572,6 +47823,52 @@
         "enum": null,
         "readOnly": false
       },
+      "GoogleCloudDiscoveryengineV1betaDataProtectionPolicy": {
+        "type": "object",
+        "format": "",
+        "description": "Contains the data protection policy config for a DataStore or a connector.",
+        "$ref": "",
+        "properties": {
+          "sensitiveDataProtectionPolicy": {
+            "type": "",
+            "format": "",
+            "description": "Optional. Specifies the sensitive data protection policy for the connector source.",
+            "$ref": "GoogleCloudDiscoveryengineV1betaDataProtectionPolicySensitiveDataProtectionPolicy",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudDiscoveryengineV1betaDataProtectionPolicySensitiveDataProtectionPolicy": {
+        "type": "object",
+        "format": "",
+        "description": "Specifies a Sensitive Data Protection (https://cloud.google.com/sensitive-data-protection/docs/sensitive-data-protection-overview) policy.",
+        "$ref": "",
+        "properties": {
+          "policy": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Specifies the resource name of the Sensitive Data Protection content policy.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
       "GoogleCloudDiscoveryengineV1betaDataStore": {
         "type": "object",
         "format": "",
@@ -47675,6 +47972,17 @@
             "additionalProperties": null,
             "enum": null,
             "readOnly": true
+          },
+          "dataProtectionPolicy": {
+            "type": "",
+            "format": "",
+            "description": "Optional. Specifies the data protection policy for the data store.",
+            "$ref": "GoogleCloudDiscoveryengineV1betaDataProtectionPolicy",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
           },
           "defaultSchemaId": {
             "type": "string",
@@ -49284,6 +49592,17 @@
             "format": "",
             "description": "Configurations for the Search Engine. Only applicable if solution_type is SOLUTION_TYPE_SEARCH.",
             "$ref": "GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfig",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "sessionConfig": {
+            "type": "",
+            "format": "",
+            "description": "Optional. Non-empty default. Session config for the engine.",
+            "$ref": "GoogleCloudDiscoveryengineV1betaSessionConfig",
             "properties": null,
             "items": null,
             "additionalProperties": null,
@@ -54299,6 +54618,67 @@
               "SUGGESTION_ONLY",
               "AUTO"
             ],
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudDiscoveryengineV1betaSessionConfig": {
+        "type": "object",
+        "format": "",
+        "description": "Configuration for the session.",
+        "$ref": "",
+        "properties": {
+          "sessionManagementPolicy": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Session management policy that defines who will manage the session.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "SESSION_MANAGEMENT_POLICY_UNSPECIFIED",
+              "NOT_MANAGED",
+              "VERTEX_AI_MANAGED"
+            ],
+            "readOnly": false
+          },
+          "sessionTtl": {
+            "type": "",
+            "format": "",
+            "description": "Optional. The TTL for the session. If unset, the default value is 60 days.",
+            "$ref": "GoogleCloudDiscoveryengineV1betaSessionConfigSessionTtl",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudDiscoveryengineV1betaSessionConfigSessionTtl": {
+        "type": "object",
+        "format": "",
+        "description": "Defines the TTL for sessions.",
+        "$ref": "",
+        "properties": {
+          "days": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Defines the number of days for session TTL.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
             "readOnly": false
           }
         },

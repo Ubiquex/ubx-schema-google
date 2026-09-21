@@ -25,7 +25,7 @@
   "version_qualifier": "v1alpha",
   "raw_spec": {
     "name": "osconfig",
-    "revision": "20260820",
+    "revision": "20260910",
     "discoveryVersion": "v1",
     "baseUrl": "https://osconfig.googleapis.com/",
     "rootUrl": "https://osconfig.googleapis.com/",
@@ -4512,7 +4512,7 @@
                     "httpMethod": "GET",
                     "path": "v1alpha/{+name}",
                     "flatPath": "v1alpha/projects/{projectsId}/locations/{locationsId}/instanceOSPoliciesCompliances/{instanceOSPoliciesCompliancesId}",
-                    "description": "Get OS policies compliance data for the specified Compute Engine VM instance.",
+                    "description": "Deprecated: Use GetOSPolicyAssignmentReport instead. Get OS policies compliance data for the specified Compute Engine VM instance.",
                     "parameters": {
                       "name": {
                         "type": "string",
@@ -4533,7 +4533,7 @@
                     "httpMethod": "GET",
                     "path": "v1alpha/{+parent}/instanceOSPoliciesCompliances",
                     "flatPath": "v1alpha/projects/{projectsId}/locations/{locationsId}/instanceOSPoliciesCompliances",
-                    "description": "List OS policies compliance data for all Compute Engine VM instances in the specified zone.",
+                    "description": "Deprecated: Use ListOSPolicyAssignmentReports instead. List OS policies compliance data for all Compute Engine VM instances in the specified zone.",
                     "parameters": {
                       "filter": {
                         "type": "string",

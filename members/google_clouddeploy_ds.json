@@ -24,7 +24,7 @@
   "wire_name": "google_clouddeploy",
   "raw_spec": {
     "name": "clouddeploy",
-    "revision": "20260818",
+    "revision": "20260907",
     "discoveryVersion": "v1",
     "baseUrl": "https://clouddeploy.googleapis.com/",
     "rootUrl": "https://clouddeploy.googleapis.com/",

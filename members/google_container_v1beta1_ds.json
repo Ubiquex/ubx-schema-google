@@ -25,7 +25,7 @@
   "version_qualifier": "v1beta1",
   "raw_spec": {
     "name": "container",
-    "revision": "20260825",
+    "revision": "20260908",
     "discoveryVersion": "v1",
     "baseUrl": "https://container.googleapis.com/",
     "rootUrl": "https://container.googleapis.com/",
@@ -206,6 +206,22 @@
             "items": null,
             "additionalProperties": null,
             "enum": null,
+            "readOnly": false
+          },
+          "stackType": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Additional NIC stack type, configured by the client.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "STACK_TYPE_UNSPECIFIED",
+              "IPV4",
+              "IPV4_IPV6",
+              "IPV6"
+            ],
             "readOnly": false
           },
           "subnetwork": {
@@ -531,7 +547,7 @@
           "parallelstoreCsiDriverConfig": {
             "type": "",
             "format": "",
-            "description": "Configuration for the Cloud Storage Parallelstore CSI driver.",
+            "description": "Deprecated: The Parallelstore CSI driver is no longer supported. Configuration for the Cloud Storage Parallelstore CSI driver.",
             "$ref": "ParallelstoreCsiDriverConfig",
             "properties": null,
             "items": null,
@@ -10705,6 +10721,17 @@
             "enum": null,
             "readOnly": false
           },
+          "reservedResourcesConfig": {
+            "type": "",
+            "format": "",
+            "description": "Optional. Controls the reserved resources on the node. Only included if any fields are specified.",
+            "$ref": "ReservedResourcesConfig",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
           "shutdownGracePeriodCriticalPodsSeconds": {
             "type": "integer",
             "format": "int32",
@@ -12265,7 +12292,7 @@
       "ParallelstoreCsiDriverConfig": {
         "type": "object",
         "format": "",
-        "description": "Configuration for the Cloud Storage Parallelstore CSI driver.",
+        "description": "Deprecated: The Parallelstore CSI driver is no longer supported. Configuration for the Cloud Storage Parallelstore CSI driver.",
         "$ref": "",
         "properties": {
           "enabled": {
@@ -13388,6 +13415,62 @@
               "enum": null,
               "readOnly": false
             },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ReservedResourcesConfig": {
+        "type": "object",
+        "format": "",
+        "description": "ReservedResourcesConfig contains the configuration for the reserved resources on the node.",
+        "$ref": "",
+        "properties": {
+          "cpuReservedMillicore": {
+            "type": "string",
+            "format": "int64",
+            "description": "Optional. The amount of CPU to reserve for system daemons. This is a user-specified value. If unspecified, GKE decides the default based on node version using different formula.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "effectiveCpuReservedMillicore": {
+            "type": "string",
+            "format": "int64",
+            "description": "Output only. The effective amount of CPU reserved for system daemons. If `cpu_reserved_millicore` is specified, user-specified value is used. Otherwise the GKE default is applied.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "effectiveMemoryReservedMib": {
+            "type": "string",
+            "format": "int64",
+            "description": "Output only. The effective amount of memory reserved for system daemons. If `memory_reserved_mib` is specified, the user-specified value is used. Otherwise the GKE default is applied.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "memoryReservedMib": {
+            "type": "string",
+            "format": "int64",
+            "description": "Optional. The amount of memory to reserve for system daemons (in MiB). This is a user-specified value. If unspecified, GKE decides the default based on node version using different formula.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
             "additionalProperties": null,
             "enum": null,
             "readOnly": false

@@ -25,7 +25,7 @@
   "version_qualifier": "beta",
   "raw_spec": {
     "name": "compute",
-    "revision": "20260828",
+    "revision": "20260910",
     "discoveryVersion": "v1",
     "baseUrl": "https://compute.googleapis.com/compute/beta/",
     "rootUrl": "https://compute.googleapis.com/",
@@ -9784,6 +9784,17 @@
         "description": "",
         "$ref": "",
         "properties": {
+          "backendService": {
+            "type": "string",
+            "format": "",
+            "description": "If set, this invalidation rule will only apply to requests routed to the\ngiven backend service or backend bucket.\nFor example, for a backend bucket `bb1` in the same scope as the URL map,\nthe path would be `projects/my-project/global/backendBuckets/bb1`; and\nfor a backend service `bs1` in the same scope as the URL map, the path\nwould be `projects/my-project/global/backendServices/bs1`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
           "cacheTags": {
             "type": "array",
             "format": "",
@@ -9805,10 +9816,32 @@
             "enum": null,
             "readOnly": false
           },
+          "contentType": {
+            "type": "string",
+            "format": "",
+            "description": "If set, this invalidation rule will only apply to responses with the given\ncontent-type. Parameters are not allowed and are ignored from the response\nwhen matching. Wildcards are not allowed.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
           "host": {
             "type": "string",
             "format": "",
             "description": "If set, this invalidation rule will only apply to requests with a Host\nheader matching host.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "httpStatus": {
+            "type": "integer",
+            "format": "int32",
+            "description": "If set, this invalidation rule will only apply to responses with the\ngiven HTTP status. Valid range is 200-599.",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -11676,7 +11709,7 @@
           "type": {
             "type": "string",
             "format": "",
-            "description": "The type of commitment; specifies the\nmachine series for which you want to commit to purchasing resources.\nThe choice of machine series affects the discount rate and the eligible\nresource types.\n\n The type must be one of the following:ACCELERATOR_OPTIMIZED, ACCELERATOR_OPTIMIZED_A3,ACCELERATOR_OPTIMIZED_A3_MEGA,COMPUTE_OPTIMIZED, COMPUTE_OPTIMIZED_C2D,\n COMPUTE_OPTIMIZED_C3, COMPUTE_OPTIMIZED_C3D,COMPUTE_OPTIMIZED_H3, GENERAL_PURPOSE,GENERAL_PURPOSE_C4, GENERAL_PURPOSE_E2,GENERAL_PURPOSE_N2, GENERAL_PURPOSE_N2D,GENERAL_PURPOSE_N4, GENERAL_PURPOSE_T2D,GRAPHICS_OPTIMIZED, GRAPHICS_OPTIMIZED_G4,GRAPHICS_OPTIMIZED_G4_VGPU,MEMORY_OPTIMIZED, MEMORY_OPTIMIZED_M3,MEMORY_OPTIMIZED_X4, STORAGE_OPTIMIZED_Z3. For\nexample, type MEMORY_OPTIMIZED specifies a commitment that\napplies only to eligible resources of memory optimized M1 and M2 machine\nseries. Type GENERAL_PURPOSE specifies a commitment that\napplies only to eligible resources of general purpose N1 machine series.",
+            "description": "The type of commitment; specifies the\nmachine series for which you want to commit to purchasing resources.\nThe choice of machine series affects the discount rate and the eligible\nresource types.\n\n The type must be one of the following:ACCELERATOR_OPTIMIZED, ACCELERATOR_OPTIMIZED_A3,ACCELERATOR_OPTIMIZED_A3_MEGA,COMPUTE_OPTIMIZED, COMPUTE_OPTIMIZED_C2D,\n COMPUTE_OPTIMIZED_C3, COMPUTE_OPTIMIZED_C3D,COMPUTE_OPTIMIZED_H3, GENERAL_PURPOSE,GENERAL_PURPOSE_C4, GENERAL_PURPOSE_E2,GENERAL_PURPOSE_N2, GENERAL_PURPOSE_N2D,GENERAL_PURPOSE_N4, GENERAL_PURPOSE_T2D,GRAPHICS_OPTIMIZED, GRAPHICS_OPTIMIZED_G4,GRAPHICS_OPTIMIZED_G4_VGPU,MEMORY_OPTIMIZED, MEMORY_OPTIMIZED_M3,MEMORY_OPTIMIZED_X4, STORAGE_OPTIMIZED_Z3,STORAGE_OPTIMIZED_Z4DS, STORAGE_OPTIMIZED_Z4DH,STORAGE_OPTIMIZED_Z4D4T. For\nexample, type MEMORY_OPTIMIZED specifies a commitment that\napplies only to eligible resources of memory optimized M1 and M2 machine\nseries. Type GENERAL_PURPOSE specifies a commitment that\napplies only to eligible resources of general purpose N1 machine series.",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -11725,6 +11758,9 @@
               "NETWORK_OPTIMIZED_U4P",
               "NETWORK_OPTIMIZED_U4S",
               "STORAGE_OPTIMIZED_Z3",
+              "STORAGE_OPTIMIZED_Z4D4T",
+              "STORAGE_OPTIMIZED_Z4DH",
+              "STORAGE_OPTIMIZED_Z4DS",
               "TYPE_UNSPECIFIED"
             ],
             "readOnly": false
@@ -17243,6 +17279,17 @@
         "description": "",
         "$ref": "",
         "properties": {
+          "maxSize": {
+            "type": "",
+            "format": "",
+            "description": "Optional. The maximum size of the group in this zone. This value can be either a\nfixed number or, a percentage. If you set a percentage, the number of\ninstances is rounded up if necessary. If unset, it is interpreted as\nunbounded.",
+            "$ref": "FixedOrPercent",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
           "zone": {
             "type": "string",
             "format": "",
@@ -21613,6 +21660,17 @@
             "enum": null,
             "readOnly": false
           },
+          "colocationResource": {
+            "type": "string",
+            "format": "",
+            "description": "Full or partial URL of an existing future reservation to indicate\nintent for reserving capacity in the same cluster as the colocation\nresource.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
           "commitmentInfo": {
             "type": "",
             "format": "",
@@ -23925,7 +23983,7 @@
           "etag": {
             "type": "string",
             "format": "",
-            "description": "Output only. For optimistic locking",
+            "description": "Output only. For optimistic locking.",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -23981,7 +24039,7 @@
           "operation": {
             "type": "",
             "format": "",
-            "description": "",
+            "description": "The Operation resource for this long-running operation.",
             "$ref": "Operation",
             "properties": null,
             "items": null,
@@ -31991,9 +32049,226 @@
           "image": {
             "type": "",
             "format": "",
-            "description": "",
+            "description": "The Image resource.",
             "$ref": "Image",
             "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ImageViewsListResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Response message for ImageViewsService.List",
+        "$ref": "",
+        "properties": {
+          "etag": {
+            "type": "string",
+            "format": "",
+            "description": "Etag of the resource.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "id": {
+            "type": "string",
+            "format": "",
+            "description": "[Output Only] Unique identifier for the resource; defined by the server.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "items": {
+            "type": "array",
+            "format": "",
+            "description": "A list of Image resources.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "ImageView",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "kind": {
+            "type": "string",
+            "format": "",
+            "description": "",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "selfLink": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. [Output Only] Server-defined URL for this resource.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "unreachables": {
+            "type": "array",
+            "format": "",
+            "description": "Output only. [Output Only] Unreachable resources.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "warning": {
+            "type": "object",
+            "format": "",
+            "description": "[Output Only] Informational warning message.",
+            "$ref": "",
+            "properties": {
+              "code": {
+                "type": "string",
+                "format": "",
+                "description": "[Output Only] A warning code, if applicable. For example, Compute\nEngine returns NO_RESULTS_ON_PAGE if there\nare no results in the response.",
+                "$ref": "",
+                "properties": null,
+                "items": null,
+                "additionalProperties": null,
+                "enum": [
+                  "CLEANUP_FAILED",
+                  "DEPRECATED_RESOURCE_USED",
+                  "DEPRECATED_TYPE_USED",
+                  "DISK_SIZE_LARGER_THAN_IMAGE_SIZE",
+                  "EXPERIMENTAL_TYPE_USED",
+                  "EXTERNAL_API_WARNING",
+                  "FIELD_VALUE_OVERRIDEN",
+                  "INJECTED_KERNELS_DEPRECATED",
+                  "INVALID_HEALTH_CHECK_FOR_DYNAMIC_WIEGHTED_LB",
+                  "LARGE_DEPLOYMENT_WARNING",
+                  "LIST_OVERHEAD_QUOTA_EXCEED",
+                  "MISSING_TYPE_DEPENDENCY",
+                  "NEXT_HOP_ADDRESS_NOT_ASSIGNED",
+                  "NEXT_HOP_CANNOT_IP_FORWARD",
+                  "NEXT_HOP_INSTANCE_HAS_NO_IPV6_INTERFACE",
+                  "NEXT_HOP_INSTANCE_NOT_FOUND",
+                  "NEXT_HOP_INSTANCE_NOT_ON_NETWORK",
+                  "NEXT_HOP_NOT_RUNNING",
+                  "NOT_CRITICAL_ERROR",
+                  "NO_RESULTS_ON_PAGE",
+                  "PARTIAL_SUCCESS",
+                  "QUOTA_INFO_UNAVAILABLE",
+                  "REQUIRED_TOS_AGREEMENT",
+                  "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING",
+                  "RESOURCE_NOT_DELETED",
+                  "SCHEMA_VALIDATION_IGNORED",
+                  "SINGLE_INSTANCE_PROPERTY_TEMPLATE",
+                  "UNDECLARED_PROPERTIES",
+                  "UNREACHABLE"
+                ],
+                "readOnly": false
+              },
+              "data": {
+                "type": "array",
+                "format": "",
+                "description": "[Output Only] Metadata about this warning in key:\nvalue format. For example:\n\n\"data\": [\n  {\n   \"key\": \"scope\",\n   \"value\": \"zones/us-east1-d\"\n  }]",
+                "$ref": "",
+                "properties": null,
+                "items": {
+                  "type": "object",
+                  "format": "",
+                  "description": "",
+                  "$ref": "",
+                  "properties": {
+                    "key": {
+                      "type": "string",
+                      "format": "",
+                      "description": "[Output Only] A key that provides more detail on the warning being\nreturned. For example, for warnings where there are no results in a list\nrequest for a particular zone, this key might be scope and\nthe key value might be the zone name. Other examples might be a key\nindicating a deprecated resource and a suggested replacement, or a\nwarning about invalid network settings (for example, if an instance\nattempts to perform IP forwarding but is not enabled for IP forwarding).",
+                      "$ref": "",
+                      "properties": null,
+                      "items": null,
+                      "additionalProperties": null,
+                      "enum": null,
+                      "readOnly": false
+                    },
+                    "value": {
+                      "type": "string",
+                      "format": "",
+                      "description": "[Output Only] A warning data value corresponding to the key.",
+                      "$ref": "",
+                      "properties": null,
+                      "items": null,
+                      "additionalProperties": null,
+                      "enum": null,
+                      "readOnly": false
+                    }
+                  },
+                  "items": null,
+                  "additionalProperties": null,
+                  "enum": null,
+                  "readOnly": false
+                },
+                "additionalProperties": null,
+                "enum": null,
+                "readOnly": false
+              },
+              "message": {
+                "type": "string",
+                "format": "",
+                "description": "[Output Only] A human-readable description of the warning code.",
+                "$ref": "",
+                "properties": null,
+                "items": null,
+                "additionalProperties": null,
+                "enum": null,
+                "readOnly": false
+              }
+            },
             "items": null,
             "additionalProperties": null,
             "enum": null,
@@ -34657,6 +34932,17 @@
         "description": "",
         "$ref": "",
         "properties": {
+          "constraints": {
+            "type": "",
+            "format": "",
+            "description": "Constraints applied to instance flexibility spreading and selection.",
+            "$ref": "InstanceGroupManagerInstanceFlexibilityPolicyConstraints",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
           "instanceSelections": {
             "type": "object",
             "format": "",
@@ -34683,6 +34969,29 @@
             "format": "",
             "description": "Provisioning model configuration used by this managed instance group to\ncreate instances.",
             "$ref": "InstanceGroupManagerInstanceFlexibilityPolicyProvisioningModelMix",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "InstanceGroupManagerInstanceFlexibilityPolicyConstraints": {
+        "type": "object",
+        "format": "",
+        "description": "Constraints applied to instance flexibility spreading and selection.",
+        "$ref": "",
+        "properties": {
+          "singleMachineType": {
+            "type": "boolean",
+            "format": "",
+            "description": "When set to true, all instances in the group will be provisioned with\nthe exact same machine type, ensuring cluster homogeneity across zones.\nDefaults to false.",
+            "$ref": "",
             "properties": null,
             "items": null,
             "additionalProperties": null,
@@ -53052,7 +53361,7 @@
           "items": {
             "type": "array",
             "format": "",
-            "description": "",
+            "description": "The list of managed rulesets.",
             "$ref": "",
             "properties": null,
             "items": {
@@ -78067,6 +78376,9 @@
             "enum": [
               "FAULT_BEHAVIOR_UNSPECIFIED",
               "GPU_ERROR",
+              "NVSWITCH_FAULT_CONTROLLER_ERROR",
+              "NVSWITCH_FAULT_DEGRADED_BANDWIDTH",
+              "NVSWITCH_FAULT_SWITCH_ERROR",
               "PERFORMANCE",
               "SILENT_DATA_CORRUPTION",
               "SWITCH_FAILURE"
@@ -82839,6 +83151,17 @@
             "enum": null,
             "readOnly": false
           },
+          "etag": {
+            "type": "string",
+            "format": "",
+            "description": "ETag for optimistic concurrency control as described by AIP 154. Used to\nprevent conflicting updates. If provided, the request will succeed only if\nthe etag matches the current etag of the router; otherwise, the request\nfails with an ABORTED error.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
           "id": {
             "type": "string",
             "format": "uint64",
@@ -84526,6 +84849,27 @@
             "$ref": "",
             "properties": null,
             "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "sourceWorkloadIdentities": {
+            "type": "array",
+            "format": "",
+            "description": "A list of source workload identities.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
             "additionalProperties": null,
             "enum": null,
             "readOnly": false
@@ -120049,6 +120393,58 @@
             "response": {
               "$ref": "ImageView"
             }
+          },
+          "list": {
+            "id": "compute.imageViews.list",
+            "httpMethod": "GET",
+            "path": "projects/{project}/regions/{region}/imageViews",
+            "flatPath": "projects/{project}/regions/{region}/imageViews",
+            "description": "Returns a list of global ImageView resources, with a regional\ncontext.",
+            "parameters": {
+              "filter": {
+                "type": "string",
+                "location": "query",
+                "required": false
+              },
+              "maxResults": {
+                "type": "integer",
+                "location": "query",
+                "required": false
+              },
+              "orderBy": {
+                "type": "string",
+                "location": "query",
+                "required": false
+              },
+              "pageToken": {
+                "type": "string",
+                "location": "query",
+                "required": false
+              },
+              "project": {
+                "type": "string",
+                "location": "path",
+                "required": true
+              },
+              "region": {
+                "type": "string",
+                "location": "path",
+                "required": true
+              },
+              "returnPartialSuccess": {
+                "type": "boolean",
+                "location": "query",
+                "required": false
+              }
+            },
+            "parameterOrder": [
+              "project",
+              "region"
+            ],
+            "request": null,
+            "response": {
+              "$ref": "ImageViewsListResponse"
+            }
           }
         },
         "resources": null
@@ -147498,6 +147894,11 @@
             "flatPath": "projects/{project}/regions/{region}/routers/{router}",
             "description": "Deletes the specified Router resource.",
             "parameters": {
+              "etag": {
+                "type": "string",
+                "location": "query",
+                "required": false
+              },
               "project": {
                 "type": "string",
                 "location": "path",

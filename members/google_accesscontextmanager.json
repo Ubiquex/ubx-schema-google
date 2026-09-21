@@ -24,7 +24,7 @@
   "wire_name": "google_accesscontextmanager",
   "raw_spec": {
     "name": "accesscontextmanager",
-    "revision": "20260827",
+    "revision": "20260916",
     "discoveryVersion": "v1",
     "baseUrl": "https://accesscontextmanager.googleapis.com/",
     "rootUrl": "https://accesscontextmanager.googleapis.com/",

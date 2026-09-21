@@ -24,7 +24,7 @@
   "wire_name": "google_backupdr",
   "raw_spec": {
     "name": "backupdr",
-    "revision": "20260826",
+    "revision": "20260908",
     "discoveryVersion": "v1",
     "baseUrl": "https://backupdr.googleapis.com/",
     "rootUrl": "https://backupdr.googleapis.com/",
@@ -8033,116 +8033,6 @@
             },
             "enum": null,
             "readOnly": false
-          }
-        },
-        "items": null,
-        "additionalProperties": null,
-        "enum": null,
-        "readOnly": false
-      },
-      "OperationMetadata": {
-        "type": "object",
-        "format": "",
-        "description": "Represents the metadata of the long-running operation.",
-        "$ref": "",
-        "properties": {
-          "additionalInfo": {
-            "type": "object",
-            "format": "",
-            "description": "Output only. AdditionalInfo contains additional Info related to backup plan association resource.",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": {
-              "type": "string",
-              "format": "",
-              "description": "",
-              "$ref": "",
-              "properties": null,
-              "items": null,
-              "additionalProperties": null,
-              "enum": null,
-              "readOnly": false
-            },
-            "enum": null,
-            "readOnly": true
-          },
-          "apiVersion": {
-            "type": "string",
-            "format": "",
-            "description": "Output only. API version used to start the operation.",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": true
-          },
-          "createTime": {
-            "type": "string",
-            "format": "google-datetime",
-            "description": "Output only. The time the operation was created.",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": true
-          },
-          "endTime": {
-            "type": "string",
-            "format": "google-datetime",
-            "description": "Output only. The time the operation finished running.",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": true
-          },
-          "requestedCancellation": {
-            "type": "boolean",
-            "format": "",
-            "description": "Output only. Identifies whether the user has requested cancellation of the operation. Operations that have successfully been cancelled have google.longrunning.Operation.error value with a google.rpc.Status.code of 1, corresponding to 'Code.CANCELLED'.",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": true
-          },
-          "statusMessage": {
-            "type": "string",
-            "format": "",
-            "description": "Output only. Human-readable status of the operation, if any.",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": true
-          },
-          "target": {
-            "type": "string",
-            "format": "",
-            "description": "Output only. Server-defined resource path for the target of the operation.",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": true
-          },
-          "verb": {
-            "type": "string",
-            "format": "",
-            "description": "Output only. Name of the verb executed by the operation.",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": true
           }
         },
         "items": null,

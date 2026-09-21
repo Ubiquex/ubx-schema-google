@@ -24,7 +24,7 @@
   "wire_name": "google_contactcenteraiplatform",
   "raw_spec": {
     "name": "contactcenteraiplatform",
-    "revision": "20260625",
+    "revision": "20260915",
     "discoveryVersion": "v1",
     "baseUrl": "https://contactcenteraiplatform.googleapis.com/",
     "rootUrl": "https://contactcenteraiplatform.googleapis.com/",

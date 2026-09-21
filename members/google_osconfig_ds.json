@@ -24,7 +24,7 @@
   "wire_name": "google_osconfig",
   "raw_spec": {
     "name": "osconfig",
-    "revision": "20260820",
+    "revision": "20260910",
     "discoveryVersion": "v1",
     "baseUrl": "https://osconfig.googleapis.com/",
     "rootUrl": "https://osconfig.googleapis.com/",

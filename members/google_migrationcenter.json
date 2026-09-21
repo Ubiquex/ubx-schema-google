@@ -24,7 +24,7 @@
   "wire_name": "google_migrationcenter",
   "raw_spec": {
     "name": "migrationcenter",
-    "revision": "20260830",
+    "revision": "20260907",
     "discoveryVersion": "v1",
     "baseUrl": "https://migrationcenter.googleapis.com/",
     "rootUrl": "https://migrationcenter.googleapis.com/",

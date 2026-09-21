@@ -25,7 +25,7 @@
   "version_qualifier": "v1beta1",
   "raw_spec": {
     "name": "composer",
-    "revision": "20260825",
+    "revision": "20260901",
     "discoveryVersion": "v1",
     "baseUrl": "https://composer.googleapis.com/",
     "rootUrl": "https://composer.googleapis.com/",

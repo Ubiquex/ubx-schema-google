@@ -24,7 +24,7 @@
   "wire_name": "google_dns",
   "raw_spec": {
     "name": "dns",
-    "revision": "20260804",
+    "revision": "20260915",
     "discoveryVersion": "v1",
     "baseUrl": "https://dns.googleapis.com/",
     "rootUrl": "https://dns.googleapis.com/",
@@ -109,7 +109,7 @@
             "items": null,
             "additionalProperties": null,
             "enum": null,
-            "readOnly": false
+            "readOnly": true
           },
           "startTime": {
             "type": "string",
@@ -172,13 +172,13 @@
           "kind": {
             "type": "string",
             "format": "",
-            "description": "Type of resource.",
+            "description": "Output only. Type of resource.",
             "$ref": "",
             "properties": null,
             "items": null,
             "additionalProperties": null,
             "enum": null,
-            "readOnly": false
+            "readOnly": true
           },
           "nextPageToken": {
             "type": "string",
@@ -316,7 +316,7 @@
             "items": null,
             "additionalProperties": null,
             "enum": null,
-            "readOnly": false
+            "readOnly": true
           },
           "publicKey": {
             "type": "string",
@@ -444,7 +444,7 @@
             "items": null,
             "additionalProperties": null,
             "enum": null,
-            "readOnly": false
+            "readOnly": true
           }
         },
         "items": null,
@@ -482,13 +482,13 @@
           "kind": {
             "type": "string",
             "format": "",
-            "description": "Type of resource.",
+            "description": "Output only. Type of resource.",
             "$ref": "",
             "properties": null,
             "items": null,
             "additionalProperties": null,
             "enum": null,
-            "readOnly": false
+            "readOnly": true
           },
           "nextPageToken": {
             "type": "string",
@@ -1112,7 +1112,7 @@
             "items": null,
             "additionalProperties": null,
             "enum": null,
-            "readOnly": false
+            "readOnly": true
           },
           "labels": {
             "type": "object",
@@ -1268,7 +1268,7 @@
             "items": null,
             "additionalProperties": null,
             "enum": null,
-            "readOnly": false
+            "readOnly": true
           }
         },
         "items": null,
@@ -1312,7 +1312,7 @@
             "items": null,
             "additionalProperties": null,
             "enum": null,
-            "readOnly": false
+            "readOnly": true
           },
           "nonExistence": {
             "type": "string",
@@ -1364,7 +1364,7 @@
             "items": null,
             "additionalProperties": null,
             "enum": null,
-            "readOnly": false
+            "readOnly": true
           },
           "targetNameServers": {
             "type": "array",
@@ -1455,7 +1455,7 @@
             "items": null,
             "additionalProperties": null,
             "enum": null,
-            "readOnly": false
+            "readOnly": true
           }
         },
         "items": null,
@@ -1472,13 +1472,13 @@
           "kind": {
             "type": "string",
             "format": "",
-            "description": "Type of resource.",
+            "description": "Output only. Type of resource.",
             "$ref": "",
             "properties": null,
             "items": null,
             "additionalProperties": null,
             "enum": null,
-            "readOnly": false
+            "readOnly": true
           },
           "nextPageToken": {
             "type": "string",
@@ -1533,7 +1533,7 @@
             "items": null,
             "additionalProperties": null,
             "enum": null,
-            "readOnly": false
+            "readOnly": true
           },
           "targetNetwork": {
             "type": "",
@@ -1578,7 +1578,7 @@
             "items": null,
             "additionalProperties": null,
             "enum": null,
-            "readOnly": false
+            "readOnly": true
           },
           "networkUrl": {
             "type": "string",
@@ -1633,7 +1633,7 @@
             "items": null,
             "additionalProperties": null,
             "enum": null,
-            "readOnly": false
+            "readOnly": true
           },
           "networks": {
             "type": "array",
@@ -1688,7 +1688,7 @@
             "items": null,
             "additionalProperties": null,
             "enum": null,
-            "readOnly": false
+            "readOnly": true
           }
         },
         "items": null,
@@ -1711,7 +1711,7 @@
             "items": null,
             "additionalProperties": null,
             "enum": null,
-            "readOnly": false
+            "readOnly": true
           },
           "networkUrl": {
             "type": "string",
@@ -1745,7 +1745,7 @@
             "items": null,
             "additionalProperties": null,
             "enum": null,
-            "readOnly": false
+            "readOnly": true
           }
         },
         "items": null,
@@ -1768,7 +1768,7 @@
             "items": null,
             "additionalProperties": null,
             "enum": null,
-            "readOnly": false
+            "readOnly": true
           },
           "namespace": {
             "type": "",
@@ -1813,7 +1813,7 @@
             "items": null,
             "additionalProperties": null,
             "enum": null,
-            "readOnly": false
+            "readOnly": true
           },
           "namespaceUrl": {
             "type": "string",
@@ -1841,13 +1841,13 @@
           "kind": {
             "type": "string",
             "format": "",
-            "description": "Type of resource.",
+            "description": "Output only. Type of resource.",
             "$ref": "",
             "properties": null,
             "items": null,
             "additionalProperties": null,
             "enum": null,
-            "readOnly": false
+            "readOnly": true
           },
           "managedZones": {
             "type": "array",
@@ -1924,7 +1924,7 @@
             "items": null,
             "additionalProperties": null,
             "enum": null,
-            "readOnly": false
+            "readOnly": true
           },
           "startTime": {
             "type": "string",
@@ -2067,13 +2067,13 @@
           "kind": {
             "type": "string",
             "format": "",
-            "description": "Type of resource.",
+            "description": "Output only. Type of resource.",
             "$ref": "",
             "properties": null,
             "items": null,
             "additionalProperties": null,
             "enum": null,
-            "readOnly": false
+            "readOnly": true
           },
           "nextPageToken": {
             "type": "string",
@@ -2240,7 +2240,7 @@
             "items": null,
             "additionalProperties": null,
             "enum": null,
-            "readOnly": false
+            "readOnly": true
           },
           "name": {
             "type": "string",
@@ -2295,7 +2295,7 @@
             "items": null,
             "additionalProperties": null,
             "enum": null,
-            "readOnly": false
+            "readOnly": true
           },
           "targetNameServers": {
             "type": "array",
@@ -2375,7 +2375,7 @@
             "items": null,
             "additionalProperties": null,
             "enum": null,
-            "readOnly": false
+            "readOnly": true
           }
         },
         "items": null,
@@ -2398,7 +2398,7 @@
             "items": null,
             "additionalProperties": null,
             "enum": null,
-            "readOnly": false
+            "readOnly": true
           },
           "scope": {
             "type": "",
@@ -2443,7 +2443,7 @@
             "items": null,
             "additionalProperties": null,
             "enum": null,
-            "readOnly": false
+            "readOnly": true
           }
         },
         "items": null,
@@ -2466,7 +2466,7 @@
             "items": null,
             "additionalProperties": null,
             "enum": null,
-            "readOnly": false
+            "readOnly": true
           },
           "networkUrl": {
             "type": "string",
@@ -2511,7 +2511,7 @@
             "items": null,
             "additionalProperties": null,
             "enum": null,
-            "readOnly": false
+            "readOnly": true
           },
           "number": {
             "type": "string",
@@ -2622,7 +2622,7 @@
             "items": null,
             "additionalProperties": null,
             "enum": null,
-            "readOnly": false
+            "readOnly": true
           },
           "managedZones": {
             "type": "integer",
@@ -2886,7 +2886,7 @@
             "items": null,
             "additionalProperties": null,
             "enum": null,
-            "readOnly": false
+            "readOnly": true
           },
           "primaryBackup": {
             "type": "",
@@ -2963,7 +2963,7 @@
             "items": null,
             "additionalProperties": null,
             "enum": null,
-            "readOnly": false
+            "readOnly": true
           }
         },
         "items": null,
@@ -2997,7 +2997,7 @@
             "items": null,
             "additionalProperties": null,
             "enum": null,
-            "readOnly": false
+            "readOnly": true
           },
           "location": {
             "type": "string",
@@ -3153,7 +3153,7 @@
             "items": null,
             "additionalProperties": null,
             "enum": null,
-            "readOnly": false
+            "readOnly": true
           },
           "loadBalancerType": {
             "type": "string",
@@ -3247,7 +3247,7 @@
             "items": null,
             "additionalProperties": null,
             "enum": null,
-            "readOnly": false
+            "readOnly": true
           },
           "primaryTargets": {
             "type": "",
@@ -3313,7 +3313,7 @@
             "items": null,
             "additionalProperties": null,
             "enum": null,
-            "readOnly": false
+            "readOnly": true
           }
         },
         "items": null,
@@ -3347,7 +3347,7 @@
             "items": null,
             "additionalProperties": null,
             "enum": null,
-            "readOnly": false
+            "readOnly": true
           },
           "rrdatas": {
             "type": "array",
@@ -3423,7 +3423,7 @@
             "items": null,
             "additionalProperties": null,
             "enum": null,
-            "readOnly": false
+            "readOnly": true
           },
           "name": {
             "type": "string",
@@ -3471,7 +3471,7 @@
           "signatureRrdatas": {
             "type": "array",
             "format": "",
-            "description": "As defined in RFC 4034 (section 3.2).",
+            "description": "",
             "$ref": "",
             "properties": null,
             "items": {
@@ -3537,13 +3537,13 @@
           "kind": {
             "type": "string",
             "format": "",
-            "description": "Type of resource.",
+            "description": "Output only. Type of resource.",
             "$ref": "",
             "properties": null,
             "items": null,
             "additionalProperties": null,
             "enum": null,
-            "readOnly": false
+            "readOnly": true
           },
           "nextPageToken": {
             "type": "string",
@@ -3731,7 +3731,7 @@
             "items": null,
             "additionalProperties": null,
             "enum": null,
-            "readOnly": false
+            "readOnly": true
           },
           "labels": {
             "type": "object",
@@ -3818,7 +3818,7 @@
             "items": null,
             "additionalProperties": null,
             "enum": null,
-            "readOnly": false
+            "readOnly": true
           }
         },
         "items": null,
@@ -3841,7 +3841,7 @@
             "items": null,
             "additionalProperties": null,
             "enum": null,
-            "readOnly": false
+            "readOnly": true
           },
           "networkUrl": {
             "type": "string",
@@ -3900,7 +3900,7 @@
             "items": null,
             "additionalProperties": null,
             "enum": null,
-            "readOnly": false
+            "readOnly": true
           },
           "localData": {
             "type": "",
@@ -4890,11 +4890,6 @@
             "flatPath": "dns/v1/projects/{project}",
             "description": "Fetches the representation of an existing Project.",
             "parameters": {
-              "clientOperationId": {
-                "type": "string",
-                "location": "query",
-                "required": false
-              },
               "project": {
                 "type": "string",
                 "location": "path",

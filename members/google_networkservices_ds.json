@@ -24,7 +24,7 @@
   "wire_name": "google_networkservices",
   "raw_spec": {
     "name": "networkservices",
-    "revision": "20260827",
+    "revision": "20260901",
     "discoveryVersion": "v1",
     "baseUrl": "https://networkservices.googleapis.com/",
     "rootUrl": "https://networkservices.googleapis.com/",
@@ -9706,6 +9706,11 @@
                     "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/agentGateways",
                     "description": "Lists AgentGateways in a given project and location.",
                     "parameters": {
+                      "filter": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
                       "pageSize": {
                         "type": "integer",
                         "location": "query",
