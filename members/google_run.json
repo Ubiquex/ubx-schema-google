@@ -24,7 +24,7 @@
   "wire_name": "google_run",
   "raw_spec": {
     "name": "run",
-    "revision": "20260828",
+    "revision": "20260911",
     "discoveryVersion": "v1",
     "baseUrl": "https://run.googleapis.com/",
     "rootUrl": "https://run.googleapis.com/",
@@ -2523,6 +2523,17 @@
             "enum": null,
             "readOnly": false
           },
+          "sshEnabled": {
+            "type": "boolean",
+            "format": "",
+            "description": "Optional. Enables SSH access to the Instance.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
           "terminalCondition": {
             "type": "",
             "format": "",
@@ -2859,6 +2870,21 @@
             "additionalProperties": null,
             "enum": null,
             "readOnly": true
+          },
+          "functionalType": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The functional type of the Job.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "FUNCTIONAL_TYPE_UNSPECIFIED",
+              "FUNCTIONAL_TYPE_AGENT",
+              "FUNCTIONAL_TYPE_MCP_SERVER"
+            ],
+            "readOnly": false
           },
           "generation": {
             "type": "string",
@@ -4247,6 +4273,17 @@
             "additionalProperties": null,
             "enum": null,
             "readOnly": false
+          },
+          "workloadIdentityConfig": {
+            "type": "",
+            "format": "",
+            "description": "Optional. The Revision's workload identity settings.",
+            "$ref": "GoogleCloudRunV2WorkloadIdentityConfig",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
           }
         },
         "items": null,
@@ -4617,6 +4654,17 @@
             "additionalProperties": null,
             "enum": null,
             "readOnly": false
+          },
+          "workloadIdentityConfig": {
+            "type": "",
+            "format": "",
+            "description": "Optional. The Revision's workload identity settings.",
+            "$ref": "GoogleCloudRunV2WorkloadIdentityConfig",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
           }
         },
         "items": null,
@@ -4947,6 +4995,21 @@
             "additionalProperties": null,
             "enum": null,
             "readOnly": true
+          },
+          "functionalType": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The functional type of the Service.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "FUNCTIONAL_TYPE_UNSPECIFIED",
+              "FUNCTIONAL_TYPE_AGENT",
+              "FUNCTIONAL_TYPE_MCP_SERVER"
+            ],
+            "readOnly": false
           },
           "generation": {
             "type": "string",
@@ -6179,6 +6242,17 @@
             "additionalProperties": null,
             "enum": null,
             "readOnly": true
+          },
+          "workloadIdentityConfig": {
+            "type": "",
+            "format": "",
+            "description": "Optional. The Task's workload identity settings.",
+            "$ref": "GoogleCloudRunV2WorkloadIdentityConfig",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
           }
         },
         "items": null,
@@ -6365,6 +6439,17 @@
             "format": "",
             "description": "Optional. VPC Access configuration to use for this Task. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.",
             "$ref": "GoogleCloudRunV2VpcAccess",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "workloadIdentityConfig": {
+            "type": "",
+            "format": "",
+            "description": "Optional. The Task's workload identity settings.",
+            "$ref": "GoogleCloudRunV2WorkloadIdentityConfig",
             "properties": null,
             "items": null,
             "additionalProperties": null,
@@ -7428,6 +7513,55 @@
             "items": null,
             "additionalProperties": null,
             "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudRunV2WorkloadIdentityConfig": {
+        "type": "object",
+        "format": "",
+        "description": "Workload identity settings.",
+        "$ref": "",
+        "properties": {
+          "identity": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The Revision's SPIFFE workload identity. Enables provisioning of SPIFFE workload certificates.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "identityCertificateEnabled": {
+            "type": "boolean",
+            "format": "",
+            "description": "Optional. Controls whether an instance receives a MWLID certificate. Corresponds to the intention of the original --[no-]identity-certificate flag.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "identityType": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The type of identity to use.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "IDENTITY_TYPE_UNSPECIFIED",
+              "IDENTITY_TYPE_SERVICE_ACCOUNT",
+              "IDENTITY_TYPE_AGENT_IDENTITY"
+            ],
             "readOnly": false
           }
         },

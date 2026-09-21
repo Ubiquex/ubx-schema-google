@@ -24,7 +24,7 @@
   "wire_name": "google_cloudnumberregistry",
   "raw_spec": {
     "name": "cloudnumberregistry",
-    "revision": "20260826",
+    "revision": "20260909",
     "discoveryVersion": "v1",
     "baseUrl": "https://cloudnumberregistry.googleapis.com/",
     "rootUrl": "https://cloudnumberregistry.googleapis.com/",

@@ -24,7 +24,7 @@
   "wire_name": "google_storage",
   "raw_spec": {
     "name": "storage",
-    "revision": "20260902",
+    "revision": "20260915",
     "discoveryVersion": "v1",
     "baseUrl": "https://storage.googleapis.com/storage/v1/",
     "rootUrl": "https://storage.googleapis.com/",
@@ -4167,6 +4167,17 @@
             "type": "string",
             "format": "date-time",
             "description": "The time at which the object context was created in RFC 3339 format.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "extendedDataTypeUrl": {
+            "type": "string",
+            "format": "",
+            "description": "The type URL of the object context's extended data.",
             "$ref": "",
             "properties": null,
             "items": null,

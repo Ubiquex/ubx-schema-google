@@ -25,7 +25,7 @@
   "version_qualifier": "v1beta1",
   "raw_spec": {
     "name": "assuredworkloads",
-    "revision": "20260904",
+    "revision": "20260914",
     "discoveryVersion": "v1",
     "baseUrl": "https://assuredworkloads.googleapis.com/",
     "rootUrl": "https://assuredworkloads.googleapis.com/",
@@ -521,6 +521,28 @@
             "additionalProperties": null,
             "enum": null,
             "readOnly": false
+          },
+          "orgPolicyFindingCount": {
+            "type": "string",
+            "format": "int64",
+            "description": "Output only. Number of organization policy findings for the cloud control.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "resourceFindingCount": {
+            "type": "string",
+            "format": "int64",
+            "description": "Output only. Number of resource findings for the cloud control.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
           }
         },
         "items": null,
@@ -1154,6 +1176,17 @@
             "enum": null,
             "readOnly": false
           },
+          "orgPolicyFindingCount": {
+            "type": "string",
+            "format": "int64",
+            "description": "Output only. Number of organization policy findings for this control.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
           "overallEvaluationState": {
             "type": "string",
             "format": "",
@@ -1168,6 +1201,17 @@
               "EVALUATION_STATE_FAILED",
               "EVALUATION_STATE_NOT_ASSESSED"
             ],
+            "readOnly": true
+          },
+          "resourceFindingCount": {
+            "type": "string",
+            "format": "int64",
+            "description": "Output only. Number of resource findings for this control.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
             "readOnly": true
           },
           "similarControls": {

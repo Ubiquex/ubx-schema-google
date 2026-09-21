@@ -24,7 +24,7 @@
   "wire_name": "google_chromemanagement",
   "raw_spec": {
     "name": "chromemanagement",
-    "revision": "20260903",
+    "revision": "20260917",
     "discoveryVersion": "v1",
     "baseUrl": "https://chromemanagement.googleapis.com/",
     "rootUrl": "https://chromemanagement.googleapis.com/",
@@ -3172,6 +3172,171 @@
         "enum": null,
         "readOnly": false
       },
+      "GoogleChromeManagementV1FindSaasUsageBrowsersResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Response to `FindSaasUsageBrowsers` method.",
+        "$ref": "",
+        "properties": {
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "A token, which can be sent as `page_token` to retrieve the next page.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "saasUsageBrowsers": {
+            "type": "array",
+            "format": "",
+            "description": "The list of SaaS usage browser reports.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "GoogleChromeManagementV1SaasUsageBrowser",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "totalSize": {
+            "type": "string",
+            "format": "int64",
+            "description": "Total number of SaaS usage browser reports that match the request.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleChromeManagementV1FindSaasUsageProfilesResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Response to `FindSaasUsageProfiles` method.",
+        "$ref": "",
+        "properties": {
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "profileReports": {
+            "type": "array",
+            "format": "",
+            "description": "The list of SaaS usage profile reports.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "GoogleChromeManagementV1SaasUsageProfileReport",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "totalSize": {
+            "type": "string",
+            "format": "int64",
+            "description": "Total number of SaaS usage profile reports that match the request.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleChromeManagementV1FindSaasUsageReportsResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Response to `FindSaasUsage` method.",
+        "$ref": "",
+        "properties": {
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "saasReports": {
+            "type": "array",
+            "format": "",
+            "description": "The list of SaaS usage reports.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "GoogleChromeManagementV1SaasUsageReport",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "totalSize": {
+            "type": "string",
+            "format": "int64",
+            "description": "Total number of SaaS usage reports that match the request.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
       "GoogleChromeManagementV1GraphicsAdapterInfo": {
         "type": "object",
         "format": "",
@@ -4971,6 +5136,422 @@
             "additionalProperties": null,
             "enum": null,
             "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleChromeManagementV1SaasUsageBrowser": {
+        "type": "object",
+        "format": "",
+        "description": "Details of a SaaS usage browser.",
+        "$ref": "",
+        "properties": {
+          "devicePermanentId": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The device permanent ID.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "firstNavigationTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. The timestamp when the application was first navigated to by this browser.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "lastNavigationTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. The timestamp when the application was last navigated to by this browser.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "machine": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The machine name.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "orgUnitId": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The ID of the organizational unit.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "osPlatform": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The OS platform.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "DEVICE_SYSTEM_UNSPECIFIED",
+              "SYSTEM_OTHER",
+              "SYSTEM_ANDROID",
+              "SYSTEM_IOS",
+              "SYSTEM_CROS",
+              "SYSTEM_WINDOWS",
+              "SYSTEM_MAC",
+              "SYSTEM_LINUX"
+            ],
+            "readOnly": true
+          },
+          "osVersion": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The OS version.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleChromeManagementV1SaasUsageProfileReport": {
+        "type": "object",
+        "format": "",
+        "description": "Represents a single SaaS report entry grouped by profile.",
+        "$ref": "",
+        "properties": {
+          "email": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The email of the user.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "firstNavigationTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. The timestamp when the application was first navigated to by this profile.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "lastNavigationTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. The timestamp when the application was last navigated to by this profile.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "orgUnitId": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The ID of the organizational unit.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "osPlatform": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The OS platform.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "DEVICE_SYSTEM_UNSPECIFIED",
+              "SYSTEM_OTHER",
+              "SYSTEM_ANDROID",
+              "SYSTEM_IOS",
+              "SYSTEM_CROS",
+              "SYSTEM_WINDOWS",
+              "SYSTEM_MAC",
+              "SYSTEM_LINUX"
+            ],
+            "readOnly": true
+          },
+          "osVersion": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The OS version.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "profilePermanentId": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The permanent ID of the profile.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleChromeManagementV1SaasUsageReport": {
+        "type": "object",
+        "format": "",
+        "description": "Represents a single SaaS report entry.",
+        "$ref": "",
+        "properties": {
+          "app": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The name of the application.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "category": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The category of the application.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "contentTransferDetails": {
+            "type": "",
+            "format": "",
+            "description": "Output only. Provides information about content transfer events, if available.",
+            "$ref": "GoogleChromeManagementV1SaasUsageReportContentTransferDetails",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "distinctBrowsersCount": {
+            "type": "string",
+            "format": "int64",
+            "description": "Output only. Number of distinct browsers that visited the application.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "distinctUsersCount": {
+            "type": "string",
+            "format": "int64",
+            "description": "Output only. Number of distinct users who visited the application.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "domains": {
+            "type": "array",
+            "format": "",
+            "description": "Output only. A list of domains and subdomains associated with the application.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "encryptionProtocols": {
+            "type": "array",
+            "format": "",
+            "description": "Output only. A list of encryption protocols used to access the application.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "firstNavigationTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. The timestamp when the application was first navigated to.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "foundedYear": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Output only. The year the organization was founded.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "headquarters": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The headquarters location of the organization.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "lastNavigationTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. The timestamp when the application was last navigated to.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "orgUnitId": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The ID of the organizational unit.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "organization": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The organization that develops the application.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "primaryDomain": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The primary domain of the application.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "visitsCount": {
+            "type": "string",
+            "format": "int64",
+            "description": "Output only. Total number of visits to the application.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleChromeManagementV1SaasUsageReportContentTransferDetails": {
+        "type": "object",
+        "format": "",
+        "description": "Provides information about content transfer events, if available.",
+        "$ref": "",
+        "properties": {
+          "contentTransferCount": {
+            "type": "string",
+            "format": "int64",
+            "description": "Output only. Total number of content transfers associated with the application.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
           }
         },
         "items": null,
@@ -7922,7 +8503,7 @@
           "commandType": {
             "type": "string",
             "format": "",
-            "description": "Required. Type of the remote command. The only supported command_type is \"clearBrowsingData\".",
+            "description": "Required. Type of the remote command. Supported commands: \"clearBrowsingData\" and \"extensionUpdateCheck\".",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -7955,7 +8536,7 @@
           "payload": {
             "type": "object",
             "format": "",
-            "description": "Required. Payload of the remote command. The payload for \"clearBrowsingData\" command supports: - fields \"clearCache\" and \"clearCookies\" - values of boolean type.",
+            "description": "Required. Payload of the remote command. The payload for \"clearBrowsingData\" command supports: - fields \"clearCache\" and \"clearCookies\" - values of boolean type. The payload for \"extensionUpdateCheck\" should be empty.",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -8219,7 +8800,8 @@
               "IDENTITY_BASED_ENROLLMENT",
               "CERTIFICATE_AUTHORITY",
               "ROOT_STORE",
-              "CONTENT_ANALYSIS"
+              "CONTENT_ANALYSIS",
+              "ENTERPRISE_PROXY"
             ],
             "readOnly": false
           }
@@ -8328,6 +8910,17 @@
             "format": "",
             "description": "Pub/Sub XDR connector config.",
             "$ref": "GoogleChromeManagementVersionsV1PubSubXdrConfig",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "secureGatewayConfig": {
+            "type": "",
+            "format": "",
+            "description": "Secure gateway connector config.",
+            "$ref": "GoogleChromeManagementVersionsV1SecureGatewayConfig",
             "properties": null,
             "items": null,
             "additionalProperties": null,
@@ -10184,6 +10777,54 @@
             "additionalProperties": null,
             "enum": null,
             "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleChromeManagementVersionsV1SecureGatewayConfig": {
+        "type": "object",
+        "format": "",
+        "description": "Secure gateway connector config.",
+        "$ref": "",
+        "properties": {
+          "enabledPlatforms": {
+            "type": "array",
+            "format": "",
+            "description": "Optional. The enabled platforms for the secure gateway connector config.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": [
+                "PLATFORM_UNSPECIFIED",
+                "ANDROID",
+                "IOS"
+              ],
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "resourceId": {
+            "type": "string",
+            "format": "",
+            "description": "Required. The resource ID of the secure gateway connector config.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
           }
         },
         "items": null,
@@ -12424,6 +13065,139 @@
                 "request": null,
                 "response": {
                   "$ref": "GoogleChromeManagementV1FindInstalledAppProfilesResponse"
+                }
+              },
+              "findSaasUsage": {
+                "id": "chromemanagement.customers.reports.findSaasUsage",
+                "httpMethod": "GET",
+                "path": "v1/{+customer}/reports:findSaasUsage",
+                "flatPath": "v1/customers/{customersId}/reports:findSaasUsage",
+                "description": "Find SaaS usage reports of a customer based on the given search and sorting criteria.",
+                "parameters": {
+                  "customer": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  },
+                  "filter": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false
+                  },
+                  "orderBy": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false
+                  },
+                  "pageSize": {
+                    "type": "integer",
+                    "location": "query",
+                    "required": false
+                  },
+                  "pageToken": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false
+                  }
+                },
+                "parameterOrder": [
+                  "customer"
+                ],
+                "request": null,
+                "response": {
+                  "$ref": "GoogleChromeManagementV1FindSaasUsageReportsResponse"
+                }
+              },
+              "findSaasUsageBrowsers": {
+                "id": "chromemanagement.customers.reports.findSaasUsageBrowsers",
+                "httpMethod": "GET",
+                "path": "v1/{+customer}/reports:findSaasUsageBrowsers",
+                "flatPath": "v1/customers/{customersId}/reports:findSaasUsageBrowsers",
+                "description": "Find SaaS usage reports of a customer grouped by browsers based on the given search and sorting criteria.",
+                "parameters": {
+                  "app": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false
+                  },
+                  "customer": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  },
+                  "filter": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false
+                  },
+                  "orderBy": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false
+                  },
+                  "pageSize": {
+                    "type": "integer",
+                    "location": "query",
+                    "required": false
+                  },
+                  "pageToken": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false
+                  }
+                },
+                "parameterOrder": [
+                  "customer"
+                ],
+                "request": null,
+                "response": {
+                  "$ref": "GoogleChromeManagementV1FindSaasUsageBrowsersResponse"
+                }
+              },
+              "findSaasUsageProfiles": {
+                "id": "chromemanagement.customers.reports.findSaasUsageProfiles",
+                "httpMethod": "GET",
+                "path": "v1/{+customer}/reports:findSaasUsageProfiles",
+                "flatPath": "v1/customers/{customersId}/reports:findSaasUsageProfiles",
+                "description": "Find SaaS usage reports of a customer grouped by profiles based on the given search and sorting criteria.",
+                "parameters": {
+                  "app": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false
+                  },
+                  "customer": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  },
+                  "filter": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false
+                  },
+                  "orderBy": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false
+                  },
+                  "pageSize": {
+                    "type": "integer",
+                    "location": "query",
+                    "required": false
+                  },
+                  "pageToken": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false
+                  }
+                },
+                "parameterOrder": [
+                  "customer"
+                ],
+                "request": null,
+                "response": {
+                  "$ref": "GoogleChromeManagementV1FindSaasUsageProfilesResponse"
                 }
               }
             },

@@ -24,7 +24,7 @@
   "wire_name": "google_sourcerepo",
   "raw_spec": {
     "name": "sourcerepo",
-    "revision": "20260826",
+    "revision": "20260914",
     "discoveryVersion": "v1",
     "baseUrl": "https://sourcerepo.googleapis.com/",
     "rootUrl": "https://sourcerepo.googleapis.com/",

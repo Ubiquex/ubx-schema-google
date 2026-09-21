@@ -25,7 +25,7 @@
   "version_qualifier": "alpha",
   "raw_spec": {
     "name": "compute",
-    "revision": "20260821",
+    "revision": "20260910",
     "discoveryVersion": "v1",
     "baseUrl": "https://compute.googleapis.com/compute/alpha/",
     "rootUrl": "https://compute.googleapis.com/",
@@ -7339,6 +7339,17 @@
             "enum": null,
             "readOnly": false
           },
+          "networkAttachment": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The URL of the network attachment that this resource\nbelongs to.projects/{project}/regions/{region_name}/networkAttachments/{network_attachment_name}.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
           "networkPassThroughLbTrafficPolicy": {
             "type": "",
             "format": "",
@@ -7499,6 +7510,17 @@
               "enum": null,
               "readOnly": false
             },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "serviceClassId": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The service class ID associated with this resource.\nProducer Service's Service class ID for the region of this backend\nservice. Can only be used with network_attachment. It is not possible to\nuse on its own; however, network_attachment can be used without\nservice_class_id.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
             "additionalProperties": null,
             "enum": null,
             "readOnly": false
@@ -8430,7 +8452,7 @@
           "instance": {
             "type": "string",
             "format": "",
-            "description": "The name of the VM instance of the leader network endpoint. The\ninstance must already be attached to the NEG specified in the\nhaPolicy.leader.backendGroup.\n\nThe name must be 1-63 characters long, and comply with RFC1035.\nAuthorization requires the following IAM permission on the\nspecified resource instance: compute.instances.use",
+            "description": "The name of the VM instance of the leader network endpoint. The\ninstance must already be attached to the NEG specified in the\nhaPolicy.leader.backendGroup.\n\nThe value must be a valid RFC1035 name (1-63 characters) or a valid\ninstance URL.\nAuthorization requires the following IAM permission on the\nspecified resource instance: compute.instances.use",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -11345,13 +11367,13 @@
       "CalendarModeExtensionAdviceRequest": {
         "type": "object",
         "format": "",
-        "description": "A request to recommend the best duration for extending an existing\nFuture Reservation in CALENDAR mode, that is equal or less than the specified\nextension duration.",
+        "description": "A request to recommend the maximum duration for extending an existing future\nreservation in calendar mode. The recommended duration is shorter than or\nequal to the specified extension duration.",
         "$ref": "",
         "properties": {
           "endTimeNotLaterThan": {
             "type": "string",
             "format": "google-datetime",
-            "description": "Required. The desired end time after the Future Reservation is extended.",
+            "description": "Required. The desired end time for the extension.",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -11362,7 +11384,7 @@
           "futureReservation": {
             "type": "string",
             "format": "",
-            "description": "Required. Reference to the Future Reservation, in the format:\nprojects/{project}/zones/{zone}/futureReservations/{name}\nFull URIs that include hostnames (like compute.googleapis.com or\nwww.googleapis.com) are also supported.",
+            "description": "Required. Reference to the future reservation, in the format:\nprojects/{project}/zones/{zone}/futureReservations/{name}\nFull URIs that include hostnames (like compute.googleapis.com or\nwww.googleapis.com) are also supported.",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -11379,13 +11401,13 @@
       "CalendarModeExtensionAdviceResponse": {
         "type": "object",
         "format": "",
-        "description": "A response containing the recommended duration to extend a\nFuture Reservation in CALENDAR mode based on the available capacity during\nthe extension period.",
+        "description": "A response that contains the recommended duration for extending\na future reservation in calendar mode based on available capacity\nduring the extension period.",
         "$ref": "",
         "properties": {
           "endTime": {
             "type": "string",
             "format": "google-datetime",
-            "description": "The recommended end time for the extension, which will either be\nthe end time requested by the caller or the longest alternative for\nwhich there is sufficient capacity. If extension is not possible, this\nfield will be empty, and not_recommended_reason will be populated instead.",
+            "description": "The recommended end time for the extension, which is either the end time\nrequested by the caller or the longest alternative with sufficient\ncapacity. If the extension is not possible, this field is empty, and\nnotRecommendedReason is populated instead.",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -11396,7 +11418,7 @@
           "notRecommendedReason": {
             "type": "",
             "format": "",
-            "description": "Information regarding the reason why the Future Reservation\ncannot be extended at all. If a recommendation is provided, whether that is\nthe requested end time or an alternative, this field will be empty.",
+            "description": "The reason why the future reservation can't be extended. If a\nrecommendation is provided, whether for the requested end time or an\nalternative, this field is empty.",
             "$ref": "CalendarModeExtensionAdviceResponseNotRecommendedReason",
             "properties": null,
             "items": null,
@@ -11407,7 +11429,7 @@
           "recommendationId": {
             "type": "string",
             "format": "",
-            "description": "Unique id of the recommendation, a UUID string generated by the API.",
+            "description": "The unique ID of the recommendation, which is a UUID string generated by\nthe API.",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -11430,7 +11452,7 @@
           "details": {
             "type": "string",
             "format": "",
-            "description": "Details (human readable) describing why the recommendation\nwas not provided. For example, if the status is CONDITION_NOT_MET,\nthen this field will contain information about why the requested\nextension duration is not eligible.",
+            "description": "Human-readable details describing why the recommendation wasn't provided.\nFor example, if the status is CONDITIONS_NOT_MET, this field explains why\nthe requested extension duration isn't possible.",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -11756,6 +11778,17 @@
               "enum": null,
               "readOnly": false
             },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "rank": {
+            "type": "string",
+            "format": "int64",
+            "description": "Optional. Rank when prioritizing the shape flexibilities.\nThe instance selections are considered in the ascending order of the\nrank. If not set, defaults to 0.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
             "additionalProperties": null,
             "enum": null,
             "readOnly": false
@@ -12124,6 +12157,48 @@
         "description": "Instance properties for this request.",
         "$ref": "",
         "properties": {
+          "disks": {
+            "type": "array",
+            "format": "",
+            "description": "Local SSDs.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "CapacityHistoryRequestInstancePropertiesAttachedDisk",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "guestAccelerators": {
+            "type": "array",
+            "format": "",
+            "description": "Accelerators configuration.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "AcceleratorConfig",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
           "machineType": {
             "type": "string",
             "format": "",
@@ -12144,6 +12219,32 @@
             "items": null,
             "additionalProperties": null,
             "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "CapacityHistoryRequestInstancePropertiesAttachedDisk": {
+        "type": "object",
+        "format": "",
+        "description": "AttachedDisk modeled after Instance's AttachedDisk.",
+        "$ref": "",
+        "properties": {
+          "type": {
+            "type": "string",
+            "format": "",
+            "description": "Specifies the type of the disk.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "DISK_TYPE_UNSPECIFIED",
+              "SCRATCH"
+            ],
             "readOnly": false
           }
         },
@@ -12887,7 +12988,7 @@
           "type": {
             "type": "string",
             "format": "",
-            "description": "The type of commitment; specifies the\nmachine series for which you want to commit to purchasing resources.\nThe choice of machine series affects the discount rate and the eligible\nresource types.\n\n The type must be one of the following:ACCELERATOR_OPTIMIZED, ACCELERATOR_OPTIMIZED_A3,ACCELERATOR_OPTIMIZED_A3_MEGA,COMPUTE_OPTIMIZED, COMPUTE_OPTIMIZED_C2D,\n COMPUTE_OPTIMIZED_C3, COMPUTE_OPTIMIZED_C3D,COMPUTE_OPTIMIZED_H3, GENERAL_PURPOSE,GENERAL_PURPOSE_C4, GENERAL_PURPOSE_E2,GENERAL_PURPOSE_N2, GENERAL_PURPOSE_N2D,GENERAL_PURPOSE_N4, GENERAL_PURPOSE_T2D,GRAPHICS_OPTIMIZED, GRAPHICS_OPTIMIZED_G4,GRAPHICS_OPTIMIZED_G4_VGPU,MEMORY_OPTIMIZED, MEMORY_OPTIMIZED_M3,MEMORY_OPTIMIZED_X4, STORAGE_OPTIMIZED_Z3. For\nexample, type MEMORY_OPTIMIZED specifies a commitment that\napplies only to eligible resources of memory optimized M1 and M2 machine\nseries. Type GENERAL_PURPOSE specifies a commitment that\napplies only to eligible resources of general purpose N1 machine series.",
+            "description": "The type of commitment; specifies the\nmachine series for which you want to commit to purchasing resources.\nThe choice of machine series affects the discount rate and the eligible\nresource types.\n\n The type must be one of the following:ACCELERATOR_OPTIMIZED, ACCELERATOR_OPTIMIZED_A3,ACCELERATOR_OPTIMIZED_A3_MEGA,COMPUTE_OPTIMIZED, COMPUTE_OPTIMIZED_C2D,\n COMPUTE_OPTIMIZED_C3, COMPUTE_OPTIMIZED_C3D,COMPUTE_OPTIMIZED_H3, GENERAL_PURPOSE,GENERAL_PURPOSE_C4, GENERAL_PURPOSE_E2,GENERAL_PURPOSE_N2, GENERAL_PURPOSE_N2D,GENERAL_PURPOSE_N4, GENERAL_PURPOSE_T2D,GRAPHICS_OPTIMIZED, GRAPHICS_OPTIMIZED_G4,GRAPHICS_OPTIMIZED_G4_VGPU,MEMORY_OPTIMIZED, MEMORY_OPTIMIZED_M3,MEMORY_OPTIMIZED_X4, STORAGE_OPTIMIZED_Z3,STORAGE_OPTIMIZED_Z4DS, STORAGE_OPTIMIZED_Z4DH,STORAGE_OPTIMIZED_Z4D4T. For\nexample, type MEMORY_OPTIMIZED specifies a commitment that\napplies only to eligible resources of memory optimized M1 and M2 machine\nseries. Type GENERAL_PURPOSE specifies a commitment that\napplies only to eligible resources of general purpose N1 machine series.",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -12943,6 +13044,9 @@
               "NETWORK_OPTIMIZED_U4S",
               "STORAGE_OPTIMIZED_Z3",
               "STORAGE_OPTIMIZED_Z4D",
+              "STORAGE_OPTIMIZED_Z4D4T",
+              "STORAGE_OPTIMIZED_Z4DH",
+              "STORAGE_OPTIMIZED_Z4DS",
               "STORAGE_OPTIMIZED_Z4M",
               "TYPE_UNSPECIFIED"
             ],
@@ -18889,6 +18993,17 @@
         "description": "",
         "$ref": "",
         "properties": {
+          "maxSize": {
+            "type": "",
+            "format": "",
+            "description": "Optional. The maximum size of the group in this zone. This value can be either a\nfixed number or, a percentage. If you set a percentage, the number of\ninstances is rounded up if necessary. If unset, it is interpreted as\nunbounded.",
+            "$ref": "FixedOrPercent",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
           "zone": {
             "type": "string",
             "format": "",
@@ -18932,6 +19047,32 @@
             "items": null,
             "additionalProperties": null,
             "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "DynamicCompressionPolicy": {
+        "type": "object",
+        "format": "",
+        "description": "Dynamic compression policy for this URL Map's route.",
+        "$ref": "",
+        "properties": {
+          "compressionMode": {
+            "type": "string",
+            "format": "",
+            "description": "Compress text responses using Brotli or gzip compression, based on\nthe client's Accept-Encoding header.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "AUTOMATIC",
+              "DISABLED"
+            ],
             "readOnly": false
           }
         },
@@ -22835,6 +22976,17 @@
             "enum": null,
             "readOnly": false
           },
+          "networkAttachment": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The URL of the network attachment that this resource\nbelongs to.projects/{project}/regions/{region_name}/networkAttachments/{network_attachment_name}.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
           "networkTier": {
             "type": "string",
             "format": "",
@@ -22968,6 +23120,17 @@
             "additionalProperties": null,
             "enum": null,
             "readOnly": true
+          },
+          "serviceClassId": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Producer Service's Service class ID for the region of this forwarding rule.\nCan only be used with network_attachment. It is not possible to use on its\nown; however, network_attachment can be used without service_class_id.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
           },
           "serviceDirectoryRegistrations": {
             "type": "array",
@@ -26130,7 +26293,7 @@
           "etag": {
             "type": "string",
             "format": "",
-            "description": "Output only. For optimistic locking",
+            "description": "Output only. For optimistic locking.",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -26186,7 +26349,7 @@
           "operation": {
             "type": "",
             "format": "",
-            "description": "",
+            "description": "The Operation resource for this long-running operation.",
             "$ref": "Operation",
             "properties": null,
             "items": null,
@@ -27860,6 +28023,7 @@
             "additionalProperties": null,
             "enum": [
               "BARE_METAL_LINUX_COMPATIBLE",
+              "BMSAI_CAPABLE",
               "CCA_CAPABLE",
               "FEATURE_TYPE_UNSPECIFIED",
               "GVNIC",
@@ -34759,6 +34923,17 @@
             "enum": null,
             "readOnly": false
           },
+          "dynamicCompressionPolicy": {
+            "type": "",
+            "format": "",
+            "description": "Dynamic compression policy for this URL Map's route. Available only for\nGlobal EXTERNAL_MANAGED load balancer schemes.",
+            "$ref": "DynamicCompressionPolicy",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
           "faultInjectionPolicy": {
             "type": "",
             "format": "",
@@ -36300,7 +36475,7 @@
           "image": {
             "type": "",
             "format": "",
-            "description": "",
+            "description": "The Image resource.",
             "$ref": "Image",
             "properties": null,
             "items": null,
@@ -36323,7 +36498,7 @@
           "etag": {
             "type": "string",
             "format": "",
-            "description": "",
+            "description": "Etag of the resource.",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -39407,6 +39582,17 @@
         "description": "",
         "$ref": "",
         "properties": {
+          "constraints": {
+            "type": "",
+            "format": "",
+            "description": "Constraints applied to instance flexibility spreading and selection.",
+            "$ref": "InstanceGroupManagerInstanceFlexibilityPolicyConstraints",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
           "instanceSelectionLists": {
             "type": "object",
             "format": "",
@@ -39454,6 +39640,29 @@
             "format": "",
             "description": "Provisioning model configuration used by this managed instance group to\ncreate instances.",
             "$ref": "InstanceGroupManagerInstanceFlexibilityPolicyProvisioningModelMix",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "InstanceGroupManagerInstanceFlexibilityPolicyConstraints": {
+        "type": "object",
+        "format": "",
+        "description": "Constraints applied to instance flexibility spreading and selection.",
+        "$ref": "",
+        "properties": {
+          "singleMachineType": {
+            "type": "boolean",
+            "format": "",
+            "description": "When set to true, all instances in the group will be provisioned with\nthe exact same machine type, ensuring cluster homogeneity across zones.\nDefaults to false.",
+            "$ref": "",
             "properties": null,
             "items": null,
             "additionalProperties": null,
@@ -59837,7 +60046,7 @@
           "items": {
             "type": "array",
             "format": "",
-            "description": "",
+            "description": "The list of managed rulesets.",
             "$ref": "",
             "properties": null,
             "items": {
@@ -61491,6 +61700,27 @@
             "additionalProperties": null,
             "enum": null,
             "readOnly": false
+          },
+          "additionalTags": {
+            "type": "array",
+            "format": "",
+            "description": "Output only. [Output Only] Additional tags for this resource.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
           },
           "autoCreateSubnetworks": {
             "type": "boolean",
@@ -90508,6 +90738,17 @@
             "additionalProperties": null,
             "enum": null,
             "readOnly": false
+          },
+          "machine": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. [Output Only] The ID of the machine on which the running instance is\nlocated. It is only populated for machines which have multiple hosts.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
           },
           "subblock": {
             "type": "string",
@@ -125419,7 +125660,7 @@
             "httpMethod": "POST",
             "path": "projects/{project}/regions/{region}/advice/calendarModeExtension",
             "flatPath": "projects/{project}/regions/{region}/advice/calendarModeExtension",
-            "description": "Advise on whether extending an existing Future Reservation is possible\nbased on the desired extension end time. If capacity is not available for\nthe entire requested duration, the method will recommend the longest\npossible extension.",
+            "description": "Advises on whether extending an existing future reservation is possible\nbased on the desired extension end time. If capacity isn't available for\nthe entire requested duration, the method recommends the longest possible\nextension.",
             "parameters": {
               "project": {
                 "type": "string",

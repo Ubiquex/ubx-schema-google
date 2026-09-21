@@ -24,7 +24,7 @@
   "wire_name": "google_dataproc",
   "raw_spec": {
     "name": "dataproc",
-    "revision": "20260818",
+    "revision": "20260911",
     "discoveryVersion": "v1",
     "baseUrl": "https://dataproc.googleapis.com/",
     "rootUrl": "https://dataproc.googleapis.com/",
@@ -1122,7 +1122,7 @@
           "diskType": {
             "type": "string",
             "format": "",
-            "description": "Optional. Disk type.",
+            "description": "Optional. Deprecated: Use type instead.",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -1151,6 +1151,17 @@
             "type": "string",
             "format": "int64",
             "description": "Optional. Indicates how much throughput to provision for the attached disk. This sets the number of throughput mb per second that the disk can handle. See https://cloud.google.com/compute/docs/disks/hyperdisks#hyperdisk-features",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "type": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Attached disk type. Currently only supports Hyperdisks. See https://cloud.google.com/compute/docs/disks/hyperdisks. Note: Hyperdisk Balanced High Availability is not supported.Allowed values are: hyperdisk-balanced hyperdisk-extreme hyperdisk-ml hyperdisk-throughput",
             "$ref": "",
             "properties": null,
             "items": null,

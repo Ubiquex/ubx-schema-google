@@ -24,7 +24,7 @@
   "wire_name": "google_cloudidentity",
   "raw_spec": {
     "name": "cloudidentity",
-    "revision": "20260902",
+    "revision": "20260916",
     "discoveryVersion": "v1",
     "baseUrl": "https://cloudidentity.googleapis.com/",
     "rootUrl": "https://cloudidentity.googleapis.com/",
@@ -476,6 +476,40 @@
             "type": "string",
             "format": "google-datetime",
             "description": "The time at which the `MembershipRole` will expire.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ExternalId": {
+        "type": "object",
+        "format": "",
+        "description": "An external identifier for an entity in the Cloud Identity Groups API. Used to link a `Group` in Cloud Identity Groups API with a corresponding entity in an external identity system or directory.",
+        "$ref": "",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "",
+            "description": "Required. The unique identifier assigned by the external identity provider. The API does not enforce uniqueness of IDs across entities, but clients should ensure IDs are unique within their namespace.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "namespace": {
+            "type": "string",
+            "format": "",
+            "description": "Required. The namespace in which the entity exists. Cannot be empty. Currently, the only allowable namespace is `\"system/external\"`.",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -2585,6 +2619,27 @@
             "$ref": "DynamicGroupMetadata",
             "properties": null,
             "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "externalIds": {
+            "type": "array",
+            "format": "",
+            "description": "Optional. External identifiers associated with the `Group`. Enables external identity providers and directory sync tools to link their native unique identifiers with this group. Currently, the only allowable namespace is `\"system/external\"`.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "ExternalId",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
             "additionalProperties": null,
             "enum": null,
             "readOnly": false

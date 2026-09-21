@@ -25,7 +25,7 @@
   "version_qualifier": "v1alpha",
   "raw_spec": {
     "name": "metastore",
-    "revision": "20260901",
+    "revision": "20260910",
     "discoveryVersion": "v1",
     "baseUrl": "https://metastore.googleapis.com/",
     "rootUrl": "https://metastore.googleapis.com/",
@@ -3215,7 +3215,7 @@
           "createTime": {
             "type": "string",
             "format": "google-datetime",
-            "description": "Output only. The UTC time when this report was finalized.",
+            "description": "Output only. The UTC time when the source metadata read was initiated.",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -3227,6 +3227,17 @@
             "type": "boolean",
             "format": "",
             "description": "Output only. Whether the migration was a dry run.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "endTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. The UTC time when the report was written.",
             "$ref": "",
             "properties": null,
             "items": null,

@@ -25,7 +25,7 @@
   "version_qualifier": "v2beta1",
   "raw_spec": {
     "name": "dialogflow",
-    "revision": "20260825",
+    "revision": "20260916",
     "discoveryVersion": "v1",
     "baseUrl": "https://dialogflow.googleapis.com/",
     "rootUrl": "https://dialogflow.googleapis.com/",

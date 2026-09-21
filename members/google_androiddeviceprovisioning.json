@@ -24,7 +24,7 @@
   "wire_name": "google_androiddeviceprovisioning",
   "raw_spec": {
     "name": "androiddeviceprovisioning",
-    "revision": "20260826",
+    "revision": "20260920",
     "discoveryVersion": "v1",
     "baseUrl": "https://androiddeviceprovisioning.googleapis.com/",
     "rootUrl": "https://androiddeviceprovisioning.googleapis.com/",

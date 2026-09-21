@@ -24,7 +24,7 @@
   "wire_name": "google_apihub",
   "raw_spec": {
     "name": "apihub",
-    "revision": "20260831",
+    "revision": "20260913",
     "discoveryVersion": "v1",
     "baseUrl": "https://apihub.googleapis.com/",
     "rootUrl": "https://apihub.googleapis.com/",
@@ -1082,6 +1082,27 @@
             "additionalProperties": null,
             "enum": null,
             "readOnly": true
+          },
+          "deployments": {
+            "type": "array",
+            "format": "",
+            "description": "Optional. The deployments linked directly to this API operation. For operations parsed from a spec, `UpdateApiOperation` returns `FAILED_PRECONDITION`; link the parent spec to the deployment via `Spec.deployments` instead. Format is `projects/{project}/locations/{location}/deployments/{deployment}`",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
           },
           "details": {
             "type": "",
@@ -2718,6 +2739,27 @@
         "description": "Details of the deployment where APIs are hosted. A deployment could represent an Apigee proxy, API gateway, other Google Cloud services or non-Google Cloud services as well. A deployment entity is a root level entity in the API hub and exists independent of any API.",
         "$ref": "",
         "properties": {
+          "apiOperations": {
+            "type": "array",
+            "format": "",
+            "description": "Output only. The API operations linked directly to this deployment.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
           "apiVersions": {
             "type": "array",
             "format": "",
@@ -2934,6 +2976,17 @@
             "enum": null,
             "readOnly": false
           },
+          "sourceRevision": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. A revision identifier for the underlying gateway configuration that this deployment serves. For Apigee gateway variants, this is typically the proxy revision number populated automatically when the deployment is discovered.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
           "sourceUri": {
             "type": "",
             "format": "",
@@ -2944,6 +2997,27 @@
             "additionalProperties": null,
             "enum": null,
             "readOnly": false
+          },
+          "specs": {
+            "type": "array",
+            "format": "",
+            "description": "Output only. The specs linked directly to this deployment. Note: a deployment could serve multiple specs (e.g., across different revisions of the same underlying gateway configuration).",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
           },
           "updateTime": {
             "type": "string",
@@ -7470,6 +7544,27 @@
             "enum": null,
             "readOnly": true
           },
+          "deployments": {
+            "type": "array",
+            "format": "",
+            "description": "Optional. The deployments linked directly to this spec. Format is `projects/{project}/locations/{location}/deployments/{deployment}`",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
           "details": {
             "type": "",
             "format": "",
@@ -7674,6 +7769,27 @@
         "description": "The metadata associated with a spec of the API version.",
         "$ref": "",
         "properties": {
+          "deploymentResourceUris": {
+            "type": "array",
+            "format": "",
+            "description": "Optional. The gateway-side URIs of deployments that serve this spec. If provided, the API Hub service creates links between this spec and the deployments identified by these URIs. URIs that don't match any known deployment are ignored; a subsequent ingestion cycle that includes the missing deployment will re-establish the link. The maximum number of URIs allowed is 100.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
           "originalCreateTime": {
             "type": "string",
             "format": "google-datetime",
@@ -9531,7 +9647,7 @@
                             "httpMethod": "DELETE",
                             "path": "v1/{+name}",
                             "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/apis/{apisId}/versions/{versionsId}/operations/{operationsId}",
-                            "description": "Delete an operation in an API version and we can delete only the operations created via create API. If the operation was created by parsing the spec, then it can be deleted by editing or deleting the spec.",
+                            "description": "Delete an operation in an API version and we can delete only the operations created via create API. If the operation was created by parsing the spec, then it can be deleted by editing or deleting the spec. Deleting an operation will also remove any links between the operation and deployments.",
                             "parameters": {
                               "name": {
                                 "type": "string",
@@ -9670,7 +9786,7 @@
                             "httpMethod": "DELETE",
                             "path": "v1/{+name}",
                             "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/apis/{apisId}/versions/{versionsId}/specs/{specsId}",
-                            "description": "Delete a spec. Deleting a spec will also delete the associated operations from the version.",
+                            "description": "Delete a spec. Deleting a spec will also delete the associated operations from the version and remove any links between the spec and deployments.",
                             "parameters": {
                               "name": {
                                 "type": "string",
@@ -10300,7 +10416,7 @@
                     "httpMethod": "DELETE",
                     "path": "v1/{+name}",
                     "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/deployments/{deploymentsId}",
-                    "description": "Delete a deployment resource in the API hub.",
+                    "description": "Deletes a deployment resource in the API hub. A deployment can only be deleted after its links to any versions, specs, and API operations have been removed.",
                     "parameters": {
                       "name": {
                         "type": "string",

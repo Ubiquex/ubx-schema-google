@@ -24,7 +24,7 @@
   "wire_name": "google_looker",
   "raw_spec": {
     "name": "looker",
-    "revision": "20260903",
+    "revision": "20260916",
     "discoveryVersion": "v1",
     "baseUrl": "https://looker.googleapis.com/",
     "rootUrl": "https://looker.googleapis.com/",
@@ -69,6 +69,90 @@
         "description": "The request message for Operations.CancelOperation.",
         "$ref": "",
         "properties": {},
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ComponentMetrics": {
+        "type": "object",
+        "format": "",
+        "description": "ComponentMetrics contains sizing, timing, retries, and metrics for an exported component.",
+        "$ref": "",
+        "properties": {
+          "componentType": {
+            "type": "string",
+            "format": "",
+            "description": "Type of the exported component.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "TYPE_UNSPECIFIED",
+              "BQ_ESA",
+              "DB",
+              "FS",
+              "ALL"
+            ],
+            "readOnly": false
+          },
+          "duration": {
+            "type": "string",
+            "format": "google-duration",
+            "description": "Duration of the component export.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "endTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "End timestamp of the component export.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "retryCount": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Number of retries during the component export.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "sizeGb": {
+            "type": "number",
+            "format": "double",
+            "description": "Size of the exported component in gigabytes.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "startTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Start timestamp of the component export.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
         "items": null,
         "additionalProperties": null,
         "enum": null,
@@ -416,6 +500,17 @@
             "enum": null,
             "readOnly": false
           },
+          "exportMetrics": {
+            "type": "",
+            "format": "",
+            "description": "Overall export metrics, timing, and component telemetry.",
+            "$ref": "ExportMetrics",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
           "filePaths": {
             "type": "array",
             "format": "",
@@ -492,7 +587,8 @@
             "enum": [
               "SOURCE_UNSPECIFIED",
               "LOOKER_CORE",
-              "LOOKER_ORIGINAL"
+              "LOOKER_ORIGINAL",
+              "LOOKER_SELF_HOSTED"
             ],
             "readOnly": false
           }
@@ -523,6 +619,50 @@
             "type": "string",
             "format": "",
             "description": "Version of the CMEK.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ExportMetrics": {
+        "type": "object",
+        "format": "",
+        "description": "ExportMetrics contains overall export execution metrics, timing, and component telemetry.",
+        "$ref": "",
+        "properties": {
+          "componentMetrics": {
+            "type": "array",
+            "format": "",
+            "description": "Metrics and telemetry for each exported component.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "ComponentMetrics",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "instanceInternalName": {
+            "type": "string",
+            "format": "",
+            "description": "Internal name of the instance being exported.",
             "$ref": "",
             "properties": null,
             "items": null,

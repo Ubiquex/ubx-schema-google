@@ -25,7 +25,7 @@
   "version_qualifier": "v1alpha",
   "raw_spec": {
     "name": "apphub",
-    "revision": "20260824",
+    "revision": "20260904",
     "discoveryVersion": "v1",
     "baseUrl": "https://apphub.googleapis.com/",
     "rootUrl": "https://apphub.googleapis.com/",

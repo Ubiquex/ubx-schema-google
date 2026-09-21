@@ -24,7 +24,7 @@
   "wire_name": "google_cloudquotas",
   "raw_spec": {
     "name": "cloudquotas",
-    "revision": "20260827",
+    "revision": "20260910",
     "discoveryVersion": "v1",
     "baseUrl": "https://cloudquotas.googleapis.com/",
     "rootUrl": "https://cloudquotas.googleapis.com/",

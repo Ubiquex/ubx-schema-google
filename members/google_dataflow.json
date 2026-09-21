@@ -24,7 +24,7 @@
   "wire_name": "google_dataflow",
   "raw_spec": {
     "name": "dataflow",
-    "revision": "20260825",
+    "revision": "20260910",
     "discoveryVersion": "v1",
     "baseUrl": "https://dataflow.googleapis.com/",
     "rootUrl": "https://dataflow.googleapis.com/",

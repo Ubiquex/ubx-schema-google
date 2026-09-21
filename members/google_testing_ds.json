@@ -24,7 +24,7 @@
   "wire_name": "google_testing",
   "raw_spec": {
     "name": "testing",
-    "revision": "20260901",
+    "revision": "20260915",
     "discoveryVersion": "v1",
     "baseUrl": "https://testing.googleapis.com/",
     "rootUrl": "https://testing.googleapis.com/",
@@ -1736,7 +1736,7 @@
           "androidDevice": {
             "type": "",
             "format": "",
-            "description": "Required. The requested device",
+            "description": "Required. The requested device.",
             "$ref": "AndroidDevice",
             "properties": null,
             "items": null,

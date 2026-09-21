@@ -24,7 +24,7 @@
   "wire_name": "google_managedkafka",
   "raw_spec": {
     "name": "managedkafka",
-    "revision": "20260827",
+    "revision": "20260910",
     "discoveryVersion": "v1",
     "baseUrl": "https://managedkafka.googleapis.com/",
     "rootUrl": "https://managedkafka.googleapis.com/",
@@ -599,13 +599,13 @@
           "kafkaVersion": {
             "type": "string",
             "format": "",
-            "description": "Output only. Only populated when FULL view is requested. The Kafka version of the cluster.",
+            "description": "Optional. The Apache Kafka version of the cluster (for example, `3.7.x`, `4.3.x`). If not specified during cluster creation, defaults to `3.7.x`.",
             "$ref": "",
             "properties": null,
             "items": null,
             "additionalProperties": null,
             "enum": null,
-            "readOnly": true
+            "readOnly": false
           },
           "labels": {
             "type": "object",

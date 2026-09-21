@@ -24,7 +24,7 @@
   "wire_name": "google_androidmanagement",
   "raw_spec": {
     "name": "androidmanagement",
-    "revision": "20260907",
+    "revision": "20260917",
     "discoveryVersion": "v1",
     "baseUrl": "https://androidmanagement.googleapis.com/",
     "rootUrl": "https://androidmanagement.googleapis.com/",
@@ -8631,6 +8631,21 @@
               "AUTOFILL_POLICY_UNSPECIFIED",
               "AUTOFILL_USER_CHOICE",
               "AUTOFILL_DISABLED"
+            ],
+            "readOnly": false
+          },
+          "backupService": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Controls whether the backup service is disabled. Supported only on fully managed devices running Android 8 and above.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "BACKUP_SERVICE_UNSPECIFIED",
+              "BACKUP_SERVICE_DISABLED",
+              "BACKUP_SERVICE_USER_CHOICE"
             ],
             "readOnly": false
           },

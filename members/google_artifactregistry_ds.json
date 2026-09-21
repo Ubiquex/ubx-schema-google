@@ -24,7 +24,7 @@
   "wire_name": "google_artifactregistry",
   "raw_spec": {
     "name": "artifactregistry",
-    "revision": "20260822",
+    "revision": "20260910",
     "discoveryVersion": "v1",
     "baseUrl": "https://artifactregistry.googleapis.com/",
     "rootUrl": "https://artifactregistry.googleapis.com/",

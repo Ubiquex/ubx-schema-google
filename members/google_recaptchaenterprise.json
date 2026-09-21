@@ -24,7 +24,7 @@
   "wire_name": "google_recaptchaenterprise",
   "raw_spec": {
     "name": "recaptchaenterprise",
-    "revision": "20260825",
+    "revision": "20260908",
     "discoveryVersion": "v1",
     "baseUrl": "https://recaptchaenterprise.googleapis.com/",
     "rootUrl": "https://recaptchaenterprise.googleapis.com/",

@@ -24,7 +24,7 @@
   "wire_name": "google_cloudresourcemanager",
   "raw_spec": {
     "name": "cloudresourcemanager",
-    "revision": "20260811",
+    "revision": "20260909",
     "discoveryVersion": "v1",
     "baseUrl": "https://cloudresourcemanager.googleapis.com/",
     "rootUrl": "https://cloudresourcemanager.googleapis.com/",
@@ -212,6 +212,144 @@
         "enum": null,
         "readOnly": false
       },
+      "CapabilityConfig": {
+        "type": "object",
+        "format": "",
+        "description": "A CapabilityConfig allows managing experiences like applications and agents on a logical administrative perimeter of Projects (Boundary).",
+        "$ref": "",
+        "properties": {
+          "boundaries": {
+            "type": "array",
+            "format": "",
+            "description": "Optional. The list of Boundaries associated with this CapabilityConfig. Format: `organizations/{organization}/boundaries/{boundary}` or, `folders/{folder}/boundaries/{boundary}` or, `projects/{project}/boundaries/{boundary}`",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "createTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. The creation time of the CapabilityConfig.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "displayName": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Human-readable non-unique display name of the CapabilityConfig. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, single-quote, double-quote, space, and exclamation point. Example: `My Capability Config`",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "etag": {
+            "type": "string",
+            "format": "",
+            "description": "This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "managementProject": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Immutable. The Management Project associated with this CapabilityConfig. If not provided during creation, a management project will be automatically created. Cannot be modified after creation. Format: `projects/{project_number}` Example: `projects/123456789012`",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "Identifier. The unique resource name of the CapabilityConfig. Format: `organizations/{organization}/capabilityConfigs/{capabilityConfig}` or, `folders/{folder}/capabilityConfigs/{capabilityConfig}` or, `projects/{project}/capabilityConfigs/{capabilityConfig}`",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "state": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The lifecycle state of the CapabilityConfig.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "STATE_UNSPECIFIED",
+              "ACTIVE"
+            ],
+            "readOnly": true
+          },
+          "types": {
+            "type": "array",
+            "format": "",
+            "description": "Required. The CapabilityConfig types.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": [
+                "TYPE_UNSPECIFIED",
+                "APP_MANAGEMENT",
+                "AGENT_MANAGEMENT"
+              ],
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "updateTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. The most recent time this CapabilityConfig was modified.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
       "CloudresourcemanagerGoogleCloudResourcemanagerV2alpha1FolderOperation": {
         "type": "object",
         "format": "",
@@ -332,6 +470,28 @@
         "enum": null,
         "readOnly": false
       },
+      "CreateBoundaryMetadata": {
+        "type": "object",
+        "format": "",
+        "description": "A status object which is used as the `metadata` field for the Operation returned by CreateBoundary. Currently empty.",
+        "$ref": "",
+        "properties": {},
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "CreateCapabilityConfigMetadata": {
+        "type": "object",
+        "format": "",
+        "description": "A status object which is used as the `metadata` field for the Operation returned by CreateCapabilityConfig. Currently empty.",
+        "$ref": "",
+        "properties": {},
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
       "CreateFolderMetadata": {
         "type": "object",
         "format": "",
@@ -437,6 +597,28 @@
         "type": "object",
         "format": "",
         "description": "Runtime operation information for creating a TagValue.",
+        "$ref": "",
+        "properties": {},
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "DeleteBoundaryMetadata": {
+        "type": "object",
+        "format": "",
+        "description": "A status object which is used as the `metadata` field for the Operation returned by DeleteBoundary. Currently empty.",
+        "$ref": "",
+        "properties": {},
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "DeleteCapabilityConfigMetadata": {
+        "type": "object",
+        "format": "",
+        "description": "A status object which is used as the `metadata` field for the Operation returned by DeleteCapabilityConfig. Currently empty.",
         "$ref": "",
         "properties": {},
         "items": null,
@@ -1130,6 +1312,50 @@
               "enum": null,
               "readOnly": false
             },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ListCapabilityConfigsResponse": {
+        "type": "object",
+        "format": "",
+        "description": "A page of the response received from the ListCapabilityConfigs method. A paginated response where more pages are available has `next_page_token` set. This token can be used in a subsequent request to retrieve the next page. NOTE: A response may contain fewer elements than the request `page_size` and still have a `next_page_token`.",
+        "$ref": "",
+        "properties": {
+          "capabilityConfigs": {
+            "type": "array",
+            "format": "",
+            "description": "The list of CapabilityConfigs under the parent. This list can be paginated.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "CapabilityConfig",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "Pagination token. If the result set is too large to fit in a single response, this token is returned. It encodes the position of the current result cursor. Feeding this value into a new list request with the `page_token` parameter gives the next page of the results. When `next_page_token` is not filled in, there is no next page and the list returned is the last page in the result set.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
             "additionalProperties": null,
             "enum": null,
             "readOnly": false
@@ -1925,6 +2151,17 @@
             "type": "string",
             "format": "",
             "description": "Output only. A checksum computed by the server based on the current value of the Project resource. This may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "isManagementProject": {
+            "type": "boolean",
+            "format": "",
+            "description": "Output only. If `true`, this project is a Management Project. A Management Project manages dedicated project groups for specific purposes (e.g., agent management or app management).",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -2872,6 +3109,39 @@
         "enum": null,
         "readOnly": false
       },
+      "UpdateBoundaryConfigMetadata": {
+        "type": "object",
+        "format": "",
+        "description": "A status object which is used as the `metadata` field for the Operation returned by UpdateBoundaryConfig. Currently empty.",
+        "$ref": "",
+        "properties": {},
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "UpdateBoundaryMetadata": {
+        "type": "object",
+        "format": "",
+        "description": "A status object which is used as the `metadata` field for the Operation returned by UpdateBoundary. Currently empty.",
+        "$ref": "",
+        "properties": {},
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "UpdateCapabilityConfigMetadata": {
+        "type": "object",
+        "format": "",
+        "description": "A status object which is used as the `metadata` field for the Operation returned by UpdateCapabilityConfig. Currently empty.",
+        "$ref": "",
+        "properties": {},
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
       "UpdateFolderMetadata": {
         "type": "object",
         "format": "",
@@ -3272,6 +3542,140 @@
               }
             },
             "resources": null
+          },
+          "capabilityConfigs": {
+            "methods": {
+              "create": {
+                "id": "cloudresourcemanager.folders.capabilityConfigs.create",
+                "httpMethod": "POST",
+                "path": "v3/{+parent}/capabilityConfigs",
+                "flatPath": "v3/folders/{foldersId}/capabilityConfigs",
+                "description": "Creates a CapabilityConfig under a parent Organization, Folder or Project. Creating a CapabilityConfig triggers the creation of a Management Project if one is not supplied.",
+                "parameters": {
+                  "capabilityConfigId": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false
+                  },
+                  "parent": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  }
+                },
+                "parameterOrder": [
+                  "parent"
+                ],
+                "request": {
+                  "$ref": "CapabilityConfig"
+                },
+                "response": {
+                  "$ref": "Operation"
+                }
+              },
+              "delete": {
+                "id": "cloudresourcemanager.folders.capabilityConfigs.delete",
+                "httpMethod": "DELETE",
+                "path": "v3/{+name}",
+                "flatPath": "v3/folders/{foldersId}/capabilityConfigs/{capabilityConfigsId}",
+                "description": "Deletes the CapabilityConfig identified by the specified `name` (for example, `folders/123456789/capabilityConfigs/my-capability-config`).",
+                "parameters": {
+                  "name": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  }
+                },
+                "parameterOrder": [
+                  "name"
+                ],
+                "request": null,
+                "response": {
+                  "$ref": "Operation"
+                }
+              },
+              "get": {
+                "id": "cloudresourcemanager.folders.capabilityConfigs.get",
+                "httpMethod": "GET",
+                "path": "v3/{+name}",
+                "flatPath": "v3/folders/{foldersId}/capabilityConfigs/{capabilityConfigsId}",
+                "description": "Retrieves the Capability Config identified by the specified `name` (for example, `folders/123456789/capabilityConfigs/my-capability-config`).",
+                "parameters": {
+                  "name": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  }
+                },
+                "parameterOrder": [
+                  "name"
+                ],
+                "request": null,
+                "response": {
+                  "$ref": "CapabilityConfig"
+                }
+              },
+              "list": {
+                "id": "cloudresourcemanager.folders.capabilityConfigs.list",
+                "httpMethod": "GET",
+                "path": "v3/{+parent}/capabilityConfigs",
+                "flatPath": "v3/folders/{foldersId}/capabilityConfigs",
+                "description": "Lists CapabilityConfigs that are direct children of the specified organization, folder or project resource.",
+                "parameters": {
+                  "pageSize": {
+                    "type": "integer",
+                    "location": "query",
+                    "required": false
+                  },
+                  "pageToken": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false
+                  },
+                  "parent": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  }
+                },
+                "parameterOrder": [
+                  "parent"
+                ],
+                "request": null,
+                "response": {
+                  "$ref": "ListCapabilityConfigsResponse"
+                }
+              },
+              "patch": {
+                "id": "cloudresourcemanager.folders.capabilityConfigs.patch",
+                "httpMethod": "PATCH",
+                "path": "v3/{+name}",
+                "flatPath": "v3/folders/{foldersId}/capabilityConfigs/{capabilityConfigsId}",
+                "description": "Updates the `display_name`, `types` and `boundaries` of the CapabilityConfig identified by the specified `name` (for example, `folders/123456789/capabilityConfigs/my-capability-config`).",
+                "parameters": {
+                  "name": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  },
+                  "updateMask": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false
+                  }
+                },
+                "parameterOrder": [
+                  "name"
+                ],
+                "request": {
+                  "$ref": "CapabilityConfig"
+                },
+                "response": {
+                  "$ref": "Operation"
+                }
+              }
+            },
+            "resources": null
           }
         }
       },
@@ -3599,7 +4003,142 @@
             }
           }
         },
-        "resources": null
+        "resources": {
+          "capabilityConfigs": {
+            "methods": {
+              "create": {
+                "id": "cloudresourcemanager.organizations.capabilityConfigs.create",
+                "httpMethod": "POST",
+                "path": "v3/{+parent}/capabilityConfigs",
+                "flatPath": "v3/organizations/{organizationsId}/capabilityConfigs",
+                "description": "Creates a CapabilityConfig under a parent Organization, Folder or Project. Creating a CapabilityConfig triggers the creation of a Management Project if one is not supplied.",
+                "parameters": {
+                  "capabilityConfigId": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false
+                  },
+                  "parent": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  }
+                },
+                "parameterOrder": [
+                  "parent"
+                ],
+                "request": {
+                  "$ref": "CapabilityConfig"
+                },
+                "response": {
+                  "$ref": "Operation"
+                }
+              },
+              "delete": {
+                "id": "cloudresourcemanager.organizations.capabilityConfigs.delete",
+                "httpMethod": "DELETE",
+                "path": "v3/{+name}",
+                "flatPath": "v3/organizations/{organizationsId}/capabilityConfigs/{capabilityConfigsId}",
+                "description": "Deletes the CapabilityConfig identified by the specified `name` (for example, `folders/123456789/capabilityConfigs/my-capability-config`).",
+                "parameters": {
+                  "name": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  }
+                },
+                "parameterOrder": [
+                  "name"
+                ],
+                "request": null,
+                "response": {
+                  "$ref": "Operation"
+                }
+              },
+              "get": {
+                "id": "cloudresourcemanager.organizations.capabilityConfigs.get",
+                "httpMethod": "GET",
+                "path": "v3/{+name}",
+                "flatPath": "v3/organizations/{organizationsId}/capabilityConfigs/{capabilityConfigsId}",
+                "description": "Retrieves the Capability Config identified by the specified `name` (for example, `folders/123456789/capabilityConfigs/my-capability-config`).",
+                "parameters": {
+                  "name": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  }
+                },
+                "parameterOrder": [
+                  "name"
+                ],
+                "request": null,
+                "response": {
+                  "$ref": "CapabilityConfig"
+                }
+              },
+              "list": {
+                "id": "cloudresourcemanager.organizations.capabilityConfigs.list",
+                "httpMethod": "GET",
+                "path": "v3/{+parent}/capabilityConfigs",
+                "flatPath": "v3/organizations/{organizationsId}/capabilityConfigs",
+                "description": "Lists CapabilityConfigs that are direct children of the specified organization, folder or project resource.",
+                "parameters": {
+                  "pageSize": {
+                    "type": "integer",
+                    "location": "query",
+                    "required": false
+                  },
+                  "pageToken": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false
+                  },
+                  "parent": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  }
+                },
+                "parameterOrder": [
+                  "parent"
+                ],
+                "request": null,
+                "response": {
+                  "$ref": "ListCapabilityConfigsResponse"
+                }
+              },
+              "patch": {
+                "id": "cloudresourcemanager.organizations.capabilityConfigs.patch",
+                "httpMethod": "PATCH",
+                "path": "v3/{+name}",
+                "flatPath": "v3/organizations/{organizationsId}/capabilityConfigs/{capabilityConfigsId}",
+                "description": "Updates the `display_name`, `types` and `boundaries` of the CapabilityConfig identified by the specified `name` (for example, `folders/123456789/capabilityConfigs/my-capability-config`).",
+                "parameters": {
+                  "name": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  },
+                  "updateMask": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false
+                  }
+                },
+                "parameterOrder": [
+                  "name"
+                ],
+                "request": {
+                  "$ref": "CapabilityConfig"
+                },
+                "response": {
+                  "$ref": "Operation"
+                }
+              }
+            },
+            "resources": null
+          }
+        }
       },
       "projects": {
         "methods": {
@@ -3867,7 +4406,142 @@
             }
           }
         },
-        "resources": null
+        "resources": {
+          "capabilityConfigs": {
+            "methods": {
+              "create": {
+                "id": "cloudresourcemanager.projects.capabilityConfigs.create",
+                "httpMethod": "POST",
+                "path": "v3/{+parent}/capabilityConfigs",
+                "flatPath": "v3/projects/{projectsId}/capabilityConfigs",
+                "description": "Creates a CapabilityConfig under a parent Organization, Folder or Project. Creating a CapabilityConfig triggers the creation of a Management Project if one is not supplied.",
+                "parameters": {
+                  "capabilityConfigId": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false
+                  },
+                  "parent": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  }
+                },
+                "parameterOrder": [
+                  "parent"
+                ],
+                "request": {
+                  "$ref": "CapabilityConfig"
+                },
+                "response": {
+                  "$ref": "Operation"
+                }
+              },
+              "delete": {
+                "id": "cloudresourcemanager.projects.capabilityConfigs.delete",
+                "httpMethod": "DELETE",
+                "path": "v3/{+name}",
+                "flatPath": "v3/projects/{projectsId}/capabilityConfigs/{capabilityConfigsId}",
+                "description": "Deletes the CapabilityConfig identified by the specified `name` (for example, `folders/123456789/capabilityConfigs/my-capability-config`).",
+                "parameters": {
+                  "name": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  }
+                },
+                "parameterOrder": [
+                  "name"
+                ],
+                "request": null,
+                "response": {
+                  "$ref": "Operation"
+                }
+              },
+              "get": {
+                "id": "cloudresourcemanager.projects.capabilityConfigs.get",
+                "httpMethod": "GET",
+                "path": "v3/{+name}",
+                "flatPath": "v3/projects/{projectsId}/capabilityConfigs/{capabilityConfigsId}",
+                "description": "Retrieves the Capability Config identified by the specified `name` (for example, `folders/123456789/capabilityConfigs/my-capability-config`).",
+                "parameters": {
+                  "name": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  }
+                },
+                "parameterOrder": [
+                  "name"
+                ],
+                "request": null,
+                "response": {
+                  "$ref": "CapabilityConfig"
+                }
+              },
+              "list": {
+                "id": "cloudresourcemanager.projects.capabilityConfigs.list",
+                "httpMethod": "GET",
+                "path": "v3/{+parent}/capabilityConfigs",
+                "flatPath": "v3/projects/{projectsId}/capabilityConfigs",
+                "description": "Lists CapabilityConfigs that are direct children of the specified organization, folder or project resource.",
+                "parameters": {
+                  "pageSize": {
+                    "type": "integer",
+                    "location": "query",
+                    "required": false
+                  },
+                  "pageToken": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false
+                  },
+                  "parent": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  }
+                },
+                "parameterOrder": [
+                  "parent"
+                ],
+                "request": null,
+                "response": {
+                  "$ref": "ListCapabilityConfigsResponse"
+                }
+              },
+              "patch": {
+                "id": "cloudresourcemanager.projects.capabilityConfigs.patch",
+                "httpMethod": "PATCH",
+                "path": "v3/{+name}",
+                "flatPath": "v3/projects/{projectsId}/capabilityConfigs/{capabilityConfigsId}",
+                "description": "Updates the `display_name`, `types` and `boundaries` of the CapabilityConfig identified by the specified `name` (for example, `folders/123456789/capabilityConfigs/my-capability-config`).",
+                "parameters": {
+                  "name": {
+                    "type": "string",
+                    "location": "path",
+                    "required": true
+                  },
+                  "updateMask": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false
+                  }
+                },
+                "parameterOrder": [
+                  "name"
+                ],
+                "request": {
+                  "$ref": "CapabilityConfig"
+                },
+                "response": {
+                  "$ref": "Operation"
+                }
+              }
+            },
+            "resources": null
+          }
+        }
       },
       "tagBindings": {
         "methods": {

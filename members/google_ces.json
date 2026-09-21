@@ -24,7 +24,7 @@
   "wire_name": "google_ces",
   "raw_spec": {
     "name": "ces",
-    "revision": "20260903",
+    "revision": "20260914",
     "discoveryVersion": "v1",
     "baseUrl": "https://ces.googleapis.com/",
     "rootUrl": "https://ces.googleapis.com/",
@@ -5473,6 +5473,27 @@
             "additionalProperties": null,
             "enum": null,
             "readOnly": false
+          },
+          "variables": {
+            "type": "object",
+            "format": "",
+            "description": "Optional. Additional variables associated with the event.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "any",
+              "format": "",
+              "description": "Properties of the object.",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
           }
         },
         "items": null,
@@ -6504,6 +6525,17 @@
             "enum": null,
             "readOnly": false
           },
+          "supervisor": {
+            "type": "",
+            "format": "",
+            "description": "Optional. Guardrail that runs supervisor intervention.",
+            "$ref": "GuardrailSupervisor",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
           "updateTime": {
             "type": "string",
             "format": "google-datetime",
@@ -6903,6 +6935,53 @@
               "BLOCK_ONLY_HIGH",
               "BLOCK_NONE",
               "OFF"
+            ],
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GuardrailSupervisor": {
+        "type": "object",
+        "format": "",
+        "description": "Guardrail that runs supervisor intervention.",
+        "$ref": "",
+        "properties": {
+          "detectionMode": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The detection mode of the supervisor.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "DETECTION_MODE_UNSPECIFIED",
+              "NON_BLOCKING",
+              "BLOCKING"
+            ],
+            "readOnly": false
+          },
+          "type": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The type of the supervisor.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "TYPE_UNSPECIFIED",
+              "INVALID_TEXT",
+              "LANGUAGE_SHIFT",
+              "SPEAKER_SHIFT",
+              "AUDIO_MISMATCH",
+              "MISSING_TOOL_CALL",
+              "CUSTOM",
+              "CHOPPY_AUDIO"
             ],
             "readOnly": false
           }
@@ -11717,10 +11796,63 @@
             "enum": null,
             "readOnly": false
           },
+          "inputVariableMapping": {
+            "type": "object",
+            "format": "",
+            "description": "Optional. Mapping of input variable names of remote agent to GECX variable names.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
           "name": {
             "type": "string",
             "format": "",
             "description": "Required. The name of the tool.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "outputVariableMapping": {
+            "type": "object",
+            "format": "",
+            "description": "Optional. Mapping of output variable names of remote agent to GECX variable names.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "statefulAgent": {
+            "type": "boolean",
+            "format": "",
+            "description": "Optional. When enabled, the interaction between the CXAS app and the remote agent will share the same context. If the remote agent returns a context_id, it will be persisted for the entirety of the session for this remote agent tool.",
             "$ref": "",
             "properties": null,
             "items": null,

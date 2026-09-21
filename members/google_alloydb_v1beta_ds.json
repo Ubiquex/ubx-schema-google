@@ -25,7 +25,7 @@
   "version_qualifier": "v1beta",
   "raw_spec": {
     "name": "alloydb",
-    "revision": "20260826",
+    "revision": "20260904",
     "discoveryVersion": "v1",
     "baseUrl": "https://alloydb.googleapis.com/",
     "rootUrl": "https://alloydb.googleapis.com/",
@@ -305,7 +305,8 @@
               "POSTGRES_15",
               "POSTGRES_16",
               "POSTGRES_17",
-              "POSTGRES_18"
+              "POSTGRES_18",
+              "POSTGRES_19"
             ],
             "readOnly": true
           },
@@ -341,6 +342,21 @@
             "additionalProperties": null,
             "enum": null,
             "readOnly": false
+          },
+          "edition": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The edition of the cluster this backup was created from. Any restored cluster created from this backup will have the same edition.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "EDITION_UNSPECIFIED",
+              "EDITION_ALLOYDB",
+              "EDITION_ALLOYDB_DEVELOPER"
+            ],
+            "readOnly": true
           },
           "encryptionConfig": {
             "type": "",
@@ -1052,7 +1068,8 @@
               "POSTGRES_15",
               "POSTGRES_16",
               "POSTGRES_17",
-              "POSTGRES_18"
+              "POSTGRES_18",
+              "POSTGRES_19"
             ],
             "readOnly": false
           },
@@ -1087,6 +1104,21 @@
             "items": null,
             "additionalProperties": null,
             "enum": null,
+            "readOnly": false
+          },
+          "edition": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Edition of the cluster. If left unspecified, the cluster behaves as `EDITION_ALLOYDB`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "EDITION_UNSPECIFIED",
+              "EDITION_ALLOYDB",
+              "EDITION_ALLOYDB_DEVELOPER"
+            ],
             "readOnly": false
           },
           "encryptionConfig": {
@@ -1458,7 +1490,8 @@
               "POSTGRES_15",
               "POSTGRES_16",
               "POSTGRES_17",
-              "POSTGRES_18"
+              "POSTGRES_18",
+              "POSTGRES_19"
             ],
             "readOnly": false
           },
@@ -9066,7 +9099,8 @@
                 "POSTGRES_15",
                 "POSTGRES_16",
                 "POSTGRES_17",
-                "POSTGRES_18"
+                "POSTGRES_18",
+                "POSTGRES_19"
               ],
               "readOnly": false
             },
@@ -9291,7 +9325,8 @@
               "POSTGRES_15",
               "POSTGRES_16",
               "POSTGRES_17",
-              "POSTGRES_18"
+              "POSTGRES_18",
+              "POSTGRES_19"
             ],
             "readOnly": false
           }
@@ -9397,7 +9432,8 @@
               "POSTGRES_15",
               "POSTGRES_16",
               "POSTGRES_17",
-              "POSTGRES_18"
+              "POSTGRES_18",
+              "POSTGRES_19"
             ],
             "readOnly": false
           },
@@ -9457,7 +9493,8 @@
               "POSTGRES_15",
               "POSTGRES_16",
               "POSTGRES_17",
-              "POSTGRES_18"
+              "POSTGRES_18",
+              "POSTGRES_19"
             ],
             "readOnly": false
           }

@@ -24,7 +24,7 @@
   "wire_name": "google_analyticshub",
   "raw_spec": {
     "name": "analyticshub",
-    "revision": "20260830",
+    "revision": "20260914",
     "discoveryVersion": "v1",
     "baseUrl": "https://analyticshub.googleapis.com/",
     "rootUrl": "https://analyticshub.googleapis.com/",
@@ -50,7 +50,7 @@
           "serviceAccountEmail": {
             "type": "string",
             "format": "",
-            "description": "Optional. The service account to use to make prediction requests against endpoints. The resource creator or updater that specifies this field must have `iam.serviceAccounts.actAs` permission on the service account. If not specified, the Pub/Sub [service agent]({$universe.dns_names.final_documentation_domain}/iam/docs/service-agents), service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.",
+            "description": "Optional. The service account to use to make prediction requests against endpoints. The resource creator or updater that specifies this field must have `iam.serviceAccounts.actAs` permission on the service account. If not specified, the Pub/Sub [service agent](https://cloud.google.com/iam/docs/service-agents), service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -408,7 +408,7 @@
           "serviceAccountEmail": {
             "type": "string",
             "format": "",
-            "description": "Optional. The service account to use to write to Bigtable. The subscription creator or updater that specifies this field must have `iam.serviceAccounts.actAs` permission on the service account. If not specified, the Pub/Sub [service agent]({$universe.dns_names.final_documentation_domain}/iam/docs/service-agents), service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.",
+            "description": "Optional. The service account to use to write to Bigtable. The subscription creator or updater that specifies this field must have `iam.serviceAccounts.actAs` permission on the service account. If not specified, the Pub/Sub [service agent](https://cloud.google.com/iam/docs/service-agents), service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -1062,6 +1062,29 @@
         "description": "A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }",
         "$ref": "",
         "properties": {},
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "EncryptionConfig": {
+        "type": "object",
+        "format": "",
+        "description": "Encryption configuration for the query template.",
+        "$ref": "",
+        "properties": {
+          "kmsKeyName": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The KMS key used to encrypt the query template. Format: `projects/{project}/locations/{location}/keyRings/{keyring}/cryptoKeys/{key}`",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
         "items": null,
         "additionalProperties": null,
         "enum": null,
@@ -2743,6 +2766,17 @@
             "format": "",
             "description": "Optional. Documentation describing the QueryTemplate.",
             "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "encryptionConfiguration": {
+            "type": "",
+            "format": "",
+            "description": "Optional. Encryption configuration for the query template. If set, the customer-managed KMS key is used to encrypt the query template definition body.",
+            "$ref": "EncryptionConfig",
             "properties": null,
             "items": null,
             "additionalProperties": null,

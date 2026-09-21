@@ -24,7 +24,7 @@
   "wire_name": "google_datamigration",
   "raw_spec": {
     "name": "datamigration",
-    "revision": "20260820",
+    "revision": "20260908",
     "discoveryVersion": "v1",
     "baseUrl": "https://datamigration.googleapis.com/",
     "rootUrl": "https://datamigration.googleapis.com/",
@@ -5461,7 +5461,7 @@
           "performanceConfig": {
             "type": "",
             "format": "",
-            "description": "Optional. Data dump parallelism settings used by the migration.",
+            "description": "Optional. Data dump and load parallelism settings used by the migration.",
             "$ref": "PerformanceConfig",
             "properties": null,
             "items": null,
@@ -6126,11 +6126,44 @@
             "enum": null,
             "readOnly": false
           },
+          "privateConnectivity": {
+            "type": "",
+            "format": "",
+            "description": "Private connectivity.",
+            "$ref": "PrivateConnectivity",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "privateServiceConnectConnectivity": {
+            "type": "",
+            "format": "",
+            "description": "Private Service Connect connectivity.",
+            "$ref": "PrivateServiceConnectConnectivity",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
           "ssl": {
             "type": "",
             "format": "",
             "description": "SSL configuration for the destination to connect to the source database.",
             "$ref": "SslConfig",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "staticServiceIpConnectivity": {
+            "type": "",
+            "format": "",
+            "description": "Static Service IP connectivity.",
+            "$ref": "StaticServiceIpConnectivity",
             "properties": null,
             "items": null,
             "additionalProperties": null,
@@ -6685,6 +6718,22 @@
               "MAX"
             ],
             "readOnly": false
+          },
+          "loadParallelLevel": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Initial load parallelism level.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "LOAD_PARALLEL_LEVEL_UNSPECIFIED",
+              "LOAD_MIN",
+              "LOAD_OPTIMAL",
+              "LOAD_MAX"
+            ],
+            "readOnly": false
           }
         },
         "items": null,
@@ -6958,7 +7007,7 @@
           "privateServiceConnectConnectivity": {
             "type": "",
             "format": "",
-            "description": "Private service connect connectivity.",
+            "description": "Private Service Connect connectivity.",
             "$ref": "PrivateServiceConnectConnectivity",
             "properties": null,
             "items": null,

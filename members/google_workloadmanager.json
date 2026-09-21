@@ -24,7 +24,7 @@
   "wire_name": "google_workloadmanager",
   "raw_spec": {
     "name": "workloadmanager",
-    "revision": "20260806",
+    "revision": "20260908",
     "discoveryVersion": "v1",
     "baseUrl": "https://workloadmanager.googleapis.com/",
     "rootUrl": "https://workloadmanager.googleapis.com/",
