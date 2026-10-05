@@ -25,7 +25,7 @@
   "version_qualifier": "v1beta2",
   "raw_spec": {
     "name": "memcache",
-    "revision": "20260517",
+    "revision": "20260910",
     "discoveryVersion": "v1",
     "baseUrl": "https://memcache.googleapis.com/",
     "rootUrl": "https://memcache.googleapis.com/",

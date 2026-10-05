@@ -24,7 +24,7 @@
   "wire_name": "google_tpu",
   "raw_spec": {
     "name": "tpu",
-    "revision": "20260127",
+    "revision": "20261001",
     "discoveryVersion": "v1",
     "baseUrl": "https://tpu.googleapis.com/",
     "rootUrl": "https://tpu.googleapis.com/",
@@ -1460,6 +1460,21 @@
             "enum": null,
             "readOnly": true
           },
+          "protectionTier": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. Protection tier for the workload which specifies the workload expectations in the event of infrastructure failures at data center (e.g. power and/or cooling failures).",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "PROTECTION_TIER_UNSPECIFIED",
+              "STANDARD",
+              "CAPACITY_OPTIMIZED"
+            ],
+            "readOnly": true
+          },
           "queuedResource": {
             "type": "string",
             "format": "",
@@ -2688,7 +2703,7 @@
                 "httpMethod": "GET",
                 "path": "v2/{+name}/locations",
                 "flatPath": "v2/projects/{projectsId}/locations",
-                "description": "Lists information about the supported locations for this service. This method can be called in two ways: * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:** Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as private or other locations specifically visible to the project.",
+                "description": "Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the ListLocationsRequest.name field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version.",
                 "parameters": {
                   "extraLocationTypes": {
                     "type": "string",

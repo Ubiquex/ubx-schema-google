@@ -25,7 +25,7 @@
   "version_qualifier": "v1beta1",
   "raw_spec": {
     "name": "bigqueryconnection",
-    "revision": "20260811",
+    "revision": "20260922",
     "discoveryVersion": "v1",
     "baseUrl": "https://bigqueryconnection.googleapis.com/",
     "rootUrl": "https://bigqueryconnection.googleapis.com/",

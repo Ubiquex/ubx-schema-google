@@ -24,7 +24,7 @@
   "wire_name": "google_networkservices",
   "raw_spec": {
     "name": "networkservices",
-    "revision": "20260827",
+    "revision": "20260921",
     "discoveryVersion": "v1",
     "baseUrl": "https://networkservices.googleapis.com/",
     "rootUrl": "https://networkservices.googleapis.com/",
@@ -1008,10 +1008,31 @@
           "domain": {
             "type": "string",
             "format": "",
-            "description": "Optional. The domain to peer.",
+            "description": "Optional. Deprecated: Use `domains` instead. The domain to peer.",
             "$ref": "",
             "properties": null,
             "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "domains": {
+            "type": "array",
+            "format": "",
+            "description": "Optional. The domains to peer.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
             "additionalProperties": null,
             "enum": null,
             "readOnly": false
@@ -1036,7 +1057,7 @@
       "EgressNetworkConfig": {
         "type": "object",
         "format": "",
-        "description": "",
+        "description": "Egress network config",
         "$ref": "",
         "properties": {
           "dnsPeeringConfig": {
@@ -1055,6 +1076,17 @@
             "format": "",
             "description": "Optional. The network attachment resource name. Format: projects/{project}/regions/{region}/networkAttachments/{network_attachment_id}",
             "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "tlsConfig": {
+            "type": "",
+            "format": "",
+            "description": "Optional. The TLS configuration for the egress traffic.",
+            "$ref": "EgressNetworkConfigTlsConfig",
             "properties": null,
             "items": null,
             "additionalProperties": null,
@@ -1085,6 +1117,44 @@
               "ALL_TRAFFIC",
               "PRIVATE_RANGES_ONLY"
             ],
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "EgressNetworkConfigTlsConfig": {
+        "type": "object",
+        "format": "",
+        "description": "Configuration for TLS connections.",
+        "$ref": "",
+        "properties": {
+          "additionalRoots": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The additional roots to trust.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "ADDITIONAL_ROOTS_UNSPECIFIED",
+              "NO_ADDITIONAL_ROOTS",
+              "PUBLICLY_TRUSTED_ROOTS"
+            ],
+            "readOnly": false
+          },
+          "trustConfig": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The trust config resource name. Format: projects/{project}/locations/{location}/trustConfigs/{trust_config}",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
             "readOnly": false
           }
         },
@@ -1964,7 +2034,7 @@
           "extensions": {
             "type": "array",
             "format": "",
-            "description": "Required. A set of extensions to execute for the matching request. At least one extension is required. Up to 3 extensions can be defined for each extension chain for `LbTrafficExtension` resource. `LbRouteExtension` and `LbEdgeExtension` chains are limited to 1 extension per extension chain.",
+            "description": "Required. A set of extensions to execute for the matching request. At least one extension is required. Up to 3 extensions can be defined for each extension chain for `LbTrafficExtension` resource. `LbRouteExtension`, `LbEdgeExtension`, and `LbTcpExtension` chains are limited to 1 extension per extension chain.",
             "$ref": "",
             "properties": null,
             "items": {
@@ -2167,7 +2237,7 @@
           "supportedEvents": {
             "type": "array",
             "format": "",
-            "description": "Optional. A set of events during request or response processing for which this extension is called. For the `LbTrafficExtension` resource, this field is required. For the `LbRouteExtension` resource, this field is optional. If unspecified, `REQUEST_HEADERS` event is assumed as supported. For the `LbEdgeExtension` resource, this field is required and must only contain `REQUEST_HEADERS` event. For the `AuthzExtension` resource, this field is optional. `REQUEST_HEADERS` is the only supported event. If unspecified, `REQUEST_HEADERS` event is assumed as supported.",
+            "description": "Optional. A set of events during request or response processing for which this extension is called. For the `LbTrafficExtension` resource, this field is required. For the `LbRouteExtension` resource, this field is optional. If unspecified, `REQUEST_HEADERS` event is assumed as supported. For the `LbEdgeExtension` resource, this field is required and must only contain `REQUEST_HEADERS` event. For the `AuthzExtension` resource, this field is optional. `REQUEST_HEADERS` is the only supported event. If unspecified, `REQUEST_HEADERS` event is assumed as supported. For the `CdnEdgeExtension` resource, this field is optional. Eligible values are `REQUEST_HEADERS` and `RESPONSE_HEADERS`. If unspecified, both are assumed as supported.",
             "$ref": "",
             "properties": null,
             "items": {
@@ -6967,7 +7037,7 @@
           "labels": {
             "type": "object",
             "format": "",
-            "description": "Optional. Labels as key-value pairs",
+            "description": "Optional. Labels as key-value pairs.",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -7058,7 +7128,7 @@
           "uniqueId": {
             "type": "string",
             "format": "",
-            "description": "Output only. [Output only] The Google-generated UUID for the resource. This value is unique across all multicast consumer association resources. If a consumer association is deleted and another with the same name is created, the new consumer association is assigned a different unique_id.",
+            "description": "Output only. [Output only] The Google-generated UUID for the resource. This value is unique across all multicast consumer association resources. If a multicast consumer association is deleted and another with the same name is created, the new multicast consumer association is assigned a different unique_id.",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -7114,7 +7184,7 @@
           "labels": {
             "type": "object",
             "format": "",
-            "description": "Optional. Labels as key-value pairs",
+            "description": "Optional. Labels as key-value pairs.",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -7157,7 +7227,7 @@
           "multicastGroup": {
             "type": "string",
             "format": "",
-            "description": "Optional. The resource name of the multicast group created by the admin in the same zone as this multicast group consumer activation. Use the following format: // `projects/*/locations/*/multicastGroups/*`. This field is deprecated. Use multicast_group_range_activation instead.",
+            "description": "Optional. The resource name of the multicast group created by the admin in the same zone as this multicast group consumer activation. Use the following format: `projects/*/locations/*/multicastGroups/*`. This field is deprecated. Use multicast_group_range_activation instead.",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -7168,7 +7238,7 @@
           "multicastGroupRangeActivation": {
             "type": "string",
             "format": "",
-            "description": "Required. The resource name of the multicast group range activation created by the admin in the same zone as this multicast group consumer activation. Use the following format: // `projects/*/locations/*/multicastGroupRangeActivations/*`.",
+            "description": "Required. The resource name of the multicast group range activation created by the admin in the same zone as this multicast group consumer activation. Use the following format: `projects/*/locations/*/multicastGroupRangeActivations/*`.",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -7216,7 +7286,7 @@
           "uniqueId": {
             "type": "string",
             "format": "",
-            "description": "Output only. [Output only] The Google-generated UUID for the resource. This value is unique across all multicast group consumer activation resources. If a group consumer activation is deleted and another with the same name is created, the new group consumer activation is assigned a different unique_id.",
+            "description": "Output only. [Output only] The Google-generated UUID for the resource. This value is unique across all multicast group consumer activation resources. If a multicast group consumer activation is deleted and another with the same name is created, the new multicast group consumer activation is assigned a different unique_id.",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -9706,6 +9776,11 @@
                     "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/agentGateways",
                     "description": "Lists AgentGateways in a given project and location.",
                     "parameters": {
+                      "filter": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
                       "pageSize": {
                         "type": "integer",
                         "location": "query",
@@ -12142,6 +12217,11 @@
                         "location": "path",
                         "required": true
                       },
+                      "requestId": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
                       "serviceBindingId": {
                         "type": "string",
                         "location": "query",
@@ -12169,6 +12249,11 @@
                         "type": "string",
                         "location": "path",
                         "required": true
+                      },
+                      "requestId": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
                       }
                     },
                     "parameterOrder": [
@@ -12242,6 +12327,11 @@
                         "type": "string",
                         "location": "path",
                         "required": true
+                      },
+                      "requestId": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
                       },
                       "updateMask": {
                         "type": "string",

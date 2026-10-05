@@ -24,7 +24,7 @@
   "wire_name": "google_bigtableadmin",
   "raw_spec": {
     "name": "bigtableadmin",
-    "revision": "20260817",
+    "revision": "20260913",
     "discoveryVersion": "v1",
     "baseUrl": "https://bigtableadmin.googleapis.com/",
     "rootUrl": "https://bigtableadmin.googleapis.com/",
@@ -397,6 +397,39 @@
             "$ref": "",
             "properties": null,
             "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "AvroSchema": {
+        "type": "object",
+        "format": "",
+        "description": "Represents a collection of Avro schemas.",
+        "$ref": "",
+        "properties": {
+          "jsonSchemas": {
+            "type": "array",
+            "format": "",
+            "description": "Required. The Avro schemas in JSON format. Each element must be the content of a valid, self-contained Avro schema file (.avsc), as described in https://avro.apache.org/docs/1.8.1/spec.html. Use repeated elements to include multiple Avro schema files in a single bundle.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
             "additionalProperties": null,
             "enum": null,
             "readOnly": false
@@ -5231,6 +5264,17 @@
         "description": "A named collection of related schemas.",
         "$ref": "",
         "properties": {
+          "avroSchema": {
+            "type": "",
+            "format": "",
+            "description": "Optional. Schema for Avros.",
+            "$ref": "AvroSchema",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
           "etag": {
             "type": "string",
             "format": "",

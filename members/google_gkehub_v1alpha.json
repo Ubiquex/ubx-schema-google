@@ -25,7 +25,7 @@
   "version_qualifier": "v1alpha",
   "raw_spec": {
     "name": "gkehub",
-    "revision": "20260826",
+    "revision": "20260927",
     "discoveryVersion": "v1",
     "baseUrl": "https://gkehub.googleapis.com/",
     "rootUrl": "https://gkehub.googleapis.com/",
@@ -9360,7 +9360,7 @@
       "Rollout": {
         "type": "object",
         "format": "",
-        "description": "Rollout contains the Rollout metadata and configuration. Next ID: 31",
+        "description": "Rollout contains the Rollout metadata and configuration. Next ID: 32",
         "$ref": "",
         "properties": {
           "completeTime": {
@@ -9503,6 +9503,17 @@
             "type": "string",
             "format": "",
             "description": "Identifier. The full, unique resource name of this Rollout in the format of `projects/{project}/locations/global/rollouts/{rollout}`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "prioritized": {
+            "type": "boolean",
+            "format": "",
+            "description": "Optional. If set to true, conflicting rollouts will be paused, to allow this rollout to progress through the sequence. Conflicting rollouts running on the first stage will be canceled, to allow this rollout to be created.",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -11530,6 +11541,17 @@
             "type": "boolean",
             "format": "",
             "description": "Optional. If set to true, the rollout will only upgrade clusters that match the minor version of the `version` field, but are on an earlier patch version.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "prioritized": {
+            "type": "boolean",
+            "format": "",
+            "description": "Optional. If set to true, conflicting rollouts will be paused, to allow this rollout to progress through the sequence. Conflicting rollouts running on the first stage will be canceled, to allow this rollout to be created.",
             "$ref": "",
             "properties": null,
             "items": null,

@@ -24,7 +24,7 @@
   "wire_name": "google_alloydb",
   "raw_spec": {
     "name": "alloydb",
-    "revision": "20260826",
+    "revision": "20260924",
     "discoveryVersion": "v1",
     "baseUrl": "https://alloydb.googleapis.com/",
     "rootUrl": "https://alloydb.googleapis.com/",
@@ -2905,6 +2905,17 @@
             "enum": null,
             "readOnly": false
           },
+          "observabilityInstanceInfo": {
+            "type": "",
+            "format": "",
+            "description": "Output only. Instance level observability information, contains the effective values of observability settings for this instance, by merging customer's provided `ObservabilityInstanceConfig` with the Observability defaults.",
+            "$ref": "ObservabilityInstanceInfo",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
           "outboundPublicIpAddresses": {
             "type": "array",
             "format": "",
@@ -2969,6 +2980,17 @@
             "additionalProperties": null,
             "enum": null,
             "readOnly": false
+          },
+          "queryInsightsInfo": {
+            "type": "",
+            "format": "",
+            "description": "Output only. Instance level Query Insights information, which is read-only and available in the output only. Contains the effective query insights settings for this instance, by merging customer's provided `QueryInsightsInstanceConfig` with the Query Insights defaults.",
+            "$ref": "QueryInsightsInstanceInfo",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
           },
           "readPoolConfig": {
             "type": "",
@@ -4008,6 +4030,106 @@
         "enum": null,
         "readOnly": false
       },
+      "ObservabilityInstanceInfo": {
+        "type": "object",
+        "format": "",
+        "description": "",
+        "$ref": "",
+        "properties": {
+          "enabled": {
+            "type": "boolean",
+            "format": "",
+            "description": "Output only. Observability feature status for an instance.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "maxQueryStringLength": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Output only. Query string length. The default value is 10k.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "preserveComments": {
+            "type": "boolean",
+            "format": "",
+            "description": "Output only. Preserve comments in query string for an instance.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "queryPlansPerMinute": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Output only. Number of query execution plans captured by Insights per minute for all queries combined.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "recordApplicationTags": {
+            "type": "boolean",
+            "format": "",
+            "description": "Output only. Record application tags for an instance.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "trackActiveQueries": {
+            "type": "boolean",
+            "format": "",
+            "description": "Output only. Track actively running queries on the instance.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "trackWaitEventTypes": {
+            "type": "boolean",
+            "format": "",
+            "description": "Output only. Track wait event types during query execution for an instance.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "trackWaitEvents": {
+            "type": "boolean",
+            "format": "",
+            "description": "Output only. Track wait events during query execution for an instance.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
       "Operation": {
         "type": "object",
         "format": "",
@@ -4739,6 +4861,73 @@
             "additionalProperties": null,
             "enum": null,
             "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "QueryInsightsInstanceInfo": {
+        "type": "object",
+        "format": "",
+        "description": "Instance level Query Insights information, which is read-only and available in the output only.",
+        "$ref": "",
+        "properties": {
+          "enabled": {
+            "type": "boolean",
+            "format": "",
+            "description": "Output only. Whether Query Insights is enabled.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "queryPlansPerMinute": {
+            "type": "integer",
+            "format": "uint32",
+            "description": "Output only. Number of query execution plans captured per minute.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "queryStringLength": {
+            "type": "integer",
+            "format": "uint32",
+            "description": "Output only. Maximum query string length.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "recordApplicationTags": {
+            "type": "boolean",
+            "format": "",
+            "description": "Output only. Whether to record application tags.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "recordClientAddress": {
+            "type": "boolean",
+            "format": "",
+            "description": "Output only. Whether to record client address.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
           }
         },
         "items": null,
@@ -8813,7 +9002,10 @@
             "enum": [
               "USER_TYPE_UNSPECIFIED",
               "ALLOYDB_BUILT_IN",
-              "ALLOYDB_IAM_USER"
+              "ALLOYDB_IAM_USER",
+              "ALLOYDB_IAM_GROUP",
+              "ALLOYDB_IAM_GROUP_USER",
+              "ALLOYDB_IAM_GROUP_SERVICE_ACCOUNT"
             ],
             "readOnly": false
           }

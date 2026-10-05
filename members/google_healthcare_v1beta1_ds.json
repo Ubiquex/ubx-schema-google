@@ -25,7 +25,7 @@
   "version_qualifier": "v1beta1",
   "raw_spec": {
     "name": "healthcare",
-    "revision": "20260806",
+    "revision": "20260908",
     "discoveryVersion": "v1",
     "baseUrl": "https://healthcare.googleapis.com/",
     "rootUrl": "https://healthcare.googleapis.com/",
@@ -12324,6 +12324,49 @@
                           "name"
                         ],
                         "request": null,
+                        "response": {
+                          "$ref": "HttpBody"
+                        }
+                      },
+                      "bulk-export-group-post": {
+                        "id": "healthcare.projects.locations.datasets.fhirStores.bulk-export-group-post",
+                        "httpMethod": "POST",
+                        "path": "v1beta1/{+name}/$export",
+                        "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/fhirStores/{fhirStoresId}/fhir/Group/{GroupId}/$export",
+                        "description": "Export resources using POST.",
+                        "parameters": {
+                          "_since": {
+                            "type": "string",
+                            "location": "query",
+                            "required": false
+                          },
+                          "_type": {
+                            "type": "string",
+                            "location": "query",
+                            "required": false
+                          },
+                          "name": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          },
+                          "organizeOutputBy": {
+                            "type": "string",
+                            "location": "query",
+                            "required": false
+                          },
+                          "outputFormat": {
+                            "type": "string",
+                            "location": "query",
+                            "required": false
+                          }
+                        },
+                        "parameterOrder": [
+                          "name"
+                        ],
+                        "request": {
+                          "$ref": "HttpBody"
+                        },
                         "response": {
                           "$ref": "HttpBody"
                         }

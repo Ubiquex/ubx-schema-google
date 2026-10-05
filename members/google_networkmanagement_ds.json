@@ -24,7 +24,7 @@
   "wire_name": "google_networkmanagement",
   "raw_spec": {
     "name": "networkmanagement",
-    "revision": "20260826",
+    "revision": "20260930",
     "discoveryVersion": "v1",
     "baseUrl": "https://networkmanagement.googleapis.com/",
     "rootUrl": "https://networkmanagement.googleapis.com/",
@@ -89,7 +89,10 @@
               "NO_SERVERLESS_IP_RANGES",
               "IP_VERSION_PROTOCOL_MISMATCH",
               "GKE_POD_UNKNOWN_ENDPOINT_LOCATION",
-              "RESPONSE_TOO_LARGE"
+              "RESPONSE_TOO_LARGE",
+              "DESTINATION_CLOUD_RUN_SERVICE_REVISION_UNSUPPORTED",
+              "DESTINATION_CLOUD_RUN_VPC_CONNECTOR_UNSUPPORTED",
+              "CLOUD_RUN_RESOURCE_NOT_CONNECTED_TO_VPC"
             ],
             "readOnly": false
           },
@@ -566,6 +569,17 @@
             "enum": null,
             "readOnly": false
           },
+          "ipAddress": {
+            "type": "string",
+            "format": "",
+            "description": "IP address of a Cloud Run revision. If the Cloud Run revision is in dual-stack subnetwork, this is the IP address relevant to the trace. Populated for `ARRIVE_AT_CLOUD_RUN_REVISION` steps.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
           "location": {
             "type": "string",
             "format": "",
@@ -602,7 +616,7 @@
           "workerPoolUri": {
             "type": "string",
             "format": "",
-            "description": "URI of Cloud Run worker pool this revision belongs to. Format: `projects/{project_id}/locations/{location}/workerPools/{worker_pool_id}`. Mutually exclusive with `service_uri`.",
+            "description": "URI of Cloud Run worker pool this revision belongs to. Format: `projects/{project_id}/locations/{location}/workerPools/{worker_pool_id}` Mutually exclusive with `service_uri`.",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -1313,6 +1327,21 @@
               "INTERVAL_5_MIN",
               "INTERVAL_10_MIN",
               "INTERVAL_15_MIN"
+            ],
+            "readOnly": false
+          },
+          "connectionLogging": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Configures whether connection logging is enabled for VPC Flow Logs.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "CONNECTION_LOGGING_UNSPECIFIED",
+              "CONNECTION_LOGGING_ENABLED",
+              "CONNECTION_LOGGING_DISABLED"
             ],
             "readOnly": false
           },
@@ -7332,6 +7361,21 @@
               "INTERVAL_5_MIN",
               "INTERVAL_10_MIN",
               "INTERVAL_15_MIN"
+            ],
+            "readOnly": false
+          },
+          "connectionLogging": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Configures whether connection logging is enabled for VPC Flow Logs.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "CONNECTION_LOGGING_UNSPECIFIED",
+              "CONNECTION_LOGGING_ENABLED",
+              "CONNECTION_LOGGING_DISABLED"
             ],
             "readOnly": false
           },

@@ -1082,6 +1082,17 @@
             "enum": null,
             "readOnly": false
           },
+          "serviceAccountAuth": {
+            "type": "boolean",
+            "format": "",
+            "description": "Optional. Determines if the hook uses the Repository Service Account to generate an OIDC ID Token for webhook authentication.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
           "targetUri": {
             "type": "string",
             "format": "",

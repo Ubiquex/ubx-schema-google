@@ -24,7 +24,7 @@
   "wire_name": "google_dataplex",
   "raw_spec": {
     "name": "dataplex",
-    "revision": "20260823",
+    "revision": "20260929",
     "discoveryVersion": "v1",
     "baseUrl": "https://dataplex.googleapis.com/",
     "rootUrl": "https://dataplex.googleapis.com/",
@@ -2620,39 +2620,6 @@
         "enum": null,
         "readOnly": false
       },
-      "GoogleCloudDataplexV1DataAccessSpec": {
-        "type": "object",
-        "format": "",
-        "description": "DataAccessSpec holds the access control configuration to be enforced on data stored within resources (eg: rows, columns in BigQuery Tables). When associated with data, the data is only accessible to principals explicitly granted access through the DataAccessSpec. Principals with access to the containing resource are not implicitly granted access.",
-        "$ref": "",
-        "properties": {
-          "readers": {
-            "type": "array",
-            "format": "",
-            "description": "Optional. The format of strings follows the pattern followed by IAM in the bindings. user:{email}, serviceAccount:{email} group:{email}. The set of principals to be granted reader role on data stored within resources.",
-            "$ref": "",
-            "properties": null,
-            "items": {
-              "type": "string",
-              "format": "",
-              "description": "",
-              "$ref": "",
-              "properties": null,
-              "items": null,
-              "additionalProperties": null,
-              "enum": null,
-              "readOnly": false
-            },
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          }
-        },
-        "items": null,
-        "additionalProperties": null,
-        "enum": null,
-        "readOnly": false
-      },
       "GoogleCloudDataplexV1DataAsset": {
         "type": "object",
         "format": "",
@@ -2799,367 +2766,23 @@
             "additionalProperties": null,
             "enum": null,
             "readOnly": false
-          }
-        },
-        "items": null,
-        "additionalProperties": null,
-        "enum": null,
-        "readOnly": false
-      },
-      "GoogleCloudDataplexV1DataAttribute": {
-        "type": "object",
-        "format": "",
-        "description": "Denotes one dataAttribute in a dataTaxonomy, for example, PII. DataAttribute resources can be defined in a hierarchy. A single dataAttribute resource can contain specs of multiple types PII - ResourceAccessSpec : - readers :foo@bar.com - DataAccessSpec : - readers :bar@foo.com ",
-        "$ref": "",
-        "properties": {
-          "attributeCount": {
-            "type": "integer",
-            "format": "int32",
-            "description": "Output only. The number of child attributes present for this attribute.",
+          },
+          "state": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The state of the iam role application.",
             "$ref": "",
             "properties": null,
             "items": null,
             "additionalProperties": null,
-            "enum": null,
+            "enum": [
+              "STATE_UNSPECIFIED",
+              "APPLYING",
+              "APPLIED",
+              "FAILED",
+              "UNSUPPORTED"
+            ],
             "readOnly": true
-          },
-          "createTime": {
-            "type": "string",
-            "format": "google-datetime",
-            "description": "Output only. The time when the DataAttribute was created.",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": true
-          },
-          "dataAccessSpec": {
-            "type": "",
-            "format": "",
-            "description": "Optional. Specified when applied to data stored on the resource (eg: rows, columns in BigQuery Tables).",
-            "$ref": "GoogleCloudDataplexV1DataAccessSpec",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "description": {
-            "type": "string",
-            "format": "",
-            "description": "Optional. Description of the DataAttribute.",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "displayName": {
-            "type": "string",
-            "format": "",
-            "description": "Optional. User friendly display name.",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "etag": {
-            "type": "string",
-            "format": "",
-            "description": "This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "labels": {
-            "type": "object",
-            "format": "",
-            "description": "Optional. User-defined labels for the DataAttribute.",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": {
-              "type": "string",
-              "format": "",
-              "description": "",
-              "$ref": "",
-              "properties": null,
-              "items": null,
-              "additionalProperties": null,
-              "enum": null,
-              "readOnly": false
-            },
-            "enum": null,
-            "readOnly": false
-          },
-          "name": {
-            "type": "string",
-            "format": "",
-            "description": "Output only. The relative resource name of the dataAttribute, of the form: projects/{project_number}/locations/{location_id}/dataTaxonomies/{dataTaxonomy}/attributes/{data_attribute_id}.",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": true
-          },
-          "parentId": {
-            "type": "string",
-            "format": "",
-            "description": "Optional. The ID of the parent DataAttribute resource, should belong to the same data taxonomy. Circular dependency in parent chain is not valid. Maximum depth of the hierarchy allowed is 4. a -\u003e b -\u003e c -\u003e d -\u003e e, depth = 4",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "resourceAccessSpec": {
-            "type": "",
-            "format": "",
-            "description": "Optional. Specified when applied to a resource (eg: Cloud Storage bucket, BigQuery dataset, BigQuery table).",
-            "$ref": "GoogleCloudDataplexV1ResourceAccessSpec",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "uid": {
-            "type": "string",
-            "format": "",
-            "description": "Output only. System generated globally unique ID for the DataAttribute. This ID will be different if the DataAttribute is deleted and re-created with the same name.",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": true
-          },
-          "updateTime": {
-            "type": "string",
-            "format": "google-datetime",
-            "description": "Output only. The time when the DataAttribute was last updated.",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": true
-          }
-        },
-        "items": null,
-        "additionalProperties": null,
-        "enum": null,
-        "readOnly": false
-      },
-      "GoogleCloudDataplexV1DataAttributeBinding": {
-        "type": "object",
-        "format": "",
-        "description": "DataAttributeBinding represents binding of attributes to resources. Eg: Bind 'CustomerInfo' entity with 'PII' attribute.",
-        "$ref": "",
-        "properties": {
-          "attributes": {
-            "type": "array",
-            "format": "",
-            "description": "Optional. List of attributes to be associated with the resource, provided in the form: projects/{project}/locations/{location}/dataTaxonomies/{dataTaxonomy}/attributes/{data_attribute_id}",
-            "$ref": "",
-            "properties": null,
-            "items": {
-              "type": "string",
-              "format": "",
-              "description": "",
-              "$ref": "",
-              "properties": null,
-              "items": null,
-              "additionalProperties": null,
-              "enum": null,
-              "readOnly": false
-            },
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "createTime": {
-            "type": "string",
-            "format": "google-datetime",
-            "description": "Output only. The time when the DataAttributeBinding was created.",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": true
-          },
-          "description": {
-            "type": "string",
-            "format": "",
-            "description": "Optional. Description of the DataAttributeBinding.",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "displayName": {
-            "type": "string",
-            "format": "",
-            "description": "Optional. User friendly display name.",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "etag": {
-            "type": "string",
-            "format": "",
-            "description": "This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding. Etags must be used when calling the DeleteDataAttributeBinding and the UpdateDataAttributeBinding method.",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "labels": {
-            "type": "object",
-            "format": "",
-            "description": "Optional. User-defined labels for the DataAttributeBinding.",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": {
-              "type": "string",
-              "format": "",
-              "description": "",
-              "$ref": "",
-              "properties": null,
-              "items": null,
-              "additionalProperties": null,
-              "enum": null,
-              "readOnly": false
-            },
-            "enum": null,
-            "readOnly": false
-          },
-          "name": {
-            "type": "string",
-            "format": "",
-            "description": "Output only. The relative resource name of the Data Attribute Binding, of the form: projects/{project_number}/locations/{location}/dataAttributeBindings/{data_attribute_binding_id}",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": true
-          },
-          "paths": {
-            "type": "array",
-            "format": "",
-            "description": "Optional. The list of paths for items within the associated resource (eg. columns and partitions within a table) along with attribute bindings.",
-            "$ref": "",
-            "properties": null,
-            "items": {
-              "type": "",
-              "format": "",
-              "description": "",
-              "$ref": "GoogleCloudDataplexV1DataAttributeBindingPath",
-              "properties": null,
-              "items": null,
-              "additionalProperties": null,
-              "enum": null,
-              "readOnly": false
-            },
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "resource": {
-            "type": "string",
-            "format": "",
-            "description": "Optional. Immutable. The resource name of the resource that is associated to attributes. Presently, only entity resource is supported in the form: projects/{project}/locations/{location}/lakes/{lake}/zones/{zone}/entities/{entity_id} Must belong in the same project and region as the attribute binding, and there can only exist one active binding for a resource.",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "uid": {
-            "type": "string",
-            "format": "",
-            "description": "Output only. System generated globally unique ID for the DataAttributeBinding. This ID will be different if the DataAttributeBinding is deleted and re-created with the same name.",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": true
-          },
-          "updateTime": {
-            "type": "string",
-            "format": "google-datetime",
-            "description": "Output only. The time when the DataAttributeBinding was last updated.",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": true
-          }
-        },
-        "items": null,
-        "additionalProperties": null,
-        "enum": null,
-        "readOnly": false
-      },
-      "GoogleCloudDataplexV1DataAttributeBindingPath": {
-        "type": "object",
-        "format": "",
-        "description": "Represents a subresource of the given resource, and associated bindings with it. Currently supported subresources are column and partition schema fields within a table.",
-        "$ref": "",
-        "properties": {
-          "attributes": {
-            "type": "array",
-            "format": "",
-            "description": "Optional. List of attributes to be associated with the path of the resource, provided in the form: projects/{project}/locations/{location}/dataTaxonomies/{dataTaxonomy}/attributes/{data_attribute_id}",
-            "$ref": "",
-            "properties": null,
-            "items": {
-              "type": "string",
-              "format": "",
-              "description": "",
-              "$ref": "",
-              "properties": null,
-              "items": null,
-              "additionalProperties": null,
-              "enum": null,
-              "readOnly": false
-            },
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "name": {
-            "type": "string",
-            "format": "",
-            "description": "Required. The name identifier of the path. Nested columns should be of the form: 'address.city'.",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
           }
         },
         "items": null,
@@ -4559,6 +4182,17 @@
         "description": "Custom user defined access groups at the data product level. These are used for granting different levels of access (IAM roles) on the individual data product's data assets.",
         "$ref": "",
         "properties": {
+          "defaultIamRoleConfig": {
+            "type": "",
+            "format": "",
+            "description": "Optional. Default IAM role configuration to be applied on the data assets associated with this data product, for this access group.",
+            "$ref": "GoogleCloudDataplexV1DataProductAccessGroupDefaultIamRoleConfig",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
           "description": {
             "type": "string",
             "format": "",
@@ -4597,6 +4231,29 @@
             "format": "",
             "description": "Required. The principal entity associated with this access group.",
             "$ref": "GoogleCloudDataplexV1DataProductPrincipal",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudDataplexV1DataProductAccessGroupDefaultIamRoleConfig": {
+        "type": "object",
+        "format": "",
+        "description": "Default IAM role configuration for an access group.",
+        "$ref": "",
+        "properties": {
+          "role": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The IAM role resource name to be applied as default. Example: \"roles/bigquery.dataViewer\".",
+            "$ref": "",
             "properties": null,
             "items": null,
             "additionalProperties": null,
@@ -7783,6 +7440,17 @@
             "enum": null,
             "readOnly": false
           },
+          "dataDocumentation": {
+            "type": "",
+            "format": "",
+            "description": "Data documentation result for data documentation (insights) scan.",
+            "$ref": "GoogleCloudDataplexV1DataScanEventDataDocumentationResult",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
           "dataProfile": {
             "type": "",
             "format": "",
@@ -7975,6 +7643,129 @@
         "enum": null,
         "readOnly": false
       },
+      "GoogleCloudDataplexV1DataScanEventDataDocumentationResult": {
+        "type": "object",
+        "format": "",
+        "description": "Data documentation result for data scan job.",
+        "$ref": "",
+        "properties": {
+          "billableTokenUsage": {
+            "type": "",
+            "format": "",
+            "description": "Breakdown of token consumption for the data documentation scan.",
+            "$ref": "GoogleCloudDataplexV1DataScanEventDataDocumentationResultTokenUsage",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudDataplexV1DataScanEventDataDocumentationResultTokenUsage": {
+        "type": "object",
+        "format": "",
+        "description": "Captures structured token usage breakdown for LLM-powered scans.",
+        "$ref": "",
+        "properties": {
+          "cachedContentTokenCount": {
+            "type": "string",
+            "format": "int64",
+            "description": "Billable cached content tokens (billed at discounted prompt caching SKU).",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "candidatesTokenCount": {
+            "type": "string",
+            "format": "int64",
+            "description": "Generated candidate response tokens.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "inputTokenCount": {
+            "type": "string",
+            "format": "int64",
+            "description": "Billable non-cached input tokens.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "outputTokenCount": {
+            "type": "string",
+            "format": "int64",
+            "description": "Billable output tokens (candidates + thoughts).",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "promptTokenCount": {
+            "type": "string",
+            "format": "int64",
+            "description": "Base prompt and system instructions tokens.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "thoughtsTokenCount": {
+            "type": "string",
+            "format": "int64",
+            "description": "Reasoning / Chain-of-Thought tokens.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "toolUsePromptTokenCount": {
+            "type": "string",
+            "format": "int64",
+            "description": "Tool use context tokens (schema, profile, query history).",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "totalTokenCount": {
+            "type": "string",
+            "format": "int64",
+            "description": "Total billable tokens (billable_input + billable_cached + billable_output). Evaluates to 0 for failed or cancelled jobs.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
       "GoogleCloudDataplexV1DataScanEventDataProfileAppliedConfigs": {
         "type": "object",
         "format": "",
@@ -8026,6 +7817,17 @@
         "description": "Data profile result for data scan job.",
         "$ref": "",
         "properties": {
+          "dcuConsumed": {
+            "type": "number",
+            "format": "double",
+            "description": "Dataplex Compute Units (DCUs) used in the data scan job.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
           "rowCount": {
             "type": "string",
             "format": "int64",
@@ -8590,138 +8392,6 @@
             "additionalProperties": null,
             "enum": null,
             "readOnly": false
-          }
-        },
-        "items": null,
-        "additionalProperties": null,
-        "enum": null,
-        "readOnly": false
-      },
-      "GoogleCloudDataplexV1DataTaxonomy": {
-        "type": "object",
-        "format": "",
-        "description": "DataTaxonomy represents a set of hierarchical DataAttributes resources, grouped with a common theme Eg: 'SensitiveDataTaxonomy' can have attributes to manage PII data. It is defined at project level.",
-        "$ref": "",
-        "properties": {
-          "attributeCount": {
-            "type": "integer",
-            "format": "int32",
-            "description": "Output only. The number of attributes in the DataTaxonomy.",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": true
-          },
-          "classCount": {
-            "type": "integer",
-            "format": "int32",
-            "description": "Output only. The number of classes in the DataTaxonomy.",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": true
-          },
-          "createTime": {
-            "type": "string",
-            "format": "google-datetime",
-            "description": "Output only. The time when the DataTaxonomy was created.",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": true
-          },
-          "description": {
-            "type": "string",
-            "format": "",
-            "description": "Optional. Description of the DataTaxonomy.",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "displayName": {
-            "type": "string",
-            "format": "",
-            "description": "Optional. User friendly display name.",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "etag": {
-            "type": "string",
-            "format": "",
-            "description": "This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "labels": {
-            "type": "object",
-            "format": "",
-            "description": "Optional. User-defined labels for the DataTaxonomy.",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": {
-              "type": "string",
-              "format": "",
-              "description": "",
-              "$ref": "",
-              "properties": null,
-              "items": null,
-              "additionalProperties": null,
-              "enum": null,
-              "readOnly": false
-            },
-            "enum": null,
-            "readOnly": false
-          },
-          "name": {
-            "type": "string",
-            "format": "",
-            "description": "Output only. The relative resource name of the DataTaxonomy, of the form: projects/{project_number}/locations/{location_id}/dataTaxonomies/{data_taxonomy_id}.",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": true
-          },
-          "uid": {
-            "type": "string",
-            "format": "",
-            "description": "Output only. System generated globally unique ID for the dataTaxonomy. This ID will be different if the DataTaxonomy is deleted and re-created with the same name.",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": true
-          },
-          "updateTime": {
-            "type": "string",
-            "format": "google-datetime",
-            "description": "Output only. The time when the DataTaxonomy was last updated.",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": true
           }
         },
         "items": null,
@@ -12556,136 +12226,6 @@
         "enum": null,
         "readOnly": false
       },
-      "GoogleCloudDataplexV1ListDataAttributeBindingsResponse": {
-        "type": "object",
-        "format": "",
-        "description": "List DataAttributeBindings response.",
-        "$ref": "",
-        "properties": {
-          "dataAttributeBindings": {
-            "type": "array",
-            "format": "",
-            "description": "DataAttributeBindings under the given parent Location.",
-            "$ref": "",
-            "properties": null,
-            "items": {
-              "type": "",
-              "format": "",
-              "description": "",
-              "$ref": "GoogleCloudDataplexV1DataAttributeBinding",
-              "properties": null,
-              "items": null,
-              "additionalProperties": null,
-              "enum": null,
-              "readOnly": false
-            },
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "nextPageToken": {
-            "type": "string",
-            "format": "",
-            "description": "Token to retrieve the next page of results, or empty if there are no more results in the list.",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "unreachableLocations": {
-            "type": "array",
-            "format": "",
-            "description": "Locations that could not be reached.",
-            "$ref": "",
-            "properties": null,
-            "items": {
-              "type": "string",
-              "format": "",
-              "description": "",
-              "$ref": "",
-              "properties": null,
-              "items": null,
-              "additionalProperties": null,
-              "enum": null,
-              "readOnly": false
-            },
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          }
-        },
-        "items": null,
-        "additionalProperties": null,
-        "enum": null,
-        "readOnly": false
-      },
-      "GoogleCloudDataplexV1ListDataAttributesResponse": {
-        "type": "object",
-        "format": "",
-        "description": "List DataAttributes response.",
-        "$ref": "",
-        "properties": {
-          "dataAttributes": {
-            "type": "array",
-            "format": "",
-            "description": "DataAttributes under the given parent DataTaxonomy.",
-            "$ref": "",
-            "properties": null,
-            "items": {
-              "type": "",
-              "format": "",
-              "description": "",
-              "$ref": "GoogleCloudDataplexV1DataAttribute",
-              "properties": null,
-              "items": null,
-              "additionalProperties": null,
-              "enum": null,
-              "readOnly": false
-            },
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "nextPageToken": {
-            "type": "string",
-            "format": "",
-            "description": "Token to retrieve the next page of results, or empty if there are no more results in the list.",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "unreachableLocations": {
-            "type": "array",
-            "format": "",
-            "description": "Locations that could not be reached.",
-            "$ref": "",
-            "properties": null,
-            "items": {
-              "type": "string",
-              "format": "",
-              "description": "",
-              "$ref": "",
-              "properties": null,
-              "items": null,
-              "additionalProperties": null,
-              "enum": null,
-              "readOnly": false
-            },
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          }
-        },
-        "items": null,
-        "additionalProperties": null,
-        "enum": null,
-        "readOnly": false
-      },
       "GoogleCloudDataplexV1ListDataDomainBindingsResponse": {
         "type": "object",
         "format": "",
@@ -12922,71 +12462,6 @@
             "readOnly": false
           },
           "unreachable": {
-            "type": "array",
-            "format": "",
-            "description": "Locations that could not be reached.",
-            "$ref": "",
-            "properties": null,
-            "items": {
-              "type": "string",
-              "format": "",
-              "description": "",
-              "$ref": "",
-              "properties": null,
-              "items": null,
-              "additionalProperties": null,
-              "enum": null,
-              "readOnly": false
-            },
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          }
-        },
-        "items": null,
-        "additionalProperties": null,
-        "enum": null,
-        "readOnly": false
-      },
-      "GoogleCloudDataplexV1ListDataTaxonomiesResponse": {
-        "type": "object",
-        "format": "",
-        "description": "List DataTaxonomies response.",
-        "$ref": "",
-        "properties": {
-          "dataTaxonomies": {
-            "type": "array",
-            "format": "",
-            "description": "DataTaxonomies under the given parent location.",
-            "$ref": "",
-            "properties": null,
-            "items": {
-              "type": "",
-              "format": "",
-              "description": "",
-              "$ref": "GoogleCloudDataplexV1DataTaxonomy",
-              "properties": null,
-              "items": null,
-              "additionalProperties": null,
-              "enum": null,
-              "readOnly": false
-            },
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "nextPageToken": {
-            "type": "string",
-            "format": "",
-            "description": "Token to retrieve the next page of results, or empty if there are no more results in the list.",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "unreachableLocations": {
             "type": "array",
             "format": "",
             "description": "Locations that could not be reached.",
@@ -15289,81 +14764,6 @@
             "$ref": "",
             "properties": null,
             "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          }
-        },
-        "items": null,
-        "additionalProperties": null,
-        "enum": null,
-        "readOnly": false
-      },
-      "GoogleCloudDataplexV1ResourceAccessSpec": {
-        "type": "object",
-        "format": "",
-        "description": "ResourceAccessSpec holds the access control configuration to be enforced on the resources, for example, Cloud Storage bucket, BigQuery dataset, BigQuery table.",
-        "$ref": "",
-        "properties": {
-          "owners": {
-            "type": "array",
-            "format": "",
-            "description": "Optional. The set of principals to be granted owner role on the resource.",
-            "$ref": "",
-            "properties": null,
-            "items": {
-              "type": "string",
-              "format": "",
-              "description": "",
-              "$ref": "",
-              "properties": null,
-              "items": null,
-              "additionalProperties": null,
-              "enum": null,
-              "readOnly": false
-            },
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "readers": {
-            "type": "array",
-            "format": "",
-            "description": "Optional. The format of strings follows the pattern followed by IAM in the bindings. user:{email}, serviceAccount:{email} group:{email}. The set of principals to be granted reader role on the resource.",
-            "$ref": "",
-            "properties": null,
-            "items": {
-              "type": "string",
-              "format": "",
-              "description": "",
-              "$ref": "",
-              "properties": null,
-              "items": null,
-              "additionalProperties": null,
-              "enum": null,
-              "readOnly": false
-            },
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "writers": {
-            "type": "array",
-            "format": "",
-            "description": "Optional. The set of principals to be granted writer role on the resource.",
-            "$ref": "",
-            "properties": null,
-            "items": {
-              "type": "string",
-              "format": "",
-              "description": "",
-              "$ref": "",
-              "properties": null,
-              "items": null,
-              "additionalProperties": null,
-              "enum": null,
-              "readOnly": false
-            },
             "additionalProperties": null,
             "enum": null,
             "readOnly": false
@@ -19244,6 +18644,83 @@
               }
             },
             "resources": {
+              "agentTasks": {
+                "methods": {
+                  "getIamPolicy": {
+                    "id": "dataplex.projects.locations.agentTasks.getIamPolicy",
+                    "httpMethod": "GET",
+                    "path": "v1/{+resource}:getIamPolicy",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/agentTasks/{agentTasksId}:getIamPolicy",
+                    "description": "Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.",
+                    "parameters": {
+                      "options.requestedPolicyVersion": {
+                        "type": "integer",
+                        "location": "query",
+                        "required": false
+                      },
+                      "resource": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "resource"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "GoogleIamV1Policy"
+                    }
+                  },
+                  "setIamPolicy": {
+                    "id": "dataplex.projects.locations.agentTasks.setIamPolicy",
+                    "httpMethod": "POST",
+                    "path": "v1/{+resource}:setIamPolicy",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/agentTasks/{agentTasksId}:setIamPolicy",
+                    "description": "Sets the access control policy on the specified resource. Replaces any existing policy.Can return NOT_FOUND, INVALID_ARGUMENT, and PERMISSION_DENIED errors.",
+                    "parameters": {
+                      "resource": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "resource"
+                    ],
+                    "request": {
+                      "$ref": "GoogleIamV1SetIamPolicyRequest"
+                    },
+                    "response": {
+                      "$ref": "GoogleIamV1Policy"
+                    }
+                  },
+                  "testIamPermissions": {
+                    "id": "dataplex.projects.locations.agentTasks.testIamPermissions",
+                    "httpMethod": "POST",
+                    "path": "v1/{+resource}:testIamPermissions",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/agentTasks/{agentTasksId}:testIamPermissions",
+                    "description": "Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a NOT_FOUND error.Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may \"fail open\" without warning.",
+                    "parameters": {
+                      "resource": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "resource"
+                    ],
+                    "request": {
+                      "$ref": "GoogleIamV1TestIamPermissionsRequest"
+                    },
+                    "response": {
+                      "$ref": "GoogleIamV1TestIamPermissionsResponse"
+                    }
+                  }
+                },
+                "resources": null
+              },
               "aspectTypes": {
                 "methods": {
                   "create": {
@@ -19716,86 +19193,6 @@
               },
               "dataAttributeBindings": {
                 "methods": {
-                  "create": {
-                    "id": "dataplex.projects.locations.dataAttributeBindings.create",
-                    "httpMethod": "POST",
-                    "path": "v1/{+parent}/dataAttributeBindings",
-                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/dataAttributeBindings",
-                    "description": "Create a DataAttributeBinding resource.",
-                    "parameters": {
-                      "dataAttributeBindingId": {
-                        "type": "string",
-                        "location": "query",
-                        "required": false
-                      },
-                      "parent": {
-                        "type": "string",
-                        "location": "path",
-                        "required": true
-                      },
-                      "validateOnly": {
-                        "type": "boolean",
-                        "location": "query",
-                        "required": false
-                      }
-                    },
-                    "parameterOrder": [
-                      "parent"
-                    ],
-                    "request": {
-                      "$ref": "GoogleCloudDataplexV1DataAttributeBinding"
-                    },
-                    "response": {
-                      "$ref": "GoogleLongrunningOperation"
-                    }
-                  },
-                  "delete": {
-                    "id": "dataplex.projects.locations.dataAttributeBindings.delete",
-                    "httpMethod": "DELETE",
-                    "path": "v1/{+name}",
-                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/dataAttributeBindings/{dataAttributeBindingsId}",
-                    "description": "Deletes a DataAttributeBinding resource. All attributes within the DataAttributeBinding must be deleted before the DataAttributeBinding can be deleted.",
-                    "parameters": {
-                      "etag": {
-                        "type": "string",
-                        "location": "query",
-                        "required": false
-                      },
-                      "name": {
-                        "type": "string",
-                        "location": "path",
-                        "required": true
-                      }
-                    },
-                    "parameterOrder": [
-                      "name"
-                    ],
-                    "request": null,
-                    "response": {
-                      "$ref": "GoogleLongrunningOperation"
-                    }
-                  },
-                  "get": {
-                    "id": "dataplex.projects.locations.dataAttributeBindings.get",
-                    "httpMethod": "GET",
-                    "path": "v1/{+name}",
-                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/dataAttributeBindings/{dataAttributeBindingsId}",
-                    "description": "Retrieves a DataAttributeBinding resource.",
-                    "parameters": {
-                      "name": {
-                        "type": "string",
-                        "location": "path",
-                        "required": true
-                      }
-                    },
-                    "parameterOrder": [
-                      "name"
-                    ],
-                    "request": null,
-                    "response": {
-                      "$ref": "GoogleCloudDataplexV1DataAttributeBinding"
-                    }
-                  },
                   "getIamPolicy": {
                     "id": "dataplex.projects.locations.dataAttributeBindings.getIamPolicy",
                     "httpMethod": "GET",
@@ -19820,80 +19217,6 @@
                     "request": null,
                     "response": {
                       "$ref": "GoogleIamV1Policy"
-                    }
-                  },
-                  "list": {
-                    "id": "dataplex.projects.locations.dataAttributeBindings.list",
-                    "httpMethod": "GET",
-                    "path": "v1/{+parent}/dataAttributeBindings",
-                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/dataAttributeBindings",
-                    "description": "Lists DataAttributeBinding resources in a project and location.",
-                    "parameters": {
-                      "filter": {
-                        "type": "string",
-                        "location": "query",
-                        "required": false
-                      },
-                      "orderBy": {
-                        "type": "string",
-                        "location": "query",
-                        "required": false
-                      },
-                      "pageSize": {
-                        "type": "integer",
-                        "location": "query",
-                        "required": false
-                      },
-                      "pageToken": {
-                        "type": "string",
-                        "location": "query",
-                        "required": false
-                      },
-                      "parent": {
-                        "type": "string",
-                        "location": "path",
-                        "required": true
-                      }
-                    },
-                    "parameterOrder": [
-                      "parent"
-                    ],
-                    "request": null,
-                    "response": {
-                      "$ref": "GoogleCloudDataplexV1ListDataAttributeBindingsResponse"
-                    }
-                  },
-                  "patch": {
-                    "id": "dataplex.projects.locations.dataAttributeBindings.patch",
-                    "httpMethod": "PATCH",
-                    "path": "v1/{+name}",
-                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/dataAttributeBindings/{dataAttributeBindingsId}",
-                    "description": "Updates a DataAttributeBinding resource.",
-                    "parameters": {
-                      "name": {
-                        "type": "string",
-                        "location": "path",
-                        "required": true
-                      },
-                      "updateMask": {
-                        "type": "string",
-                        "location": "query",
-                        "required": false
-                      },
-                      "validateOnly": {
-                        "type": "boolean",
-                        "location": "query",
-                        "required": false
-                      }
-                    },
-                    "parameterOrder": [
-                      "name"
-                    ],
-                    "request": {
-                      "$ref": "GoogleCloudDataplexV1DataAttributeBinding"
-                    },
-                    "response": {
-                      "$ref": "GoogleLongrunningOperation"
                     }
                   },
                   "setIamPolicy": {
@@ -21115,86 +20438,6 @@
               },
               "dataTaxonomies": {
                 "methods": {
-                  "create": {
-                    "id": "dataplex.projects.locations.dataTaxonomies.create",
-                    "httpMethod": "POST",
-                    "path": "v1/{+parent}/dataTaxonomies",
-                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/dataTaxonomies",
-                    "description": "Create a DataTaxonomy resource.",
-                    "parameters": {
-                      "dataTaxonomyId": {
-                        "type": "string",
-                        "location": "query",
-                        "required": false
-                      },
-                      "parent": {
-                        "type": "string",
-                        "location": "path",
-                        "required": true
-                      },
-                      "validateOnly": {
-                        "type": "boolean",
-                        "location": "query",
-                        "required": false
-                      }
-                    },
-                    "parameterOrder": [
-                      "parent"
-                    ],
-                    "request": {
-                      "$ref": "GoogleCloudDataplexV1DataTaxonomy"
-                    },
-                    "response": {
-                      "$ref": "GoogleLongrunningOperation"
-                    }
-                  },
-                  "delete": {
-                    "id": "dataplex.projects.locations.dataTaxonomies.delete",
-                    "httpMethod": "DELETE",
-                    "path": "v1/{+name}",
-                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/dataTaxonomies/{dataTaxonomiesId}",
-                    "description": "Deletes a DataTaxonomy resource. All attributes within the DataTaxonomy must be deleted before the DataTaxonomy can be deleted.",
-                    "parameters": {
-                      "etag": {
-                        "type": "string",
-                        "location": "query",
-                        "required": false
-                      },
-                      "name": {
-                        "type": "string",
-                        "location": "path",
-                        "required": true
-                      }
-                    },
-                    "parameterOrder": [
-                      "name"
-                    ],
-                    "request": null,
-                    "response": {
-                      "$ref": "GoogleLongrunningOperation"
-                    }
-                  },
-                  "get": {
-                    "id": "dataplex.projects.locations.dataTaxonomies.get",
-                    "httpMethod": "GET",
-                    "path": "v1/{+name}",
-                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/dataTaxonomies/{dataTaxonomiesId}",
-                    "description": "Retrieves a DataTaxonomy resource.",
-                    "parameters": {
-                      "name": {
-                        "type": "string",
-                        "location": "path",
-                        "required": true
-                      }
-                    },
-                    "parameterOrder": [
-                      "name"
-                    ],
-                    "request": null,
-                    "response": {
-                      "$ref": "GoogleCloudDataplexV1DataTaxonomy"
-                    }
-                  },
                   "getIamPolicy": {
                     "id": "dataplex.projects.locations.dataTaxonomies.getIamPolicy",
                     "httpMethod": "GET",
@@ -21219,80 +20462,6 @@
                     "request": null,
                     "response": {
                       "$ref": "GoogleIamV1Policy"
-                    }
-                  },
-                  "list": {
-                    "id": "dataplex.projects.locations.dataTaxonomies.list",
-                    "httpMethod": "GET",
-                    "path": "v1/{+parent}/dataTaxonomies",
-                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/dataTaxonomies",
-                    "description": "Lists DataTaxonomy resources in a project and location.",
-                    "parameters": {
-                      "filter": {
-                        "type": "string",
-                        "location": "query",
-                        "required": false
-                      },
-                      "orderBy": {
-                        "type": "string",
-                        "location": "query",
-                        "required": false
-                      },
-                      "pageSize": {
-                        "type": "integer",
-                        "location": "query",
-                        "required": false
-                      },
-                      "pageToken": {
-                        "type": "string",
-                        "location": "query",
-                        "required": false
-                      },
-                      "parent": {
-                        "type": "string",
-                        "location": "path",
-                        "required": true
-                      }
-                    },
-                    "parameterOrder": [
-                      "parent"
-                    ],
-                    "request": null,
-                    "response": {
-                      "$ref": "GoogleCloudDataplexV1ListDataTaxonomiesResponse"
-                    }
-                  },
-                  "patch": {
-                    "id": "dataplex.projects.locations.dataTaxonomies.patch",
-                    "httpMethod": "PATCH",
-                    "path": "v1/{+name}",
-                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/dataTaxonomies/{dataTaxonomiesId}",
-                    "description": "Updates a DataTaxonomy resource.",
-                    "parameters": {
-                      "name": {
-                        "type": "string",
-                        "location": "path",
-                        "required": true
-                      },
-                      "updateMask": {
-                        "type": "string",
-                        "location": "query",
-                        "required": false
-                      },
-                      "validateOnly": {
-                        "type": "boolean",
-                        "location": "query",
-                        "required": false
-                      }
-                    },
-                    "parameterOrder": [
-                      "name"
-                    ],
-                    "request": {
-                      "$ref": "GoogleCloudDataplexV1DataTaxonomy"
-                    },
-                    "response": {
-                      "$ref": "GoogleLongrunningOperation"
                     }
                   },
                   "setIamPolicy": {
@@ -21345,86 +20514,6 @@
                 "resources": {
                   "attributes": {
                     "methods": {
-                      "create": {
-                        "id": "dataplex.projects.locations.dataTaxonomies.attributes.create",
-                        "httpMethod": "POST",
-                        "path": "v1/{+parent}/attributes",
-                        "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/dataTaxonomies/{dataTaxonomiesId}/attributes",
-                        "description": "Create a DataAttribute resource.",
-                        "parameters": {
-                          "dataAttributeId": {
-                            "type": "string",
-                            "location": "query",
-                            "required": false
-                          },
-                          "parent": {
-                            "type": "string",
-                            "location": "path",
-                            "required": true
-                          },
-                          "validateOnly": {
-                            "type": "boolean",
-                            "location": "query",
-                            "required": false
-                          }
-                        },
-                        "parameterOrder": [
-                          "parent"
-                        ],
-                        "request": {
-                          "$ref": "GoogleCloudDataplexV1DataAttribute"
-                        },
-                        "response": {
-                          "$ref": "GoogleLongrunningOperation"
-                        }
-                      },
-                      "delete": {
-                        "id": "dataplex.projects.locations.dataTaxonomies.attributes.delete",
-                        "httpMethod": "DELETE",
-                        "path": "v1/{+name}",
-                        "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/dataTaxonomies/{dataTaxonomiesId}/attributes/{attributesId}",
-                        "description": "Deletes a Data Attribute resource.",
-                        "parameters": {
-                          "etag": {
-                            "type": "string",
-                            "location": "query",
-                            "required": false
-                          },
-                          "name": {
-                            "type": "string",
-                            "location": "path",
-                            "required": true
-                          }
-                        },
-                        "parameterOrder": [
-                          "name"
-                        ],
-                        "request": null,
-                        "response": {
-                          "$ref": "GoogleLongrunningOperation"
-                        }
-                      },
-                      "get": {
-                        "id": "dataplex.projects.locations.dataTaxonomies.attributes.get",
-                        "httpMethod": "GET",
-                        "path": "v1/{+name}",
-                        "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/dataTaxonomies/{dataTaxonomiesId}/attributes/{attributesId}",
-                        "description": "Retrieves a Data Attribute resource.",
-                        "parameters": {
-                          "name": {
-                            "type": "string",
-                            "location": "path",
-                            "required": true
-                          }
-                        },
-                        "parameterOrder": [
-                          "name"
-                        ],
-                        "request": null,
-                        "response": {
-                          "$ref": "GoogleCloudDataplexV1DataAttribute"
-                        }
-                      },
                       "getIamPolicy": {
                         "id": "dataplex.projects.locations.dataTaxonomies.attributes.getIamPolicy",
                         "httpMethod": "GET",
@@ -21449,80 +20538,6 @@
                         "request": null,
                         "response": {
                           "$ref": "GoogleIamV1Policy"
-                        }
-                      },
-                      "list": {
-                        "id": "dataplex.projects.locations.dataTaxonomies.attributes.list",
-                        "httpMethod": "GET",
-                        "path": "v1/{+parent}/attributes",
-                        "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/dataTaxonomies/{dataTaxonomiesId}/attributes",
-                        "description": "Lists Data Attribute resources in a DataTaxonomy.",
-                        "parameters": {
-                          "filter": {
-                            "type": "string",
-                            "location": "query",
-                            "required": false
-                          },
-                          "orderBy": {
-                            "type": "string",
-                            "location": "query",
-                            "required": false
-                          },
-                          "pageSize": {
-                            "type": "integer",
-                            "location": "query",
-                            "required": false
-                          },
-                          "pageToken": {
-                            "type": "string",
-                            "location": "query",
-                            "required": false
-                          },
-                          "parent": {
-                            "type": "string",
-                            "location": "path",
-                            "required": true
-                          }
-                        },
-                        "parameterOrder": [
-                          "parent"
-                        ],
-                        "request": null,
-                        "response": {
-                          "$ref": "GoogleCloudDataplexV1ListDataAttributesResponse"
-                        }
-                      },
-                      "patch": {
-                        "id": "dataplex.projects.locations.dataTaxonomies.attributes.patch",
-                        "httpMethod": "PATCH",
-                        "path": "v1/{+name}",
-                        "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/dataTaxonomies/{dataTaxonomiesId}/attributes/{attributesId}",
-                        "description": "Updates a DataAttribute resource.",
-                        "parameters": {
-                          "name": {
-                            "type": "string",
-                            "location": "path",
-                            "required": true
-                          },
-                          "updateMask": {
-                            "type": "string",
-                            "location": "query",
-                            "required": false
-                          },
-                          "validateOnly": {
-                            "type": "boolean",
-                            "location": "query",
-                            "required": false
-                          }
-                        },
-                        "parameterOrder": [
-                          "name"
-                        ],
-                        "request": {
-                          "$ref": "GoogleCloudDataplexV1DataAttribute"
-                        },
-                        "response": {
-                          "$ref": "GoogleLongrunningOperation"
                         }
                       },
                       "setIamPolicy": {

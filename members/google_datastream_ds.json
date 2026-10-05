@@ -24,7 +24,7 @@
   "wire_name": "google_datastream",
   "raw_spec": {
     "name": "datastream",
-    "revision": "20260826",
+    "revision": "20260923",
     "discoveryVersion": "v1",
     "baseUrl": "https://datastream.googleapis.com/",
     "rootUrl": "https://datastream.googleapis.com/",
@@ -7407,7 +7407,19 @@
         "format": "",
         "description": "Configuration to use Change Tables CDC read method.",
         "$ref": "",
-        "properties": {},
+        "properties": {
+          "ddlConfig": {
+            "type": "",
+            "format": "",
+            "description": "Optional. DDL configuration for change tables.",
+            "$ref": "SqlServerDdlConfig",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
         "items": null,
         "additionalProperties": null,
         "enum": null,
@@ -7500,6 +7512,40 @@
             "type": "integer",
             "format": "int32",
             "description": "Column scale.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "SqlServerDdlConfig": {
+        "type": "object",
+        "format": "",
+        "description": "DDL configuration for change tables.",
+        "$ref": "",
+        "properties": {
+          "autoCreateNewCaptureInstanceOnDdl": {
+            "type": "boolean",
+            "format": "",
+            "description": "Optional. If set to true, Datastream will automatically create a new capture instance when DDL is detected on a table.The customer will be responsible for deleting it so that the next set of DDLs can be handled. The default is false and it means that DDL's will not be handled .",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "autoDeleteOldCaptureInstance": {
+            "type": "boolean",
+            "format": "",
+            "description": "Optional. If set to true, Datastream will automatically delete the old capture instance after creating a new one to support a DDL change. The default is false and means that the customer has to delete the old capture instance manually.",
             "$ref": "",
             "properties": null,
             "items": null,
