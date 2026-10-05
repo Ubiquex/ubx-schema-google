@@ -24,7 +24,7 @@
   "wire_name": "google_memcache",
   "raw_spec": {
     "name": "memcache",
-    "revision": "20260517",
+    "revision": "20260910",
     "discoveryVersion": "v1",
     "baseUrl": "https://memcache.googleapis.com/",
     "rootUrl": "https://memcache.googleapis.com/",

@@ -25,7 +25,7 @@
   "version_qualifier": "v2beta2",
   "raw_spec": {
     "name": "cloudtasks",
-    "revision": "20260831",
+    "revision": "20260916",
     "discoveryVersion": "v1",
     "baseUrl": "https://cloudtasks.googleapis.com/",
     "rootUrl": "https://cloudtasks.googleapis.com/",

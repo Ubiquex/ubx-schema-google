@@ -25,7 +25,7 @@
   "version_qualifier": "v1beta",
   "raw_spec": {
     "name": "discoveryengine",
-    "revision": "20260831",
+    "revision": "20260927",
     "discoveryVersion": "v1",
     "baseUrl": "https://discoveryengine.googleapis.com/",
     "rootUrl": "https://discoveryengine.googleapis.com/",
@@ -1614,6 +1614,17 @@
               "enum": null,
               "readOnly": false
             },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "dataProtectionPolicy": {
+            "type": "",
+            "format": "",
+            "description": "Optional. Data protection policy to be used for sanitizing file uploads.",
+            "$ref": "GoogleCloudDiscoveryengineV1DataProtectionPolicy",
+            "properties": null,
+            "items": null,
             "additionalProperties": null,
             "enum": null,
             "readOnly": false
@@ -3386,6 +3397,17 @@
             "enum": null,
             "readOnly": true
           },
+          "dataProtectionPolicy": {
+            "type": "",
+            "format": "",
+            "description": "Optional. Specifies the data protection policy for the connector.",
+            "$ref": "GoogleCloudDiscoveryengineV1DataProtectionPolicy",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
           "dataSource": {
             "type": "string",
             "format": "",
@@ -3842,7 +3864,7 @@
           "tag": {
             "type": "string",
             "format": "",
-            "description": "Optional. Immutable. User-facing, version-independent label for this connector. May be shared by multiple connectors under the same (project, location, collection, data_source); tag-based lookup returns the one with the greatest create_time. Optional at Create time. Agent Designer resolves connectors via (data_source, tag) when set, falling back to the legacy resource-name lookup when unset, so connectors created before the tag-write launch continue to work without a backfill.",
+            "description": "Optional. Immutable. User-facing, version-independent label for this connector. May be shared by multiple connectors under the same (project, location, collection, data_source); tag-based lookup returns the one with the greatest create_time. Optional at Create time. If the caller omits `tag`, the server auto-derives one from the collection_id (falling back to data_source, else a time-based `t-` sentinel). The auto-derived tag is subject to the same immutability guarantee as a caller-supplied one, so callers who care about the exact tag value should provide it explicitly rather than relying on the server default. Agent Designer resolves connectors via (data_source, tag) when set, falling back to the legacy resource-name lookup when unset, so connectors created before the tag-write launch continue to work without a backfill.",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -4279,6 +4301,52 @@
         "enum": null,
         "readOnly": false
       },
+      "GoogleCloudDiscoveryengineV1DataProtectionPolicy": {
+        "type": "object",
+        "format": "",
+        "description": "Contains the data protection policy config for a DataStore or a connector.",
+        "$ref": "",
+        "properties": {
+          "sensitiveDataProtectionPolicy": {
+            "type": "",
+            "format": "",
+            "description": "Optional. Specifies the sensitive data protection policy for the connector source.",
+            "$ref": "GoogleCloudDiscoveryengineV1DataProtectionPolicySensitiveDataProtectionPolicy",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudDiscoveryengineV1DataProtectionPolicySensitiveDataProtectionPolicy": {
+        "type": "object",
+        "format": "",
+        "description": "Specifies a Sensitive Data Protection (https://cloud.google.com/sensitive-data-protection/docs/sensitive-data-protection-overview) policy.",
+        "$ref": "",
+        "properties": {
+          "policy": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Specifies the resource name of the Sensitive Data Protection content policy.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
       "GoogleCloudDiscoveryengineV1DataStore": {
         "type": "object",
         "format": "",
@@ -4382,6 +4450,17 @@
             "additionalProperties": null,
             "enum": null,
             "readOnly": true
+          },
+          "dataProtectionPolicy": {
+            "type": "",
+            "format": "",
+            "description": "Optional. Specifies the data protection policy for the data store.",
+            "$ref": "GoogleCloudDiscoveryengineV1DataProtectionPolicy",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
           },
           "defaultSchemaId": {
             "type": "string",
@@ -6158,6 +6237,17 @@
             "format": "",
             "description": "Configurations for the Search Engine. Only applicable if solution_type is SOLUTION_TYPE_SEARCH.",
             "$ref": "GoogleCloudDiscoveryengineV1EngineSearchEngineConfig",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "sessionConfig": {
+            "type": "",
+            "format": "",
+            "description": "Optional. Non-empty default. Session config for the engine.",
+            "$ref": "GoogleCloudDiscoveryengineV1SessionConfig",
             "properties": null,
             "items": null,
             "additionalProperties": null,
@@ -7976,6 +8066,17 @@
             "additionalProperties": null,
             "enum": null,
             "readOnly": false
+          },
+          "resourceAccessControlConfig": {
+            "type": "",
+            "format": "",
+            "description": "Optional. Resource-level access control config for Gemini Enterprise users.",
+            "$ref": "GoogleCloudDiscoveryengineV1ProjectCustomerProvidedConfigResourceAccessControlConfig",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
           }
         },
         "items": null,
@@ -8106,6 +8207,29 @@
             "type": "string",
             "format": "",
             "description": "Optional. The resource name of the Model Armor Template for sanitizing user prompts. Format: projects/{project}/locations/{location}/templates/{template_id} If not specified, no sanitization will be applied to the user prompt.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudDiscoveryengineV1ProjectCustomerProvidedConfigResourceAccessControlConfig": {
+        "type": "object",
+        "format": "",
+        "description": "Controls resource-level access control for Gemini Enterprise users.",
+        "$ref": "",
+        "properties": {
+          "dataStoreAccessControlEnabled": {
+            "type": "boolean",
+            "format": "",
+            "description": "Optional. If `true`, the data stores and data connectors shown to Gemini Enterprise users are filtered to those the user has the required resource-level `.get` IAM permission on.",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -9393,6 +9517,67 @@
             "type": "string",
             "format": "",
             "description": "Specifies the event type used for demoting recommendation result. Currently supported values: * `view-item`: Item viewed. * `media-play`: Start/resume watching a video, playing a song, etc. * `media-complete`: Finished or stopped midway through a video, song, etc. If unset, watch history demotion will not be applied. Content freshness demotion will still be applied.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudDiscoveryengineV1SessionConfig": {
+        "type": "object",
+        "format": "",
+        "description": "Configuration for the session.",
+        "$ref": "",
+        "properties": {
+          "sessionManagementPolicy": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Session management policy that defines who will manage the session.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "SESSION_MANAGEMENT_POLICY_UNSPECIFIED",
+              "NOT_MANAGED",
+              "VERTEX_AI_MANAGED"
+            ],
+            "readOnly": false
+          },
+          "sessionTtl": {
+            "type": "",
+            "format": "",
+            "description": "Optional. The TTL for the session. If unset, the default value is 60 days.",
+            "$ref": "GoogleCloudDiscoveryengineV1SessionConfigSessionTtl",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudDiscoveryengineV1SessionConfigSessionTtl": {
+        "type": "object",
+        "format": "",
+        "description": "Defines the TTL for sessions.",
+        "$ref": "",
+        "properties": {
+          "days": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Defines the number of days for session TTL.",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -11168,6 +11353,23 @@
             "enum": null,
             "readOnly": false
           },
+          "thinkingLevel": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Sent as Vertex `ThinkingConfig.thinking_level`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "THINKING_LEVEL_UNSPECIFIED",
+              "MINIMAL",
+              "LOW",
+              "MEDIUM",
+              "HIGH"
+            ],
+            "readOnly": false
+          },
           "weight": {
             "type": "number",
             "format": "float",
@@ -12898,6 +13100,27 @@
             "additionalProperties": null,
             "enum": null,
             "readOnly": false
+          },
+          "connectorDisplayNames": {
+            "type": "object",
+            "format": "",
+            "description": "Output only. Maps an internal connector agent name (the machine identifier embedded in tool names, e.g. `custom_mcp__agent`) to the connector's human-readable display name. Populated at serving time for custom MCP / agent gateway connectors so user-facing surfaces (e.g. the tool-call chip) can show the connector name instead of its internal identifier. Empty when there are no such connectors.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": true
           },
           "customerPolicyEnforcementResult": {
             "type": "",
@@ -16334,7 +16557,7 @@
           "tag": {
             "type": "string",
             "format": "",
-            "description": "Optional. Immutable. User-facing, version-independent label for this connector. May be shared by multiple connectors under the same (project, location, collection, data_source); tag-based lookup returns the one with the greatest create_time. Optional at Create time. Agent Designer resolves connectors via (data_source, tag) when set, falling back to the legacy resource-name lookup when unset, so connectors created before the tag-write launch continue to work without a backfill.",
+            "description": "Optional. Immutable. User-facing, version-independent label for this connector. May be shared by multiple connectors under the same (project, location, collection, data_source); tag-based lookup returns the one with the greatest create_time. Optional at Create time. If the caller omits `tag`, the server auto-derives one from the collection_id (falling back to data_source, else a time-based `t-` sentinel). The auto-derived tag is subject to the same immutability guarantee as a caller-supplied one, so callers who care about the exact tag value should provide it explicitly rather than relying on the server default. Agent Designer resolves connectors via (data_source, tag) when set, falling back to the legacy resource-name lookup when unset, so connectors created before the tag-write launch continue to work without a backfill.",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -18938,6 +19161,17 @@
             "enum": null,
             "readOnly": false
           },
+          "sessionConfig": {
+            "type": "",
+            "format": "",
+            "description": "Optional. Non-empty default. Session config for the engine.",
+            "$ref": "GoogleCloudDiscoveryengineV1alphaSessionConfig",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
           "similarDocumentsConfig": {
             "type": "",
             "format": "",
@@ -21122,6 +21356,17 @@
             "enum": null,
             "readOnly": false
           },
+          "billingAccountLicenseConfig": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The name of the BillingAccountLicenseConfig from which this LicenseConfig is assigned, if this field is set.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
           "earlyTerminated": {
             "type": "boolean",
             "format": "",
@@ -21916,6 +22161,17 @@
             "additionalProperties": null,
             "enum": null,
             "readOnly": false
+          },
+          "resourceAccessControlConfig": {
+            "type": "",
+            "format": "",
+            "description": "Optional. Resource-level access control config for Gemini Enterprise users.",
+            "$ref": "GoogleCloudDiscoveryengineV1alphaProjectCustomerProvidedConfigResourceAccessControlConfig",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
           }
         },
         "items": null,
@@ -22046,6 +22302,29 @@
             "type": "string",
             "format": "",
             "description": "Optional. The resource name of the Model Armor Template for sanitizing user prompts. Format: projects/{project}/locations/{location}/templates/{template_id} If not specified, no sanitization will be applied to the user prompt.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudDiscoveryengineV1alphaProjectCustomerProvidedConfigResourceAccessControlConfig": {
+        "type": "object",
+        "format": "",
+        "description": "Controls resource-level access control for Gemini Enterprise users.",
+        "$ref": "",
+        "properties": {
+          "dataStoreAccessControlEnabled": {
+            "type": "boolean",
+            "format": "",
+            "description": "Optional. If `true`, the data stores and data connectors shown to Gemini Enterprise users are filtered to those the user has the required resource-level `.get` IAM permission on.",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -22748,6 +23027,17 @@
             "additionalProperties": null,
             "enum": null,
             "readOnly": false
+          },
+          "userSuppliedSobiArtifactReference": {
+            "type": "",
+            "format": "",
+            "description": "Reference to a user-supplied file attached to a long-running-agent (Sobi) task. See `UserSuppliedSobiArtifactReference` above.",
+            "$ref": "GoogleCloudDiscoveryengineV1alphaQueryPartUserSuppliedSobiArtifactReference",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
           }
         },
         "items": null,
@@ -22987,6 +23277,40 @@
             "type": "string",
             "format": "",
             "description": "The person id of the person.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudDiscoveryengineV1alphaQueryPartUserSuppliedSobiArtifactReference": {
+        "type": "object",
+        "format": "",
+        "description": "Reference to a user-supplied file attached to a long-running-agent (Sobi) task. Rendered by the client as an attachment chip on the user turn's bubble. The file itself is stored on the task's `AgentArtifact` list; the client resolves full metadata (source URI, size, ...) for download or preview by calling `GetTask` on the Sobi Task API and matching `AgentArtifact.name` against `file_name`. Only `file_name` and `mime_type` appear on this wire deliberately: the backing `gs://` or Drive URI is not exposed to conversation-history readers. Same variant is used for both byte-uploaded and Drive-picked files -- \"user attached a file\" is one concept regardless of source.",
+        "$ref": "",
+        "properties": {
+          "fileName": {
+            "type": "string",
+            "format": "",
+            "description": "Required. Client-supplied filename. Unique per task within the user-supplied artifact set (UI dedupes before upload). Doubles as the artifact identifier used to look up the artifact on `Task.artifacts`. The `_name` suffix is deliberate and the AIP-122 lint is suppressed: this field is not a resource name (which is what AIP-122 reserves the bare `name` for). It is the literal filename, and it serves as the join key against `AgentArtifact.name` on the backing Sobi task -- a structural role that `title` or `display_name` would not communicate to a client picking what to send. The internal mirror (`cloud/ml/discoveryengine/schema/assistant.proto`) uses the same field name so the round-trip converter stays name-for-name.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "mimeType": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. IANA MIME type. Used for icon/preview rendering.",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -25715,6 +26039,72 @@
               "AUTO"
             ],
             "readOnly": false
+          },
+          "fields": {
+            "type": "array",
+            "format": "",
+            "description": "Optional. The list of fields to be used for Search As You Type scoring.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "GoogleCloudDiscoveryengineV1alphaSearchRequestSearchAsYouTypeSpecField",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "scoreThreshold": {
+            "type": "number",
+            "format": "double",
+            "description": "Optional. Search As You Type score threshold for filtering purpose. We keep the result if `score` \u003e= `score_threshold`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudDiscoveryengineV1alphaSearchRequestSearchAsYouTypeSpecField": {
+        "type": "object",
+        "format": "",
+        "description": "A schema field to be used for Search As You Type scoring on this request. Overrides any data-store-level Search As You Type field configuration for the duration of the request.",
+        "$ref": "",
+        "properties": {
+          "key": {
+            "type": "string",
+            "format": "",
+            "description": "Required. A field key that has been indexed for Search As You Type.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "weight": {
+            "type": "number",
+            "format": "double",
+            "description": "Optional. Weight for scores from this field. Defaults to 1.0 if not specified.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
           }
         },
         "items": null,
@@ -25915,6 +26305,67 @@
             "type": "string",
             "format": "",
             "description": "A unique identifier for tracking users.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudDiscoveryengineV1alphaSessionConfig": {
+        "type": "object",
+        "format": "",
+        "description": "Configuration for the session.",
+        "$ref": "",
+        "properties": {
+          "sessionManagementPolicy": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Session management policy that defines who will manage the session.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "SESSION_MANAGEMENT_POLICY_UNSPECIFIED",
+              "NOT_MANAGED",
+              "VERTEX_AI_MANAGED"
+            ],
+            "readOnly": false
+          },
+          "sessionTtl": {
+            "type": "",
+            "format": "",
+            "description": "Optional. The TTL for the session. If unset, the default value is 60 days.",
+            "$ref": "GoogleCloudDiscoveryengineV1alphaSessionConfigSessionTtl",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudDiscoveryengineV1alphaSessionConfigSessionTtl": {
+        "type": "object",
+        "format": "",
+        "description": "Defines the TTL for sessions.",
+        "$ref": "",
+        "properties": {
+          "days": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Defines the number of days for session TTL.",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -30771,6 +31222,27 @@
             "enum": null,
             "readOnly": false
           },
+          "connectorDisplayNames": {
+            "type": "object",
+            "format": "",
+            "description": "Output only. Maps an internal connector agent name (the machine identifier embedded in tool names, e.g. `custom_mcp__agent`) to the connector's human-readable display name. Populated at serving time for custom MCP / agent gateway connectors so user-facing surfaces (e.g. the tool-call chip) can show the connector name instead of its internal identifier. Empty when there are no such connectors.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": true
+          },
           "customerPolicyEnforcementResult": {
             "type": "",
             "format": "",
@@ -31450,6 +31922,17 @@
               "enum": null,
               "readOnly": false
             },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "dataProtectionPolicy": {
+            "type": "",
+            "format": "",
+            "description": "Optional. Data protection policy to be used for sanitizing file uploads.",
+            "$ref": "GoogleCloudDiscoveryengineV1betaDataProtectionPolicy",
+            "properties": null,
+            "items": null,
             "additionalProperties": null,
             "enum": null,
             "readOnly": false
@@ -34008,7 +34491,7 @@
           "selectedSuggestion": {
             "type": "string",
             "format": "",
-            "description": "End user selected CompleteQueryResponse.QuerySuggestion.suggestion.",
+            "description": "Optional. End user selected CompleteQueryResponse.QuerySuggestion.suggestion.",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -35504,6 +35987,52 @@
         "enum": null,
         "readOnly": false
       },
+      "GoogleCloudDiscoveryengineV1betaDataProtectionPolicy": {
+        "type": "object",
+        "format": "",
+        "description": "Contains the data protection policy config for a DataStore or a connector.",
+        "$ref": "",
+        "properties": {
+          "sensitiveDataProtectionPolicy": {
+            "type": "",
+            "format": "",
+            "description": "Optional. Specifies the sensitive data protection policy for the connector source.",
+            "$ref": "GoogleCloudDiscoveryengineV1betaDataProtectionPolicySensitiveDataProtectionPolicy",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudDiscoveryengineV1betaDataProtectionPolicySensitiveDataProtectionPolicy": {
+        "type": "object",
+        "format": "",
+        "description": "Specifies a Sensitive Data Protection (https://cloud.google.com/sensitive-data-protection/docs/sensitive-data-protection-overview) policy.",
+        "$ref": "",
+        "properties": {
+          "policy": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Specifies the resource name of the Sensitive Data Protection content policy.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
       "GoogleCloudDiscoveryengineV1betaDataStore": {
         "type": "object",
         "format": "",
@@ -35607,6 +36136,17 @@
             "additionalProperties": null,
             "enum": null,
             "readOnly": true
+          },
+          "dataProtectionPolicy": {
+            "type": "",
+            "format": "",
+            "description": "Optional. Specifies the data protection policy for the data store.",
+            "$ref": "GoogleCloudDiscoveryengineV1betaDataProtectionPolicy",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
           },
           "defaultSchemaId": {
             "type": "string",
@@ -37802,6 +38342,17 @@
             "format": "",
             "description": "Configurations for the Search Engine. Only applicable if solution_type is SOLUTION_TYPE_SEARCH.",
             "$ref": "GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfig",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "sessionConfig": {
+            "type": "",
+            "format": "",
+            "description": "Optional. Non-empty default. Session config for the engine.",
+            "$ref": "GoogleCloudDiscoveryengineV1betaSessionConfig",
             "properties": null,
             "items": null,
             "additionalProperties": null,
@@ -42615,6 +43166,17 @@
             "additionalProperties": null,
             "enum": null,
             "readOnly": false
+          },
+          "resourceAccessControlConfig": {
+            "type": "",
+            "format": "",
+            "description": "Optional. Resource-level access control config for Gemini Enterprise users.",
+            "$ref": "GoogleCloudDiscoveryengineV1betaProjectCustomerProvidedConfigResourceAccessControlConfig",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
           }
         },
         "items": null,
@@ -42745,6 +43307,29 @@
             "type": "string",
             "format": "",
             "description": "Optional. The resource name of the Model Armor Template for sanitizing user prompts. Format: projects/{project}/locations/{location}/templates/{template_id} If not specified, no sanitization will be applied to the user prompt.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudDiscoveryengineV1betaProjectCustomerProvidedConfigResourceAccessControlConfig": {
+        "type": "object",
+        "format": "",
+        "description": "Controls resource-level access control for Gemini Enterprise users.",
+        "$ref": "",
+        "properties": {
+          "dataStoreAccessControlEnabled": {
+            "type": "boolean",
+            "format": "",
+            "description": "Optional. If `true`, the data stores and data connectors shown to Gemini Enterprise users are filtered to those the user has the required resource-level `.get` IAM permission on.",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -44729,7 +45314,7 @@
           "searchQuery": {
             "type": "string",
             "format": "",
-            "description": "The user's search query. See SearchRequest.query for definition. The value must be a UTF-8 encoded string with a length limit of 5,000 characters. Otherwise, an `INVALID_ARGUMENT` error is returned. At least one of search_query or PageInfo.page_category is required for `search` events. Other event types should not set this field. Otherwise, an `INVALID_ARGUMENT` error is returned.",
+            "description": "Optional. The user's search query. See SearchRequest.query for definition. The value must be a UTF-8 encoded string with a length limit of 5,000 characters. Otherwise, an `INVALID_ARGUMENT` error is returned. At least one of search_query or PageInfo.page_category is required for `search` events. Other event types should not set this field. Otherwise, an `INVALID_ARGUMENT` error is returned.",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -46758,6 +47343,72 @@
               "ENABLED",
               "AUTO"
             ],
+            "readOnly": false
+          },
+          "fields": {
+            "type": "array",
+            "format": "",
+            "description": "Optional. The list of fields to be used for Search As You Type scoring.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "GoogleCloudDiscoveryengineV1betaSearchRequestSearchAsYouTypeSpecField",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "scoreThreshold": {
+            "type": "number",
+            "format": "double",
+            "description": "Optional. Search As You Type score threshold for filtering purpose. We keep the result if `score` \u003e= `score_threshold`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudDiscoveryengineV1betaSearchRequestSearchAsYouTypeSpecField": {
+        "type": "object",
+        "format": "",
+        "description": "A schema field to be used for Search As You Type scoring on this request. Overrides any data-store-level Search As You Type field configuration for the duration of the request.",
+        "$ref": "",
+        "properties": {
+          "key": {
+            "type": "string",
+            "format": "",
+            "description": "Required. A field key that has been indexed for Search As You Type.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "weight": {
+            "type": "number",
+            "format": "double",
+            "description": "Optional. Weight for scores from this field. Defaults to 1.0 if not specified.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
             "readOnly": false
           }
         },
@@ -49258,6 +49909,67 @@
         "enum": null,
         "readOnly": false
       },
+      "GoogleCloudDiscoveryengineV1betaSessionConfig": {
+        "type": "object",
+        "format": "",
+        "description": "Configuration for the session.",
+        "$ref": "",
+        "properties": {
+          "sessionManagementPolicy": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Session management policy that defines who will manage the session.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "SESSION_MANAGEMENT_POLICY_UNSPECIFIED",
+              "NOT_MANAGED",
+              "VERTEX_AI_MANAGED"
+            ],
+            "readOnly": false
+          },
+          "sessionTtl": {
+            "type": "",
+            "format": "",
+            "description": "Optional. The TTL for the session. If unset, the default value is 60 days.",
+            "$ref": "GoogleCloudDiscoveryengineV1betaSessionConfigSessionTtl",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudDiscoveryengineV1betaSessionConfigSessionTtl": {
+        "type": "object",
+        "format": "",
+        "description": "Defines the TTL for sessions.",
+        "$ref": "",
+        "properties": {
+          "days": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Defines the number of days for session TTL.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
       "GoogleCloudDiscoveryengineV1betaSessionTurn": {
         "type": "object",
         "format": "",
@@ -50853,7 +51565,7 @@
           "attributes": {
             "type": "object",
             "format": "",
-            "description": "Extra user event features to include in the recommendation model. These attributes must NOT contain data that needs to be parsed or processed further, e.g. JSON or other encodings. If you provide custom attributes for ingested user events, also include them in the user events that you associate with prediction requests. Custom attribute formatting must be consistent between imported events and events provided with prediction requests. This lets the Discovery Engine API use those custom attributes when training models and serving predictions, which helps improve recommendation quality. This field needs to pass all below criteria, otherwise an `INVALID_ARGUMENT` error is returned: * The key must be a UTF-8 encoded string with a length limit of 5,000 characters. * For text attributes, at most 400 values are allowed. Empty values are not allowed. Each value must be a UTF-8 encoded string with a length limit of 256 characters. * For number attributes, at most 400 values are allowed. For product recommendations, an example of extra user information is `traffic_channel`, which is how a user arrives at the site. Users can arrive at the site by coming to the site directly, coming through Google search, or in other ways.",
+            "description": "Optional. Extra user event features to include in the recommendation model. These attributes must NOT contain data that needs to be parsed or processed further, e.g. JSON or other encodings. If you provide custom attributes for ingested user events, also include them in the user events that you associate with prediction requests. Custom attribute formatting must be consistent between imported events and events provided with prediction requests. This lets the Discovery Engine API use those custom attributes when training models and serving predictions, which helps improve recommendation quality. This field needs to pass all below criteria, otherwise an `INVALID_ARGUMENT` error is returned: * The key must be a UTF-8 encoded string with a length limit of 5,000 characters. * For text attributes, at most 400 values are allowed. Empty values are not allowed. Each value must be a UTF-8 encoded string with a length limit of 256 characters. * For number attributes, at most 400 values are allowed. For product recommendations, an example of extra user information is `traffic_channel`, which is how a user arrives at the site. Users can arrive at the site by coming to the site directly, coming through Google search, or in other ways.",
             "$ref": "",
             "properties": null,
             "items": null,

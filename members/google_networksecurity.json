@@ -24,7 +24,7 @@
   "wire_name": "google_networksecurity",
   "raw_spec": {
     "name": "networksecurity",
-    "revision": "20260824",
+    "revision": "20260910",
     "discoveryVersion": "v1",
     "baseUrl": "https://networksecurity.googleapis.com/",
     "rootUrl": "https://networksecurity.googleapis.com/",
@@ -1198,7 +1198,7 @@
           "baseProtocolMethodsOption": {
             "type": "string",
             "format": "",
-            "description": "Optional. If specified, matches on the MCP protocol’s non-access specific methods namely: * initialize * completion/ * logging/ * notifications/ * ping Defaults to SKIP_BASE_PROTOCOL_METHODS if not specified.",
+            "description": "Optional. If specified, matches on the MCP protocol's non-access specific methods namely: * initialize * completion/ * logging/ * notifications/ * ping Defaults to SKIP_BASE_PROTOCOL_METHODS if not specified.",
             "$ref": "",
             "properties": null,
             "items": null,

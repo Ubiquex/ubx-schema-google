@@ -25,18 +25,75 @@
   "version_qualifier": "v1beta1",
   "raw_spec": {
     "name": "aiplatform",
-    "revision": "20260831",
+    "revision": "20260930",
     "discoveryVersion": "v1",
     "baseUrl": "https://aiplatform.googleapis.com/",
     "rootUrl": "https://aiplatform.googleapis.com/",
     "servicePath": "",
     "schemas": {
+      "CloudAiLargeModelsVisionExperimentsResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Experimental response metadata for video generation.",
+        "$ref": "",
+        "properties": {
+          "proEditResult": {
+            "type": "",
+            "format": "",
+            "description": "Result metadata from a Pro Edit operation, populated for edit requests.",
+            "$ref": "CloudAiLargeModelsVisionExperimentsResponseProEditResult",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "CloudAiLargeModelsVisionExperimentsResponseProEditResult": {
+        "type": "object",
+        "format": "",
+        "description": "Result metadata from a Pro Edit operation.",
+        "$ref": "",
+        "properties": {
+          "structuredPrompt": {
+            "type": "string",
+            "format": "",
+            "description": "The output structured prompt (JSON string) produced by this edit.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
       "CloudAiLargeModelsVisionGenerateVideoExperiments": {
         "type": "object",
         "format": "",
         "description": "Experimental parameters for video generation.",
         "$ref": "",
         "properties": {
+          "allowMeteredBilling": {
+            "type": "boolean",
+            "format": "",
+            "description": "If false, when a non-subscription customer tries to call an experimental feature, the request will be rejected. This field has no effect for subscription customers.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
           "anchorLastFrame": {
             "type": "boolean",
             "format": "",
@@ -221,6 +278,17 @@
             "format": "",
             "description": "Config for Outpainting task.",
             "$ref": "CloudAiLargeModelsVisionGenerateVideoExperimentsOutpaintConfig",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "proEdit": {
+            "type": "",
+            "format": "",
+            "description": "Configuration for Pro Edit.",
+            "$ref": "CloudAiLargeModelsVisionGenerateVideoExperimentsProEditConfig",
             "properties": null,
             "items": null,
             "additionalProperties": null,
@@ -496,7 +564,8 @@
               "OUTPUT_SPEC_UNSPECIFIED",
               "OUTPUT_SPEC_1920X1072x72",
               "OUTPUT_SPEC_1280X720x192",
-              "OUTPUT_SPEC_960X544x432"
+              "OUTPUT_SPEC_960X544x432",
+              "OUTPUT_SPEC_1280X720x144"
             ],
             "readOnly": false
           }
@@ -526,7 +595,7 @@
           "horizontalOffset": {
             "type": "integer",
             "format": "int32",
-            "description": "Horizontal offset in pixels to shift the input frame from center. Positive values shift right, negative values shift left. Optional. Default is 0 (centered).",
+            "description": "Horizontal offset in pixels of the frame's left edge from the canvas's left edge. Values outside the canvas crop the frame. Optional. Default is 0 (frame flush with the canvas's left edge).",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -537,7 +606,52 @@
           "verticalOffset": {
             "type": "integer",
             "format": "int32",
-            "description": "Vertical offset in pixels to shift the input frame from center. Positive values shift down, negative values shift up. Optional. Default is 0 (centered).",
+            "description": "Vertical offset in pixels of the frame's top edge from the canvas's top edge. Values outside the canvas crop the frame. Optional. Default is 0 (frame flush with the canvas's top edge).",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "CloudAiLargeModelsVisionGenerateVideoExperimentsProEditConfig": {
+        "type": "object",
+        "format": "",
+        "description": "Configuration for Pro Edit.",
+        "$ref": "",
+        "properties": {
+          "editInstructionPrompt": {
+            "type": "string",
+            "format": "",
+            "description": "A text string containing the user's edit instruction. Will be applied to the original URF.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "fromOperationId": {
+            "type": "string",
+            "format": "",
+            "description": "Required. The operation_id from a previous omni-cine generation whose OF and URF should be retrieved for editing.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "structuredPrompt": {
+            "type": "string",
+            "format": "",
+            "description": "A JSON string containing the user's modified URF. The URF Editing Preamble will diff this against the original URF to determine what changed.",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -918,6 +1032,17 @@
             "format": "",
             "description": "Optional metadata returned from experimental requests. Likely only includes the rewritten prompt chunks.",
             "$ref": "CloudAiLargeModelsVisionGenerateVideoExperiments",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "experimentsResponse": {
+            "type": "",
+            "format": "",
+            "description": "Optional response returned from experimental requests.",
+            "$ref": "CloudAiLargeModelsVisionExperimentsResponse",
             "properties": null,
             "items": null,
             "additionalProperties": null,
@@ -2137,6 +2262,40 @@
         "enum": null,
         "readOnly": false
       },
+      "GenaiVertexV1beta1AudioData": {
+        "type": "object",
+        "format": "",
+        "description": "Audio payload used for voice creation.",
+        "$ref": "",
+        "properties": {
+          "data": {
+            "type": "string",
+            "format": "byte",
+            "description": "Required. The raw audio bytes.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "mimeType": {
+            "type": "string",
+            "format": "",
+            "description": "Required. The IANA MIME type of the audio data (for example, `audio/wav` or `audio/mpeg`).",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
       "GenaiVertexV1beta1AudioDelta": {
         "type": "object",
         "format": "",
@@ -2186,7 +2345,8 @@
               "TYPE_L16",
               "TYPE_OPUS",
               "TYPE_ALAW",
-              "TYPE_MULAW"
+              "TYPE_MULAW",
+              "TYPE_WEBM"
             ],
             "readOnly": false
           },
@@ -2308,29 +2468,6 @@
         "enum": null,
         "readOnly": false
       },
-      "GenaiVertexV1beta1CodeExecutionCallContent": {
-        "type": "object",
-        "format": "",
-        "description": "Code execution content.",
-        "$ref": "",
-        "properties": {
-          "arguments": {
-            "type": "",
-            "format": "",
-            "description": "Required. The arguments to pass to the code execution.",
-            "$ref": "GenaiVertexV1beta1CodeExecutionCallContentCodeExecutionCallArguments",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          }
-        },
-        "items": null,
-        "additionalProperties": null,
-        "enum": null,
-        "readOnly": false
-      },
       "GenaiVertexV1beta1CodeExecutionCallContentCodeExecutionCallArguments": {
         "type": "object",
         "format": "",
@@ -2443,40 +2580,6 @@
               "LANGUAGE_UNSPECIFIED",
               "PYTHON"
             ],
-            "readOnly": false
-          }
-        },
-        "items": null,
-        "additionalProperties": null,
-        "enum": null,
-        "readOnly": false
-      },
-      "GenaiVertexV1beta1CodeExecutionResultContent": {
-        "type": "object",
-        "format": "",
-        "description": "Code execution result content.",
-        "$ref": "",
-        "properties": {
-          "isError": {
-            "type": "boolean",
-            "format": "",
-            "description": "Whether the code execution resulted in an error.",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "result": {
-            "type": "string",
-            "format": "",
-            "description": "Required. The output of the code execution.",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
             "readOnly": false
           }
         },
@@ -2942,200 +3045,11 @@
             "enum": null,
             "readOnly": false
           },
-          "thought": {
-            "type": "",
-            "format": "",
-            "description": "",
-            "$ref": "GenaiVertexV1beta1ThoughtContent",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "toolCall": {
-            "type": "",
-            "format": "",
-            "description": "",
-            "$ref": "GenaiVertexV1beta1ToolCallContent",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "toolResult": {
-            "type": "",
-            "format": "",
-            "description": "",
-            "$ref": "GenaiVertexV1beta1ToolResultContent",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
           "video": {
             "type": "",
             "format": "",
             "description": "",
             "$ref": "GenaiVertexV1beta1VideoContent",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          }
-        },
-        "items": null,
-        "additionalProperties": null,
-        "enum": null,
-        "readOnly": false
-      },
-      "GenaiVertexV1beta1ContentDelta": {
-        "type": "object",
-        "format": "",
-        "description": "",
-        "$ref": "",
-        "properties": {
-          "delta": {
-            "type": "",
-            "format": "",
-            "description": "",
-            "$ref": "GenaiVertexV1beta1ContentDeltaData",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "index": {
-            "type": "integer",
-            "format": "int32",
-            "description": "",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          }
-        },
-        "items": null,
-        "additionalProperties": null,
-        "enum": null,
-        "readOnly": false
-      },
-      "GenaiVertexV1beta1ContentDeltaData": {
-        "type": "object",
-        "format": "",
-        "description": "The delta content data for a content block.",
-        "$ref": "",
-        "properties": {
-          "audio": {
-            "type": "",
-            "format": "",
-            "description": "",
-            "$ref": "GenaiVertexV1beta1AudioDelta",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "document": {
-            "type": "",
-            "format": "",
-            "description": "",
-            "$ref": "GenaiVertexV1beta1DocumentDelta",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "image": {
-            "type": "",
-            "format": "",
-            "description": "",
-            "$ref": "GenaiVertexV1beta1ImageDelta",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "text": {
-            "type": "",
-            "format": "",
-            "description": "",
-            "$ref": "GenaiVertexV1beta1TextDelta",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "textAnnotation": {
-            "type": "",
-            "format": "",
-            "description": "",
-            "$ref": "GenaiVertexV1beta1TextAnnotationDelta",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "thoughtSignature": {
-            "type": "",
-            "format": "",
-            "description": "",
-            "$ref": "GenaiVertexV1beta1ThoughtSignatureDelta",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "thoughtSummary": {
-            "type": "",
-            "format": "",
-            "description": "",
-            "$ref": "GenaiVertexV1beta1ThoughtSummaryDelta",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "toolCall": {
-            "type": "",
-            "format": "",
-            "description": "",
-            "$ref": "GenaiVertexV1beta1ToolCallDelta",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "toolResult": {
-            "type": "",
-            "format": "",
-            "description": "",
-            "$ref": "GenaiVertexV1beta1ToolResultDelta",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "video": {
-            "type": "",
-            "format": "",
-            "description": "",
-            "$ref": "GenaiVertexV1beta1VideoDelta",
             "properties": null,
             "items": null,
             "additionalProperties": null,
@@ -3171,63 +3085,6 @@
               "enum": null,
               "readOnly": false
             },
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          }
-        },
-        "items": null,
-        "additionalProperties": null,
-        "enum": null,
-        "readOnly": false
-      },
-      "GenaiVertexV1beta1ContentStart": {
-        "type": "object",
-        "format": "",
-        "description": "",
-        "$ref": "",
-        "properties": {
-          "content": {
-            "type": "",
-            "format": "",
-            "description": "",
-            "$ref": "GenaiVertexV1beta1Content",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "index": {
-            "type": "integer",
-            "format": "int32",
-            "description": "",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          }
-        },
-        "items": null,
-        "additionalProperties": null,
-        "enum": null,
-        "readOnly": false
-      },
-      "GenaiVertexV1beta1ContentStop": {
-        "type": "object",
-        "format": "",
-        "description": "",
-        "$ref": "",
-        "properties": {
-          "index": {
-            "type": "integer",
-            "format": "int32",
-            "description": "",
-            "$ref": "",
-            "properties": null,
-            "items": null,
             "additionalProperties": null,
             "enum": null,
             "readOnly": false
@@ -3581,13 +3438,13 @@
       "GenaiVertexV1beta1EnvironmentConfigEgressRule": {
         "type": "object",
         "format": "",
-        "description": "A network egress rule that controls which external domains the environment is allowed to reach. Each rule identifies a target domain and, optionally, a set of HTTP headers to inject into every matching outbound request.",
+        "description": "A single domain allowlist rule with optional header injection.",
         "$ref": "",
         "properties": {
           "domain": {
             "type": "string",
             "format": "",
-            "description": "The domain pattern to match for this rule. Use an exact hostname (e.g., `github.com`), a wildcard prefix (e.g., `*.googleapis.com`), or `*` to match all domains.",
+            "description": "Domain to allow outbound requests to. Supports wildcards (e.g. '*.googleapis.com'). Use '*' to allow all domains.",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -3996,17 +3853,6 @@
         "enum": null,
         "readOnly": false
       },
-      "GenaiVertexV1beta1FileSearchCallContent": {
-        "type": "object",
-        "format": "",
-        "description": "File Search content.",
-        "$ref": "",
-        "properties": {},
-        "items": null,
-        "additionalProperties": null,
-        "enum": null,
-        "readOnly": false
-      },
       "GenaiVertexV1beta1FileSearchCallDelta": {
         "type": "object",
         "format": "",
@@ -4024,39 +3870,6 @@
         "description": "File Search call step.",
         "$ref": "",
         "properties": {},
-        "items": null,
-        "additionalProperties": null,
-        "enum": null,
-        "readOnly": false
-      },
-      "GenaiVertexV1beta1FileSearchResultContent": {
-        "type": "object",
-        "format": "",
-        "description": "File Search result content.",
-        "$ref": "",
-        "properties": {
-          "result": {
-            "type": "array",
-            "format": "",
-            "description": "The results of the File Search.",
-            "$ref": "",
-            "properties": null,
-            "items": {
-              "type": "",
-              "format": "",
-              "description": "",
-              "$ref": "GenaiVertexV1beta1FileSearchResultContentFileSearchResult",
-              "properties": null,
-              "items": null,
-              "additionalProperties": null,
-              "enum": null,
-              "readOnly": false
-            },
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          }
-        },
         "items": null,
         "additionalProperties": null,
         "enum": null,
@@ -4162,74 +3975,6 @@
         "enum": null,
         "readOnly": false
       },
-      "GenaiVertexV1beta1FunctionCallContent": {
-        "type": "object",
-        "format": "",
-        "description": "A function tool call content block.",
-        "$ref": "",
-        "properties": {
-          "arguments": {
-            "type": "",
-            "format": "",
-            "description": "Required. The arguments to pass to the function.",
-            "$ref": "GenaiVertexV1beta1Struct",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "name": {
-            "type": "string",
-            "format": "",
-            "description": "Required. The name of the tool to call.",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          }
-        },
-        "items": null,
-        "additionalProperties": null,
-        "enum": null,
-        "readOnly": false
-      },
-      "GenaiVertexV1beta1FunctionCallDelta": {
-        "type": "object",
-        "format": "",
-        "description": "",
-        "$ref": "",
-        "properties": {
-          "arguments": {
-            "type": "",
-            "format": "",
-            "description": "",
-            "$ref": "GenaiVertexV1beta1Struct",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "name": {
-            "type": "string",
-            "format": "",
-            "description": "",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          }
-        },
-        "items": null,
-        "additionalProperties": null,
-        "enum": null,
-        "readOnly": false
-      },
       "GenaiVertexV1beta1FunctionCallStep": {
         "type": "object",
         "format": "",
@@ -4252,73 +3997,6 @@
             "format": "",
             "description": "Required. The name of the tool to call.",
             "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          }
-        },
-        "items": null,
-        "additionalProperties": null,
-        "enum": null,
-        "readOnly": false
-      },
-      "GenaiVertexV1beta1FunctionResultContent": {
-        "type": "object",
-        "format": "",
-        "description": "A function tool result content block.",
-        "$ref": "",
-        "properties": {
-          "contentList": {
-            "type": "",
-            "format": "",
-            "description": "",
-            "$ref": "GenaiVertexV1beta1FunctionResultSubcontentList",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "isError": {
-            "type": "boolean",
-            "format": "",
-            "description": "Whether the tool call resulted in an error.",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "name": {
-            "type": "string",
-            "format": "",
-            "description": "The name of the tool that was called.",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "stringResult": {
-            "type": "string",
-            "format": "",
-            "description": "",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "structResult": {
-            "type": "",
-            "format": "",
-            "description": "",
-            "$ref": "GenaiVertexV1beta1Struct",
             "properties": null,
             "items": null,
             "additionalProperties": null,
@@ -4411,73 +4089,6 @@
             "$ref": "GenaiVertexV1beta1Value",
             "properties": null,
             "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          }
-        },
-        "items": null,
-        "additionalProperties": null,
-        "enum": null,
-        "readOnly": false
-      },
-      "GenaiVertexV1beta1FunctionResultSubcontent": {
-        "type": "object",
-        "format": "",
-        "description": "",
-        "$ref": "",
-        "properties": {
-          "image": {
-            "type": "",
-            "format": "",
-            "description": "",
-            "$ref": "GenaiVertexV1beta1ImageContent",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "text": {
-            "type": "",
-            "format": "",
-            "description": "",
-            "$ref": "GenaiVertexV1beta1TextContent",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          }
-        },
-        "items": null,
-        "additionalProperties": null,
-        "enum": null,
-        "readOnly": false
-      },
-      "GenaiVertexV1beta1FunctionResultSubcontentList": {
-        "type": "object",
-        "format": "",
-        "description": "",
-        "$ref": "",
-        "properties": {
-          "contents": {
-            "type": "array",
-            "format": "",
-            "description": "",
-            "$ref": "",
-            "properties": null,
-            "items": {
-              "type": "",
-              "format": "",
-              "description": "",
-              "$ref": "GenaiVertexV1beta1FunctionResultSubcontent",
-              "properties": null,
-              "items": null,
-              "additionalProperties": null,
-              "enum": null,
-              "readOnly": false
-            },
             "additionalProperties": null,
             "enum": null,
             "readOnly": false
@@ -4714,29 +4325,6 @@
         "enum": null,
         "readOnly": false
       },
-      "GenaiVertexV1beta1GoogleMapsCallContent": {
-        "type": "object",
-        "format": "",
-        "description": "Google Maps content.",
-        "$ref": "",
-        "properties": {
-          "arguments": {
-            "type": "",
-            "format": "",
-            "description": "The arguments to pass to the Google Maps tool.",
-            "$ref": "GenaiVertexV1beta1GoogleMapsCallContentGoogleMapsCallArguments",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          }
-        },
-        "items": null,
-        "additionalProperties": null,
-        "enum": null,
-        "readOnly": false
-      },
       "GenaiVertexV1beta1GoogleMapsCallContentGoogleMapsCallArguments": {
         "type": "object",
         "format": "",
@@ -4833,39 +4421,6 @@
               "format": "",
               "description": "",
               "$ref": "",
-              "properties": null,
-              "items": null,
-              "additionalProperties": null,
-              "enum": null,
-              "readOnly": false
-            },
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          }
-        },
-        "items": null,
-        "additionalProperties": null,
-        "enum": null,
-        "readOnly": false
-      },
-      "GenaiVertexV1beta1GoogleMapsResultContent": {
-        "type": "object",
-        "format": "",
-        "description": "Google Maps result content.",
-        "$ref": "",
-        "properties": {
-          "result": {
-            "type": "array",
-            "format": "",
-            "description": "Required. The results of the Google Maps.",
-            "$ref": "",
-            "properties": null,
-            "items": {
-              "type": "",
-              "format": "",
-              "description": "",
-              "$ref": "GenaiVertexV1beta1GoogleMapsResultContentGoogleMapsResult",
               "properties": null,
               "items": null,
               "additionalProperties": null,
@@ -5206,45 +4761,6 @@
         "enum": null,
         "readOnly": false
       },
-      "GenaiVertexV1beta1GoogleSearchCallContent": {
-        "type": "object",
-        "format": "",
-        "description": "Google Search content.",
-        "$ref": "",
-        "properties": {
-          "arguments": {
-            "type": "",
-            "format": "",
-            "description": "Required. The arguments to pass to Google Search.",
-            "$ref": "GenaiVertexV1beta1GoogleSearchCallContentGoogleSearchCallArguments",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "searchType": {
-            "type": "string",
-            "format": "",
-            "description": "The type of search grounding enabled.",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": [
-              "SEARCH_TYPE_UNSPECIFIED",
-              "SEARCH_TYPE_WEB_SEARCH",
-              "SEARCH_TYPE_IMAGE_SEARCH",
-              "SEARCH_TYPE_ENTERPRISE_WEB_SEARCH"
-            ],
-            "readOnly": false
-          }
-        },
-        "items": null,
-        "additionalProperties": null,
-        "enum": null,
-        "readOnly": false
-      },
       "GenaiVertexV1beta1GoogleSearchCallContentGoogleSearchCallArguments": {
         "type": "object",
         "format": "",
@@ -5357,50 +4873,6 @@
               "format": "",
               "description": "",
               "$ref": "",
-              "properties": null,
-              "items": null,
-              "additionalProperties": null,
-              "enum": null,
-              "readOnly": false
-            },
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          }
-        },
-        "items": null,
-        "additionalProperties": null,
-        "enum": null,
-        "readOnly": false
-      },
-      "GenaiVertexV1beta1GoogleSearchResultContent": {
-        "type": "object",
-        "format": "",
-        "description": "Google Search result content.",
-        "$ref": "",
-        "properties": {
-          "isError": {
-            "type": "boolean",
-            "format": "",
-            "description": "Whether the Google Search resulted in an error.",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "result": {
-            "type": "array",
-            "format": "",
-            "description": "Required. The results of the Google Search.",
-            "$ref": "",
-            "properties": null,
-            "items": {
-              "type": "",
-              "format": "",
-              "description": "",
-              "$ref": "GenaiVertexV1beta1GoogleSearchResultContentGoogleSearchResult",
               "properties": null,
               "items": null,
               "additionalProperties": null,
@@ -5832,17 +5304,6 @@
             "enum": null,
             "readOnly": false
           },
-          "contentList": {
-            "type": "",
-            "format": "",
-            "description": "The inputs for the interaction.",
-            "$ref": "GenaiVertexV1beta1ContentList",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
           "created": {
             "type": "string",
             "format": "",
@@ -5911,7 +5372,7 @@
           "labels": {
             "type": "object",
             "format": "",
-            "description": "The labels with user-defined metadata for the request. It is used for billing and reporting only. Label keys and values can be no longer than 63 characters (Unicode codepoints) and can only contain lowercase letters, numeric characters, underscores, and dashes. International characters are allowed. Label values are optional. Label keys must start with a letter.",
+            "description": "The labels with user-defined metadata for the request. Label keys and values can be no longer than 63 characters (Unicode codepoints) and can only contain lowercase letters, numeric characters, underscores, and dashes. International characters are allowed. Label values are optional. Label keys must start with a letter.",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -5951,27 +5412,6 @@
             "enum": null,
             "readOnly": false
           },
-          "outputs": {
-            "type": "array",
-            "format": "",
-            "description": "Output only. Responses from the model.",
-            "$ref": "",
-            "properties": null,
-            "items": {
-              "type": "",
-              "format": "",
-              "description": "",
-              "$ref": "GenaiVertexV1beta1Content",
-              "properties": null,
-              "items": null,
-              "additionalProperties": null,
-              "enum": null,
-              "readOnly": false
-            },
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": true
-          },
           "previousInteractionId": {
             "type": "string",
             "format": "",
@@ -5988,17 +5428,6 @@
             "format": "",
             "description": "",
             "$ref": "GenaiVertexV1beta1EnvironmentConfig",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "responseFormat": {
-            "type": "",
-            "format": "",
-            "description": "Enforces that the generated response is a JSON object that complies with the JSON schema specified in this field.",
-            "$ref": "GenaiVertexV1beta1Value",
             "properties": null,
             "items": null,
             "additionalProperties": null,
@@ -6065,17 +5494,6 @@
             "additionalProperties": null,
             "enum": null,
             "readOnly": false
-          },
-          "role": {
-            "type": "string",
-            "format": "",
-            "description": "Output only. The role of the interaction.",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": true
           },
           "safetySettings": {
             "type": "array",
@@ -6150,7 +5568,7 @@
           "steps": {
             "type": "array",
             "format": "",
-            "description": "Required. Output only. The steps that make up the interaction.",
+            "description": "Required. Output only. The steps that make up the interaction, when included in the response.",
             "$ref": "",
             "properties": null,
             "items": {
@@ -6239,39 +5657,16 @@
         "enum": null,
         "readOnly": false
       },
-      "GenaiVertexV1beta1InteractionCompleteEvent": {
-        "type": "object",
-        "format": "",
-        "description": "",
-        "$ref": "",
-        "properties": {
-          "interaction": {
-            "type": "",
-            "format": "",
-            "description": "Required. The completed interaction with empty outputs to reduce the payload size. Use the preceding ContentDelta events for the actual output.",
-            "$ref": "GenaiVertexV1beta1Interaction",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          }
-        },
-        "items": null,
-        "additionalProperties": null,
-        "enum": null,
-        "readOnly": false
-      },
       "GenaiVertexV1beta1InteractionCompletedSseEvent": {
         "type": "object",
         "format": "",
-        "description": "",
+        "description": "Signals that the Interaction completed. Sent when the Interaction receives Complete/Cancel or naturally terminates. No more input can be sent to the Interaction after this.",
         "$ref": "",
         "properties": {
           "interaction": {
             "type": "",
             "format": "",
-            "description": "Required. The completed interaction with empty outputs to reduce the payload size. Use the preceding ContentDelta events for the actual output.",
+            "description": "Required. Partial completed interaction resource emitted at the end of the stream.",
             "$ref": "GenaiVertexV1beta1Interaction",
             "properties": null,
             "items": null,
@@ -6288,36 +5683,13 @@
       "GenaiVertexV1beta1InteractionCreatedSseEvent": {
         "type": "object",
         "format": "",
-        "description": "",
+        "description": "Server response confirming that a new interaction was created.",
         "$ref": "",
         "properties": {
           "interaction": {
             "type": "",
             "format": "",
-            "description": "",
-            "$ref": "GenaiVertexV1beta1Interaction",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          }
-        },
-        "items": null,
-        "additionalProperties": null,
-        "enum": null,
-        "readOnly": false
-      },
-      "GenaiVertexV1beta1InteractionStartEvent": {
-        "type": "object",
-        "format": "",
-        "description": "",
-        "$ref": "",
-        "properties": {
-          "interaction": {
-            "type": "",
-            "format": "",
-            "description": "",
+            "description": "Required. Partial interaction resource emitted when the stream is created.",
             "$ref": "GenaiVertexV1beta1Interaction",
             "properties": null,
             "items": null,
@@ -6381,39 +5753,6 @@
         "description": "",
         "$ref": "",
         "properties": {
-          "contentDelta": {
-            "type": "",
-            "format": "",
-            "description": "The content block delta data, used for content.delta events. Legacy content-based streaming event, used when steps are disabled.",
-            "$ref": "GenaiVertexV1beta1ContentDelta",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "contentStart": {
-            "type": "",
-            "format": "",
-            "description": "The content block start data, used for content.start events. Legacy content-based streaming event, used when steps are disabled.",
-            "$ref": "GenaiVertexV1beta1ContentStart",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "contentStop": {
-            "type": "",
-            "format": "",
-            "description": "The content block stop data, used for content.stop events. Legacy content-based streaming event, used when steps are disabled.",
-            "$ref": "GenaiVertexV1beta1ContentStop",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
           "errorEvent": {
             "type": "",
             "format": "",
@@ -6436,17 +5775,6 @@
             "enum": null,
             "readOnly": false
           },
-          "interactionCompleteEvent": {
-            "type": "",
-            "format": "",
-            "description": "The interaction data, used for interaction.complete events. Legacy event, used when steps are disabled.",
-            "$ref": "GenaiVertexV1beta1InteractionCompleteEvent",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
           "interactionCompletedEvent": {
             "type": "",
             "format": "",
@@ -6463,17 +5791,6 @@
             "format": "",
             "description": "The interaction data, used for interaction.created events. Used when steps are enabled.",
             "$ref": "GenaiVertexV1beta1InteractionCreatedSseEvent",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "interactionStartEvent": {
-            "type": "",
-            "format": "",
-            "description": "The interaction data, used for interaction.start events. Legacy event, used when steps are disabled.",
-            "$ref": "GenaiVertexV1beta1InteractionStartEvent",
             "properties": null,
             "items": null,
             "additionalProperties": null,
@@ -6913,51 +6230,6 @@
         "enum": null,
         "readOnly": false
       },
-      "GenaiVertexV1beta1McpServerToolCallContent": {
-        "type": "object",
-        "format": "",
-        "description": "MCPServer tool call content.",
-        "$ref": "",
-        "properties": {
-          "arguments": {
-            "type": "",
-            "format": "",
-            "description": "Required. The JSON object of arguments for the function.",
-            "$ref": "GenaiVertexV1beta1Struct",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "name": {
-            "type": "string",
-            "format": "",
-            "description": "Required. The name of the tool which was called.",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "serverName": {
-            "type": "string",
-            "format": "",
-            "description": "Required. The name of the used MCP server.",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          }
-        },
-        "items": null,
-        "additionalProperties": null,
-        "enum": null,
-        "readOnly": false
-      },
       "GenaiVertexV1beta1McpServerToolCallDelta": {
         "type": "object",
         "format": "",
@@ -7036,73 +6308,6 @@
             "format": "",
             "description": "Required. The name of the used MCP server.",
             "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          }
-        },
-        "items": null,
-        "additionalProperties": null,
-        "enum": null,
-        "readOnly": false
-      },
-      "GenaiVertexV1beta1McpServerToolResultContent": {
-        "type": "object",
-        "format": "",
-        "description": "MCPServer tool result content.",
-        "$ref": "",
-        "properties": {
-          "contentList": {
-            "type": "",
-            "format": "",
-            "description": "",
-            "$ref": "GenaiVertexV1beta1FunctionResultSubcontentList",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "name": {
-            "type": "string",
-            "format": "",
-            "description": "Name of the tool which is called for this specific tool call.",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "serverName": {
-            "type": "string",
-            "format": "",
-            "description": "The name of the used MCP server.",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "stringResult": {
-            "type": "string",
-            "format": "",
-            "description": "",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "structResult": {
-            "type": "",
-            "format": "",
-            "description": "",
-            "$ref": "GenaiVertexV1beta1Struct",
             "properties": null,
             "items": null,
             "additionalProperties": null,
@@ -8427,6 +7632,40 @@
         "enum": null,
         "readOnly": false
       },
+      "GenaiVertexV1beta1SpeechAnnotation": {
+        "type": "object",
+        "format": "",
+        "description": "Speech annotation for text content.",
+        "$ref": "",
+        "properties": {
+          "speaker": {
+            "type": "string",
+            "format": "",
+            "description": "The speaker to associate with this turn.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "style": {
+            "type": "string",
+            "format": "",
+            "description": "Style instruction for the speech synthesis.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
       "GenaiVertexV1beta1SpeechConfig": {
         "type": "object",
         "format": "",
@@ -8978,6 +8217,17 @@
             "enum": null,
             "readOnly": false
           },
+          "speechMetadata": {
+            "type": "",
+            "format": "",
+            "description": "Speech annotation for text content.",
+            "$ref": "GenaiVertexV1beta1SpeechAnnotation",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
           "startIndex": {
             "type": "integer",
             "format": "int32",
@@ -9078,50 +8328,6 @@
         "enum": null,
         "readOnly": false
       },
-      "GenaiVertexV1beta1ThoughtContent": {
-        "type": "object",
-        "format": "",
-        "description": "A thought content block.",
-        "$ref": "",
-        "properties": {
-          "signature": {
-            "type": "string",
-            "format": "byte",
-            "description": "Signature to match the backend source to be part of the generation.",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "summary": {
-            "type": "array",
-            "format": "",
-            "description": "A summary of the thought.",
-            "$ref": "",
-            "properties": null,
-            "items": {
-              "type": "",
-              "format": "",
-              "description": "",
-              "$ref": "GenaiVertexV1beta1ThoughtSummaryContent",
-              "properties": null,
-              "items": null,
-              "additionalProperties": null,
-              "enum": null,
-              "readOnly": false
-            },
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          }
-        },
-        "items": null,
-        "additionalProperties": null,
-        "enum": null,
-        "readOnly": false
-      },
       "GenaiVertexV1beta1ThoughtSignatureDelta": {
         "type": "object",
         "format": "",
@@ -9179,40 +8385,6 @@
               "enum": null,
               "readOnly": false
             },
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          }
-        },
-        "items": null,
-        "additionalProperties": null,
-        "enum": null,
-        "readOnly": false
-      },
-      "GenaiVertexV1beta1ThoughtSummaryContent": {
-        "type": "object",
-        "format": "",
-        "description": "",
-        "$ref": "",
-        "properties": {
-          "image": {
-            "type": "",
-            "format": "",
-            "description": "",
-            "$ref": "GenaiVertexV1beta1ImageContent",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "text": {
-            "type": "",
-            "format": "",
-            "description": "",
-            "$ref": "GenaiVertexV1beta1TextContent",
-            "properties": null,
-            "items": null,
             "additionalProperties": null,
             "enum": null,
             "readOnly": false
@@ -9345,228 +8517,6 @@
             "format": "",
             "description": "A tool that can be used by the model to fetch URL context.",
             "$ref": "GenaiVertexV1beta1UrlContext",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          }
-        },
-        "items": null,
-        "additionalProperties": null,
-        "enum": null,
-        "readOnly": false
-      },
-      "GenaiVertexV1beta1ToolCallContent": {
-        "type": "object",
-        "format": "",
-        "description": "Tool call content.",
-        "$ref": "",
-        "properties": {
-          "codeExecutionCall": {
-            "type": "",
-            "format": "",
-            "description": "",
-            "$ref": "GenaiVertexV1beta1CodeExecutionCallContent",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "fileSearchCall": {
-            "type": "",
-            "format": "",
-            "description": "",
-            "$ref": "GenaiVertexV1beta1FileSearchCallContent",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "functionCall": {
-            "type": "",
-            "format": "",
-            "description": "",
-            "$ref": "GenaiVertexV1beta1FunctionCallContent",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "googleMapsCall": {
-            "type": "",
-            "format": "",
-            "description": "",
-            "$ref": "GenaiVertexV1beta1GoogleMapsCallContent",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "googleSearchCall": {
-            "type": "",
-            "format": "",
-            "description": "",
-            "$ref": "GenaiVertexV1beta1GoogleSearchCallContent",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "id": {
-            "type": "string",
-            "format": "",
-            "description": "Required. A unique ID for this specific tool call.",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "mcpServerToolCall": {
-            "type": "",
-            "format": "",
-            "description": "",
-            "$ref": "GenaiVertexV1beta1McpServerToolCallContent",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "signature": {
-            "type": "string",
-            "format": "byte",
-            "description": "A signature hash for backend validation.",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "urlContextCall": {
-            "type": "",
-            "format": "",
-            "description": "",
-            "$ref": "GenaiVertexV1beta1UrlContextCallContent",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          }
-        },
-        "items": null,
-        "additionalProperties": null,
-        "enum": null,
-        "readOnly": false
-      },
-      "GenaiVertexV1beta1ToolCallDelta": {
-        "type": "object",
-        "format": "",
-        "description": "",
-        "$ref": "",
-        "properties": {
-          "codeExecutionCall": {
-            "type": "",
-            "format": "",
-            "description": "",
-            "$ref": "GenaiVertexV1beta1CodeExecutionCallDelta",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "fileSearchCall": {
-            "type": "",
-            "format": "",
-            "description": "",
-            "$ref": "GenaiVertexV1beta1FileSearchCallDelta",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "functionCall": {
-            "type": "",
-            "format": "",
-            "description": "",
-            "$ref": "GenaiVertexV1beta1FunctionCallDelta",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "googleMapsCall": {
-            "type": "",
-            "format": "",
-            "description": "",
-            "$ref": "GenaiVertexV1beta1GoogleMapsCallDelta",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "googleSearchCall": {
-            "type": "",
-            "format": "",
-            "description": "",
-            "$ref": "GenaiVertexV1beta1GoogleSearchCallDelta",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "id": {
-            "type": "string",
-            "format": "",
-            "description": "Required. A unique ID for this specific tool call.",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "mcpServerToolCall": {
-            "type": "",
-            "format": "",
-            "description": "",
-            "$ref": "GenaiVertexV1beta1McpServerToolCallDelta",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "signature": {
-            "type": "string",
-            "format": "byte",
-            "description": "A signature hash for backend validation.",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "urlContextCall": {
-            "type": "",
-            "format": "",
-            "description": "",
-            "$ref": "GenaiVertexV1beta1UrlContextCallDelta",
             "properties": null,
             "items": null,
             "additionalProperties": null,
@@ -9723,228 +8673,6 @@
             "format": "",
             "description": "The allowed tools.",
             "$ref": "GenaiVertexV1beta1AllowedTools",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          }
-        },
-        "items": null,
-        "additionalProperties": null,
-        "enum": null,
-        "readOnly": false
-      },
-      "GenaiVertexV1beta1ToolResultContent": {
-        "type": "object",
-        "format": "",
-        "description": "Tool result content.",
-        "$ref": "",
-        "properties": {
-          "callId": {
-            "type": "string",
-            "format": "",
-            "description": "Required. ID to match the ID from the function call block.",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "codeExecutionResult": {
-            "type": "",
-            "format": "",
-            "description": "",
-            "$ref": "GenaiVertexV1beta1CodeExecutionResultContent",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "fileSearchResult": {
-            "type": "",
-            "format": "",
-            "description": "",
-            "$ref": "GenaiVertexV1beta1FileSearchResultContent",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "functionResult": {
-            "type": "",
-            "format": "",
-            "description": "",
-            "$ref": "GenaiVertexV1beta1FunctionResultContent",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "googleMapsResult": {
-            "type": "",
-            "format": "",
-            "description": "",
-            "$ref": "GenaiVertexV1beta1GoogleMapsResultContent",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "googleSearchResult": {
-            "type": "",
-            "format": "",
-            "description": "",
-            "$ref": "GenaiVertexV1beta1GoogleSearchResultContent",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "mcpServerToolResult": {
-            "type": "",
-            "format": "",
-            "description": "",
-            "$ref": "GenaiVertexV1beta1McpServerToolResultContent",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "signature": {
-            "type": "string",
-            "format": "byte",
-            "description": "A signature hash for backend validation.",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "urlContextResult": {
-            "type": "",
-            "format": "",
-            "description": "",
-            "$ref": "GenaiVertexV1beta1UrlContextResultContent",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          }
-        },
-        "items": null,
-        "additionalProperties": null,
-        "enum": null,
-        "readOnly": false
-      },
-      "GenaiVertexV1beta1ToolResultDelta": {
-        "type": "object",
-        "format": "",
-        "description": "",
-        "$ref": "",
-        "properties": {
-          "callId": {
-            "type": "string",
-            "format": "",
-            "description": "Required. ID to match the ID from the function call block.",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "codeExecutionResult": {
-            "type": "",
-            "format": "",
-            "description": "",
-            "$ref": "GenaiVertexV1beta1CodeExecutionResultDelta",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "fileSearchResult": {
-            "type": "",
-            "format": "",
-            "description": "",
-            "$ref": "GenaiVertexV1beta1FileSearchResultDelta",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "functionResult": {
-            "type": "",
-            "format": "",
-            "description": "",
-            "$ref": "GenaiVertexV1beta1FunctionResultDelta",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "googleMapsResult": {
-            "type": "",
-            "format": "",
-            "description": "",
-            "$ref": "GenaiVertexV1beta1GoogleMapsResultDelta",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "googleSearchResult": {
-            "type": "",
-            "format": "",
-            "description": "",
-            "$ref": "GenaiVertexV1beta1GoogleSearchResultDelta",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "mcpServerToolResult": {
-            "type": "",
-            "format": "",
-            "description": "",
-            "$ref": "GenaiVertexV1beta1McpServerToolResultDelta",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "signature": {
-            "type": "string",
-            "format": "byte",
-            "description": "A signature hash for backend validation.",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "urlContextResult": {
-            "type": "",
-            "format": "",
-            "description": "",
-            "$ref": "GenaiVertexV1beta1UrlContextResultDelta",
             "properties": null,
             "items": null,
             "additionalProperties": null,
@@ -10242,29 +8970,6 @@
         "enum": null,
         "readOnly": false
       },
-      "GenaiVertexV1beta1UrlContextCallContent": {
-        "type": "object",
-        "format": "",
-        "description": "URL context content.",
-        "$ref": "",
-        "properties": {
-          "arguments": {
-            "type": "",
-            "format": "",
-            "description": "Required. The arguments to pass to the URL context.",
-            "$ref": "GenaiVertexV1beta1UrlContextCallContentUrlContextCallArguments",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          }
-        },
-        "items": null,
-        "additionalProperties": null,
-        "enum": null,
-        "readOnly": false
-      },
       "GenaiVertexV1beta1UrlContextCallContentUrlContextCallArguments": {
         "type": "object",
         "format": "",
@@ -10361,50 +9066,6 @@
               "format": "",
               "description": "",
               "$ref": "",
-              "properties": null,
-              "items": null,
-              "additionalProperties": null,
-              "enum": null,
-              "readOnly": false
-            },
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          }
-        },
-        "items": null,
-        "additionalProperties": null,
-        "enum": null,
-        "readOnly": false
-      },
-      "GenaiVertexV1beta1UrlContextResultContent": {
-        "type": "object",
-        "format": "",
-        "description": "URL context result content.",
-        "$ref": "",
-        "properties": {
-          "isError": {
-            "type": "boolean",
-            "format": "",
-            "description": "Whether the URL context resulted in an error.",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "result": {
-            "type": "array",
-            "format": "",
-            "description": "Required. The results of the URL context.",
-            "$ref": "",
-            "properties": null,
-            "items": {
-              "type": "",
-              "format": "",
-              "description": "",
-              "$ref": "GenaiVertexV1beta1UrlContextResultContentUrlContextResult",
               "properties": null,
               "items": null,
               "additionalProperties": null,
@@ -11110,6 +9771,283 @@
         "enum": null,
         "readOnly": false
       },
+      "GenaiVertexV1beta1Voice": {
+        "type": "object",
+        "format": "",
+        "description": "A voice resource representing either a custom voice (created via `CreateVoice`) or a prebuilt system voice (returned by `ListVoices`).",
+        "$ref": "",
+        "properties": {
+          "accent": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Regional accent descriptor (e.g. \"American\", \"British\").",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "context": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Optimal usage context or domain (e.g. \"Conversational\", \"Audiobook\", \"News\").",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "description": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Descriptive summary of vocal timbre, personality, and tone.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "displayName": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. User-provided display name for a stored voice (`store = true`), or the catalog name for a prebuilt voice.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "expireTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. The timestamp at which a custom stored voice (`store = true`) or replicated voice key (`store = false`) expires. Unset for prebuilt catalog voices (`\"prebuilt\"`), which do not expire.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "gender": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Perceived voice gender presentation (e.g. \"female\", \"male\", \"neutral\").",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "id": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The unique identifier of the voice. * For Google-managed custom voices (`store = true`), this is a generated ID with prefix `voice_` (for example, `voice_abc123def456`). Pass `voices/{id}` as the `name` in `GetVoice` and `DeleteVoice`, and pass `{id}` directly to `SpeechConfig.voice_config.voice` (or `SpeechConfig.voice`) during speech synthesis. * For prebuilt catalog voices (`\"prebuilt\"` returned by `ListVoices`), this is the speaker name (for example, `Puck` or `Charon`). * Unset when `CreateVoice` is called with `store = false`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "key": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The client-managed voice replication key (with prefix `voicekey_`). Returned only by `CreateVoice` when `type` is `\"replicated\"` and `store` is `false`. Pass this key to `SpeechConfig.voice_config.voice` (or `SpeechConfig.voice`) during speech synthesis.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "languageCode": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Primary BCP-47 language tag (e.g. \"en-US\", \"fr-FR\").",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "model": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The model used to design or replicate the voice. If omitted in `CreateVoice`, defaults to the latest supported voice design model. Returned in `CreateVoice`, `GetVoice`, and `ListVoices` responses for custom voices (`\"prompted\"` and `\"replicated\"`); unset for `\"prebuilt\"` voices. Created voices can be synthesized across any supported TTS synthesis model.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "persona": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Intended persona or character archetype (e.g. \"Warm, Friendly\", \"Narrator\").",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "pitch": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Voice pitch classification.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "PITCH_UNSPECIFIED",
+              "PITCH_LOW",
+              "PITCH_MEDIUM",
+              "PITCH_HIGH"
+            ],
+            "readOnly": false
+          },
+          "prompted": {
+            "type": "",
+            "format": "",
+            "description": "Parameters for prompted voice generation. Required in `CreateVoice` when `type` is `\"prompted\"`. Returned in `CreateVoice`, `GetVoice`, and `ListVoices` responses for prompted voices.",
+            "$ref": "GenaiVertexV1beta1VoicePromptedVoice",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "regionCode": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. ISO 3166-1 alpha-2 or UN M.49 geographic region code (e.g. \"US\", \"GB\", \"001\").",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "replicated": {
+            "type": "",
+            "format": "",
+            "description": "Input only. Parameters for replicated voice generation. Required on input when `type` is `\"replicated\"`. Not returned in responses.",
+            "$ref": "GenaiVertexV1beta1VoiceReplicatedVoice",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "sampleAudio": {
+            "type": "",
+            "format": "",
+            "description": "Output only. Sample audio (synthesizer prompt audio) generated for a prompted voice. Populated only in `CreateVoice` and `GetVoice` responses when `type` is `\"prompted\"`; unset in `ListVoices` responses and for `\"replicated\"` or `\"prebuilt\"` voices.",
+            "$ref": "GenaiVertexV1beta1AudioData",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "type": {
+            "type": "string",
+            "format": "",
+            "description": "Required. The type of the voice. In `CreateVoice`, must be `\"replicated\"` or `\"prompted\"`. In `ListVoices` responses, may also be `\"prebuilt\"`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "VOICE_TYPE_UNSPECIFIED",
+              "VOICE_TYPE_REPLICATED",
+              "VOICE_TYPE_PROMPTED",
+              "VOICE_TYPE_PREBUILT"
+            ],
+            "readOnly": false
+          },
+          "usage": {
+            "type": "",
+            "format": "",
+            "description": "Output only. Token usage statistics for the voice creation request. Populated only in the response of `CreateVoice` when `type` is `\"prompted\"`; unset for `\"replicated\"` and in `GetVoice` and `ListVoices` responses.",
+            "$ref": "GenaiVertexV1beta1InteractionUsage",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GenaiVertexV1beta1VoicePromptedVoice": {
+        "type": "object",
+        "format": "",
+        "description": "Parameters for prompted voice generation. Required in `CreateVoice` when `type` is `\"prompted\"`. Returned in `CreateVoice`, `GetVoice`, and `ListVoices` responses for prompted voices.",
+        "$ref": "",
+        "properties": {
+          "input": {
+            "type": "string",
+            "format": "",
+            "description": "Required. The natural-language prompt describing the desired voice, e.g. \"A deep, booming male voice of a massive evil ogre in his middle years.\"",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GenaiVertexV1beta1VoiceReplicatedVoice": {
+        "type": "object",
+        "format": "",
+        "description": "Input only. Parameters for replicated voice generation. Required on input when `type` is `\"replicated\"`. Not returned in responses.",
+        "$ref": "",
+        "properties": {
+          "consentAudio": {
+            "type": "",
+            "format": "",
+            "description": "Required. Audio recording of the same speaker reading the required consent phrase, confirming authorization to replicate the voice.",
+            "$ref": "GenaiVertexV1beta1AudioData",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "sourceAudio": {
+            "type": "",
+            "format": "",
+            "description": "Required. The reference audio sample of the speaker's voice to replicate. Must be an unmodified recording of an adult human voice.",
+            "$ref": "GenaiVertexV1beta1AudioData",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
       "GenaiVertexV1beta1WordInfo": {
         "type": "object",
         "format": "",
@@ -11511,18 +10449,18 @@
           "status": {
             "type": "",
             "format": "",
-            "description": "Output only. The status of the task, including the state, status message, and timestamp.",
+            "description": "Optional. The status of the task, including the state, status message, and timestamp.",
             "$ref": "GoogleCloudAiplatformV1beta1A2ATaskRecordStatus",
             "properties": null,
             "items": null,
             "additionalProperties": null,
             "enum": null,
-            "readOnly": true
+            "readOnly": false
           },
           "ttl": {
             "type": "string",
             "format": "google-duration",
-            "description": "Optional. Input only. The TTL (Time To Live) for the task. If not set, the task will expire in 24 hours by default. Valid range: (0 seconds, 1000 days]",
+            "description": "Optional. Input only. The TTL (Time To Live) for the task. If not set, the task will expire in 24 hours by default. Valid range: [1 second, 1000 days], at second precision. The `nanos` component MUST be zero; sub-second TTLs are not supported because the task's expiration is persisted at second granularity.",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -12031,18 +10969,18 @@
           "message": {
             "type": "",
             "format": "",
-            "description": "Output only. The status message associated with the state.",
+            "description": "Optional. The status message associated with the state.",
             "$ref": "GoogleCloudAiplatformV1beta1A2ATaskRecordMessage",
             "properties": null,
             "items": null,
             "additionalProperties": null,
             "enum": null,
-            "readOnly": true
+            "readOnly": false
           },
           "state": {
             "type": "string",
             "format": "",
-            "description": "Output only. The current state of the task.",
+            "description": "Optional. The current state of the task.",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -12058,7 +10996,7 @@
               "TASK_STATE_REJECTED",
               "TASK_STATE_AUTH_REQUIRED"
             ],
-            "readOnly": true
+            "readOnly": false
           },
           "timestamp": {
             "type": "string",
@@ -13448,6 +12386,17 @@
             "enum": null,
             "readOnly": true
           },
+          "observabilityConfig": {
+            "type": "",
+            "format": "",
+            "description": "Optional. Observability settings for this agent's sessions.",
+            "$ref": "GoogleCloudAiplatformV1beta1ObservabilityConfig",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
           "system_instruction": {
             "type": "string",
             "format": "",
@@ -13922,7 +12871,7 @@
       "GoogleCloudAiplatformV1beta1AgentTool": {
         "type": "object",
         "format": "",
-        "description": "A tool provides a list of actions available to the Agent during the process of executing a task.",
+        "description": "A tool provides a list of actions available to the Agent during the process of executing a task. Example JSON for an MCP server tool: { \"type\": \"mcp_server\", \"name\": \"my-mcp-server\", \"url\": \"https://api.example.com/mcp\", \"headers\": { \"Authorization\": \"Bearer token123\" } }",
         "$ref": "",
         "properties": {
           "headers": {
@@ -13949,7 +12898,7 @@
           "name": {
             "type": "string",
             "format": "",
-            "description": "Optional. The tool's GCP resource name, used to resolve the tool. Applicable when `type` is `mcp_server` or `endpoint` (a tool registered in Agent Registry), for example `projects/{project}/locations/{location}/.../mcpServers/{id}` or `projects/{project}/locations/{location}/.../endpoints/{id}`.",
+            "description": "Optional. The tool's Google Cloud resource name, used to resolve the tool. Applicable when `type` is `mcp_server` or `endpoint` (a tool registered in Agent Registry), for example `projects/{project}/locations/{location}/.../mcpServers/{id}` or `projects/{project}/locations/{location}/.../endpoints/{id}`.",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -13971,7 +12920,7 @@
           "url": {
             "type": "string",
             "format": "",
-            "description": "Optional. Temporary: the tool's runtime reference, consumed by CreateAgent to create the downstream AI App. Applicable when `type` is `mcp_server` or `endpoint`. It is duplicated here (the resource name is already in `name`) only because the Agent service is not yet connected to Agent Registry to derive it from `name`; the Task Service instead resolves it from Agent Registry (GetMcpServer / GetEndpoint) at task creation.",
+            "description": "Optional. Fallback for the tool's runtime reference, consumed by `CreateAgent` to create the downstream AI App. Applicable when `type` is `mcp_server` or `endpoint`, and optional: the Agent service derives the runtime reference from `name` via Agent Registry (`GetMcpServer` / `GetEndpoint`), and reads this only when that lookup yields none.",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -16138,6 +15087,21 @@
             "items": null,
             "additionalProperties": null,
             "enum": null,
+            "readOnly": false
+          },
+          "mode": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Configures transcription mode. Supported values: `VERBATIM`, `SMART`. If unspecified, defaults to `VERBATIM` transcription. In `SMART` mode, the model performs disfluency removal (eliminating filler words, repetitions, and false starts), light grammatical cleanup, automatic formatting (paragraphs, bullet points, numbered lists), and minor user edits (inline self-corrections). Timestamps and diarization are incompatible with mode `SMART`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "MODE_UNSPECIFIED",
+              "VERBATIM",
+              "SMART"
+            ],
             "readOnly": false
           },
           "wordTimestamp": {
@@ -19109,6 +18073,44 @@
             "additionalProperties": null,
             "enum": null,
             "readOnly": false
+          },
+          "retentionConfig": {
+            "type": "",
+            "format": "",
+            "description": "Optional. Project-level retention type for implicit caching. On `GetCacheConfig` this is populated with the retention the project gets: a project that has stated no preference reports `DURABLE`. On `UpdateCacheConfig`, leaving it unset means the project states no preference. Whether that clears an existing preference depends on `update_mask`; see that field.",
+            "$ref": "GoogleCloudAiplatformV1beta1CacheConfigRetentionConfig",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudAiplatformV1beta1CacheConfigRetentionConfig": {
+        "type": "object",
+        "format": "",
+        "description": "Configures the retention behavior of GenAI implicit (automatic) context caching for this project.",
+        "$ref": "",
+        "properties": {
+          "retentionType": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Retention type applied to implicit cache traffic for this project.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "RETENTION_TYPE_UNSPECIFIED",
+              "EPHEMERAL",
+              "DURABLE"
+            ],
+            "readOnly": false
           }
         },
         "items": null,
@@ -20220,6 +19222,17 @@
             "readOnly": false
           }
         },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudAiplatformV1beta1ClearTrainingDataRequest": {
+        "type": "object",
+        "format": "",
+        "description": "Request message for AgentAnomalyDetectionService.ClearTrainingData.",
+        "$ref": "",
+        "properties": {},
         "items": null,
         "additionalProperties": null,
         "enum": null,
@@ -23184,7 +22197,7 @@
           "codeExecutionRegion": {
             "type": "string",
             "format": "",
-            "description": "Optional. The region to use for code execution. If set, the Code Execution Sandbox will be invoked in the specified region regardless of the request's originating region. Must be a region where the Code Execution Sandbox is available. Supported regions: northamerica-northeast1, southamerica-east1, us-central1, us-east1, us-east4, us-west1, us-west4, europe-central2, europe-north1, europe-southwest1, europe-west1, europe-west2, europe-west3, europe-west4, europe-west6, europe-west8, europe-west9, me-west1, asia-east1, asia-east2, asia-northeast1, asia-northeast3, asia-south1, asia-south2, asia-southeast1, australia-southeast2. If unset, the request's originating region is used; requests from regions where the sandbox is unavailable will fail with UNIMPLEMENTED.",
+            "description": "Optional. The region to use for code execution. If set, the Code Execution Sandbox will be invoked in the specified region regardless of the request's originating region. Must be a region where the Code Execution Sandbox is available. For the current list of [supported regions](https://cloud.google.com/vertex-ai/generative-ai/docs/agent-engine/locations). If unset, the request's originating region is used; requests from regions where the sandbox is unavailable will fail with UNIMPLEMENTED.",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -26950,6 +25963,29 @@
         "enum": null,
         "readOnly": false
       },
+      "GoogleCloudAiplatformV1beta1DiscoveryEngineAssistantConfig": {
+        "type": "object",
+        "format": "",
+        "description": "Config for scraping a Discovery Engine Assistant.",
+        "$ref": "",
+        "properties": {
+          "assistant": {
+            "type": "string",
+            "format": "",
+            "description": "Required. The resource name of the Discovery Engine Assistant. Format: `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/assistants/{assistant}`. For example: `projects/123/locations/global/collections/default_collection/engines/my-engine/assistants/default_assistant`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
       "GoogleCloudAiplatformV1beta1DiskSpec": {
         "type": "object",
         "format": "",
@@ -29638,6 +28674,125 @@
         "enum": null,
         "readOnly": false
       },
+      "GoogleCloudAiplatformV1beta1EvaluationExperiment": {
+        "type": "object",
+        "format": "",
+        "description": "EvaluationExperiment is a resource that represents an experiment for iterating on and visualizing evaluation runs.",
+        "$ref": "",
+        "properties": {
+          "createTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. Timestamp when this experiment was created.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "displayName": {
+            "type": "string",
+            "format": "",
+            "description": "Required. The display name of the evaluation experiment.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "evaluationRuns": {
+            "type": "array",
+            "format": "",
+            "description": "Required. The EvaluationRuns that are part of this experiment.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "labels": {
+            "type": "object",
+            "format": "",
+            "description": "Optional. Labels for the evaluation experiment.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "metadata": {
+            "type": "object",
+            "format": "",
+            "description": "Optional. Metadata about the evaluation experiment, can be used by the caller to store additional tracking information about the experiment.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "any",
+              "format": "",
+              "description": "Properties of the object.",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "Identifier. The resource name of the EvaluationExperiment. This is a unique identifier. Format: `projects/{project}/locations/{location}/evaluationExperiments/{evaluation_experiment}`",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "updateTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. Timestamp when this experiment was last updated.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
       "GoogleCloudAiplatformV1beta1EvaluationInstance": {
         "type": "object",
         "format": "",
@@ -30620,7 +29775,7 @@
           "codeExecutionRegion": {
             "type": "string",
             "format": "",
-            "description": "Optional. The region to use for code execution. If set, the Code Execution Sandbox will be invoked in the specified region regardless of the request's originating region. Must be a region where the Code Execution Sandbox is available. Supported regions: northamerica-northeast1, southamerica-east1, us-central1, us-east1, us-east4, us-west1, us-west4, europe-central2, europe-north1, europe-southwest1, europe-west1, europe-west2, europe-west3, europe-west4, europe-west6, europe-west8, europe-west9, me-west1, asia-east1, asia-east2, asia-northeast1, asia-northeast3, asia-south1, asia-south2, asia-southeast1, australia-southeast2. If unset, the request's originating region is used.",
+            "description": "Optional. The region to use for code execution. If set, the Code Execution Sandbox will be invoked in the specified region regardless of the request's originating region. Must be a region where the Code Execution Sandbox is available. For the current list of [supported regions](https://cloud.google.com/vertex-ai/generative-ai/docs/agent-engine/locations). If unset, the request's originating region is used.",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -31120,6 +30275,17 @@
             "format": "",
             "description": "Optional. The configuration used for the evaluation. Optional when analysis_configs is provided.",
             "$ref": "GoogleCloudAiplatformV1beta1EvaluationRunEvaluationConfig",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "evaluationExperiment": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The resource name of the evaluation experiment for the evaluation run. Setting the evaluation experiment will add the run to the experiment. Multiple runs can be added to the same experiment. Format: `projects/{project}/locations/{location}/evaluationExperiments/{evaluation_experiment}`",
+            "$ref": "",
             "properties": null,
             "items": null,
             "additionalProperties": null,
@@ -31636,6 +30802,17 @@
             "format": "",
             "description": "Optional. The resource name of the Agent Engine. Format: projects/{project}/locations/{location}/reasoningEngines/{reasoning_engine} For example: projects/123/locations/us-central1/reasoningEngines/456",
             "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "discoveryEngineAssistantConfig": {
+            "type": "",
+            "format": "",
+            "description": "Optional. Config for scraping a Discovery Engine Assistant. The scraping service runs the assistant via the Discovery Engine AssistantService and returns the resulting trajectory for evaluation.",
+            "$ref": "GoogleCloudAiplatformV1beta1DiscoveryEngineAssistantConfig",
             "properties": null,
             "items": null,
             "additionalProperties": null,
@@ -42847,6 +42024,17 @@
             "enum": null,
             "readOnly": false
           },
+          "timeZone": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The time zone of the conversation or caller, used as the baseline for resolving relative time expressions (e.g., \"yesterday\") and formatting timestamps. If not set, \"UTC\" is used. Must be a valid IANA Time Zone Database name, e.g. \"America/New_York\".",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
           "vertexSessionSource": {
             "type": "",
             "format": "",
@@ -45795,6 +44983,17 @@
         "description": "Source for loading traces directly from Cloud Trace.",
         "$ref": "",
         "properties": {
+          "agentResource": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Restricts the imported spans to a single agent. Accepts either of two forms, matching `OnlineEvaluator.agent_resource`: * a project-scoped resource name, matched against the `cloud.resource_id` resource attribute that Vertex AI Agent Engine agents are stamped with; * an Agent Registry agent URN, matched against the `gen_ai.main_agent.id` resource attribute that agents on GKE, and any other runtime that stamps it, are identified by. Scopes `session_ids` selection only. Traces named explicitly in `trace_ids` are imported as given and are NOT filtered by this field, because the caller has already identified them. Setting this field with only `trace_ids` therefore has no effect. When unset, spans are selected by session or trace ID alone. That is the pre-existing behavior and it remains the correct one for a session whose agents run in several deployments, because each deployment stamps its own `gen_ai.main_agent.id` and filtering on one of them would silently truncate the trajectory.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
           "projectId": {
             "type": "string",
             "format": "",
@@ -49802,6 +49001,50 @@
             "type": "string",
             "format": "",
             "description": "A token, which can be sent as ListEntityTypesRequest.page_token to retrieve the next page. If this field is omitted, there are no subsequent pages.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudAiplatformV1beta1ListEvaluationExperimentsResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Response message for EvaluationManagementService.ListEvaluationExperiments.",
+        "$ref": "",
+        "properties": {
+          "evaluationExperiments": {
+            "type": "array",
+            "format": "",
+            "description": "List of EvaluationExperiments in the requested page.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "GoogleCloudAiplatformV1beta1EvaluationExperiment",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "A token to retrieve the next page of results.",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -63551,6 +62794,40 @@
         "enum": null,
         "readOnly": false
       },
+      "GoogleCloudAiplatformV1beta1ObservabilityConfig": {
+        "type": "object",
+        "format": "",
+        "description": "Observability settings for one agent's sessions.",
+        "$ref": "",
+        "properties": {
+          "observabilityEnabled": {
+            "type": "boolean",
+            "format": "",
+            "description": "Optional. Enables observability for this agent's sessions: OpenTelemetry span emission covering tool names, model names, token counts, latencies and status. If `false`, the other fields here are ignored.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "sensitiveLoggingEnabled": {
+            "type": "boolean",
+            "format": "",
+            "description": "Optional. Enables sensitive logging. Sensitive logging includes customer core content (prompts, model completions, tool argument payloads and tool responses). If `false`, those are sanitized and only structural attributes are recorded. No effect unless `observability_enabled` is true. Settable and returned, but NOT YET ENFORCED. Nothing reads it at runtime, so `true` does not currently cause content to be captured, and `false` is not what keeps content from being captured. Treat it as a recorded intention that takes effect when enforcement lands.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
       "GoogleCloudAiplatformV1beta1OnlineEvaluator": {
         "type": "object",
         "format": "",
@@ -65034,6 +64311,17 @@
             "format": "",
             "description": "per part media resolution. Media resolution for the input media.",
             "$ref": "GoogleCloudAiplatformV1beta1PartMediaResolution",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "speechMetadata": {
+            "type": "",
+            "format": "",
+            "description": "Optional. Turn-level metadata for speech generation (e.g. Daikon speaker/style). May be set alongside `text` to attach speaker and style information to a text part.",
+            "$ref": "GoogleCloudAiplatformV1beta1SpeechMetadata",
             "properties": null,
             "items": null,
             "additionalProperties": null,
@@ -68378,6 +67666,21 @@
         "description": "Spec for Veo data processing.",
         "$ref": "",
         "properties": {
+          "outpaintingMode": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The mode of Veo Outpainting data processing to perform. Required (`DATA_PREPARATION` or `OUTPAINTING`) when `process_type` is `VEO_OUTPAINTING` (`OUTPAINTING_MODE_UNSPECIFIED` is rejected with `INVALID_ARGUMENT`). Must not be set when `process_type` is not `VEO_OUTPAINTING` (rejected with `INVALID_ARGUMENT`).",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "OUTPAINTING_MODE_UNSPECIFIED",
+              "DATA_PREPARATION",
+              "OUTPAINTING"
+            ],
+            "readOnly": false
+          },
           "processType": {
             "type": "string",
             "format": "",
@@ -68388,7 +67691,8 @@
             "additionalProperties": null,
             "enum": [
               "VEO_V1_AND_V2_DEFAULT",
-              "VEO_V3"
+              "VEO_V3",
+              "VEO_OUTPAINTING"
             ],
             "readOnly": false
           }
@@ -73893,6 +73197,17 @@
             "enum": null,
             "readOnly": false
           },
+          "revisionGarbageCollectionStrategy": {
+            "type": "",
+            "format": "",
+            "description": "Optional. Configures garbage collection of Runtime Revisions.",
+            "$ref": "GoogleCloudAiplatformV1beta1ReasoningEngineRevisionGarbageCollectionStrategy",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
           "spec": {
             "type": "",
             "format": "",
@@ -74200,6 +73515,52 @@
         "enum": null,
         "readOnly": false
       },
+      "GoogleCloudAiplatformV1beta1ReasoningEngineRevisionGarbageCollectionStrategy": {
+        "type": "object",
+        "format": "",
+        "description": "Configures garbage collection of Runtime Revisions.",
+        "$ref": "",
+        "properties": {
+          "keepNLatest": {
+            "type": "",
+            "format": "",
+            "description": "Optional. Keeps only the latest N Runtime Revisions active.",
+            "$ref": "GoogleCloudAiplatformV1beta1ReasoningEngineRevisionGarbageCollectionStrategyKeepNLatest",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudAiplatformV1beta1ReasoningEngineRevisionGarbageCollectionStrategyKeepNLatest": {
+        "type": "object",
+        "format": "",
+        "description": "Keeps only the latest N Runtime Revisions active.",
+        "$ref": "",
+        "properties": {
+          "maxRevisions": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Required. Specifies the maximum number of Runtime Revisions to keep active. If an update to Reasoning Engine would result in exceeding this number of active Runtime Revisions, a new Runtime Revision will be created, while the oldest Runtime Revision will be automatically deleted, providing it's not configured to serve traffic via `traffic_config`. If the oldest Runtime Revision is configured to serve traffic, the update will fail validation. No changes will be made to the Reasoning Engine, existing Runtime Revisions, and no new Runtime Revision will be created.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
       "GoogleCloudAiplatformV1beta1ReasoningEngineRuntimeRevision": {
         "type": "object",
         "format": "",
@@ -74250,7 +73611,7 @@
             "enum": [
               "STATE_UNSPECIFIED",
               "ACTIVE",
-              "DEPRECATED"
+              "ARCHIVED"
             ],
             "readOnly": true
           }
@@ -79643,6 +79004,17 @@
             "enum": null,
             "readOnly": false
           },
+          "persistentDiskConfig": {
+            "type": "",
+            "format": "",
+            "description": "Optional. Configuration for attaching a persistent disk (PD) to each SandboxEnvironment created from this template. When unset (or when `enabled` is `false`), sandboxes created from this template are not backed by a persistent disk and rely on ephemeral storage only. See PersistentDiskConfig for details.",
+            "$ref": "GoogleCloudAiplatformV1beta1SandboxEnvironmentTemplatePersistentDiskConfig",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
           "state": {
             "type": "string",
             "format": "",
@@ -79935,6 +79307,51 @@
               "TCP",
               "UDP"
             ],
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudAiplatformV1beta1SandboxEnvironmentTemplatePersistentDiskConfig": {
+        "type": "object",
+        "format": "",
+        "description": "Configuration for attaching a persistent disk (PD) to each SandboxEnvironment created from this template. A persistent disk provides durable, per-sandbox block storage whose contents survive across the sandbox lifecycle events that this service supports (e.g. pause/resume), unlike ephemeral local storage which is lost when the underlying runtime is torn down.",
+        "$ref": "",
+        "properties": {
+          "enabled": {
+            "type": "boolean",
+            "format": "",
+            "description": "Optional. Whether a persistent disk is attached to sandboxes created from this template. Defaults to `false`. This flag lets a template carry (and preserve) disk configuration while keeping the disk detached, so it can be toggled on later without re-specifying the rest of the config. When `false`, the remaining fields in this message are ignored.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "mountPath": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The absolute path inside the sandbox container at which the persistent disk is mounted. Defaults to `/workspace` when unset. Ignored when `enabled` is `false`. Only writes beneath this path land on the disk. Writes elsewhere go to the container's writable layer, which counts against the container's ephemeral storage and is lost when the sandbox's runtime is torn down, so this should be the directory the workload actually writes to. Paths that would shadow the container's system directories (for example `/etc`, `/proc`, or `/usr` itself) are rejected.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "sizeGb": {
+            "type": "string",
+            "format": "int64",
+            "description": "Optional. The size of the persistent disk in GB. Must be non-negative. When `enabled` is `true`, a positive value is required; when unset or zero while enabled, the service applies a default size. Ignored when `enabled` is `false`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
             "readOnly": false
           }
         },
@@ -91590,6 +91007,17 @@
             "enum": null,
             "readOnly": false
           },
+          "dryRun": {
+            "type": "boolean",
+            "format": "",
+            "description": "Optional. If true, this policy is evaluated and its result is reported, but the policy is not enforced: a violation does not block the agent's action. Use this to validate a policy against real traffic before turning enforcement on. Defaults to `false`, meaning the policy is enforced. This setting applies only to this policy. If the SemanticGovernancePolicyEngine for the project is itself in dry run, every policy behaves as dry run regardless of this field.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
           "etag": {
             "type": "string",
             "format": "",
@@ -93219,6 +92647,40 @@
             "format": "",
             "description": "The configuration for the voice to use.",
             "$ref": "GoogleCloudAiplatformV1beta1VoiceConfig",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudAiplatformV1beta1SpeechMetadata": {
+        "type": "object",
+        "format": "",
+        "description": "Structured Metadata Sub-Message for Part",
+        "$ref": "",
+        "properties": {
+          "speaker": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Identifies which speaker is speaking this turn.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "style": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Natural language description of the vocal style (e.g., \"cheerful\").",
+            "$ref": "",
             "properties": null,
             "items": null,
             "additionalProperties": null,
@@ -98732,6 +98194,36 @@
         "description": "Tool to support computer use.",
         "$ref": "",
         "properties": {
+          "disabledSafetyPolicies": {
+            "type": "array",
+            "format": "",
+            "description": "Optional. Disabled safety policies for computer use.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": [
+                "SAFETY_POLICY_UNSPECIFIED",
+                "FINANCIAL_TRANSACTIONS",
+                "SENSITIVE_DATA_MODIFICATION",
+                "COMMUNICATION_TOOL",
+                "ACCOUNT_CREATION",
+                "DATA_MODIFICATION",
+                "USER_CONSENT_MANAGEMENT",
+                "LEGAL_TERMS_AND_AGREEMENTS"
+              ],
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
           "enablePromptInjectionDetection": {
             "type": "boolean",
             "format": "",
@@ -101461,6 +100953,17 @@
             "enum": null,
             "readOnly": false
           },
+          "gcsMetricsUri": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The Cloud Storage metrics URI associated with this TuningJob.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
           "labels": {
             "type": "object",
             "format": "",
@@ -104143,6 +103646,17 @@
             "additionalProperties": null,
             "enum": null,
             "readOnly": false
+          },
+          "voice": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The speaker identifier for synthesis. Supported formats: * Speaker name for prebuilt voices (for example, `Orus` or `Kore`). * Voice ID for stored voices (for example, `voice_xxx`). * Voice replication key (for example, `voicekey_xxx`).",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
           }
         },
         "items": null,
@@ -105012,6 +104526,118 @@
               "format": "",
               "description": "",
               "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleLearningVertexApiInteractionsV1beta1CreateVoiceHttpTranscoderRequest": {
+        "type": "object",
+        "format": "",
+        "description": "Request message for `VoicesHttpService.CreateVoiceHttp`.",
+        "$ref": "",
+        "properties": {
+          "httpBody": {
+            "type": "",
+            "format": "",
+            "description": "Required. The request body containing the `CreateVoiceRequest` payload.",
+            "$ref": "GoogleApiHttpBody",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleLearningVertexApiInteractionsV1beta1CreateVoiceRequest": {
+        "type": "object",
+        "format": "",
+        "description": "Request message for `VoicesService.CreateVoice`.",
+        "$ref": "",
+        "properties": {
+          "store": {
+            "type": "boolean",
+            "format": "",
+            "description": "Optional. Whether the created voice is persisted and managed by Google. * When `true`, Google stores the voice and returns `Voice.id` (for example, `voice_abc123def456`), which can be managed via `GetVoice`, `ListVoices`, and `DeleteVoice` and referenced by ID in synthesis requests. Projects are subject to a maximum active stored voice quota; exceeding the quota returns `RESOURCE_EXHAUSTED`. * When `false` (default), the voice is not stored by Google and `Voice.key` (for example, `voicekey_...`) is returned for client-side storage and synthesis. Optional discovery metadata fields on `voice` are not persisted or returned when `store` is `false`. * Required to be `true` when `voice.type` is `\"prompted\"` (otherwise fails with `INVALID_ARGUMENT`).",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "voice": {
+            "type": "",
+            "format": "",
+            "description": "Required. The voice to create. `voice.model` is optional; if omitted, the service selects the default voice creation model. Output-only fields on `Voice` (`id`, `key`, `expire_time`, `usage`) are ignored if set.",
+            "$ref": "GenaiVertexV1beta1Voice",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleLearningVertexApiInteractionsV1beta1DeleteVoiceResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Response message for `VoicesService.DeleteVoice`.",
+        "$ref": "",
+        "properties": {},
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleLearningVertexApiInteractionsV1beta1ListVoicesResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Response message for `VoicesService.ListVoices`.",
+        "$ref": "",
+        "properties": {
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "A token that can be sent as `page_token` to retrieve the next page. If empty, there are no subsequent pages.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "voices": {
+            "type": "array",
+            "format": "",
+            "description": "The voices from the specified collection.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "GenaiVertexV1beta1Voice",
               "properties": null,
               "items": null,
               "additionalProperties": null,
@@ -113277,6 +112903,11 @@
                 "type": "string",
                 "location": "path",
                 "required": true
+              },
+              "updateMask": {
+                "type": "string",
+                "location": "query",
+                "required": false
               }
             },
             "parameterOrder": [
@@ -114042,7 +113673,7 @@
                       "$ref": "GoogleCloudAiplatformV1beta1Agent"
                     },
                     "response": {
-                      "$ref": "GoogleCloudAiplatformV1beta1Agent"
+                      "$ref": "GoogleLongrunningOperation"
                     }
                   },
                   "setIamPolicy": {
@@ -118105,6 +117736,145 @@
                     "resources": null
                   }
                 }
+              },
+              "evaluationExperiments": {
+                "methods": {
+                  "create": {
+                    "id": "aiplatform.projects.locations.evaluationExperiments.create",
+                    "httpMethod": "POST",
+                    "path": "v1beta1/{+parent}/evaluationExperiments",
+                    "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/evaluationExperiments",
+                    "description": "Creates an Evaluation Experiment.",
+                    "parameters": {
+                      "parent": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "parent"
+                    ],
+                    "request": {
+                      "$ref": "GoogleCloudAiplatformV1beta1EvaluationExperiment"
+                    },
+                    "response": {
+                      "$ref": "GoogleCloudAiplatformV1beta1EvaluationExperiment"
+                    }
+                  },
+                  "delete": {
+                    "id": "aiplatform.projects.locations.evaluationExperiments.delete",
+                    "httpMethod": "DELETE",
+                    "path": "v1beta1/{+name}",
+                    "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/evaluationExperiments/{evaluationExperimentsId}",
+                    "description": "Deletes an Evaluation Experiment.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "GoogleLongrunningOperation"
+                    }
+                  },
+                  "get": {
+                    "id": "aiplatform.projects.locations.evaluationExperiments.get",
+                    "httpMethod": "GET",
+                    "path": "v1beta1/{+name}",
+                    "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/evaluationExperiments/{evaluationExperimentsId}",
+                    "description": "Gets an Evaluation Experiment.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "GoogleCloudAiplatformV1beta1EvaluationExperiment"
+                    }
+                  },
+                  "list": {
+                    "id": "aiplatform.projects.locations.evaluationExperiments.list",
+                    "httpMethod": "GET",
+                    "path": "v1beta1/{+parent}/evaluationExperiments",
+                    "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/evaluationExperiments",
+                    "description": "Lists Evaluation Experiments.",
+                    "parameters": {
+                      "filter": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "orderBy": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "pageSize": {
+                        "type": "integer",
+                        "location": "query",
+                        "required": false
+                      },
+                      "pageToken": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "parent": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "parent"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "GoogleCloudAiplatformV1beta1ListEvaluationExperimentsResponse"
+                    }
+                  },
+                  "patch": {
+                    "id": "aiplatform.projects.locations.evaluationExperiments.patch",
+                    "httpMethod": "PATCH",
+                    "path": "v1beta1/{+name}",
+                    "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/evaluationExperiments/{evaluationExperimentsId}",
+                    "description": "Updates an Evaluation Experiment.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      },
+                      "updateMask": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": {
+                      "$ref": "GoogleCloudAiplatformV1beta1EvaluationExperiment"
+                    },
+                    "response": {
+                      "$ref": "GoogleCloudAiplatformV1beta1EvaluationExperiment"
+                    }
+                  }
+                },
+                "resources": null
               },
               "evaluationItems": {
                 "methods": {
@@ -124265,7 +124035,7 @@
                     "httpMethod": "POST",
                     "path": "v1beta1/{+name}/cancel",
                     "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/interactionsHttp/{interactionsHttpId}/cancel",
-                    "description": "Cancels an interaction.",
+                    "description": "Cancels an interaction by id. This only applies to background interactions that are still running.",
                     "parameters": {
                       "name": {
                         "type": "string",
@@ -124286,7 +124056,7 @@
                     "httpMethod": "POST",
                     "path": "v1beta1/{+parent}/interactionsHttp",
                     "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/interactionsHttp",
-                    "description": "Generates a set of responses from the model.",
+                    "description": "Creates a new interaction.",
                     "parameters": {
                       "parent": {
                         "type": "string",
@@ -124309,7 +124079,7 @@
                     "httpMethod": "GET",
                     "path": "v1beta1/{+name}",
                     "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/interactionsHttp/{interactionsHttpId}",
-                    "description": "Gets an interaction.",
+                    "description": "Retrieves the full details of a single interaction based on its `Interaction.id`.",
                     "parameters": {
                       "includeInput": {
                         "type": "boolean",
@@ -128246,6 +128016,29 @@
               },
               "monitoredAgents": {
                 "methods": {
+                  "clearTrainingData": {
+                    "id": "aiplatform.projects.locations.monitoredAgents.clearTrainingData",
+                    "httpMethod": "POST",
+                    "path": "v1beta1/{+name}:clearTrainingData",
+                    "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/monitoredAgents/{monitoredAgentsId}:clearTrainingData",
+                    "description": "Clears (purges) the trained model artifacts derived from a MonitoredAgent's data. The purged model is rebuilt by the next scheduled training run. To clear every MonitoredAgent in a location's scope, use the `-` wildcard agent segment for the name field: `projects/{project}/locations/{location}/monitoredAgents/-` This is the on-demand data-deletion path for customers who have deleted the underlying logs / observability data a model was trained on. It deletes only the derived model artifacts in the tenant project (it does NOT delete the scope, tenant project, or monitoring). To stop monitoring an agent entirely, disable it via DisableMonitoredAgent. See go/aad-clear-training-data.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": {
+                      "$ref": "GoogleCloudAiplatformV1beta1ClearTrainingDataRequest"
+                    },
+                    "response": {
+                      "$ref": "GoogleLongrunningOperation"
+                    }
+                  },
                   "disable": {
                     "id": "aiplatform.projects.locations.monitoredAgents.disable",
                     "httpMethod": "POST",
@@ -141190,6 +140983,152 @@
                     "resources": null
                   }
                 }
+              },
+              "voices": {
+                "methods": {
+                  "create": {
+                    "id": "aiplatform.projects.locations.voices.create",
+                    "httpMethod": "POST",
+                    "path": "v1beta1/{+parent}/voices:create",
+                    "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/voices:create",
+                    "description": "Creates a custom voice from a natural-language prompt (`VOICE_TYPE_PROMPTED`) or from reference and consent audio recordings (`VOICE_TYPE_REPLICATED`).",
+                    "parameters": {
+                      "parent": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "parent"
+                    ],
+                    "request": {
+                      "$ref": "GoogleLearningVertexApiInteractionsV1beta1CreateVoiceRequest"
+                    },
+                    "response": {
+                      "$ref": "GenaiVertexV1beta1Voice"
+                    }
+                  },
+                  "delete": {
+                    "id": "aiplatform.projects.locations.voices.delete",
+                    "httpMethod": "DELETE",
+                    "path": "v1beta1/{+name}:delete",
+                    "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/voices/{voicesId}:delete",
+                    "description": "Deletes a custom stored voice (`store = true`) by resource name. Prebuilt catalog voices (`\"prebuilt\"`) cannot be deleted.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "GoogleLearningVertexApiInteractionsV1beta1DeleteVoiceResponse"
+                    }
+                  },
+                  "get": {
+                    "id": "aiplatform.projects.locations.voices.get",
+                    "httpMethod": "GET",
+                    "path": "v1beta1/{+name}:get",
+                    "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/voices/{voicesId}:get",
+                    "description": "Gets a custom stored voice (`store = true`) by resource name. Prebuilt catalog voices (`VOICE_TYPE_PREBUILT`) cannot be retrieved via `GetVoice`; use `ListVoices` instead.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "GenaiVertexV1beta1Voice"
+                    }
+                  },
+                  "list": {
+                    "id": "aiplatform.projects.locations.voices.list",
+                    "httpMethod": "GET",
+                    "path": "v1beta1/{+parent}/voices:list",
+                    "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/voices:list",
+                    "description": "Lists custom stored voices owned by the caller as well as prebuilt system voices from Google's voice catalog.",
+                    "parameters": {
+                      "accent": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "context": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "gender": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "languageCode": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "pageSize": {
+                        "type": "integer",
+                        "location": "query",
+                        "required": false
+                      },
+                      "pageToken": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "parent": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      },
+                      "persona": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "pitch": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "regionCode": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "search": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "type": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      }
+                    },
+                    "parameterOrder": [
+                      "parent"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "GoogleLearningVertexApiInteractionsV1beta1ListVoicesResponse"
+                    }
+                  }
+                },
+                "resources": null
               }
             }
           },

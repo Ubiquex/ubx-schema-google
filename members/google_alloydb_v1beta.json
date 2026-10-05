@@ -25,7 +25,7 @@
   "version_qualifier": "v1beta",
   "raw_spec": {
     "name": "alloydb",
-    "revision": "20260826",
+    "revision": "20260924",
     "discoveryVersion": "v1",
     "baseUrl": "https://alloydb.googleapis.com/",
     "rootUrl": "https://alloydb.googleapis.com/",
@@ -305,7 +305,8 @@
               "POSTGRES_15",
               "POSTGRES_16",
               "POSTGRES_17",
-              "POSTGRES_18"
+              "POSTGRES_18",
+              "POSTGRES_19"
             ],
             "readOnly": true
           },
@@ -341,6 +342,21 @@
             "additionalProperties": null,
             "enum": null,
             "readOnly": false
+          },
+          "edition": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The edition of the cluster this backup was created from. Any restored cluster created from this backup will have the same edition.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "EDITION_UNSPECIFIED",
+              "EDITION_ALLOYDB",
+              "EDITION_ALLOYDB_DEVELOPER"
+            ],
+            "readOnly": true
           },
           "encryptionConfig": {
             "type": "",
@@ -1052,7 +1068,8 @@
               "POSTGRES_15",
               "POSTGRES_16",
               "POSTGRES_17",
-              "POSTGRES_18"
+              "POSTGRES_18",
+              "POSTGRES_19"
             ],
             "readOnly": false
           },
@@ -1089,6 +1106,21 @@
             "enum": null,
             "readOnly": false
           },
+          "edition": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Edition of the cluster. If left unspecified, the cluster behaves as `EDITION_ALLOYDB`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "EDITION_UNSPECIFIED",
+              "EDITION_ALLOYDB",
+              "EDITION_ALLOYDB_DEVELOPER"
+            ],
+            "readOnly": false
+          },
           "encryptionConfig": {
             "type": "",
             "format": "",
@@ -1116,6 +1148,17 @@
             "format": "",
             "description": "For Resource freshness validation (https://google.aip.dev/154)",
             "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "expressConfig": {
+            "type": "",
+            "format": "",
+            "description": "Optional. Configuration that allows the customer to create an AlloyDB Express cluster.",
+            "$ref": "ExpressConfig",
             "properties": null,
             "items": null,
             "additionalProperties": null,
@@ -1458,7 +1501,8 @@
               "POSTGRES_15",
               "POSTGRES_16",
               "POSTGRES_17",
-              "POSTGRES_18"
+              "POSTGRES_18",
+              "POSTGRES_19"
             ],
             "readOnly": false
           },
@@ -2535,6 +2579,29 @@
         "enum": null,
         "readOnly": false
       },
+      "ExpressConfig": {
+        "type": "object",
+        "format": "",
+        "description": "Configuration that allows the user to create an AlloyDB Express cluster.",
+        "$ref": "",
+        "properties": {
+          "enabled": {
+            "type": "boolean",
+            "format": "",
+            "description": "Optional. Whether Express configuration is enabled for the cluster.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
       "FailoverInstanceRequest": {
         "type": "object",
         "format": "",
@@ -3327,6 +3394,17 @@
             "enum": null,
             "readOnly": false
           },
+          "observabilityInstanceInfo": {
+            "type": "",
+            "format": "",
+            "description": "Output only. Instance level observability information, contains the effective values of observability settings for this instance, by merging customer's provided `ObservabilityInstanceConfig` with the Observability defaults.",
+            "$ref": "ObservabilityInstanceInfo",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
           "outboundPublicIpAddresses": {
             "type": "array",
             "format": "",
@@ -3391,6 +3469,17 @@
             "additionalProperties": null,
             "enum": null,
             "readOnly": false
+          },
+          "queryInsightsInfo": {
+            "type": "",
+            "format": "",
+            "description": "Output only. Instance level Query Insights information, which is read-only and available in the output only. Contains the effective query insights settings for this instance, by merging customer's provided `QueryInsightsInstanceConfig` with the Query Insights defaults.",
+            "$ref": "QueryInsightsInstanceInfo",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
           },
           "readPoolConfig": {
             "type": "",
@@ -4492,7 +4581,7 @@
           "trackActiveQueryPlan": {
             "type": "boolean",
             "format": "",
-            "description": "Indicates whether to track active query plans for an instance. If not set, the default value is \"off\". Can only be enabled if track_active_queries is enabled.",
+            "description": "Indicates whether to track active query plans for an instance. If not set, the default value is \"off\". Can only be enabled if track_active_queries is enabled. Deprecated: Use track_active_queries instead.",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -4532,6 +4621,139 @@
             "additionalProperties": null,
             "enum": null,
             "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ObservabilityInstanceInfo": {
+        "type": "object",
+        "format": "",
+        "description": "",
+        "$ref": "",
+        "properties": {
+          "assistiveExperiencesEnabled": {
+            "type": "boolean",
+            "format": "",
+            "description": "Output only. Whether assistive experiences are enabled for this AlloyDB instance.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "enabled": {
+            "type": "boolean",
+            "format": "",
+            "description": "Output only. Observability feature status for an instance.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "maxQueryStringLength": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Output only. Query string length. The default value is 10k.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "preserveComments": {
+            "type": "boolean",
+            "format": "",
+            "description": "Output only. Preserve comments in query string for an instance.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "queryPlansPerMinute": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Output only. Number of query execution plans captured by Insights per minute for all queries combined.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "recordApplicationTags": {
+            "type": "boolean",
+            "format": "",
+            "description": "Output only. Record application tags for an instance.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "trackActiveQueries": {
+            "type": "boolean",
+            "format": "",
+            "description": "Output only. Track actively running queries on the instance.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "trackActiveQueryPlan": {
+            "type": "boolean",
+            "format": "",
+            "description": "Output only. Indicates whether to track active query plans for an instance. Deprecated: Use track_active_queries instead.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "trackClientAddress": {
+            "type": "boolean",
+            "format": "",
+            "description": "Output only. Track client address for an instance.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "trackWaitEventTypes": {
+            "type": "boolean",
+            "format": "",
+            "description": "Output only. Track wait event types during query execution for an instance.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "trackWaitEvents": {
+            "type": "boolean",
+            "format": "",
+            "description": "Output only. Track wait events during query execution for an instance.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
           }
         },
         "items": null,
@@ -5337,6 +5559,73 @@
             "additionalProperties": null,
             "enum": null,
             "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "QueryInsightsInstanceInfo": {
+        "type": "object",
+        "format": "",
+        "description": "Instance level Query Insights information, which is read-only and available in the output only.",
+        "$ref": "",
+        "properties": {
+          "enabled": {
+            "type": "boolean",
+            "format": "",
+            "description": "Output only. Whether Query Insights is enabled.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "queryPlansPerMinute": {
+            "type": "integer",
+            "format": "uint32",
+            "description": "Output only. Number of query execution plans captured per minute.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "queryStringLength": {
+            "type": "integer",
+            "format": "uint32",
+            "description": "Output only. Maximum query string length.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "recordApplicationTags": {
+            "type": "boolean",
+            "format": "",
+            "description": "Output only. Whether to record application tags.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "recordClientAddress": {
+            "type": "boolean",
+            "format": "",
+            "description": "Output only. Whether to record client address.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
           }
         },
         "items": null,
@@ -9066,7 +9355,8 @@
                 "POSTGRES_15",
                 "POSTGRES_16",
                 "POSTGRES_17",
-                "POSTGRES_18"
+                "POSTGRES_18",
+                "POSTGRES_19"
               ],
               "readOnly": false
             },
@@ -9291,7 +9581,8 @@
               "POSTGRES_15",
               "POSTGRES_16",
               "POSTGRES_17",
-              "POSTGRES_18"
+              "POSTGRES_18",
+              "POSTGRES_19"
             ],
             "readOnly": false
           }
@@ -9397,7 +9688,8 @@
               "POSTGRES_15",
               "POSTGRES_16",
               "POSTGRES_17",
-              "POSTGRES_18"
+              "POSTGRES_18",
+              "POSTGRES_19"
             ],
             "readOnly": false
           },
@@ -9457,7 +9749,8 @@
               "POSTGRES_15",
               "POSTGRES_16",
               "POSTGRES_17",
-              "POSTGRES_18"
+              "POSTGRES_18",
+              "POSTGRES_19"
             ],
             "readOnly": false
           }

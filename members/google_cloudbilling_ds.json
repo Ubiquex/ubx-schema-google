@@ -24,7 +24,7 @@
   "wire_name": "google_cloudbilling",
   "raw_spec": {
     "name": "cloudbilling",
-    "revision": "20260901",
+    "revision": "20260911",
     "discoveryVersion": "v1",
     "baseUrl": "https://cloudbilling.googleapis.com/",
     "rootUrl": "https://cloudbilling.googleapis.com/",

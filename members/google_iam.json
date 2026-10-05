@@ -24,7 +24,7 @@
   "wire_name": "google_iam",
   "raw_spec": {
     "name": "iam",
-    "revision": "20260828",
+    "revision": "20260925",
     "discoveryVersion": "v1",
     "baseUrl": "https://iam.googleapis.com/",
     "rootUrl": "https://iam.googleapis.com/",
@@ -1100,7 +1100,7 @@
           "useDefaultSharedCa": {
             "type": "boolean",
             "format": "",
-            "description": "Optional. If set to true, the trust domain will utilize the GCP-provisioned default CA. A default CA in the same region as the workload will be selected to issue the certificate. Enabling this will clear any existing `ca_pools` configuration to provision the certificates. NOTE: This field is mutually exclusive with `ca_pools`. If this flag is enabled, certificates will be automatically provisioned from the default shared CAs. This flag should not be set if you want to use your own CA pools to provision the certificates.",
+            "description": "Optional. Determines whether the trust domain utilizes the Google Cloud-provisioned default CA. A default CA in the same region as the workload will be selected to issue the certificate. Enabling this will clear any existing `ca_pools` configuration to provision the certificates. NOTE: This field is mutually exclusive with `ca_pools`. If this flag is enabled, certificates will be automatically provisioned from the default shared CAs. This flag should not be set if you want to use your own CA pools to provision the certificates.",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -2091,7 +2091,7 @@
           "allowedGrantTypes": {
             "type": "array",
             "format": "",
-            "description": "Required. The list of OAuth grant types is allowed for the OauthClient.",
+            "description": "Optional. The list of OAuth grant types is allowed for the OauthClient.",
             "$ref": "",
             "properties": null,
             "items": {
@@ -3182,6 +3182,17 @@
         "enum": null,
         "readOnly": false
       },
+      "RevokeWorkforcePoolSubjectSessionsRequest": {
+        "type": "object",
+        "format": "",
+        "description": "Request message for RevokeWorkforcePoolSubjectSessions.",
+        "$ref": "",
+        "properties": {},
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
       "Role": {
         "type": "object",
         "format": "",
@@ -4006,7 +4017,7 @@
           "trustDefaultSharedCa": {
             "type": "boolean",
             "format": "",
-            "description": "Optional. If set to True, the trust bundle will include the private ca managed identity regional root public certificates. Important: `trust_default_shared_ca` is only supported for managed identity trust domain resource.",
+            "description": "Optional. Determines whether the trust bundle includes the private CA managed identity regional root public certificates. Important: `trust_default_shared_ca` is only supported for managed identity trust domain resource.",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -4494,7 +4505,8 @@
             "additionalProperties": null,
             "enum": [
               "SCIM_USAGE_UNSPECIFIED",
-              "ENABLED_FOR_GROUPS"
+              "ENABLED_FOR_GROUPS",
+              "ENABLED_FOR_USERS_GROUPS"
             ],
             "readOnly": false
           },
@@ -5060,7 +5072,7 @@
           "attributeCondition": {
             "type": "string",
             "format": "",
-            "description": "Optional. [A Common Expression Language](https://opensource.google/projects/cel) expression, in plain text, to restrict what otherwise valid authentication credentials issued by the provider should not be accepted. The expression must output a boolean representing whether to allow the federation. The following keywords may be referenced in the expressions: * `assertion`: JSON representing the authentication credential issued by the provider. * `google`: The Google attributes mapped from the assertion in the `attribute_mappings`. * `attribute`: The custom attributes mapped from the assertion in the `attribute_mappings`. The maximum length of the attribute condition expression is 4096 characters. If unspecified, all valid authentication credential are accepted. The following example shows how to only allow credentials with a mapped `google.groups` value of `admins`: ``` \"'admins' in google.groups\" ```",
+            "description": "Optional. [A Common Expression Language](https://opensource.google/projects/cel) expression, in plain text, to restrict what otherwise valid authentication credentials issued by the provider should not be accepted. The expression must output a boolean representing whether to allow the federation. The following keywords may be referenced in the expressions: * `assertion`: JSON representing the authentication credential issued by the provider. * `google`: The Google attributes mapped from the assertion in the `attribute_mappings`. * `attribute`: The custom attributes mapped from the assertion in the `attribute_mappings`. The maximum length of the `attribute_condition` expression is 4,096 characters. Providing a condition longer than this will result in an error. If unspecified, all valid authentication credentials are accepted. However, multi-tenant identity providers (such as GitHub or Terraform Cloud) require an `attribute_condition` to prevent token spoofing. The following example shows how to only allow credentials with a mapped `google.groups` value of `admins`: ``` \"'admins' in google.groups\" ```",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -6352,6 +6364,29 @@
                       "name"
                     ],
                     "request": null,
+                    "response": {
+                      "$ref": "Operation"
+                    }
+                  },
+                  "revokeSessions": {
+                    "id": "iam.locations.workforcePools.subjects.revokeSessions",
+                    "httpMethod": "POST",
+                    "path": "v1/{+name}:revokeSessions",
+                    "flatPath": "v1/locations/{locationsId}/workforcePools/{workforcePoolsId}/subjects/{subjectsId}:revokeSessions",
+                    "description": "Revokes all sessions for a given WorkforcePoolSubject.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": {
+                      "$ref": "RevokeWorkforcePoolSubjectSessionsRequest"
+                    },
                     "response": {
                       "$ref": "Operation"
                     }

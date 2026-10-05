@@ -24,7 +24,7 @@
   "wire_name": "google_blockchainnodeengine",
   "raw_spec": {
     "name": "blockchainnodeengine",
-    "revision": "20250507",
+    "revision": "20250514",
     "discoveryVersion": "v1",
     "baseUrl": "https://blockchainnodeengine.googleapis.com/",
     "rootUrl": "https://blockchainnodeengine.googleapis.com/",

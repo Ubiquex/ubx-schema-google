@@ -25,7 +25,7 @@
   "version_qualifier": "v1beta",
   "raw_spec": {
     "name": "apigateway",
-    "revision": "20260902",
+    "revision": "20260909",
     "discoveryVersion": "v1",
     "baseUrl": "https://apigateway.googleapis.com/",
     "rootUrl": "https://apigateway.googleapis.com/",
@@ -699,7 +699,7 @@
           "defaultHostname": {
             "type": "string",
             "format": "",
-            "description": "Output only. The default API Gateway host name of the form `{gateway_id}-{hash}.{region_code}.gateway.dev`.",
+            "description": "Output only. The default hostname that serves traffic for this Gateway.",
             "$ref": "",
             "properties": null,
             "items": null,

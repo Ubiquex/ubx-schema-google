@@ -24,7 +24,7 @@
   "wire_name": "google_storage",
   "raw_spec": {
     "name": "storage",
-    "revision": "20260902",
+    "revision": "20260930",
     "discoveryVersion": "v1",
     "baseUrl": "https://storage.googleapis.com/storage/v1/",
     "rootUrl": "https://storage.googleapis.com/",
@@ -1508,6 +1508,40 @@
                 "description": "Server-determined value that indicates the time from which the policy, or one with a greater retention, was effective. This value is in RFC 3339 format.",
                 "$ref": "",
                 "properties": null,
+                "items": null,
+                "additionalProperties": null,
+                "enum": null,
+                "readOnly": false
+              },
+              "hardDeletePause": {
+                "type": "object",
+                "format": "",
+                "description": "The bucket's hard delete pause configuration. If set, soft-deleted objects in the bucket will not be permanently deleted until the hard delete pause is disabled.",
+                "$ref": "",
+                "properties": {
+                  "effectiveTime": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Server-determined value that indicates the time from which the hard delete pause became effective. This value is in RFC 3339 format.",
+                    "$ref": "",
+                    "properties": null,
+                    "items": null,
+                    "additionalProperties": null,
+                    "enum": null,
+                    "readOnly": false
+                  },
+                  "enabled": {
+                    "type": "boolean",
+                    "format": "",
+                    "description": "Whether hard deletions are paused.",
+                    "$ref": "",
+                    "properties": null,
+                    "items": null,
+                    "additionalProperties": null,
+                    "enum": null,
+                    "readOnly": false
+                  }
+                },
                 "items": null,
                 "additionalProperties": null,
                 "enum": null,
@@ -4174,10 +4208,122 @@
             "enum": null,
             "readOnly": false
           },
+          "extendedDataTypeUrl": {
+            "type": "string",
+            "format": "",
+            "description": "The type URL of the object context's extended data.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
           "updateTime": {
             "type": "string",
             "format": "date-time",
             "description": "The time at which the object context was last updated in RFC 3339 format.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "value": {
+            "type": "string",
+            "format": "",
+            "description": "The value of the object context.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ObjectFullContext": {
+        "type": "object",
+        "format": "",
+        "description": "A full representation of an object context.",
+        "$ref": "",
+        "properties": {
+          "createTime": {
+            "type": "string",
+            "format": "date-time",
+            "description": "The time at which the object context was created. This value is in RFC 3339 format.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "extendedData": {
+            "type": "object",
+            "format": "",
+            "description": "The extended data of the object context.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "any",
+              "format": "",
+              "description": "Properties of the object. Contains field @type with type URL.",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "key": {
+            "type": "string",
+            "format": "",
+            "description": "The key of the object context.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "kind": {
+            "type": "string",
+            "format": "",
+            "description": "The kind of item this is. For ObjectFullContext, this is always storage#objectFullContext.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "type": {
+            "type": "string",
+            "format": "",
+            "description": "The type of the object context.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "CUSTOM"
+            ],
+            "readOnly": false
+          },
+          "updateTime": {
+            "type": "string",
+            "format": "date-time",
+            "description": "The time at which the object context was last updated. This value is in RFC 3339 format.",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -7961,6 +8107,48 @@
             },
             "response": {
               "$ref": "Object"
+            }
+          },
+          "viewFullContext": {
+            "id": "storage.objects.viewFullContext",
+            "httpMethod": "GET",
+            "path": "b/{bucket}/o/{object}/viewFullContext",
+            "flatPath": "",
+            "description": "Retrieves a specific object context with its extended data for a given object.",
+            "parameters": {
+              "bucket": {
+                "type": "string",
+                "location": "path",
+                "required": true
+              },
+              "contextKey": {
+                "type": "string",
+                "location": "query",
+                "required": true
+              },
+              "generation": {
+                "type": "string",
+                "location": "query",
+                "required": false
+              },
+              "object": {
+                "type": "string",
+                "location": "path",
+                "required": true
+              },
+              "userProject": {
+                "type": "string",
+                "location": "query",
+                "required": false
+              }
+            },
+            "parameterOrder": [
+              "bucket",
+              "object"
+            ],
+            "request": null,
+            "response": {
+              "$ref": "ObjectFullContext"
             }
           }
         },

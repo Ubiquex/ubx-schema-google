@@ -24,7 +24,7 @@
   "wire_name": "google_contactcenterinsights",
   "raw_spec": {
     "name": "contactcenterinsights",
-    "revision": "20260905",
+    "revision": "20261002",
     "discoveryVersion": "v1",
     "baseUrl": "https://contactcenterinsights.googleapis.com/",
     "rootUrl": "https://contactcenterinsights.googleapis.com/",
@@ -773,6 +773,28 @@
             "additionalProperties": null,
             "enum": null,
             "readOnly": true
+          },
+          "satisfiesPzi": {
+            "type": "boolean",
+            "format": "",
+            "description": "Output only. Whether this resource is zone isolated.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "satisfiesPzs": {
+            "type": "boolean",
+            "format": "",
+            "description": "Output only. Whether this resource is zone separated.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
           }
         },
         "items": null,
@@ -1056,6 +1078,28 @@
             "additionalProperties": null,
             "enum": null,
             "readOnly": false
+          },
+          "satisfiesPzi": {
+            "type": "boolean",
+            "format": "",
+            "description": "Output only. Whether this resource is zone isolated.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "satisfiesPzs": {
+            "type": "boolean",
+            "format": "",
+            "description": "Output only. Whether this resource is zone separated.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
           },
           "updateTime": {
             "type": "string",
@@ -1682,6 +1726,28 @@
             "enum": null,
             "readOnly": false
           },
+          "satisfiesPzi": {
+            "type": "boolean",
+            "format": "",
+            "description": "Output only. Whether this resource is zone isolated.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "satisfiesPzs": {
+            "type": "boolean",
+            "format": "",
+            "description": "Output only. Whether this resource is zone separated.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
           "scheduleInfo": {
             "type": "",
             "format": "",
@@ -1945,6 +2011,28 @@
             "enum": null,
             "readOnly": false
           },
+          "satisfiesPzi": {
+            "type": "boolean",
+            "format": "",
+            "description": "Output only. Whether this resource is zone isolated.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "satisfiesPzs": {
+            "type": "boolean",
+            "format": "",
+            "description": "Output only. Whether this resource is zone separated.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
           "updateTime": {
             "type": "string",
             "format": "google-datetime",
@@ -2000,6 +2088,28 @@
             "additionalProperties": null,
             "enum": null,
             "readOnly": false
+          },
+          "satisfiesPzi": {
+            "type": "boolean",
+            "format": "",
+            "description": "Output only. Whether this resource is zone isolated.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "satisfiesPzs": {
+            "type": "boolean",
+            "format": "",
+            "description": "Output only. Whether this resource is zone separated.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
           },
           "updateTime": {
             "type": "string",
@@ -2250,7 +2360,7 @@
           "relabel": {
             "type": "boolean",
             "format": "",
-            "description": "Output only. If true, the labeling rules will be re-evaluated for the conversations.",
+            "description": "Output only. Deprecated: Use `request.annotator_selector.run_auto_labeling_annotator` instead. If true, the labeling rules will be re-evaluated for the conversations.",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -2339,7 +2449,7 @@
           "relabel": {
             "type": "boolean",
             "format": "",
-            "description": "Optional. If true, the labeling rules will be re-evaluated for the conversations.",
+            "description": "Optional. Deprecated: Use `annotator_selector.run_auto_labeling_annotator` instead. If true, the labeling rules will be re-evaluated for the conversations.",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -4236,6 +4346,28 @@
               "enum": null,
               "readOnly": false
             },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "satisfiesPzi": {
+            "type": "boolean",
+            "format": "",
+            "description": "Output only. Whether this resource is zone isolated.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "satisfiesPzs": {
+            "type": "boolean",
+            "format": "",
+            "description": "Output only. Whether this resource is zone separated.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
             "additionalProperties": null,
             "enum": null,
             "readOnly": true
@@ -6616,6 +6748,28 @@
             "enum": null,
             "readOnly": false
           },
+          "satisfiesPzi": {
+            "type": "boolean",
+            "format": "",
+            "description": "Output only. Whether this resource is zone isolated.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "satisfiesPzs": {
+            "type": "boolean",
+            "format": "",
+            "description": "Output only. Whether this resource is zone separated.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
           "ttl": {
             "type": "string",
             "format": "google-duration",
@@ -7674,6 +7828,28 @@
             "additionalProperties": null,
             "enum": null,
             "readOnly": false
+          },
+          "satisfiesPzi": {
+            "type": "boolean",
+            "format": "",
+            "description": "Output only. Whether this resource is zone isolated.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "satisfiesPzs": {
+            "type": "boolean",
+            "format": "",
+            "description": "Output only. Whether this resource is zone separated.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
           }
         },
         "items": null,
@@ -8351,6 +8527,28 @@
             "additionalProperties": null,
             "enum": null,
             "readOnly": false
+          },
+          "satisfiesPzi": {
+            "type": "boolean",
+            "format": "",
+            "description": "Output only. Whether this resource is zone isolated.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "satisfiesPzs": {
+            "type": "boolean",
+            "format": "",
+            "description": "Output only. Whether this resource is zone separated.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
           },
           "updateTime": {
             "type": "string",
@@ -12585,6 +12783,28 @@
             ],
             "readOnly": false
           },
+          "satisfiesPzi": {
+            "type": "boolean",
+            "format": "",
+            "description": "Output only. Whether this resource is zone isolated.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "satisfiesPzs": {
+            "type": "boolean",
+            "format": "",
+            "description": "Output only. Whether this resource is zone separated.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
           "tags": {
             "type": "array",
             "format": "",
@@ -12846,6 +13066,28 @@
             "enum": null,
             "readOnly": false
           },
+          "satisfiesPzi": {
+            "type": "boolean",
+            "format": "",
+            "description": "Output only. Whether this resource is zone isolated.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "satisfiesPzs": {
+            "type": "boolean",
+            "format": "",
+            "description": "Output only. Whether this resource is zone separated.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
           "updateTime": {
             "type": "string",
             "format": "google-datetime",
@@ -12984,6 +13226,28 @@
             "additionalProperties": null,
             "enum": null,
             "readOnly": false
+          },
+          "satisfiesPzi": {
+            "type": "boolean",
+            "format": "",
+            "description": "Output only. Whether this resource is zone isolated.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "satisfiesPzs": {
+            "type": "boolean",
+            "format": "",
+            "description": "Output only. Whether this resource is zone separated.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
           },
           "source": {
             "type": "string",
@@ -13366,6 +13630,28 @@
             "additionalProperties": null,
             "enum": null,
             "readOnly": false
+          },
+          "satisfiesPzi": {
+            "type": "boolean",
+            "format": "",
+            "description": "Output only. Whether this resource is zone isolated.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "satisfiesPzs": {
+            "type": "boolean",
+            "format": "",
+            "description": "Output only. Whether this resource is zone separated.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
           },
           "snapshot": {
             "type": "",
@@ -15417,6 +15703,28 @@
             "enum": null,
             "readOnly": false
           },
+          "satisfiesPzi": {
+            "type": "boolean",
+            "format": "",
+            "description": "Output only. Whether this resource is zone isolated.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "satisfiesPzs": {
+            "type": "boolean",
+            "format": "",
+            "description": "Output only. Whether this resource is zone separated.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
           "screenRecordingBucketUri": {
             "type": "string",
             "format": "",
@@ -16830,6 +17138,28 @@
             "additionalProperties": null,
             "enum": null,
             "readOnly": true
+          },
+          "satisfiesPzi": {
+            "type": "boolean",
+            "format": "",
+            "description": "Output only. Whether this resource is zone isolated.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "satisfiesPzs": {
+            "type": "boolean",
+            "format": "",
+            "description": "Output only. Whether this resource is zone separated.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
           }
         },
         "items": null,
@@ -17568,7 +17898,7 @@
           "relabel": {
             "type": "boolean",
             "format": "",
-            "description": "Output only. If true, the labeling rules will be re-evaluated for the conversations.",
+            "description": "Output only. Deprecated: Use `request.annotator_selector.run_auto_labeling_annotator` instead. If true, the labeling rules will be re-evaluated for the conversations.",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -17657,7 +17987,7 @@
           "relabel": {
             "type": "boolean",
             "format": "",
-            "description": "Optional. If true, the labeling rules will be re-evaluated for the conversations.",
+            "description": "Optional. Deprecated: Use `annotator_selector.run_auto_labeling_annotator` instead. If true, the labeling rules will be re-evaluated for the conversations.",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -18461,6 +18791,28 @@
               "enum": null,
               "readOnly": false
             },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "satisfiesPzi": {
+            "type": "boolean",
+            "format": "",
+            "description": "Output only. Whether this resource is zone isolated.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "satisfiesPzs": {
+            "type": "boolean",
+            "format": "",
+            "description": "Output only. Whether this resource is zone separated.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
             "additionalProperties": null,
             "enum": null,
             "readOnly": true
@@ -20562,6 +20914,28 @@
             "enum": null,
             "readOnly": false
           },
+          "satisfiesPzi": {
+            "type": "boolean",
+            "format": "",
+            "description": "Output only. Whether this resource is zone isolated.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "satisfiesPzs": {
+            "type": "boolean",
+            "format": "",
+            "description": "Output only. Whether this resource is zone separated.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
           "ttl": {
             "type": "string",
             "format": "google-duration",
@@ -21534,6 +21908,28 @@
             "additionalProperties": null,
             "enum": null,
             "readOnly": false
+          },
+          "satisfiesPzi": {
+            "type": "boolean",
+            "format": "",
+            "description": "Output only. Whether this resource is zone isolated.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "satisfiesPzs": {
+            "type": "boolean",
+            "format": "",
+            "description": "Output only. Whether this resource is zone separated.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
           }
         },
         "items": null,
@@ -22188,6 +22584,28 @@
             "additionalProperties": null,
             "enum": null,
             "readOnly": false
+          },
+          "satisfiesPzi": {
+            "type": "boolean",
+            "format": "",
+            "description": "Output only. Whether this resource is zone isolated.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "satisfiesPzs": {
+            "type": "boolean",
+            "format": "",
+            "description": "Output only. Whether this resource is zone separated.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
           },
           "updateTime": {
             "type": "string",
@@ -24410,6 +24828,28 @@
             "additionalProperties": null,
             "enum": null,
             "readOnly": false
+          },
+          "satisfiesPzi": {
+            "type": "boolean",
+            "format": "",
+            "description": "Output only. Whether this resource is zone isolated.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "satisfiesPzs": {
+            "type": "boolean",
+            "format": "",
+            "description": "Output only. Whether this resource is zone separated.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
           },
           "updateTime": {
             "type": "string",
@@ -27056,6 +27496,28 @@
             "additionalProperties": null,
             "enum": null,
             "readOnly": true
+          },
+          "satisfiesPzi": {
+            "type": "boolean",
+            "format": "",
+            "description": "Output only. Whether this resource is zone isolated.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "satisfiesPzs": {
+            "type": "boolean",
+            "format": "",
+            "description": "Output only. Whether this resource is zone separated.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
           }
         },
         "items": null,
@@ -27794,7 +28256,7 @@
           "relabel": {
             "type": "boolean",
             "format": "",
-            "description": "Output only. If true, the labeling rules will be re-evaluated for the conversations.",
+            "description": "Output only. Deprecated: Use `request.annotator_selector.run_auto_labeling_annotator` instead. If true, the labeling rules will be re-evaluated for the conversations.",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -27883,7 +28345,7 @@
           "relabel": {
             "type": "boolean",
             "format": "",
-            "description": "Optional. If true, the labeling rules will be re-evaluated for the conversations.",
+            "description": "Optional. Deprecated: Use `annotator_selector.run_auto_labeling_annotator` instead. If true, the labeling rules will be re-evaluated for the conversations.",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -29061,6 +29523,28 @@
               "enum": null,
               "readOnly": false
             },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "satisfiesPzi": {
+            "type": "boolean",
+            "format": "",
+            "description": "Output only. Whether this resource is zone isolated.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "satisfiesPzs": {
+            "type": "boolean",
+            "format": "",
+            "description": "Output only. Whether this resource is zone separated.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
             "additionalProperties": null,
             "enum": null,
             "readOnly": true
@@ -31162,6 +31646,28 @@
             "enum": null,
             "readOnly": false
           },
+          "satisfiesPzi": {
+            "type": "boolean",
+            "format": "",
+            "description": "Output only. Whether this resource is zone isolated.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "satisfiesPzs": {
+            "type": "boolean",
+            "format": "",
+            "description": "Output only. Whether this resource is zone separated.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
           "ttl": {
             "type": "string",
             "format": "google-duration",
@@ -32134,6 +32640,28 @@
             "additionalProperties": null,
             "enum": null,
             "readOnly": false
+          },
+          "satisfiesPzi": {
+            "type": "boolean",
+            "format": "",
+            "description": "Output only. Whether this resource is zone isolated.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "satisfiesPzs": {
+            "type": "boolean",
+            "format": "",
+            "description": "Output only. Whether this resource is zone separated.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
           }
         },
         "items": null,
@@ -32788,6 +33316,28 @@
             "additionalProperties": null,
             "enum": null,
             "readOnly": false
+          },
+          "satisfiesPzi": {
+            "type": "boolean",
+            "format": "",
+            "description": "Output only. Whether this resource is zone isolated.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "satisfiesPzs": {
+            "type": "boolean",
+            "format": "",
+            "description": "Output only. Whether this resource is zone separated.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
           },
           "updateTime": {
             "type": "string",
@@ -35010,6 +35560,28 @@
             "additionalProperties": null,
             "enum": null,
             "readOnly": false
+          },
+          "satisfiesPzi": {
+            "type": "boolean",
+            "format": "",
+            "description": "Output only. Whether this resource is zone isolated.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "satisfiesPzs": {
+            "type": "boolean",
+            "format": "",
+            "description": "Output only. Whether this resource is zone separated.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
           },
           "updateTime": {
             "type": "string",

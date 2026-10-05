@@ -25,7 +25,7 @@
   "version_qualifier": "v3beta1",
   "raw_spec": {
     "name": "dialogflow",
-    "revision": "20260825",
+    "revision": "20260929",
     "discoveryVersion": "v1",
     "baseUrl": "https://dialogflow.googleapis.com/",
     "rootUrl": "https://dialogflow.googleapis.com/",
@@ -25092,6 +25092,214 @@
         "enum": null,
         "readOnly": false
       },
+      "GoogleCloudDialogflowV2CompanionSuggestion": {
+        "type": "object",
+        "format": "",
+        "description": "",
+        "$ref": "",
+        "properties": {
+          "guidances": {
+            "type": "array",
+            "format": "",
+            "description": "",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "GoogleCloudDialogflowV2CompanionSuggestionGuidance",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudDialogflowV2CompanionSuggestionGuidance": {
+        "type": "object",
+        "format": "",
+        "description": "",
+        "$ref": "",
+        "properties": {
+          "explanation": {
+            "type": "string",
+            "format": "",
+            "description": "",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "groundingMetadata": {
+            "type": "",
+            "format": "",
+            "description": "",
+            "$ref": "GoogleCloudDialogflowV2GroundingMetadata",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "instructionSource": {
+            "type": "",
+            "format": "",
+            "description": "",
+            "$ref": "GoogleCloudDialogflowV2GuidanceInstruction",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "knowledgeSources": {
+            "type": "array",
+            "format": "",
+            "description": "",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "GoogleCloudDialogflowV2CompanionSuggestionGuidanceKnowledgeSource",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "suggestedAction": {
+            "type": "string",
+            "format": "",
+            "description": "",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "suggestedReply": {
+            "type": "string",
+            "format": "",
+            "description": "",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "toolCalls": {
+            "type": "array",
+            "format": "",
+            "description": "",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "GoogleCloudDialogflowV2ToolCallSuggestion",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "triggeringToolCallAnswerRecords": {
+            "type": "array",
+            "format": "",
+            "description": "",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudDialogflowV2CompanionSuggestionGuidanceKnowledgeSource": {
+        "type": "object",
+        "format": "",
+        "description": "",
+        "$ref": "",
+        "properties": {
+          "knowledgeArticleTitle": {
+            "type": "string",
+            "format": "",
+            "description": "",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "knowledgeArticleUrl": {
+            "type": "string",
+            "format": "",
+            "description": "",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "knowledgeSnippet": {
+            "type": "string",
+            "format": "",
+            "description": "",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
       "GoogleCloudDialogflowV2Context": {
         "type": "object",
         "format": "",
@@ -26035,6 +26243,62 @@
         "enum": null,
         "readOnly": false
       },
+      "GoogleCloudDialogflowV2GenerateCompanionSuggestionsResponse": {
+        "type": "object",
+        "format": "",
+        "description": "",
+        "$ref": "",
+        "properties": {
+          "answerRecord": {
+            "type": "string",
+            "format": "",
+            "description": "",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "companionSuggestion": {
+            "type": "",
+            "format": "",
+            "description": "",
+            "$ref": "GoogleCloudDialogflowV2CompanionSuggestion",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "latestMessage": {
+            "type": "string",
+            "format": "",
+            "description": "",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "suggestionIndex": {
+            "type": "integer",
+            "format": "int32",
+            "description": "",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
       "GoogleCloudDialogflowV2GenerateSuggestionsResponse": {
         "type": "object",
         "format": "",
@@ -26212,6 +26476,376 @@
             "format": "",
             "description": "",
             "$ref": "GoogleCloudDialogflowV2ToolCallResult",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudDialogflowV2GroundingChunk": {
+        "type": "object",
+        "format": "",
+        "description": "",
+        "$ref": "",
+        "properties": {
+          "retrievedContext": {
+            "type": "",
+            "format": "",
+            "description": "",
+            "$ref": "GoogleCloudDialogflowV2GroundingChunkRetrievedContext",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "web": {
+            "type": "",
+            "format": "",
+            "description": "",
+            "$ref": "GoogleCloudDialogflowV2GroundingChunkWeb",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudDialogflowV2GroundingChunkRetrievedContext": {
+        "type": "object",
+        "format": "",
+        "description": "",
+        "$ref": "",
+        "properties": {
+          "text": {
+            "type": "string",
+            "format": "",
+            "description": "",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "title": {
+            "type": "string",
+            "format": "",
+            "description": "",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "uri": {
+            "type": "string",
+            "format": "",
+            "description": "",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudDialogflowV2GroundingChunkWeb": {
+        "type": "object",
+        "format": "",
+        "description": "",
+        "$ref": "",
+        "properties": {
+          "domain": {
+            "type": "string",
+            "format": "",
+            "description": "",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "title": {
+            "type": "string",
+            "format": "",
+            "description": "",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "uri": {
+            "type": "string",
+            "format": "",
+            "description": "",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudDialogflowV2GroundingMetadata": {
+        "type": "object",
+        "format": "",
+        "description": "",
+        "$ref": "",
+        "properties": {
+          "groundingChunks": {
+            "type": "array",
+            "format": "",
+            "description": "",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "GoogleCloudDialogflowV2GroundingChunk",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "groundingSupports": {
+            "type": "array",
+            "format": "",
+            "description": "",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "GoogleCloudDialogflowV2GroundingSupport",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "searchEntryPoint": {
+            "type": "",
+            "format": "",
+            "description": "",
+            "$ref": "GoogleCloudDialogflowV2SearchEntryPoint",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "webSearchQueries": {
+            "type": "array",
+            "format": "",
+            "description": "",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudDialogflowV2GroundingSupport": {
+        "type": "object",
+        "format": "",
+        "description": "",
+        "$ref": "",
+        "properties": {
+          "groundingChunkIndices": {
+            "type": "array",
+            "format": "",
+            "description": "",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "integer",
+              "format": "int32",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "segment": {
+            "type": "",
+            "format": "",
+            "description": "",
+            "$ref": "GoogleCloudDialogflowV2Segment",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudDialogflowV2GuidanceInstruction": {
+        "type": "object",
+        "format": "",
+        "description": "",
+        "$ref": "",
+        "properties": {
+          "actions": {
+            "type": "array",
+            "format": "",
+            "description": "",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "GoogleCloudDialogflowV2GuidanceInstructionAction",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "condition": {
+            "type": "string",
+            "format": "",
+            "description": "",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "disableSuggestedReply": {
+            "type": "boolean",
+            "format": "",
+            "description": "",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "displayDetails": {
+            "type": "string",
+            "format": "",
+            "description": "",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "displayName": {
+            "type": "string",
+            "format": "",
+            "description": "",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "triggerEvent": {
+            "type": "string",
+            "format": "",
+            "description": "",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "TRIGGER_EVENT_UNSPECIFIED",
+              "END_OF_UTTERANCE",
+              "CUSTOMER_MESSAGE",
+              "AGENT_MESSAGE"
+            ],
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudDialogflowV2GuidanceInstructionAction": {
+        "type": "object",
+        "format": "",
+        "description": "",
+        "$ref": "",
+        "properties": {
+          "description": {
+            "type": "string",
+            "format": "",
+            "description": "",
+            "$ref": "",
             "properties": null,
             "items": null,
             "additionalProperties": null,
@@ -29933,6 +30567,74 @@
         "enum": null,
         "readOnly": false
       },
+      "GoogleCloudDialogflowV2SearchEntryPoint": {
+        "type": "object",
+        "format": "",
+        "description": "",
+        "$ref": "",
+        "properties": {
+          "renderedContent": {
+            "type": "string",
+            "format": "",
+            "description": "",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudDialogflowV2Segment": {
+        "type": "object",
+        "format": "",
+        "description": "",
+        "$ref": "",
+        "properties": {
+          "endIndex": {
+            "type": "integer",
+            "format": "int32",
+            "description": "",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "startIndex": {
+            "type": "integer",
+            "format": "int32",
+            "description": "",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "text": {
+            "type": "string",
+            "format": "",
+            "description": "",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
       "GoogleCloudDialogflowV2Sentiment": {
         "type": "object",
         "format": "",
@@ -30690,6 +31392,17 @@
             "enum": null,
             "readOnly": false
           },
+          "generateCompanionSuggestionsResponse": {
+            "type": "",
+            "format": "",
+            "description": "",
+            "$ref": "GoogleCloudDialogflowV2GenerateCompanionSuggestionsResponse",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
           "generateSuggestionsResponse": {
             "type": "",
             "format": "",
@@ -31109,6 +31822,40 @@
             "format": "",
             "description": "",
             "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudDialogflowV2ToolCallSuggestion": {
+        "type": "object",
+        "format": "",
+        "description": "",
+        "$ref": "",
+        "properties": {
+          "textUpdate": {
+            "type": "string",
+            "format": "",
+            "description": "",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "toolCallInfo": {
+            "type": "",
+            "format": "",
+            "description": "",
+            "$ref": "GoogleCloudDialogflowV2GeneratorSuggestionToolCallInfo",
             "properties": null,
             "items": null,
             "additionalProperties": null,
@@ -32080,6 +32827,214 @@
         "enum": null,
         "readOnly": false
       },
+      "GoogleCloudDialogflowV2beta1CompanionSuggestion": {
+        "type": "object",
+        "format": "",
+        "description": "",
+        "$ref": "",
+        "properties": {
+          "guidances": {
+            "type": "array",
+            "format": "",
+            "description": "",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "GoogleCloudDialogflowV2beta1CompanionSuggestionGuidance",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudDialogflowV2beta1CompanionSuggestionGuidance": {
+        "type": "object",
+        "format": "",
+        "description": "",
+        "$ref": "",
+        "properties": {
+          "explanation": {
+            "type": "string",
+            "format": "",
+            "description": "",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "groundingMetadata": {
+            "type": "",
+            "format": "",
+            "description": "",
+            "$ref": "GoogleCloudDialogflowV2beta1GroundingMetadata",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "instructionSource": {
+            "type": "",
+            "format": "",
+            "description": "",
+            "$ref": "GoogleCloudDialogflowV2beta1GuidanceInstruction",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "knowledgeSources": {
+            "type": "array",
+            "format": "",
+            "description": "",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "GoogleCloudDialogflowV2beta1CompanionSuggestionGuidanceKnowledgeSource",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "suggestedAction": {
+            "type": "string",
+            "format": "",
+            "description": "",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "suggestedReply": {
+            "type": "string",
+            "format": "",
+            "description": "",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "toolCalls": {
+            "type": "array",
+            "format": "",
+            "description": "",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "GoogleCloudDialogflowV2beta1ToolCallSuggestion",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "triggeringToolCallAnswerRecords": {
+            "type": "array",
+            "format": "",
+            "description": "",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudDialogflowV2beta1CompanionSuggestionGuidanceKnowledgeSource": {
+        "type": "object",
+        "format": "",
+        "description": "",
+        "$ref": "",
+        "properties": {
+          "knowledgeArticleTitle": {
+            "type": "string",
+            "format": "",
+            "description": "",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "knowledgeArticleUrl": {
+            "type": "string",
+            "format": "",
+            "description": "",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "knowledgeSnippet": {
+            "type": "string",
+            "format": "",
+            "description": "",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
       "GoogleCloudDialogflowV2beta1Context": {
         "type": "object",
         "format": "",
@@ -32675,6 +33630,62 @@
         "enum": null,
         "readOnly": false
       },
+      "GoogleCloudDialogflowV2beta1GenerateCompanionSuggestionsResponse": {
+        "type": "object",
+        "format": "",
+        "description": "",
+        "$ref": "",
+        "properties": {
+          "answerRecord": {
+            "type": "string",
+            "format": "",
+            "description": "",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "companionSuggestion": {
+            "type": "",
+            "format": "",
+            "description": "",
+            "$ref": "GoogleCloudDialogflowV2beta1CompanionSuggestion",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "latestMessage": {
+            "type": "string",
+            "format": "",
+            "description": "",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "suggestionIndex": {
+            "type": "integer",
+            "format": "int32",
+            "description": "",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
       "GoogleCloudDialogflowV2beta1GenerateSuggestionsResponse": {
         "type": "object",
         "format": "",
@@ -32852,6 +33863,376 @@
             "format": "",
             "description": "",
             "$ref": "GoogleCloudDialogflowV2beta1ToolCallResult",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudDialogflowV2beta1GroundingChunk": {
+        "type": "object",
+        "format": "",
+        "description": "",
+        "$ref": "",
+        "properties": {
+          "retrievedContext": {
+            "type": "",
+            "format": "",
+            "description": "",
+            "$ref": "GoogleCloudDialogflowV2beta1GroundingChunkRetrievedContext",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "web": {
+            "type": "",
+            "format": "",
+            "description": "",
+            "$ref": "GoogleCloudDialogflowV2beta1GroundingChunkWeb",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudDialogflowV2beta1GroundingChunkRetrievedContext": {
+        "type": "object",
+        "format": "",
+        "description": "",
+        "$ref": "",
+        "properties": {
+          "text": {
+            "type": "string",
+            "format": "",
+            "description": "",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "title": {
+            "type": "string",
+            "format": "",
+            "description": "",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "uri": {
+            "type": "string",
+            "format": "",
+            "description": "",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudDialogflowV2beta1GroundingChunkWeb": {
+        "type": "object",
+        "format": "",
+        "description": "",
+        "$ref": "",
+        "properties": {
+          "domain": {
+            "type": "string",
+            "format": "",
+            "description": "",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "title": {
+            "type": "string",
+            "format": "",
+            "description": "",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "uri": {
+            "type": "string",
+            "format": "",
+            "description": "",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudDialogflowV2beta1GroundingMetadata": {
+        "type": "object",
+        "format": "",
+        "description": "",
+        "$ref": "",
+        "properties": {
+          "groundingChunks": {
+            "type": "array",
+            "format": "",
+            "description": "",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "GoogleCloudDialogflowV2beta1GroundingChunk",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "groundingSupports": {
+            "type": "array",
+            "format": "",
+            "description": "",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "GoogleCloudDialogflowV2beta1GroundingSupport",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "searchEntryPoint": {
+            "type": "",
+            "format": "",
+            "description": "",
+            "$ref": "GoogleCloudDialogflowV2beta1SearchEntryPoint",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "webSearchQueries": {
+            "type": "array",
+            "format": "",
+            "description": "",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudDialogflowV2beta1GroundingSupport": {
+        "type": "object",
+        "format": "",
+        "description": "",
+        "$ref": "",
+        "properties": {
+          "groundingChunkIndices": {
+            "type": "array",
+            "format": "",
+            "description": "",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "integer",
+              "format": "int32",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "segment": {
+            "type": "",
+            "format": "",
+            "description": "",
+            "$ref": "GoogleCloudDialogflowV2beta1Segment",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudDialogflowV2beta1GuidanceInstruction": {
+        "type": "object",
+        "format": "",
+        "description": "",
+        "$ref": "",
+        "properties": {
+          "actions": {
+            "type": "array",
+            "format": "",
+            "description": "",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "GoogleCloudDialogflowV2beta1GuidanceInstructionAction",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "condition": {
+            "type": "string",
+            "format": "",
+            "description": "",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "disableSuggestedReply": {
+            "type": "boolean",
+            "format": "",
+            "description": "",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "displayDetails": {
+            "type": "string",
+            "format": "",
+            "description": "",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "displayName": {
+            "type": "string",
+            "format": "",
+            "description": "",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "triggerEvent": {
+            "type": "string",
+            "format": "",
+            "description": "",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "TRIGGER_EVENT_UNSPECIFIED",
+              "END_OF_UTTERANCE",
+              "CUSTOMER_MESSAGE",
+              "AGENT_MESSAGE"
+            ],
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudDialogflowV2beta1GuidanceInstructionAction": {
+        "type": "object",
+        "format": "",
+        "description": "",
+        "$ref": "",
+        "properties": {
+          "description": {
+            "type": "string",
+            "format": "",
+            "description": "",
+            "$ref": "",
             "properties": null,
             "items": null,
             "additionalProperties": null,
@@ -37532,6 +38913,74 @@
         "enum": null,
         "readOnly": false
       },
+      "GoogleCloudDialogflowV2beta1SearchEntryPoint": {
+        "type": "object",
+        "format": "",
+        "description": "",
+        "$ref": "",
+        "properties": {
+          "renderedContent": {
+            "type": "string",
+            "format": "",
+            "description": "",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudDialogflowV2beta1Segment": {
+        "type": "object",
+        "format": "",
+        "description": "",
+        "$ref": "",
+        "properties": {
+          "endIndex": {
+            "type": "integer",
+            "format": "int32",
+            "description": "",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "startIndex": {
+            "type": "integer",
+            "format": "int32",
+            "description": "",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "text": {
+            "type": "string",
+            "format": "",
+            "description": "",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
       "GoogleCloudDialogflowV2beta1Sentiment": {
         "type": "object",
         "format": "",
@@ -38340,6 +39789,17 @@
             "enum": null,
             "readOnly": false
           },
+          "generateCompanionSuggestionsResponse": {
+            "type": "",
+            "format": "",
+            "description": "",
+            "$ref": "GoogleCloudDialogflowV2beta1GenerateCompanionSuggestionsResponse",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
           "generateSuggestionsResponse": {
             "type": "",
             "format": "",
@@ -38832,6 +40292,40 @@
             "format": "",
             "description": "",
             "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudDialogflowV2beta1ToolCallSuggestion": {
+        "type": "object",
+        "format": "",
+        "description": "",
+        "$ref": "",
+        "properties": {
+          "textUpdate": {
+            "type": "string",
+            "format": "",
+            "description": "",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "toolCallInfo": {
+            "type": "",
+            "format": "",
+            "description": "",
+            "$ref": "GoogleCloudDialogflowV2beta1GeneratorSuggestionToolCallInfo",
             "properties": null,
             "items": null,
             "additionalProperties": null,

@@ -25,7 +25,7 @@
   "version_qualifier": "v1beta1",
   "raw_spec": {
     "name": "networkservices",
-    "revision": "20260827",
+    "revision": "20260921",
     "discoveryVersion": "v1",
     "baseUrl": "https://networkservices.googleapis.com/",
     "rootUrl": "https://networkservices.googleapis.com/",
@@ -1003,10 +1003,31 @@
           "domain": {
             "type": "string",
             "format": "",
-            "description": "Optional. The domain to peer.",
+            "description": "Optional. Deprecated: Use `domains` instead. The domain to peer.",
             "$ref": "",
             "properties": null,
             "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "domains": {
+            "type": "array",
+            "format": "",
+            "description": "Optional. The domains to peer.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
             "additionalProperties": null,
             "enum": null,
             "readOnly": false
@@ -1031,7 +1052,7 @@
       "EgressNetworkConfig": {
         "type": "object",
         "format": "",
-        "description": "",
+        "description": "Egress network config",
         "$ref": "",
         "properties": {
           "dnsPeeringConfig": {
@@ -1050,6 +1071,17 @@
             "format": "",
             "description": "Optional. The network attachment resource name. Format: projects/{project}/regions/{region}/networkAttachments/{network_attachment_id}",
             "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "tlsConfig": {
+            "type": "",
+            "format": "",
+            "description": "Optional. The TLS configuration for the egress traffic.",
+            "$ref": "EgressNetworkConfigTlsConfig",
             "properties": null,
             "items": null,
             "additionalProperties": null,
@@ -1080,6 +1112,44 @@
               "ALL_TRAFFIC",
               "PRIVATE_RANGES_ONLY"
             ],
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "EgressNetworkConfigTlsConfig": {
+        "type": "object",
+        "format": "",
+        "description": "Configuration for TLS connections.",
+        "$ref": "",
+        "properties": {
+          "additionalRoots": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The additional roots to trust.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "ADDITIONAL_ROOTS_UNSPECIFIED",
+              "NO_ADDITIONAL_ROOTS",
+              "PUBLICLY_TRUSTED_ROOTS"
+            ],
+            "readOnly": false
+          },
+          "trustConfig": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The trust config resource name. Format: projects/{project}/locations/{location}/trustConfigs/{trust_config}",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
             "readOnly": false
           }
         },
@@ -1832,7 +1902,7 @@
           "extensions": {
             "type": "array",
             "format": "",
-            "description": "Required. A set of extensions to execute for the matching request. At least one extension is required. Up to 3 extensions can be defined for each extension chain for `LbTrafficExtension` resource. `LbRouteExtension` and `LbEdgeExtension` chains are limited to 1 extension per extension chain.",
+            "description": "Required. A set of extensions to execute for the matching request. At least one extension is required. Up to 3 extensions can be defined for each extension chain for `LbTrafficExtension` resource. `LbRouteExtension`, `LbEdgeExtension`, and `LbTcpExtension` chains are limited to 1 extension per extension chain.",
             "$ref": "",
             "properties": null,
             "items": {
@@ -2046,7 +2116,7 @@
           "supportedEvents": {
             "type": "array",
             "format": "",
-            "description": "Optional. A set of events during request or response processing for which this extension is called. For the `LbTrafficExtension` resource, this field is required. For the `LbRouteExtension` resource, this field is optional. If unspecified, `REQUEST_HEADERS` event is assumed as supported. For the `LbEdgeExtension` resource, this field is required and must only contain `REQUEST_HEADERS` event. For the `AuthzExtension` resource, this field is optional. `REQUEST_HEADERS` is the only supported event. If unspecified, `REQUEST_HEADERS` event is assumed as supported.",
+            "description": "Optional. A set of events during request or response processing for which this extension is called. For the `LbTrafficExtension` resource, this field is required. For the `LbRouteExtension` resource, this field is optional. If unspecified, `REQUEST_HEADERS` event is assumed as supported. For the `LbEdgeExtension` resource, this field is required and must only contain `REQUEST_HEADERS` event. For the `AuthzExtension` resource, this field is optional. `REQUEST_HEADERS` is the only supported event. If unspecified, `REQUEST_HEADERS` event is assumed as supported. For the `CdnEdgeExtension` resource, this field is optional. Eligible values are `REQUEST_HEADERS` and `RESPONSE_HEADERS`. If unspecified, both are assumed as supported.",
             "$ref": "",
             "properties": null,
             "items": {
@@ -4785,7 +4855,7 @@
           "extensionChains": {
             "type": "array",
             "format": "",
-            "description": "Required. A set of ordered extension chains that contain the match conditions and extensions to execute. Match conditions for each extension chain are evaluated in sequence for a given request. The first extension chain that has a condition that matches the request is executed. Any subsequent extension chains do not execute. Limited to 5 extension chains per resource.",
+            "description": "Required. A set of ordered extension chains that contain the match conditions and extensions to execute. Match conditions for each extension chain are evaluated in sequence for a given request. The first extension chain that has a condition that matches the request is executed. Any subsequent extension chains do not execute. Limited to 1 extension chain per resource.",
             "$ref": "",
             "properties": null,
             "items": {
@@ -9286,6 +9356,11 @@
                     "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/agentGateways",
                     "description": "Lists AgentGateways in a given project and location.",
                     "parameters": {
+                      "filter": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
                       "pageSize": {
                         "type": "integer",
                         "location": "query",
@@ -11491,6 +11566,11 @@
                         "location": "path",
                         "required": true
                       },
+                      "requestId": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
                       "serviceBindingId": {
                         "type": "string",
                         "location": "query",
@@ -11518,6 +11598,11 @@
                         "type": "string",
                         "location": "path",
                         "required": true
+                      },
+                      "requestId": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
                       }
                     },
                     "parameterOrder": [
@@ -11591,6 +11676,11 @@
                         "type": "string",
                         "location": "path",
                         "required": true
+                      },
+                      "requestId": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
                       },
                       "updateMask": {
                         "type": "string",

@@ -24,7 +24,7 @@
   "wire_name": "google_storagebatchoperations",
   "raw_spec": {
     "name": "storagebatchoperations",
-    "revision": "20260826",
+    "revision": "20260923",
     "discoveryVersion": "v1",
     "baseUrl": "https://storagebatchoperations.googleapis.com/",
     "rootUrl": "https://storagebatchoperations.googleapis.com/",
@@ -1957,6 +1957,44 @@
               "HOLD_STATUS_UNSPECIFIED",
               "SET",
               "UNSET"
+            ],
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ReconciliationOperationMetadata": {
+        "type": "object",
+        "format": "",
+        "description": "Operation metadata returned by the CLH during resource state reconciliation.",
+        "$ref": "",
+        "properties": {
+          "deleteResource": {
+            "type": "boolean",
+            "format": "",
+            "description": "DEPRECATED. Use exclusive_action instead.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "exclusiveAction": {
+            "type": "string",
+            "format": "",
+            "description": "Excluisive action returned by the CLH.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "UNKNOWN_REPAIR_ACTION",
+              "DELETE",
+              "RETRY"
             ],
             "readOnly": false
           }

@@ -24,7 +24,7 @@
   "wire_name": "google_developerconnect",
   "raw_spec": {
     "name": "developerconnect",
-    "revision": "20260827",
+    "revision": "20260914",
     "discoveryVersion": "v1",
     "baseUrl": "https://developerconnect.googleapis.com/",
     "rootUrl": "https://developerconnect.googleapis.com/",
@@ -2099,7 +2099,7 @@
       "GitProxyConfig": {
         "type": "object",
         "format": "",
-        "description": "The git proxy configuration.",
+        "description": "Configuration for proxies. For legacy reasons, this message is named `GitProxyConfig`, but it includes settings for both Git and HTTP proxy.",
         "$ref": "",
         "properties": {
           "enabled": {

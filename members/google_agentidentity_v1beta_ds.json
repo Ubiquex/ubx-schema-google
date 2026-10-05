@@ -25,7 +25,7 @@
   "version_qualifier": "v1beta",
   "raw_spec": {
     "name": "agentidentity",
-    "revision": "20260827",
+    "revision": "20261001",
     "discoveryVersion": "v1",
     "baseUrl": "https://agentidentity.googleapis.com/",
     "rootUrl": "https://agentidentity.googleapis.com/",
@@ -61,7 +61,9 @@
               "AUTH_PROVIDER_TYPE_THREE_LEGGED_OAUTH",
               "AUTH_PROVIDER_TYPE_TWO_LEGGED_OAUTH",
               "AUTH_PROVIDER_TYPE_API_KEY",
-              "AUTH_PROVIDER_TYPE_GEMINI_ENTERPRISE"
+              "AUTH_PROVIDER_TYPE_GEMINI_ENTERPRISE",
+              "AUTH_PROVIDER_TYPE_CROSS_APP_ACCESS",
+              "AUTH_PROVIDER_TYPE_CONNECTOR_REFERENCE"
             ],
             "readOnly": true
           },
@@ -185,6 +187,17 @@
             "readOnly": true
           }
         },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "AgentIdentityPool": {
+        "type": "object",
+        "format": "",
+        "description": "Marker message to indicate the managed Agent Identity Pool is used.",
+        "$ref": "",
+        "properties": {},
         "items": null,
         "additionalProperties": null,
         "enum": null,
@@ -511,6 +524,17 @@
             "enum": null,
             "readOnly": false
           },
+          "connectorReferenceAuthProvider": {
+            "type": "",
+            "format": "",
+            "description": "Parameters for Connector Reference authentication.",
+            "$ref": "ConnectorReferenceAuthProvider",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
           "geAuthProvider": {
             "type": "",
             "format": "",
@@ -538,6 +562,17 @@
             "format": "",
             "description": "Parameters for 2-legged OAuth (2LO) authentication.",
             "$ref": "TwoLeggedOAuth",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "xaaAuthProvider": {
+            "type": "",
+            "format": "",
+            "description": "Parameters for Cross-App Access authentication.",
+            "$ref": "CrossAppAccessAuthProvider",
             "properties": null,
             "items": null,
             "additionalProperties": null,
@@ -697,6 +732,272 @@
         "enum": null,
         "readOnly": false
       },
+      "ClientAssertionJwtAuth": {
+        "type": "object",
+        "format": "",
+        "description": "Configuration for client ID and client assertion JWT authentication.",
+        "$ref": "",
+        "properties": {
+          "clientId": {
+            "type": "string",
+            "format": "",
+            "description": "Required. The client identifier.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ClientSecretAuth": {
+        "type": "object",
+        "format": "",
+        "description": "Configuration for client ID and client secret authentication.",
+        "$ref": "",
+        "properties": {
+          "clientId": {
+            "type": "string",
+            "format": "",
+            "description": "Required. The client identifier.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "clientSecret": {
+            "type": "string",
+            "format": "",
+            "description": "Required. Input only. The client secret.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ConnectorReferenceAuthProvider": {
+        "type": "object",
+        "format": "",
+        "description": "Configuration parameters for the Connector Reference auth provider.",
+        "$ref": "",
+        "properties": {
+          "authorizationDetails": {
+            "type": "array",
+            "format": "",
+            "description": "Optional. Rich Authorization Requests (RFC 9396) detailing targeted OAuth resources/scopes, formatted as a JSON array of JSON objects.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "object",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": {
+                "type": "any",
+                "format": "",
+                "description": "Properties of the object.",
+                "$ref": "",
+                "properties": null,
+                "items": null,
+                "additionalProperties": null,
+                "enum": null,
+                "readOnly": false
+              },
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "connector": {
+            "type": "string",
+            "format": "",
+            "description": "Required. The name of the referenced connector.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "CrossAppAccessAuthProvider": {
+        "type": "object",
+        "format": "",
+        "description": "Configuration parameters for the Cross-App Access auth provider.",
+        "$ref": "",
+        "properties": {
+          "additionalParameters": {
+            "type": "object",
+            "format": "",
+            "description": "Optional. Additional parameters to be passed to the token endpoint.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "clientAssertionJwtAuth": {
+            "type": "",
+            "format": "",
+            "description": "Option 2: Authenticate using a standard `client_id` and a Client Assertion JWT.",
+            "$ref": "ClientAssertionJwtAuth",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "clientSecretAuth": {
+            "type": "",
+            "format": "",
+            "description": "Option 1: Authenticate using a standard `client_id` and `client_secret`.",
+            "$ref": "ClientSecretAuth",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "customIssuer": {
+            "type": "",
+            "format": "",
+            "description": "Configuration when using a custom or third-party authorization server as the issuer.",
+            "$ref": "CustomIssuer",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "googleAccount": {
+            "type": "",
+            "format": "",
+            "description": "Configuration when using Google Accounts as the issuer.",
+            "$ref": "GoogleAccount",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "idJagInput": {
+            "type": "",
+            "format": "",
+            "description": "Configuration for when the input is already an ID-JAG.",
+            "$ref": "DirectIdJagInput",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "idTokenInput": {
+            "type": "",
+            "format": "",
+            "description": "Configuration for when the input is an ID token.",
+            "$ref": "IdTokenProcessingConfig",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "workforceIdentityFederation": {
+            "type": "",
+            "format": "",
+            "description": "Configuration when using Workforce Identity Federation as the issuer.",
+            "$ref": "WorkforceIdentityFederation",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "CustomIssuer": {
+        "type": "object",
+        "format": "",
+        "description": "Configuration for a custom or third-party authorization server issuer.",
+        "$ref": "",
+        "properties": {
+          "issuer": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The issuer identifier of the target Authorization Server.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "tokenUrl": {
+            "type": "string",
+            "format": "",
+            "description": "Required. The token endpoint of the target OAuth authorization server to retrieve resource tokens.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "DirectIdJagInput": {
+        "type": "object",
+        "format": "",
+        "description": "Marker message indicating the input is already an ID-JAG, so no fetching is required.",
+        "$ref": "",
+        "properties": {},
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
       "DisableAuthProviderRequest": {
         "type": "object",
         "format": "",
@@ -816,6 +1117,72 @@
         "description": "Configuration for Gemini Enterprise authentication.",
         "$ref": "",
         "properties": {},
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleAccount": {
+        "type": "object",
+        "format": "",
+        "description": "Configuration for Google Account usage as the issuer.",
+        "$ref": "",
+        "properties": {},
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "IdTokenProcessingConfig": {
+        "type": "object",
+        "format": "",
+        "description": "Defines how to process an input ID token to obtain an ID-JAG.",
+        "$ref": "",
+        "properties": {
+          "agentIdentityPool": {
+            "type": "",
+            "format": "",
+            "description": "Indicates the managed Agent Identity pool should be used to fetch the ID-JAG.",
+            "$ref": "AgentIdentityPool",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "idJagAdditionalClaims": {
+            "type": "object",
+            "format": "",
+            "description": "Optional. Optional additional claims to include when fetching an ID-JAG.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "any",
+              "format": "",
+              "description": "Properties of the object.",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "idJagAuthProvider": {
+            "type": "string",
+            "format": "",
+            "description": "The resource name of the ID-JAG auth provider. Format: \"projects/{project}/locations/{location}/authProviders/{auth_provider}\"",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
         "items": null,
         "additionalProperties": null,
         "enum": null,
@@ -1311,6 +1678,52 @@
         "enum": null,
         "readOnly": false
       },
+      "ResolveAuthorizationRequest": {
+        "type": "object",
+        "format": "",
+        "description": "Request message for `ResolveAuthorization`.",
+        "$ref": "",
+        "properties": {
+          "clientUserId": {
+            "type": "string",
+            "format": "",
+            "description": "Required. The user ID of the client for whom the authorization is resolved.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ResolveAuthorizationResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Response message for `ResolveAuthorization`.",
+        "$ref": "",
+        "properties": {
+          "authorization": {
+            "type": "string",
+            "format": "",
+            "description": "The resource name of the resolved authorization. Format: projects/{project}/locations/{location}/authProviders/{auth_provider}/authorizations/{authorization}",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
       "RevokeAuthorizationRequest": {
         "type": "object",
         "format": "",
@@ -1597,6 +2010,17 @@
             "readOnly": false
           }
         },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "WorkforceIdentityFederation": {
+        "type": "object",
+        "format": "",
+        "description": "Configuration for Workforce Identity Federation usage as the issuer.",
+        "$ref": "",
+        "properties": {},
         "items": null,
         "additionalProperties": null,
         "enum": null,
@@ -2040,6 +2464,29 @@
                       "$ref": "QueryWorkloadsResponse"
                     }
                   },
+                  "resolveAuthorization": {
+                    "id": "agentidentity.projects.locations.authProviders.resolveAuthorization",
+                    "httpMethod": "POST",
+                    "path": "v1beta/{+name}:resolveAuthorization",
+                    "flatPath": "v1beta/projects/{projectsId}/locations/{locationsId}/authProviders/{authProvidersId}:resolveAuthorization",
+                    "description": "Resolves an authorization for a user on an auth provider, creating one if it does not exist or returning an existing one.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": {
+                      "$ref": "ResolveAuthorizationRequest"
+                    },
+                    "response": {
+                      "$ref": "ResolveAuthorizationResponse"
+                    }
+                  },
                   "revokeAuthorization": {
                     "id": "agentidentity.projects.locations.authProviders.revokeAuthorization",
                     "httpMethod": "POST",
@@ -2183,6 +2630,32 @@
                           "$ref": "Authorization"
                         }
                       },
+                      "getIamPolicy": {
+                        "id": "agentidentity.projects.locations.authProviders.authorizations.getIamPolicy",
+                        "httpMethod": "GET",
+                        "path": "v1beta/{+resource}:getIamPolicy",
+                        "flatPath": "v1beta/projects/{projectsId}/locations/{locationsId}/authProviders/{authProvidersId}/authorizations/{authorizationsId}:getIamPolicy",
+                        "description": "Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.",
+                        "parameters": {
+                          "options.requestedPolicyVersion": {
+                            "type": "integer",
+                            "location": "query",
+                            "required": false
+                          },
+                          "resource": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          }
+                        },
+                        "parameterOrder": [
+                          "resource"
+                        ],
+                        "request": null,
+                        "response": {
+                          "$ref": "Policy"
+                        }
+                      },
                       "list": {
                         "id": "agentidentity.projects.locations.authProviders.authorizations.list",
                         "httpMethod": "GET",
@@ -2222,6 +2695,52 @@
                         "request": null,
                         "response": {
                           "$ref": "ListAuthorizationsResponse"
+                        }
+                      },
+                      "setIamPolicy": {
+                        "id": "agentidentity.projects.locations.authProviders.authorizations.setIamPolicy",
+                        "httpMethod": "POST",
+                        "path": "v1beta/{+resource}:setIamPolicy",
+                        "flatPath": "v1beta/projects/{projectsId}/locations/{locationsId}/authProviders/{authProvidersId}/authorizations/{authorizationsId}:setIamPolicy",
+                        "description": "Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.",
+                        "parameters": {
+                          "resource": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          }
+                        },
+                        "parameterOrder": [
+                          "resource"
+                        ],
+                        "request": {
+                          "$ref": "SetIamPolicyRequest"
+                        },
+                        "response": {
+                          "$ref": "Policy"
+                        }
+                      },
+                      "testIamPermissions": {
+                        "id": "agentidentity.projects.locations.authProviders.authorizations.testIamPermissions",
+                        "httpMethod": "POST",
+                        "path": "v1beta/{+resource}:testIamPermissions",
+                        "flatPath": "v1beta/projects/{projectsId}/locations/{locationsId}/authProviders/{authProvidersId}/authorizations/{authorizationsId}:testIamPermissions",
+                        "description": "Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may \"fail open\" without warning.",
+                        "parameters": {
+                          "resource": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          }
+                        },
+                        "parameterOrder": [
+                          "resource"
+                        ],
+                        "request": {
+                          "$ref": "TestIamPermissionsRequest"
+                        },
+                        "response": {
+                          "$ref": "TestIamPermissionsResponse"
                         }
                       }
                     },

@@ -25,7 +25,7 @@
   "version_qualifier": "v1beta1",
   "raw_spec": {
     "name": "assuredworkloads",
-    "revision": "20260904",
+    "revision": "20260928",
     "discoveryVersion": "v1",
     "baseUrl": "https://assuredworkloads.googleapis.com/",
     "rootUrl": "https://assuredworkloads.googleapis.com/",
@@ -72,6 +72,21 @@
             "items": null,
             "additionalProperties": null,
             "enum": null,
+            "readOnly": false
+          },
+          "view": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Specifies the violation view (`AssuredWorkloads` or `DataBoundary`) for acknowledging violations.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "VIOLATION_VIEW_UNSPECIFIED",
+              "VIOLATION_VIEW_ASSURED_WORKLOADS",
+              "VIOLATION_VIEW_DATA_BOUNDARY"
+            ],
             "readOnly": false
           }
         },
@@ -521,6 +536,28 @@
             "additionalProperties": null,
             "enum": null,
             "readOnly": false
+          },
+          "orgPolicyFindingCount": {
+            "type": "string",
+            "format": "int64",
+            "description": "Output only. Number of organization policy findings for the cloud control.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "resourceFindingCount": {
+            "type": "string",
+            "format": "int64",
+            "description": "Output only. Number of resource findings for the cloud control.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
           }
         },
         "items": null,
@@ -1154,6 +1191,17 @@
             "enum": null,
             "readOnly": false
           },
+          "orgPolicyFindingCount": {
+            "type": "string",
+            "format": "int64",
+            "description": "Output only. Number of organization policy findings for this control.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
           "overallEvaluationState": {
             "type": "string",
             "format": "",
@@ -1168,6 +1216,17 @@
               "EVALUATION_STATE_FAILED",
               "EVALUATION_STATE_NOT_ASSESSED"
             ],
+            "readOnly": true
+          },
+          "resourceFindingCount": {
+            "type": "string",
+            "format": "int64",
+            "description": "Output only. Number of resource findings for this control.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
             "readOnly": true
           },
           "similarControls": {
@@ -2830,6 +2889,27 @@
             "enum": null,
             "readOnly": false
           },
+          "affectedFrameworks": {
+            "type": "array",
+            "format": "",
+            "description": "Output only. List of compliance frameworks that are affected by this violation. This field is only populated when using `VIOLATION_VIEW_DATA_BOUNDARY`. e.g. \"FedRAMP High\", \"NIST 800-53\".",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
           "associatedOrgPolicyViolationId": {
             "type": "string",
             "format": "",
@@ -2867,6 +2947,17 @@
             "type": "string",
             "format": "",
             "description": "Output only. Category under which this violation is mapped. e.g. Location, Service Usage, Access, Encryption, etc.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "childResourceViolationCount": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Optional. Output only. The number of resource violations for particular org policy violation. This will be 0 in case of resource violation.",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -2966,6 +3057,17 @@
             "format": "",
             "description": "Output only. Compliance violation remediation",
             "$ref": "GoogleCloudAssuredworkloadsV1beta1ViolationRemediation",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "remediationMarkdown": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. Contains the remediation instructions for the violation in markdown format.",
+            "$ref": "",
             "properties": null,
             "items": null,
             "additionalProperties": null,
@@ -5413,6 +5515,11 @@
                             "type": "string",
                             "location": "path",
                             "required": true
+                          },
+                          "view": {
+                            "type": "string",
+                            "location": "query",
+                            "required": false
                           }
                         },
                         "parameterOrder": [
@@ -5464,6 +5571,11 @@
                             "type": "string",
                             "location": "path",
                             "required": true
+                          },
+                          "view": {
+                            "type": "string",
+                            "location": "query",
+                            "required": false
                           }
                         },
                         "parameterOrder": [

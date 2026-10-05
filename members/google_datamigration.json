@@ -24,7 +24,7 @@
   "wire_name": "google_datamigration",
   "raw_spec": {
     "name": "datamigration",
-    "revision": "20260820",
+    "revision": "20260919",
     "discoveryVersion": "v1",
     "baseUrl": "https://datamigration.googleapis.com/",
     "rootUrl": "https://datamigration.googleapis.com/",
@@ -1849,6 +1849,17 @@
             "enum": null,
             "readOnly": true
           },
+          "latestApplyTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Optional. Output only. The timestamp when the workspace was last applied.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
           "latestCommitId": {
             "type": "string",
             "format": "",
@@ -1864,6 +1875,17 @@
             "type": "string",
             "format": "google-datetime",
             "description": "Output only. The timestamp when the workspace was committed.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "latestConvertTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Optional. Output only. The timestamp when the workspace was last converted.",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -2859,6 +2881,96 @@
         "enum": null,
         "readOnly": false
       },
+      "EntityId": {
+        "type": "object",
+        "format": "",
+        "description": "An entity identifier.",
+        "$ref": "",
+        "properties": {
+          "parentName": {
+            "type": "string",
+            "format": "",
+            "description": "The parent entity full name.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "parentType": {
+            "type": "string",
+            "format": "",
+            "description": "The type of the database entity (schema, table, view, ...).",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "DATABASE_ENTITY_TYPE_UNSPECIFIED",
+              "DATABASE_ENTITY_TYPE_SCHEMA",
+              "DATABASE_ENTITY_TYPE_TABLE",
+              "DATABASE_ENTITY_TYPE_COLUMN",
+              "DATABASE_ENTITY_TYPE_CONSTRAINT",
+              "DATABASE_ENTITY_TYPE_INDEX",
+              "DATABASE_ENTITY_TYPE_TRIGGER",
+              "DATABASE_ENTITY_TYPE_VIEW",
+              "DATABASE_ENTITY_TYPE_SEQUENCE",
+              "DATABASE_ENTITY_TYPE_STORED_PROCEDURE",
+              "DATABASE_ENTITY_TYPE_FUNCTION",
+              "DATABASE_ENTITY_TYPE_SYNONYM",
+              "DATABASE_ENTITY_TYPE_DATABASE_PACKAGE",
+              "DATABASE_ENTITY_TYPE_UDT",
+              "DATABASE_ENTITY_TYPE_MATERIALIZED_VIEW",
+              "DATABASE_ENTITY_TYPE_DATABASE"
+            ],
+            "readOnly": false
+          },
+          "shortName": {
+            "type": "string",
+            "format": "",
+            "description": "The short name (e.g. table name) of the entity.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "type": {
+            "type": "string",
+            "format": "",
+            "description": "The type of the database entity (schema, table, view, index, ...).",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "DATABASE_ENTITY_TYPE_UNSPECIFIED",
+              "DATABASE_ENTITY_TYPE_SCHEMA",
+              "DATABASE_ENTITY_TYPE_TABLE",
+              "DATABASE_ENTITY_TYPE_COLUMN",
+              "DATABASE_ENTITY_TYPE_CONSTRAINT",
+              "DATABASE_ENTITY_TYPE_INDEX",
+              "DATABASE_ENTITY_TYPE_TRIGGER",
+              "DATABASE_ENTITY_TYPE_VIEW",
+              "DATABASE_ENTITY_TYPE_SEQUENCE",
+              "DATABASE_ENTITY_TYPE_STORED_PROCEDURE",
+              "DATABASE_ENTITY_TYPE_FUNCTION",
+              "DATABASE_ENTITY_TYPE_SYNONYM",
+              "DATABASE_ENTITY_TYPE_DATABASE_PACKAGE",
+              "DATABASE_ENTITY_TYPE_UDT",
+              "DATABASE_ENTITY_TYPE_MATERIALIZED_VIEW",
+              "DATABASE_ENTITY_TYPE_DATABASE"
+            ],
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
       "EntityIssue": {
         "type": "object",
         "format": "",
@@ -3166,6 +3278,139 @@
         "enum": null,
         "readOnly": false
       },
+      "EntityStatusView": {
+        "type": "object",
+        "format": "",
+        "description": "A single entity for the UI view.",
+        "$ref": "",
+        "properties": {
+          "dependencies": {
+            "type": "array",
+            "format": "",
+            "description": "Optional. The set of entities that this entity directly depends on, i.e., it does not include transitive dependencies. Provided only for FULL_WITH_DEPENDENCIES view. Dependencies are provided according to the request tree type.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "EntityId",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "draftDdlKind": {
+            "type": "string",
+            "format": "",
+            "description": "The DDL Kind selected for apply. If UNSPECIFIED, the entity wasn't converted yet. For SUMMARY view, this rolls up from descendants with the logic of UNSPECIFIED \u003c DETERMINISTIC \u003c AI. USER_EDIT is not propagated.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "DDL_KIND_UNSPECIFIED",
+              "SOURCE",
+              "DETERMINISTIC",
+              "AI",
+              "USER_EDIT"
+            ],
+            "readOnly": false
+          },
+          "draftEntity": {
+            "type": "",
+            "format": "",
+            "description": "The entity short name and type from the DRAFT tree.",
+            "$ref": "EntityId",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "editedDdlKind": {
+            "type": "string",
+            "format": "",
+            "description": "If ddl_kind is USER_EDIT, this holds the DDL kind of the original content - DETERMINISTIC or AI. Otherwise, this is DDL_KIND_UNSPECIFIED. Relevant only for FULL view.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "DDL_KIND_UNSPECIFIED",
+              "SOURCE",
+              "DETERMINISTIC",
+              "AI",
+              "USER_EDIT"
+            ],
+            "readOnly": false
+          },
+          "issues": {
+            "type": "",
+            "format": "",
+            "description": "Unresolved issues information according to the current Draft DdlKind.",
+            "$ref": "IssueAggregateData",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "resolvedIssues": {
+            "type": "",
+            "format": "",
+            "description": "Resolved issues information according to the current Draft DdlKind.",
+            "$ref": "IssueAggregateData",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "sourceEntity": {
+            "type": "",
+            "format": "",
+            "description": "The entity short name and type from the SOURCE tree.",
+            "$ref": "EntityId",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "testedEntity": {
+            "type": "boolean",
+            "format": "",
+            "description": "Optional. Whether the entity has successfully generated and executed validation tests.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "wasApplied": {
+            "type": "boolean",
+            "format": "",
+            "description": "Was the entity applied on the destination. Relevant only for FULL view.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
       "ErrorInfo": {
         "type": "object",
         "format": "",
@@ -3264,6 +3509,150 @@
             "type": "string",
             "format": "",
             "description": "Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "FetchEntitiesStatusViewResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Response message for DataMigrationService.FetchEntitiesStatusView.",
+        "$ref": "",
+        "properties": {
+          "entities": {
+            "type": "array",
+            "format": "",
+            "description": "A list of the entities matching the request, sorted by their full name (source name if requested the SOURCE tree, draft name if requested the DRAFT tree). Sub-entities (such as indexes) always appear immediately after their parent element.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "EntityStatusView",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "A token which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "FetchIssuesResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Response for fetching issues of a conversion workspace.",
+        "$ref": "",
+        "properties": {
+          "issues": {
+            "type": "array",
+            "format": "",
+            "description": "The list of issues for the conversion workspace.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Issue",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "A token which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "FetchIssuesResponseIssuePosition": {
+        "type": "object",
+        "format": "",
+        "description": "Issue position.",
+        "$ref": "",
+        "properties": {
+          "column": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Issue column number.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "length": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Issue length.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "line": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Issue line number.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "offset": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Issue offset.",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -4122,6 +4511,335 @@
               "VALUE_COMPARISON_IF_VALUE_LARGER_THAN",
               "VALUE_COMPARISON_IF_VALUE_LARGER_EQUAL_THAN"
             ],
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Issue": {
+        "type": "object",
+        "format": "",
+        "description": "Issue related to the entity.",
+        "$ref": "",
+        "properties": {
+          "categoryId": {
+            "type": "string",
+            "format": "",
+            "description": "The category ID.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "ISSUE_CATEGORY_ID_UNSPECIFIED",
+              "ISSUE_CATEGORY_ID_CW00",
+              "ISSUE_CATEGORY_ID_CW01",
+              "ISSUE_CATEGORY_ID_CW02",
+              "ISSUE_CATEGORY_ID_CW03",
+              "ISSUE_CATEGORY_ID_CW04",
+              "ISSUE_CATEGORY_ID_CW05",
+              "ISSUE_CATEGORY_ID_CW06",
+              "ISSUE_CATEGORY_ID_CW07",
+              "ISSUE_CATEGORY_ID_CW08",
+              "ISSUE_CATEGORY_ID_CW99",
+              "ISSUE_CATEGORY_ID_QA00",
+              "ISSUE_CATEGORY_ID_AP00"
+            ],
+            "readOnly": false
+          },
+          "entityFullName": {
+            "type": "string",
+            "format": "",
+            "description": "Entity full name.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "entityType": {
+            "type": "string",
+            "format": "",
+            "description": "The entity type (if the DDL is for a sub entity).",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "DATABASE_ENTITY_TYPE_UNSPECIFIED",
+              "DATABASE_ENTITY_TYPE_SCHEMA",
+              "DATABASE_ENTITY_TYPE_TABLE",
+              "DATABASE_ENTITY_TYPE_COLUMN",
+              "DATABASE_ENTITY_TYPE_CONSTRAINT",
+              "DATABASE_ENTITY_TYPE_INDEX",
+              "DATABASE_ENTITY_TYPE_TRIGGER",
+              "DATABASE_ENTITY_TYPE_VIEW",
+              "DATABASE_ENTITY_TYPE_SEQUENCE",
+              "DATABASE_ENTITY_TYPE_STORED_PROCEDURE",
+              "DATABASE_ENTITY_TYPE_FUNCTION",
+              "DATABASE_ENTITY_TYPE_SYNONYM",
+              "DATABASE_ENTITY_TYPE_DATABASE_PACKAGE",
+              "DATABASE_ENTITY_TYPE_UDT",
+              "DATABASE_ENTITY_TYPE_MATERIALIZED_VIEW",
+              "DATABASE_ENTITY_TYPE_DATABASE"
+            ],
+            "readOnly": false
+          },
+          "groupId": {
+            "type": "string",
+            "format": "",
+            "description": "The group ID.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "ISSUE_GROUP_ID_UNSPECIFIED",
+              "ISSUE_GROUP_ID_CW_OP0000",
+              "ISSUE_GROUP_ID_CW_OP0001",
+              "ISSUE_GROUP_ID_CW_OP0002",
+              "ISSUE_GROUP_ID_CW_OP0101",
+              "ISSUE_GROUP_ID_CW_OP0102",
+              "ISSUE_GROUP_ID_CW_OP0103",
+              "ISSUE_GROUP_ID_CW_OP0200",
+              "ISSUE_GROUP_ID_CW_OP0201",
+              "ISSUE_GROUP_ID_CW_OP0202",
+              "ISSUE_GROUP_ID_CW_OP0203",
+              "ISSUE_GROUP_ID_CW_OP0204",
+              "ISSUE_GROUP_ID_CW_OP0205",
+              "ISSUE_GROUP_ID_CW_OP0206",
+              "ISSUE_GROUP_ID_CW_OP0300",
+              "ISSUE_GROUP_ID_CW_OP0301",
+              "ISSUE_GROUP_ID_CW_OP0315",
+              "ISSUE_GROUP_ID_CW_OP0303",
+              "ISSUE_GROUP_ID_CW_OP0304",
+              "ISSUE_GROUP_ID_CW_OP0305",
+              "ISSUE_GROUP_ID_CW_OP0306",
+              "ISSUE_GROUP_ID_CW_OP0307",
+              "ISSUE_GROUP_ID_CW_OP0308",
+              "ISSUE_GROUP_ID_CW_OP0309",
+              "ISSUE_GROUP_ID_CW_OP0310",
+              "ISSUE_GROUP_ID_CW_OP0311",
+              "ISSUE_GROUP_ID_CW_OP0312",
+              "ISSUE_GROUP_ID_CW_OP0313",
+              "ISSUE_GROUP_ID_CW_OP0314",
+              "ISSUE_GROUP_ID_CW_OP0302",
+              "ISSUE_GROUP_ID_CW_OP0400",
+              "ISSUE_GROUP_ID_CW_OP0401",
+              "ISSUE_GROUP_ID_CW_OP0402",
+              "ISSUE_GROUP_ID_CW_OP0403",
+              "ISSUE_GROUP_ID_CW_OP0404",
+              "ISSUE_GROUP_ID_CW_OP0500",
+              "ISSUE_GROUP_ID_CW_OP0501",
+              "ISSUE_GROUP_ID_CW_OP0502",
+              "ISSUE_GROUP_ID_CW_OP0503",
+              "ISSUE_GROUP_ID_CW_OP0504",
+              "ISSUE_GROUP_ID_CW_OP0601",
+              "ISSUE_GROUP_ID_CW_OP0602",
+              "ISSUE_GROUP_ID_CW_OP0603",
+              "ISSUE_GROUP_ID_CW_OP0604",
+              "ISSUE_GROUP_ID_CW_OP0605",
+              "ISSUE_GROUP_ID_CW_OP0606",
+              "ISSUE_GROUP_ID_CW_OP0701",
+              "ISSUE_GROUP_ID_CW_OP0702",
+              "ISSUE_GROUP_ID_CW_OP0801",
+              "ISSUE_GROUP_ID_CW_OP0802",
+              "ISSUE_GROUP_ID_CW_OP0803",
+              "ISSUE_GROUP_ID_CW_OP0804",
+              "ISSUE_GROUP_ID_CW_OP0805",
+              "ISSUE_GROUP_ID_CW_OP0806",
+              "ISSUE_GROUP_ID_CW_OP0807",
+              "ISSUE_GROUP_ID_CW_OP0808",
+              "ISSUE_GROUP_ID_QA_OP0000",
+              "ISSUE_GROUP_ID_CW_SP0000",
+              "ISSUE_GROUP_ID_CW_SP0001",
+              "ISSUE_GROUP_ID_CW_SP0002",
+              "ISSUE_GROUP_ID_CW_SP0101",
+              "ISSUE_GROUP_ID_CW_SP0102",
+              "ISSUE_GROUP_ID_CW_SP0103",
+              "ISSUE_GROUP_ID_CW_SP0200",
+              "ISSUE_GROUP_ID_CW_SP0201",
+              "ISSUE_GROUP_ID_CW_SP0202",
+              "ISSUE_GROUP_ID_CW_SP0203",
+              "ISSUE_GROUP_ID_CW_SP0204",
+              "ISSUE_GROUP_ID_CW_SP0205",
+              "ISSUE_GROUP_ID_CW_SP0300",
+              "ISSUE_GROUP_ID_CW_SP0302",
+              "ISSUE_GROUP_ID_CW_SP0306",
+              "ISSUE_GROUP_ID_CW_SP0308",
+              "ISSUE_GROUP_ID_CW_SP0309",
+              "ISSUE_GROUP_ID_CW_SP0310",
+              "ISSUE_GROUP_ID_CW_SP0311",
+              "ISSUE_GROUP_ID_CW_SP0312",
+              "ISSUE_GROUP_ID_CW_SP0313",
+              "ISSUE_GROUP_ID_CW_SP0314",
+              "ISSUE_GROUP_ID_CW_SP0400",
+              "ISSUE_GROUP_ID_CW_SP0401",
+              "ISSUE_GROUP_ID_CW_SP0402",
+              "ISSUE_GROUP_ID_CW_SP0403",
+              "ISSUE_GROUP_ID_CW_SP0404",
+              "ISSUE_GROUP_ID_CW_SP0500",
+              "ISSUE_GROUP_ID_CW_SP0501",
+              "ISSUE_GROUP_ID_CW_SP0502",
+              "ISSUE_GROUP_ID_CW_SP0503",
+              "ISSUE_GROUP_ID_CW_SP0504",
+              "ISSUE_GROUP_ID_CW_SP0601",
+              "ISSUE_GROUP_ID_CW_SP0602",
+              "ISSUE_GROUP_ID_CW_SP0604",
+              "ISSUE_GROUP_ID_CW_SP0701",
+              "ISSUE_GROUP_ID_CW_SP0802",
+              "ISSUE_GROUP_ID_CW_SP0807",
+              "ISSUE_GROUP_ID_QA_SP0000",
+              "ISSUE_GROUP_ID_CW_AI9900",
+              "ISSUE_GROUP_ID_CW_AI9901",
+              "ISSUE_GROUP_ID_CW_AI9902",
+              "ISSUE_GROUP_ID_CW_AP0000"
+            ],
+            "readOnly": false
+          },
+          "id": {
+            "type": "string",
+            "format": "",
+            "description": "Unique Issue ID. Use this ID when referencing a specific issue in other API calls, such as DataMigrationService.SetIssuesState.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "issueOrigin": {
+            "type": "string",
+            "format": "",
+            "description": "The source of the issue (deterministic, gemini, etc).",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "ISSUE_ORIGIN_UNSPECIFIED",
+              "ISSUE_ORIGIN_DETERMINISTIC",
+              "ISSUE_ORIGIN_AI",
+              "ISSUE_ORIGIN_AI_FROM_DETERMINISTIC"
+            ],
+            "readOnly": false
+          },
+          "issueState": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The state of the issue (open, resolved, etc).",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "ISSUE_STATE_UNSPECIFIED",
+              "ISSUE_STATE_OPEN",
+              "ISSUE_STATE_RESOLVED"
+            ],
+            "readOnly": true
+          },
+          "message": {
+            "type": "string",
+            "format": "",
+            "description": "Issue detailed message.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "position": {
+            "type": "",
+            "format": "",
+            "description": "The position of the issue found, if relevant.",
+            "$ref": "FetchIssuesResponseIssuePosition",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "severity": {
+            "type": "string",
+            "format": "",
+            "description": "Severity of the issue.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "ISSUE_SEVERITY_UNSPECIFIED",
+              "ISSUE_SEVERITY_INFO",
+              "ISSUE_SEVERITY_WARNING",
+              "ISSUE_SEVERITY_ERROR"
+            ],
+            "readOnly": false
+          },
+          "type": {
+            "type": "string",
+            "format": "",
+            "description": "The type of the issue.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "ISSUE_TYPE_UNSPECIFIED",
+              "ISSUE_TYPE_CONVERSION",
+              "ISSUE_TYPE_PULL_SCHEMA",
+              "ISSUE_TYPE_APPLY"
+            ],
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "IssueAggregateData": {
+        "type": "object",
+        "format": "",
+        "description": "Aggregate issue information.",
+        "$ref": "",
+        "properties": {
+          "errorCount": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Number of error issues.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "infoCount": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Number of info issues.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "warningCount": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Number of warning issues.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
             "readOnly": false
           }
         },
@@ -5461,7 +6179,7 @@
           "performanceConfig": {
             "type": "",
             "format": "",
-            "description": "Optional. Data dump parallelism settings used by the migration.",
+            "description": "Optional. Data dump and load parallelism settings used by the migration.",
             "$ref": "PerformanceConfig",
             "properties": null,
             "items": null,
@@ -5484,7 +6202,8 @@
               "PROMOTE_IN_PROGRESS",
               "WAITING_FOR_SOURCE_WRITES_TO_STOP",
               "PREPARING_THE_DUMP",
-              "READY_FOR_PROMOTE"
+              "READY_FOR_PROMOTE",
+              "PHASE_FAILBACK"
             ],
             "readOnly": true
           },
@@ -6126,11 +6845,44 @@
             "enum": null,
             "readOnly": false
           },
+          "privateConnectivity": {
+            "type": "",
+            "format": "",
+            "description": "Private connectivity.",
+            "$ref": "PrivateConnectivity",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "privateServiceConnectConnectivity": {
+            "type": "",
+            "format": "",
+            "description": "Private Service Connect connectivity.",
+            "$ref": "PrivateServiceConnectConnectivity",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
           "ssl": {
             "type": "",
             "format": "",
             "description": "SSL configuration for the destination to connect to the source database.",
             "$ref": "SslConfig",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "staticServiceIpConnectivity": {
+            "type": "",
+            "format": "",
+            "description": "Static Service IP connectivity.",
+            "$ref": "StaticServiceIpConnectivity",
             "properties": null,
             "items": null,
             "additionalProperties": null,
@@ -6685,6 +7437,22 @@
               "MAX"
             ],
             "readOnly": false
+          },
+          "loadParallelLevel": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Initial load parallelism level.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "LOAD_PARALLEL_LEVEL_UNSPECIFIED",
+              "LOAD_MIN",
+              "LOAD_OPTIMAL",
+              "LOAD_MAX"
+            ],
+            "readOnly": false
           }
         },
         "items": null,
@@ -6958,7 +7726,7 @@
           "privateServiceConnectConnectivity": {
             "type": "",
             "format": "",
-            "description": "Private service connect connectivity.",
+            "description": "Private Service Connect connectivity.",
             "$ref": "PrivateServiceConnectConnectivity",
             "properties": null,
             "items": null,
@@ -8301,6 +9069,124 @@
             "readOnly": false
           }
         },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "SetDraftEntityDdlRequest": {
+        "type": "object",
+        "format": "",
+        "description": "Request message for DataMigrationService.SetDraftEntityDdl.",
+        "$ref": "",
+        "properties": {
+          "basedOnDdlKind": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Which DDL (Deterministic/AI) the updated DDL is based on. Defaults to DETERMINISTIC if not specified.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "DDL_KIND_UNSPECIFIED",
+              "SOURCE",
+              "DETERMINISTIC",
+              "AI",
+              "USER_EDIT"
+            ],
+            "readOnly": false
+          },
+          "ddl": {
+            "type": "string",
+            "format": "",
+            "description": "Required. The DDL to set.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "ddlKind": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The updated DDL Kind. Can be either USER_EDIT (default) or AI.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "DDL_KIND_UNSPECIFIED",
+              "SOURCE",
+              "DETERMINISTIC",
+              "AI",
+              "USER_EDIT"
+            ],
+            "readOnly": false
+          },
+          "entityName": {
+            "type": "string",
+            "format": "",
+            "description": "Required. The draft entity full name from the tree. .",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "entityType": {
+            "type": "string",
+            "format": "",
+            "description": "Required. The type of the database entity (table, view, index, ...).",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "DATABASE_ENTITY_TYPE_UNSPECIFIED",
+              "DATABASE_ENTITY_TYPE_SCHEMA",
+              "DATABASE_ENTITY_TYPE_TABLE",
+              "DATABASE_ENTITY_TYPE_COLUMN",
+              "DATABASE_ENTITY_TYPE_CONSTRAINT",
+              "DATABASE_ENTITY_TYPE_INDEX",
+              "DATABASE_ENTITY_TYPE_TRIGGER",
+              "DATABASE_ENTITY_TYPE_VIEW",
+              "DATABASE_ENTITY_TYPE_SEQUENCE",
+              "DATABASE_ENTITY_TYPE_STORED_PROCEDURE",
+              "DATABASE_ENTITY_TYPE_FUNCTION",
+              "DATABASE_ENTITY_TYPE_SYNONYM",
+              "DATABASE_ENTITY_TYPE_DATABASE_PACKAGE",
+              "DATABASE_ENTITY_TYPE_UDT",
+              "DATABASE_ENTITY_TYPE_MATERIALIZED_VIEW",
+              "DATABASE_ENTITY_TYPE_DATABASE"
+            ],
+            "readOnly": false
+          },
+          "explanation": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. An optional explanation of the generated DDL if ddl_kind is AI.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "SetDraftEntityDdlResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Response message for DataMigrationService.SetDraftEntityDdl.",
+        "$ref": "",
+        "properties": {},
         "items": null,
         "additionalProperties": null,
         "enum": null,
@@ -11289,6 +12175,98 @@
                       "$ref": "DescribeDatabaseEntitiesResponse"
                     }
                   },
+                  "fetchEntitiesStatusView": {
+                    "id": "datamigration.projects.locations.conversionWorkspaces.fetchEntitiesStatusView",
+                    "httpMethod": "GET",
+                    "path": "v1/{+conversionWorkspace}:fetchEntitiesStatusView",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/conversionWorkspaces/{conversionWorkspacesId}:fetchEntitiesStatusView",
+                    "description": "An internal, RPC only method that returns a list of the (filtered) entities with minimal information required for the entities tree view.",
+                    "parameters": {
+                      "conversionWorkspace": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      },
+                      "fetchView": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "filter": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "pageSize": {
+                        "type": "integer",
+                        "location": "query",
+                        "required": false
+                      },
+                      "pageToken": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "tree": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      }
+                    },
+                    "parameterOrder": [
+                      "conversionWorkspace"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "FetchEntitiesStatusViewResponse"
+                    }
+                  },
+                  "fetchIssues": {
+                    "id": "datamigration.projects.locations.conversionWorkspaces.fetchIssues",
+                    "httpMethod": "GET",
+                    "path": "v1/{+conversionWorkspace}:fetchIssues",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/conversionWorkspaces/{conversionWorkspacesId}:fetchIssues",
+                    "description": "List issues of conversion workspace operations e.g. conversion.",
+                    "parameters": {
+                      "allIssues": {
+                        "type": "boolean",
+                        "location": "query",
+                        "required": false
+                      },
+                      "conversionWorkspace": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      },
+                      "filter": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "pageSize": {
+                        "type": "integer",
+                        "location": "query",
+                        "required": false
+                      },
+                      "pageToken": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "tree": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      }
+                    },
+                    "parameterOrder": [
+                      "conversionWorkspace"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "FetchIssuesResponse"
+                    }
+                  },
                   "get": {
                     "id": "datamigration.projects.locations.conversionWorkspaces.get",
                     "httpMethod": "GET",
@@ -11485,6 +12463,29 @@
                     },
                     "response": {
                       "$ref": "Operation"
+                    }
+                  },
+                  "setDraftEntityDdl": {
+                    "id": "datamigration.projects.locations.conversionWorkspaces.setDraftEntityDdl",
+                    "httpMethod": "POST",
+                    "path": "v1/{+conversionWorkspace}:setDraftEntityDdl",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/conversionWorkspaces/{conversionWorkspacesId}:setDraftEntityDdl",
+                    "description": "Updates the draft DDL of an entity.",
+                    "parameters": {
+                      "conversionWorkspace": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "conversionWorkspace"
+                    ],
+                    "request": {
+                      "$ref": "SetDraftEntityDdlRequest"
+                    },
+                    "response": {
+                      "$ref": "SetDraftEntityDdlResponse"
                     }
                   },
                   "setIamPolicy": {
