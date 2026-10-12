@@ -24,7 +24,7 @@
   "wire_name": "google_alloydb",
   "raw_spec": {
     "name": "alloydb",
-    "revision": "20260826",
+    "revision": "20261006",
     "discoveryVersion": "v1",
     "baseUrl": "https://alloydb.googleapis.com/",
     "rootUrl": "https://alloydb.googleapis.com/",
@@ -43,6 +43,50 @@
             "$ref": "",
             "properties": null,
             "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "AutoScalingConfig": {
+        "type": "object",
+        "format": "",
+        "description": "Configuration for autoscaling.",
+        "$ref": "",
+        "properties": {
+          "policy": {
+            "type": "",
+            "format": "",
+            "description": "Policy for the MIG autoscaler.",
+            "$ref": "Policy",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "schedules": {
+            "type": "array",
+            "format": "",
+            "description": "Optional list of schedules for the MIG autoscaler. If not set, no schedules are created.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Schedule",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
             "additionalProperties": null,
             "enum": null,
             "readOnly": false
@@ -1781,6 +1825,29 @@
         "enum": null,
         "readOnly": false
       },
+      "CpuUtilization": {
+        "type": "object",
+        "format": "",
+        "description": "CPU utilization policy for the autoscaler.",
+        "$ref": "",
+        "properties": {
+          "utilizationTarget": {
+            "type": "number",
+            "format": "float",
+            "description": "Target CPU utilization as a float between 0 and 1.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
       "CsvExportOptions": {
         "type": "object",
         "format": "",
@@ -2905,6 +2972,17 @@
             "enum": null,
             "readOnly": false
           },
+          "observabilityInstanceInfo": {
+            "type": "",
+            "format": "",
+            "description": "Output only. Instance level observability information, contains the effective values of observability settings for this instance, by merging customer's provided `ObservabilityInstanceConfig` with the Observability defaults.",
+            "$ref": "ObservabilityInstanceInfo",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
           "outboundPublicIpAddresses": {
             "type": "array",
             "format": "",
@@ -2951,7 +3029,7 @@
           "publicIpAddress": {
             "type": "string",
             "format": "",
-            "description": "Output only. The public IP addresses for the Instance. This is available ONLY when enable_public_ip is set. This is the connection endpoint for an end-user application.",
+            "description": "Output only. The public IP address for the Instance. This is available ONLY when `enable_public_ip` is set or when you have upgraded from an Express Instance that has public DNS enabled. This field is not available for Express Instances. This is the connection endpoint for an end-user application.",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -2969,6 +3047,17 @@
             "additionalProperties": null,
             "enum": null,
             "readOnly": false
+          },
+          "queryInsightsInfo": {
+            "type": "",
+            "format": "",
+            "description": "Output only. Instance level Query Insights information, which is read-only and available in the output only. Contains the effective query insights settings for this instance, by merging customer's provided `QueryInsightsInstanceConfig` with the Query Insights defaults.",
+            "$ref": "QueryInsightsInstanceInfo",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
           },
           "readPoolConfig": {
             "type": "",
@@ -4008,6 +4097,106 @@
         "enum": null,
         "readOnly": false
       },
+      "ObservabilityInstanceInfo": {
+        "type": "object",
+        "format": "",
+        "description": "",
+        "$ref": "",
+        "properties": {
+          "enabled": {
+            "type": "boolean",
+            "format": "",
+            "description": "Output only. Observability feature status for an instance.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "maxQueryStringLength": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Output only. Query string length. The default value is 10k.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "preserveComments": {
+            "type": "boolean",
+            "format": "",
+            "description": "Output only. Preserve comments in query string for an instance.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "queryPlansPerMinute": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Output only. Number of query execution plans captured by Insights per minute for all queries combined.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "recordApplicationTags": {
+            "type": "boolean",
+            "format": "",
+            "description": "Output only. Record application tags for an instance.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "trackActiveQueries": {
+            "type": "boolean",
+            "format": "",
+            "description": "Output only. Track actively running queries on the instance.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "trackWaitEventTypes": {
+            "type": "boolean",
+            "format": "",
+            "description": "Output only. Track wait event types during query execution for an instance.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "trackWaitEvents": {
+            "type": "boolean",
+            "format": "",
+            "description": "Output only. Track wait events during query execution for an instance.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
       "Operation": {
         "type": "object",
         "format": "",
@@ -4188,6 +4377,62 @@
             "additionalProperties": null,
             "enum": null,
             "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Policy": {
+        "type": "object",
+        "format": "",
+        "description": "Policy for the autoscaler.",
+        "$ref": "",
+        "properties": {
+          "coolDownPeriodSec": {
+            "type": "string",
+            "format": "int64",
+            "description": "The period of time in seconds after a new node is created before the autoscaler will incorporate its resource usage (e.g. CPU utilization) into the autoscaling recommendation algorithm.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "cpuUtilization": {
+            "type": "",
+            "format": "",
+            "description": "CPU utilization policy for the autoscaler.",
+            "$ref": "CpuUtilization",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "enabled": {
+            "type": "boolean",
+            "format": "",
+            "description": "If true, autoscaling is enabled for the instance. If not set, the default value is false.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "maxNodeCount": {
+            "type": "string",
+            "format": "int64",
+            "description": "Maximum number of nodes for the autoscaler.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
           }
         },
         "items": null,
@@ -4746,12 +4991,90 @@
         "enum": null,
         "readOnly": false
       },
+      "QueryInsightsInstanceInfo": {
+        "type": "object",
+        "format": "",
+        "description": "Instance level Query Insights information, which is read-only and available in the output only.",
+        "$ref": "",
+        "properties": {
+          "enabled": {
+            "type": "boolean",
+            "format": "",
+            "description": "Output only. Whether Query Insights is enabled.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "queryPlansPerMinute": {
+            "type": "integer",
+            "format": "uint32",
+            "description": "Output only. Number of query execution plans captured per minute.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "queryStringLength": {
+            "type": "integer",
+            "format": "uint32",
+            "description": "Output only. Maximum query string length.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "recordApplicationTags": {
+            "type": "boolean",
+            "format": "",
+            "description": "Output only. Whether to record application tags.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "recordClientAddress": {
+            "type": "boolean",
+            "format": "",
+            "description": "Output only. Whether to record client address.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
       "ReadPoolConfig": {
         "type": "object",
         "format": "",
         "description": "Configuration for a read pool instance.",
         "$ref": "",
         "properties": {
+          "autoScalingConfig": {
+            "type": "",
+            "format": "",
+            "description": "Optional. Autoscaling configuration for the read pool instance. If not set, the read pool instance will not be autoscaled.",
+            "$ref": "AutoScalingConfig",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
           "nodeCount": {
             "type": "integer",
             "format": "int32",
@@ -4979,6 +5302,95 @@
             "type": "string",
             "format": "",
             "description": "Required. ID of the requesting object.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Schedule": {
+        "type": "object",
+        "format": "",
+        "description": "A schedule for the autoscaler.",
+        "$ref": "",
+        "properties": {
+          "cronExpression": {
+            "type": "string",
+            "format": "",
+            "description": "Cron expression for the triggering the schedule. See https://cloud.google.com/compute/docs/autoscaler/scaling-schedules#cron_expressions for the syntax.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "description": {
+            "type": "string",
+            "format": "",
+            "description": "Description of the schedule.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "disabled": {
+            "type": "boolean",
+            "format": "",
+            "description": "If true, the schedule is disabled.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "durationSec": {
+            "type": "string",
+            "format": "int64",
+            "description": "Duration of the schedule.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "minNodeCount": {
+            "type": "string",
+            "format": "int64",
+            "description": "Minimum number of nodes in while the schedule is active.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "Name of the schedule.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "timeZone": {
+            "type": "string",
+            "format": "",
+            "description": "The location-based IANA time zone for interpreting the schedule's start time. If no time zone is provided, UTC is used by default.",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -8813,7 +9225,10 @@
             "enum": [
               "USER_TYPE_UNSPECIFIED",
               "ALLOYDB_BUILT_IN",
-              "ALLOYDB_IAM_USER"
+              "ALLOYDB_IAM_USER",
+              "ALLOYDB_IAM_GROUP",
+              "ALLOYDB_IAM_GROUP_USER",
+              "ALLOYDB_IAM_GROUP_SERVICE_ACCOUNT"
             ],
             "readOnly": false
           }

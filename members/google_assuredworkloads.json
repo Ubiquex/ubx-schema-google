@@ -24,7 +24,7 @@
   "wire_name": "google_assuredworkloads",
   "raw_spec": {
     "name": "assuredworkloads",
-    "revision": "20260904",
+    "revision": "20261006",
     "discoveryVersion": "v1",
     "baseUrl": "https://assuredworkloads.googleapis.com/",
     "rootUrl": "https://assuredworkloads.googleapis.com/",
@@ -71,6 +71,21 @@
             "items": null,
             "additionalProperties": null,
             "enum": null,
+            "readOnly": false
+          },
+          "view": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Specifies the violation view (`AssuredWorkloads` or `DataBoundary`) for acknowledging violations.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "VIOLATION_VIEW_UNSPECIFIED",
+              "VIOLATION_VIEW_ASSURED_WORKLOADS",
+              "VIOLATION_VIEW_DATA_BOUNDARY"
+            ],
             "readOnly": false
           }
         },
@@ -298,107 +313,6 @@
         "enum": null,
         "readOnly": false
       },
-      "GoogleCloudAssuredworkloadsV1ArchiveResourceEventsRequest": {
-        "type": "object",
-        "format": "",
-        "description": "Request for archiving resource events.",
-        "$ref": "",
-        "properties": {
-          "archiveTime": {
-            "type": "string",
-            "format": "google-datetime",
-            "description": "Optional. Time to set as ArchiveTime in the archive table. If not provided, the current time is used.",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "batchSize": {
-            "type": "integer",
-            "format": "int32",
-            "description": "Required. The number of events to process in a single transaction batch.",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "eventCutoffTime": {
-            "type": "string",
-            "format": "google-datetime",
-            "description": "Required. Only events with EventTime earlier than this cutoff will be archived.",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "maxEventsMove": {
-            "type": "integer",
-            "format": "int32",
-            "description": "Required. The maximum total number of events to move in this request.",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "organizationId": {
-            "type": "string",
-            "format": "int64",
-            "description": "Required. The organization ID for which to archive events.",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "region": {
-            "type": "string",
-            "format": "",
-            "description": "Required. The region of the workload(s) whose events should be archived. This is used to filter workloads based on AssurantWorkloadData.region.",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          }
-        },
-        "items": null,
-        "additionalProperties": null,
-        "enum": null,
-        "readOnly": false
-      },
-      "GoogleCloudAssuredworkloadsV1ArchiveResourceEventsResponse": {
-        "type": "object",
-        "format": "",
-        "description": "Response for archiving resource events.",
-        "$ref": "",
-        "properties": {
-          "movedEventsCount": {
-            "type": "integer",
-            "format": "int32",
-            "description": "The total number of events successfully moved to the archive table.",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          }
-        },
-        "items": null,
-        "additionalProperties": null,
-        "enum": null,
-        "readOnly": false
-      },
       "GoogleCloudAssuredworkloadsV1AssetMoveAnalysis": {
         "type": "object",
         "format": "",
@@ -520,6 +434,28 @@
             "additionalProperties": null,
             "enum": null,
             "readOnly": false
+          },
+          "orgPolicyFindingCount": {
+            "type": "string",
+            "format": "int64",
+            "description": "Output only. Number of organization policy findings for the cloud control.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "resourceFindingCount": {
+            "type": "string",
+            "format": "int64",
+            "description": "Output only. Number of resource findings for the cloud control.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
           }
         },
         "items": null,
@@ -1132,6 +1068,17 @@
             "enum": null,
             "readOnly": false
           },
+          "orgPolicyFindingCount": {
+            "type": "string",
+            "format": "int64",
+            "description": "Output only. Number of organization policy findings for this control.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
           "overallEvaluationState": {
             "type": "string",
             "format": "",
@@ -1146,6 +1093,17 @@
               "EVALUATION_STATE_FAILED",
               "EVALUATION_STATE_NOT_ASSESSED"
             ],
+            "readOnly": true
+          },
+          "resourceFindingCount": {
+            "type": "string",
+            "format": "int64",
+            "description": "Output only. Number of resource findings for this control.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
             "readOnly": true
           },
           "similarControls": {
@@ -2451,107 +2409,6 @@
         "enum": null,
         "readOnly": false
       },
-      "GoogleCloudAssuredworkloadsV1RevertArchivedResourceEventsRequest": {
-        "type": "object",
-        "format": "",
-        "description": "Request for reverting archived resource events.",
-        "$ref": "",
-        "properties": {
-          "archiveEndTime": {
-            "type": "string",
-            "format": "google-datetime",
-            "description": "Required. Only events within this time range will be reverted. This helps prevent reverting everything when something goes wrong.",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "archiveStartTime": {
-            "type": "string",
-            "format": "google-datetime",
-            "description": "Required. Only events within this time range will be reverted. This helps prevent reverting everything when something goes wrong.",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "batchSize": {
-            "type": "integer",
-            "format": "int32",
-            "description": "Required. The number of events to process in a single transaction batch.",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "maxEventsMove": {
-            "type": "integer",
-            "format": "int32",
-            "description": "Required. The maximum total number of events to move in this request.",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "organizationId": {
-            "type": "string",
-            "format": "int64",
-            "description": "Required. The organization ID for which to revert events.",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "region": {
-            "type": "string",
-            "format": "",
-            "description": "Required. The region of the workload(s) whose events should be reverted. This is used to filter workloads based on AssurantWorkloadData.region.",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          }
-        },
-        "items": null,
-        "additionalProperties": null,
-        "enum": null,
-        "readOnly": false
-      },
-      "GoogleCloudAssuredworkloadsV1RevertArchivedResourceEventsResponse": {
-        "type": "object",
-        "format": "",
-        "description": "Response for reverting archived resource events.",
-        "$ref": "",
-        "properties": {
-          "movedEventsCount": {
-            "type": "integer",
-            "format": "int32",
-            "description": "The total number of events successfully moved to the original table.",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          }
-        },
-        "items": null,
-        "additionalProperties": null,
-        "enum": null,
-        "readOnly": false
-      },
       "GoogleCloudAssuredworkloadsV1Rule": {
         "type": "object",
         "format": "",
@@ -2853,6 +2710,27 @@
             "enum": null,
             "readOnly": false
           },
+          "affectedFrameworks": {
+            "type": "array",
+            "format": "",
+            "description": "Output only. List of compliance frameworks that are affected by this violation. This field is only populated when using `VIOLATION_VIEW_DATA_BOUNDARY`. e.g. \"FedRAMP High\", \"NIST 800-53\".",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
           "associatedOrgPolicyViolationId": {
             "type": "string",
             "format": "",
@@ -2890,6 +2768,17 @@
             "type": "string",
             "format": "",
             "description": "Output only. Category under which this violation is mapped. e.g. Location, Service Usage, Access, Encryption, etc.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "childResourceViolationCount": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Optional. Output only. The number of resource violations for particular org policy violation. This will be 0 in case of resource violation.",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -2989,6 +2878,17 @@
             "format": "",
             "description": "Output only. Compliance violation remediation",
             "$ref": "GoogleCloudAssuredworkloadsV1ViolationRemediation",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "remediationMarkdown": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. Contains the remediation instructions for the violation in markdown format.",
+            "$ref": "",
             "properties": null,
             "items": null,
             "additionalProperties": null,
@@ -4414,41 +4314,6 @@
       }
     },
     "resources": {
-      "assuredworkloads": {
-        "methods": {
-          "archiveResourceEvents": {
-            "id": "assuredworkloads.assuredworkloads.archiveResourceEvents",
-            "httpMethod": "POST",
-            "path": "v1/assuredworkloads:archiveResourceEvents",
-            "flatPath": "v1/assuredworkloads:archiveResourceEvents",
-            "description": "Finds orphan ResourceEvents matching the criteria and moves them to the ArchivedResourceEvents table.",
-            "parameters": {},
-            "parameterOrder": [],
-            "request": {
-              "$ref": "GoogleCloudAssuredworkloadsV1ArchiveResourceEventsRequest"
-            },
-            "response": {
-              "$ref": "GoogleCloudAssuredworkloadsV1ArchiveResourceEventsResponse"
-            }
-          },
-          "revertArchivedResourceEvents": {
-            "id": "assuredworkloads.assuredworkloads.revertArchivedResourceEvents",
-            "httpMethod": "POST",
-            "path": "v1/assuredworkloads:revertArchivedResourceEvents",
-            "flatPath": "v1/assuredworkloads:revertArchivedResourceEvents",
-            "description": "Finds matching ArchivedResourceEvents and moves them back to the ResourceEvents table.",
-            "parameters": {},
-            "parameterOrder": [],
-            "request": {
-              "$ref": "GoogleCloudAssuredworkloadsV1RevertArchivedResourceEventsRequest"
-            },
-            "response": {
-              "$ref": "GoogleCloudAssuredworkloadsV1RevertArchivedResourceEventsResponse"
-            }
-          }
-        },
-        "resources": null
-      },
       "folders": {
         "methods": null,
         "resources": {
@@ -5301,6 +5166,11 @@
                             "type": "string",
                             "location": "path",
                             "required": true
+                          },
+                          "view": {
+                            "type": "string",
+                            "location": "query",
+                            "required": false
                           }
                         },
                         "parameterOrder": [
@@ -5352,6 +5222,11 @@
                             "type": "string",
                             "location": "path",
                             "required": true
+                          },
+                          "view": {
+                            "type": "string",
+                            "location": "query",
+                            "required": false
                           }
                         },
                         "parameterOrder": [

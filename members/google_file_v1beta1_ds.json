@@ -25,7 +25,7 @@
   "version_qualifier": "v1beta1",
   "raw_spec": {
     "name": "file",
-    "revision": "20260827",
+    "revision": "20260927",
     "discoveryVersion": "v1",
     "baseUrl": "https://file.googleapis.com/",
     "rootUrl": "https://file.googleapis.com/",
@@ -350,6 +350,72 @@
         "enum": null,
         "readOnly": false
       },
+      "CreateFromSourceRequest": {
+        "type": "object",
+        "format": "",
+        "description": "Request for creating a volume from an existing data source (such as a backup).",
+        "$ref": "",
+        "properties": {
+          "backup": {
+            "type": "string",
+            "format": "",
+            "description": "The resource name of the backup to create from. Format: projects/{project}/locations/{location}/backups/{backup}",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "ipAcls": {
+            "type": "array",
+            "format": "",
+            "description": "Optional. IP ACLs defining permissions/ACLs to apply to the newly created volume.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "NfsExportOptions",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "quota": {
+            "type": "string",
+            "format": "int64",
+            "description": "Optional. The limit for how much data can be written to this volume, in MiB.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "volumeId": {
+            "type": "string",
+            "format": "",
+            "description": "Required. Unique identifier for the volume which also appears in the volumes resource name.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
       "DailyCycle": {
         "type": "object",
         "format": "",
@@ -424,6 +490,17 @@
             "readOnly": false
           }
         },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "DeleteVolumeRequest": {
+        "type": "object",
+        "format": "",
+        "description": "DeleteVolumeRequest deletes a volume.",
+        "$ref": "",
+        "properties": {},
         "items": null,
         "additionalProperties": null,
         "enum": null,
@@ -3889,6 +3966,50 @@
         "enum": null,
         "readOnly": false
       },
+      "UnfreezeVolumeRequest": {
+        "type": "object",
+        "format": "",
+        "description": "Request for unfreezing a volume.",
+        "$ref": "",
+        "properties": {
+          "ipAcls": {
+            "type": "array",
+            "format": "",
+            "description": "Optional. IP ACLs defining permissions/ACLs to apply to the unfrozen volume",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "NfsExportOptions",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "quota": {
+            "type": "string",
+            "format": "int64",
+            "description": "Optional. The limit for how much data can be written to this volume, in MiB.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
       "UpdatePolicy": {
         "type": "object",
         "format": "",
@@ -3979,6 +4100,27 @@
             "enum": null,
             "readOnly": false
           },
+          "ipAcls": {
+            "type": "array",
+            "format": "",
+            "description": "Optional. User-defined permissions protecting mount points.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "NfsExportOptions",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
           "labels": {
             "type": "object",
             "format": "",
@@ -4021,6 +4163,34 @@
             "additionalProperties": null,
             "enum": null,
             "readOnly": false
+          },
+          "quotaMib": {
+            "type": "string",
+            "format": "int64",
+            "description": "Optional. The maximum size of the volume in mebibytes (MiB).",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "state": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The state of the volume. This field is caller-settable via `UpdateVolume` to transition a volume from `HOT` to `COLD` (freezing the volume). In `CreateVolume`, this field is output-only and initialized to `HOT`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "STATE_UNSPECIFIED",
+              "CREATING",
+              "HOT",
+              "WARM",
+              "COLD"
+            ],
+            "readOnly": false
           }
         },
         "items": null,
@@ -4034,6 +4204,17 @@
         "description": "VolumePool representation of a Cloud Filestore volume pool.",
         "$ref": "",
         "properties": {
+          "activeVolumeCount": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Optional. The number of active volumes. Default: 100.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
           "activeVolumeIops": {
             "type": "integer",
             "format": "int32",
@@ -4059,7 +4240,7 @@
           "defaultVolumeQuotaMib": {
             "type": "integer",
             "format": "int32",
-            "description": "Optional. The default quota per volume in MiB. Default: 1024 MiB.",
+            "description": "Optional. The default quota per volume in MiB. Must be between 100 MiB and 102400 MiB (100 GiB). Default: 1024 MiB.",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -4120,6 +4301,22 @@
             "additionalProperties": null,
             "enum": null,
             "readOnly": false
+          },
+          "state": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The state of the volume pool.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "STATE_UNSPECIFIED",
+              "READY",
+              "DELETING",
+              "INVALID"
+            ],
+            "readOnly": true
           },
           "uid": {
             "type": "string",
@@ -5279,6 +5476,29 @@
                           "$ref": "Volume"
                         }
                       },
+                      "createFromSource": {
+                        "id": "file.projects.locations.volumePools.volumes.createFromSource",
+                        "httpMethod": "POST",
+                        "path": "v1beta1/{+parent}/volumes:createFromSource",
+                        "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/volumePools/{volumePoolsId}/volumes:createFromSource",
+                        "description": "Creates a volume in a volume pool from an existing data source (such as a Filestore backup).",
+                        "parameters": {
+                          "parent": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          }
+                        },
+                        "parameterOrder": [
+                          "parent"
+                        ],
+                        "request": {
+                          "$ref": "CreateFromSourceRequest"
+                        },
+                        "response": {
+                          "$ref": "Operation"
+                        }
+                      },
                       "delete": {
                         "id": "file.projects.locations.volumePools.volumes.delete",
                         "httpMethod": "DELETE",
@@ -5296,6 +5516,57 @@
                           "name"
                         ],
                         "request": null,
+                        "response": {
+                          "$ref": "Empty"
+                        }
+                      },
+                      "directCreate": {
+                        "id": "file.projects.locations.volumePools.volumes.directCreate",
+                        "httpMethod": "POST",
+                        "path": "v1beta1/{+parent}/volumes:directCreate",
+                        "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/volumePools/{volumePoolsId}/volumes:directCreate",
+                        "description": "Creates a volume directly on the CLH, bypassing CCFE. This is a temporary PoC that will be used for testing and removed.",
+                        "parameters": {
+                          "parent": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          },
+                          "volumeId": {
+                            "type": "string",
+                            "location": "query",
+                            "required": false
+                          }
+                        },
+                        "parameterOrder": [
+                          "parent"
+                        ],
+                        "request": {
+                          "$ref": "Volume"
+                        },
+                        "response": {
+                          "$ref": "Volume"
+                        }
+                      },
+                      "directDelete": {
+                        "id": "file.projects.locations.volumePools.volumes.directDelete",
+                        "httpMethod": "POST",
+                        "path": "v1beta1/{+name}:directDelete",
+                        "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/volumePools/{volumePoolsId}/volumes/{volumesId}:directDelete",
+                        "description": "Deletes a volume directly on the CLH, bypassing CCFE. This is a temporary PoC that will be used for testing and removed.",
+                        "parameters": {
+                          "name": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          }
+                        },
+                        "parameterOrder": [
+                          "name"
+                        ],
+                        "request": {
+                          "$ref": "DeleteVolumeRequest"
+                        },
                         "response": {
                           "$ref": "Empty"
                         }
@@ -5360,6 +5631,57 @@
                         "request": null,
                         "response": {
                           "$ref": "ListVolumesResponse"
+                        }
+                      },
+                      "patch": {
+                        "id": "file.projects.locations.volumePools.volumes.patch",
+                        "httpMethod": "PATCH",
+                        "path": "v1beta1/{+name}",
+                        "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/volumePools/{volumePoolsId}/volumes/{volumesId}",
+                        "description": "Updates the settings of a specific volume.",
+                        "parameters": {
+                          "name": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          },
+                          "updateMask": {
+                            "type": "string",
+                            "location": "query",
+                            "required": false
+                          }
+                        },
+                        "parameterOrder": [
+                          "name"
+                        ],
+                        "request": {
+                          "$ref": "Volume"
+                        },
+                        "response": {
+                          "$ref": "Volume"
+                        }
+                      },
+                      "unfreeze": {
+                        "id": "file.projects.locations.volumePools.volumes.unfreeze",
+                        "httpMethod": "POST",
+                        "path": "v1beta1/{+name}:unfreeze",
+                        "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/volumePools/{volumePoolsId}/volumes/{volumesId}:unfreeze",
+                        "description": "Unfreezes a volume.",
+                        "parameters": {
+                          "name": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          }
+                        },
+                        "parameterOrder": [
+                          "name"
+                        ],
+                        "request": {
+                          "$ref": "UnfreezeVolumeRequest"
+                        },
+                        "response": {
+                          "$ref": "Operation"
                         }
                       }
                     },

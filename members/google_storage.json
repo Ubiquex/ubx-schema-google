@@ -24,7 +24,7 @@
   "wire_name": "google_storage",
   "raw_spec": {
     "name": "storage",
-    "revision": "20260902",
+    "revision": "20261009",
     "discoveryVersion": "v1",
     "baseUrl": "https://storage.googleapis.com/storage/v1/",
     "rootUrl": "https://storage.googleapis.com/",
@@ -1513,6 +1513,40 @@
                 "enum": null,
                 "readOnly": false
               },
+              "hardDeletePause": {
+                "type": "object",
+                "format": "",
+                "description": "The bucket's hard delete pause configuration. If set, soft-deleted objects in the bucket will not be permanently deleted until the hard delete pause is disabled.",
+                "$ref": "",
+                "properties": {
+                  "effectiveTime": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Server-determined value that indicates the time from which the hard delete pause became effective. This value is in RFC 3339 format.",
+                    "$ref": "",
+                    "properties": null,
+                    "items": null,
+                    "additionalProperties": null,
+                    "enum": null,
+                    "readOnly": false
+                  },
+                  "enabled": {
+                    "type": "boolean",
+                    "format": "",
+                    "description": "Whether hard deletions are paused.",
+                    "$ref": "",
+                    "properties": null,
+                    "items": null,
+                    "additionalProperties": null,
+                    "enum": null,
+                    "readOnly": false
+                  }
+                },
+                "items": null,
+                "additionalProperties": null,
+                "enum": null,
+                "readOnly": false
+              },
               "retentionDurationSeconds": {
                 "type": "string",
                 "format": "int64",
@@ -2111,138 +2145,6 @@
             "type": "string",
             "format": "date-time",
             "description": "Restores only the objects that were soft-deleted before this time.",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          }
-        },
-        "items": null,
-        "additionalProperties": null,
-        "enum": null,
-        "readOnly": false
-      },
-      "Channel": {
-        "type": "object",
-        "format": "",
-        "description": "An notification channel used to watch for resource changes.",
-        "$ref": "",
-        "properties": {
-          "address": {
-            "type": "string",
-            "format": "",
-            "description": "The address where notifications are delivered for this channel.",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "expiration": {
-            "type": "string",
-            "format": "int64",
-            "description": "Date and time of notification channel expiration, expressed as a Unix timestamp, in milliseconds. Optional.",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "id": {
-            "type": "string",
-            "format": "",
-            "description": "A UUID or similar unique string that identifies this channel.",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "kind": {
-            "type": "string",
-            "format": "",
-            "description": "Identifies this as a notification channel used to watch for changes to a resource, which is \"api#channel\".",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "params": {
-            "type": "object",
-            "format": "",
-            "description": "Additional parameters controlling delivery channel behavior. Optional.",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": {
-              "type": "string",
-              "format": "",
-              "description": "Declares a new parameter by name.",
-              "$ref": "",
-              "properties": null,
-              "items": null,
-              "additionalProperties": null,
-              "enum": null,
-              "readOnly": false
-            },
-            "enum": null,
-            "readOnly": false
-          },
-          "payload": {
-            "type": "boolean",
-            "format": "",
-            "description": "A Boolean value to indicate whether payload is wanted. Optional.",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "resourceId": {
-            "type": "string",
-            "format": "",
-            "description": "An opaque ID that identifies the resource being watched on this channel. Stable across different API versions.",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "resourceUri": {
-            "type": "string",
-            "format": "",
-            "description": "A version-specific identifier for the watched resource.",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "token": {
-            "type": "string",
-            "format": "",
-            "description": "An arbitrary string delivered to the target address with each notification delivered over this channel. Optional.",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "type": {
-            "type": "string",
-            "format": "",
-            "description": "The type of delivery mechanism used for this channel.",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -4174,10 +4076,122 @@
             "enum": null,
             "readOnly": false
           },
+          "extendedDataTypeUrl": {
+            "type": "string",
+            "format": "",
+            "description": "The type URL of the object context's extended data.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
           "updateTime": {
             "type": "string",
             "format": "date-time",
             "description": "The time at which the object context was last updated in RFC 3339 format.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "value": {
+            "type": "string",
+            "format": "",
+            "description": "The value of the object context.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ObjectFullContext": {
+        "type": "object",
+        "format": "",
+        "description": "A full representation of an object context.",
+        "$ref": "",
+        "properties": {
+          "createTime": {
+            "type": "string",
+            "format": "date-time",
+            "description": "The time at which the object context was created. This value is in RFC 3339 format.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "extendedData": {
+            "type": "object",
+            "format": "",
+            "description": "The extended data of the object context.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "any",
+              "format": "",
+              "description": "Properties of the object. Contains field @type with type URL.",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "key": {
+            "type": "string",
+            "format": "",
+            "description": "The key of the object context.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "kind": {
+            "type": "string",
+            "format": "",
+            "description": "The kind of item this is. For ObjectFullContext, this is always storage#objectFullContext.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "type": {
+            "type": "string",
+            "format": "",
+            "description": "The type of the object context.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "CUSTOM"
+            ],
+            "readOnly": false
+          },
+          "updateTime": {
+            "type": "string",
+            "format": "date-time",
+            "description": "The time at which the object context was last updated. This value is in RFC 3339 format.",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -5816,24 +5830,6 @@
             "response": {
               "$ref": "Bucket"
             }
-          }
-        },
-        "resources": null
-      },
-      "channels": {
-        "methods": {
-          "stop": {
-            "id": "storage.channels.stop",
-            "httpMethod": "POST",
-            "path": "channels/stop",
-            "flatPath": "",
-            "description": "Stop watching resources through this channel",
-            "parameters": null,
-            "parameterOrder": null,
-            "request": {
-              "$ref": "Channel"
-            },
-            "response": null
           }
         },
         "resources": null
@@ -7961,6 +7957,48 @@
             },
             "response": {
               "$ref": "Object"
+            }
+          },
+          "viewFullContext": {
+            "id": "storage.objects.viewFullContext",
+            "httpMethod": "GET",
+            "path": "b/{bucket}/o/{object}/viewFullContext",
+            "flatPath": "",
+            "description": "Retrieves a specific object context with its extended data for a given object.",
+            "parameters": {
+              "bucket": {
+                "type": "string",
+                "location": "path",
+                "required": true
+              },
+              "contextKey": {
+                "type": "string",
+                "location": "query",
+                "required": true
+              },
+              "generation": {
+                "type": "string",
+                "location": "query",
+                "required": false
+              },
+              "object": {
+                "type": "string",
+                "location": "path",
+                "required": true
+              },
+              "userProject": {
+                "type": "string",
+                "location": "query",
+                "required": false
+              }
+            },
+            "parameterOrder": [
+              "bucket",
+              "object"
+            ],
+            "request": null,
+            "response": {
+              "$ref": "ObjectFullContext"
             }
           }
         },

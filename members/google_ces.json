@@ -24,7 +24,7 @@
   "wire_name": "google_ces",
   "raw_spec": {
     "name": "ces",
-    "revision": "20260903",
+    "revision": "20260924",
     "discoveryVersion": "v1",
     "baseUrl": "https://ces.googleapis.com/",
     "rootUrl": "https://ces.googleapis.com/",
@@ -1939,6 +1939,392 @@
         "enum": null,
         "readOnly": false
       },
+      "ArtifactChunk": {
+        "type": "object",
+        "format": "",
+        "description": "A streamed fragment of a document artifact (e.g. a markdown TDD) that the assistant is generating. Content deltas stream while the document is being written so clients can render a live preview; the FINALIZED chunk carries the GCS URI once the file has been persisted.",
+        "$ref": "",
+        "properties": {
+          "artifactId": {
+            "type": "string",
+            "format": "",
+            "description": "Identifier of the artifact, stable across all chunks of one artifact within the stream.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "contentDelta": {
+            "type": "string",
+            "format": "",
+            "description": "Incremental artifact content. Set on DELTA chunks.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "displayName": {
+            "type": "string",
+            "format": "",
+            "description": "The file name shown to the user, e.g. \"hotel_booking_tdd.md\". Set on STARTED (and repeated on FINALIZED).",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "gcsUri": {
+            "type": "string",
+            "format": "",
+            "description": "The GCS object the artifact was persisted to. Set on FINALIZED chunks.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "mimeType": {
+            "type": "string",
+            "format": "",
+            "description": "The IANA media type of the artifact content, e.g. \"text/markdown\".",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "state": {
+            "type": "string",
+            "format": "",
+            "description": "Lifecycle position of this chunk.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "STATE_UNSPECIFIED",
+              "STARTED",
+              "DELTA",
+              "FINALIZED",
+              "FAILED",
+              "CLOSED"
+            ],
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "AssistantConfirmationRequest": {
+        "type": "object",
+        "format": "",
+        "description": "A blocking question or confirmation the assistant needs answered before an agent action can proceed. The requesting agent is paused and resumes only when the answer arrives on a later StreamChatAiAssistantRequest.confirmation_response.",
+        "$ref": "",
+        "properties": {
+          "agentName": {
+            "type": "string",
+            "format": "",
+            "description": "Display label of the agent that raised the confirmation (e.g. `\"Contract Architect\"`), for the card header.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "confirmationId": {
+            "type": "string",
+            "format": "",
+            "description": "Identifier correlating this request with its response. Opaque to clients; must be echoed verbatim on the answering request.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "context": {
+            "type": "string",
+            "format": "",
+            "description": "Context describing what is being confirmed (e.g. the action the agent wants to take, or the question it needs answered). Rendered as plain text, not Markdown.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "expireTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Time after which this confirmation can no longer be answered. An expired card renders as inactive, and the server declines the confirmation on the next turn so the paused agent does not wait indefinitely.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "negativeLabel": {
+            "type": "string",
+            "format": "",
+            "description": "Label for the declining action of a binary confirmation (e.g. \"Not yet\"). Unset when `questions` is populated.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "positiveLabel": {
+            "type": "string",
+            "format": "",
+            "description": "Label for the approving action of a binary confirmation (e.g. \"Publish\"). Unset when `questions` is populated.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "questions": {
+            "type": "array",
+            "format": "",
+            "description": "Multi-choice form of the confirmation. When populated, the card renders a selectable option list and the chosen option's submit_text (or free-form user text) is returned as AssistantConfirmationResponse.answer_text.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "OptionQuestionsChunkQuestion",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "tool": {
+            "type": "string",
+            "format": "",
+            "description": "Name of the tool call the agent paused on (e.g. \"update_app\"), for the card header. Unset for pure questions.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "AssistantConfirmationResponse": {
+        "type": "object",
+        "format": "",
+        "description": "The user's answer to an AssistantConfirmationRequest, sent on the next SessionService.StreamChatAiAssistant call to resume the paused agent.",
+        "$ref": "",
+        "properties": {
+          "answerText": {
+            "type": "string",
+            "format": "",
+            "description": "The chosen option's submit_text, or free-form user text. The paused action is cancelled and the text is handed to the agent to act on.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "confirmationId": {
+            "type": "string",
+            "format": "",
+            "description": "The AssistantConfirmationRequest.confirmation_id being answered.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "confirmed": {
+            "type": "boolean",
+            "format": "",
+            "description": "Binary answer: true approves the paused action, false declines it.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "AssistantSuggestion": {
+        "type": "object",
+        "format": "",
+        "description": "A single personalized onboarding suggestion chip for the AI assistant's zero state.",
+        "$ref": "",
+        "properties": {
+          "candidateType": {
+            "type": "string",
+            "format": "",
+            "description": "Rule-table candidate type in kebab-case (e.g. \"resume-pending-review\"), for metrics.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "icon": {
+            "type": "string",
+            "format": "",
+            "description": "Icon hint for the chip.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "ICON_UNSPECIFIED",
+              "RESUME",
+              "BUILD",
+              "EVALUATE",
+              "DEPLOY",
+              "EXPLORE",
+              "FIX"
+            ],
+            "readOnly": false
+          },
+          "label": {
+            "type": "string",
+            "format": "",
+            "description": "Chip label shown to the user (at most 60 characters).",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "loadSession": {
+            "type": "",
+            "format": "",
+            "description": "Open an existing assistant session.",
+            "$ref": "AssistantSuggestionLoadSession",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "rationale": {
+            "type": "string",
+            "format": "",
+            "description": "Optional short explanation of why this suggestion is shown (tooltip / rationale popover).",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "seedPrompt": {
+            "type": "string",
+            "format": "",
+            "description": "Prefill the composer with this text; the user reviews and sends.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "sendMessage": {
+            "type": "string",
+            "format": "",
+            "description": "Prefill the composer with this text and submit immediately. Only used for quick-reply chips inside an active onboarding conversation.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "source": {
+            "type": "string",
+            "format": "",
+            "description": "How this suggestion was produced.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "SOURCE_UNSPECIFIED",
+              "RULE",
+              "LLM_RANKED"
+            ],
+            "readOnly": false
+          },
+          "suggestionId": {
+            "type": "string",
+            "format": "",
+            "description": "Stable identifier for this suggestion, round-tripped by clients in interaction logging.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "AssistantSuggestionLoadSession": {
+        "type": "object",
+        "format": "",
+        "description": "Parameters for the load_session action.",
+        "$ref": "",
+        "properties": {
+          "assistantSessionId": {
+            "type": "string",
+            "format": "",
+            "description": "Identifier of the assistant session to open (the final segment of the AssistantSession resource name).",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
       "AudioProcessingConfig": {
         "type": "object",
         "format": "",
@@ -2272,6 +2658,52 @@
             "type": "string",
             "format": "",
             "description": "Required. The python code to execute for the callback.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "CancelAssistantTurnRequest": {
+        "type": "object",
+        "format": "",
+        "description": "Request to cancel an assistant session's in-flight turn.",
+        "$ref": "",
+        "properties": {
+          "turnId": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The turn to cancel; empty cancels whichever turn is running. A cancel naming a turn that is no longer the running one is a no-op.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "CancelAssistantTurnResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Response for CancelAssistantTurn.",
+        "$ref": "",
+        "properties": {
+          "cancelled": {
+            "type": "boolean",
+            "format": "",
+            "description": "Whether an in-flight turn was found and asked to stop (directly on this task, or through an epoch preemption for a turn hosted elsewhere).",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -3837,6 +4269,22 @@
             "enum": null,
             "readOnly": false
           },
+          "voiceInstructionMode": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Instruction mode for the voice sample. If unspecified, defaults to NO_INSTRUCTION.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "VOICE_INSTRUCTION_MODE_UNSPECIFIED",
+              "NO_INSTRUCTION",
+              "GENERATE_INSTRUCTION",
+              "CUSTOM_INSTRUCTION"
+            ],
+            "readOnly": false
+          },
           "voiceSampleGcsUri": {
             "type": "string",
             "format": "",
@@ -3847,6 +4295,64 @@
             "additionalProperties": null,
             "enum": null,
             "readOnly": false
+          },
+          "warnings": {
+            "type": "array",
+            "format": "",
+            "description": "Output only. Warning messages encountered during voice clone processing (e.g. low audio level).",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "CustomVoiceSampleWarning",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "CustomVoiceSampleWarning": {
+        "type": "object",
+        "format": "",
+        "description": "A warning message encountered during voice sample processing.",
+        "$ref": "",
+        "properties": {
+          "message": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. A human-readable description of the warning.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "type": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The type of the warning.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "WARNING_TYPE_UNSPECIFIED",
+              "LOW_AUDIO_LEVEL"
+            ],
+            "readOnly": true
           }
         },
         "items": null,
@@ -5473,6 +5979,27 @@
             "additionalProperties": null,
             "enum": null,
             "readOnly": false
+          },
+          "variables": {
+            "type": "object",
+            "format": "",
+            "description": "Optional. Additional variables associated with the event.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "any",
+              "format": "",
+              "description": "Properties of the object.",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
           }
         },
         "items": null,
@@ -6170,6 +6697,89 @@
         "enum": null,
         "readOnly": false
       },
+      "GenerateOnboardingSuggestionsRequest": {
+        "type": "object",
+        "format": "",
+        "description": "Request message for SessionService.GenerateOnboardingSuggestions.",
+        "$ref": "",
+        "properties": {
+          "maxSuggestions": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Optional. Maximum number of suggestions to return. Defaults to 4 when unset.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GenerateOnboardingSuggestionsResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Response message for SessionService.GenerateOnboardingSuggestions.",
+        "$ref": "",
+        "properties": {
+          "contextToken": {
+            "type": "string",
+            "format": "",
+            "description": "Opaque token capturing the onboarding snapshot used to generate these suggestions. Clients echo it on the first StreamChatAiAssistantRequest so the server can reuse the snapshot.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "suggestions": {
+            "type": "array",
+            "format": "",
+            "description": "Personalized suggestions, ranked most relevant first.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "AssistantSuggestion",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "userProfile": {
+            "type": "string",
+            "format": "",
+            "description": "Classification of the requesting user's history.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "USER_PROFILE_UNSPECIFIED",
+              "NEW",
+              "EXPLORING",
+              "RETURNING"
+            ],
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
       "GoogleSearchSuggestions": {
         "type": "object",
         "format": "",
@@ -6498,6 +7108,17 @@
             "format": "",
             "description": "Identifier. The unique identifier of the guardrail. Format: `projects/{project}/locations/{location}/apps/{app}/guardrails/{guardrail}`",
             "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "supervisor": {
+            "type": "",
+            "format": "",
+            "description": "Optional. Guardrail that runs supervisor intervention.",
+            "$ref": "GuardrailSupervisor",
             "properties": null,
             "items": null,
             "additionalProperties": null,
@@ -6903,6 +7524,54 @@
               "BLOCK_ONLY_HIGH",
               "BLOCK_NONE",
               "OFF"
+            ],
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GuardrailSupervisor": {
+        "type": "object",
+        "format": "",
+        "description": "Guardrail that runs supervisor intervention.",
+        "$ref": "",
+        "properties": {
+          "detectionMode": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The detection mode of the supervisor.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "DETECTION_MODE_UNSPECIFIED",
+              "NON_BLOCKING",
+              "BLOCKING"
+            ],
+            "readOnly": false
+          },
+          "type": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The type of the supervisor.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "TYPE_UNSPECIFIED",
+              "INVALID_TEXT",
+              "LANGUAGE_SHIFT",
+              "SPEAKER_SHIFT",
+              "AUDIO_MISMATCH",
+              "MISSING_TOOL_CALL",
+              "CUSTOM",
+              "CHOPPY_AUDIO",
+              "PROFANITY"
             ],
             "readOnly": false
           }
@@ -10998,6 +11667,23 @@
             "additionalProperties": null,
             "enum": null,
             "readOnly": false
+          },
+          "thinkingLevel": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The thinking level of the model.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "THINKING_LEVEL_UNSPECIFIED",
+              "DEFAULT",
+              "LOW",
+              "MEDIUM",
+              "HIGH"
+            ],
+            "readOnly": false
           }
         },
         "items": null,
@@ -11350,6 +12036,105 @@
         "enum": null,
         "readOnly": false
       },
+      "OperationCompletedEvent": {
+        "type": "object",
+        "format": "",
+        "description": "Event sent by the client or background worker to resume an assistant session after an asynchronous Long-Running Operation (LRO) completes.",
+        "$ref": "",
+        "properties": {
+          "deduplicationToken": {
+            "type": "string",
+            "format": "",
+            "description": "Optional deduplication token (e.g. UUID) to prevent duplicate turn execution from concurrent browser tabs.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "error": {
+            "type": "",
+            "format": "",
+            "description": "Optional canonical error status if the operation failed.",
+            "$ref": "Status",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "metadata": {
+            "type": "object",
+            "format": "",
+            "description": "Optional structured result metadata (e.g. pass_rate, total_examples, export_uri).",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "any",
+              "format": "",
+              "description": "Properties of the object.",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "operationName": {
+            "type": "string",
+            "format": "",
+            "description": "The operation resource name (e.g. `operations/{op}`).",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "operationType": {
+            "type": "string",
+            "format": "",
+            "description": "The operation type or tool name (e.g. \"run_evaluation\", \"copy_app\", \"export_app\").",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "status": {
+            "type": "string",
+            "format": "",
+            "description": "Status of the operation run (e.g. \"SUCCEEDED\", \"FAILED\", \"CANCELLED\").",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "targetResourceName": {
+            "type": "string",
+            "format": "",
+            "description": "The primary resource targeted or produced by the operation (e.g. evaluation run ID, app ID, dataset ID).",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
       "OperationMetadata": {
         "type": "object",
         "format": "",
@@ -11399,6 +12184,128 @@
             "additionalProperties": null,
             "enum": null,
             "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "OptionQuestionsChunk": {
+        "type": "object",
+        "format": "",
+        "description": "Structured clarification options the assistant asks the user to choose among, transduced server-side out of the model's turn (the option block is stripped from the streamed and persisted text). The console renders a keyboard-navigable option list docked above the composer.",
+        "$ref": "",
+        "properties": {
+          "questions": {
+            "type": "array",
+            "format": "",
+            "description": "The questions asked this turn. More than one entry drives the console's \"1 of N\" pager.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "OptionQuestionsChunkQuestion",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "OptionQuestionsChunkOption": {
+        "type": "object",
+        "format": "",
+        "description": "A single selectable option.",
+        "$ref": "",
+        "properties": {
+          "details": {
+            "type": "string",
+            "format": "",
+            "description": "Optional trade-off details shown as secondary text.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "submitText": {
+            "type": "string",
+            "format": "",
+            "description": "Optional message text to send when the option is chosen; defaults to `title` when empty.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "title": {
+            "type": "string",
+            "format": "",
+            "description": "Short plain-text option title (no markdown, no numbering).",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "OptionQuestionsChunkQuestion": {
+        "type": "object",
+        "format": "",
+        "description": "One question with its options.",
+        "$ref": "",
+        "properties": {
+          "options": {
+            "type": "array",
+            "format": "",
+            "description": "The selectable options, in presentation order.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "OptionQuestionsChunkOption",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "question": {
+            "type": "string",
+            "format": "",
+            "description": "The question header text.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
           }
         },
         "items": null,
@@ -11717,10 +12624,63 @@
             "enum": null,
             "readOnly": false
           },
+          "inputVariableMapping": {
+            "type": "object",
+            "format": "",
+            "description": "Optional. Mapping of input variable names of remote agent to GECX variable names.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
           "name": {
             "type": "string",
             "format": "",
             "description": "Required. The name of the tool.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "outputVariableMapping": {
+            "type": "object",
+            "format": "",
+            "description": "Optional. Mapping of output variable names of remote agent to GECX variable names.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "statefulAgent": {
+            "type": "boolean",
+            "format": "",
+            "description": "Optional. When enabled, the interaction between the CXAS app and the remote agent will share the same context. If the remote agent returns a context_id, it will be persisted for the entirety of the session for this remote agent tool.",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -12423,6 +13383,29 @@
         "enum": null,
         "readOnly": false
       },
+      "SessionCheckpoint": {
+        "type": "object",
+        "format": "",
+        "description": "Session checkpoint containing inferred user intent for session title and UI.",
+        "$ref": "",
+        "properties": {
+          "userIntent": {
+            "type": "string",
+            "format": "",
+            "description": "Inferred user goal or topic for the session (e.g. \"Building E-Commerce Support Agent\").",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
       "SessionConfig": {
         "type": "object",
         "format": "",
@@ -12779,37 +13762,6 @@
             "enum": null,
             "readOnly": false
           },
-          "context": {
-            "type": "array",
-            "format": "",
-            "description": "Context messages for external supervision guardrails.",
-            "$ref": "",
-            "properties": null,
-            "items": {
-              "type": "object",
-              "format": "",
-              "description": "",
-              "$ref": "",
-              "properties": null,
-              "items": null,
-              "additionalProperties": {
-                "type": "any",
-                "format": "",
-                "description": "Properties of the object. Contains field @type with type URL.",
-                "$ref": "",
-                "properties": null,
-                "items": null,
-                "additionalProperties": null,
-                "enum": null,
-                "readOnly": false
-              },
-              "enum": null,
-              "readOnly": false
-            },
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
           "diagnosticInfo": {
             "type": "",
             "format": "",
@@ -13143,16 +14095,16 @@
         "enum": null,
         "readOnly": false
       },
-      "SynthesizeSpeechConfig": {
+      "StreamChatAiAssistantRequest": {
         "type": "object",
         "format": "",
-        "description": "Configuration for how the agent response should be synthesized.",
+        "description": "Request message for SessionService.StreamChatAiAssistant.",
         "$ref": "",
         "properties": {
-          "consentAudioGcsUri": {
-            "type": "string",
+          "attachOnly": {
+            "type": "boolean",
             "format": "",
-            "description": "Optional. Deprecated: Use `custom_voice_samples` in AudioProcessingConfig instead. The Cloud Storage URI to the consent audio for voice cloning.",
+            "description": "Optional. Optional flag to attach to an existing in-flight turn without submitting a new message.",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -13160,6 +14112,329 @@
             "enum": null,
             "readOnly": false
           },
+          "attachedGcsUris": {
+            "type": "array",
+            "format": "",
+            "description": "Optional. Cloud Storage URIs for files uploaded by the user during this turn. Example: \"gs://cxas-transient-uploads/uuid/prd.pdf\"",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "clientCapabilities": {
+            "type": "array",
+            "format": "",
+            "description": "Optional. Response features this client can render. The server only emits events that need a capability (e.g. `confirmation_request`) when the capability is declared, so older clients never receive events they would silently drop.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": [
+                "CLIENT_CAPABILITY_UNSPECIFIED",
+                "CONFIRMATION_CARDS",
+                "CLIENT_MANAGED_LRO"
+              ],
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "confirmationResponse": {
+            "type": "",
+            "format": "",
+            "description": "Optional. The user's answer to a pending AssistantConfirmationRequest. When set, the server resumes the paused agent with this answer instead of (or in addition to) starting a new prompt turn.",
+            "$ref": "AssistantConfirmationResponse",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "contextToken": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Opaque onboarding context token returned by SessionService.GenerateOnboardingSuggestions. When set and still fresh, the server reuses the onboarding snapshot computed for the zero state instead of recomputing it for the first conversation turn.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "message": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The message to send to the assistant agent. May be empty when `confirmation_response` is set (answering a pending confirmation without adding a new message); at least one of the two must be provided.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "operationCompletedEvent": {
+            "type": "",
+            "format": "",
+            "description": "Optional. Resumes an assistant session paused waiting for a client-managed long-running operation to complete.",
+            "$ref": "OperationCompletedEvent",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "resumeFromSequenceNumber": {
+            "type": "string",
+            "format": "int64",
+            "description": "Optional. Optional cursor to resume and replay events from an in-flight or completed turn.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "StreamChatAiAssistantResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Response message for SessionService.StreamChatAiAssistant.",
+        "$ref": "",
+        "properties": {
+          "artifactChunk": {
+            "type": "",
+            "format": "",
+            "description": "Generated-document artifact event (live preview deltas + final GCS pointer).",
+            "$ref": "ArtifactChunk",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "confirmationRequest": {
+            "type": "",
+            "format": "",
+            "description": "A blocking confirmation the agent paused on. The agent resumes when the answer arrives on a later request's `confirmation_response`. Only sent to clients that declared the CONFIRMATION_CARDS capability on the request.",
+            "$ref": "AssistantConfirmationRequest",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "eventId": {
+            "type": "string",
+            "format": "",
+            "description": "Unique identifier for the event.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "eventTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Timestamp when the event occurred.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "handoff": {
+            "type": "",
+            "format": "",
+            "description": "Tells the client to silently reconnect with resume_from_sequence_number: the task serving this stream is going away and the turn will continue elsewhere. Not an error; the stream completes normally after this event.",
+            "$ref": "TurnHandoffEvent",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "optionQuestionsChunk": {
+            "type": "",
+            "format": "",
+            "description": "Structured clarification options parsed out of the model turn. The console renders these as a selectable option list instead of raw text.",
+            "$ref": "OptionQuestionsChunk",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "resumeSnapshot": {
+            "type": "",
+            "format": "",
+            "description": "A compacted replay of an in-flight turn, sent as the first event of every attach or resume before any live event. The client replaces any locally rendered state for this turn with the snapshot's contents.",
+            "$ref": "TurnResumeSnapshot",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "sequenceNumber": {
+            "type": "string",
+            "format": "int64",
+            "description": "Optional. Monotonically increasing sequence number for this session turn.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "sessionCheckpoint": {
+            "type": "",
+            "format": "",
+            "description": "Session checkpoint/compaction recap event containing user intent and rolling summary.",
+            "$ref": "SessionCheckpoint",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "status": {
+            "type": "",
+            "format": "",
+            "description": "Simple status update.",
+            "$ref": "Status",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "textChunk": {
+            "type": "string",
+            "format": "",
+            "description": "Text Token (for streaming Gemini responses word-by-word).",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "thoughtChunk": {
+            "type": "string",
+            "format": "",
+            "description": "Thought text chunk (agent's reasoning before generating response).",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "toolCall": {
+            "type": "",
+            "format": "",
+            "description": "Tool call execution event.",
+            "$ref": "ToolCall",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "toolResponse": {
+            "type": "",
+            "format": "",
+            "description": "Tool call response event.",
+            "$ref": "ToolResponse",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "turnCompleted": {
+            "type": "",
+            "format": "",
+            "description": "The turn has ended. Sent as the last event of every turn, on the original stream and on every attached or resumed stream, so clients can end the turn on an explicit signal instead of inferring it from stream closure.",
+            "$ref": "TurnCompletedEvent",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "turnInProgress": {
+            "type": "boolean",
+            "format": "",
+            "description": "Optional. Indicates whether the turn is still actively running in the background.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "turnMetadata": {
+            "type": "",
+            "format": "",
+            "description": "Optional. Turn-level metadata and intent categorization.",
+            "$ref": "TurnMetadata",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "uiEvent": {
+            "type": "",
+            "format": "",
+            "description": "Optional. UI event payload.",
+            "$ref": "UiEvent",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "SynthesizeSpeechConfig": {
+        "type": "object",
+        "format": "",
+        "description": "Configuration for how the agent response should be synthesized.",
+        "$ref": "",
+        "properties": {
           "instruction": {
             "type": "string",
             "format": "",
@@ -13197,17 +14472,6 @@
             "type": "string",
             "format": "",
             "description": "Optional. The name of the voice. If not set, the service will choose a voice based on the other parameters such as language_code. For the list of available voices, please refer to [Supported voices and languages](https://cloud.google.com/text-to-speech/docs/voices) from Cloud Text-to-Speech.",
-            "$ref": "",
-            "properties": null,
-            "items": null,
-            "additionalProperties": null,
-            "enum": null,
-            "readOnly": false
-          },
-          "voiceSampleGcsUri": {
-            "type": "string",
-            "format": "",
-            "description": "Optional. Deprecated: Use `custom_voice_samples` in AudioProcessingConfig instead. The Cloud Storage URI to the audio sample for voice cloning. The audio sample should be a mono-channel, 24kHz WAV file. Note: Please make sure the CES service agent `service-@gcp-sa-ces.iam.gserviceaccount.com` has `storage.objects.get` permission to the Cloud Storage object.",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -13519,6 +14783,17 @@
             "additionalProperties": null,
             "enum": null,
             "readOnly": false
+          },
+          "readOnly": {
+            "type": "boolean",
+            "format": "",
+            "description": "Output only. Indicates whether the tool is read-only. If true, the tool cannot be modified by the user.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
           },
           "remoteAgentTool": {
             "type": "",
@@ -14347,6 +15622,253 @@
         "enum": null,
         "readOnly": false
       },
+      "TurnCompletedEvent": {
+        "type": "object",
+        "format": "",
+        "description": "Terminal event of a turn (see StreamChatAiAssistantResponse.turn_completed).",
+        "$ref": "",
+        "properties": {
+          "finalSequenceNumber": {
+            "type": "string",
+            "format": "int64",
+            "description": "Sequence number of the last event the turn produced. A client whose cursor is lower missed content and should reload the session to see it.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "reason": {
+            "type": "string",
+            "format": "",
+            "description": "Why the turn ended.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "REASON_UNSPECIFIED",
+              "COMPLETED",
+              "ABANDONED",
+              "RESUME_UNAVAILABLE"
+            ],
+            "readOnly": false
+          },
+          "turnId": {
+            "type": "string",
+            "format": "",
+            "description": "Identifier of the turn that ended; matches TurnResumeSnapshot.turn_id and ActiveTurnInfo.turn_id.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "TurnHandoffEvent": {
+        "type": "object",
+        "format": "",
+        "description": "Emitted before this task stops serving the stream mid-turn (e.g. a server restart). The turn's state is persisted; a reconnect carrying resume_from_sequence_number continues it on another task.",
+        "$ref": "",
+        "properties": {
+          "reason": {
+            "type": "string",
+            "format": "",
+            "description": "Why the stream is handing off.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "REASON_UNSPECIFIED",
+              "SERVER_RESTART"
+            ],
+            "readOnly": false
+          },
+          "turnId": {
+            "type": "string",
+            "format": "",
+            "description": "Identifies the turn to resume.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "TurnMetadata": {
+        "type": "object",
+        "format": "",
+        "description": "Turn-level metadata and intent categorization.",
+        "$ref": "",
+        "properties": {
+          "contractDraftComplete": {
+            "type": "boolean",
+            "format": "",
+            "description": "Set on the terminal event of a contract draft whose every placeholder is resolved (contract_progress is 100%), whether or not the draft was published. Clients complete and dismiss the contract progress display on it; publication is reported separately by contract_finalized.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "contractFinalized": {
+            "type": "boolean",
+            "format": "",
+            "description": "Set on the final artifact event of a turn whose contract draft was published (a revision was activated). Terminal for the clarification flow of this draft: contract_progress is authoritative and complete.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "contractRelated": {
+            "type": "boolean",
+            "format": "",
+            "description": "Indicates whether this assistant turn was contract-related (e.g. contract drafting, alignment, extraction, or revision).",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "contractStreamingPhase": {
+            "type": "string",
+            "format": "",
+            "description": "Set only on in-flight progress estimates emitted while a contract artifact fence is streaming, and on the revision-turn-start event. Unset on authoritative payloads.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "CONTRACT_STREAMING_PHASE_UNSPECIFIED",
+              "DRAFTING",
+              "REVISING"
+            ],
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "TurnResumeSnapshot": {
+        "type": "object",
+        "format": "",
+        "description": "A compacted replay of an in-flight turn: everything needed to render the turn's visible output so far, plus the position live events continue from.",
+        "$ref": "",
+        "properties": {
+          "events": {
+            "type": "array",
+            "format": "",
+            "description": "Compacted events reconstructing the turn's visible output, in render order, using the same event shapes as live streaming.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "StreamChatAiAssistantResponse",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "orphanDeadlineTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "When the turn will be wound down if no client remains attached.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "resolvedSequenceNumber": {
+            "type": "string",
+            "format": "int64",
+            "description": "The position this snapshot represents. Live events follow with sequence_number strictly greater than this. When lower than the resume_from_sequence_number the client requested, flushed progress lags what the client already rendered: the client must discard its rendered content of this turn beyond this position before applying the snapshot.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "turnId": {
+            "type": "string",
+            "format": "",
+            "description": "Identifies the turn being attached to.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "UiEvent": {
+        "type": "object",
+        "format": "",
+        "description": "Represents a UI event payload.",
+        "$ref": "",
+        "properties": {
+          "jsonPayload": {
+            "type": "string",
+            "format": "",
+            "description": "The JSON payload representing the A2UI surface.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "mimeType": {
+            "type": "string",
+            "format": "",
+            "description": "The media type (MIME type) indicating the format of the UI event payload (e.g., \"application/json+a2ui\").",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
       "VpcScSettings": {
         "type": "object",
         "format": "",
@@ -14909,6 +16431,29 @@
                       "$ref": "Operation"
                     }
                   },
+                  "generateOnboardingSuggestions": {
+                    "id": "ces.projects.locations.apps.generateOnboardingSuggestions",
+                    "httpMethod": "POST",
+                    "path": "v1/{+name}:generateOnboardingSuggestions",
+                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/apps/{appsId}:generateOnboardingSuggestions",
+                    "description": "Generates personalized onboarding suggestions for the AI assistant zero state: classifies the requesting user (new / exploring / returning) from their assistant-session history in the app and returns suggestion chips (resume a session, continue work, or start something new) to render before any message is sent.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": {
+                      "$ref": "GenerateOnboardingSuggestionsRequest"
+                    },
+                    "response": {
+                      "$ref": "GenerateOnboardingSuggestionsResponse"
+                    }
+                  },
                   "get": {
                     "id": "ces.projects.locations.apps.get",
                     "httpMethod": "GET",
@@ -15217,6 +16762,57 @@
                         },
                         "response": {
                           "$ref": "Agent"
+                        }
+                      }
+                    },
+                    "resources": null
+                  },
+                  "assistantSessions": {
+                    "methods": {
+                      "cancelAssistantTurn": {
+                        "id": "ces.projects.locations.apps.assistantSessions.cancelAssistantTurn",
+                        "httpMethod": "POST",
+                        "path": "v1/{+name}:cancelAssistantTurn",
+                        "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/apps/{appsId}/assistantSessions/{assistantSessionsId}:cancelAssistantTurn",
+                        "description": "Cancels the assistant session's in-flight turn, if any: the explicit user stop for a turn running detached from any stream. A cancel landing on a task that does not host the turn preempts it through the session turn epoch instead, ending it within one lease renewal.",
+                        "parameters": {
+                          "name": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          }
+                        },
+                        "parameterOrder": [
+                          "name"
+                        ],
+                        "request": {
+                          "$ref": "CancelAssistantTurnRequest"
+                        },
+                        "response": {
+                          "$ref": "CancelAssistantTurnResponse"
+                        }
+                      },
+                      "streamChatAiAssistant": {
+                        "id": "ces.projects.locations.apps.assistantSessions.streamChatAiAssistant",
+                        "httpMethod": "POST",
+                        "path": "v1/{+name}:streamChatAiAssistant",
+                        "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/apps/{appsId}/assistantSessions/{assistantSessionsId}:streamChatAiAssistant",
+                        "description": "Runs the Chat AI assistant agent for the specified assistant session in a streaming fashion.",
+                        "parameters": {
+                          "name": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          }
+                        },
+                        "parameterOrder": [
+                          "name"
+                        ],
+                        "request": {
+                          "$ref": "StreamChatAiAssistantRequest"
+                        },
+                        "response": {
+                          "$ref": "StreamChatAiAssistantResponse"
                         }
                       }
                     },

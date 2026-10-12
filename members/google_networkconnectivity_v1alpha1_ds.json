@@ -25,7 +25,7 @@
   "version_qualifier": "v1alpha1",
   "raw_spec": {
     "name": "networkconnectivity",
-    "revision": "20260819",
+    "revision": "20260929",
     "discoveryVersion": "v1",
     "baseUrl": "https://networkconnectivity.googleapis.com/",
     "rootUrl": "https://networkconnectivity.googleapis.com/",
@@ -827,6 +827,21 @@
             "items": null,
             "additionalProperties": null,
             "enum": null,
+            "readOnly": false
+          },
+          "purpose": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The purpose of this internal range. Defines the intended use of the range and any restrictions associated with it. If not specified, it defaults to VPC_SUBNET.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "PURPOSE_UNSPECIFIED",
+              "VPC_SUBNET",
+              "INTERNAL_ADDRESS"
+            ],
             "readOnly": false
           },
           "rangeStatus": {

@@ -25,7 +25,7 @@
   "version_qualifier": "v1beta1",
   "raw_spec": {
     "name": "securitycenter",
-    "revision": "20260828",
+    "revision": "20261005",
     "discoveryVersion": "v1",
     "baseUrl": "https://securitycenter.googleapis.com/",
     "rootUrl": "https://securitycenter.googleapis.com/",
@@ -5503,6 +5503,17 @@
             "enum": null,
             "readOnly": false
           },
+          "deletionNotificationsEnabled": {
+            "type": "boolean",
+            "format": "",
+            "description": "",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
           "description": {
             "type": "string",
             "format": "",
@@ -6176,6 +6187,17 @@
         "description": "",
         "$ref": "",
         "properties": {
+          "deletedFinding": {
+            "type": "boolean",
+            "format": "",
+            "description": "",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
           "finding": {
             "type": "",
             "format": "",
@@ -9240,6 +9262,17 @@
           },
           "dataset": {
             "type": "string",
+            "format": "",
+            "description": "",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "deletionNotificationsEnabled": {
+            "type": "boolean",
             "format": "",
             "description": "",
             "$ref": "",
@@ -15776,6 +15809,17 @@
         "description": "",
         "$ref": "",
         "properties": {
+          "deletedFinding": {
+            "type": "boolean",
+            "format": "",
+            "description": "",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
           "finding": {
             "type": "",
             "format": "",

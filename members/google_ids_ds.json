@@ -24,7 +24,7 @@
   "wire_name": "google_ids",
   "raw_spec": {
     "name": "ids",
-    "revision": "20260427",
+    "revision": "20260918",
     "discoveryVersion": "v1",
     "baseUrl": "https://ids.googleapis.com/",
     "rootUrl": "https://ids.googleapis.com/",

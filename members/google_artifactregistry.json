@@ -24,7 +24,7 @@
   "wire_name": "google_artifactregistry",
   "raw_spec": {
     "name": "artifactregistry",
-    "revision": "20260822",
+    "revision": "20261005",
     "discoveryVersion": "v1",
     "baseUrl": "https://artifactregistry.googleapis.com/",
     "rootUrl": "https://artifactregistry.googleapis.com/",
@@ -1450,7 +1450,7 @@
           "uri": {
             "type": "string",
             "format": "",
-            "description": "An http/https uri reference to the upstream remote repository, for ex: \"https://my.apt.registry/\".",
+            "description": "An https uri reference to the upstream remote repository, for ex: \"https://my.apt.registry/\".",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -1512,7 +1512,7 @@
           "uri": {
             "type": "string",
             "format": "",
-            "description": "An http/https uri reference to the custom remote repository, for ex: \"https://registry-1.docker.io\".",
+            "description": "An https uri reference to the custom remote repository, for ex: \"https://registry-1.docker.io\".",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -1535,7 +1535,7 @@
           "uri": {
             "type": "string",
             "format": "",
-            "description": "An http/https uri reference to the upstream remote repository, for ex: \"https://my.maven.registry/\".",
+            "description": "An https uri reference to the upstream remote repository, for ex: \"https://my.maven.registry/\".",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -1558,7 +1558,7 @@
           "uri": {
             "type": "string",
             "format": "",
-            "description": "An http/https uri reference to the upstream remote repository, for ex: \"https://my.npm.registry/\".",
+            "description": "An https uri reference to the upstream remote repository, for ex: \"https://my.npm.registry/\".",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -1581,7 +1581,7 @@
           "uri": {
             "type": "string",
             "format": "",
-            "description": "An http/https uri reference to the upstream remote repository, for ex: \"https://my.python.registry/\".",
+            "description": "An https uri reference to the upstream remote repository, for ex: \"https://my.python.registry/\".",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -1604,7 +1604,7 @@
           "uri": {
             "type": "string",
             "format": "",
-            "description": "An http/https uri reference to the upstream remote repository, for ex: \"https://my.yum.registry/\".",
+            "description": "An https uri reference to the upstream remote repository, for ex: \"https://my.yum.registry/\".",
             "$ref": "",
             "properties": null,
             "items": null,

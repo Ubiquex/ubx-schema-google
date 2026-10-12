@@ -24,7 +24,7 @@
   "wire_name": "google_bigqueryconnection",
   "raw_spec": {
     "name": "bigqueryconnection",
-    "revision": "20260811",
+    "revision": "20260922",
     "discoveryVersion": "v1",
     "baseUrl": "https://bigqueryconnection.googleapis.com/",
     "rootUrl": "https://bigqueryconnection.googleapis.com/",
@@ -173,6 +173,17 @@
             "additionalProperties": null,
             "enum": null,
             "readOnly": false
+          },
+          "crossCloudCacheOptions": {
+            "type": "",
+            "format": "",
+            "description": "Optional. Configuration options for cross-cloud caching of data and metadata files.",
+            "$ref": "CrossCloudCacheOptions",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
           }
         },
         "items": null,
@@ -207,6 +218,17 @@
             "additionalProperties": null,
             "enum": null,
             "readOnly": true
+          },
+          "crossCloudCacheOptions": {
+            "type": "",
+            "format": "",
+            "description": "Optional. Configuration options for cross-cloud caching of data and metadata files.",
+            "$ref": "CrossCloudCacheOptions",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
           },
           "customerTenantId": {
             "type": "string",
@@ -1187,6 +1209,29 @@
         "enum": null,
         "readOnly": false
       },
+      "CrossCloudCacheOptions": {
+        "type": "object",
+        "format": "",
+        "description": "Options for caching cross-cloud data and metadata files.",
+        "$ref": "",
+        "properties": {
+          "enabled": {
+            "type": "boolean",
+            "format": "",
+            "description": "Optional. Whether cross-cloud caching is enabled. This only affects queries through BigQuery. If this value is `true`, read data and metadata are stored in a cache, which can increase performance and decrease network egress costs for cross-cloud queries. If this value is `false`, cross-cloud caching is disabled.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
       "Empty": {
         "type": "object",
         "format": "",
@@ -1449,6 +1494,17 @@
         "description": "Connection properties specific to Salesforce DataCloud. This is intended for use only by Salesforce partner projects.",
         "$ref": "",
         "properties": {
+          "crossCloudCacheOptions": {
+            "type": "",
+            "format": "",
+            "description": "Optional. Configuration options for cross-cloud caching of data and metadata files.",
+            "$ref": "CrossCloudCacheOptions",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
           "identity": {
             "type": "string",
             "format": "",
