@@ -24,7 +24,7 @@
   "wire_name": "google_modelarmor",
   "raw_spec": {
     "name": "modelarmor",
-    "revision": "20260826",
+    "revision": "20260923",
     "discoveryVersion": "v1",
     "baseUrl": "https://modelarmor.us-central1.rep.googleapis.com/",
     "rootUrl": "https://modelarmor.us-central1.rep.googleapis.com/",
@@ -272,6 +272,29 @@
         "enum": null,
         "readOnly": false
       },
+      "Dictionary": {
+        "type": "object",
+        "format": "",
+        "description": "Message defining a custom dictionary of words or phrases for syntactic match. Dictionary words are case-insensitive and all characters other than letters and digits in the unicode [Basic Multilingual Plane](https://en.wikipedia.org/wiki/Plane_%28Unicode%29#Basic_Multilingual_Plane) will be replaced with whitespace when scanning for matches. For example, the dictionary phrase `Sam Johnson` will match all three phrases `sam johnson`, `Sam, Johnson`, and `Sam (Johnson)`. Additionally, the characters surrounding any match must be of a different type than the adjacent characters within the word, so letters must be next to non-letters and digits must be next to non-digits. For example, the dictionary word `jen` will match the first three letters of the text `jen123` but will return no matches for `jennifer`. Dictionary words containing a large number of characters that are not letters or digits may result in unexpected matches because such characters are treated as whitespace. For details about the size limits of dictionaries, see [Quotas and limits](https://docs.cloud.google.com/model-armor/quotas).",
+        "$ref": "",
+        "properties": {
+          "wordList": {
+            "type": "",
+            "format": "",
+            "description": "Message defining a list of words or phrases.",
+            "$ref": "WordList",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
       "Empty": {
         "type": "object",
         "format": "",
@@ -283,12 +306,72 @@
         "enum": null,
         "readOnly": false
       },
+      "ExclusionRule": {
+        "type": "object",
+        "format": "",
+        "description": "The rule that specifies conditions when filter detections are excluded from results.",
+        "$ref": "",
+        "properties": {
+          "dictionary": {
+            "type": "",
+            "format": "",
+            "description": "Dictionary which defines the rule.",
+            "$ref": "Dictionary",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "matchingScope": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Specifies the scope of the input that should be matched against the exclusion rule. If unspecified, defaults to MATCHING_SCOPE_PARTIAL_MATCH.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "MATCHING_SCOPE_UNSPECIFIED",
+              "MATCHING_SCOPE_FULL_MATCH",
+              "MATCHING_SCOPE_PARTIAL_MATCH"
+            ],
+            "readOnly": false
+          },
+          "regex": {
+            "type": "",
+            "format": "",
+            "description": "Regular expression which defines the rule.",
+            "$ref": "Regex",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
       "FilterConfig": {
         "type": "object",
         "format": "",
         "description": "Filters configuration.",
         "$ref": "",
         "properties": {
+          "filterRuleSettings": {
+            "type": "",
+            "format": "",
+            "description": "Optional. Settings for customizing filter rules. Note: This field is not supported in FloorSetting and Streaming Sanitization APIs.",
+            "$ref": "FilterRuleSettings",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
           "maliciousUriFilterSettings": {
             "type": "",
             "format": "",
@@ -407,6 +490,120 @@
             "$ref": "VirusScanFilterResult",
             "properties": null,
             "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "FilterRule": {
+        "type": "object",
+        "format": "",
+        "description": "A single rule to be applied to filters, specified in `FilterRuleSet`.",
+        "$ref": "",
+        "properties": {
+          "exclusionRule": {
+            "type": "",
+            "format": "",
+            "description": "Exclusion rule.",
+            "$ref": "ExclusionRule",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "FilterRuleSet": {
+        "type": "object",
+        "format": "",
+        "description": "A set of rules that modifies the behavior of specific filters based on the rules defined within the set.",
+        "$ref": "",
+        "properties": {
+          "filterTypes": {
+            "type": "array",
+            "format": "",
+            "description": "Required. List of filters this rule set is applied to.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": [
+                "RULE_FILTER_TYPE_UNSPECIFIED",
+                "PROMPT_INJECTION_AND_JAILBREAK",
+                "RESPONSIBLE_AI"
+              ],
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "rules": {
+            "type": "array",
+            "format": "",
+            "description": "Required. Set of rules to be applied to filterTypes.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "FilterRule",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "FilterRuleSettings": {
+        "type": "object",
+        "format": "",
+        "description": "Settings for customizing filter rules.",
+        "$ref": "",
+        "properties": {
+          "ruleSets": {
+            "type": "array",
+            "format": "",
+            "description": "Optional. List of rule sets to be applied to filters.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "FilterRuleSet",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
             "additionalProperties": null,
             "enum": null,
             "readOnly": false
@@ -1568,6 +1765,29 @@
             "type": "string",
             "format": "int64",
             "description": "For proto3, value cannot be set to 0 unless the field is optional. Ref: https://protobuf.dev/programming-guides/proto3/#default Index of first character (inclusive).",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Regex": {
+        "type": "object",
+        "format": "",
+        "description": "Message defining a custom regular expression.",
+        "$ref": "",
+        "properties": {
+          "pattern": {
+            "type": "string",
+            "format": "",
+            "description": "Required. The regular expression pattern.",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -2777,7 +2997,7 @@
           "modalities": {
             "type": "array",
             "format": "",
-            "description": "Optional. Specifies the modalities to scan. If empty, only text modality will be scanned.",
+            "description": "Optional. Specifies the modalities to scan. If not specified or empty, only text modality will be scanned.",
             "$ref": "",
             "properties": null,
             "items": {
@@ -2973,6 +3193,39 @@
               "format": "",
               "description": "",
               "$ref": "VirusDetail",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "WordList": {
+        "type": "object",
+        "format": "",
+        "description": "Message defining a list of words or phrases.",
+        "$ref": "",
+        "properties": {
+          "words": {
+            "type": "array",
+            "format": "",
+            "description": "Required. Words or phrases defining the dictionary. The dictionary must contain at least one phrase and every phrase must contain at least two characters that are letters or digits.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
               "properties": null,
               "items": null,
               "additionalProperties": null,

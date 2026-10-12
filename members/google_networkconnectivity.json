@@ -24,7 +24,7 @@
   "wire_name": "google_networkconnectivity",
   "raw_spec": {
     "name": "networkconnectivity",
-    "revision": "20260819",
+    "revision": "20260929",
     "discoveryVersion": "v1",
     "baseUrl": "https://networkconnectivity.googleapis.com/",
     "rootUrl": "https://networkconnectivity.googleapis.com/",
@@ -2686,6 +2686,38 @@
             "additionalProperties": null,
             "enum": null,
             "readOnly": false
+          },
+          "purpose": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The purpose of this internal range. Defines the intended use of the range and any restrictions associated with it. If not specified, it defaults to VPC_SUBNET.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "PURPOSE_UNSPECIFIED",
+              "VPC_SUBNET",
+              "INTERNAL_ADDRESS"
+            ],
+            "readOnly": false
+          },
+          "rangeStatus": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. Status of the Internal Range.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "RANGE_STATUS_UNSPECIFIED",
+              "ACTIVE",
+              "OBSOLETE",
+              "CREATING",
+              "DELETING"
+            ],
+            "readOnly": true
           },
           "targetCidrRange": {
             "type": "array",
@@ -7908,7 +7940,7 @@
           "fieldPathsPendingUpdate": {
             "type": "array",
             "format": "",
-            "description": "Optional. The list of fields waiting for hub administrator's approval.",
+            "description": "Output only. The list of fields waiting for hub administrator's approval.",
             "$ref": "",
             "properties": null,
             "items": {
@@ -7924,7 +7956,7 @@
             },
             "additionalProperties": null,
             "enum": null,
-            "readOnly": false
+            "readOnly": true
           },
           "gateway": {
             "type": "",
@@ -8562,6 +8594,17 @@
             "enum": null,
             "readOnly": false
           },
+          "autoAccept": {
+            "type": "boolean",
+            "format": "",
+            "description": "Optional. Immutable. Controls whether resources proposed by the Transport are automatically accepted on behalf of the user. List of actions that can be automatically accepted are: 1. VPC Peering creation 2. Routing VPC Spoke creation 3. Hybrid Spoke creation",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
           "bandwidth": {
             "type": "string",
             "format": "",
@@ -8620,6 +8663,17 @@
             "additionalProperties": null,
             "enum": null,
             "readOnly": true
+          },
+          "hub": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Immutable. The NCC Hub that the Transport should attach to. The hub must be in the same project as the Transport. Format: `{hub}` or `projects/{project}/locations/global/hubs/{hub}`",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
           },
           "labels": {
             "type": "object",
@@ -8690,6 +8744,17 @@
             "type": "string",
             "format": "",
             "description": "Optional. Immutable. Key used for establishing a connection with the remote transport. This key can only be provided if the profile supports an INPUT key flow and the resource is in the PENDING_KEY state.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "pscRoutingEnabled": {
+            "type": "boolean",
+            "format": "",
+            "description": "Optional. Immutable. Controls whether a Routing VPC Spoke should be created and attached to the NCC Hub. This will provide Private Service Connect (PSC) connectivity through NCC. This can only be set when the Transport is first created.",
             "$ref": "",
             "properties": null,
             "items": null,

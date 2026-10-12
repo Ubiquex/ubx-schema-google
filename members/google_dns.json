@@ -24,7 +24,7 @@
   "wire_name": "google_dns",
   "raw_spec": {
     "name": "dns",
-    "revision": "20260804",
+    "revision": "20261002",
     "discoveryVersion": "v1",
     "baseUrl": "https://dns.googleapis.com/",
     "rootUrl": "https://dns.googleapis.com/",
@@ -109,7 +109,7 @@
             "items": null,
             "additionalProperties": null,
             "enum": null,
-            "readOnly": false
+            "readOnly": true
           },
           "startTime": {
             "type": "string",
@@ -172,13 +172,13 @@
           "kind": {
             "type": "string",
             "format": "",
-            "description": "Type of resource.",
+            "description": "Output only. Type of resource.",
             "$ref": "",
             "properties": null,
             "items": null,
             "additionalProperties": null,
             "enum": null,
-            "readOnly": false
+            "readOnly": true
           },
           "nextPageToken": {
             "type": "string",
@@ -316,7 +316,7 @@
             "items": null,
             "additionalProperties": null,
             "enum": null,
-            "readOnly": false
+            "readOnly": true
           },
           "publicKey": {
             "type": "string",
@@ -444,7 +444,7 @@
             "items": null,
             "additionalProperties": null,
             "enum": null,
-            "readOnly": false
+            "readOnly": true
           }
         },
         "items": null,
@@ -482,13 +482,13 @@
           "kind": {
             "type": "string",
             "format": "",
-            "description": "Type of resource.",
+            "description": "Output only. Type of resource.",
             "$ref": "",
             "properties": null,
             "items": null,
             "additionalProperties": null,
             "enum": null,
-            "readOnly": false
+            "readOnly": true
           },
           "nextPageToken": {
             "type": "string",
@@ -502,6 +502,17 @@
             "readOnly": false
           }
         },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Empty": {
+        "type": "object",
+        "format": "",
+        "description": "A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }",
+        "$ref": "",
+        "properties": {},
         "items": null,
         "additionalProperties": null,
         "enum": null,
@@ -933,6 +944,71 @@
         "enum": null,
         "readOnly": false
       },
+      "GoogleLongrunningListOperationsResponse": {
+        "type": "object",
+        "format": "",
+        "description": "The response message for Operations.ListOperations.",
+        "$ref": "",
+        "properties": {
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "The standard List next-page token.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "operations": {
+            "type": "array",
+            "format": "",
+            "description": "A list of operations that matches the specified filter in the request.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "GoogleLongrunningOperation",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "unreachable": {
+            "type": "array",
+            "format": "",
+            "description": "Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
       "GoogleLongrunningOperation": {
         "type": "object",
         "format": "",
@@ -1011,6 +1087,202 @@
               "enum": null,
               "readOnly": false
             },
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ListLocationsResponse": {
+        "type": "object",
+        "format": "",
+        "description": "The response message for Locations.ListLocations.",
+        "$ref": "",
+        "properties": {
+          "locations": {
+            "type": "array",
+            "format": "",
+            "description": "A list of locations that matches the specified filter in the request.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "Location",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "The standard List next-page token.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ListOutboundEndpointsResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Response message for OutboundEndpointsService.ListOutboundEndpoints",
+        "$ref": "",
+        "properties": {
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "A token to retrieve the next page of results. Set to empty if there are no remaining results.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "outboundEndpoints": {
+            "type": "array",
+            "format": "",
+            "description": "The list of OutboundEndpoints.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "OutboundEndpoint",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "unreachable": {
+            "type": "array",
+            "format": "",
+            "description": "Unordered list. The resource names of the unreachable locations. Format: `projects/{project}/locations/{location}`",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "Location": {
+        "type": "object",
+        "format": "",
+        "description": "A resource that represents a Google Cloud location.",
+        "$ref": "",
+        "properties": {
+          "displayName": {
+            "type": "string",
+            "format": "",
+            "description": "The friendly name for this location, typically a nearby city name. For example, \"Tokyo\".",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "labels": {
+            "type": "object",
+            "format": "",
+            "description": "Cross-service attributes for the location. For example {\"cloud.googleapis.com/region\": \"us-east1\"}",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "locationId": {
+            "type": "string",
+            "format": "",
+            "description": "The canonical id for this location. For example: `\"us-east1\"`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "metadata": {
+            "type": "object",
+            "format": "google.protobuf.Any",
+            "description": "Service-specific metadata. For example the available capacity at the given location.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "any",
+              "format": "",
+              "description": "Properties of the object. Contains field @type with type URL.",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "Resource name for the location, which may vary between implementations. For example: `\"projects/example-project/locations/us-east1\"`",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
             "enum": null,
             "readOnly": false
           }
@@ -1112,7 +1384,7 @@
             "items": null,
             "additionalProperties": null,
             "enum": null,
-            "readOnly": false
+            "readOnly": true
           },
           "labels": {
             "type": "object",
@@ -1268,7 +1540,7 @@
             "items": null,
             "additionalProperties": null,
             "enum": null,
-            "readOnly": false
+            "readOnly": true
           }
         },
         "items": null,
@@ -1312,7 +1584,7 @@
             "items": null,
             "additionalProperties": null,
             "enum": null,
-            "readOnly": false
+            "readOnly": true
           },
           "nonExistence": {
             "type": "string",
@@ -1362,6 +1634,27 @@
             "$ref": "",
             "properties": null,
             "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "outboundEndpoints": {
+            "type": "array",
+            "format": "",
+            "description": "The list of outbound endpoints to use for queries.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "ManagedZoneForwardingConfigOutboundEndpoint",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
             "additionalProperties": null,
             "enum": null,
             "readOnly": false
@@ -1455,6 +1748,40 @@
             "items": null,
             "additionalProperties": null,
             "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "ManagedZoneForwardingConfigOutboundEndpoint": {
+        "type": "object",
+        "format": "",
+        "description": "",
+        "$ref": "",
+        "properties": {
+          "kind": {
+            "type": "string",
+            "format": "",
+            "description": "",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "Specified as a resource path including project and region. This should be formatted like projects/{project}/locations/{location}/outboundEndpoints/{endpoint}",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
             "readOnly": false
           }
         },
@@ -1472,13 +1799,13 @@
           "kind": {
             "type": "string",
             "format": "",
-            "description": "Type of resource.",
+            "description": "Output only. Type of resource.",
             "$ref": "",
             "properties": null,
             "items": null,
             "additionalProperties": null,
             "enum": null,
-            "readOnly": false
+            "readOnly": true
           },
           "nextPageToken": {
             "type": "string",
@@ -1533,7 +1860,7 @@
             "items": null,
             "additionalProperties": null,
             "enum": null,
-            "readOnly": false
+            "readOnly": true
           },
           "targetNetwork": {
             "type": "",
@@ -1578,7 +1905,7 @@
             "items": null,
             "additionalProperties": null,
             "enum": null,
-            "readOnly": false
+            "readOnly": true
           },
           "networkUrl": {
             "type": "string",
@@ -1633,7 +1960,7 @@
             "items": null,
             "additionalProperties": null,
             "enum": null,
-            "readOnly": false
+            "readOnly": true
           },
           "networks": {
             "type": "array",
@@ -1688,7 +2015,7 @@
             "items": null,
             "additionalProperties": null,
             "enum": null,
-            "readOnly": false
+            "readOnly": true
           }
         },
         "items": null,
@@ -1711,7 +2038,7 @@
             "items": null,
             "additionalProperties": null,
             "enum": null,
-            "readOnly": false
+            "readOnly": true
           },
           "networkUrl": {
             "type": "string",
@@ -1745,7 +2072,7 @@
             "items": null,
             "additionalProperties": null,
             "enum": null,
-            "readOnly": false
+            "readOnly": true
           }
         },
         "items": null,
@@ -1768,7 +2095,7 @@
             "items": null,
             "additionalProperties": null,
             "enum": null,
-            "readOnly": false
+            "readOnly": true
           },
           "namespace": {
             "type": "",
@@ -1813,7 +2140,7 @@
             "items": null,
             "additionalProperties": null,
             "enum": null,
-            "readOnly": false
+            "readOnly": true
           },
           "namespaceUrl": {
             "type": "string",
@@ -1841,13 +2168,13 @@
           "kind": {
             "type": "string",
             "format": "",
-            "description": "Type of resource.",
+            "description": "Output only. Type of resource.",
             "$ref": "",
             "properties": null,
             "items": null,
             "additionalProperties": null,
             "enum": null,
-            "readOnly": false
+            "readOnly": true
           },
           "managedZones": {
             "type": "array",
@@ -1924,7 +2251,7 @@
             "items": null,
             "additionalProperties": null,
             "enum": null,
-            "readOnly": false
+            "readOnly": true
           },
           "startTime": {
             "type": "string",
@@ -2058,6 +2385,247 @@
         "enum": null,
         "readOnly": false
       },
+      "OperationMetadata": {
+        "type": "object",
+        "format": "",
+        "description": "Represents the metadata of the long-running operation.",
+        "$ref": "",
+        "properties": {
+          "apiVersion": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. API version used to start the operation.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "createTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. The time the operation was created.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "endTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. The time the operation finished running.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "requestedCancellation": {
+            "type": "boolean",
+            "format": "",
+            "description": "Output only. Identifies whether the user has requested cancellation of the operation. Operations that have successfully been cancelled have Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "statusMessage": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. Human-readable status of the operation, if any.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "target": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. Server-defined resource path for the target of the operation.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "verb": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. Name of the verb executed by the operation.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "OutboundEndpoint": {
+        "type": "object",
+        "format": "",
+        "description": "An OutboundEndpoint is a regional resource to enable outbound forwarding from a private IP range in VPCs to on-premise or other networks.",
+        "$ref": "",
+        "properties": {
+          "annotations": {
+            "type": "object",
+            "format": "",
+            "description": "Optional. Annotations as key value pairs",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "createTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. [Output only] Create time stamp",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "description": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. User provided description.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "endpointIp": {
+            "type": "string",
+            "format": "",
+            "description": "Required. Immutable. User provided IP address to use for outbound DNS forwarding. This address must be a free address on the subnetwork.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "labels": {
+            "type": "object",
+            "format": "",
+            "description": "Optional. Labels as key value pairs",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "Identifier. The resource name of the OutboundEndpoint. Format: `projects/{project}/locations/{location}/outboundEndpoints/{outboundEndpoint}`",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "network": {
+            "type": "string",
+            "format": "",
+            "description": "Required. Immutable. The VPC network containing the outbound endpoint, specified as full path.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "subnetwork": {
+            "type": "string",
+            "format": "",
+            "description": "Required. Immutable. The subnetwork holding the endpoint_ip, specified as full path.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "tags": {
+            "type": "object",
+            "format": "",
+            "description": "Optional. Tag bindings as key value pairs",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "updateTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. [Output only] Update time stamp",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
       "PoliciesListResponse": {
         "type": "object",
         "format": "",
@@ -2067,13 +2635,13 @@
           "kind": {
             "type": "string",
             "format": "",
-            "description": "Type of resource.",
+            "description": "Output only. Type of resource.",
             "$ref": "",
             "properties": null,
             "items": null,
             "additionalProperties": null,
             "enum": null,
-            "readOnly": false
+            "readOnly": true
           },
           "nextPageToken": {
             "type": "string",
@@ -2240,7 +2808,7 @@
             "items": null,
             "additionalProperties": null,
             "enum": null,
-            "readOnly": false
+            "readOnly": true
           },
           "name": {
             "type": "string",
@@ -2295,6 +2863,27 @@
             "items": null,
             "additionalProperties": null,
             "enum": null,
+            "readOnly": true
+          },
+          "outboundEndpoints": {
+            "type": "array",
+            "format": "",
+            "description": "The list of outbound endpoints to use for queries.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "PolicyAlternativeNameServerConfigOutboundEndpoint",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
             "readOnly": false
           },
           "targetNameServers": {
@@ -2314,6 +2903,40 @@
               "enum": null,
               "readOnly": false
             },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "PolicyAlternativeNameServerConfigOutboundEndpoint": {
+        "type": "object",
+        "format": "",
+        "description": "",
+        "$ref": "",
+        "properties": {
+          "kind": {
+            "type": "string",
+            "format": "",
+            "description": "",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "Specified as a resource path including project and region. This should be formatted like projects/{project}/locations/{location}/outboundEndpoints/{endpoint}",
+            "$ref": "",
+            "properties": null,
+            "items": null,
             "additionalProperties": null,
             "enum": null,
             "readOnly": false
@@ -2375,7 +2998,7 @@
             "items": null,
             "additionalProperties": null,
             "enum": null,
-            "readOnly": false
+            "readOnly": true
           }
         },
         "items": null,
@@ -2398,7 +3021,7 @@
             "items": null,
             "additionalProperties": null,
             "enum": null,
-            "readOnly": false
+            "readOnly": true
           },
           "scope": {
             "type": "",
@@ -2443,7 +3066,7 @@
             "items": null,
             "additionalProperties": null,
             "enum": null,
-            "readOnly": false
+            "readOnly": true
           }
         },
         "items": null,
@@ -2466,7 +3089,7 @@
             "items": null,
             "additionalProperties": null,
             "enum": null,
-            "readOnly": false
+            "readOnly": true
           },
           "networkUrl": {
             "type": "string",
@@ -2511,7 +3134,7 @@
             "items": null,
             "additionalProperties": null,
             "enum": null,
-            "readOnly": false
+            "readOnly": true
           },
           "number": {
             "type": "string",
@@ -2622,7 +3245,7 @@
             "items": null,
             "additionalProperties": null,
             "enum": null,
-            "readOnly": false
+            "readOnly": true
           },
           "managedZones": {
             "type": "integer",
@@ -2694,6 +3317,28 @@
             "type": "integer",
             "format": "int32",
             "description": "Maximum allowed number of networks per response policy.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "outboundEndpointsPerManagedZone": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Maximum allowed number of outbound endpoints per managed zone.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "outboundEndpointsPerPolicy": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Maximum allowed number of outbound endpoints per policy.",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -2886,7 +3531,7 @@
             "items": null,
             "additionalProperties": null,
             "enum": null,
-            "readOnly": false
+            "readOnly": true
           },
           "primaryBackup": {
             "type": "",
@@ -2963,7 +3608,7 @@
             "items": null,
             "additionalProperties": null,
             "enum": null,
-            "readOnly": false
+            "readOnly": true
           }
         },
         "items": null,
@@ -2997,7 +3642,7 @@
             "items": null,
             "additionalProperties": null,
             "enum": null,
-            "readOnly": false
+            "readOnly": true
           },
           "location": {
             "type": "string",
@@ -3153,7 +3798,7 @@
             "items": null,
             "additionalProperties": null,
             "enum": null,
-            "readOnly": false
+            "readOnly": true
           },
           "loadBalancerType": {
             "type": "string",
@@ -3247,7 +3892,7 @@
             "items": null,
             "additionalProperties": null,
             "enum": null,
-            "readOnly": false
+            "readOnly": true
           },
           "primaryTargets": {
             "type": "",
@@ -3313,7 +3958,7 @@
             "items": null,
             "additionalProperties": null,
             "enum": null,
-            "readOnly": false
+            "readOnly": true
           }
         },
         "items": null,
@@ -3347,7 +3992,7 @@
             "items": null,
             "additionalProperties": null,
             "enum": null,
-            "readOnly": false
+            "readOnly": true
           },
           "rrdatas": {
             "type": "array",
@@ -3423,7 +4068,7 @@
             "items": null,
             "additionalProperties": null,
             "enum": null,
-            "readOnly": false
+            "readOnly": true
           },
           "name": {
             "type": "string",
@@ -3471,7 +4116,7 @@
           "signatureRrdatas": {
             "type": "array",
             "format": "",
-            "description": "As defined in RFC 4034 (section 3.2).",
+            "description": "",
             "$ref": "",
             "properties": null,
             "items": {
@@ -3537,13 +4182,13 @@
           "kind": {
             "type": "string",
             "format": "",
-            "description": "Type of resource.",
+            "description": "Output only. Type of resource.",
             "$ref": "",
             "properties": null,
             "items": null,
             "additionalProperties": null,
             "enum": null,
-            "readOnly": false
+            "readOnly": true
           },
           "nextPageToken": {
             "type": "string",
@@ -3731,7 +4376,7 @@
             "items": null,
             "additionalProperties": null,
             "enum": null,
-            "readOnly": false
+            "readOnly": true
           },
           "labels": {
             "type": "object",
@@ -3818,7 +4463,7 @@
             "items": null,
             "additionalProperties": null,
             "enum": null,
-            "readOnly": false
+            "readOnly": true
           }
         },
         "items": null,
@@ -3841,7 +4486,7 @@
             "items": null,
             "additionalProperties": null,
             "enum": null,
-            "readOnly": false
+            "readOnly": true
           },
           "networkUrl": {
             "type": "string",
@@ -3900,7 +4545,7 @@
             "items": null,
             "additionalProperties": null,
             "enum": null,
-            "readOnly": false
+            "readOnly": true
           },
           "localData": {
             "type": "",
@@ -4334,6 +4979,73 @@
         },
         "resources": null
       },
+      "locations": {
+        "methods": {
+          "get": {
+            "id": "dns.locations.get",
+            "httpMethod": "GET",
+            "path": "dns/v1/{+name}",
+            "flatPath": "dns/v1/projects/{projectsId}/locations/{locationsId}",
+            "description": "Gets information about a location.",
+            "parameters": {
+              "name": {
+                "type": "string",
+                "location": "path",
+                "required": true
+              }
+            },
+            "parameterOrder": [
+              "name"
+            ],
+            "request": null,
+            "response": {
+              "$ref": "Location"
+            }
+          },
+          "list": {
+            "id": "dns.locations.list",
+            "httpMethod": "GET",
+            "path": "dns/v1/{+name}/locations",
+            "flatPath": "dns/v1/projects/{projectsId}/locations",
+            "description": "Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the ListLocationsRequest.name field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version.",
+            "parameters": {
+              "extraLocationTypes": {
+                "type": "string",
+                "location": "query",
+                "required": false
+              },
+              "filter": {
+                "type": "string",
+                "location": "query",
+                "required": false
+              },
+              "name": {
+                "type": "string",
+                "location": "path",
+                "required": true
+              },
+              "pageSize": {
+                "type": "integer",
+                "location": "query",
+                "required": false
+              },
+              "pageToken": {
+                "type": "string",
+                "location": "query",
+                "required": false
+              }
+            },
+            "parameterOrder": [
+              "name"
+            ],
+            "request": null,
+            "response": {
+              "$ref": "ListLocationsResponse"
+            }
+          }
+        },
+        "resources": null
+      },
       "managedZoneOperations": {
         "methods": {
           "get": {
@@ -4687,6 +5399,289 @@
         },
         "resources": null
       },
+      "operations": {
+        "methods": {
+          "cancel": {
+            "id": "dns.operations.cancel",
+            "httpMethod": "POST",
+            "path": "dns/v1/{+name}:cancel",
+            "flatPath": "dns/v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}:cancel",
+            "description": "Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.",
+            "parameters": {
+              "name": {
+                "type": "string",
+                "location": "path",
+                "required": true
+              }
+            },
+            "parameterOrder": [
+              "name"
+            ],
+            "request": null,
+            "response": {
+              "$ref": "Empty"
+            }
+          },
+          "delete": {
+            "id": "dns.operations.delete",
+            "httpMethod": "DELETE",
+            "path": "dns/v1/{+name}",
+            "flatPath": "dns/v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
+            "description": "Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.",
+            "parameters": {
+              "name": {
+                "type": "string",
+                "location": "path",
+                "required": true
+              }
+            },
+            "parameterOrder": [
+              "name"
+            ],
+            "request": null,
+            "response": {
+              "$ref": "Empty"
+            }
+          },
+          "get": {
+            "id": "dns.operations.get",
+            "httpMethod": "GET",
+            "path": "dns/v1/{+name}",
+            "flatPath": "dns/v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
+            "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
+            "parameters": {
+              "name": {
+                "type": "string",
+                "location": "path",
+                "required": true
+              }
+            },
+            "parameterOrder": [
+              "name"
+            ],
+            "request": null,
+            "response": {
+              "$ref": "GoogleLongrunningOperation"
+            }
+          },
+          "list": {
+            "id": "dns.operations.list",
+            "httpMethod": "GET",
+            "path": "dns/v1/{+name}/operations",
+            "flatPath": "dns/v1/projects/{projectsId}/locations/{locationsId}/operations",
+            "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.",
+            "parameters": {
+              "filter": {
+                "type": "string",
+                "location": "query",
+                "required": false
+              },
+              "name": {
+                "type": "string",
+                "location": "path",
+                "required": true
+              },
+              "pageSize": {
+                "type": "integer",
+                "location": "query",
+                "required": false
+              },
+              "pageToken": {
+                "type": "string",
+                "location": "query",
+                "required": false
+              },
+              "returnPartialSuccess": {
+                "type": "boolean",
+                "location": "query",
+                "required": false
+              }
+            },
+            "parameterOrder": [
+              "name"
+            ],
+            "request": null,
+            "response": {
+              "$ref": "GoogleLongrunningListOperationsResponse"
+            }
+          }
+        },
+        "resources": null
+      },
+      "outboundEndpoints": {
+        "methods": {
+          "create": {
+            "id": "dns.outboundEndpoints.create",
+            "httpMethod": "POST",
+            "path": "dns/v1/{+parent}/outboundEndpoints",
+            "flatPath": "dns/v1/projects/{projectsId}/locations/{locationsId}/outboundEndpoints",
+            "description": "Creates a new Outbound Endpoint.",
+            "parameters": {
+              "clientOperationId": {
+                "type": "string",
+                "location": "query",
+                "required": false
+              },
+              "outboundEndpointId": {
+                "type": "string",
+                "location": "query",
+                "required": false
+              },
+              "parent": {
+                "type": "string",
+                "location": "path",
+                "required": true
+              },
+              "requestId": {
+                "type": "string",
+                "location": "query",
+                "required": false
+              }
+            },
+            "parameterOrder": [
+              "parent"
+            ],
+            "request": {
+              "$ref": "OutboundEndpoint"
+            },
+            "response": {
+              "$ref": "GoogleLongrunningOperation"
+            }
+          },
+          "delete": {
+            "id": "dns.outboundEndpoints.delete",
+            "httpMethod": "DELETE",
+            "path": "dns/v1/{+name}",
+            "flatPath": "dns/v1/projects/{projectsId}/locations/{locationsId}/outboundEndpoints/{outboundEndpointsId}",
+            "description": "Deletes a previously created Outbound Endpoint.",
+            "parameters": {
+              "clientOperationId": {
+                "type": "string",
+                "location": "query",
+                "required": false
+              },
+              "name": {
+                "type": "string",
+                "location": "path",
+                "required": true
+              },
+              "requestId": {
+                "type": "string",
+                "location": "query",
+                "required": false
+              }
+            },
+            "parameterOrder": [
+              "name"
+            ],
+            "request": null,
+            "response": {
+              "$ref": "GoogleLongrunningOperation"
+            }
+          },
+          "get": {
+            "id": "dns.outboundEndpoints.get",
+            "httpMethod": "GET",
+            "path": "dns/v1/{+name}",
+            "flatPath": "dns/v1/projects/{projectsId}/locations/{locationsId}/outboundEndpoints/{outboundEndpointsId}",
+            "description": "Fetches the representation of an existing Outbound Endpoint.",
+            "parameters": {
+              "clientOperationId": {
+                "type": "string",
+                "location": "query",
+                "required": false
+              },
+              "name": {
+                "type": "string",
+                "location": "path",
+                "required": true
+              }
+            },
+            "parameterOrder": [
+              "name"
+            ],
+            "request": null,
+            "response": {
+              "$ref": "OutboundEndpoint"
+            }
+          },
+          "list": {
+            "id": "dns.outboundEndpoints.list",
+            "httpMethod": "GET",
+            "path": "dns/v1/{+parent}/outboundEndpoints",
+            "flatPath": "dns/v1/projects/{projectsId}/locations/{locationsId}/outboundEndpoints",
+            "description": "Enumerates all Outbound Endpoints associated with a project.",
+            "parameters": {
+              "clientOperationId": {
+                "type": "string",
+                "location": "query",
+                "required": false
+              },
+              "pageSize": {
+                "type": "integer",
+                "location": "query",
+                "required": false
+              },
+              "pageToken": {
+                "type": "string",
+                "location": "query",
+                "required": false
+              },
+              "parent": {
+                "type": "string",
+                "location": "path",
+                "required": true
+              }
+            },
+            "parameterOrder": [
+              "parent"
+            ],
+            "request": null,
+            "response": {
+              "$ref": "ListOutboundEndpointsResponse"
+            }
+          },
+          "patch": {
+            "id": "dns.outboundEndpoints.patch",
+            "httpMethod": "PATCH",
+            "path": "dns/v1/{+name}",
+            "flatPath": "dns/v1/projects/{projectsId}/locations/{locationsId}/outboundEndpoints/{outboundEndpointsId}",
+            "description": "Updates an existing Outbound Endpoint.",
+            "parameters": {
+              "clientOperationId": {
+                "type": "string",
+                "location": "query",
+                "required": false
+              },
+              "name": {
+                "type": "string",
+                "location": "path",
+                "required": true
+              },
+              "requestId": {
+                "type": "string",
+                "location": "query",
+                "required": false
+              },
+              "updateMask": {
+                "type": "string",
+                "location": "query",
+                "required": false
+              }
+            },
+            "parameterOrder": [
+              "name"
+            ],
+            "request": {
+              "$ref": "OutboundEndpoint"
+            },
+            "response": {
+              "$ref": "GoogleLongrunningOperation"
+            }
+          }
+        },
+        "resources": null
+      },
       "policies": {
         "methods": {
           "create": {
@@ -4890,11 +5885,6 @@
             "flatPath": "dns/v1/projects/{project}",
             "description": "Fetches the representation of an existing Project.",
             "parameters": {
-              "clientOperationId": {
-                "type": "string",
-                "location": "query",
-                "required": false
-              },
               "project": {
                 "type": "string",
                 "location": "path",

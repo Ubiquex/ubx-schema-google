@@ -24,7 +24,7 @@
   "wire_name": "google_datacatalog",
   "raw_spec": {
     "name": "datacatalog",
-    "revision": "20260826",
+    "revision": "20261005",
     "discoveryVersion": "v1",
     "baseUrl": "https://datacatalog.googleapis.com/",
     "rootUrl": "https://datacatalog.googleapis.com/",

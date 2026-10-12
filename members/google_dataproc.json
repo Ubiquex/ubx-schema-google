@@ -24,7 +24,7 @@
   "wire_name": "google_dataproc",
   "raw_spec": {
     "name": "dataproc",
-    "revision": "20260818",
+    "revision": "20261002",
     "discoveryVersion": "v1",
     "baseUrl": "https://dataproc.googleapis.com/",
     "rootUrl": "https://dataproc.googleapis.com/",
@@ -786,6 +786,17 @@
             "enum": null,
             "readOnly": false
           },
+          "eventLogPath": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The event log path for the application attempt.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
           "lastUpdated": {
             "type": "string",
             "format": "google-datetime",
@@ -1122,7 +1133,7 @@
           "diskType": {
             "type": "string",
             "format": "",
-            "description": "Optional. Disk type.",
+            "description": "Optional. Deprecated: Use type instead.",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -1151,6 +1162,17 @@
             "type": "string",
             "format": "int64",
             "description": "Optional. Indicates how much throughput to provision for the attached disk. This sets the number of throughput mb per second that the disk can handle. See https://cloud.google.com/compute/docs/disks/hyperdisks#hyperdisk-features",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "type": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Attached disk type. Currently only supports Hyperdisks. See https://cloud.google.com/compute/docs/disks/hyperdisks. Note: Hyperdisk Balanced High Availability is not supported.Allowed values are: hyperdisk-balanced hyperdisk-extreme hyperdisk-ml hyperdisk-throughput",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -5212,6 +5234,17 @@
             "enum": null,
             "readOnly": false
           },
+          "multiZoneConfig": {
+            "type": "",
+            "format": "",
+            "description": "Optional. Controls how instances within this Cluster are allowed to exist in multiple Zones within the Region. Only one of zone_uri or multi_zone_config must be set.",
+            "$ref": "MultiZoneConfig",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
           "networkUri": {
             "type": "string",
             "format": "",
@@ -8792,6 +8825,32 @@
               "HIVESERVER2",
               "HIVEMETASTORE",
               "FLINK"
+            ],
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "MultiZoneConfig": {
+        "type": "object",
+        "format": "",
+        "description": "Configuration for multi-zonal clusters that can create instances across multiple Zones within the Region.",
+        "$ref": "",
+        "properties": {
+          "targetShape": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. The distribution shape of the nodes in the multi-zonal cluster.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "TARGET_SHAPE_UNSPECIFIED",
+              "ANY"
             ],
             "readOnly": false
           }
@@ -12921,7 +12980,7 @@
           "sessionTemplate": {
             "type": "string",
             "format": "",
-            "description": "Optional. The session template used by the session.Only resource names, including project ID and location, are valid.Example: * https://www.googleapis.com/compute/v1/projects/[project_id]/locations/[dataproc_region]/sessionTemplates/[template_id] * projects/[project_id]/locations/[dataproc_region]/sessionTemplates/[template_id]The template must be in the same project and Dataproc region as the session.",
+            "description": "Optional. The session template used by the session.Resource names and short template IDs are valid. Examples: * projects/[project_id]/locations/[dataproc_region]/sessionTemplates/[template_id] * [template_id]The template must be in the same project and Dataproc region as the session.",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -19748,6 +19807,131 @@
             "additionalProperties": null,
             "enum": null,
             "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "VirtualClusterOperationMetadata": {
+        "type": "object",
+        "format": "",
+        "description": "Metadata describing the VirtualCluster operation.",
+        "$ref": "",
+        "properties": {
+          "createTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. The time when the operation was created.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "description": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. Short description of the operation.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "doneTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. The time when the operation finished.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "labels": {
+            "type": "object",
+            "format": "",
+            "description": "Output only. Labels associated with the operation.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": true
+          },
+          "operationType": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. The operation type.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "VIRTUAL_CLUSTER_OPERATION_TYPE_UNSPECIFIED",
+              "CREATE",
+              "UPDATE",
+              "DELETE"
+            ],
+            "readOnly": true
+          },
+          "virtualCluster": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. Name of the virtual cluster for the operation.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "virtualClusterUuid": {
+            "type": "string",
+            "format": "",
+            "description": "Output only. VirtualCluster UUID for the operation.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "warnings": {
+            "type": "array",
+            "format": "",
+            "description": "Output only. Warnings encountered during operation execution.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
           }
         },
         "items": null,

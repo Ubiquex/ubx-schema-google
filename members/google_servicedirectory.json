@@ -24,7 +24,7 @@
   "wire_name": "google_servicedirectory",
   "raw_spec": {
     "name": "servicedirectory",
-    "revision": "20260807",
+    "revision": "20260916",
     "discoveryVersion": "v1",
     "baseUrl": "https://servicedirectory.googleapis.com/",
     "rootUrl": "https://servicedirectory.googleapis.com/",
@@ -137,7 +137,7 @@
           "name": {
             "type": "string",
             "format": "",
-            "description": "Immutable. The resource name for the endpoint in the format `projects/*/locations/*/namespaces/*/services/*/endpoints/*`.",
+            "description": "Identifier. The resource name for the endpoint in the format `projects/*/locations/*/namespaces/*/services/*/endpoints/*`.",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -579,7 +579,7 @@
           "name": {
             "type": "string",
             "format": "",
-            "description": "Immutable. The resource name for the namespace in the format `projects/*/locations/*/namespaces/*`.",
+            "description": "Identifier. The resource name for the namespace in the format `projects/*/locations/*/namespaces/*`.",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -767,7 +767,7 @@
           "name": {
             "type": "string",
             "format": "",
-            "description": "Immutable. The resource name for the service in the format `projects/*/locations/*/namespaces/*/services/*`.",
+            "description": "Identifier. The resource name for the service in the format `projects/*/locations/*/namespaces/*/services/*`.",
             "$ref": "",
             "properties": null,
             "items": null,

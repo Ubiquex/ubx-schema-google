@@ -24,7 +24,7 @@
   "wire_name": "google_gkeonprem",
   "raw_spec": {
     "name": "gkeonprem",
-    "revision": "20260819",
+    "revision": "20260909",
     "discoveryVersion": "v1",
     "baseUrl": "https://gkeonprem.googleapis.com/",
     "rootUrl": "https://gkeonprem.googleapis.com/",

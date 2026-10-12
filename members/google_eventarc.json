@@ -24,7 +24,7 @@
   "wire_name": "google_eventarc",
   "raw_spec": {
     "name": "eventarc",
-    "revision": "20260826",
+    "revision": "20261002",
     "discoveryVersion": "v1",
     "baseUrl": "https://eventarc.googleapis.com/",
     "rootUrl": "https://eventarc.googleapis.com/",
@@ -3660,7 +3660,7 @@
           "eventFilters": {
             "type": "array",
             "format": "",
-            "description": "Required. Unordered list. The list of filters that applies to event attributes. Only events that match all the provided filters are sent to the destination.",
+            "description": "Optional. Unordered list. The list of filters that applies to event attributes. Only events that match all the provided filters are sent to the destination.",
             "$ref": "",
             "properties": null,
             "items": {

@@ -24,7 +24,7 @@
   "wire_name": "google_biglake",
   "raw_spec": {
     "name": "biglake",
-    "revision": "20260828",
+    "revision": "20261007",
     "discoveryVersion": "v1",
     "baseUrl": "https://biglake.googleapis.com/",
     "rootUrl": "https://biglake.googleapis.com/",
@@ -1219,6 +1219,83 @@
                         "path": "v1/{+resource}:testIamPermissions",
                         "flatPath": "v1/projects/{projectsId}/catalogs/{catalogsId}/namespaces/{namespacesId}/tables/{tablesId}:testIamPermissions",
                         "description": "Tests the IAM permissions for the specified table.",
+                        "parameters": {
+                          "resource": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          }
+                        },
+                        "parameterOrder": [
+                          "resource"
+                        ],
+                        "request": {
+                          "$ref": "TestIamPermissionsRequest"
+                        },
+                        "response": {
+                          "$ref": "TestIamPermissionsResponse"
+                        }
+                      }
+                    },
+                    "resources": null
+                  },
+                  "views": {
+                    "methods": {
+                      "getIamPolicy": {
+                        "id": "biglake.projects.catalogs.namespaces.views.getIamPolicy",
+                        "httpMethod": "GET",
+                        "path": "v1/{+resource}:getIamPolicy",
+                        "flatPath": "v1/projects/{projectsId}/catalogs/{catalogsId}/namespaces/{namespacesId}/views/{viewsId}:getIamPolicy",
+                        "description": "Gets the IAM policy for the specified View.",
+                        "parameters": {
+                          "options.requestedPolicyVersion": {
+                            "type": "integer",
+                            "location": "query",
+                            "required": false
+                          },
+                          "resource": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          }
+                        },
+                        "parameterOrder": [
+                          "resource"
+                        ],
+                        "request": null,
+                        "response": {
+                          "$ref": "Policy"
+                        }
+                      },
+                      "setIamPolicy": {
+                        "id": "biglake.projects.catalogs.namespaces.views.setIamPolicy",
+                        "httpMethod": "POST",
+                        "path": "v1/{+resource}:setIamPolicy",
+                        "flatPath": "v1/projects/{projectsId}/catalogs/{catalogsId}/namespaces/{namespacesId}/views/{viewsId}:setIamPolicy",
+                        "description": "Sets the IAM policy for the specified view.",
+                        "parameters": {
+                          "resource": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          }
+                        },
+                        "parameterOrder": [
+                          "resource"
+                        ],
+                        "request": {
+                          "$ref": "SetIamPolicyRequest"
+                        },
+                        "response": {
+                          "$ref": "Policy"
+                        }
+                      },
+                      "testIamPermissions": {
+                        "id": "biglake.projects.catalogs.namespaces.views.testIamPermissions",
+                        "httpMethod": "POST",
+                        "path": "v1/{+resource}:testIamPermissions",
+                        "flatPath": "v1/projects/{projectsId}/catalogs/{catalogsId}/namespaces/{namespacesId}/views/{viewsId}:testIamPermissions",
+                        "description": "Tests the IAM permissions for the specified view.",
                         "parameters": {
                           "resource": {
                             "type": "string",

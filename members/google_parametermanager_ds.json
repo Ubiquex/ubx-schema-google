@@ -24,7 +24,7 @@
   "wire_name": "google_parametermanager",
   "raw_spec": {
     "name": "parametermanager",
-    "revision": "20260819",
+    "revision": "20260923",
     "discoveryVersion": "v1",
     "baseUrl": "https://parametermanager.googleapis.com/",
     "rootUrl": "https://parametermanager.googleapis.com/",
@@ -441,7 +441,7 @@
           "createTime": {
             "type": "string",
             "format": "google-datetime",
-            "description": "Output only. [Output only] Create time stamp",
+            "description": "Output only. Create time stamp",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -500,7 +500,7 @@
           "name": {
             "type": "string",
             "format": "",
-            "description": "Identifier. [Output only] The resource name of the Parameter in the format `projects/*/locations/*/parameters/*`.",
+            "description": "Identifier. The resource name of the Parameter in the format `projects/*/locations/*/parameters/*`.",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -511,7 +511,7 @@
           "policyMember": {
             "type": "",
             "format": "",
-            "description": "Output only. [Output-only] policy member strings of a Google Cloud resource.",
+            "description": "Output only. Policy member strings of a Google Cloud resource.",
             "$ref": "ResourcePolicyMember",
             "properties": null,
             "items": null,
@@ -519,10 +519,31 @@
             "enum": null,
             "readOnly": true
           },
+          "tags": {
+            "type": "object",
+            "format": "",
+            "description": "Optional. Input only. Immutable. Tag keys and tag values that are bound to this Parameter. You must represent each item in the map as: `\"\" : \"\"`. For example, a single resource can have the following tags: ``` \"123/environment\": \"production\", \"123/costCenter\": \"marketing\", ``` Tags are used to organize and group resources. Tags can be used to control policy evaluation for the resource.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
           "updateTime": {
             "type": "string",
             "format": "google-datetime",
-            "description": "Output only. [Output only] Update time stamp",
+            "description": "Output only. Update time stamp",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -542,10 +563,25 @@
         "description": "Message describing ParameterVersion resource",
         "$ref": "",
         "properties": {
+          "checksumSource": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Output only. The source of the checksum.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "CHECKSUM_SOURCE_UNSPECIFIED",
+              "SERVER_GENERATED",
+              "USER_SPECIFIED"
+            ],
+            "readOnly": true
+          },
           "createTime": {
             "type": "string",
             "format": "google-datetime",
-            "description": "Output only. [Output only] Create time stamp",
+            "description": "Output only. Create time stamp",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -567,7 +603,7 @@
           "kmsKeyVersion": {
             "type": "string",
             "format": "",
-            "description": "Optional. Output only. [Output only] The resource name of the KMS key version used to encrypt the ParameterVersion payload. This field is populated only if the Parameter resource has customer managed encryption key (CMEK) configured.",
+            "description": "Optional. Output only. The resource name of the KMS key version used to encrypt the ParameterVersion payload. This field is populated only if the Parameter resource has customer managed encryption key (CMEK) configured.",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -578,7 +614,7 @@
           "name": {
             "type": "string",
             "format": "",
-            "description": "Identifier. [Output only] The resource name of the ParameterVersion in the format `projects/*/locations/*/parameters/*/versions/*`.",
+            "description": "Identifier. The resource name of the ParameterVersion in the format `projects/*/locations/*/parameters/*/versions/*`.",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -600,7 +636,7 @@
           "updateTime": {
             "type": "string",
             "format": "google-datetime",
-            "description": "Output only. [Output only] Update time stamp",
+            "description": "Output only. Update time stamp",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -630,6 +666,17 @@
             "additionalProperties": null,
             "enum": null,
             "readOnly": false
+          },
+          "dataCrc32c": {
+            "type": "string",
+            "format": "int64",
+            "description": "Optional. The integrity checksum of the payload. If provided, the server will verify that the checksum matches the payload. If not provided, the server will generate the checksum.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
           }
         },
         "items": null,
@@ -640,19 +687,19 @@
       "RenderParameterVersionResponse": {
         "type": "object",
         "format": "",
-        "description": "Message describing RenderParameterVersionResponse resource",
+        "description": "Message describing response of the `RenderParameterVersion` method",
         "$ref": "",
         "properties": {
           "parameterVersion": {
             "type": "string",
             "format": "",
-            "description": "Output only. Resource identifier of a ParameterVersion in the format `projects/*/locations/*/parameters/*/versions/*`.",
+            "description": "Resource identifier of a ParameterVersion in the format `projects/*/locations/*/parameters/*/versions/*`.",
             "$ref": "",
             "properties": null,
             "items": null,
             "additionalProperties": null,
             "enum": null,
-            "readOnly": true
+            "readOnly": false
           },
           "payload": {
             "type": "",
@@ -668,13 +715,13 @@
           "renderedPayload": {
             "type": "string",
             "format": "byte",
-            "description": "Output only. Server generated rendered version of the user provided payload data (ParameterVersionPayload) which has substitutions of all (if any) references to a SecretManager SecretVersion resources. This substitution only works for a Parameter which is in JSON or YAML format.",
+            "description": "Server generated rendered version of the user provided payload data (ParameterVersionPayload) which has substitutions of all (if any) references to a SecretManager SecretVersion resources. This substitution only works for a Parameter which is in JSON or YAML format.",
             "$ref": "",
             "properties": null,
             "items": null,
             "additionalProperties": null,
             "enum": null,
-            "readOnly": true
+            "readOnly": false
           }
         },
         "items": null,
@@ -685,19 +732,19 @@
       "RenderTemplateVersionResponse": {
         "type": "object",
         "format": "",
-        "description": "Message describing RenderTemplateVersionResponse resource",
+        "description": "Message describing response for `RenderTemplateVersion` method",
         "$ref": "",
         "properties": {
           "parameterVersion": {
             "type": "string",
             "format": "",
-            "description": "Output only. The resource name of the ParameterVersion used to render the template version in the format `projects/*/locations/*/parameters/*/versions/*`.",
+            "description": "The resource name of the ParameterVersion used to render the template version in the format `projects/*/locations/*/parameters/*/versions/*`.",
             "$ref": "",
             "properties": null,
             "items": null,
             "additionalProperties": null,
             "enum": null,
-            "readOnly": true
+            "readOnly": false
           },
           "payload": {
             "type": "",
@@ -713,18 +760,18 @@
           "renderedPayload": {
             "type": "string",
             "format": "byte",
-            "description": "Output only. Server generated rendered version of the user provided payload data (TemplateVersionPayload) which has all the variables resolved using the provided parameter version.",
+            "description": "Server generated rendered version of the user provided payload data (TemplateVersionPayload) which has all the variables resolved using the provided parameter version.",
             "$ref": "",
             "properties": null,
             "items": null,
             "additionalProperties": null,
             "enum": null,
-            "readOnly": true
+            "readOnly": false
           },
           "templateFormat": {
             "type": "string",
             "format": "",
-            "description": "Output only. Format of the template version.",
+            "description": "Format of the template version.",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -734,7 +781,7 @@
               "TEMPLATE_FORMAT_YAML",
               "TEMPLATE_FORMAT_JSON"
             ],
-            "readOnly": true
+            "readOnly": false
           },
           "templateVersion": {
             "type": "string",

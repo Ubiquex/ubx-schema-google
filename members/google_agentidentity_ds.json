@@ -24,7 +24,7 @@
   "wire_name": "google_agentidentity",
   "raw_spec": {
     "name": "agentidentity",
-    "revision": "20260827",
+    "revision": "20261001",
     "discoveryVersion": "v1",
     "baseUrl": "https://agentidentity.googleapis.com/",
     "rootUrl": "https://agentidentity.googleapis.com/",
@@ -2182,6 +2182,32 @@
                           "$ref": "Authorization"
                         }
                       },
+                      "getIamPolicy": {
+                        "id": "agentidentity.projects.locations.authProviders.authorizations.getIamPolicy",
+                        "httpMethod": "GET",
+                        "path": "v1/{+resource}:getIamPolicy",
+                        "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/authProviders/{authProvidersId}/authorizations/{authorizationsId}:getIamPolicy",
+                        "description": "Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.",
+                        "parameters": {
+                          "options.requestedPolicyVersion": {
+                            "type": "integer",
+                            "location": "query",
+                            "required": false
+                          },
+                          "resource": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          }
+                        },
+                        "parameterOrder": [
+                          "resource"
+                        ],
+                        "request": null,
+                        "response": {
+                          "$ref": "Policy"
+                        }
+                      },
                       "list": {
                         "id": "agentidentity.projects.locations.authProviders.authorizations.list",
                         "httpMethod": "GET",
@@ -2221,6 +2247,52 @@
                         "request": null,
                         "response": {
                           "$ref": "ListAuthorizationsResponse"
+                        }
+                      },
+                      "setIamPolicy": {
+                        "id": "agentidentity.projects.locations.authProviders.authorizations.setIamPolicy",
+                        "httpMethod": "POST",
+                        "path": "v1/{+resource}:setIamPolicy",
+                        "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/authProviders/{authProvidersId}/authorizations/{authorizationsId}:setIamPolicy",
+                        "description": "Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.",
+                        "parameters": {
+                          "resource": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          }
+                        },
+                        "parameterOrder": [
+                          "resource"
+                        ],
+                        "request": {
+                          "$ref": "SetIamPolicyRequest"
+                        },
+                        "response": {
+                          "$ref": "Policy"
+                        }
+                      },
+                      "testIamPermissions": {
+                        "id": "agentidentity.projects.locations.authProviders.authorizations.testIamPermissions",
+                        "httpMethod": "POST",
+                        "path": "v1/{+resource}:testIamPermissions",
+                        "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/authProviders/{authProvidersId}/authorizations/{authorizationsId}:testIamPermissions",
+                        "description": "Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may \"fail open\" without warning.",
+                        "parameters": {
+                          "resource": {
+                            "type": "string",
+                            "location": "path",
+                            "required": true
+                          }
+                        },
+                        "parameterOrder": [
+                          "resource"
+                        ],
+                        "request": {
+                          "$ref": "TestIamPermissionsRequest"
+                        },
+                        "response": {
+                          "$ref": "TestIamPermissionsResponse"
                         }
                       }
                     },

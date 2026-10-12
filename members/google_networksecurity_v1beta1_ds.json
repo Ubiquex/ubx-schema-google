@@ -25,7 +25,7 @@
   "version_qualifier": "v1beta1",
   "raw_spec": {
     "name": "networksecurity",
-    "revision": "20260824",
+    "revision": "20260924",
     "discoveryVersion": "v1",
     "baseUrl": "https://networksecurity.googleapis.com/",
     "rootUrl": "https://networksecurity.googleapis.com/",
@@ -1199,7 +1199,7 @@
           "baseProtocolMethodsOption": {
             "type": "string",
             "format": "",
-            "description": "Optional. If specified, matches on the MCP protocol’s non-access specific methods namely: * initialize * completion/ * logging/ * notifications/ * ping Defaults to SKIP_BASE_PROTOCOL_METHODS if not specified.",
+            "description": "Optional. If specified, matches on the MCP protocol's non-access specific methods namely: * initialize * completion/ * logging/ * notifications/ * ping Defaults to SKIP_BASE_PROTOCOL_METHODS if not specified.",
             "$ref": "",
             "properties": null,
             "items": null,
@@ -5284,6 +5284,71 @@
         "enum": null,
         "readOnly": false
       },
+      "ListRateLimitPoliciesResponse": {
+        "type": "object",
+        "format": "",
+        "description": "Contains a response to listing `RateLimitPolicy` resources.",
+        "$ref": "",
+        "properties": {
+          "nextPageToken": {
+            "type": "string",
+            "format": "",
+            "description": "Identifies a token for a page of results the server should return.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "rateLimitPolicies": {
+            "type": "array",
+            "format": "",
+            "description": "Contains a list of `RateLimitPolicy` resources.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "RateLimitPolicy",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "unreachable": {
+            "type": "array",
+            "format": "",
+            "description": "Unordered list. Lists locations that could not be reached.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
       "ListSACAttachmentsResponse": {
         "type": "object",
         "format": "",
@@ -6966,6 +7031,1119 @@
             "additionalProperties": null,
             "enum": null,
             "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "RateLimitPolicy": {
+        "type": "object",
+        "format": "",
+        "description": "Describes a `RateLimitPolicy` object.",
+        "$ref": "",
+        "properties": {
+          "createTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. Represents the create timestamp.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "description": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Provides a human-readable description of the resource.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "httpRules": {
+            "type": "array",
+            "format": "",
+            "description": "Optional. Specifies a list of rate limit HTTP rules to match against the incoming request.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "RateLimitPolicyRateLimitRule",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "labels": {
+            "type": "object",
+            "format": "",
+            "description": "Optional. Stores labels as key value pairs.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "enum": null,
+            "readOnly": false
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "Identifier. Specifies the name of the `RateLimitPolicy` resource.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "rateLimitBuckets": {
+            "type": "array",
+            "format": "",
+            "description": "Optional. Specifies a list of rate limit buckets to be used for rate limiting. Rate limit buckets will be referenced by the rate limit actions by name.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "RateLimitPolicyRateLimitBucket",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "targets": {
+            "type": "array",
+            "format": "",
+            "description": "Required. Specifies a list of targets to which this policy applies.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "RateLimitPolicyTarget",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "updateTime": {
+            "type": "string",
+            "format": "google-datetime",
+            "description": "Output only. Represents the update timestamp.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "RateLimitPolicyRateLimitBucket": {
+        "type": "object",
+        "format": "",
+        "description": "Describes properties of a rate limit bucket.",
+        "$ref": "",
+        "properties": {
+          "defaultLimit": {
+            "type": "",
+            "format": "",
+            "description": "Required. Specifies the default limit to apply for this rate limit bucket.",
+            "$ref": "RateLimitPolicyRateLimitBucketLimit",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "dryRun": {
+            "type": "boolean",
+            "format": "",
+            "description": "Optional. Specifies whether the rate limit bucket is in dry-run mode.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "keys": {
+            "type": "array",
+            "format": "",
+            "description": "Required. Specifies the keys to use for rate limiting. At least one key is required. If multiple keys are specified, the keys will be combined and used as a single key.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "RateLimitPolicyRateLimitBucketKey",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "Required. Specifies the name of the rate limit bucket. Name will be used to reference the bucket in the RateLimitAction.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "userOverrides": {
+            "type": "array",
+            "format": "",
+            "description": "Optional. Specifies a list of user overrides to apply to the rate limit bucket.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "RateLimitPolicyRateLimitBucketUserOverride",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "RateLimitPolicyRateLimitBucketCountLimit": {
+        "type": "object",
+        "format": "",
+        "description": "Describes the count limit for enforcement.",
+        "$ref": "",
+        "properties": {
+          "count": {
+            "type": "string",
+            "format": "int64",
+            "description": "Required. Specifies the maximum number of costs allowed in the specified interval. Must be non-negative.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "interval": {
+            "type": "string",
+            "format": "int64",
+            "description": "Required. Specifies the interval in units for which the count limit is enforced. Must be positive.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "intervalUnit": {
+            "type": "string",
+            "format": "",
+            "description": "Required. Specifies the unit of the interval. Defaults to MINUTES.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "INTERVAL_UNIT_UNSPECIFIED",
+              "SECONDS",
+              "MINUTES",
+              "HOURS",
+              "DAYS"
+            ],
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "RateLimitPolicyRateLimitBucketKey": {
+        "type": "object",
+        "format": "",
+        "description": "Describes properties of a key to use for rate limiting.",
+        "$ref": "",
+        "properties": {
+          "header": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Specifies the header name if key_type is HTTP_HEADER.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "keyType": {
+            "type": "string",
+            "format": "",
+            "description": "Required. Specifies the type of key to use for rate limiting.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "KEY_TYPE_UNSPECIFIED",
+              "ALL",
+              "SOURCE_IP",
+              "HTTP_HEADER",
+              "HTTP_PATH",
+              "PRINCIPAL",
+              "MCP_TOOL"
+            ],
+            "readOnly": false
+          },
+          "principalType": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Specifies the principal type if key_type is PRINCIPAL.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "PRINCIPAL_TYPE_UNSPECIFIED",
+              "CLIENT_CERT_COMMON_NAME"
+            ],
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "RateLimitPolicyRateLimitBucketLimit": {
+        "type": "object",
+        "format": "",
+        "description": "Describes a limit for enforcement.",
+        "$ref": "",
+        "properties": {
+          "countLimit": {
+            "type": "",
+            "format": "",
+            "description": "Required. Defines the count limit to enforce.",
+            "$ref": "RateLimitPolicyRateLimitBucketCountLimit",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "RateLimitPolicyRateLimitBucketUserOverride": {
+        "type": "object",
+        "format": "",
+        "description": "Describes properties of a user override for the rate limit bucket.",
+        "$ref": "",
+        "properties": {
+          "limit": {
+            "type": "",
+            "format": "",
+            "description": "Required. Specifies the limit to apply for this specific key.",
+            "$ref": "RateLimitPolicyRateLimitBucketLimit",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "overrideKey": {
+            "type": "",
+            "format": "",
+            "description": "Required. Specifies the key to override.",
+            "$ref": "RateLimitPolicyRateLimitBucketUserOverrideOverrideKey",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "RateLimitPolicyRateLimitBucketUserOverrideOverrideKey": {
+        "type": "object",
+        "format": "",
+        "description": "Specifies the key to override. Key fields must match the key types specified in the rate limit bucket. Key type ALL does not support overrides.",
+        "$ref": "",
+        "properties": {
+          "httpHeaders": {
+            "type": "array",
+            "format": "",
+            "description": "Optional. Specifies the HTTP headers if the rate limit bucket keys contain keys of type HTTP_HEADER. Number of headers and header names must match the rate limit bucket key.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "RateLimitPolicyRateLimitBucketUserOverrideOverrideKeyHttpHeader",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "httpPath": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Specifies the HTTP path if the rate limit bucket keys contain a key of type HTTP_PATH.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "mcpTool": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Specifies the MCP tool if the rate limit bucket keys contain a key of type MCP_TOOL.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "principals": {
+            "type": "array",
+            "format": "",
+            "description": "Optional. Specifies the principals if the rate limit bucket keys contain keys of PRINCIPAL. Number of principals and principal types must match the rate limit bucket key.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "RateLimitPolicyRateLimitBucketUserOverrideOverrideKeyPrincipal",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "sourceIp": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Specifies the source IP if the rate limit bucket keys contain a key of type SOURCE_IP.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "RateLimitPolicyRateLimitBucketUserOverrideOverrideKeyHttpHeader": {
+        "type": "object",
+        "format": "",
+        "description": "Specifies the key in the type HTTP header to override.",
+        "$ref": "",
+        "properties": {
+          "header": {
+            "type": "string",
+            "format": "",
+            "description": "Required. Specifies the header name of the key.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "value": {
+            "type": "string",
+            "format": "",
+            "description": "Required. Specifies the header value of the key.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "RateLimitPolicyRateLimitBucketUserOverrideOverrideKeyPrincipal": {
+        "type": "object",
+        "format": "",
+        "description": "Specifies the key in the type PRINCIPAL to override.",
+        "$ref": "",
+        "properties": {
+          "principal": {
+            "type": "string",
+            "format": "",
+            "description": "Required. Specifies the principal value of the key.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "principalType": {
+            "type": "string",
+            "format": "",
+            "description": "Required. Specifies the principal type of the key.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "PRINCIPAL_TYPE_UNSPECIFIED",
+              "CLIENT_CERT_COMMON_NAME"
+            ],
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "RateLimitPolicyRateLimitRule": {
+        "type": "object",
+        "format": "",
+        "description": "Specifies conditions to match against the incoming request.",
+        "$ref": "",
+        "properties": {
+          "from": {
+            "type": "",
+            "format": "",
+            "description": "Optional. Describes properties of a source of a request.",
+            "$ref": "RateLimitPolicyRateLimitRuleFrom",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "rateLimitActions": {
+            "type": "array",
+            "format": "",
+            "description": "Optional. Specifies the actions to take when this rule is matched.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "RateLimitPolicyRateLimitRuleRateLimitAction",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "to": {
+            "type": "",
+            "format": "",
+            "description": "Optional. Describes properties of a target of a request.",
+            "$ref": "RateLimitPolicyRateLimitRuleTo",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "RateLimitPolicyRateLimitRuleFrom": {
+        "type": "object",
+        "format": "",
+        "description": "Describes properties of the sources of a request.",
+        "$ref": "",
+        "properties": {
+          "notSource": {
+            "type": "",
+            "format": "",
+            "description": "Optional. Describes the negated properties of request source. Matches requests from source that does not match the criteria specified in this field. At least one of source or not_source must be specified.",
+            "$ref": "RateLimitPolicyRateLimitRuleFromSource",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "source": {
+            "type": "",
+            "format": "",
+            "description": "Optional. Describes the properties of a request's source. At least one of source or not_source must be specified. A match occurs when ANY fields in either source or not_source matches the request. Within a single source, the match follows OR semantics across fields and AND semantics within a single field.",
+            "$ref": "RateLimitPolicyRateLimitRuleFromSource",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "RateLimitPolicyRateLimitRuleFromSource": {
+        "type": "object",
+        "format": "",
+        "description": "Describes the properties of a request source.",
+        "$ref": "",
+        "properties": {
+          "principals": {
+            "type": "array",
+            "format": "",
+            "description": "Required. Contains a list of identities derived from the client's certificate. This field does not match on a request unless frontend mutual TLS is enabled for the Gateway and the client certificate is successfully validated by mTLS. Each identity is a string whose value is matched against a list of URI SANs, DNS Name SANs, or the common name in the client's certificate. A match happens when any principal matches with the rule.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "RateLimitPolicyRateLimitRulePrincipal",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "RateLimitPolicyRateLimitRuleHeaderMatch": {
+        "type": "object",
+        "format": "",
+        "description": "Determines how an HTTP header is matched.",
+        "$ref": "",
+        "properties": {
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Specifies the name of the header in the request.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "value": {
+            "type": "",
+            "format": "",
+            "description": "Optional. Specifies how the header match is performed.",
+            "$ref": "RateLimitPolicyRateLimitRuleStringMatch",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "RateLimitPolicyRateLimitRulePrincipal": {
+        "type": "object",
+        "format": "",
+        "description": "Describes the properties of a principal for matching.",
+        "$ref": "",
+        "properties": {
+          "principal": {
+            "type": "",
+            "format": "",
+            "description": "Required. Matches a non-empty string against the principal value based on the principal_selector.",
+            "$ref": "RateLimitPolicyRateLimitRuleStringMatch",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "principalSelector": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. Decides what principal value the principal rule will match against. If not specified, defaults to CLIENT_CERT_URI_SAN.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "PRINCIPAL_SELECTOR_UNSPECIFIED",
+              "CLIENT_CERT_URI_SAN",
+              "CLIENT_CERT_DNS_NAME_SAN",
+              "CLIENT_CERT_COMMON_NAME"
+            ],
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "RateLimitPolicyRateLimitRuleRateLimitAction": {
+        "type": "object",
+        "format": "",
+        "description": "Describes the action to take when the rate limit rule is matched.",
+        "$ref": "",
+        "properties": {
+          "rateLimitBucket": {
+            "type": "string",
+            "format": "",
+            "description": "Required. Specifies the name of the rate limit bucket to apply when this rule is matched.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "RateLimitPolicyRateLimitRuleStringMatch": {
+        "type": "object",
+        "format": "",
+        "description": "Determines how a string value is matched.",
+        "$ref": "",
+        "properties": {
+          "contains": {
+            "type": "string",
+            "format": "",
+            "description": "Checks if the input string contains the substring specified here. Note: empty contains match is not allowed, please use regex instead. Examples: * ``abc`` matches the value ``xyz.abc.def``",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "exact": {
+            "type": "string",
+            "format": "",
+            "description": "Matches the input string exactly to the string specified here. Examples: * ``abc`` only matches the value ``abc``.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "ignoreCase": {
+            "type": "boolean",
+            "format": "",
+            "description": "Optional. Indicates if the exact/prefix/suffix/contains matching should be case insensitive. For example, when true, the matcher ``data`` matches both input strings ``Data`` and ``data``.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "prefix": {
+            "type": "string",
+            "format": "",
+            "description": "Checks if the input string has the prefix specified here. Note: empty prefix is not allowed, please use regex instead. Examples: * ``abc`` matches the value ``abc.xyz``",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "suffix": {
+            "type": "string",
+            "format": "",
+            "description": "Checks if the input string has the suffix specified here. Note: empty suffix is not allowed, please use regex instead. Examples: * ``abc`` matches the value ``xyz.abc``",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "RateLimitPolicyRateLimitRuleTo": {
+        "type": "object",
+        "format": "",
+        "description": "Describes properties of the targets of a request.",
+        "$ref": "",
+        "properties": {
+          "destination": {
+            "type": "",
+            "format": "",
+            "description": "Optional. Describes properties of a request's destination. At least one of destination or not_destination must be specified. A match occurs when ANY fields in either destination or not_destination matches the request. Within a destination, the match follows OR semantics across fields and AND semantics within a single field.",
+            "$ref": "RateLimitPolicyRateLimitRuleToDestination",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "notDestination": {
+            "type": "",
+            "format": "",
+            "description": "Optional. Describes the negated properties of a request's destination. Matches requests for destination that does not match the criteria specified in this field. At least one of destination or not_destination must be specified.",
+            "$ref": "RateLimitPolicyRateLimitRuleToDestination",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "RateLimitPolicyRateLimitRuleToDestination": {
+        "type": "object",
+        "format": "",
+        "description": "Describes properties of a request target.",
+        "$ref": "",
+        "properties": {
+          "headerSet": {
+            "type": "",
+            "format": "",
+            "description": "Optional. Specifies a list of headers to match against in http header.",
+            "$ref": "RateLimitPolicyRateLimitRuleToDestinationHeaderSet",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "hosts": {
+            "type": "array",
+            "format": "",
+            "description": "Optional. Specifies a list of HTTP Hosts to match against. The match can be one of exact, prefix, suffix, or contains (substring match). Matches are always case sensitive unless the ignoreCase is set. The match follows OR semantics which means that if any of the hosts match, the operation is considered to be matched.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "RateLimitPolicyRateLimitRuleStringMatch",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "mcp": {
+            "type": "",
+            "format": "",
+            "description": "Optional. Specifies the MCP protocol attributes to match against. This field is only valid if the targeted Gateway or Forwarding Rule has an Agent Gateway attached to it.",
+            "$ref": "RateLimitPolicyRateLimitRuleToDestinationMCP",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "methods": {
+            "type": "array",
+            "format": "",
+            "description": "Optional. Specifies a list of HTTP methods to match against. Each entry must be a valid HTTP method name (GET, PUT, POST, HEAD, PATCH, DELETE, OPTIONS). It only allows exact match and is always case sensitive. The match follows OR semantics which means that if any of the methods match, the operation is considered to be matched.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "string",
+              "format": "",
+              "description": "",
+              "$ref": "",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "paths": {
+            "type": "array",
+            "format": "",
+            "description": "Optional. Specifies a list of paths to match against. The match can be one of exact, prefix, suffix, or contains (substring match). Matches are always case sensitive unless the ignoreCase is set. The match follows OR semantics which means that if any of the paths match, the operation is considered to be matched. Note that this path match includes the query parameters. For gRPC services, this should be a fully-qualified name of the form /package.service/method.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "RateLimitPolicyRateLimitRuleStringMatch",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "RateLimitPolicyRateLimitRuleToDestinationHeaderSet": {
+        "type": "object",
+        "format": "",
+        "description": "Describes a set of HTTP headers to match against.",
+        "$ref": "",
+        "properties": {
+          "headers": {
+            "type": "array",
+            "format": "",
+            "description": "Required. Contains a list of headers to match against in http header. The match can be one of exact, prefix, suffix, or contains (substring match). The match follows AND semantics which means all the headers must match. Matches are always case sensitive unless the ignoreCase is set.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "RateLimitPolicyRateLimitRuleHeaderMatch",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "RateLimitPolicyRateLimitRuleToDestinationMCP": {
+        "type": "object",
+        "format": "",
+        "description": "Describes a set of MCP protocol attributes to match against for a given MCP request. This field is only valid if the targeted Gateway or Forwarding Rule has an Agent Gateway attached to it.",
+        "$ref": "",
+        "properties": {
+          "baseProtocolMethodsOption": {
+            "type": "string",
+            "format": "",
+            "description": "Optional. If specified, matches on the MCP protocol’s non-access specific methods namely: * initialize * completion/ * logging/ * notifications/ * ping Defaults to SKIP_BASE_PROTOCOL_METHODS if not specified.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "BASE_PROTOCOL_METHODS_OPTION_UNSPECIFIED",
+              "SKIP_BASE_PROTOCOL_METHODS",
+              "MATCH_BASE_PROTOCOL_METHODS"
+            ],
+            "readOnly": false
+          },
+          "methods": {
+            "type": "array",
+            "format": "",
+            "description": "Optional. A list of MCP methods and associated parameter names to match on. It is recommended to use this field to match on tools, prompts and resource accesses while setting the baseProtocolMethodsOption to MATCH_BASE_PROTOCOL_METHODS to match on all the other MCP protocol methods. Limited to 10 MCP methods per Rate Limit Policy.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "RateLimitPolicyRateLimitRuleToDestinationMCPMethod",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "RateLimitPolicyRateLimitRuleToDestinationMCPMethod": {
+        "type": "object",
+        "format": "",
+        "description": "Describes a set of MCP methods to match against. This field is only valid if the targeted Gateway or Forwarding Rule has an Agent Gateway attached to it.",
+        "$ref": "",
+        "properties": {
+          "name": {
+            "type": "string",
+            "format": "",
+            "description": "Required. Specifies the MCP method to match against. Allowed values are as follows: 1. `tools`, `prompts`, `resources` - these will match against all sub methods under the respective methods. 2. `prompts/list`, `tools/list`, `resources/list`, `resources/templates/list` 3. `prompts/get`, `tools/call`, `resources/subscribe`, `resources/unsubscribe`, `resources/read` Params cannot be specified for categories 1 and 2.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "params": {
+            "type": "array",
+            "format": "",
+            "description": "Optional. Specifies a list of MCP method parameter names to match against. The match can be one of exact, prefix, suffix, or contains (substring match). Matches are always case sensitive unless the ignoreCase is set.",
+            "$ref": "",
+            "properties": null,
+            "items": {
+              "type": "",
+              "format": "",
+              "description": "",
+              "$ref": "RateLimitPolicyRateLimitRuleStringMatch",
+              "properties": null,
+              "items": null,
+              "additionalProperties": null,
+              "enum": null,
+              "readOnly": false
+            },
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "RateLimitPolicyTarget": {
+        "type": "object",
+        "format": "",
+        "description": "Specifies the target to which this policy applies.",
+        "$ref": "",
+        "properties": {
+          "resource": {
+            "type": "string",
+            "format": "",
+            "description": "Required. Reference to a Gateway or Forwarding Rule resource on which this policy will be applied.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
           }
         },
         "items": null,
@@ -13730,6 +14908,165 @@
                     "request": null,
                     "response": {
                       "$ref": "ListOperationsResponse"
+                    }
+                  }
+                },
+                "resources": null
+              },
+              "rateLimitPolicies": {
+                "methods": {
+                  "create": {
+                    "id": "networksecurity.projects.locations.rateLimitPolicies.create",
+                    "httpMethod": "POST",
+                    "path": "v1beta1/{+parent}/rateLimitPolicies",
+                    "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/rateLimitPolicies",
+                    "description": "Creates a new `RateLimitPolicy` in a given project and location.",
+                    "parameters": {
+                      "parent": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      },
+                      "rateLimitPolicyId": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "requestId": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      }
+                    },
+                    "parameterOrder": [
+                      "parent"
+                    ],
+                    "request": {
+                      "$ref": "RateLimitPolicy"
+                    },
+                    "response": {
+                      "$ref": "Operation"
+                    }
+                  },
+                  "delete": {
+                    "id": "networksecurity.projects.locations.rateLimitPolicies.delete",
+                    "httpMethod": "DELETE",
+                    "path": "v1beta1/{+name}",
+                    "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/rateLimitPolicies/{rateLimitPoliciesId}",
+                    "description": "Deletes a single `RateLimitPolicy`.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      },
+                      "requestId": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "Operation"
+                    }
+                  },
+                  "get": {
+                    "id": "networksecurity.projects.locations.rateLimitPolicies.get",
+                    "httpMethod": "GET",
+                    "path": "v1beta1/{+name}",
+                    "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/rateLimitPolicies/{rateLimitPoliciesId}",
+                    "description": "Gets details of a single `RateLimitPolicy`.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "RateLimitPolicy"
+                    }
+                  },
+                  "list": {
+                    "id": "networksecurity.projects.locations.rateLimitPolicies.list",
+                    "httpMethod": "GET",
+                    "path": "v1beta1/{+parent}/rateLimitPolicies",
+                    "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/rateLimitPolicies",
+                    "description": "Lists `RateLimitPolicy` resources in a given project and location.",
+                    "parameters": {
+                      "filter": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "orderBy": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "pageSize": {
+                        "type": "integer",
+                        "location": "query",
+                        "required": false
+                      },
+                      "pageToken": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "parent": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      }
+                    },
+                    "parameterOrder": [
+                      "parent"
+                    ],
+                    "request": null,
+                    "response": {
+                      "$ref": "ListRateLimitPoliciesResponse"
+                    }
+                  },
+                  "patch": {
+                    "id": "networksecurity.projects.locations.rateLimitPolicies.patch",
+                    "httpMethod": "PATCH",
+                    "path": "v1beta1/{+name}",
+                    "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/rateLimitPolicies/{rateLimitPoliciesId}",
+                    "description": "Updates the parameters of a single `RateLimitPolicy`.",
+                    "parameters": {
+                      "name": {
+                        "type": "string",
+                        "location": "path",
+                        "required": true
+                      },
+                      "requestId": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      },
+                      "updateMask": {
+                        "type": "string",
+                        "location": "query",
+                        "required": false
+                      }
+                    },
+                    "parameterOrder": [
+                      "name"
+                    ],
+                    "request": {
+                      "$ref": "RateLimitPolicy"
+                    },
+                    "response": {
+                      "$ref": "Operation"
                     }
                   }
                 },

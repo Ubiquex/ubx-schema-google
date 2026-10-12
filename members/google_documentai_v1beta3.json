@@ -25,7 +25,7 @@
   "version_qualifier": "v1beta3",
   "raw_spec": {
     "name": "documentai",
-    "revision": "20260901",
+    "revision": "20260929",
     "discoveryVersion": "v1",
     "baseUrl": "https://documentai.googleapis.com/",
     "rootUrl": "https://documentai.googleapis.com/",
@@ -2352,6 +2352,34 @@
         "enum": null,
         "readOnly": false
       },
+      "GoogleCloudDocumentaiUiv1beta3GroundingSettings": {
+        "type": "object",
+        "format": "",
+        "description": "Settings for grounding extractions.",
+        "$ref": "",
+        "properties": {
+          "groundingType": {
+            "type": "string",
+            "format": "",
+            "description": "The type of grounding to apply.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "GROUNDING_TYPE_UNSPECIFIED",
+              "HARD",
+              "OCR_RELAXED",
+              "NO_GROUNDING"
+            ],
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
       "GoogleCloudDocumentaiUiv1beta3HumanReviewLabelingMetadata": {
         "type": "object",
         "format": "",
@@ -2872,6 +2900,17 @@
             "format": "",
             "description": "Output only. Denotes that this `ProcessorVersion` is managed by Google.",
             "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
+          "groundingSettings": {
+            "type": "",
+            "format": "",
+            "description": "Output only. The grounding settings of the processor version. This can only be set using TrainProcessorVersionRequest to override the default grounding settings.",
+            "$ref": "GoogleCloudDocumentaiUiv1beta3GroundingSettings",
             "properties": null,
             "items": null,
             "additionalProperties": null,
@@ -11768,6 +11807,34 @@
         "enum": null,
         "readOnly": false
       },
+      "GoogleCloudDocumentaiV1beta3GroundingSettings": {
+        "type": "object",
+        "format": "",
+        "description": "Settings for grounding extractions.",
+        "$ref": "",
+        "properties": {
+          "groundingType": {
+            "type": "string",
+            "format": "",
+            "description": "The type of grounding to apply.",
+            "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": [
+              "GROUNDING_TYPE_UNSPECIFIED",
+              "HARD",
+              "OCR_RELAXED",
+              "NO_GROUNDING"
+            ],
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
       "GoogleCloudDocumentaiV1beta3HumanReviewStatus": {
         "type": "object",
         "format": "",
@@ -13710,6 +13777,17 @@
             "enum": null,
             "readOnly": true
           },
+          "groundingSettings": {
+            "type": "",
+            "format": "",
+            "description": "Output only. The grounding settings of the processor version. This can only be set using TrainProcessorVersionRequest to override the default grounding settings.",
+            "$ref": "GoogleCloudDocumentaiV1beta3GroundingSettings",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": true
+          },
           "kmsKeyName": {
             "type": "string",
             "format": "",
@@ -13980,6 +14058,29 @@
             "format": "int32",
             "description": "The minimum number of labeled documents in the training dataset required for fine tuning.",
             "$ref": "",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          }
+        },
+        "items": null,
+        "additionalProperties": null,
+        "enum": null,
+        "readOnly": false
+      },
+      "GoogleCloudDocumentaiV1beta3ProcessorVersionOverrides": {
+        "type": "object",
+        "format": "",
+        "description": "Overrides to apply when creating a new processor version.",
+        "$ref": "",
+        "properties": {
+          "groundingSettings": {
+            "type": "",
+            "format": "",
+            "description": "Optional. Grounding settings to override the default values.",
+            "$ref": "GoogleCloudDocumentaiV1beta3GroundingSettings",
             "properties": null,
             "items": null,
             "additionalProperties": null,
@@ -14800,6 +14901,17 @@
             "format": "",
             "description": "Required. The processor version to be created.",
             "$ref": "GoogleCloudDocumentaiV1beta3ProcessorVersion",
+            "properties": null,
+            "items": null,
+            "additionalProperties": null,
+            "enum": null,
+            "readOnly": false
+          },
+          "processorVersionOverrides": {
+            "type": "",
+            "format": "",
+            "description": "Optional. Options to override structures in the base processor version.",
+            "$ref": "GoogleCloudDocumentaiV1beta3ProcessorVersionOverrides",
             "properties": null,
             "items": null,
             "additionalProperties": null,
